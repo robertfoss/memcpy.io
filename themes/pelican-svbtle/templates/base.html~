@@ -28,7 +28,7 @@
 		</figure>
 
 		<div class="user_meta">
-            <h1 id="user"><a href="{{ SITEURL }}" class="">{{ AUTHOR }}</a></h1>
+            <h1 id="user"><a href="/" class="">{{ AUTHOR }}</a></h1>
 			<h2>{{ TAGLINE }}</h2>
 			{% if AUTHOR_BIO %}
 			<p class="bio">{{ AUTHOR_BIO }}</p>
@@ -51,12 +51,6 @@
 				{% endfor %}
 			</ul>
 		</div>
-		<footer>
-			<address>
-				Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
-		                theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
-			</address>
-		</footer>
 	</section>
 
 	<section id="posts">
