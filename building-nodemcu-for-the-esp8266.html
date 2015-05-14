@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+	<!--<link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">-->
+	<!--<script src="/theme/js/less.js" type="text/javascript"></script>-->
+	<link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
+
+	<link href="/" type="application/atom+xml" rel="alternate" title="memset.io ATOM Feed" />
+
+
+		<title>memset.io</title>
+		<meta charset="utf-8" />
+</head>
+<body>
+	<section id="sidebar">
+		<figure id="user_logo">
+            <a href="/"><div class="logo">&nbsp;</div></a>
+		</figure>
+
+		<div class="user_meta">
+            <h1 id="user"><a href="/" class="">Robert Foss</a></h1>
+			<h2>Projects, hacks and engineering</h2>
+			<ul>
+					<li><a href="https://github.com/robertfoss">Github</a></li>
+					<li><a href="archives.html">Archives</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="posts">
+	<header>
+		<h1>Robert Foss's blog</h1>
+		<h3>Posted Thu 14 May 2015</h3>
+	</header>
+	<article>
+		<h1 id="title">
+			<a href="/building-nodemcu-for-the-esp8266.html" rel="bookmark"
+				title="Permalink to Building NodeMCU for the ESP8266">Building NodeMCU for the ESP8266</a>
+		</h1>
+		<p>This is a simple step-by-step guide to building and flashing NodeMCU on a ESP8266.</p>
+<h3>Build ESP8266 SDK</h3>
+<div class="highlight"><pre>sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
+cd /opt
+git clone https://github.com/pfalcon/esp-open-sdk.git
+cd esp-open-sdk
+git submodule update
+make
+export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$### Changing the build to fit your needs
+</pre></div>
+
+
+<h3>Build NodeMCU</h3>
+<div class="highlight"><pre>git clone https://github.com/nodemcu/nodemcu-firmware.git
+cd nodemcu-firmware
+# Switch to dev branch, since it&#39;s the most up to date
+git checkout --track origin/dev
+# Make INTEGER version, since it uses less memory/space
+make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
+</pre></div>
+
+
+<h3>Modifying NodeMCU to fit you needs</h3>
+<h5>app/include/user_modules.h</h5>
+<p>Contains a list of which modules to include in the build.</p>
+<div class="highlight"><pre>...
+#define LUA_USE_MODULES_NODE
+#define LUA_USE_MODULES_FILE
+#define LUA_USE_MODULES_GPIO
+#define LUA_USE_MODULES_WIFI
+#define LUA_USE_MODULES_NET
+...
+</pre></div>
+
+
+<h5>app/include/user_config.h</h5>
+<p>Contains NodeMCU developer options, but could be of use.</p>
+<div class="highlight"><pre>...
+#define DEVELOP_VERSION
+#define NODE_ERROR
+...
+</pre></div>
+
+
+<h3>Flash NodeMCU</h3>
+<div class="highlight"><pre>COMPORT=/dev/ttyUSB0 make flash
+</pre></div>
+
+		<div id="article_meta">
+				Category:
+					<a href="/category/esp8266.html">ESP8266</a>
+				<br />Tags:
+					<a href="/tag/nodemcu.html">NodeMCU</a>
+					<a href="/tag/esp8266.html">ESP8266</a>
+		</div>
+	</article>
+
+	<footer>
+		<a href="/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+	</footer>
+
+
+	</section>
+
+</body>
+</html>
