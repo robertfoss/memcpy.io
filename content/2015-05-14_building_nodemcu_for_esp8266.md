@@ -3,7 +3,7 @@ Date: 2015-05-14 11:31
 Category: ESP8266
 Tags: NodeMCU, ESP8266
 
-This is a simple step-by-step guide to building and flashing NodeMCU on a ESP8266.
+This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.
 
 ### Build ESP8266 SDK
 
@@ -24,6 +24,11 @@ This is a simple step-by-step guide to building and flashing NodeMCU on a ESP826
     # Make INTEGER version, since it uses less memory/space
     make EXTRA_CCFLAGS="-DLUA_NUMBER_INTEGRAL"
 
+### Flash NodeMCU
+
+    COMPORT=/dev/ttyUSB0 make flash
+
+
 ### Modifying NodeMCU to fit you needs
 ##### app/include/user_modules.h
 Contains a list of which modules to include in the build.
@@ -43,8 +48,3 @@ Contains NodeMCU developer options, but could be of use.
     #define DEVELOP_VERSION
     #define NODE_ERROR
     ...
-
-
-### Flash NodeMCU
-
-    COMPORT=/dev/ttyUSB0 make flash
