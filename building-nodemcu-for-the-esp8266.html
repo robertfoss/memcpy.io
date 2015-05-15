@@ -39,7 +39,7 @@
 			<a href="/building-nodemcu-for-the-esp8266.html" rel="bookmark"
 				title="Permalink to Building NodeMCU for the ESP8266">Building NodeMCU for the ESP8266</a>
 		</h1>
-		<p>This is a simple step-by-step guide to building and flashing NodeMCU on a ESP8266.</p>
+		<p>This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.</p>
 <h3>Build ESP8266 SDK</h3>
 <div class="highlight"><pre>sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
 cd /opt
@@ -58,6 +58,11 @@ cd nodemcu-firmware
 git checkout --track origin/dev
 # Make INTEGER version, since it uses less memory/space
 make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
+</pre></div>
+
+
+<h3>Flash NodeMCU</h3>
+<div class="highlight"><pre>COMPORT=/dev/ttyUSB0 make flash
 </pre></div>
 
 
@@ -80,11 +85,6 @@ make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 #define DEVELOP_VERSION
 #define NODE_ERROR
 ...
-</pre></div>
-
-
-<h3>Flash NodeMCU</h3>
-<div class="highlight"><pre>COMPORT=/dev/ttyUSB0 make flash
 </pre></div>
 
 		<div id="article_meta">

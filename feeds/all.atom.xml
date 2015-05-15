@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memset.io</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-05-14T11:31:00+02:00</updated><entry><title>Building NodeMCU for the ESP8266</title><link href="/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:,2015-05-14:building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU on a ESP8266.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memset.io</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-05-14T11:31:00+02:00</updated><entry><title>Building NodeMCU for the ESP8266</title><link href="/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:,2015-05-14:building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
 &lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
 cd /opt
@@ -18,6 +18,11 @@ cd nodemcu-firmware
 git checkout --track origin/dev
 # Make INTEGER version, since it uses less memory/space
 make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Flash NodeMCU&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;COMPORT=/dev/ttyUSB0 make flash
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -40,9 +45,4 @@ make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 #define DEVELOP_VERSION
 #define NODE_ERROR
 ...
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Flash NodeMCU&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;COMPORT=/dev/ttyUSB0 make flash
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="NodeMCU"></category><category term="ESP8266"></category></entry></feed>
