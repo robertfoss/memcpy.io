@@ -41,13 +41,13 @@
 		</h1>
 		<p>This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.</p>
 <h3>Build ESP8266 SDK</h3>
-<div class="highlight"><pre>sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-cd /opt
-git clone https://github.com/pfalcon/esp-open-sdk.git
-cd esp-open-sdk
-git submodule update
-make
-export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$### Changing the build to fit your needs
+<div class="highlight"><pre><span class="x">sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed</span>
+<span class="x">cd /opt</span>
+<span class="x">git clone https://github.com/pfalcon/esp-open-sdk.git</span>
+<span class="x">cd esp-open-sdk</span>
+<span class="x">git submodule update</span>
+<span class="x">make</span>
+<span class="x">export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:</span><span class="p">$</span><span class="nv">PATH</span><span class="x"></span>
 </pre></div>
 
 

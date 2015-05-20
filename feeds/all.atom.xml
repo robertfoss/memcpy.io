@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memset.io</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-05-14T11:31:00+02:00</updated><entry><title>Building NodeMCU for the ESP8266</title><link href="/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:,2015-05-14:building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
 &lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-cd /opt
-git clone https://github.com/pfalcon/esp-open-sdk.git
-cd esp-open-sdk
-git submodule update
-make
-export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$### Changing the build to fit your needs
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed&lt;/span&gt;
+&lt;span class="x"&gt;cd /opt&lt;/span&gt;
+&lt;span class="x"&gt;git clone https://github.com/pfalcon/esp-open-sdk.git&lt;/span&gt;
+&lt;span class="x"&gt;cd esp-open-sdk&lt;/span&gt;
+&lt;span class="x"&gt;git submodule update&lt;/span&gt;
+&lt;span class="x"&gt;make&lt;/span&gt;
+&lt;span class="x"&gt;export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
