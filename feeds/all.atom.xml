@@ -5,6 +5,7 @@
 &lt;span class="x"&gt;cd /opt&lt;/span&gt;
 &lt;span class="x"&gt;git clone https://github.com/pfalcon/esp-open-sdk.git&lt;/span&gt;
 &lt;span class="x"&gt;cd esp-open-sdk&lt;/span&gt;
+&lt;span class="x"&gt;git submodule sync&lt;/span&gt;
 &lt;span class="x"&gt;git submodule update&lt;/span&gt;
 &lt;span class="x"&gt;make&lt;/span&gt;
 &lt;span class="x"&gt;export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
