@@ -13,7 +13,7 @@ This is a simple step-by-step guide to building and flashing NodeMCU for the ESP
     cd esp-open-sdk
     git submodule update
     make
-    export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$### Changing the build to fit your needs
+    export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
 
 ### Build NodeMCU
 
