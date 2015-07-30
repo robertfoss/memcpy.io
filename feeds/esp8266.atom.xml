@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memset.io</title><link href="/" rel="alternate"></link><link href="/feeds/esp8266.atom.xml" rel="self"></link><id>/</id><updated>2015-05-14T11:31:00+02:00</updated><entry><title>Building NodeMCU for the ESP8266</title><link href="/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:,2015-05-14:building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memset.io</title><link href="/" rel="alternate"></link><link href="/feeds/esp8266.atom.xml" rel="self"></link><id>/</id><updated>2015-07-30T15:10:00+02:00</updated><entry><title>User friendly setup of ESP8266 gadgets</title><link href="/user-friendly-setup-of-esp8266-gadgets.html" rel="alternate"></link><updated>2015-07-30T15:10:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:,2015-07-30:user-friendly-setup-of-esp8266-gadgets.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="https://raw.githubusercontent.com/robertfoss/esp8266_nodemcu_wifi_setup/images/screenshot.png" title="Screenshot" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup"&gt;esp8266_nodemcu_wifi_setup&lt;/a&gt; is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start ESP.&lt;/li&gt;
+&lt;li&gt;Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.&lt;/li&gt;
+&lt;li&gt;Submit credentials of your local WiFi.&lt;/li&gt;
+&lt;li&gt;The ESP reboots and connects to your local WiFi.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What is this magic! How could a bare mortal like me summon features like this?!&lt;/h2&gt;
+&lt;p&gt;Let me tell you..&lt;/p&gt;
+&lt;p&gt;By default DNS is not announced in the DHCP offer message, because a DNS server does not ship with NodeMCU.
+In order to announce that the ESP8266 is running a DNS server, NodeMCU has to be recompiled to support that.
+A guide to building NodeMCU can be found &lt;a href="http://memset.io/building-nodemcu-for-the-esp8266.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks to the wonderful work of Andy Reischles on &lt;a href="https://github.com/reischle/CaptiveIntraweb/tree/dev"&gt;Captive Portal&lt;/a&gt;, a lua implementation of a domain hijacking DNS server exists. Which will allow an ESP8266 to redirect all traffic to itself.&lt;/p&gt;
+&lt;h4&gt;Detailed guide&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;In dhcpserver.h, #define USE_DNS 1&lt;/li&gt;
+&lt;li&gt;Build NodeMCU.&lt;/li&gt;
+&lt;li&gt;Flash NodeMCU.&lt;/li&gt;
+&lt;li&gt;Upload all .lua files &lt;strong&gt;and&lt;/strong&gt; index.html.&lt;/li&gt;
+&lt;li&gt;Reboot ESP.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;What you need to do&lt;/h4&gt;
+&lt;p&gt;After a user has connected throught the portal and sucessfully configured the the ESP8266 with the credentials of the local WiFi, something lua service should be started so that the ESP8266 actually does something.&lt;/p&gt;
+&lt;p&gt;I would suggest adding something like this to init.lua:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;dofile(&amp;quot;init_connected.lua&amp;quot;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Where init_connected.lua is where your script resides.&lt;/p&gt;</summary><category term="NodeMCU"></category><category term="ESP8266"></category><category term="Setup"></category></entry><entry><title>Building NodeMCU for the ESP8266</title><link href="/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:,2015-05-14:building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
 &lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed&lt;/span&gt;
 &lt;span class="x"&gt;cd /opt&lt;/span&gt;

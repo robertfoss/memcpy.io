@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+	<!--<link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">-->
+	<!--<script src="/theme/js/less.js" type="text/javascript"></script>-->
+	<link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
+
+	<link href="/" type="application/atom+xml" rel="alternate" title="memset.io ATOM Feed" />
+
+
+		<title>memset.io</title>
+		<meta charset="utf-8" />
+</head>
+<body>
+	<section id="sidebar">
+		<figure id="user_logo">
+            <a href="/"><div class="logo">&nbsp;</div></a>
+		</figure>
+
+		<div class="user_meta">
+            <h1 id="user"><a href="/" class="">Robert Foss</a></h1>
+			<h2>Projects, hacks and engineering</h2>
+			<ul>
+					<li><a href="https://github.com/robertfoss">Github</a></li>
+					<li><a href="archives.html">Archives</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="posts">
+	<header>
+		<h1>Robert Foss's blog</h1>
+		<h3>Posted Thu 30 July 2015</h3>
+	</header>
+	<article>
+		<h1 id="title">
+			<a href="/user-friendly-setup-of-esp8266-gadgets.html" rel="bookmark"
+				title="Permalink to User friendly setup of ESP8266 gadgets">User friendly setup of ESP8266 gadgets</a>
+		</h1>
+		<p><img alt="Alt text" src="https://raw.githubusercontent.com/robertfoss/esp8266_nodemcu_wifi_setup/images/screenshot.png" title="Screenshot" /></p>
+<p><a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup">esp8266_nodemcu_wifi_setup</a> is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.</p>
+<ul>
+<li>Start ESP.</li>
+<li>Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.</li>
+<li>Submit credentials of your local WiFi.</li>
+<li>The ESP reboots and connects to your local WiFi.</li>
+</ul>
+<h2>What is this magic! How could a bare mortal like me summon features like this?!</h2>
+<p>Let me tell you..</p>
+<p>By default DNS is not announced in the DHCP offer message, because a DNS server does not ship with NodeMCU.
+In order to announce that the ESP8266 is running a DNS server, NodeMCU has to be recompiled to support that.
+A guide to building NodeMCU can be found <a href="http://memset.io/building-nodemcu-for-the-esp8266.html">here</a>.</p>
+<p>Thanks to the wonderful work of Andy Reischles on <a href="https://github.com/reischle/CaptiveIntraweb/tree/dev">Captive Portal</a>, a lua implementation of a domain hijacking DNS server exists. Which will allow an ESP8266 to redirect all traffic to itself.</p>
+<h4>Detailed guide</h4>
+<ul>
+<li>In dhcpserver.h, #define USE_DNS 1</li>
+<li>Build NodeMCU.</li>
+<li>Flash NodeMCU.</li>
+<li>Upload all .lua files <strong>and</strong> index.html.</li>
+<li>Reboot ESP.</li>
+</ul>
+<h4>What you need to do</h4>
+<p>After a user has connected throught the portal and sucessfully configured the the ESP8266 with the credentials of the local WiFi, something lua service should be started so that the ESP8266 actually does something.</p>
+<p>I would suggest adding something like this to init.lua:</p>
+<div class="highlight"><pre>dofile(&quot;init_connected.lua&quot;)
+</pre></div>
+
+
+<p>Where init_connected.lua is where your script resides.</p>
+
+		<div id="article_meta">
+				Category:
+					<a href="/category/esp8266.html">ESP8266</a>
+				<br />Tags:
+					<a href="/tag/nodemcu.html">NodeMCU</a>
+					<a href="/tag/esp8266.html">ESP8266</a>
+					<a href="/tag/setup.html">Setup</a>
+		</div>
+	</article>
+
+	<footer>
+		<a href="/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+	</footer>
+
+
+	</section>
+
+</body>
+</html>
