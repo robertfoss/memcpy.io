@@ -7,7 +7,7 @@
 &lt;li&gt;Submit credentials of your local WiFi.&lt;/li&gt;
 &lt;li&gt;The ESP reboots and connects to your local WiFi.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;What is this magic! How could a bare mortal like me summon features like this?!&lt;/h2&gt;
+&lt;h2&gt;What is this magic! How could a mere mortal like me summon features like this?!&lt;/h2&gt;
 &lt;p&gt;Let me tell you..&lt;/p&gt;
 &lt;p&gt;By default DNS is not announced in the DHCP offer message, because a DNS server does not ship with NodeMCU.
 In order to announce that the ESP8266 is running a DNS server, NodeMCU has to be recompiled to support that.
