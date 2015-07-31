@@ -12,7 +12,7 @@ Tags: NodeMCU, ESP8266, Setup
  * Submit credentials of your local WiFi.
  * The ESP reboots and connects to your local WiFi.
 
-## What is this magic! How could a bare mortal like me summon features like this?!
+## What is this magic! How could a mere mortal like me summon features like this?!
 Let me tell you..
 
 By default DNS is not announced in the DHCP offer message, because a DNS server does not ship with NodeMCU.
