@@ -5,6 +5,8 @@ Tags: NodeMCU, ESP8266, Setup
 
 ![Alt text](https://raw.githubusercontent.com/robertfoss/esp8266_nodemcu_wifi_setup/images/screenshot.png "Screenshot")
 
+The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.
+
 [esp8266_nodemcu_wifi_setup](https://github.com/robertfoss/esp8266_nodemcu_wifi_setup) is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.
 
  * Start ESP.
