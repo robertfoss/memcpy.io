@@ -4,7 +4,7 @@ Category: ESP8266
 Tags: NodeMCU, ESP8266
 
 
-![Alt text](images/esp8266.jpg "ESP8266")
+![Alt text](images/2015-05-14_esp8266.jpg "ESP8266")
 
 This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.
 
