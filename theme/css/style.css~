@@ -23,7 +23,7 @@ section#posts ul,section#posts ol{margin:0 0 0 15px;padding:0;list-style-positio
 section#posts ul pre,section#posts ol pre{width:517px}
 section#posts blockquote{margin:0;padding:0 0 0 20px;display:inline-block;border-left:10px solid #0e94ec;max-width:500px}section#posts blockquote p{width:530px}
 section#posts code{margin:0;padding:2px 4px;color:#000;background-color:#eee;font-family:'Inconsolata',monospace,serif;box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6);-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6)}
-section#posts pre{margin:0;padding:0 0 0 20px;display:inline-block;border-left:10px solid #0e94ec;width:550px;color:#000;background-color:#eee;font-family:'Inconsolata',monospace,serif;overflow-x:auto;box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6);-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6)}
+section#posts pre{margin:0;padding:0 0 0 20px;display:inline-block;border-left:10px solid #0e94ec;width:733px;color:#000;background-color:#eee;font-family:'Inconsolata',monospace,serif;overflow-x:auto;box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6);-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.6)}
 section#posts hr{color:#eee;background-color:#eee;height:1px;width:100%;border:none}
 section#posts header{margin:0;padding:40px 40px 40px 50px;border-bottom:#eee 1px solid;font-color:#000;font-weight:300;text-transform:uppercase;text-size:15px;line-height:33px}section#posts header h1{margin:0;padding:0;height:0;width:0;visibility:hidden}
 section#posts header h3{margin:0;padding:0;color:#000}
@@ -40,7 +40,7 @@ section#posts #disqus_thread{width:600px}
 section#posts dl#tag_list{margin:0;padding:40px 40px 40px 50px;font-size:14px;line-height:18px}section#posts dl#tag_list ul{margin:0;padding:0}section#posts dl#tag_list ul li{margin:0;padding:0}
 section#posts dl{margin:0;padding:0;font-size:15px;line-height:25px;overflow-x:hidden;overflow-y:hidden}section#posts dl ol{margin:0;padding:0;list-style-type:none}section#posts dl ol li{margin:0 0 0;padding:0 0 50px 50px;border-bottom:#eee 1px solid}
 section#posts dl ol .title{margin:76px 0 0;padding:0;color:#000}section#posts dl ol .title a{border:none}
-section#posts dl ol .entry-content{width:550px}
+section#posts dl ol .entry-content{width:760px}
 section#posts dl ol .entry-content ul{margin:0 0 0 15px;padding:0;list-style-position:outside}
 section#posts dl ol .entry-content ul li{padding:3px 0 3px 5px;border-bottom:0}
 section#posts dl ol abbr{margin:0;padding:0;text-transform:uppercase;font-weight:300px;font-size:13px;line-height:16px;visibility:hidden}
