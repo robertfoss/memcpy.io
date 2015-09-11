@@ -6,8 +6,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The animation is built ontop of the excellent &lt;a href="https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino"&gt;light_ws2812&lt;/a&gt; library. It supports AtTiny85 better than other competing libraries like FastLED.&lt;/p&gt;
-&lt;p&gt;The animation is built around an uin8_t sin function that approximatis sinus in the range between 0-255.&lt;/p&gt;
+&lt;p&gt;The animation is built ontop of the excellent &lt;a href="https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino"&gt;light_ws2812&lt;/a&gt; library. It supports the AtTiny85 better than other competing libraries like FastLED.&lt;/p&gt;
+&lt;p&gt;The animation is built around an non-float sin function and a HSV function that generates the actual colors.&lt;/p&gt;
 &lt;h2&gt;Video&lt;/h2&gt;
 &lt;video controls&gt;
   &lt;source src="videos/2015-10-11_goggles.mp4" type="video/mp4"&gt;
