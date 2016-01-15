@@ -10,7 +10,7 @@ The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an 
 
 ## Code
 
-    git clone https://github.com/robertfoss/led_matrix.git
+    git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
 
 
 The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent [Konrad Beckmann](https://github.com/kbeckmann).
