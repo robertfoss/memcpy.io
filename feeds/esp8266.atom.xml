@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memset.io</title><link href="/" rel="alternate"></link><link href="/feeds/esp8266.atom.xml" rel="self"></link><id>/</id><updated>2015-10-12T16:51:00+02:00</updated><entry><title>WS2812 LED Matrix</title><link href="/ws2812-led-matrix.html" rel="alternate"></link><updated>2015-10-12T16:51:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:,2015-10-12:ws2812-led-matrix.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running" /&gt;&lt;/p&gt;
 &lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
 &lt;h2&gt;Code&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git clone https://github.com/robertfoss/led_matrix.git
+&lt;div class="highlight"&gt;&lt;pre&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
