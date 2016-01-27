@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Robert Foss'
-SITENAME = u'memset.io'
+SITENAME = u'memcpy.io'
 TAGLINE = u'Projects, hacks and engineering'
 SITEURL = ''
 
