@@ -6,7 +6,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This project consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
 &lt;h3&gt;Firmware&lt;/h3&gt;
 &lt;p&gt;The firmare is based on the &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; firwmare for the ESP8266. It's running the APA102 LED driver and the enduser setup module, which I've written about &lt;a href="../user-friendly-setup-of-esp8266-gadgets.html"&gt;previously&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Additionally it's running 3 lua scripts that deal with different aspects.&lt;/p&gt;
