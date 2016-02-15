@@ -24,11 +24,14 @@
 <body>
 	<section id="sidebar">
 		<figure id="user_logo">
-            <a href="/"><div class="logo">&nbsp;</div></a>
+			<a href="{{ SITEURL }}"><div class="logo">&nbsp;</div></a>
 		</figure>
 
 		<div class="user_meta">
-            <h1 id="user"><a href="/" class="">{{ AUTHOR }}</a></h1>
+			<a href="{{ SITEURL }}">
+				<img type="image/png" src="{{ SITEURL }}/logo.png" width="155">
+			</a>
+
 			<h2>{{ TAGLINE }}</h2>
 			{% if AUTHOR_BIO %}
 			<p class="bio">{{ AUTHOR_BIO }}</p>
