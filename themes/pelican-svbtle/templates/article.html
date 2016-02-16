@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-	{% include "header.html" %}
-	<article>
+	<article class="single">
 		<h1 id="title">
 			<a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
 				title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
 		</h1>
+		<abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>
 		{{ article.content }}
 
 		<div id="article_meta">

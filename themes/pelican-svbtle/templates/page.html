@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block title %}{{ page.title }}{%endblock%}
 {% block content %}
-	{% include "header.html" %}
 	<article>
 		<h1 id="title">
 			<a href="{{ SITEURL }}/{{ page.url }}" rel="bookmark">{{ page.title }}</a>
 		</h1>
+		<h3>Posted {{ article.locale_date }}</h3>
 		{{ page.content }}
 
 	</article>
