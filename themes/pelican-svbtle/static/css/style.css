@@ -54,7 +54,6 @@ section#posts article {border-bottom:1px solid #efefef}
 section#posts article .published {text-decoration:none}
 section#posts article.single {margin-top:0px}
 section#posts #comments h2{color:#000}
-
 section#posts #disqus_thread{width:600px}
 section#posts dl#tag_list{margin:0;padding:40px 40px 40px 50px;font-size:14px;line-height:18px}
 section#posts dl#tag_list ul{margin:0;padding:0}
