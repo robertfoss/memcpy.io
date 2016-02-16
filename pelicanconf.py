@@ -24,8 +24,8 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = (
-            ('Github', 'https://github.com/robertfoss'),
             ('Archives', 'archives.html'),
+            ('Github', 'https://github.com/robertfoss'),
         )
 
 # Social widget
