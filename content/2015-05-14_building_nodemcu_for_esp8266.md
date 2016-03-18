@@ -33,7 +33,7 @@ This is a simple step-by-step guide to building and flashing NodeMCU for the ESP
     COMPORT=/dev/ttyUSB0 make flash
 
 
-### Modifying NodeMCU to fit you needs
+### Modifying NodeMCU to fit your needs
 ##### app/include/user_modules.h
 Contains a list of which modules to include in the build.
 
