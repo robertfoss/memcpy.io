@@ -167,7 +167,7 @@ make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Modifying NodeMCU to fit you needs&lt;/h3&gt;
+&lt;h3&gt;Modifying NodeMCU to fit your needs&lt;/h3&gt;
 &lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
 &lt;p&gt;Contains a list of which modules to include in the build.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;...
