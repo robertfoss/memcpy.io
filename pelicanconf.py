@@ -22,11 +22,21 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (
-            ('Archives', 'archives.html'),
+# Make pages appear in the top dir
+PAGE_URL = '{slug}.html'
+PAGE_SAVE_AS = '{slug}.html'
+
+DISPLAY_CATEGORIES_ON_MENU = False
+DISPLAY_PAGES_ON_MENU = False
+DISPLAY_LINKS_ON_MENU = False
+
+MENUITEMS = (
+            ('About me', 'about-me.html'),
+            ('Contracting', 'contracting.html'),
             ('Github', 'https://github.com/robertfoss'),
-        )
+            ('Previous posts', 'archives.html')
+)
+LINKS = ()
 
 # Social widget
 #SOCIAL = (('You can add links in your config file', '#'),
@@ -37,8 +47,9 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-STATIC_PATHS = ['videos', 'images', 'favicon.png', 'logo.png']
+STATIC_PATHS = ['videos', 'images', 'favicon.png', 'logo.png', 'me.jpg']
 EXTRA_PATH_METADATA = {
     'favicon.png': {'path': 'favicon.png'},
-    'logo.png': {'path': 'logo.png'}
+    'logo.png': {'path': 'logo.png'},
+    'me.jpg': {'path': 'me.jpg'},
 }

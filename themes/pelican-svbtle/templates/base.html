@@ -46,9 +46,11 @@
 						<li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
 					{% endfor %}
 				{% endif %}
-				{% for name, link in LINKS %}
-					<li><a href="{{ link }}">{{ name }}</a></li>
-				{% endfor %}
+				{% if DISPLAY_LINKS_ON_MENU %}
+				    {% for name, link in LINKS %}
+					    <li><a href="{{ link }}">{{ name }}</a></li>
+				    {% endfor %}
+				{% endif %}
 			</ul>
 		</div>
 	</section>
