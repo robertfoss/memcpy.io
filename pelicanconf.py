@@ -33,7 +33,7 @@ DISPLAY_LINKS_ON_MENU = False
 MENUITEMS = (
             ('About me', 'about-me.html'),
             ('Contracting', 'contracting.html'),
-            ('Github', 'https://github.com/robertfoss'),
+            ('GitHub', 'https://github.com/robertfoss'),
             ('Previous posts', 'archives.html')
 )
 LINKS = ()
