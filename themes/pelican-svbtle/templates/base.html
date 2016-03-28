@@ -10,7 +10,7 @@
 
 	<link href="{{ FEED_DOMAIN }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
 	{% if FEED_RSS %}
-		<link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+	<link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
 	{% endif %}
 	{% if article and article.latex %}
 		{{ article.latex }}
@@ -18,13 +18,13 @@
 
 	{% if article %}
         {% for tag in article.ogtags %}
-            <meta property="{{tag[0]}}" content="{{tag[1]|striptags|e}}" />
+    <meta property="{{tag[0]}}" content="{{tag[1]|striptags|e}}" />
         {% endfor %}
 	{% endif %}
 
 	{% block head %}
-		<title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-		<meta charset="utf-8" />
+	<title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+	<meta charset="utf-8" />
 	{% endblock head %}
 </head>
 <body>
