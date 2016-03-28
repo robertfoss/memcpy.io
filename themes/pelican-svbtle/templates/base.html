@@ -16,6 +16,12 @@
 		{{ article.latex }}
 	{% endif %}
 
+	{% if article %}
+        {% for tag in article.ogtags %}
+            <meta property="{{tag[0]}}" content="{{tag[1]|striptags|e}}" />
+        {% endfor %}
+	{% endif %}
+
 	{% block head %}
 		<title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 		<meta charset="utf-8" />
