@@ -53,3 +53,7 @@ EXTRA_PATH_METADATA = {
     'logo.png': {'path': 'logo.png'},
     'me.jpg': {'path': 'me.jpg'},
 }
+
+
+PLUGIN_PATHS = ["plugins", "plugins"]
+PLUGINS = ["pelican-open_graph"]
