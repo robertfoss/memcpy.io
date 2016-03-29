@@ -30,13 +30,18 @@ def tag_article(instance):
     ogtags = [('og:title', instance.title),
               ('og:type', 'article')]
 
-    soup = BeautifulSoup(instance._content, 'html.parser')
-    img_links = soup.find_all('img')
     image = instance.metadata.get('og_image', '')
     if image:
         ogtags.append(('og:image', image))
-    elif (len(img_links) > 0):
-        ogtags.append(('og:image', img_links[0].get('src')))
+    else:
+        soup = BeautifulSoup(instance._content, 'html.parser')
+        img_links = soup.find_all('img')
+        if  (len(img_links) > 0):
+            img_src = img_links[0].get('src')
+            if not "http" in img_src:
+                if instance.settings.get('SITEURL', ''):
+                    img_src = instance.settings.get('SITEURL', '') + "/" + img_src
+            ogtags.append(('og:image', img_src))
 
     url = os.path.join(instance.settings.get('SITEURL', ''), instance.url)
     ogtags.append(('og:url', url))
