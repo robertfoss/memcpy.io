@@ -16,7 +16,7 @@ from freedesktop.org, but altered to target VC4 and Raspbian.&lt;/p&gt;
 &lt;p&gt;You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Change WLD any location you like&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Change WLD to any location you like&lt;/span&gt;
 &lt;span class="x"&gt;export WLD=/opt/local&lt;/span&gt;
 &lt;span class="x"&gt;export LD_LIBRARY_PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/lib&lt;/span&gt;
 &lt;span class="x"&gt;export PKG_CONFIG_PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/lib/pkgconfig/:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/share/pkgconfig/&lt;/span&gt;
