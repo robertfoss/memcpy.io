@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/wayland.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-06-03T10:32:00+02:00</updated><entry><title>Running Weston on a Raspbian</title><link href="http://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2." /&gt;&lt;/p&gt;
+&lt;h2&gt;Building Linux kernel&lt;/h2&gt;
+&lt;p&gt;A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
+been written by the Raspberry Pi foundation and is available &lt;a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.&lt;/p&gt;
+&lt;h2&gt;Set up alternative install location&lt;/h2&gt;
+&lt;p&gt;You probably don't want to install experimental builds of software among the usual
+software of your operating system, so let's define a prefix for where to install
+our builds.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Change WLD any location you like&lt;/span&gt;
+&lt;span class="x"&gt;export WLD=/opt/local&lt;/span&gt;
+&lt;span class="x"&gt;export LD_LIBRARY_PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/lib&lt;/span&gt;
+&lt;span class="x"&gt;export PKG_CONFIG_PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/lib/pkgconfig/:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/share/pkgconfig/&lt;/span&gt;
+&lt;span class="x"&gt;export PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/bin:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;export ACLOCAL_PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/share/aclocal&lt;/span&gt;
+&lt;span class="x"&gt;export ACLOCAL=&amp;quot;aclocal -I &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="x"&gt;&amp;quot;&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Needed by autotools&lt;/span&gt;
+&lt;span class="x"&gt;mkdir -p &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/share/aclocal&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Building Mesa&lt;/h2&gt;
+&lt;p&gt;Start by installing the build dependencies of Mesa.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# Enable source packages
+sudo sed -e &amp;quot;s/#\sdeb-src/deb-src/g&amp;quot; -i /etc/apt/sources.list
+sudo apt update
+
+# Fetch build dependencies of mesa
+sudo apt-get build-dep mesa
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Configure and compile mesa with vc4, wayland and EGL support.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/mesa/mesa&lt;/span&gt;
+&lt;span class="x"&gt;cd mesa&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt; --enable-gles2 \&lt;/span&gt;
+&lt;span class="x"&gt;  --with-egl-platforms=x11,wayland,drm --enable-gbm --enable-shared-glapi \&lt;/span&gt;
+&lt;span class="x"&gt;  --with-gallium-drivers=vc4&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Building Weston and dependencies&lt;/h2&gt;
+&lt;p&gt;Weston and Wayland have a number of dependencies that also need to be fetched
+and built.&lt;/p&gt;
+&lt;h4&gt;Wayland&lt;/h4&gt;
+&lt;p&gt;Weston is a Wayland compositor, so we're going to have to build Wayland.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/wayland/wayland&lt;/span&gt;
+&lt;span class="x"&gt;cd wayland&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+
+&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/wayland/wayland-protocols&lt;/span&gt;
+&lt;span class="x"&gt;cd wayland-protocols&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;libunwind&lt;/h4&gt;
+&lt;p&gt;libunwind is a dependency of Weston. It's used for debugging purposes and
+providing stack-traces and the like for bug reporting.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://git.sv.gnu.org/libunwind&lt;/span&gt;
+&lt;span class="x"&gt;cd libunwind&lt;/span&gt;
+&lt;span class="x"&gt;autoreconf -i&lt;/span&gt;
+&lt;span class="x"&gt;./configure --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;libevdev&lt;/h4&gt;
+&lt;p&gt;libevdev is a dependency of libinput. It wraps the evdev devices to simplify access.
+evdev is the generic input event interface for Linux.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/libevdev&lt;/span&gt;
+&lt;span class="x"&gt;cd libinput&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;libwacom&lt;/h4&gt;
+&lt;p&gt;libwacom is a dependency of libinput. It handles the settings and state of
+Wacom tablets. For example it can provide you with information about the
+number of buttons of the stylus connected to a tablet.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://git.code.sf.net/p/linuxwacom/libwacom&lt;/span&gt;
+&lt;span class="x"&gt;cd libinput&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;libxkbcommon&lt;/h4&gt;
+&lt;p&gt;libxkbcommon is a dependency of libinput. It is handles the loading/parsing/state
+of keyboard descriptions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://github.com/xkbcommon/libxkbcommon&lt;/span&gt;
+&lt;span class="x"&gt;cd libinput&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;libinput&lt;/h4&gt;
+&lt;p&gt;libinput is a library that handles input devices like keyboards, touchpads and mice.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/wayland/libinput&lt;/span&gt;
+&lt;span class="x"&gt;cd libinput&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Weston&lt;/h4&gt;
+&lt;p&gt;Finally we've built all of the dependencies of Weston and can now build it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/wayland/weston&lt;/span&gt;
+&lt;span class="x"&gt;cd weston&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;make -j4&lt;/span&gt;
+&lt;span class="x"&gt;sudo make install&lt;/span&gt;
+&lt;span class="x"&gt;cd ..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Running Weston&lt;/h2&gt;
+&lt;p&gt;That wasn't so bad, it took a little while, but now we're ready to start Weston.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# Run as root
+sudo su
+
+# Set up environment variables to access our newly built binaries
+export WLD=/opt/local
+export LD_LIBRARY_PATH=&lt;span class="nv"&gt;$WLD&lt;/span&gt;/libs
+export PATH=&lt;span class="nv"&gt;$WLD&lt;/span&gt;/bin:&lt;span class="nv"&gt;$PATH&lt;/span&gt;
+
+# Make sure that &lt;span class="nv"&gt;$DISPLAY&lt;/span&gt; is unset.
+unset DISPLAY
+
+# And that &lt;span class="nv"&gt;$XDG_RUNTIME_DIR&lt;/span&gt; has been set and created.
+export XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir
+mkdir &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
+chmod 0700 &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
+
+# Run weston:
+weston
+
+# Run weston through ssh:
+# If running weston through ssh, make sure an input device is attached.
+weston --tty=3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Try weston applications&lt;/h2&gt;
+&lt;p&gt;Now that we're running weston, let's try some applications.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;weston-terminal&lt;/li&gt;
+&lt;li&gt;weston-flower&lt;/li&gt;
+&lt;li&gt;weston-gears&lt;/li&gt;
+&lt;li&gt;weston-smoke&lt;/li&gt;
+&lt;li&gt;weston-image&lt;/li&gt;
+&lt;li&gt;weston-view&lt;/li&gt;
+&lt;li&gt;weston-resizor&lt;/li&gt;
+&lt;li&gt;weston-eventdemo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When you've started all of your favorite applications you can grab a screenshot 
+by pressing &lt;strong&gt;Super + s&lt;/strong&gt;, which will save wayland-screenshot.png in your home
+directory.&lt;/p&gt;</summary><category term="wayland"></category><category term="weston"></category><category term="rpi"></category><category term="rpi2"></category><category term="kernel"></category></entry></feed>
