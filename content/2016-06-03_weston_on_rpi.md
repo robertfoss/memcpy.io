@@ -32,7 +32,7 @@ software of your operating system, so let's define a prefix for where to install
 our builds.
 
     # Change WLD to any location you like
-    export WLD=/opt/local
+    export WLD=~/local
     export LD_LIBRARY_PATH=$WLD/lib
     export PKG_CONFIG_PATH=$WLD/lib/pkgconfig/:$WLD/share/pkgconfig/
     export PATH=$WLD/bin:$PATH
@@ -58,7 +58,6 @@ package manager, by enabling source packages.
 
     # Install build dependencies of wayland/weston
     sudo apt-get install \
-      libunwind libunwind-dev \
       libevdev libevdev-dev \
       libwacom libwacom-dev \
       libxkbcommon libxkbcommon-dev
@@ -70,9 +69,16 @@ Configure and compile mesa with vc4, wayland and EGL support.
 
     git clone git://anongit.freedesktop.org/mesa/mesa
     cd mesa
-    ./autogen.sh --prefix=$WLD --enable-gles2 \
-      --with-egl-platforms=x11,wayland,drm --enable-gbm --enable-shared-glapi \
-      --with-gallium-drivers=vc4
+    ./autogen.sh --prefix=$WLD \
+      --enable-gles2 \
+      --with-egl-platforms=x11,wayland,drm \
+      --enable-gbm --enable-shared-glapi \
+      --with-gallium-drivers=vc4 \
+      --without-dri-drivers \
+      --disable-va \
+      --disable-vdpau \
+      --disable-xvmc \
+      --disable-omx
     make -j4 && make install
 
 
@@ -97,7 +103,7 @@ Weston is a Wayland compositor, so we're going to have to build Wayland.
     cd ..
 
 #### libinput
-libinput is dependency of wasten,  handles input devices like keyboards, touchpads and mice.
+libinput is a dependency of Wesron, handles input devices like keyboards, touchpads and mice.
 
     git clone git://anongit.freedesktop.org/wayland/libinput
     cd libinput
@@ -110,40 +116,38 @@ Finally we've built all of the dependencies of Weston and can now build it.
 
     git clone git://anongit.freedesktop.org/wayland/weston
     cd weston
-    ./autogen.sh --prefix=$WLD
-    make -j4
+    ./autogen.sh --prefix=$WLD \
+      --disable-libunwind
+    make -j4 &&
     sudo make install
     cd ..
 
 
 ## Running Weston
 That wasn't so bad, it took a little while, but now we're ready to start Weston.
+Now, let's fire up a (virtual) terminal. Make sure that you're not running an
+X terminal, ssh terminal or serial terminal.
 
-    # Run as root
-    sudo su
-    
-    # Set up environment variables to access our newly built binaries
-    export WLD=/opt/local
-    export LD_LIBRARY_PATH=$WLD/libs
-    export PATH=$WLD/bin:$PATH
+Running weston in this way depends on logind.
 
     # Make sure that $DISPLAY is unset.
     unset DISPLAY
 
     # And that $XDG_RUNTIME_DIR has been set and created.
-    export XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir
-    mkdir "${XDG_RUNTIME_DIR}"
-    chmod 0700 "${XDG_RUNTIME_DIR}"
+    if test -z "${XDG_RUNTIME_DIR}"; then
+      export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+      if ! test -d "${XDG_RUNTIME_DIR}"; then
+        mkdir "${XDG_RUNTIME_DIR}"
+        chmod 0700 "${XDG_RUNTIME_DIR}"1
+      fi
+    fi
 
     # Run weston:
     weston
 
-    # Run weston through ssh:
-    # If running weston through ssh, make sure an input device is attached.
-    weston --tty=3
-
 ## Try weston applications
 Now that we're running weston, let's try some applications.
+They're located in the top level directory of weston.
 
  * weston-terminal
  * weston-flower
@@ -157,6 +161,4 @@ Now that we're running weston, let's try some applications.
 When you've started all of your favorite applications you can grab a screenshot 
 by pressing **Super + s**, which will save wayland-screenshot.png in your home
 directory.
-
-
 
