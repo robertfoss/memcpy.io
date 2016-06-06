@@ -44,7 +44,6 @@ sudo apt-get build-dep mesa
 
 # Install build dependencies of wayland/weston
 sudo apt-get install \
-  libunwind libunwind-dev \
   libevdev libevdev-dev \
   libwacom libwacom-dev \
   libxkbcommon libxkbcommon-dev
@@ -55,9 +54,16 @@ sudo apt-get install \
 &lt;p&gt;Configure and compile mesa with vc4, wayland and EGL support.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/mesa/mesa&lt;/span&gt;
 &lt;span class="x"&gt;cd mesa&lt;/span&gt;
-&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt; --enable-gles2 \&lt;/span&gt;
-&lt;span class="x"&gt;  --with-egl-platforms=x11,wayland,drm --enable-gbm --enable-shared-glapi \&lt;/span&gt;
-&lt;span class="x"&gt;  --with-gallium-drivers=vc4&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt; \&lt;/span&gt;
+&lt;span class="x"&gt;  --enable-gles2 \&lt;/span&gt;
+&lt;span class="x"&gt;  --with-egl-platforms=x11,wayland,drm \&lt;/span&gt;
+&lt;span class="x"&gt;  --enable-gbm --enable-shared-glapi \&lt;/span&gt;
+&lt;span class="x"&gt;  --with-gallium-drivers=vc4 \&lt;/span&gt;
+&lt;span class="x"&gt;  --without-dri-drivers&lt;/span&gt;
+&lt;span class="x"&gt;  --disable-va \&lt;/span&gt;
+&lt;span class="x"&gt;  --disable-vdpau \&lt;/span&gt;
+&lt;span class="x"&gt;  --disable-xvmc \&lt;/span&gt;
+&lt;span class="x"&gt;  --diable-omx&lt;/span&gt;
 &lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -95,7 +101,8 @@ and built.&lt;/p&gt;
 &lt;p&gt;Finally we've built all of the dependencies of Weston and can now build it.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/wayland/weston&lt;/span&gt;
 &lt;span class="x"&gt;cd weston&lt;/span&gt;
-&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt; \&lt;/span&gt;
+&lt;span class="x"&gt;  --disable-libunwind&lt;/span&gt;
 &lt;span class="x"&gt;make -j4&lt;/span&gt;
 &lt;span class="x"&gt;sudo make install&lt;/span&gt;
 &lt;span class="x"&gt;cd ..&lt;/span&gt;
@@ -116,9 +123,14 @@ export PATH=&lt;span class="nv"&gt;$WLD&lt;/span&gt;/bin:&lt;span class="nv"&gt;
 unset DISPLAY
 
 # And that &lt;span class="nv"&gt;$XDG_RUNTIME_DIR&lt;/span&gt; has been set and created.
-export XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir
-mkdir &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
-chmod 0700 &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
+if test -z &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;; then
+  export XDG_RUNTIME_DIR=/tmp/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;UID&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;-runtime-dir
+  if ! test -d &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;; then
+    mkdir &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
+    chmod 0700 &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
+  fi
+fi
+
 
 # Run weston:
 weston

@@ -97,7 +97,6 @@ sudo apt-get build-dep mesa
 
 # Install build dependencies of wayland/weston
 sudo apt-get install \
-  libunwind libunwind-dev \
   libevdev libevdev-dev \
   libwacom libwacom-dev \
   libxkbcommon libxkbcommon-dev
@@ -108,9 +107,16 @@ sudo apt-get install \
 <p>Configure and compile mesa with vc4, wayland and EGL support.</p>
 <div class="highlight"><pre><span class="x">git clone git://anongit.freedesktop.org/mesa/mesa</span>
 <span class="x">cd mesa</span>
-<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> --enable-gles2 \</span>
-<span class="x">  --with-egl-platforms=x11,wayland,drm --enable-gbm --enable-shared-glapi \</span>
-<span class="x">  --with-gallium-drivers=vc4</span>
+<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
+<span class="x">  --enable-gles2 \</span>
+<span class="x">  --with-egl-platforms=x11,wayland,drm \</span>
+<span class="x">  --enable-gbm --enable-shared-glapi \</span>
+<span class="x">  --with-gallium-drivers=vc4 \</span>
+<span class="x">  --without-dri-drivers</span>
+<span class="x">  --disable-va \</span>
+<span class="x">  --disable-vdpau \</span>
+<span class="x">  --disable-xvmc \</span>
+<span class="x">  --diable-omx</span>
 <span class="x">make -j4 &amp;&amp; make install</span>
 </pre></div>
 
@@ -148,7 +154,8 @@ and built.</p>
 <p>Finally we've built all of the dependencies of Weston and can now build it.</p>
 <div class="highlight"><pre><span class="x">git clone git://anongit.freedesktop.org/wayland/weston</span>
 <span class="x">cd weston</span>
-<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
+<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
+<span class="x">  --disable-libunwind</span>
 <span class="x">make -j4</span>
 <span class="x">sudo make install</span>
 <span class="x">cd ..</span>
@@ -169,9 +176,14 @@ export PATH=<span class="nv">$WLD</span>/bin:<span class="nv">$PATH</span>
 unset DISPLAY
 
 # And that <span class="nv">$XDG_RUNTIME_DIR</span> has been set and created.
-export XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir
-mkdir &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;
-chmod 0700 &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;
+if test -z &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;; then
+  export XDG_RUNTIME_DIR=/tmp/<span class="cp">${</span><span class="n">UID</span><span class="cp">}</span>-runtime-dir
+  if ! test -d &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;; then
+    mkdir &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;
+    chmod 0700 &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;
+  fi
+fi
+
 
 # Run weston:
 weston
