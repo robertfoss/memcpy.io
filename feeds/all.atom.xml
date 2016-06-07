@@ -17,7 +17,7 @@ from freedesktop.org, but altered to target VC4 and Raspbian.&lt;/p&gt;
 software of your operating system, so let's define a prefix for where to install
 our builds.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Change WLD to any location you like&lt;/span&gt;
-&lt;span class="x"&gt;export WLD=/opt/local&lt;/span&gt;
+&lt;span class="x"&gt;export WLD=~/local&lt;/span&gt;
 &lt;span class="x"&gt;export LD_LIBRARY_PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/lib&lt;/span&gt;
 &lt;span class="x"&gt;export PKG_CONFIG_PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/lib/pkgconfig/:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/share/pkgconfig/&lt;/span&gt;
 &lt;span class="x"&gt;export PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;/bin:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
@@ -59,6 +59,7 @@ sudo apt-get install \
 &lt;span class="x"&gt;  --with-egl-platforms=x11,wayland,drm \&lt;/span&gt;
 &lt;span class="x"&gt;  --enable-gbm --enable-shared-glapi \&lt;/span&gt;
 &lt;span class="x"&gt;  --with-gallium-drivers=vc4 \&lt;/span&gt;
+&lt;span class="x"&gt;  --without-dri-drivers \&lt;/span&gt;
 &lt;span class="x"&gt;  --disable-va \&lt;/span&gt;
 &lt;span class="x"&gt;  --disable-vdpau \&lt;/span&gt;
 &lt;span class="x"&gt;  --disable-xvmc \&lt;/span&gt;
@@ -109,7 +110,10 @@ and built.&lt;/p&gt;
 
 
 &lt;h2&gt;Running Weston&lt;/h2&gt;
-&lt;p&gt;That wasn't so bad, it took a little while, but now we're ready to start Weston.&lt;/p&gt;
+&lt;p&gt;That wasn't so bad, it took a little while, but now we're ready to start Weston.
+Now, let's fire up a (virtual) terminal. Make sure that you're not running an
+X terminal, ssh terminal or serial terminal.&lt;/p&gt;
+&lt;p&gt;Running weston in this way depends on logind.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# Make sure that &lt;span class="nv"&gt;$DISPLAY&lt;/span&gt; is unset.
 unset DISPLAY
 
@@ -118,7 +122,7 @@ if test -z &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt
   export XDG_RUNTIME_DIR=/tmp/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;UID&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;-runtime-dir
   if ! test -d &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;; then
     mkdir &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
-    chmod 0700 &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
+    chmod 0700 &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;1
   fi
 fi
 

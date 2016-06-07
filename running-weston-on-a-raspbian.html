@@ -70,7 +70,7 @@ from freedesktop.org, but altered to target VC4 and Raspbian.</p>
 software of your operating system, so let's define a prefix for where to install
 our builds.</p>
 <div class="highlight"><pre><span class="err">#</span><span class="x"> Change WLD to any location you like</span>
-<span class="x">export WLD=/opt/local</span>
+<span class="x">export WLD=~/local</span>
 <span class="x">export LD_LIBRARY_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib</span>
 <span class="x">export PKG_CONFIG_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib/pkgconfig/:</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/share/pkgconfig/</span>
 <span class="x">export PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/bin:</span><span class="p">$</span><span class="nv">PATH</span><span class="x"></span>
@@ -112,6 +112,7 @@ sudo apt-get install \
 <span class="x">  --with-egl-platforms=x11,wayland,drm \</span>
 <span class="x">  --enable-gbm --enable-shared-glapi \</span>
 <span class="x">  --with-gallium-drivers=vc4 \</span>
+<span class="x">  --without-dri-drivers \</span>
 <span class="x">  --disable-va \</span>
 <span class="x">  --disable-vdpau \</span>
 <span class="x">  --disable-xvmc \</span>
@@ -162,7 +163,10 @@ and built.</p>
 
 
 <h2>Running Weston</h2>
-<p>That wasn't so bad, it took a little while, but now we're ready to start Weston.</p>
+<p>That wasn't so bad, it took a little while, but now we're ready to start Weston.
+Now, let's fire up a (virtual) terminal. Make sure that you're not running an
+X terminal, ssh terminal or serial terminal.</p>
+<p>Running weston in this way depends on logind.</p>
 <div class="highlight"><pre># Make sure that <span class="nv">$DISPLAY</span> is unset.
 unset DISPLAY
 
@@ -171,7 +175,7 @@ if test -z &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span
   export XDG_RUNTIME_DIR=/tmp/<span class="cp">${</span><span class="n">UID</span><span class="cp">}</span>-runtime-dir
   if ! test -d &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;; then
     mkdir &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;
-    chmod 0700 &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;
+    chmod 0700 &quot;<span class="cp">${</span><span class="n">XDG_RUNTIME_DIR</span><span class="cp">}</span>&quot;1
   fi
 fi
 
