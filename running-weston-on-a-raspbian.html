@@ -112,11 +112,10 @@ sudo apt-get install \
 <span class="x">  --with-egl-platforms=x11,wayland,drm \</span>
 <span class="x">  --enable-gbm --enable-shared-glapi \</span>
 <span class="x">  --with-gallium-drivers=vc4 \</span>
-<span class="x">  --without-dri-drivers</span>
 <span class="x">  --disable-va \</span>
 <span class="x">  --disable-vdpau \</span>
 <span class="x">  --disable-xvmc \</span>
-<span class="x">  --diable-omx</span>
+<span class="x">  --disable-omx</span>
 <span class="x">make -j4 &amp;&amp; make install</span>
 </pre></div>
 
@@ -156,7 +155,7 @@ and built.</p>
 <span class="x">cd weston</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
 <span class="x">  --disable-libunwind</span>
-<span class="x">make -j4</span>
+<span class="x">make -j4 &amp;&amp;</span>
 <span class="x">sudo make install</span>
 <span class="x">cd ..</span>
 </pre></div>
@@ -164,15 +163,7 @@ and built.</p>
 
 <h2>Running Weston</h2>
 <p>That wasn't so bad, it took a little while, but now we're ready to start Weston.</p>
-<div class="highlight"><pre># Run as root
-sudo su
-
-# Set up environment variables to access our newly built binaries
-export WLD=/opt/local
-export LD_LIBRARY_PATH=<span class="nv">$WLD</span>/libs
-export PATH=<span class="nv">$WLD</span>/bin:<span class="nv">$PATH</span>
-
-# Make sure that <span class="nv">$DISPLAY</span> is unset.
+<div class="highlight"><pre># Make sure that <span class="nv">$DISPLAY</span> is unset.
 unset DISPLAY
 
 # And that <span class="nv">$XDG_RUNTIME_DIR</span> has been set and created.
@@ -187,15 +178,12 @@ fi
 
 # Run weston:
 weston
-
-# Run weston through ssh:
-# If running weston through ssh, make sure an input device is attached.
-weston --tty=3
 </pre></div>
 
 
 <h2>Try weston applications</h2>
-<p>Now that we're running weston, let's try some applications.</p>
+<p>Now that we're running weston, let's try some applications.
+They're located in the top level directory of weston.</p>
 <ul>
 <li>weston-terminal</li>
 <li>weston-flower</li>

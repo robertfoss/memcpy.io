@@ -59,11 +59,10 @@ sudo apt-get install \
 &lt;span class="x"&gt;  --with-egl-platforms=x11,wayland,drm \&lt;/span&gt;
 &lt;span class="x"&gt;  --enable-gbm --enable-shared-glapi \&lt;/span&gt;
 &lt;span class="x"&gt;  --with-gallium-drivers=vc4 \&lt;/span&gt;
-&lt;span class="x"&gt;  --without-dri-drivers&lt;/span&gt;
 &lt;span class="x"&gt;  --disable-va \&lt;/span&gt;
 &lt;span class="x"&gt;  --disable-vdpau \&lt;/span&gt;
 &lt;span class="x"&gt;  --disable-xvmc \&lt;/span&gt;
-&lt;span class="x"&gt;  --diable-omx&lt;/span&gt;
+&lt;span class="x"&gt;  --disable-omx&lt;/span&gt;
 &lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -103,7 +102,7 @@ and built.&lt;/p&gt;
 &lt;span class="x"&gt;cd weston&lt;/span&gt;
 &lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt; \&lt;/span&gt;
 &lt;span class="x"&gt;  --disable-libunwind&lt;/span&gt;
-&lt;span class="x"&gt;make -j4&lt;/span&gt;
+&lt;span class="x"&gt;make -j4 &amp;amp;&amp;amp;&lt;/span&gt;
 &lt;span class="x"&gt;sudo make install&lt;/span&gt;
 &lt;span class="x"&gt;cd ..&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -111,15 +110,7 @@ and built.&lt;/p&gt;
 
 &lt;h2&gt;Running Weston&lt;/h2&gt;
 &lt;p&gt;That wasn't so bad, it took a little while, but now we're ready to start Weston.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;# Run as root
-sudo su
-
-# Set up environment variables to access our newly built binaries
-export WLD=/opt/local
-export LD_LIBRARY_PATH=&lt;span class="nv"&gt;$WLD&lt;/span&gt;/libs
-export PATH=&lt;span class="nv"&gt;$WLD&lt;/span&gt;/bin:&lt;span class="nv"&gt;$PATH&lt;/span&gt;
-
-# Make sure that &lt;span class="nv"&gt;$DISPLAY&lt;/span&gt; is unset.
+&lt;div class="highlight"&gt;&lt;pre&gt;# Make sure that &lt;span class="nv"&gt;$DISPLAY&lt;/span&gt; is unset.
 unset DISPLAY
 
 # And that &lt;span class="nv"&gt;$XDG_RUNTIME_DIR&lt;/span&gt; has been set and created.
@@ -134,15 +125,12 @@ fi
 
 # Run weston:
 weston
-
-# Run weston through ssh:
-# If running weston through ssh, make sure an input device is attached.
-weston --tty=3
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Try weston applications&lt;/h2&gt;
-&lt;p&gt;Now that we're running weston, let's try some applications.&lt;/p&gt;
+&lt;p&gt;Now that we're running weston, let's try some applications.
+They're located in the top level directory of weston.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;weston-terminal&lt;/li&gt;
 &lt;li&gt;weston-flower&lt;/li&gt;
