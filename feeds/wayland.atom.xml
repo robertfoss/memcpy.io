@@ -122,7 +122,6 @@ if test -z &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt
   fi
 fi
 
-
 # Run weston:
 weston
 &lt;/pre&gt;&lt;/div&gt;
