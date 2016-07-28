@@ -45,7 +45,9 @@
 </pre></div>
 
 
-<p>The software is divided into two parts. The receiving end is run on the ESP8266 that has been ...</p> </div>
+<p>The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with <a href="https://github.com/nodemcu/nodemcu-firmware">NodeMCU</a> and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent <a href="https://github.com/kbeckmann">Konrad Beckmann</a>.</p>
+<p>The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
+This relies on the host pc being able to connect to the ...</p> </div>
 		</article>
 
 <p class="paginator">

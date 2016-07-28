@@ -42,7 +42,15 @@
 <p>Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration
 using pixman was needed, but this is no longer the case.</p>
-<p>Additionally the rpi backend for weston is now being removed since ...</p> </div>
+<p>Additionally the rpi backend for weston is now being removed since it has been
+obsoleted by the improved drm layer.</p>
+<p>Let's explore running hardware accelerated Weston on the Raspberry Pi.</p>
+<h2>Building Linux kernel</h2>
+<p>A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
+been written by the Raspberry Pi foundation and is available <a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md">here</a>.</p>
+<p>As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.</p>
+<h2>Set up alternative install location</h2>
+<p>These build ...</p> </div>
 		</article>
 
 <p class="paginator">

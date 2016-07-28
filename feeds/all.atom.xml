@@ -1,5 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/all.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-06-03T10:32:00+02:00</updated><entry><title>Running Weston on a Raspbian</title><link href="http://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2." /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/all.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-06-03T10:32:00+02:00</updated><entry><title>Linux kernel development shell scripts</title><link href="http://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use" /&gt;&lt;/p&gt;
+&lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
+often come in handy.
+But to me the interface they provide is slightly bulky and rely
+on using patch files instead of git commits, which to me is a bit inconvenient.&lt;/p&gt;
+&lt;p&gt;These scripts are all meant to be included in &lt;strong&gt;.bashrc&lt;/strong&gt; or &lt;strong&gt;.zshrc&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;scripts/checkpatch.pl helper&lt;/h2&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="k"&gt;function&lt;/span&gt; checkpatch &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;+x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;exec&lt;/span&gt; git diff &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
+  &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$1&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; *&lt;span class="s2"&gt;&amp;quot;cache&amp;quot;&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;exec&lt;/span&gt; git diff --cached &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
+  &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="nv"&gt;NUM_COMMITS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+    &lt;span class="nb"&gt;exec&lt;/span&gt; git diff HEAD~$NUM_COMMITS..HEAD &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
+  &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The checkpatch script simple wraps the patch creation process and allows you to
+right away specify which &lt;/p&gt;
+&lt;h4&gt;Example&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;~/work/linux $ checkpatch 15
+WARNING: ENOSYS means &amp;#39;invalid syscall nr&amp;#39; and nothing else
+#349: FILE: drivers/tty/serial/sh-sci.c:3026:
++   if (IS_ERR(sciport-&amp;gt;gpios) &amp;amp;&amp;amp; PTR_ERR(sciport-&amp;gt;gpios) != -ENOSYS)
+
+total: 0 errors, 1 warnings, 385 lines checked
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In this example the 15 last commits are checked against scripts/checkpatch.pl
+for correctness.&lt;/p&gt;
+&lt;h2&gt;scripts/get_mainteiner.pl helper&lt;/h2&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="k"&gt;function&lt;/span&gt; get_maintainer &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="nv"&gt;NUM_COMMITS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+
+  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;git format-patch HEAD~$NUM_COMMITS..HEAD --stdout &lt;span class="p"&gt;|&lt;/span&gt; scripts/get_maintainer.pl&lt;span class="k"&gt;)&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Remove extraneous stats&lt;/span&gt;
+  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;MAINTAINERS&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/(.*//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Remove names from email addresses&lt;/span&gt;
+  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;MAINTAINERS&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/.*&amp;lt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Remove left over character&lt;/span&gt;
+  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;MAINTAINERS&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/&amp;gt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+  &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;MAINTAINERS&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;read&lt;/span&gt; email&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; -n &lt;span class="s2"&gt;&amp;quot;--to=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;email&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;  &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h4&gt;Example&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;~/work/linux $ get_maintainer 1
+--to=gregkh@linuxfoundation.org  --to=jslaby@suse.com  --to=linux-serial@vger.kernel.org  --to=linux-kernel@vger.kernel.org
+
+~/work/linux $ git send-email -1 $(get_maintainer 1)
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="linux"></category><category term="kernel"></category><category term="script"></category></entry><entry><title>Running Weston on a Raspbian</title><link href="http://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2." /&gt;&lt;/p&gt;
 &lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration
 using pixman was needed, but this is no longer the case.&lt;/p&gt;

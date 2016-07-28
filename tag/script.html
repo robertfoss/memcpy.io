@@ -11,7 +11,7 @@
 	<link href="http://memcpy.io/" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
 
 
-	<title>memcpy.io - kernel</title>
+	<title>memcpy.io - script</title>
 	<meta charset="utf-8" />
 </head>
 <body>
@@ -70,25 +70,6 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
 </td></tr></table>
 
 <p>The checkpatch script simple wraps the patch creation process and allows ...</p> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="../running-weston-on-a-raspbian.html" rel="bookmark" title="Permalink to Running Weston on a Raspbian">Running Weston on a Raspbian</a>
-			</h1>
-			<abbr class="published" title="2016-06-03T10:32:00+02:00">Fri 03 June 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2." /></p>
-<p>Progress in the VC4 graphics camp and the Wayland camp now enables us to run
-Weston on top of the drm backend for VC4 platforms. Previously software acceleration
-using pixman was needed, but this is no longer the case.</p>
-<p>Additionally the rpi backend for weston is now being removed since it has been
-obsoleted by the improved drm layer.</p>
-<p>Let's explore running hardware accelerated Weston on the Raspberry Pi.</p>
-<h2>Building Linux kernel</h2>
-<p>A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
-been written by the Raspberry Pi foundation and is available <a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md">here</a>.</p>
-<p>As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.</p>
-<h2>Set up alternative install location</h2>
-<p>These build ...</p> </div>
 		</article>
 
 <p class="paginator">
