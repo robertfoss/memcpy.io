@@ -44,7 +44,7 @@ total: 0 errors, 1 warnings, 385 lines checked
 
 &lt;p&gt;In this example the 15 last commits are checked against scripts/checkpatch.pl
 for correctness.&lt;/p&gt;
-&lt;h2&gt;scripts/get_mainteiner.pl helper&lt;/h2&gt;
+&lt;h2&gt;scripts/get_maintainer.pl helper&lt;/h2&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
