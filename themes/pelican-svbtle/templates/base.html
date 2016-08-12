@@ -23,7 +23,13 @@
 	{% endif %}
 
 	{% block head %}
-	<title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+	<title>
+	{%- if article -%}
+		{{ SITENAME }} | {{ article.title }}
+	{%- else -%}
+		{{ SITENAME }}
+	{%- endif -%}
+	</title>
 	<meta charset="utf-8" />
 	{% endblock head %}
 </head>
