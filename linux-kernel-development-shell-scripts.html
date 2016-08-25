@@ -17,7 +17,7 @@
     <meta property="og:description" content="While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl often come in handy. But to me the interface they provide is slightly bulky and rely on using patch files instead of git commits, which to me is a bit inconvenient. These scripts are all meant to be included in .bashrc or .zshrc scripts/checkpatch.pl helper 1 2 3 4 5 6 7 8 9 10 11#!/bin/bash function checkpatch { if [ -z ${1+x} ]; then exec git diff | scripts/checkpatch.pl --no-signoff -q - elif [[ $1 == *&#34;cache&#34;* ]]; then exec git diff --cached | scripts/checkpatch.pl --no-signoff -q - else NUM_COMMITS=$1 exec git diff HEAD~$NUM_COMMITS..HEAD | scripts/checkpatch.pl --no-signoff -q - fi } The checkpatch script simple wraps the patch creation process and allows ..." />
     <meta property="og:locale" content="" />
     <meta property="og:site_name" content="memcpy.io" />
-    <meta property="article:published_time" content="2016-06-03" />
+    <meta property="article:published_time" content="2016-07-26" />
     <meta property="article:section" content="kernel" />
     <meta property="article:tag" content="linux" />
     <meta property="article:tag" content="kernel" />
@@ -49,7 +49,7 @@
 			<a href="./linux-kernel-development-shell-scripts.html" rel="bookmark"
 				title="Permalink to Linux kernel development shell scripts">Linux kernel development shell scripts</a>
 		</h1>
-		<abbr class="published" title="2016-06-03T10:32:00+02:00">Fri 03 June 2016</abbr>
+		<abbr class="published" title="2016-07-26T10:32:00+02:00">Tue 26 July 2016</abbr>
 		<p><img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use" /></p>
 <p>While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.

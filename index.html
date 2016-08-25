@@ -35,9 +35,30 @@
 
 		<article>
 			<h1 class="title">
+				<a href="./ethernet-device-stress-testing.html" rel="bookmark" title="Permalink to Ethernet device stress testing">Ethernet device stress testing</a>
+			</h1>
+			<abbr class="published" title="2016-08-25T13:05:00+02:00">Thu 25 August 2016</abbr>
+		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script" /></p>
+<p>During testing of power management patches for usb ethernet dongles, a script
+was needed to stress test connecting/disconnecting/reconnecting these devices.</p>
+<p>Luckily a script like that already exists as a part of the chromiumos project,
+and can be found <a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py">here</a>.</p>
+<p>That script does however not run standalone and requires are remote device
+(chromebook) to execute on. So I took the liberty of changing it to support
+local testing. The modified version can be found <a href="files/2016-08-25_network_EthernetStressPlug.py">here</a>.</p>
+<p>This might come in handy for someone, if not, the script will at least be
+archived on this site.</p>
+<h2>Example</h2>
+<div class="highlight"><pre>$ sudo pip2.7 install autotest
+$ ip link
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
+    link/loopback 00:00:00 ...</pre></div> </div>
+		</article>
+		<article>
+			<h1 class="title">
 				<a href="./linux-kernel-development-shell-scripts.html" rel="bookmark" title="Permalink to Linux kernel development shell scripts">Linux kernel development shell scripts</a>
 			</h1>
-			<abbr class="published" title="2016-06-03T10:32:00+02:00">Fri 03 June 2016</abbr>
+			<abbr class="published" title="2016-07-26T10:32:00+02:00">Tue 26 July 2016</abbr>
 		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use" /></p>
 <p>While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
