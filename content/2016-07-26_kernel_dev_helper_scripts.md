@@ -1,5 +1,5 @@
 Title: Linux kernel development shell scripts
-Date: 2016-06-03 10:32
+Date: 2016-07-26 10:32
 Category: kernel
 Tags: linux, kernel, script
 
