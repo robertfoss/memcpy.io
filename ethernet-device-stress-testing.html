@@ -14,7 +14,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:image" content="http://memcpy.io/images/2016-08-25_ethernet_device_testing.png" />
     <meta property="og:url" content="http://memcpy.io/ethernet-device-stress-testing.html" />
-    <meta property="og:description" content="During testing of power management patches for usb ethernet dongles, a script was needed to stress test connecting/disconnecting/reconnecting these devices. Luckily a script like that already exists as a part of the chromiumos project, and can be found here. That script does however not run standalone and requires are remote device (chromebook) to execute on. So I took the liberty of changing it to support local testing. The modified version can be found here. This might come in handy for someone, if not, the script will at least be archived on this site. Example $ sudo pip2.7 install autotest $ ip link 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1 link/loopback 00:00:00 ..." />
+    <meta property="og:description" content="During testing of power management patches for usb ethernet dongles, a script was needed to stress test connecting/disconnecting/reconnecting these devices. Luckily a script like that already exists as a part of the chromiumos project, and can be found here. That script does however not run standalone and requires a remote device (chromebook) to execute on. So I took the liberty of changing it to support local testing. The modified version can be found here. This might come in handy for someone, if not, the script will at least be archived on this site. Example $ sudo pip2.7 install autotest $ ip link 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1 link/loopback 00:00:00 ..." />
     <meta property="og:locale" content="" />
     <meta property="og:site_name" content="memcpy.io" />
     <meta property="article:published_time" content="2016-08-25" />
@@ -58,7 +58,7 @@
 was needed to stress test connecting/disconnecting/reconnecting these devices.</p>
 <p>Luckily a script like that already exists as a part of the chromiumos project,
 and can be found <a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py">here</a>.</p>
-<p>That script does however not run standalone and requires are remote device
+<p>That script does however not run standalone and requires a remote device
 (chromebook) to execute on. So I took the liberty of changing it to support
 local testing. The modified version can be found <a href="files/2016-08-25_network_EthernetStressPlug.py">here</a>.</p>
 <p>This might come in handy for someone, if not, the script will at least be

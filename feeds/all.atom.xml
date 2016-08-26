@@ -4,7 +4,7 @@
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
 and can be found &lt;a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;That script does however not run standalone and requires are remote device
+&lt;p&gt;That script does however not run standalone and requires a remote device
 (chromebook) to execute on. So I took the liberty of changing it to support
 local testing. The modified version can be found &lt;a href="files/2016-08-25_network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This might come in handy for someone, if not, the script will at least be
