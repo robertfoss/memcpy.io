@@ -10,4 +10,4 @@ Open source related projects have recently been in the IoT/esp8266/[NodeMCU](htt
 
 
 
-If you're interested in getting a quote, availibility information or just discussing a project, feel free to contact me at [contact@robertfoss.se](mailto:contact@robertfoss.se).
+If you're interested in getting a quote, availibility information or just discussing a project, feel free to contact me at [contact@memcpy.io](mailto:contact@memcy.io).
