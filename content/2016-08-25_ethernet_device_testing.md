@@ -13,7 +13,7 @@ and can be found [here](https://chromium.googlesource.com/chromiumos/third_party
 
 That script does however not run standalone and requires a remote device
 (chromebook) to execute on. So I took the liberty of changing it to support
-local testing. The modified version can be found [here](files/2016-08-25_network_EthernetStressPlug.py).
+local testing. The modified version can be found [here](files/2016-08-25/network_EthernetStressPlug.py).
 
 This might come in handy for someone, if not, the script will at least be
 archived on this site.
