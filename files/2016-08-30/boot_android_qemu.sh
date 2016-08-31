@@ -2,10 +2,14 @@
 
 set -e
 
-PATH="${ANDROID_PATH}/out/host/linux-x86/bin/:$PATH"
 ARCH=${ARCH:="$1"}
 ARCH=${ARCH:="x86_64"}
+
+ANDROID_IMAGE_PATH=${ANDROID_PATH}/out/target/product/linaro_${ARCH}
+
 QEMU_ARCH=$ARCH
+
+PATH="${ANDROID_PATH}/out/host/linux-x86/bin/:$PATH"
 
 case "$ARCH" in
 arm)
@@ -32,16 +36,33 @@ x86)
     ;;
 esac
 
-ANDROID_IMAGE_PATH=${ANDROID_PATH}/out/target/product/linaro_${ARCH}
-echo $ANDROID_IMAGE_PATH
-if [ ! -f system_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/system.img -nt system_${ARCH}.raw ]; then
-    simg2img ${ANDROID_IMAGE_PATH}/system.img system_${ARCH}.raw
+if [ ! -f ${PROJECT_PATH}/boot.img -o \
+      ${LINUX_PATH}/arch/${ARCH}/boot/bzImage -nt ${PROJECT_PATH}/boot.img -o \
+      ${ANDROID_IMAGE_PATH}/linaro_${ARCH}/ramdisk.img -nt ${PROJECT_PATH}/boot.img ]; then
+
+    ${ANDROID_TOOLS_PATH}/mkbootimg/mkbootimg \
+        --kernel ${LINUX_PATH}/arch/${ARCH}/boot/bzImage \
+        --ramdisk ${ANDROID_IMAGE_PATH}/ramdisk.img \
+        --output ${PROJECT_PATH}/boot.img \
+        --pagesize 2048 \
+        --base 0x80000000 \
+        --cmdline 'rw console=ttyMSM0,115200n8'
+    echo "Regenerated ${PROJECT_PATH}/boot.img"
 fi
-if [ ! -f cache_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/cache.img -nt cache_${ARCH}.raw ]; then
-    simg2img ${ANDROID_IMAGE_PATH}/cache.img cache_${ARCH}.raw
+
+if [ ! -f ${PROJECT_PATH}/system_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/system.img -nt ${PROJECT_PATH}/system_${ARCH}.raw ]; then
+    simg2img ${ANDROID_IMAGE_PATH}/system.img ${PROJECT_PATH}/system_${ARCH}.raw
+    echo "Regenerated ${PROJECT_PATH}/system_${ARCH}.raw"
 fi
-if [ ! -f userdata_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/userdata.img -nt userdata_${ARCH}.raw ]; then
-    simg2img ${ANDROID_IMAGE_PATH}/userdata.img userdata_${ARCH}.raw
+
+if [ ! -f ${PROJECT_PATH}/cache_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/cache.img -nt ${PROJECT_PATH}/cache_${ARCH}.raw ]; then
+    simg2img ${ANDROID_IMAGE_PATH}/cache.img ${PROJECT_PATH}/cache_${ARCH}.raw
+    echo "Regenerated ${PROJECT_PATH}/cache_${ARCH}.raw"
+fi
+
+if [ ! -f ${PROJECT_PATH}/userdata_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/userdata.img -nt ${PROJECT_PATH}/userdata_${ARCH}.raw ]; then
+    simg2img ${ANDROID_IMAGE_PATH}/userdata.img ${PROJECT_PATH}/userdata_${ARCH}.raw
+    echo "Regenerated ${PROJECT_PATH}/userdata_${ARCH}.raw"
 fi
 
 ${QEMU_PATH}/build/${QEMU_ARCH}-softmmu/qemu-system-${QEMU_ARCH} \
@@ -51,16 +72,16 @@ ${QEMU_PATH}/build/${QEMU_ARCH}-softmmu/qemu-system-${QEMU_ARCH} \
     -serial mon:stdio \
     -kernel ${KERNEL} \
     -initrd ${ANDROID_IMAGE_PATH}/ramdisk.img \
-    -drive index=0,if=none,id=system,file=system_${ARCH}.raw \
+    -drive index=0,if=none,id=system,file=${PROJECT_PATH}/system_${ARCH}.raw \
     -device virtio-blk-pci,drive=system \
-    -drive index=1,if=none,id=cache,file=cache_${ARCH}.raw \
+    -drive index=1,if=none,id=cache,file=${PROJECT_PATH}/cache_${ARCH}.raw \
     -device virtio-blk-pci,drive=cache \
-    -drive index=2,if=none,id=userdata,file=userdata_${ARCH}.raw \
+    -drive index=2,if=none,id=userdata,file=${PROJECT_PATH}/userdata_${ARCH}.raw \
     -device virtio-blk-pci,drive=userdata \
     -netdev user,id=mynet,hostfwd=tcp::5550-:5555 -device virtio-net-pci,netdev=mynet \
     -device virtio-gpu-pci,virgl -display gtk,gl=on \
     -device virtio-mouse-pci -device virtio-keyboard-pci \
-    -device nec-usb-xhci,id=xhci                    \
+    -device nec-usb-xhci,id=xhci \
     -device sdhci-pci \
     -d guest_errors \
     -nodefaults \
