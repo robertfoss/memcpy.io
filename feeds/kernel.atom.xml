@@ -53,7 +53,7 @@ make -j
 &lt;p&gt;Build trunk of mainline linux kernel.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- defconfig
+wget http://memcpy.io/files/2016-08-30/.config -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/.config
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j
 &lt;/pre&gt;&lt;/div&gt;
 
