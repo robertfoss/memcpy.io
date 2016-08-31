@@ -14,7 +14,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:image" content="http://memcpy.io/images/2016-08-25_ethernet_device_testing.png" />
     <meta property="og:url" content="http://memcpy.io/building-android-for-qemu.html" />
-    <meta property="og:description" content="Developing Linux for Android on Qemu is allows you to do some things that are not necessarily possible using the stock emulator. For my purposes I need access to a GPU and be able to modify the driver, which is where virgilrenderer and qemu comes in handy. The guide below helps you compile Android and run it on top of Qemu with Mesa/virgilrenderer supplying a virtual GPU. Because of this, the following guide is aimed at Linux hosts. This guide is based on Rob Herrings fantastic guide, but has been slightly streamlined and had physical hardware support stripped out. Install dependencies These dependencies were available on Ubuntu 16.04, some alternative packages might be needed for other distributions. sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev ..." />
+    <meta property="og:description" content="Developing Linux for Android on Qemu allows you to do some things that are not necessarily possible using the stock emulator. For my purposes I need access to a GPU and be able to modify the driver, which is where Virgilrenderer and Qemu comes in handy. The guide below helps you compile Android and run it on top of Qemu with Mesa/Virgilrenderer supplying a virtual GPU. Because of this, the following guide is aimed at Linux hosts. This guide is based on Rob Herrings fantastic guide, but has been slightly streamlined and had physical hardware support stripped out. Install dependencies These dependencies were available on Ubuntu 16.04, some alternative packages might be needed for other distributions. sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ..." />
     <meta property="og:locale" content="" />
     <meta property="og:site_name" content="memcpy.io" />
     <meta property="article:published_time" content="2016-08-30" />
@@ -53,12 +53,12 @@
 		</h1>
 		<abbr class="published" title="2016-08-30T15:22:00+02:00">Tue 30 August 2016</abbr>
 		<p><img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script" /></p>
-<p>Developing Linux for Android on Qemu is allows you to do some things that are
+<p>Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
-is where virgilrenderer and qemu comes in handy.</p>
+is where Virgilrenderer and Qemu comes in handy.</p>
 <p>The guide below helps you compile Android and run it on top of Qemu with
-Mesa/virgilrenderer supplying a virtual GPU.
+Mesa/Virgilrenderer supplying a virtual GPU.
 Because of this, the following guide is aimed at Linux hosts.</p>
 <p>This guide is based on Rob Herrings <a href="https://github.com/robherring/generic_device/wiki/KConfig-based-Multi-platform-Android-Device-(and-Mesa-graphics)">fantastic guide</a>, but has
 been slightly streamlined and had physical hardware support stripped out.</p>
@@ -74,13 +74,15 @@ might be needed for other distributions.</p>
 <div class="highlight"><pre>export PROJECT_PATH=&quot;/opt/qemu_android&quot;
 export VIRGLRENDERER_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/virglrenderer&quot;
 export QEMU_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/qemu&quot;
-export LINUX_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/linux-android&quot;
+export LINUX_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/linux&quot;
 export ANDROID_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/android&quot;
 export ANDROID_TOOLS_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/android-tools&quot;
 </pre></div>
 
 
 <h2>Virglrenderer</h2>
+<p>Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
+graphics capabilities of the host machine.</p>
 <div class="highlight"><pre>git clone git://git.freedesktop.org/git/virglrenderer <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
 ./autogen.sh
@@ -90,6 +92,8 @@ sudo make install
 
 
 <h2>Qemu</h2>
+<p>Qemu is a full system emulator, and supports a multitude of machine architectures.
+We're going to to use arm64/aarch64 but also build support for x86_64.</p>
 <div class="highlight"><pre>git clone git://git.qemu-project.org/qemu.git <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>
 mkdir <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
 cd <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
@@ -99,18 +103,22 @@ make -j
 
 
 <h2>Linux kernel</h2>
-<div class="highlight"><pre>git clone http://git.linaro.org/people/rob.herring/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
+<p>Build trunk of mainline linux kernel.</p>
+<div class="highlight"><pre>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
-git checkout android-4.4
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- ranchu_defconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- defconfig
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j
 </pre></div>
 
 
 <h2>Android</h2>
+<p>Build the Android Open Source Project.</p>
+<p><strong>Important:</strong> When running <em>source build/envsetup.sh</em> make sure that you are
+using bash. I had issues running this <em>lunch</em> using zsh.</p>
 <div class="highlight"><pre>mkdir <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
 repo init -u https://android.googlesource.com/platform/manifest -b master
+cd .repo
 git clone https://github.com/robherring/android_manifest.git -b android-6.0 local_manifests
 cd ..
 repo sync -j
@@ -118,23 +126,28 @@ cd device/linaro/generic
 make defconfig
 make all
 cd ../../..
+# The following snippet must be run in bash
+bash
 source build/envsetup.sh
-# Select linaro_arm64-userdebug or linaro_x86_64-userdebug
+# Select linaro_arm64-userdebug
 lunch
+# We don&#39;t need to use bash any longer
+exit
 make -j
 </pre></div>
 
 
 <h2>mkbootimg</h2>
+<p>Make boot image. This script assembles the boot image and device tree image, <em>boot.img</em> and <em>dt.img</em>.</p>
 <div class="highlight"><pre>git clone https://android.googlesource.com/platform/system/core.git <span class="nv">$ANDROID_TOOLS_PATH</span>
-<span class="cp">${</span><span class="n">ANDROID_TOOLS_PATH</span><span class="cp">}</span>/mkbootimg/mkbootimg --kernel <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/arch/arm64/boot/Image --ramdisk <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>/out/target/product/linaro_arm64/ramdisk.img --output <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot-db410c.img --dt dt.img --pagesize 2048 --base 0x80000000 --cmdline &#39;rw console=ttyMSM0,115200n8&#39;
+<span class="cp">${</span><span class="n">ANDROID_TOOLS_PATH</span><span class="cp">}</span>/mkbootimg/mkbootimg --kernel <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/arch/arm64/boot/Image --ramdisk <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>/out/target/product/linaro_arm64/ramdisk.img --output <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot.img --dt <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/dt.img --pagesize 2048 --base 0x80000000 --cmdline &#39;rw console=ttyMSM0,115200n8&#39;
 </pre></div>
 
 
 <h2>Run Qemu machine</h2>
 <p>When running the below script, make sure that the all of the paths from step two
 have been exported.</p>
-<div class="highlight"><pre>wget http://localhost:8000/files/2016-08-30/boot_android_qemu.sh -o <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
+<div class="highlight"><pre>wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -o <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
 chmod +x <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
 <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
 </pre></div>
