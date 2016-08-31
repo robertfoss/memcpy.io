@@ -40,7 +40,7 @@ sudo make install
 
 &lt;h2&gt;Qemu&lt;/h2&gt;
 &lt;p&gt;Qemu is a full system emulator, and supports a multitude of machine architectures.
-We're going to to use arm64/aarch64 but also build support for x86_64.&lt;/p&gt;
+We're going to to use x86_64 but also build support for arm64/aarch64.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone git://git.qemu-project.org/qemu.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
