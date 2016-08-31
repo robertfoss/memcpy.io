@@ -23,10 +23,10 @@ section#sidebar li a{color:#999;font-size:15px;line-height:19px;border:2px solid
 section#sidebar footer{margin:0;padding:0;position:absolute;bottom:45px;width:258px;text-align:center;color:#999;font-size:12px;font-weight:300;line-height:15px}
 section#posts{top:0;margin:0 0 0 260px;padding:0 0 75px 0;min-height:700px;min-width:710px;height:100%;border-left:#eee 1px solid;background-color:rgba(255,255,255,0.9);position:relative;z-index:1}
 section#posts h1{margin:45px 0 0px;color:#000; font-weight: 100; font-size: 30px;}
-section#posts h2{margin:20px 0 10px;color:#000; font-weight: 100; font-size: 26px;}
-section#posts h3{margin:15px 0 10px;color:#000; font-weight: 100; font-size: 23px}
-section#posts h4{margin:15px 0 10px;color:#000; font-weight: 100; font-size: 20px}
-section#posts h5{margin:15px 0 10px;color:#000; font-weight: 100; font-size: 18px}
+section#posts h2{margin:35px 0 10px;color:#000; font-weight: 100; font-size: 26px;}
+section#posts h3{margin:20px 0 10px;color:#000; font-weight: 100; font-size: 23px}
+section#posts h4{margin:20px 0 10px;color:#000; font-weight: 100; font-size: 20px}
+section#posts h5{margin:20px 0 10px;color:#000; font-weight: 100; font-size: 18px}
 section#posts h6{margin:15px 0 10px;color:#000; font-weight: 100; font-size: 16px}
 section#posts img {max-width:100%;max-height:100%; border-radius: 5px}
 section#posts ul,section#posts ol{margin:0 0 0 15px;padding:0;list-style-position:outside;}
