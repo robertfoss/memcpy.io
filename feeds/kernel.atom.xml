@@ -94,7 +94,7 @@ make -j
 &lt;h2&gt;Run Qemu machine&lt;/h2&gt;
 &lt;p&gt;When running the below script, make sure that the all of the paths from step two
 have been exported.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -o &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
+&lt;div class="highlight"&gt;&lt;pre&gt;wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 chmod +x &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script" /&gt;&lt;/p&gt;

@@ -43,7 +43,7 @@ if [ ! -f userdata_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/userdata.img -nt userdat
     simg2img ${ANDROID_IMAGE_PATH}/userdata.img userdata_${ARCH}.raw
 fi
 
-${QEMU_PATH}/${QEMU_ARCH}-softmmu/qemu-system-${QEMU_ARCH} \
+${QEMU_PATH}/build/${QEMU_ARCH}-softmmu/qemu-system-${QEMU_ARCH} \
     ${QEMU_OPTS} \
     -append "${KERNEL_CMDLINE}" \
     -m 1024 \
