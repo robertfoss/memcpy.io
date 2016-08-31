@@ -9,7 +9,7 @@ a:hover{color:#0e94ec;outline:0}
 a:active{color:#0e94ec;outline:0}
 a:focus{outline:thin dotted}
 .clearfix{content:".";display:block;height:0;clear:both}
-section#sidebar{width:258px;position:fixed;top:0;left:0;bottom:0;right:auto;min-height:700px;z-index:0; }
+section#sidebar{width:258px;position:fixed;top:0;left:0;bottom:0;right:auto;min-height:700px;z-index:0;display: block;}
 section#sidebar img{display: block;margin: auto;}
 section#sidebar figure{margin:40px 40px;width:100px;height:100px}
 section#sidebar a{border-bottom:none}
