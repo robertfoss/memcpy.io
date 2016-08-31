@@ -54,14 +54,14 @@ make -j
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 wget http://memcpy.io/files/2016-08-30/.config -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/.config
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j
+make -j
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Android&lt;/h2&gt;
 &lt;p&gt;Build the Android Open Source Project.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; When running &lt;em&gt;source build/envsetup.sh&lt;/em&gt; make sure that you are
-using bash. I had issues running this &lt;em&gt;lunch&lt;/em&gt; using zsh.&lt;/p&gt;
+using bash. I had issues running &lt;em&gt;lunch&lt;/em&gt; using zsh.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 repo init -u https://android.googlesource.com/platform/manifest -b master
@@ -76,18 +76,18 @@ cd ../../..
 # The following snippet must be run in bash
 bash
 source build/envsetup.sh
-# Select linaro_arm64-userdebug
+# Select linaro_x86_64-userdebug
 lunch
+make -j
 # We don&amp;#39;t need to use bash any longer
 exit
-make -j
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;mkbootimg&lt;/h2&gt;
-&lt;p&gt;Make boot image. This script assembles the boot image and device tree image, &lt;em&gt;boot.img&lt;/em&gt; and &lt;em&gt;dt.img&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Make boot image. This script assembles the boot image, &lt;em&gt;boot.img&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone https://android.googlesource.com/platform/system/core.git &lt;span class="nv"&gt;$ANDROID_TOOLS_PATH&lt;/span&gt;
-&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_TOOLS_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/mkbootimg/mkbootimg --kernel &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/arch/arm64/boot/Image --ramdisk &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/out/target/product/linaro_arm64/ramdisk.img --output &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot.img --dt &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/dt.img --pagesize 2048 --base 0x80000000 --cmdline &amp;#39;rw console=ttyMSM0,115200n8&amp;#39;
+&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_TOOLS_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/mkbootimg/mkbootimg --kernel &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/arch/arm64/boot/Image --ramdisk &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/out/target/product/linaro_arm64/ramdisk.img --output &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot.img --pagesize 2048 --base 0x80000000 --cmdline &amp;#39;rw console=ttyMSM0,115200n8&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -96,7 +96,7 @@ make -j
 have been exported.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 chmod +x &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
-&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
+&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh x86_64
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script" /&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;

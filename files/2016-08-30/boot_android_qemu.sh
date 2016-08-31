@@ -4,7 +4,7 @@ set -e
 
 PATH="${ANDROID_PATH}/out/host/linux-x86/bin/:$PATH"
 ARCH=${ARCH:="$1"}
-ARCH=${ARCH:="arm64"}
+ARCH=${ARCH:="x86_64"}
 QEMU_ARCH=$ARCH
 
 case "$ARCH" in
