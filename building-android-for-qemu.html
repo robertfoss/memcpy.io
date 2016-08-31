@@ -104,9 +104,11 @@ make -j
 
 <h2>Linux kernel</h2>
 <p>Build trunk of mainline linux kernel.</p>
+<p><strong>Important:</strong> If not building for x86_64, make sure that SELinux is enabled.
+x86_64 has SELinux enabled by default and requires no further configuration.</p>
 <div class="highlight"><pre>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
-wget http://memcpy.io/files/2016-08-30/.config -O <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/.config
+make defconfig
 make -j
 </pre></div>
 
@@ -138,9 +140,8 @@ exit
 
 
 <h2>mkbootimg</h2>
-<p>Make boot image. This script assembles the boot image, <em>boot.img</em>.</p>
-<div class="highlight"><pre>git clone https://android.googlesource.com/platform/system/core.git <span class="nv">$ANDROID_TOOLS_PATH</span>
-<span class="cp">${</span><span class="n">ANDROID_TOOLS_PATH</span><span class="cp">}</span>/mkbootimg/mkbootimg --kernel <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/arch/arm64/boot/Image --ramdisk <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>/out/target/product/linaro_arm64/ramdisk.img --output <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot.img --pagesize 2048 --base 0x80000000 --cmdline &#39;rw console=ttyMSM0,115200n8&#39;
+<p>Fetch the make boot image script. This script later assembles the boot image, <em>boot.img</em>.</p>
+<div class="highlight"><pre><span class="x">git clone https://android.googlesource.com/platform/system/core.git </span><span class="p">$</span><span class="nv">ANDROID_TOOLS_PATH</span><span class="x"></span>
 </pre></div>
 
 
