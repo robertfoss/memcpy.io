@@ -28,7 +28,7 @@ section#posts h3{margin:20px 0 10px;color:#000; font-weight: 100; font-size: 23p
 section#posts h4{margin:20px 0 10px;color:#000; font-weight: 100; font-size: 20px}
 section#posts h5{margin:20px 0 10px;color:#000; font-weight: 100; font-size: 18px}
 section#posts h6{margin:15px 0 10px;color:#000; font-weight: 100; font-size: 16px}
-section#posts img {max-width:100%;max-height:100%; border-radius: 5px}
+section#posts img {max-width:100%;max-height:100%; border-radius: 5px;margin-left: auto;margin-right: auto;display: block;}
 section#posts ul,section#posts ol{margin:0 0 0 15px;padding:0;list-style-position:outside;}
 section#posts ul li,section#posts ol li{margin:0 0 0 15px;padding:3px 0 3px 5px}
 section#posts ul pre,section#posts ol pre{width:733px}
