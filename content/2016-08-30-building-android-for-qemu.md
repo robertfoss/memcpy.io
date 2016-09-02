@@ -68,7 +68,7 @@ Inclusion is targeted for *v4.9*.
 
     git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ${LINUX_PATH}
     cd ${LINUX_PATH}
-    wget http://memcpy.io/files/2016-08-30/.config -O ${LINUX_PATH}/.config
+    wget http://memcpy.io/files/2016-08-30/Kconfig -O ${LINUX_PATH}/.config
     make oldconfig
     make -j
 
