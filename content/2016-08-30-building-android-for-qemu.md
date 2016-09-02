@@ -140,11 +140,11 @@ using bash. I had issues running *lunch* using zsh.
     exit
 
 
-As of this writing SW_SYNC related patches by Gustavo Padovan has yet to be included
+As of this writing DRM fences related patches by Gustavo Padovan has yet to be included
 into AOSP, and therefore has to be included included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. 
 
-    cd ${ANDROID_PATH}/external/drm_hwcomposer
+    cd $ANDROID_PATH/system/core/
     git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
     git fetch padovan
     git checkout padovan/master
