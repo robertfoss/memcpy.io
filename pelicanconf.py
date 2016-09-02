@@ -33,10 +33,10 @@ DISPLAY_PAGES_ON_MENU = False
 DISPLAY_LINKS_ON_MENU = False
 
 MENUITEMS = (
-            ('About', 'about-me.html'),
-            ('Contracting', 'contracting.html'),
-            ('GitHub', 'https://github.com/robertfoss'),
-            ('Previous posts', 'archives.html')
+    ('About', 'about-me.html'),
+    ('Contracting', 'contracting.html'),
+    ('GitHub', 'https://github.com/robertfoss'),
+    ('Previous posts', 'archives.html')
 )
 LINKS = ()
 
@@ -59,5 +59,4 @@ EXTRA_PATH_METADATA = {
 
 
 PLUGIN_PATHS = ["plugins", "plugins"]
-PLUGINS = ["pelican-open_graph",
-           "tipue_search"]
+PLUGINS = ["pelican-open_graph"]
