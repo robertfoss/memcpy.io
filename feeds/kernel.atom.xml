@@ -129,8 +129,8 @@ exit
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan has yet to be included
-into AOSP, and therefore has to be included included manually until it is upstreamed.
+&lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
+into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;cd &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="x"&gt;/system/core/&lt;/span&gt;
 &lt;span class="x"&gt;git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git&lt;/span&gt;
