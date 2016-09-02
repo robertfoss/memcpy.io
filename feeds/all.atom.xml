@@ -129,7 +129,7 @@ exit
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;As of this writing a SW_SYNC related patches by Gustavo Padovan has yet to be included
+&lt;p&gt;As of this writing SW_SYNC related patches by Gustavo Padovan has yet to be included
 into AOSP, and therefore has to be included included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/external/drm_hwcomposer
