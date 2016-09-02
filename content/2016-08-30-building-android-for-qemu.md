@@ -140,8 +140,8 @@ using bash. I had issues running *lunch* using zsh.
     exit
 
 
-As of this writing DRM fences related patches by Gustavo Padovan has yet to be included
-into AOSP, and therefore has to be included included manually until it is upstreamed.
+As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
+into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. 
 
     cd $ANDROID_PATH/system/core/
