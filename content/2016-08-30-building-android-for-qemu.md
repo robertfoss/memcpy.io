@@ -140,7 +140,7 @@ using bash. I had issues running *lunch* using zsh.
     exit
 
 
-As of this writing a SW_SYNC branch by Gustavo Padovan has yet to be included
+As of this writing a SW_SYNC related patches by Gustavo Padovan has yet to be included
 into AOSP, and therefore has to be included included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. 
 
