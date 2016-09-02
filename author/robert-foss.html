@@ -36,6 +36,26 @@
 
 		<article>
 			<h1 class="title">
+				<a href="../building-android-for-qemu.html" rel="bookmark" title="Permalink to Building Android for Qemu">Building Android for Qemu</a>
+			</h1>
+			<abbr class="published" title="2016-08-30T15:22:00+02:00">Tue 30 August 2016</abbr>
+		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu" /></p>
+<p>Developing Linux for Android on Qemu allows you to do some things that are
+not necessarily possible using the stock emulator.
+For my purposes I need access to a GPU and be able to modify the driver, which
+is where Virgilrenderer and Qemu comes in handy.</p>
+<p>The guide below helps you compile Android and run it on top of Qemu with
+Mesa/Virgilrenderer supplying a virtual GPU.
+Because of this, the following guide is aimed at Linux hosts.</p>
+<p>This guide is based on Rob Herrings <a href="https://github.com/robherring/generic_device/wiki/KConfig-based-Multi-platform-Android-Device-(and-Mesa-graphics)">fantastic guide</a>, but has
+been slightly streamlined and had physical hardware support stripped out.</p>
+<h2>Install dependencies</h2>
+<p>These dependencies were available on Ubuntu 16.04, some alternative packages
+might be needed for other distributions.</p>
+<div class="highlight"><pre>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
+		</article>
+		<article>
+			<h1 class="title">
 				<a href="../ethernet-device-stress-testing.html" rel="bookmark" title="Permalink to Ethernet device stress testing">Ethernet device stress testing</a>
 			</h1>
 			<abbr class="published" title="2016-08-25T13:05:00+02:00">Thu 25 August 2016</abbr>

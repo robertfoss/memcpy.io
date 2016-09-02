@@ -14,25 +14,25 @@ PATH="${ANDROID_PATH}/out/host/linux-x86/bin/:$PATH"
 case "$ARCH" in
 arm)
     QEMU_OPTS="-cpu cortex-a15 -machine type=virt"
-    KERNEL_CMDLINE='console=ttyAMA0,38400 earlycon=pl011,0x09000000 debug nosmp drm.debug=0 rootwait androidboot.selinux=permissive'
+    KERNEL_CMDLINE='console=ttyAMA0,38400 earlycon=pl011,0x09000000 debug nosmp drm.debug=0x0 rootwait androidboot.selinux=permissive'
     KERNEL=${LINUX_PATH}/arch/arm/boot/zImage
     ;;
 arm64)
     QEMU_ARCH="aarch64"
     QEMU_OPTS="-cpu cortex-a57 -machine type=virt"
-    KERNEL_CMDLINE='console=ttyAMA0,38400 earlycon=pl011,0x09000000 nosmp drm.debug=0 rootwait rootdelay=5 androidboot.selinux=permissive'
+    KERNEL_CMDLINE='console=ttyAMA0,38400 earlycon=pl011,0x09000000 nosmp drm.debug=0x0 rootwait rootdelay=5 androidboot.selinux=permissive'
     KERNEL=${LINUX_PATH}/arch/arm64/boot/Image
     ;;
 x86_64)
     KERNEL=${LINUX_PATH}/arch/x86/boot/bzImage
-    QEMU_OPTS="-enable-kvm -smp 2"
-    KERNEL_CMDLINE='console=tty0 console=ttyS0 debug drm.debug=0 androidboot.selinux=permissive'
+    QEMU_OPTS="-enable-kvm -smp 4"
+    KERNEL_CMDLINE='console=tty0 console=ttyS0 debug drm.debug=0x0 androidboot.selinux=permissive'
     ;;
 x86)
     QEMU_ARCH="x86_64"
     KERNEL=${LINUX_PATH}/arch/x86/boot/bzImage
-    QEMU_OPTS="-enable-kvm -smp 2"
-    KERNEL_CMDLINE='console=tty0 console=ttyS0 debug  drm.debug=0 androidboot.selinux=permissive'
+    QEMU_OPTS="-enable-kvm -smp 4"
+    KERNEL_CMDLINE='console=tty0 console=ttyS0 debug drm.debug=0x0 androidboot.selinux=permissive'
     ;;
 esac
 
@@ -47,22 +47,22 @@ if [ ! -f ${PROJECT_PATH}/boot.img -o \
         --pagesize 2048 \
         --base 0x80000000 \
         --cmdline 'rw console=ttyMSM0,115200n8'
-    echo "Regenerated ${PROJECT_PATH}/boot.img"
+    echo "Generated ${PROJECT_PATH}/boot.img"
 fi
 
 if [ ! -f ${PROJECT_PATH}/system_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/system.img -nt ${PROJECT_PATH}/system_${ARCH}.raw ]; then
     simg2img ${ANDROID_IMAGE_PATH}/system.img ${PROJECT_PATH}/system_${ARCH}.raw
-    echo "Regenerated ${PROJECT_PATH}/system_${ARCH}.raw"
+    echo "Generated ${PROJECT_PATH}/system_${ARCH}.raw"
 fi
 
 if [ ! -f ${PROJECT_PATH}/cache_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/cache.img -nt ${PROJECT_PATH}/cache_${ARCH}.raw ]; then
     simg2img ${ANDROID_IMAGE_PATH}/cache.img ${PROJECT_PATH}/cache_${ARCH}.raw
-    echo "Regenerated ${PROJECT_PATH}/cache_${ARCH}.raw"
+    echo "Generated ${PROJECT_PATH}/cache_${ARCH}.raw"
 fi
 
 if [ ! -f ${PROJECT_PATH}/userdata_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/userdata.img -nt ${PROJECT_PATH}/userdata_${ARCH}.raw ]; then
     simg2img ${ANDROID_IMAGE_PATH}/userdata.img ${PROJECT_PATH}/userdata_${ARCH}.raw
-    echo "Regenerated ${PROJECT_PATH}/userdata_${ARCH}.raw"
+    echo "Generated ${PROJECT_PATH}/userdata_${ARCH}.raw"
 fi
 
 ${QEMU_PATH}/build/${QEMU_ARCH}-softmmu/qemu-system-${QEMU_ARCH} \
@@ -80,9 +80,12 @@ ${QEMU_PATH}/build/${QEMU_ARCH}-softmmu/qemu-system-${QEMU_ARCH} \
     -device virtio-blk-pci,drive=userdata \
     -netdev user,id=mynet,hostfwd=tcp::5550-:5555 -device virtio-net-pci,netdev=mynet \
     -device virtio-gpu-pci,virgl -display gtk,gl=on \
-    -device virtio-mouse-pci -device virtio-keyboard-pci \
+    -usbdevice mouse \
+    -usbdevice keyboard \
     -device nec-usb-xhci,id=xhci \
     -device sdhci-pci \
     -d guest_errors \
     -nodefaults \
     $*
+#    -device virtio-mouse-pci -device virtio-keyboard-pci \
+
