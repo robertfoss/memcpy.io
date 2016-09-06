@@ -40,6 +40,7 @@ if [ ! -f ${PROJECT_PATH}/boot.img -o \
       ${LINUX_PATH}/arch/${ARCH}/boot/bzImage -nt ${PROJECT_PATH}/boot.img -o \
       ${ANDROID_IMAGE_PATH}/linaro_${ARCH}/ramdisk.img -nt ${PROJECT_PATH}/boot.img ]; then
 
+    echo "Generating ${PROJECT_PATH}/boot.img ..."
     ${ANDROID_TOOLS_PATH}/mkbootimg/mkbootimg \
         --kernel ${LINUX_PATH}/arch/${ARCH}/boot/bzImage \
         --ramdisk ${ANDROID_IMAGE_PATH}/ramdisk.img \
@@ -47,22 +48,21 @@ if [ ! -f ${PROJECT_PATH}/boot.img -o \
         --pagesize 2048 \
         --base 0x80000000 \
         --cmdline 'rw console=ttyMSM0,115200n8'
-    echo "Generated ${PROJECT_PATH}/boot.img"
 fi
 
 if [ ! -f ${PROJECT_PATH}/system_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/system.img -nt ${PROJECT_PATH}/system_${ARCH}.raw ]; then
+    echo "Generating ${PROJECT_PATH}/system_${ARCH}.raw ..."
     simg2img ${ANDROID_IMAGE_PATH}/system.img ${PROJECT_PATH}/system_${ARCH}.raw
-    echo "Generated ${PROJECT_PATH}/system_${ARCH}.raw"
 fi
 
 if [ ! -f ${PROJECT_PATH}/cache_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/cache.img -nt ${PROJECT_PATH}/cache_${ARCH}.raw ]; then
+    echo "Generating ${PROJECT_PATH}/cache_${ARCH}.raw ..."
     simg2img ${ANDROID_IMAGE_PATH}/cache.img ${PROJECT_PATH}/cache_${ARCH}.raw
-    echo "Generated ${PROJECT_PATH}/cache_${ARCH}.raw"
 fi
 
 if [ ! -f ${PROJECT_PATH}/userdata_${ARCH}.raw -o ${ANDROID_IMAGE_PATH}/userdata.img -nt ${PROJECT_PATH}/userdata_${ARCH}.raw ]; then
+    echo "Generating ${PROJECT_PATH}/userdata_${ARCH}.raw ..."
     simg2img ${ANDROID_IMAGE_PATH}/userdata.img ${PROJECT_PATH}/userdata_${ARCH}.raw
-    echo "Generated ${PROJECT_PATH}/userdata_${ARCH}.raw"
 fi
 
 ${QEMU_PATH}/build/${QEMU_ARCH}-softmmu/qemu-system-${QEMU_ARCH} \
