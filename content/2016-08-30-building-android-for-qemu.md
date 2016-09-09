@@ -43,7 +43,7 @@ graphics capabilities of the host machine.
     git clone git://git.freedesktop.org/git/virglrenderer ${VIRGLRENDERER_PATH}
     cd ${VIRGLRENDERER_PATH}
     ./autogen.sh
-    make
+    make -j7
     sudo make install
 
 
@@ -55,7 +55,7 @@ We're going to to use x86_64 but also build support for arm64/aarch64.
     mkdir ${QEMU_PATH}/build
     cd ${QEMU_PATH}/build
     ../configure --target-list=aarch64-softmmu,x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm
-    make -j
+    make -j7
 
 
 ## Linux kernel
@@ -70,7 +70,7 @@ Inclusion is targeted for *v4.9*.
     cd ${LINUX_PATH}
     wget http://memcpy.io/files/2016-08-30/Kconfig -O ${LINUX_PATH}/.config
     make oldconfig
-    make -j
+    make -j7
 
 
 **Important:** If you decide not to use the *.config* linked in this step, a few
@@ -125,7 +125,7 @@ using bash. I had issues running *lunch* using zsh.
     cd .repo
     git clone https://github.com/robherring/android_manifest.git -b android-6.0 local_manifests
     cd ..
-    repo sync -j
+    repo sync -j20
     cd device/linaro/generic
     make defconfig
     make all
@@ -135,7 +135,7 @@ using bash. I had issues running *lunch* using zsh.
     source build/envsetup.sh
     # Select linaro_x86_64-userdebug
     lunch
-    make -j
+    make -j7
     # We don't need to use bash any longer
     exit
 
