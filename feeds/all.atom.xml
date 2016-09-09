@@ -33,7 +33,7 @@ graphics capabilities of the host machine.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone git://git.freedesktop.org/git/virglrenderer &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 ./autogen.sh
-make
+make -j7
 sudo make install
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -45,7 +45,7 @@ We're going to to use x86_64 but also build support for arm64/aarch64.&lt;/p&gt;
 mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
 ../configure --target-list=aarch64-softmmu,x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm
-make -j
+make -j7
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -59,7 +59,7 @@ Inclusion is targeted for &lt;em&gt;v4.9&lt;/em&gt;.&lt;/p&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 wget http://memcpy.io/files/2016-08-30/Kconfig -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/.config
 make oldconfig
-make -j
+make -j7
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -113,7 +113,7 @@ repo init -u https://android.googlesource.com/platform/manifest -b master
 cd .repo
 git clone https://github.com/robherring/android_manifest.git -b android-6.0 local_manifests
 cd ..
-repo sync -j
+repo sync -j20
 cd device/linaro/generic
 make defconfig
 make all
@@ -123,7 +123,7 @@ bash
 source build/envsetup.sh
 # Select linaro_x86_64-userdebug
 lunch
-make -j
+make -j7
 # We don&amp;#39;t need to use bash any longer
 exit
 &lt;/pre&gt;&lt;/div&gt;
