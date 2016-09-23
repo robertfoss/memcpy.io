@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="./theme/css/style.css">
+	<!--<link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">-->
+	<!--<script src="/theme/js/less.js" type="text/javascript"></script>-->
+	<link rel="stylesheet" type="text/css" href="./theme/css/pygments.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
+	<link rel="icon" type="image/png" href="logo.png" />
+
+	<link href="http://memcpy.io/" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+
+
+	<title>memcpy.io</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<section id="sidebar">
+		<div id="menu">
+			<a href="/">
+				<img type="image/png" src="./logo.png" width="155">
+			</a>
+
+			<h1>memcpy.io</h1>
+			<h2>Projects, hacks and engineering</h2>
+			<ul>
+					<li><a href="about-me.html">About</a></li>
+					<li><a href="contracting.html">Contracting</a></li>
+					<li><a href="https://github.com/robertfoss">GitHub</a></li>
+					<li><a href="archives.html">Previous posts</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="posts">
+
+		<article>
+			<h1 class="title">
+				<a href="./building-nodemcu-for-the-esp8266.html" rel="bookmark" title="Permalink to Building NodeMCU for the ESP8266">Building NodeMCU for the ESP8266</a>
+			</h1>
+			<abbr class="published" title="2015-05-14T11:31:00+02:00">Thu 14 May 2015</abbr>
+		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-05-14_esp8266.jpg" title="ESP8266" /></p>
+<p>This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.</p>
+<h3>Build ESP8266 SDK</h3>
+<div class="highlight"><pre><span class="x">sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed</span>
+<span class="x">cd /opt</span>
+<span class="x">git clone https://github.com/pfalcon/esp-open-sdk.git</span>
+<span class="x">cd esp-open-sdk</span>
+<span class="x">git submodule sync</span>
+<span class="x">git submodule update</span>
+<span class="x">make</span>
+<span class="x">export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:</span><span class="p">$</span><span class="nv">PATH</span><span class="x"></span>
+</pre></div>
+
+
+<h3>Build NodeMCU</h3>
+<div class="highlight"><pre>git clone https://github.com/nodemcu/nodemcu-firmware.git
+cd nodemcu-firmware
+# Switch to dev branch, since it&#39;s the most up to date
+git checkout --track origin/dev
+# Make INTEGER version, since it uses less memory/space
+make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
+</pre></div>
+
+
+<h3>Flash NodeMCU</h3>
+<div class="highlight"><pre>COMPORT=/dev/ttyUSB0 make flash
+</pre></div>
+
+
+<h3>Modifying NodeMCU to fit your needs</h3>
+<h5>app/include/user_modules.h</h5>
+<p>Contains a list of which ...</p> </div>
+		</article>
+
+<p class="paginator">
+			<a href="./index.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
+</p>
+	</section>
+
+</body>
+</html>
