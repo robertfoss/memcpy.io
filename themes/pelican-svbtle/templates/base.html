@@ -16,6 +16,22 @@
 		{{ article.latex }}
 	{% endif %}
 
+    <meta name="robots" content="index,follow">
+    <meta name="keywords" content="Robert Foss, Open Source, Linux, Embedded, Engineer
+	    {%- if article and article.tags %}
+		    {% for tag in article.tags -%}
+                , {{ tag }}
+		    {%- endfor %}
+	    {% endif -%}
+    ">
+	{% if article and article.ogtags %}
+		{% for tag in article.ogtags %}
+            {% if tag[0] == "og:description" %}
+    <meta name="description" content="{{tag[1]|striptags|e}}" />
+            {% endif %}
+		{% endfor %}
+	{% endif %}
+
 	{% if article %}
         {% for tag in article.ogtags %}
     <meta property="{{tag[0]}}" content="{{tag[1]|striptags|e}}" />
