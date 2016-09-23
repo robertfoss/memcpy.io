@@ -167,4 +167,4 @@ have been exported.
 ## Conclusion
 Hopefully this guide will have enabled you build the required software and run Android on
 Qemu with a virtual GPU.
-The post was has been a part of work undertaken by my employer [Collabora](http://www.collabora.com).
+This post has been a part of work undertaken by my employer [Collabora](http://www.collabora.com).
