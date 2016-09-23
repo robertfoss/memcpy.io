@@ -10,6 +10,10 @@
 
 	<link href="http://memcpy.io/" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
 
+    <meta name="robots" content="index,follow">
+    <meta name="keywords" content="Robert Foss, Open Source, Linux, Embedded, Engineer, linux, kernel, android, qemu, collabora">
+    <meta name="description" content="Developing Linux for Android on Qemu allows you to do some things that are not necessarily possible using the stock emulator. For my purposes I need access to a GPU and be able to modify the driver, which is where Virgilrenderer and Qemu comes in handy. The guide below helps you compile Android and run it on top of Qemu with Mesa/Virgilrenderer supplying a virtual GPU. Because of this, the following guide is aimed at Linux hosts. This guide is based on Rob Herrings fantastic guide, but has been slightly streamlined and had physical hardware support stripped out. Install dependencies These dependencies were available on Ubuntu 16.04, some alternative packages might be needed for other distributions. sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ..." />
+
     <meta property="og:title" content="Building Android for Qemu (with Mesa and Virgil3D)" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="http://memcpy.io/images/2016-08-30_android_qemu.png" />

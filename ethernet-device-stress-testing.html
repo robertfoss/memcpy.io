@@ -10,6 +10,10 @@
 
 	<link href="http://memcpy.io/" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
 
+    <meta name="robots" content="index,follow">
+    <meta name="keywords" content="Robert Foss, Open Source, Linux, Embedded, Engineer, linux, kernel, script, collabora, chromiumos">
+    <meta name="description" content="During testing of power management patches for usb ethernet dongles, a script was needed to stress test connecting/disconnecting/reconnecting these devices. Luckily a script like that already exists as a part of the chromiumos project, and can be found here. That script does however not run standalone and requires a remote device (chromebook) to execute on. So I took the liberty of changing it to support local testing. The modified version can be found here. This might come in handy for someone, if not, the script will at least be archived on this site. Example $ sudo pip2.7 install autotest $ ip link 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1 link/loopback 00:00:00 ..." />
+
     <meta property="og:title" content="Ethernet device stress testing" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="http://memcpy.io/images/2016-08-25_ethernet_device_testing.png" />
