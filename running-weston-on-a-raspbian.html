@@ -74,7 +74,7 @@ from freedesktop.org, but altered to target VC4 and Raspbian.</p>
 <p>You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.</p>
-<div class="highlight"><pre><span class="err">#</span><span class="x"> Change WLD to any location you like</span>
+<div class="highlight"><pre><span></span><span class="err">#</span><span class="x"> Change WLD to any location you like</span>
 <span class="x">export WLD=~/local</span>
 <span class="x">export LD_LIBRARY_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib</span>
 <span class="x">export PKG_CONFIG_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib/pkgconfig/:</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/share/pkgconfig/</span>
@@ -89,7 +89,7 @@ our builds.</p>
 
 <h2>Installing dependencies</h2>
 <p>Start by installing the build dependencies of mesa, weston and wayland.</p>
-<div class="highlight"><pre># Enable source packages
+<div class="highlight"><pre><span></span># Enable source packages
 sudo sed -e &quot;s/#\sdeb-src/deb-src/g&quot; -i /etc/apt/sources.list
 sudo apt update
 </pre></div>
@@ -97,7 +97,7 @@ sudo apt update
 
 <p>The above step can alternatively be completed using the GUI of your
 package manager, by enabling source packages.</p>
-<div class="highlight"><pre># Install build dependencies of mesa
+<div class="highlight"><pre><span></span># Install build dependencies of mesa
 sudo apt-get build-dep mesa
 
 # Install build dependencies of wayland/weston
@@ -110,7 +110,7 @@ sudo apt-get install \
 
 <h2>Building Mesa</h2>
 <p>Configure and compile mesa with vc4, wayland and EGL support.</p>
-<div class="highlight"><pre><span class="x">git clone git://anongit.freedesktop.org/mesa/mesa</span>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/mesa/mesa</span>
 <span class="x">cd mesa</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
 <span class="x">  --enable-gles2 \</span>
@@ -131,7 +131,7 @@ sudo apt-get install \
 and built.</p>
 <h4>Wayland</h4>
 <p>Weston is a Wayland compositor, so we're going to have to build Wayland.</p>
-<div class="highlight"><pre><span class="x">git clone git://anongit.freedesktop.org/wayland/wayland</span>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/wayland</span>
 <span class="x">cd wayland</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
 <span class="x">make -j4 &amp;&amp; make install</span>
@@ -147,7 +147,7 @@ and built.</p>
 
 <h4>libinput</h4>
 <p>libinput is a dependency of Wesron, handles input devices like keyboards, touchpads and mice.</p>
-<div class="highlight"><pre><span class="x">git clone git://anongit.freedesktop.org/wayland/libinput</span>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/libinput</span>
 <span class="x">cd libinput</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
 <span class="x">make -j4 &amp;&amp; make install</span>
@@ -157,7 +157,7 @@ and built.</p>
 
 <h4>Weston</h4>
 <p>Finally we've built all of the dependencies of Weston and can now build it.</p>
-<div class="highlight"><pre><span class="x">git clone git://anongit.freedesktop.org/wayland/weston</span>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/weston</span>
 <span class="x">cd weston</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
 <span class="x">  --disable-libunwind</span>
@@ -172,7 +172,7 @@ and built.</p>
 Now, let's fire up a (virtual) terminal. Make sure that you're not running an
 X terminal, ssh terminal or serial terminal.</p>
 <p>Running weston in this way depends on logind.</p>
-<div class="highlight"><pre># Make sure that <span class="nv">$DISPLAY</span> is unset.
+<div class="highlight"><pre><span></span># Make sure that <span class="nv">$DISPLAY</span> is unset.
 unset DISPLAY
 
 # And that <span class="nv">$XDG_RUNTIME_DIR</span> has been set and created.

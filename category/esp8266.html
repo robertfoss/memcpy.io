@@ -45,7 +45,7 @@
 		<div class="entry-content"> <p><img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi" /></p>
 <p>The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.</p>
 <h2>Software and hardware sources</h2>
-<div class="highlight"><pre>git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
+<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
 </pre></div>
 
 
@@ -64,7 +64,7 @@
 		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running" /></p>
 <p>The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.</p>
 <h2>Code</h2>
-<div class="highlight"><pre>git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
+<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
 </pre></div>
 
 
@@ -97,7 +97,7 @@ This relies on the host pc being able to connect to the ...</p> </div>
 		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-05-14_esp8266.jpg" title="ESP8266" /></p>
 <p>This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.</p>
 <h3>Build ESP8266 SDK</h3>
-<div class="highlight"><pre><span class="x">sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed</span>
+<div class="highlight"><pre><span></span><span class="x">sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed</span>
 <span class="x">cd /opt</span>
 <span class="x">git clone https://github.com/pfalcon/esp-open-sdk.git</span>
 <span class="x">cd esp-open-sdk</span>
@@ -109,7 +109,7 @@ This relies on the host pc being able to connect to the ...</p> </div>
 
 
 <h3>Build NodeMCU</h3>
-<div class="highlight"><pre>git clone https://github.com/nodemcu/nodemcu-firmware.git
+<div class="highlight"><pre><span></span>git clone https://github.com/nodemcu/nodemcu-firmware.git
 cd nodemcu-firmware
 # Switch to dev branch, since it&#39;s the most up to date
 git checkout --track origin/dev
@@ -119,7 +119,7 @@ make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 
 
 <h3>Flash NodeMCU</h3>
-<div class="highlight"><pre>COMPORT=/dev/ttyUSB0 make flash
+<div class="highlight"><pre><span></span>COMPORT=/dev/ttyUSB0 make flash
 </pre></div>
 
 

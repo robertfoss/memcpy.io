@@ -73,7 +73,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> checkpatch <span class="o">{</span>
   <span class="k">if</span> <span class="o">[</span> -z <span class="si">${</span><span class="nv">1</span><span class="p">+x</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="nb">exec</span> git diff <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
@@ -81,7 +81,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
     <span class="nb">exec</span> git diff --cached <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">else</span>
     <span class="nv">NUM_COMMITS</span><span class="o">=</span><span class="nv">$1</span>
-    <span class="nb">exec</span> git diff HEAD~$NUM_COMMITS..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
+    <span class="nb">exec</span> git diff HEAD~<span class="nv">$NUM_COMMITS</span>..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">fi</span>
 <span class="o">}</span>
 </pre></div>
@@ -90,7 +90,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
 <p>The checkpatch script simple wraps the patch creation process and allows you to
 right away specify which </p>
 <h4>Example</h4>
-<div class="highlight"><pre>~/work/linux $ checkpatch 15
+<div class="highlight"><pre><span></span>~/work/linux $ checkpatch 15
 WARNING: ENOSYS means &#39;invalid syscall nr&#39; and nothing else
 #349: FILE: drivers/tty/serial/sh-sci.c:3026:
 +   if (IS_ERR(sciport-&gt;gpios) &amp;&amp; PTR_ERR(sciport-&gt;gpios) != -ENOSYS)
@@ -120,22 +120,22 @@ for correctness.</p>
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> get_maintainer <span class="o">{</span>
   <span class="nv">NUM_COMMITS</span><span class="o">=</span><span class="nv">$1</span>
 
-  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span>git format-patch HEAD~$NUM_COMMITS..HEAD --stdout <span class="p">|</span> scripts/get_maintainer.pl<span class="k">)</span>
+  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span>git format-patch HEAD~<span class="nv">$NUM_COMMITS</span>..HEAD --stdout <span class="p">|</span> scripts/get_maintainer.pl<span class="k">)</span>
 
   <span class="c1"># Remove extraneous stats</span>
-  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span>$<span class="s2">MAINTAINERS&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/(.*//g&#39;</span><span class="k">)</span>
+  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/(.*//g&#39;</span><span class="k">)</span>
 
   <span class="c1"># Remove names from email addresses</span>
-  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span>$<span class="s2">MAINTAINERS&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/.*&lt;//g&#39;</span><span class="k">)</span>
+  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/.*&lt;//g&#39;</span><span class="k">)</span>
 
   <span class="c1"># Remove left over character</span>
-  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span>$<span class="s2">MAINTAINERS&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/&gt;//g&#39;</span><span class="k">)</span>
+  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/&gt;//g&#39;</span><span class="k">)</span>
 
-  <span class="nb">echo</span> <span class="s2">&quot;</span>$<span class="s2">MAINTAINERS&quot;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> email<span class="p">;</span> <span class="k">do</span>
+  <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> email<span class="p">;</span> <span class="k">do</span>
     <span class="nb">echo</span> -n <span class="s2">&quot;--to=</span><span class="si">${</span><span class="nv">email</span><span class="si">}</span><span class="s2">  &quot;</span><span class="p">;</span>
   <span class="k">done</span>
 <span class="o">}</span>
@@ -143,7 +143,7 @@ for correctness.</p>
 </td></tr></table>
 
 <h4>Example</h4>
-<div class="highlight"><pre>~/work/linux $ get_maintainer 1
+<div class="highlight"><pre><span></span>~/work/linux $ get_maintainer 1
 --to=gregkh@linuxfoundation.org  --to=jslaby@suse.com  --to=linux-serial@vger.kernel.org  --to=linux-kernel@vger.kernel.org
 
 ~/work/linux $ git send-email -1 $(get_maintainer 1)

@@ -68,7 +68,7 @@ local testing. The modified version can be found <a href="files/2016-08-25/netwo
 <p>This might come in handy for someone, if not, the script will at least be
 archived on this site.</p>
 <h2>Example</h2>
-<div class="highlight"><pre>$ sudo pip2.7 install autotest
+<div class="highlight"><pre><span></span>$ sudo pip2.7 install autotest
 $ ip link
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -78,7 +78,7 @@ $ ip link
     link/ether 00:0e:c6:89:ab:9e brd ff:ff:ff:ff:ff:ff
 $ <span class="nb">export</span> <span class="nv">INTERFACE</span><span class="o">=</span>enx000ec689ab9e
 $ <span class="nb">export</span> <span class="nv">NUM_ITERATIONS</span><span class="o">=</span>10
-$ sudo python network_EthernetStressPlug.py $INTERFACE $NUM_ITERATIONS
+$ sudo python network_EthernetStressPlug.py <span class="nv">$INTERFACE</span> <span class="nv">$NUM_ITERATIONS</span>
 </pre></div>
 
 		<div id="article_meta">

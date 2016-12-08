@@ -70,13 +70,13 @@ been slightly streamlined and had physical hardware support stripped out.</p>
 <h2>Install dependencies</h2>
 <p>These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.</p>
-<div class="highlight"><pre>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-2.90-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev
+<div class="highlight"><pre><span></span>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-2.90-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev
 </pre></div>
 
 
 <h2>Set up paths</h2>
 <p>Naturally all of the paths below are configurable, this is just what I used.</p>
-<div class="highlight"><pre>export PROJECT_PATH=&quot;/opt/qemu_android&quot;
+<div class="highlight"><pre><span></span>export PROJECT_PATH=&quot;/opt/qemu_android&quot;
 export VIRGLRENDERER_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/virglrenderer&quot;
 export QEMU_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/qemu&quot;
 export LINUX_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/linux&quot;
@@ -88,7 +88,7 @@ export ANDROID_TOOLS_PATH=&quot;<span class="cp">${</span><span class="n">PROJEC
 <h2>Virglrenderer</h2>
 <p>Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
 graphics capabilities of the host machine.</p>
-<div class="highlight"><pre>git clone git://git.freedesktop.org/git/virglrenderer <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span>git clone git://git.freedesktop.org/git/virglrenderer <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
 ./autogen.sh
 make -j7
@@ -99,7 +99,7 @@ sudo make install
 <h2>Qemu</h2>
 <p>Qemu is a full system emulator, and supports a multitude of machine architectures.
 We're going to to use x86_64 but also build support for arm64/aarch64.</p>
-<div class="highlight"><pre>git clone git://git.qemu-project.org/qemu.git <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span>git clone git://git.qemu-project.org/qemu.git <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>
 mkdir <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
 cd <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
 ../configure --target-list=aarch64-softmmu,x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm
@@ -113,7 +113,7 @@ make -j7
 this guide, <em>https://git.kernel.org/pub/scm/linux/kernel/git/padovan/linux.git</em>
 and the <em>fences</em> branch was used due to SW_SYNC not yet being included in upstream.
 Inclusion is targeted for <em>v4.9</em>.</p>
-<div class="highlight"><pre>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
 wget http://memcpy.io/files/2016-08-30/Kconfig -O <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/.config
 make oldconfig
@@ -123,7 +123,7 @@ make -j7
 
 <p><strong>Important:</strong> If you decide not to use the <em>.config</em> linked in this step, a few
 Kconfig options need to be set:</p>
-<div class="highlight"><pre>CONFIG_ANDROID=y
+<div class="highlight"><pre><span></span>CONFIG_ANDROID=y
 CONFIG_ANDROID_BINDER_IPC=y
 CONFIG_AUDIT=y
 CONFIG_HAVE_ARCH_AUDITSYSCALL=y
@@ -165,7 +165,7 @@ CONFIG_SYNC_FILE=y
 <p>Build the Android Open Source Project.</p>
 <p><strong>Important:</strong> When running <em>source build/envsetup.sh</em> make sure that you are
 using bash. I had issues running <em>lunch</em> using zsh.</p>
-<div class="highlight"><pre>mkdir <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span>mkdir <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
 repo init -u https://android.googlesource.com/platform/manifest -b master
 cd .repo
@@ -190,7 +190,7 @@ exit
 <p>As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. </p>
-<div class="highlight"><pre><span class="x">cd </span><span class="p">$</span><span class="nv">ANDROID_PATH</span><span class="x">/system/core/</span>
+<div class="highlight"><pre><span></span><span class="x">cd </span><span class="p">$</span><span class="nv">ANDROID_PATH</span><span class="x">/system/core/</span>
 <span class="x">git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git</span>
 <span class="x">git fetch padovan</span>
 <span class="x">git checkout padovan/master</span>
@@ -199,14 +199,14 @@ After switching to this branch, the AOSP project has to be rebuilt again. </p>
 
 <h2>mkbootimg</h2>
 <p>Fetch the make boot image script. This script later assembles the boot image, <em>boot.img</em>.</p>
-<div class="highlight"><pre><span class="x">git clone https://android.googlesource.com/platform/system/core.git </span><span class="p">$</span><span class="nv">ANDROID_TOOLS_PATH</span><span class="x"></span>
+<div class="highlight"><pre><span></span><span class="x">git clone https://android.googlesource.com/platform/system/core.git </span><span class="p">$</span><span class="nv">ANDROID_TOOLS_PATH</span><span class="x"></span>
 </pre></div>
 
 
 <h2>Run Qemu machine</h2>
 <p>When running the below script, make sure that the all of the paths from step two
 have been exported.</p>
-<div class="highlight"><pre>wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
+<div class="highlight"><pre><span></span>wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
 chmod +x <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
 <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh x86_64
 </pre></div>

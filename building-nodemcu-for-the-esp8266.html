@@ -57,7 +57,7 @@
 		<p><img alt="Alt text" src="images/2015-05-14_esp8266.jpg" title="ESP8266" /></p>
 <p>This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.</p>
 <h3>Build ESP8266 SDK</h3>
-<div class="highlight"><pre><span class="x">sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed</span>
+<div class="highlight"><pre><span></span><span class="x">sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed</span>
 <span class="x">cd /opt</span>
 <span class="x">git clone https://github.com/pfalcon/esp-open-sdk.git</span>
 <span class="x">cd esp-open-sdk</span>
@@ -69,7 +69,7 @@
 
 
 <h3>Build NodeMCU</h3>
-<div class="highlight"><pre>git clone https://github.com/nodemcu/nodemcu-firmware.git
+<div class="highlight"><pre><span></span>git clone https://github.com/nodemcu/nodemcu-firmware.git
 cd nodemcu-firmware
 # Switch to dev branch, since it&#39;s the most up to date
 git checkout --track origin/dev
@@ -79,14 +79,14 @@ make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 
 
 <h3>Flash NodeMCU</h3>
-<div class="highlight"><pre>COMPORT=/dev/ttyUSB0 make flash
+<div class="highlight"><pre><span></span>COMPORT=/dev/ttyUSB0 make flash
 </pre></div>
 
 
 <h3>Modifying NodeMCU to fit your needs</h3>
 <h5>app/include/user_modules.h</h5>
 <p>Contains a list of which modules to include in the build.</p>
-<div class="highlight"><pre>...
+<div class="highlight"><pre><span></span>...
 #define LUA_USE_MODULES_NODE
 #define LUA_USE_MODULES_FILE
 #define LUA_USE_MODULES_GPIO
@@ -98,7 +98,7 @@ make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 
 <h5>app/include/user_config.h</h5>
 <p>Contains NodeMCU developer options, but could be of use.</p>
-<div class="highlight"><pre>...
+<div class="highlight"><pre><span></span>...
 #define DEVELOP_VERSION
 #define NODE_ERROR
 ...

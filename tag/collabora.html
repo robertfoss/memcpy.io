@@ -72,7 +72,7 @@ been slightly streamlined and had physical hardware support stripped out.</p>
 <h2>Install dependencies</h2>
 <p>These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.</p>
-<div class="highlight"><pre>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
+<div class="highlight"><pre><span></span>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
 		</article>
 		<article>
 			<h1 class="title">
@@ -90,7 +90,7 @@ local testing. The modified version can be found <a href="files/2016-08-25/netwo
 <p>This might come in handy for someone, if not, the script will at least be
 archived on this site.</p>
 <h2>Example</h2>
-<div class="highlight"><pre>$ sudo pip2.7 install autotest
+<div class="highlight"><pre><span></span>$ sudo pip2.7 install autotest
 $ ip link
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
     link/loopback 00:00:00 ...</pre></div> </div>
@@ -117,7 +117,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> checkpatch <span class="o">{</span>
   <span class="k">if</span> <span class="o">[</span> -z <span class="si">${</span><span class="nv">1</span><span class="p">+x</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="nb">exec</span> git diff <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
@@ -125,7 +125,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
     <span class="nb">exec</span> git diff --cached <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">else</span>
     <span class="nv">NUM_COMMITS</span><span class="o">=</span><span class="nv">$1</span>
-    <span class="nb">exec</span> git diff HEAD~$NUM_COMMITS..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
+    <span class="nb">exec</span> git diff HEAD~<span class="nv">$NUM_COMMITS</span>..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">fi</span>
 <span class="o">}</span>
 </pre></div>

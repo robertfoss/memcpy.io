@@ -39,6 +39,22 @@
 
 		<article>
 			<h1 class="title">
+				<a href="../running-an-android-unit-test.html" rel="bookmark" title="Permalink to Running an Android Unit Test">Running an Android Unit Test</a>
+			</h1>
+			<abbr class="published" title="2016-12-07T20:23:00+01:00">Wed 07 December 2016</abbr>
+		<div class="entry-content"> <p>Here's a short snippet for running a specific unit test from an Android AOSP
+checkout.</p>
+<p>A similar approach can be used for any Android module.</p>
+<div class="highlight"><pre><span></span>cd aosp &amp;&amp; \
+mmm system/core/libsync/tests &amp;&amp; \
+adb root &amp;&amp; \
+adb remount &amp;&amp; \
+adb sync &amp;&amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
+</pre></div> </div>
+		</article>
+		<article>
+			<h1 class="title">
 				<a href="../xdc-2016.html" rel="bookmark" title="Permalink to XDC 2016">XDC 2016</a>
 			</h1>
 			<abbr class="published" title="2016-09-23T20:20:00+02:00">Fri 23 September 2016</abbr>
@@ -72,7 +88,7 @@ been slightly streamlined and had physical hardware support stripped out.</p>
 <h2>Install dependencies</h2>
 <p>These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.</p>
-<div class="highlight"><pre>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
+<div class="highlight"><pre><span></span>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
 		</article>
 		<article>
 			<h1 class="title">
@@ -90,7 +106,7 @@ local testing. The modified version can be found <a href="files/2016-08-25/netwo
 <p>This might come in handy for someone, if not, the script will at least be
 archived on this site.</p>
 <h2>Example</h2>
-<div class="highlight"><pre>$ sudo pip2.7 install autotest
+<div class="highlight"><pre><span></span>$ sudo pip2.7 install autotest
 $ ip link
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
     link/loopback 00:00:00 ...</pre></div> </div>
@@ -117,7 +133,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> checkpatch <span class="o">{</span>
   <span class="k">if</span> <span class="o">[</span> -z <span class="si">${</span><span class="nv">1</span><span class="p">+x</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="nb">exec</span> git diff <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
@@ -125,7 +141,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
     <span class="nb">exec</span> git diff --cached <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">else</span>
     <span class="nv">NUM_COMMITS</span><span class="o">=</span><span class="nv">$1</span>
-    <span class="nb">exec</span> git diff HEAD~$NUM_COMMITS..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
+    <span class="nb">exec</span> git diff HEAD~<span class="nv">$NUM_COMMITS</span>..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">fi</span>
 <span class="o">}</span>
 </pre></div>
@@ -161,7 +177,7 @@ been written by the Raspberry Pi foundation and is available <a href="https://ww
 <p>Coverpage is a single-page landing page built to showcase an idea or a product. To allow interested parties to get notified of updates, the template has mailchimp subscription integration.</p>
 <p>A live version of the site can be found at <a href="http://coverpage.memcpy.io">coverpage.memcpy.io</a>.</p>
 <h2>Sources</h2>
-<div class="highlight"><pre>git clone https://github.com/robertfoss/coverpage.git
+<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/coverpage.git
 </pre></div>
 
 
@@ -177,7 +193,7 @@ Therefore it includes a Makefile for pushing copy of the current design to a gh-
 		<div class="entry-content"> <p><img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi" /></p>
 <p>The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.</p>
 <h2>Software and hardware sources</h2>
-<div class="highlight"><pre>git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
+<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
 </pre></div>
 
 
@@ -196,7 +212,7 @@ Therefore it includes a Makefile for pushing copy of the current design to a gh-
 		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running" /></p>
 <p>The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.</p>
 <h2>Code</h2>
-<div class="highlight"><pre>git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
+<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
 </pre></div>
 
 
@@ -212,7 +228,7 @@ This relies on the host pc being able to connect to the ...</p> </div>
 		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-10-11_goggles.png" title="WS2812 Welding Goggles" /></p>
 <p>The goggles were built using an AtTiny85 module and a WS2812B strip and some bits and bobs that were laying around. A more complete BOM can be found below.</p>
 <h2>Code</h2>
-<div class="highlight"><pre>git clone https://github.com/robertfoss/digispark_ws2812_waves.git
+<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/digispark_ws2812_waves.git
 </pre></div>
 
 
@@ -232,23 +248,6 @@ Your browser does not support the video tag.
 <li>2x$4 <a href="http://www.aliexpress.com/item/Eachine-3D-X4-RC-Quadcopter-Spare-Parts-3-7V-300Mah-Battery/32335487012.html?ws_ab_test=201407_4,201444_5,201409_4">LiPo 3.7V 300mAh</a></li>
 <li>$3 <a href="http://www.aliexpress.com/item/F14786-4-in-1-3-7V-Lipo-Battery-Charger-USB-Interface-4-Ports-For-Hubsan-X4/32394891091.html?ws_ab_test=201407_4,201444_5,201409_4">LiPo USB Charger</a></li>
 <li>$6 <a href="http://www.aliexpress.com/item/10-pairs-of-battery-plug-connector-1S-2-Pins-Mirco-model-battery-connector/32305697134.html">Battery connector cable ...</a></li></ul> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="../user-friendly-setup-of-esp8266-gadgets.html" rel="bookmark" title="Permalink to User friendly setup of ESP8266 gadgets">User friendly setup of ESP8266 gadgets</a>
-			</h1>
-			<abbr class="published" title="2015-07-30T15:10:00+02:00">Thu 30 July 2015</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-07-30_screenshot.png" title="Screenshot" /></p>
-<p>The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.</p>
-<p><a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup">esp8266_nodemcu_wifi_setup</a> is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.</p>
-<ul>
-<li>Start ESP.</li>
-<li>Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.</li>
-<li>Submit credentials of your local WiFi.</li>
-<li>The ESP reboots and connects to your local WiFi.</li>
-</ul>
-<h2>What is this magic! How could a mere mortal like me summon features like this?!</h2>
-<p>Let me tell you ...</p> </div>
 		</article>
 
 <p class="paginator">

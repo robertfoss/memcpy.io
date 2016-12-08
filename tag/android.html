@@ -39,6 +39,22 @@
 
 		<article>
 			<h1 class="title">
+				<a href="../running-an-android-unit-test.html" rel="bookmark" title="Permalink to Running an Android Unit Test">Running an Android Unit Test</a>
+			</h1>
+			<abbr class="published" title="2016-12-07T20:23:00+01:00">Wed 07 December 2016</abbr>
+		<div class="entry-content"> <p>Here's a short snippet for running a specific unit test from an Android AOSP
+checkout.</p>
+<p>A similar approach can be used for any Android module.</p>
+<div class="highlight"><pre><span></span>cd aosp &amp;&amp; \
+mmm system/core/libsync/tests &amp;&amp; \
+adb root &amp;&amp; \
+adb remount &amp;&amp; \
+adb sync &amp;&amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
+</pre></div> </div>
+		</article>
+		<article>
+			<h1 class="title">
 				<a href="../building-android-for-qemu-with-mesa-and-virgil3d.html" rel="bookmark" title="Permalink to Building Android for Qemu (with Mesa and Virgil3D)">Building Android for Qemu (with Mesa and Virgil3D)</a>
 			</h1>
 			<abbr class="published" title="2016-08-30T15:22:00+02:00">Tue 30 August 2016</abbr>
@@ -55,7 +71,7 @@ been slightly streamlined and had physical hardware support stripped out.</p>
 <h2>Install dependencies</h2>
 <p>These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.</p>
-<div class="highlight"><pre>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
+<div class="highlight"><pre><span></span>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
 		</article>
 
 <p class="paginator">

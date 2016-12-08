@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/coverpage.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-03-27T00:34:00+01:00</updated><entry><title>Coverpage template</title><link href="http://memcpy.io/coverpage-template.html" rel="alternate"></link><updated>2016-03-27T00:34:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-03-27:coverpage-template.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/coverpage/raw/media/screenshot.png" title="coverpage screenshot" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/coverpage.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-03-27T00:34:00+01:00</updated><entry><title>Coverpage template</title><link href="http://memcpy.io/coverpage-template.html" rel="alternate"></link><published>2016-03-27T00:34:00+01:00</published><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-03-27:coverpage-template.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/coverpage/raw/media/screenshot.png" title="coverpage screenshot" /&gt;&lt;/p&gt;
 &lt;p&gt;Coverpage is a single-page landing page built to showcase an idea or a product. To allow interested parties to get notified of updates, the template has mailchimp subscription integration.&lt;/p&gt;
 &lt;p&gt;A live version of the site can be found at &lt;a href="http://coverpage.memcpy.io"&gt;coverpage.memcpy.io&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Sources&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git clone https://github.com/robertfoss/coverpage.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/coverpage.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
