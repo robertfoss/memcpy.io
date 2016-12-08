@@ -45,7 +45,10 @@
 		<div class="entry-content"> <p>Here's a short snippet for running a specific unit test from an Android AOSP
 checkout.</p>
 <p>A similar approach can be used for any Android module.</p>
-<div class="highlight"><pre><span></span>cd aosp &amp;&amp; \
+<div class="highlight"><pre><span></span>cd aosp
+bash
+source build/envsetup.sh &amp;&amp; \
+lunch linaro_arm64-userdebug &amp;&amp; \
 mmm system/core/libsync/tests &amp;&amp; \
 adb root &amp;&amp; \
 adb remount &amp;&amp; \

@@ -2,7 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/all.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-12-07T20:23:00+01:00</updated><entry><title>Running an Android Unit Test</title><link href="http://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:running-an-android-unit-test.html</id><summary type="html">&lt;p&gt;Here's a short snippet for running a specific unit test from an Android AOSP
 checkout.&lt;/p&gt;
 &lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp &amp;amp;&amp;amp; \
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
+bash
+source build/envsetup.sh &amp;amp;&amp;amp; \
+lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
 mmm system/core/libsync/tests &amp;amp;&amp;amp; \
 adb root &amp;amp;&amp;amp; \
 adb remount &amp;amp;&amp;amp; \
