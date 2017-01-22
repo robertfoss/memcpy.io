@@ -26,7 +26,7 @@ These scripts are all meant to be included in **.bashrc** or **.zshrc**
       fi
     }
 
-The checkpatch script simple wraps the patch creation process and allows you to
+The checkpatch script simply wraps the patch creation process and allows you to
 right away specify which 
 
 #### Example
