@@ -2,6 +2,7 @@ Title: WS2812 LED Matrix
 Date: 2015-10-12 16:51
 Category: ESP8266
 Tags: ESP8266, ESP, WS2812, WS2812B, 3D Printing, CAD
+Description: A 8x8 LED panel conntected to an ESP8266 was constructed to make a kind of portable display module.
 
 ![Alt text](images/2015-10-12_led_matrix_running.jpg "LED Matrix Running")
 

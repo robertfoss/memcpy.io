@@ -2,6 +2,7 @@ Title: User friendly setup of ESP8266 gadgets
 Date: 2015-07-30 15:10
 Category: ESP8266
 Tags: NodeMCU, ESP8266, Setup
+Description: When first configuring any IoT device the lack of options for interaction can be problematic, so I hacked together an access-portal + captive portal application for the NodeMCU firmware.
 
 ![Alt text](images/2015-07-30_screenshot.png "Screenshot")
 

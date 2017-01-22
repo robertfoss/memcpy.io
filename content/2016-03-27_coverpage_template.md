@@ -2,6 +2,7 @@ Title: Coverpage template
 Date: 2016-03-27 00:34
 Category: coverpage
 Tags: coverpage, html, template
+Description: As a precursor to creating a commercial project, having the ability to gauge interest free of charge is a great tool. This is a template for that purpose.
 
 ![Alt text](https://github.com/robertfoss/coverpage/raw/media/screenshot.png "coverpage screenshot")
 

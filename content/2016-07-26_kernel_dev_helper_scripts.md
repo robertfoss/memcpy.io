@@ -2,6 +2,7 @@ Title: Linux kernel development shell scripts
 Date: 2016-07-26 10:32
 Category: kernel
 Tags: linux, kernel, script, collabora
+Description: A part of getting active in kernel development is finding a good workflow. These are the scripts I've used to avoid errors and increase productivity.
 
 ![Alt text](images/2016-07-26_linux_development_helper_script.png "Terminal screenshot of scripts in use")
 

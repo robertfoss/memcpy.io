@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+		<article id="content" itemscope>
+			<header>
+				<h1>{{ article.title }}</h1>
+				<p>
+				  written by <a href="/" class="author">Robert Foss</a><br>
+				  published <time datetime="{{ article.date.strftime("%Y-%m-%d") }}" itemprop="datePublished">{{ article.date.strftime("%Y-%m-%d") }}</time>
+				</p>
+			</header>
+			<p>{{ article.description }}</p>
+			{{ article.content }}
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+			{% if article.tags %}
+				<p>Tags:
+				{% for tag in article.tags %}
+					<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }} </a>
+					{% if not loop.last %}
+					<span id="breakdot">&middot; </span>
+					{% endif %}
+				{% endfor %}
+				</p>
+			{% endif %}
+			</div>
+		</section>
+{% include "footer.html" %}
+{% endblock %}
+

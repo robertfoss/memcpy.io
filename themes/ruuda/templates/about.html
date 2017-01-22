@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+		<div id="content">
+			<header>
+				<h1>Robert Foss</h1>
+			</header>
+			<p>
+			Hi, I am Robert.
+			I love to create <strong>beautiful things</strong> with <strong>elegant code</strong>.
+			I particularly like low-level optimisation for bare metal performance and systems programming,
+			but I also enjoy high-<wbr>level functional programming.
+			Sometimes I write about that.
+			I am mildly allergic to buzzwords.
+			</p>
+			<nav class="smcp">
+			{% for item in MENUITEMS %}
+				{% if not "about" in item[1] %}
+			<a href="{{ item[1] }}">{{ item[0] }}</a>
+				{% endif %}
+			{% endfor %}
+			</nav>
+		</div>
+{% endblock content %}

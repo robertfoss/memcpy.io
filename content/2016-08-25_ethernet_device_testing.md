@@ -2,6 +2,7 @@ Title: Ethernet device stress testing
 Date: 2016-08-25 13:05
 Category: kernel
 Tags: linux, kernel, script, collabora, chromiumos
+Description: During kernel upstreaming for chromiumos devices a standalone ethernet subssystem testing script was needed.
 
 ![Alt text](images/2016-08-25_ethernet_device_testing.png "Screenshot of python script")
 

@@ -2,6 +2,7 @@ Title: Building Android for Qemu (with Mesa and Virgil3D)
 Date: 2016-08-30 15:22
 Category: kernel
 Tags: linux, kernel, android, qemu, collabora
+Description: Running the Linux mainline gra[hics stack on Android devices is currently not a reality, but this is a viable development environment for improving the situation.
 
 ![Alt text](images/2016-08-30_android_qemu.png "Android running on Qemu")
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% block head %}
+		<title>
+		{%- if article -%}
+			{{ SITENAME }} | {{ article.title }}
+		{%- else -%}
+			{{ SITENAME }}
+		{%- endif -%}
+		</title>
+		{% endblock head %}
+		<link rel="icon" type="image/png" href="logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		{% if "about" in output_file or "contact" in output_file %}
+		<link rel="stylesheet" type="text/css" href="/theme/css/page_light.css">
+		{% else %}
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		{% endif %}
+		<link href="{{ FEED_DOMAIN }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
+		{% if FEED_RSS %}
+		<link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+		{% endif %}
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		{% if article and article.summary %}
+		<meta name="description" content="{{ article.summary|striptags|e }}">
+		{% endif %}
+		<meta name="author" content="{{ AUTHOR }}">
+		<meta name="keywords" content="{{ KEYWORDS }}
+		    {%- if article and article.tags %}
+			    {% for tag in article.tags -%}
+			, {{ tag }}
+			    {%- endfor %}
+		    {% endif -%}
+		">
+		{% if article and article.ogtags %}
+			{% for tag in article.ogtags %}
+				{% if tag[0] != "og:description" %}
+		<meta property="{{tag[0]}}" content="{{tag[1]|striptags|e}}" />
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</head>
+	<body>
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>

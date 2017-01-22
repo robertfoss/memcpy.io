@@ -2,9 +2,7 @@ Title: Running an Android Unit Test
 Date: 2016-12-07 20:23
 Category: android
 Tags: linux, kernel, android, aosp, adb
-
-Here's a short snippet for running a specific unit test from an Android AOSP
-checkout.
+Description: Running specific AOSP unit tests on an Android device is not entirely obvious, so this is what I cobbled together.
 
 A similar approach can be used for any Android module.
 

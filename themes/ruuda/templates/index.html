@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+		<div id="content" class="archive">
+			<header>
+				<h1>Writing</h1>
+			</header>
+			{% set last_year = 99999 %}
+			{% for article in articles %}
+				{% set article_year = article.date.year %}
+				{% if last_year > article_year %}
+					{% set last_year = article_year %}
+			<h2>{{ article_year }}</h2>
+				{% endif %}
+			<h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+			<p>{{ article.description }} <a href="{{ article.url }}" class="smcp">Read full post</a></p>
+			{% endfor %}
+		</div>
+{% include "footer.html" %}
+{% endblock content %}
+

@@ -2,6 +2,7 @@ Title: Running Weston on a Raspbian
 Date: 2016-06-03 10:32
 Category: wayland
 Tags: wayland, weston, rpi, rpi2, kernel
+Description: This is a simple guide for how to build and run Wayland & Weston on a Raspberry Pi.
 
 ![Alt text](images/2016-06-03_weston.png "Weston running on a RPi2.")
 

@@ -2,6 +2,7 @@ Title: Building NodeMCU for the ESP8266
 Date: 2015-05-14 11:31
 Category: ESP8266
 Tags: NodeMCU, ESP8266
+Description: This is a simple hands-on guide to building NodeMCU and flashing it onto a raw ESP8266-01 module.
 
 
 ![Alt text](images/2015-05-14_esp8266.jpg "ESP8266")
