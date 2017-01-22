@@ -59,4 +59,7 @@ EXTRA_PATH_METADATA = {
 
 
 PLUGIN_PATHS = ["plugins", "plugins"]
-PLUGINS = ["pelican-open_graph"]
+PLUGINS = [
+    "pelican-open_graph",
+    "minification"
+    ]
