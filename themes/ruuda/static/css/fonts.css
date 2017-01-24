@@ -32,6 +32,12 @@
 
 @font-face
 {
+  font-family: Georgia;
+  src: url(/theme/fonts/georgia.woff)  format("woff");
+}
+
+@font-face
+{
   font-family: Inconsolata;
   src: url(/theme/fonts/m.woff2) format("woff2"),
        url(/theme/fonts/m.woff)  format("woff");

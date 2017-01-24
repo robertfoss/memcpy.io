@@ -130,6 +130,7 @@ a
 /* Used for post titles on the archive page. */
 h3
 {
+  font-family: Georgia, serif;
   /* Align as p, but remove the blank line afterwards. */
   font-size: 1em;
   margin-bottom: -0.4em;
@@ -185,7 +186,7 @@ abbr
 
 h2
 {
-  font-family: Calluna, serif;
+  font-family: Georgia, serif;
   font-size: 1.4em;
   line-height: 1em;
   margin-bottom: 0.2rem;
@@ -367,7 +368,7 @@ blockquote
 
 #teaser a {
   color: #fff; /* TODO: Pick good colour scheme. */
-  font-family: Calluna, serif;
+  font-family: Georgia, serif;
 
   /* Fix baseline alignment of the teaser in Firefox. At different viewport
    * widths and zoom levels, the error is different, and there is no one
