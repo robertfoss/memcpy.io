@@ -124,6 +124,7 @@ a
 /* Used for post titles on the archive page. */
 h3
 {
+  font-family: Georgia, serif;
   /* Align as p, but remove the blank line afterwards. */
   font-size: 1em;
   margin-bottom: -0.4em;
@@ -179,7 +180,7 @@ abbr
 
 h2
 {
-  font-family: Calluna, serif;
+  font-family: Georgia, serif;
   font-size: 1.4em;
   line-height: 1em;
   margin-bottom: 0.2rem;
