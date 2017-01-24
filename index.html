@@ -1,262 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<link rel="stylesheet" type="text/css" href="./theme/css/style.css">
-	<!--<link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">-->
-	<!--<script src="/theme/js/less.js" type="text/javascript"></script>-->
-	<link rel="stylesheet" type="text/css" href="./theme/css/pygments.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
-	<link rel="icon" type="image/png" href="logo.png" />
-
-	<link href="http://memcpy.io/" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
-
-    <meta name="robots" content="index,follow">
-    <meta name="keywords" content="Robert Foss, Open Source, Linux, Embedded, Engineer">
-
-
-	<title>memcpy.io</title>
-	<meta charset="utf-8" />
-</head>
-<body>
-	<section id="sidebar">
-		<div id="menu">
-			<a href="/">
-				<img type="image/png" src="./logo.png" width="155">
-			</a>
-
-			<h1>memcpy.io</h1>
-			<h2>Projects, hacks and engineering</h2>
-			<ul>
-					<li><a href="about-me.html">About</a></li>
-					<li><a href="contracting.html">Contracting</a></li>
-					<li><a href="https://github.com/robertfoss">GitHub</a></li>
-					<li><a href="archives.html">Previous posts</a></li>
-			</ul>
+<html>
+	<head>
+		<title>memcpy.io</title>
+		<link rel="icon" type="image/png" href="logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="http://memcpy.io/" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer">
+	</head>
+	<body>
+		<div id="content" class="archive">
+			<header>
+				<h1>Writing</h1>
+			</header>
+			<h2>2016</h2>
+			<h3><a href="running-an-android-unit-test.html">Running an Android Unit Test</a></h3>
+			<p>Running specific AOSP unit tests on an Android device is not entirely obvious, so this is what I cobbled together. <a href="running-an-android-unit-test.html" class="smcp">Read full post</a></p>
+			<h3><a href="xdc-2016.html">XDC 2016</a></h3>
+			<p>Highlights from the 2016 X.org Developers conference. <a href="xdc-2016.html" class="smcp">Read full post</a></p>
+			<h3><a href="building-android-for-qemu-with-mesa-and-virgil3d.html">Building Android for Qemu (with Mesa and Virgil3D)</a></h3>
+			<p>Running the Linux mainline gra[hics stack on Android devices is currently not a reality, but this is a viable development environment for improving the situation. <a href="building-android-for-qemu-with-mesa-and-virgil3d.html" class="smcp">Read full post</a></p>
+			<h3><a href="ethernet-device-stress-testing.html">Ethernet device stress testing</a></h3>
+			<p>During kernel upstreaming for chromiumos devices a standalone ethernet subssystem testing script was needed. <a href="ethernet-device-stress-testing.html" class="smcp">Read full post</a></p>
+			<h3><a href="linux-kernel-development-shell-scripts.html">Linux kernel development shell scripts</a></h3>
+			<p>A part of getting active in kernel development is finding a good workflow. These are the scripts I've used to avoid errors and increase productivity. <a href="linux-kernel-development-shell-scripts.html" class="smcp">Read full post</a></p>
+			<h3><a href="running-weston-on-a-raspbian.html">Running Weston on a Raspbian</a></h3>
+			<p>This is a simple guide for how to build and run Wayland & Weston on a Raspberry Pi. <a href="running-weston-on-a-raspbian.html" class="smcp">Read full post</a></p>
+			<h3><a href="coverpage-template.html">Coverpage template</a></h3>
+			<p>As a precursor to creating a commercial project, having the ability to gauge interest free of charge is a great tool. This is a template for that purpose. <a href="coverpage-template.html" class="smcp">Read full post</a></p>
+			<h3><a href="esp8266-apa102-bulb.html">ESP8266 APA102 Bulb</a></h3>
+			<p>As an experiment in HW design an alternative to the Philips Hue was built. It's fully programmable over WiFi. <a href="esp8266-apa102-bulb.html" class="smcp">Read full post</a></p>
+			<h2>2015</h2>
+			<h3><a href="ws2812-led-matrix.html">WS2812 LED Matrix</a></h3>
+			<p>A 8x8 LED panel conntected to an ESP8266 was constructed to make a kind of portable display module. <a href="ws2812-led-matrix.html" class="smcp">Read full post</a></p>
+			<h3><a href="ws2812-welding-goggles.html">WS2812 Welding Goggles</a></h3>
+			<p>As a gift I've cobbled together a pair of welding googgles with RGB LEDs and a microcontroller. <a href="ws2812-welding-goggles.html" class="smcp">Read full post</a></p>
+			<h3><a href="user-friendly-setup-of-esp8266-gadgets.html">User friendly setup of ESP8266 gadgets</a></h3>
+			<p>When first configuring any IoT device the lack of options for interaction can be problematic, so I hacked together an access-portal + captive portal application for the NodeMCU firmware. <a href="user-friendly-setup-of-esp8266-gadgets.html" class="smcp">Read full post</a></p>
+			<h3><a href="building-nodemcu-for-the-esp8266.html">Building NodeMCU for the ESP8266</a></h3>
+			<p>This is a simple hands-on guide to building NodeMCU and flashing it onto a raw ESP8266-01 module. <a href="building-nodemcu-for-the-esp8266.html" class="smcp">Read full post</a></p>
 		</div>
-	</section>
-
-	<section id="posts">
-
-		<article>
-			<h1 class="title">
-				<a href="./running-an-android-unit-test.html" rel="bookmark" title="Permalink to Running an Android Unit Test">Running an Android Unit Test</a>
-			</h1>
-			<abbr class="published" title="2016-12-07T20:23:00+01:00">Wed 07 December 2016</abbr>
-		<div class="entry-content"> <p>Here's a short snippet for running a specific unit test from an Android AOSP
-checkout.</p>
-<p>A similar approach can be used for any Android module.</p>
-<div class="highlight"><pre><span></span>cd aosp
-bash
-source build/envsetup.sh &amp;&amp; \
-lunch linaro_arm64-userdebug &amp;&amp; \
-mmm system/core/libsync/tests &amp;&amp; \
-adb root &amp;&amp; \
-adb remount &amp;&amp; \
-adb sync &amp;&amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-</pre></div> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./xdc-2016.html" rel="bookmark" title="Permalink to XDC 2016">XDC 2016</a>
-			</h1>
-			<abbr class="published" title="2016-09-23T20:20:00+02:00">Fri 23 September 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016" /></p>
-<p>XDC 2016 was hosted in Helsinki at Haaga-Helia.
-The full <a href="https://www.x.org/wiki/Events/XDC2016/Program/">program</a> was filmed and is archived <a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos">here</a>.</p>
-<h2>[<a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf">Slides</a>] FastUIDraw - High Performance 2D renderer for GPUs</h2>
-<p>Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.</p>
-<p>By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &gt;9.3x faster than Cairo-CPU and &gt;4.8x times the previous GPU state of the art SKIA-GL.</p>
-<p>Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.</p>
-<h2>[<a href="files/2016-09-23/xdc-2016_2d_perf.pdf">Slides</a>] 2D Performance</h2>
-<p><a href="http://phd.mupuf.org/">Martin Perez</a> gave a talk about 2D performance and power consumption of the Xserver.</p>
-<p>The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
-The FPS/Watt ...</p> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./building-android-for-qemu-with-mesa-and-virgil3d.html" rel="bookmark" title="Permalink to Building Android for Qemu (with Mesa and Virgil3D)">Building Android for Qemu (with Mesa and Virgil3D)</a>
-			</h1>
-			<abbr class="published" title="2016-08-30T15:22:00+02:00">Tue 30 August 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu" /></p>
-<p>Developing Linux for Android on Qemu allows you to do some things that are
-not necessarily possible using the stock emulator.
-For my purposes I need access to a GPU and be able to modify the driver, which
-is where Virgilrenderer and Qemu comes in handy.</p>
-<p>The guide below helps you compile Android and run it on top of Qemu with
-Mesa/Virgilrenderer supplying a virtual GPU.
-Because of this, the following guide is aimed at Linux hosts.</p>
-<p>This guide is based on Rob Herrings <a href="https://github.com/robherring/generic_device/wiki/KConfig-based-Multi-platform-Android-Device-(and-Mesa-graphics)">fantastic guide</a>, but has
-been slightly streamlined and had physical hardware support stripped out.</p>
-<h2>Install dependencies</h2>
-<p>These dependencies were available on Ubuntu 16.04, some alternative packages
-might be needed for other distributions.</p>
-<div class="highlight"><pre><span></span>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev ...</pre></div> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./ethernet-device-stress-testing.html" rel="bookmark" title="Permalink to Ethernet device stress testing">Ethernet device stress testing</a>
-			</h1>
-			<abbr class="published" title="2016-08-25T13:05:00+02:00">Thu 25 August 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script" /></p>
-<p>During testing of power management patches for usb ethernet dongles, a script
-was needed to stress test connecting/disconnecting/reconnecting these devices.</p>
-<p>Luckily a script like that already exists as a part of the chromiumos project,
-and can be found <a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py">here</a>.</p>
-<p>That script does however not run standalone and requires a remote device
-(chromebook) to execute on. So I took the liberty of changing it to support
-local testing. The modified version can be found <a href="files/2016-08-25/network_EthernetStressPlug.py">here</a>.</p>
-<p>This might come in handy for someone, if not, the script will at least be
-archived on this site.</p>
-<h2>Example</h2>
-<div class="highlight"><pre><span></span>$ sudo pip2.7 install autotest
-$ ip link
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00 ...</pre></div> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./linux-kernel-development-shell-scripts.html" rel="bookmark" title="Permalink to Linux kernel development shell scripts">Linux kernel development shell scripts</a>
-			</h1>
-			<abbr class="published" title="2016-07-26T10:32:00+02:00">Tue 26 July 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use" /></p>
-<p>While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
-often come in handy.
-But to me the interface they provide is slightly bulky and rely
-on using patch files instead of git commits, which to me is a bit inconvenient.</p>
-<p>These scripts are all meant to be included in <strong>.bashrc</strong> or <strong>.zshrc</strong></p>
-<h2>scripts/checkpatch.pl helper</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="k">function</span> checkpatch <span class="o">{</span>
-  <span class="k">if</span> <span class="o">[</span> -z <span class="si">${</span><span class="nv">1</span><span class="p">+x</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">exec</span> git diff <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
-  <span class="k">elif</span> <span class="o">[[</span> <span class="nv">$1</span> <span class="o">==</span> *<span class="s2">&quot;cache&quot;</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">exec</span> git diff --cached <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
-  <span class="k">else</span>
-    <span class="nv">NUM_COMMITS</span><span class="o">=</span><span class="nv">$1</span>
-    <span class="nb">exec</span> git diff HEAD~<span class="nv">$NUM_COMMITS</span>..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
-  <span class="k">fi</span>
-<span class="o">}</span>
-</pre></div>
-</td></tr></table>
-
-<p>The checkpatch script simple wraps the patch creation process and allows ...</p> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./running-weston-on-a-raspbian.html" rel="bookmark" title="Permalink to Running Weston on a Raspbian">Running Weston on a Raspbian</a>
-			</h1>
-			<abbr class="published" title="2016-06-03T10:32:00+02:00">Fri 03 June 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2." /></p>
-<p>Progress in the VC4 graphics camp and the Wayland camp now enables us to run
-Weston on top of the drm backend for VC4 platforms. Previously software acceleration
-using pixman was needed, but this is no longer the case.</p>
-<p>Additionally the rpi backend for weston is now being removed since it has been
-obsoleted by the improved drm layer.</p>
-<p>Let's explore running hardware accelerated Weston on the Raspberry Pi.</p>
-<h2>Building Linux kernel</h2>
-<p>A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
-been written by the Raspberry Pi foundation and is available <a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md">here</a>.</p>
-<p>As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.</p>
-<h2>Set up alternative install location</h2>
-<p>These build ...</p> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./coverpage-template.html" rel="bookmark" title="Permalink to Coverpage template">Coverpage template</a>
-			</h1>
-			<abbr class="published" title="2016-03-27T00:34:00+01:00">Sun 27 March 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="https://github.com/robertfoss/coverpage/raw/media/screenshot.png" title="coverpage screenshot" /></p>
-<p>Coverpage is a single-page landing page built to showcase an idea or a product. To allow interested parties to get notified of updates, the template has mailchimp subscription integration.</p>
-<p>A live version of the site can be found at <a href="http://coverpage.memcpy.io">coverpage.memcpy.io</a>.</p>
-<h2>Sources</h2>
-<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/coverpage.git
-</pre></div>
-
-
-<h2>GitHub hosting</h2>
-<p>This template was built with the explicit intention of having it be hosted at GitHub in a gh-pages branch.
-Therefore it includes a Makefile for pushing copy of the current design to a gh-pages branch.</p> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./esp8266-apa102-bulb.html" rel="bookmark" title="Permalink to ESP8266 APA102 Bulb">ESP8266 APA102 Bulb</a>
-			</h1>
-			<abbr class="published" title="2016-02-07T22:46:00+01:00">Sun 07 February 2016</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi" /></p>
-<p>The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.</p>
-<h2>Software and hardware sources</h2>
-<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
-</pre></div>
-
-
-<p><a href="https://github.com/robertfoss/esp8266_apa102_bulb">This project</a> consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.</p>
-<h3>Firmware</h3>
-<p>The firmare is based on the <a href="https://github.com/nodemcu/nodemcu-firmware">NodeMCU</a> firwmare for the ESP8266. It's running the APA102 LED driver and the enduser setup module, which I've written about <a href="../user-friendly-setup-of-esp8266-gadgets.html">previously</a>.</p>
-<p>Additionally it's running 3 lua scripts that deal with different aspects.</p>
-<p>There's init.lua which makes sure we're connected to a WiFi.</p>
-<p>udp_listener.lua receives UDP packets ...</p> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./ws2812-led-matrix.html" rel="bookmark" title="Permalink to WS2812 LED Matrix">WS2812 LED Matrix</a>
-			</h1>
-			<abbr class="published" title="2015-10-12T16:51:00+02:00">Mon 12 October 2015</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running" /></p>
-<p>The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.</p>
-<h2>Code</h2>
-<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
-</pre></div>
-
-
-<p>The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with <a href="https://github.com/nodemcu/nodemcu-firmware">NodeMCU</a> and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent <a href="https://github.com/kbeckmann">Konrad Beckmann</a>.</p>
-<p>The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
-This relies on the host pc being able to connect to the ...</p> </div>
-		</article>
-		<article>
-			<h1 class="title">
-				<a href="./ws2812-welding-goggles.html" rel="bookmark" title="Permalink to WS2812 Welding Goggles">WS2812 Welding Goggles</a>
-			</h1>
-			<abbr class="published" title="2015-10-11T13:16:00+02:00">Sun 11 October 2015</abbr>
-		<div class="entry-content"> <p><img alt="Alt text" src="images/2015-10-11_goggles.png" title="WS2812 Welding Goggles" /></p>
-<p>The goggles were built using an AtTiny85 module and a WS2812B strip and some bits and bobs that were laying around. A more complete BOM can be found below.</p>
-<h2>Code</h2>
-<div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/digispark_ws2812_waves.git
-</pre></div>
-
-
-<p>The animation is built ontop of the excellent <a href="https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino">light_ws2812</a> library. It supports the AtTiny85 better than other competing libraries like FastLED.</p>
-<p>The animation is built around an non-float sin function and a HSV function that generates the actual colors.</p>
-<h2>Video</h2>
-<video controls>
-  <source src="videos/2015-10-11_goggles.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
-<h2>Bill of materials</h2>
-<ul>
-<li>6€ <a href="https://www.weldorado.de/">Weldorado STROOF DIN4 Welding Goggles</a></li>
-<li>2$ <a href="http://www.aliexpress.com/item/Free-shipping-GY-Digispark-Kickstarter-Mini-Development-board-TINY85-module-for-Ard-usb/32312040804.html?ws_ab_test=201407_4,201444_5,201409_4">Digispark</a></li>
-<li>23$ <a href="http://www.aliexpress.com/item/1M-WS2812B-WS2811-IC-Chip-built-in-Black-PCB-144-leds-m-Digital-5050-RGB-LED/1838594646.html?ws_ab_test=201407_4,201444_5,201409_4">WS2812B Strip 144 LEDs/m</a> - Only about a 5th of the length needed.</li>
-<li>2x$4 <a href="http://www.aliexpress.com/item/Eachine-3D-X4-RC-Quadcopter-Spare-Parts-3-7V-300Mah-Battery/32335487012.html?ws_ab_test=201407_4,201444_5,201409_4">LiPo 3.7V 300mAh</a></li>
-<li>$3 <a href="http://www.aliexpress.com/item/F14786-4-in-1-3-7V-Lipo-Battery-Charger-USB-Interface-4-Ports-For-Hubsan-X4/32394891091.html?ws_ab_test=201407_4,201444_5,201409_4">LiPo USB Charger</a></li>
-<li>$6 <a href="http://www.aliexpress.com/item/10-pairs-of-battery-plug-connector-1S-2-Pins-Mirco-model-battery-connector/32305697134.html">Battery connector cable ...</a></li></ul> </div>
-		</article>
-
-<p class="paginator">
-		<a href="./index2.html" class="button_accent" style="position: absolute; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
-</p>
-	</section>
-
-</body>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
 </html>
