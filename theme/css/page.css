@@ -375,6 +375,7 @@ blockquote
    * value that corrects the error at all sizes. The value below works for
    * large sizes. */
   line-height: 0;
+  font-size: 0.8em;
 }
 
 #teaser a:after
