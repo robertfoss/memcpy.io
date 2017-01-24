@@ -56,12 +56,13 @@ DEFAULT_PAGINATION = 999
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-STATIC_PATHS = ['videos', 'images', 'files', 'favicon.png', 'logo.png', 'me.jpg', 'keybase.txt']
+STATIC_PATHS = ['videos', 'images', 'files', 'favicon.png', 'logo.png', 'me.jpg', 'keybase.txt', 'robertfoss.asc']
 EXTRA_PATH_METADATA = {
     'favicon.png': {'path': 'favicon.png'},
     'logo.png': {'path': 'logo.png'},
     'me.jpg': {'path': 'me.jpg'},
     'keybase.txt': {'path': 'keybase.txt'},
+    'robertfoss.asc': {'path': 'robertfoss.asc'},
 }
 
 
