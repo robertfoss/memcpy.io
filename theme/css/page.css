@@ -287,7 +287,7 @@ pre
   /* Use a slightly smaller font size for code blocks, because matching the
    * x-height to the body font makes the code look too big. Do keep the same
    * line height to ensure proper baseline alignment. */
-  font-size: 0.8em;
+  font-size: 0.75em;
   line-height: 1.0rem;
 }
 
