@@ -1,4 +1,4 @@
-Title: Building Android for Qemu (with Mesa and Virgil3D)
+Title: Building Android for Qemu with Mesa and Virgil3D
 Date: 2016-08-30 15:22
 Category: kernel
 Tags: linux, kernel, android, qemu, collabora
