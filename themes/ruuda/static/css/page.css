@@ -394,14 +394,15 @@ footer
 {
   background-color: #234; /* TODO: pick unified colour scheme. */
   color: #b4aaaa;
-  font-family: Georgia;
+  font-family: Calluna Sans, sans-serif;
+  text-transform: lowercase;
+  font-size: 1.0em;
 }
 
 #notices
 {
   clear: both;
   text-align: center;
-  padding-top: 1.8em;
 }
 
 #notices img
