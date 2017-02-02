@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - android</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 07 Dec 2016 20:23:00 +0100</lastBuildDate><item><title>Running an Android Unit Test</title><link>http://memcpy.io/running-an-android-unit-test.html</link><description>&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
+bash
+source build/envsetup.sh &amp;amp;&amp;amp; \
+lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
+mmm system/core/libsync/tests &amp;amp;&amp;amp; \
+adb root &amp;amp;&amp;amp; \
+adb remount &amp;amp;&amp;amp; \
+adb sync &amp;amp;&amp;amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 07 Dec 2016 20:23:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</guid><category>linux</category><category>kernel</category><category>android</category><category>aosp</category><category>adb</category></item><item><title>Building Android for Qemu with Mesa and Virgil3D</title><link>http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
+not necessarily possible using the stock emulator.
+For my purposes I need access to a GPU and be able to modify the driver, which
+is where Virgilrenderer and Qemu comes in handy.&lt;/p&gt;
+&lt;p&gt;The guide below helps you compile Android and run it on top of Qemu with
+Mesa/Virgilrenderer supplying a virtual GPU.
+Because of this, the following guide is aimed at Linux hosts.&lt;/p&gt;
+&lt;p&gt;This guide is based on Rob Herrings &lt;a href="https://github.com/robherring/generic_device/wiki/KConfig-based-Multi-platform-Android-Device-(and-Mesa-graphics)"&gt;fantastic guide&lt;/a&gt;, but has
+been slightly streamlined and had physical hardware support stripped out.&lt;/p&gt;
+&lt;h2&gt;Install dependencies&lt;/h2&gt;
+&lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
+might be needed for other distributions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 30 Aug 2016 15:22:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</guid><category>linux</category><category>kernel</category><category>android</category><category>qemu</category><category>collabora</category></item></channel></rss>

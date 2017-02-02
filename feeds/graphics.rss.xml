@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - graphics</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Fri, 23 Sep 2016 20:20:00 +0200</lastBuildDate><item><title>XDC 2016</title><link>http://memcpy.io/xdc-2016.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
+The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
+&lt;p&gt;Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.&lt;/p&gt;
+&lt;p&gt;By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &amp;gt;9.3x faster than Cairo-CPU and &amp;gt;4.8x times the previous GPU state of the art SKIA-GL.&lt;/p&gt;
+&lt;p&gt;Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
+&lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
+The FPS/Watt …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 23 Sep 2016 20:20:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-09-23:/xdc-2016.html</guid><category>linux</category><category>graphics</category><category>kernel</category><category>collabora</category></item></channel></rss>

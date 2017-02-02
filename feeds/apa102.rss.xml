@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - APA102</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Sun, 07 Feb 2016 22:46:00 +0100</lastBuildDate><item><title>ESP8266 APA102 Bulb</title><link>http://memcpy.io/esp8266-apa102-bulb.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
+&lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
+&lt;h2&gt;Software and hardware sources&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
+&lt;h3&gt;Firmware&lt;/h3&gt;
+&lt;p&gt;The firmare is based on the &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; firwmare for the ESP8266. It's running the APA102 LED driver and the enduser setup module, which I've written about &lt;a href="../user-friendly-setup-of-esp8266-gadgets.html"&gt;previously&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Additionally it's running 3 lua scripts that deal with different aspects.&lt;/p&gt;
+&lt;p&gt;There's init.lua which makes sure we're connected to a WiFi.&lt;/p&gt;
+&lt;p&gt;udp_listener.lua receives UDP packets and then sends forwards that …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 07 Feb 2016 22:46:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-02-07:/esp8266-apa102-bulb.html</guid><category>ESP8266</category><category>APA102</category><category>LED</category><category>WIFI</category></item></channel></rss>

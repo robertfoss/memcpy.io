@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - graphics</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/graphics.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-09-23T20:20:00+02:00</updated><entry><title>XDC 2016</title><link href="http://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
+The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
+&lt;p&gt;Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.&lt;/p&gt;
+&lt;p&gt;By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &amp;gt;9.3x faster than Cairo-CPU and &amp;gt;4.8x times the previous GPU state of the art SKIA-GL.&lt;/p&gt;
+&lt;p&gt;Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
+&lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
+The FPS/Watt …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
+The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
+&lt;p&gt;Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.&lt;/p&gt;
+&lt;p&gt;By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &amp;gt;9.3x faster than Cairo-CPU and &amp;gt;4.8x times the previous GPU state of the art SKIA-GL.&lt;/p&gt;
+&lt;p&gt;Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
+&lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
+The FPS/Watt measurements showed 0.73-15.1x times the CPU efficiency.&lt;/p&gt;
+&lt;p&gt;When looking at Cairo traces the power efficiency is actually lower using GPU accelaration than with CPU acceleration.
+This is somewhat expected in that the Cairo workload is not very high throughput, so the overhead of doing 2D operations is relatively high compared to the actual work.&lt;/p&gt;
+&lt;p&gt;Overall toolkits are moving away from letting the Xserver do 2D rendering, for reasons of portability and performance.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-glvnd-status.pdf"&gt;Slides&lt;/a&gt;] libglvnd Status Update&lt;/h2&gt;
+&lt;p&gt;Andy Ritger gave a talk about the current libglvnd status.
+The goal of libglvnd is to allow different graphics libraries from potentially different vendors to coexist on a filesystem and in a process.
+GLX/EGl/OpenGL/OpenGLES/GL are all supported by libglvnd.&lt;/p&gt;
+&lt;p&gt;Currently mesa supports libglvnd for OpenGL and GLX, with EGL support being in the pipeline.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-drm_hwcomposer.pdf"&gt;Slides&lt;/a&gt;] drm_hwcomposer&lt;/h2&gt;
+&lt;p&gt;Sean Paul and Zach Reizner gave an exceptionally well timed talk about the Android &amp;amp;&amp;amp; Chromium drm_hwcomposer project.
+drm_hwcomposer is an implementation of the hwcomposer (HWC) API ontop of the Linux DRM/KMS.&lt;/p&gt;
+&lt;p&gt;The talk detailed the implications of HWC2 and explicit fencing.
+A large part of the HWC1 implementation can be removed from drm_hwcomposer since it's made redundant by the fencing support in HWC2.
+So, for example the worker threads (DrmCompositorWorker and FrameWorker) are no longer necessary and can be removed.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-nouveau_update.pdf"&gt;Slides&lt;/a&gt;] Status update of Nouveau&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://hakzsam.wordpress.com/"&gt;Samuel Pitoiset&lt;/a&gt;, Karol Herbst, &lt;a href="https://twitter.com/kurtelborgpm"&gt;Pierre Moreau&lt;/a&gt; and &lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about what has happened in Nouveau land the last year.&lt;/p&gt;
+&lt;p&gt;Hardware support is as always taking steps forward, with Fermi support is scheduled for Linux v4.9+.&lt;/p&gt;
+&lt;p&gt;A call to arms for Nouveau compiler optimizations was issued by &lt;a href="mailto:martin.peres AT free DOT fr"&gt;Martin Perez&lt;/a&gt;.
+There is a lot of low hanging fruit for optimizations is available, and the compiler is overall in a good shape.
+So feel free to contact Martin or the Nouveau project if you are interested or curious.&lt;/p&gt;
+&lt;p&gt;As of the Maxwell generation of GPUs the firmware needed now has to be signed, GM20x/GP100 firmware has been released, but support for loading firmware on Tegra has not been provided by NVidia.&lt;/p&gt;
+&lt;p&gt;Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016.
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry></feed>
