@@ -1,5 +1,44 @@
 <!DOCTYPE html>
-<html><head><title>memcpy.io | Running an Android Unit Test</title><link rel="icon" type="image/png" href="logo.png"><link rel="stylesheet" type="text/css" href="/theme/css/fonts.css"><link rel="stylesheet" type="text/css" href="/theme/css/math.css"><link rel="stylesheet" type="text/css" href="/theme/css/page.css"><link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed"><link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed"><meta charset="utf-8"><meta name="robots" content="index,follow"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A similar approach can be used for any Android module. cd aosp bash source build/envsetup.sh && \ lunch linaro_arm64-userdebug && \ mmm system/core/libsync/tests && \ adb root && \ adb remount && \ adb sync && \ adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests"><meta name="author" content="Robert Foss"><meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, android, aosp, adb"><meta property="og:title" content="Running an Android Unit Test"><meta property="og:type" content="article"><meta property="og:url" content="http://memcpy.io/running-an-android-unit-test.html"><meta property="og:locale" content><meta property="og:site_name" content="memcpy.io"><meta property="article:published_time" content="2016-12-07"><meta property="article:section" content="android"><meta property="article:tag" content="linux"><meta property="article:tag" content="kernel"><meta property="article:tag" content="android"><meta property="article:tag" content="aosp"><meta property="article:tag" content="adb"></head><body><article id="content" itemscope><header><h1>Running an Android Unit Test</h1><p> written by <a href="/" class="author">Robert Foss</a><br> published <time datetime="2016-12-07" itemprop="datePublished">2016-12-07</time></p></header><p>Running specific AOSP unit tests on an Android device is not entirely obvious, so this is what I cobbled together.</p><p>A similar approach can be used for any Android module.</p><div class="highlight"><pre><span></span>cd aosp
+<html>
+	<head>
+		<title>memcpy.io | Running an Android Unit Test</title>
+		<link rel="icon" type="image/png" href="logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="A similar approach can be used for any Android module. cd aosp bash source build/envsetup.sh &amp;&amp; \ lunch linaro_arm64-userdebug &amp;&amp; \ mmm system/core/libsync/tests &amp;&amp; \ adb root &amp;&amp; \ adb remount &amp;&amp; \ adb sync &amp;&amp; \ adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, android, aosp, adb">
+		<meta property="og:title" content="Running an Android Unit Test" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://memcpy.io/running-an-android-unit-test.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2016-12-07" />
+		<meta property="article:section" content="android" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="kernel" />
+		<meta property="article:tag" content="android" />
+		<meta property="article:tag" content="aosp" />
+		<meta property="article:tag" content="adb" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Running an Android Unit Test</h1>
+				<p>
+				  written by <a href="/" class="author">Robert Foss</a><br>
+				  published <time datetime="2016-12-07" itemprop="datePublished">2016-12-07</time>
+				</p>
+			</header>
+			<p>Running specific AOSP unit tests on an Android device is not entirely obvious, so this is what I cobbled together.</p>
+			<p>A similar approach can be used for any Android module.</p>
+<div class="highlight"><pre><span></span>cd aosp
 bash
 source build/envsetup.sh &amp;&amp; \
 lunch linaro_arm64-userdebug &amp;&amp; \
@@ -8,4 +47,43 @@ adb root &amp;&amp; \
 adb remount &amp;&amp; \
 adb sync &amp;&amp; \
 adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-</pre></div></article><section id="teaser-section"><div id="teaser"><p>Tags: <a href="./tag/linux.html">linux </a><span id="breakdot">&middot; </span><a href="./tag/kernel.html">kernel </a><span id="breakdot">&middot; </span><a href="./tag/android.html">android </a><span id="breakdot">&middot; </span><a href="./tag/aosp.html">aosp </a><span id="breakdot">&middot; </span><a href="./tag/adb.html">adb </a></p></div></section><footer><div id="footer"><p id="notices" class="smcp"><a href="/about.html">About</a><span id="breakdot">&middot;</span><a href="/index.html">Blog</a><span id="breakdot">&middot;</span><a href="/contact.html">Contact</a><span id="breakdot">&middot;</span><a href="https://github.com/robertfoss">GitHub</a><br><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a><span id="breakdot">&middot;</span> 2017 Robert Foss <span id="breakdot">&middot;</span><a href="https://github.com/robertfoss/memcpy.io">Source</a><br><a href="/"><img src="/logo.png"></a></p></div></footer></body></html>
+</pre></div>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/kernel.html">kernel </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/android.html">android </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/aosp.html">aosp </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/adb.html">adb </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

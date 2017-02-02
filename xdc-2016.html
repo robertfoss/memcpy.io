@@ -1,2 +1,112 @@
 <!DOCTYPE html>
-<html><head><title>memcpy.io | XDC 2016</title><link rel="icon" type="image/png" href="logo.png"><link rel="stylesheet" type="text/css" href="/theme/css/fonts.css"><link rel="stylesheet" type="text/css" href="/theme/css/math.css"><link rel="stylesheet" type="text/css" href="/theme/css/page.css"><link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed"><link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed"><meta charset="utf-8"><meta name="robots" content="index,follow"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="XDC 2016 was hosted in Helsinki at Haaga-Helia. The full program was filmed and is archived here. [Slides] FastUIDraw - High Performance 2D renderer for GPUs Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs. By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs >9.3x faster than Cairo-CPU and >4.8x times the previous GPU state of the art SKIA-GL. Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android. [Slides] 2D Performance Martin Perez gave a talk about 2D performance and power consumption of the Xserver. The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance. The FPS/Watt …"><meta name="author" content="Robert Foss"><meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, graphics, kernel, collabora"><meta property="og:title" content="XDC 2016"><meta property="og:type" content="article"><meta property="og:image" content="http://memcpy.io/images/2016-09-23_xdc_2016.jpg"><meta property="og:url" content="http://memcpy.io/xdc-2016.html"><meta property="og:locale" content><meta property="og:site_name" content="memcpy.io"><meta property="article:published_time" content="2016-09-23"><meta property="article:section" content="linux"><meta property="article:tag" content="linux"><meta property="article:tag" content="graphics"><meta property="article:tag" content="kernel"><meta property="article:tag" content="collabora"></head><body><article id="content" itemscope><header><h1>XDC 2016</h1><p> written by <a href="/" class="author">Robert Foss</a><br> published <time datetime="2016-09-23" itemprop="datePublished">2016-09-23</time></p></header><p>Highlights from the 2016 X.org Developers conference.</p><p><img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"></p><p>XDC 2016 was hosted in Helsinki at Haaga-Helia. The full <a href="https://www.x.org/wiki/Events/XDC2016/Program/">program</a> was filmed and is archived <a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos">here</a>.</p><h2>[<a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf">Slides</a>] FastUIDraw - High Performance 2D renderer for GPUs</h2><p>Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.</p><p>By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &gt;9.3x faster than Cairo-CPU and &gt;4.8x times the previous GPU state of the art SKIA-GL.</p><p>Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.</p><h2>[<a href="files/2016-09-23/xdc-2016_2d_perf.pdf">Slides</a>] 2D Performance</h2><p><a href="http://phd.mupuf.org/">Martin Perez</a> gave a talk about 2D performance and power consumption of the Xserver.</p><p>The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance. The FPS/Watt measurements showed 0.73-15.1x times the CPU efficiency.</p><p>When looking at Cairo traces the power efficiency is actually lower using GPU accelaration than with CPU acceleration. This is somewhat expected in that the Cairo workload is not very high throughput, so the overhead of doing 2D operations is relatively high compared to the actual work.</p><p>Overall toolkits are moving away from letting the Xserver do 2D rendering, for reasons of portability and performance.</p><h2>[<a href="files/2016-09-23/xdc-2016-glvnd-status.pdf">Slides</a>] libglvnd Status Update</h2><p>Andy Ritger gave a talk about the current libglvnd status. The goal of libglvnd is to allow different graphics libraries from potentially different vendors to coexist on a filesystem and in a process. GLX/EGl/OpenGL/OpenGLES/GL are all supported by libglvnd.</p><p>Currently mesa supports libglvnd for OpenGL and GLX, with EGL support being in the pipeline.</p><h2>[<a href="files/2016-09-23/xdc-2016-drm_hwcomposer.pdf">Slides</a>] drm_hwcomposer</h2><p>Sean Paul and Zach Reizner gave an exceptionally well timed talk about the Android &amp;&amp; Chromium drm_hwcomposer project. drm_hwcomposer is an implementation of the hwcomposer (HWC) API ontop of the Linux DRM/KMS.</p><p>The talk detailed the implications of HWC2 and explicit fencing. A large part of the HWC1 implementation can be removed from drm_hwcomposer since it's made redundant by the fencing support in HWC2. So, for example the worker threads (DrmCompositorWorker and FrameWorker) are no longer necessary and can be removed.</p><h2>[<a href="files/2016-09-23/xdc-2016-nouveau_update.pdf">Slides</a>] Status update of Nouveau</h2><p><a href="https://hakzsam.wordpress.com/">Samuel Pitoiset</a>, Karol Herbst, <a href="https://twitter.com/kurtelborgpm">Pierre Moreau</a> and <a href="http://phd.mupuf.org/">Martin Perez</a> gave a talk about what has happened in Nouveau land the last year.</p><p>Hardware support is as always taking steps forward, with Fermi support is scheduled for Linux v4.9+.</p><p>A call to arms for Nouveau compiler optimizations was issued by <a href="mailto:martin.peres AT free DOT fr">Martin Perez</a>. There is a lot of low hanging fruit for optimizations is available, and the compiler is overall in a good shape. So feel free to contact Martin or the Nouveau project if you are interested or curious.</p><p>As of the Maxwell generation of GPUs the firmware needed now has to be signed, GM20x/GP100 firmware has been released, but support for loading firmware on Tegra has not been provided by NVidia.</p><p>Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.</p><h2>Conclusion</h2><p>Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016. This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p></article><section id="teaser-section"><div id="teaser"><p>Tags: <a href="./tag/linux.html">linux </a><span id="breakdot">&middot; </span><a href="./tag/graphics.html">graphics </a><span id="breakdot">&middot; </span><a href="./tag/kernel.html">kernel </a><span id="breakdot">&middot; </span><a href="./tag/collabora.html">collabora </a></p></div></section><footer><div id="footer"><p id="notices" class="smcp"><a href="/about.html">About</a><span id="breakdot">&middot;</span><a href="/index.html">Blog</a><span id="breakdot">&middot;</span><a href="/contact.html">Contact</a><span id="breakdot">&middot;</span><a href="https://github.com/robertfoss">GitHub</a><br><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a><span id="breakdot">&middot;</span> 2017 Robert Foss <span id="breakdot">&middot;</span><a href="https://github.com/robertfoss/memcpy.io">Source</a><br><a href="/"><img src="/logo.png"></a></p></div></footer></body></html>
+<html>
+	<head>
+		<title>memcpy.io | XDC 2016</title>
+		<link rel="icon" type="image/png" href="logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="XDC 2016 was hosted in Helsinki at Haaga-Helia. The full program was filmed and is archived here. [Slides] FastUIDraw - High Performance 2D renderer for GPUs Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs. By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &gt;9.3x faster than Cairo-CPU and &gt;4.8x times the previous GPU state of the art SKIA-GL. Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android. [Slides] 2D Performance Martin Perez gave a talk about 2D performance and power consumption of the Xserver. The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance. The FPS/Watt …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, graphics, kernel, collabora">
+		<meta property="og:title" content="XDC 2016" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="http://memcpy.io/images/2016-09-23_xdc_2016.jpg" />
+		<meta property="og:url" content="http://memcpy.io/xdc-2016.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2016-09-23" />
+		<meta property="article:section" content="linux" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="graphics" />
+		<meta property="article:tag" content="kernel" />
+		<meta property="article:tag" content="collabora" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>XDC 2016</h1>
+				<p>
+				  written by <a href="/" class="author">Robert Foss</a><br>
+				  published <time datetime="2016-09-23" itemprop="datePublished">2016-09-23</time>
+				</p>
+			</header>
+			<p>Highlights from the 2016 X.org Developers conference.</p>
+			<p><img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"></p>
+<p>XDC 2016 was hosted in Helsinki at Haaga-Helia.
+The full <a href="https://www.x.org/wiki/Events/XDC2016/Program/">program</a> was filmed and is archived <a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos">here</a>.</p>
+<h2>[<a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf">Slides</a>] FastUIDraw - High Performance 2D renderer for GPUs</h2>
+<p>Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.</p>
+<p>By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &gt;9.3x faster than Cairo-CPU and &gt;4.8x times the previous GPU state of the art SKIA-GL.</p>
+<p>Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.</p>
+<h2>[<a href="files/2016-09-23/xdc-2016_2d_perf.pdf">Slides</a>] 2D Performance</h2>
+<p><a href="http://phd.mupuf.org/">Martin Perez</a> gave a talk about 2D performance and power consumption of the Xserver.</p>
+<p>The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
+The FPS/Watt measurements showed 0.73-15.1x times the CPU efficiency.</p>
+<p>When looking at Cairo traces the power efficiency is actually lower using GPU accelaration than with CPU acceleration.
+This is somewhat expected in that the Cairo workload is not very high throughput, so the overhead of doing 2D operations is relatively high compared to the actual work.</p>
+<p>Overall toolkits are moving away from letting the Xserver do 2D rendering, for reasons of portability and performance.</p>
+<h2>[<a href="files/2016-09-23/xdc-2016-glvnd-status.pdf">Slides</a>] libglvnd Status Update</h2>
+<p>Andy Ritger gave a talk about the current libglvnd status.
+The goal of libglvnd is to allow different graphics libraries from potentially different vendors to coexist on a filesystem and in a process.
+GLX/EGl/OpenGL/OpenGLES/GL are all supported by libglvnd.</p>
+<p>Currently mesa supports libglvnd for OpenGL and GLX, with EGL support being in the pipeline.</p>
+<h2>[<a href="files/2016-09-23/xdc-2016-drm_hwcomposer.pdf">Slides</a>] drm_hwcomposer</h2>
+<p>Sean Paul and Zach Reizner gave an exceptionally well timed talk about the Android &amp;&amp; Chromium drm_hwcomposer project.
+drm_hwcomposer is an implementation of the hwcomposer (HWC) API ontop of the Linux DRM/KMS.</p>
+<p>The talk detailed the implications of HWC2 and explicit fencing.
+A large part of the HWC1 implementation can be removed from drm_hwcomposer since it's made redundant by the fencing support in HWC2.
+So, for example the worker threads (DrmCompositorWorker and FrameWorker) are no longer necessary and can be removed.</p>
+<h2>[<a href="files/2016-09-23/xdc-2016-nouveau_update.pdf">Slides</a>] Status update of Nouveau</h2>
+<p><a href="https://hakzsam.wordpress.com/">Samuel Pitoiset</a>, Karol Herbst, <a href="https://twitter.com/kurtelborgpm">Pierre Moreau</a> and <a href="http://phd.mupuf.org/">Martin Perez</a> gave a talk about what has happened in Nouveau land the last year.</p>
+<p>Hardware support is as always taking steps forward, with Fermi support is scheduled for Linux v4.9+.</p>
+<p>A call to arms for Nouveau compiler optimizations was issued by <a href="mailto:martin.peres AT free DOT fr">Martin Perez</a>.
+There is a lot of low hanging fruit for optimizations is available, and the compiler is overall in a good shape.
+So feel free to contact Martin or the Nouveau project if you are interested or curious.</p>
+<p>As of the Maxwell generation of GPUs the firmware needed now has to be signed, GM20x/GP100 firmware has been released, but support for loading firmware on Tegra has not been provided by NVidia.</p>
+<p>Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.</p>
+<h2>Conclusion</h2>
+<p>Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016.
+This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/graphics.html">graphics </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/kernel.html">kernel </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

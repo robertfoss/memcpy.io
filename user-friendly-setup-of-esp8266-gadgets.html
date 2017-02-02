@@ -1,3 +1,104 @@
 <!DOCTYPE html>
-<html><head><title>memcpy.io | User friendly setup of ESP8266 gadgets</title><link rel="icon" type="image/png" href="logo.png"><link rel="stylesheet" type="text/css" href="/theme/css/fonts.css"><link rel="stylesheet" type="text/css" href="/theme/css/math.css"><link rel="stylesheet" type="text/css" href="/theme/css/page.css"><link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed"><link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed"><meta charset="utf-8"><meta name="robots" content="index,follow"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point. esp8266_nodemcu_wifi_setup is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through. Start ESP. Connect to the &#34;SetupGadget&#34; WiFi through your internet enabled thing of choice. Submit credentials of your local WiFi. The ESP reboots and connects to your local WiFi. What is this magic! How could a mere mortal like me summon features like this?! Let me tell you …"><meta name="author" content="Robert Foss"><meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, NodeMCU, ESP8266, Setup"><meta property="og:title" content="User friendly setup of ESP8266 gadgets"><meta property="og:type" content="article"><meta property="og:image" content="http://memcpy.io/images/2015-07-30_screenshot.png"><meta property="og:url" content="http://memcpy.io/user-friendly-setup-of-esp8266-gadgets.html"><meta property="og:locale" content><meta property="og:site_name" content="memcpy.io"><meta property="article:published_time" content="2015-07-30"><meta property="article:section" content="ESP8266"><meta property="article:tag" content="NodeMCU"><meta property="article:tag" content="ESP8266"><meta property="article:tag" content="Setup"></head><body><article id="content" itemscope><header><h1>User friendly setup of ESP8266 gadgets</h1><p> written by <a href="/" class="author">Robert Foss</a><br> published <time datetime="2015-07-30" itemprop="datePublished">2015-07-30</time></p></header><p>When first configuring any IoT device the lack of options for interaction can be problematic, so I hacked together an access-portal + captive portal application for the NodeMCU firmware.</p><p><img alt="Alt text" src="images/2015-07-30_screenshot.png" title="Screenshot"></p><p>The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.</p><p><a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup">esp8266_nodemcu_wifi_setup</a> is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.</p><ul><li>Start ESP.</li><li>Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.</li><li>Submit credentials of your local WiFi.</li><li>The ESP reboots and connects to your local WiFi.</li></ul><h2>What is this magic! How could a mere mortal like me summon features like this?!</h2><p>Let me tell you..</p><p>By default DNS is not announced in the DHCP offer message, because a DNS server does not ship with NodeMCU. In order to announce that the ESP8266 is running a DNS server, NodeMCU has to be recompiled to support that. A guide to building NodeMCU can be found <a href="http://memset.io/building-nodemcu-for-the-esp8266.html">here</a>.</p><p>Thanks to the wonderful work of Andy Reischles on <a href="https://github.com/reischle/CaptiveIntraweb/tree/dev">Captive Portal</a>, a lua implementation of a domain hijacking DNS server exists. Which will allow an ESP8266 to redirect all traffic to itself.</p><h4>Detailed guide</h4><ul><li>In dhcpserver.h, #define USE_DNS 1</li><li>Build NodeMCU.</li><li>Flash NodeMCU.</li><li>Upload all .lua files <strong>and</strong> index.html.</li><li>Reboot ESP.</li></ul><h4>What you need to do</h4><p>After a user has connected throught the portal and sucessfully configured the the ESP8266 with the credentials of the local WiFi, something lua service should be started so that the ESP8266 actually does something.</p><p>I would suggest adding something like this to init.lua:</p><div class="highlight"><pre><span></span>dofile(&quot;init_connected.lua&quot;)
-</pre></div><p>Where init_connected.lua is where your script resides.</p></article><section id="teaser-section"><div id="teaser"><p>Tags: <a href="./tag/nodemcu.html">NodeMCU </a><span id="breakdot">&middot; </span><a href="./tag/esp8266.html">ESP8266 </a><span id="breakdot">&middot; </span><a href="./tag/setup.html">Setup </a></p></div></section><footer><div id="footer"><p id="notices" class="smcp"><a href="/about.html">About</a><span id="breakdot">&middot;</span><a href="/index.html">Blog</a><span id="breakdot">&middot;</span><a href="/contact.html">Contact</a><span id="breakdot">&middot;</span><a href="https://github.com/robertfoss">GitHub</a><br><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a><span id="breakdot">&middot;</span> 2017 Robert Foss <span id="breakdot">&middot;</span><a href="https://github.com/robertfoss/memcpy.io">Source</a><br><a href="/"><img src="/logo.png"></a></p></div></footer></body></html>
+<html>
+	<head>
+		<title>memcpy.io | User friendly setup of ESP8266 gadgets</title>
+		<link rel="icon" type="image/png" href="logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a &#39;captive portal&#39; mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point. esp8266_nodemcu_wifi_setup is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through. Start ESP. Connect to the &#34;SetupGadget&#34; WiFi through your internet enabled thing of choice. Submit credentials of your local WiFi. The ESP reboots and connects to your local WiFi. What is this magic! How could a mere mortal like me summon features like this?! Let me tell you …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, NodeMCU, ESP8266, Setup">
+		<meta property="og:title" content="User friendly setup of ESP8266 gadgets" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="http://memcpy.io/images/2015-07-30_screenshot.png" />
+		<meta property="og:url" content="http://memcpy.io/user-friendly-setup-of-esp8266-gadgets.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2015-07-30" />
+		<meta property="article:section" content="ESP8266" />
+		<meta property="article:tag" content="NodeMCU" />
+		<meta property="article:tag" content="ESP8266" />
+		<meta property="article:tag" content="Setup" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>User friendly setup of ESP8266 gadgets</h1>
+				<p>
+				  written by <a href="/" class="author">Robert Foss</a><br>
+				  published <time datetime="2015-07-30" itemprop="datePublished">2015-07-30</time>
+				</p>
+			</header>
+			<p>When first configuring any IoT device the lack of options for interaction can be problematic, so I hacked together an access-portal + captive portal application for the NodeMCU firmware.</p>
+			<p><img alt="Alt text" src="images/2015-07-30_screenshot.png" title="Screenshot"></p>
+<p>The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.</p>
+<p><a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup">esp8266_nodemcu_wifi_setup</a> is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.</p>
+<ul>
+<li>Start ESP.</li>
+<li>Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.</li>
+<li>Submit credentials of your local WiFi.</li>
+<li>The ESP reboots and connects to your local WiFi.</li>
+</ul>
+<h2>What is this magic! How could a mere mortal like me summon features like this?!</h2>
+<p>Let me tell you..</p>
+<p>By default DNS is not announced in the DHCP offer message, because a DNS server does not ship with NodeMCU.
+In order to announce that the ESP8266 is running a DNS server, NodeMCU has to be recompiled to support that.
+A guide to building NodeMCU can be found <a href="http://memset.io/building-nodemcu-for-the-esp8266.html">here</a>.</p>
+<p>Thanks to the wonderful work of Andy Reischles on <a href="https://github.com/reischle/CaptiveIntraweb/tree/dev">Captive Portal</a>, a lua implementation of a domain hijacking DNS server exists. Which will allow an ESP8266 to redirect all traffic to itself.</p>
+<h4>Detailed guide</h4>
+<ul>
+<li>In dhcpserver.h, #define USE_DNS 1</li>
+<li>Build NodeMCU.</li>
+<li>Flash NodeMCU.</li>
+<li>Upload all .lua files <strong>and</strong> index.html.</li>
+<li>Reboot ESP.</li>
+</ul>
+<h4>What you need to do</h4>
+<p>After a user has connected throught the portal and sucessfully configured the the ESP8266 with the credentials of the local WiFi, something lua service should be started so that the ESP8266 actually does something.</p>
+<p>I would suggest adding something like this to init.lua:</p>
+<div class="highlight"><pre><span></span>dofile(&quot;init_connected.lua&quot;)
+</pre></div>
+
+
+<p>Where init_connected.lua is where your script resides.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/nodemcu.html">NodeMCU </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/esp8266.html">ESP8266 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/setup.html">Setup </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

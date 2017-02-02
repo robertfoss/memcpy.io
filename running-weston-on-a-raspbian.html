@@ -1,5 +1,61 @@
 <!DOCTYPE html>
-<html><head><title>memcpy.io | Running Weston on a Raspbian</title><link rel="icon" type="image/png" href="logo.png"><link rel="stylesheet" type="text/css" href="/theme/css/fonts.css"><link rel="stylesheet" type="text/css" href="/theme/css/math.css"><link rel="stylesheet" type="text/css" href="/theme/css/page.css"><link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed"><link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed"><meta charset="utf-8"><meta name="robots" content="index,follow"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Progress in the VC4 graphics camp and the Wayland camp now enables us to run Weston on top of the drm backend for VC4 platforms. Previously software acceleration using pixman was needed, but this is no longer the case. Additionally the rpi backend for weston is now being removed since it has been obsoleted by the improved drm layer. Let's explore running hardware accelerated Weston on the Raspberry Pi. Building Linux kernel A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has been written by the Raspberry Pi foundation and is available here. As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes. Set up alternative install location These build instructions …"><meta name="author" content="Robert Foss"><meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, wayland, weston, rpi, rpi2, kernel"><meta property="og:title" content="Running Weston on a Raspbian"><meta property="og:type" content="article"><meta property="og:image" content="http://memcpy.io/images/2016-06-03_weston.png"><meta property="og:url" content="http://memcpy.io/running-weston-on-a-raspbian.html"><meta property="og:locale" content><meta property="og:site_name" content="memcpy.io"><meta property="article:published_time" content="2016-06-03"><meta property="article:section" content="wayland"><meta property="article:tag" content="wayland"><meta property="article:tag" content="weston"><meta property="article:tag" content="rpi"><meta property="article:tag" content="rpi2"><meta property="article:tag" content="kernel"></head><body><article id="content" itemscope><header><h1>Running Weston on a Raspbian</h1><p> written by <a href="/" class="author">Robert Foss</a><br> published <time datetime="2016-06-03" itemprop="datePublished">2016-06-03</time></p></header><p>This is a simple guide for how to build and run Wayland & Weston on a Raspberry Pi.</p><p><img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2."></p><p>Progress in the VC4 graphics camp and the Wayland camp now enables us to run Weston on top of the drm backend for VC4 platforms. Previously software acceleration using pixman was needed, but this is no longer the case.</p><p>Additionally the rpi backend for weston is now being removed since it has been obsoleted by the improved drm layer.</p><p>Let's explore running hardware accelerated Weston on the Raspberry Pi.</p><h2>Building Linux kernel</h2><p>A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has been written by the Raspberry Pi foundation and is available <a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md">here</a>.</p><p>As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.</p><h2>Set up alternative install location</h2><p>These build instructions are based on the <a href="https://wayland.freedesktop.org/building.html">Wayland instructions</a> from freedesktop.org, but altered to target VC4 and Raspbian.</p><p>You probably don't want to install experimental builds of software among the usual software of your operating system, so let's define a prefix for where to install our builds.</p><div class="highlight"><pre><span></span><span class="err">#</span><span class="x"> Change WLD to any location you like</span>
+<html>
+	<head>
+		<title>memcpy.io | Running Weston on a Raspbian</title>
+		<link rel="icon" type="image/png" href="logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="Progress in the VC4 graphics camp and the Wayland camp now enables us to run Weston on top of the drm backend for VC4 platforms. Previously software acceleration using pixman was needed, but this is no longer the case. Additionally the rpi backend for weston is now being removed since it has been obsoleted by the improved drm layer. Let&#39;s explore running hardware accelerated Weston on the Raspberry Pi. Building Linux kernel A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has been written by the Raspberry Pi foundation and is available here. As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes. Set up alternative install location These build instructions …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, wayland, weston, rpi, rpi2, kernel">
+		<meta property="og:title" content="Running Weston on a Raspbian" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="http://memcpy.io/images/2016-06-03_weston.png" />
+		<meta property="og:url" content="http://memcpy.io/running-weston-on-a-raspbian.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2016-06-03" />
+		<meta property="article:section" content="wayland" />
+		<meta property="article:tag" content="wayland" />
+		<meta property="article:tag" content="weston" />
+		<meta property="article:tag" content="rpi" />
+		<meta property="article:tag" content="rpi2" />
+		<meta property="article:tag" content="kernel" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Running Weston on a Raspbian</h1>
+				<p>
+				  written by <a href="/" class="author">Robert Foss</a><br>
+				  published <time datetime="2016-06-03" itemprop="datePublished">2016-06-03</time>
+				</p>
+			</header>
+			<p>This is a simple guide for how to build and run Wayland & Weston on a Raspberry Pi.</p>
+			<p><img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2."></p>
+<p>Progress in the VC4 graphics camp and the Wayland camp now enables us to run
+Weston on top of the drm backend for VC4 platforms. Previously software acceleration
+using pixman was needed, but this is no longer the case.</p>
+<p>Additionally the rpi backend for weston is now being removed since it has been
+obsoleted by the improved drm layer.</p>
+<p>Let's explore running hardware accelerated Weston on the Raspberry Pi.</p>
+<h2>Building Linux kernel</h2>
+<p>A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
+been written by the Raspberry Pi foundation and is available <a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md">here</a>.</p>
+<p>As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.</p>
+<h2>Set up alternative install location</h2>
+<p>These build instructions are based on the <a href="https://wayland.freedesktop.org/building.html">Wayland instructions</a>
+from freedesktop.org, but altered to target VC4 and Raspbian.</p>
+<p>You probably don't want to install experimental builds of software among the usual
+software of your operating system, so let's define a prefix for where to install
+our builds.</p>
+<div class="highlight"><pre><span></span><span class="err">#</span><span class="x"> Change WLD to any location you like</span>
 <span class="x">export WLD=~/local</span>
 <span class="x">export LD_LIBRARY_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib</span>
 <span class="x">export PKG_CONFIG_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib/pkgconfig/:</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/share/pkgconfig/</span>
@@ -9,10 +65,20 @@
 
 <span class="err">#</span><span class="x"> Needed by autotools</span>
 <span class="x">mkdir -p </span><span class="p">$</span><span class="nv">WLD</span><span class="x">/share/aclocal</span>
-</pre></div><h2>Installing dependencies</h2><p>Start by installing the build dependencies of mesa, weston and wayland.</p><div class="highlight"><pre><span></span># Enable source packages
+</pre></div>
+
+
+<h2>Installing dependencies</h2>
+<p>Start by installing the build dependencies of mesa, weston and wayland.</p>
+<div class="highlight"><pre><span></span># Enable source packages
 sudo sed -e &quot;s/#\sdeb-src/deb-src/g&quot; -i /etc/apt/sources.list
 sudo apt update
-</pre></div><p>The above step can alternatively be completed using the GUI of your package manager, by enabling source packages.</p><div class="highlight"><pre><span></span># Install build dependencies of mesa
+</pre></div>
+
+
+<p>The above step can alternatively be completed using the GUI of your
+package manager, by enabling source packages.</p>
+<div class="highlight"><pre><span></span># Install build dependencies of mesa
 sudo apt-get build-dep mesa
 
 # Install build dependencies of wayland/weston
@@ -20,7 +86,12 @@ sudo apt-get install \
   libevdev libevdev-dev \
   libwacom libwacom-dev \
   libxkbcommon libxkbcommon-dev
-</pre></div><h2>Building Mesa</h2><p>Configure and compile mesa with vc4, wayland and EGL support.</p><div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/mesa/mesa</span>
+</pre></div>
+
+
+<h2>Building Mesa</h2>
+<p>Configure and compile mesa with vc4, wayland and EGL support.</p>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/mesa/mesa</span>
 <span class="x">cd mesa</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
 <span class="x">  --enable-gles2 \</span>
@@ -33,7 +104,15 @@ sudo apt-get install \
 <span class="x">  --disable-xvmc \</span>
 <span class="x">  --disable-omx</span>
 <span class="x">make -j4 &amp;&amp; make install</span>
-</pre></div><h2>Building Weston and dependencies</h2><p>Weston and Wayland have a number of dependencies that also need to be fetched and built.</p><h4>Wayland</h4><p>Weston is a Wayland compositor, so we're going to have to build Wayland.</p><div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/wayland</span>
+</pre></div>
+
+
+<h2>Building Weston and dependencies</h2>
+<p>Weston and Wayland have a number of dependencies that also need to be fetched
+and built.</p>
+<h4>Wayland</h4>
+<p>Weston is a Wayland compositor, so we're going to have to build Wayland.</p>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/wayland</span>
 <span class="x">cd wayland</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
 <span class="x">make -j4 &amp;&amp; make install</span>
@@ -44,19 +123,37 @@ sudo apt-get install \
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
 <span class="x">make install</span>
 <span class="x">cd ..</span>
-</pre></div><h4>libinput</h4><p>libinput is a dependency of Wesron, handles input devices like keyboards, touchpads and mice.</p><div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/libinput</span>
+</pre></div>
+
+
+<h4>libinput</h4>
+<p>libinput is a dependency of Wesron, handles input devices like keyboards, touchpads and mice.</p>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/libinput</span>
 <span class="x">cd libinput</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
 <span class="x">make -j4 &amp;&amp; make install</span>
 <span class="x">cd ..</span>
-</pre></div><h4>Weston</h4><p>Finally we've built all of the dependencies of Weston and can now build it.</p><div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/weston</span>
+</pre></div>
+
+
+<h4>Weston</h4>
+<p>Finally we've built all of the dependencies of Weston and can now build it.</p>
+<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/weston</span>
 <span class="x">cd weston</span>
 <span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
 <span class="x">  --disable-libunwind</span>
 <span class="x">make -j4 &amp;&amp;</span>
 <span class="x">sudo make install</span>
 <span class="x">cd ..</span>
-</pre></div><h2>Running Weston</h2><p>That wasn't so bad, it took a little while, but now we're ready to start Weston. Now, let's fire up a (virtual) terminal. Make sure that you're not running an X terminal, ssh terminal or serial terminal.</p><p>Running weston in this way depends on logind.</p><div class="highlight"><pre><span></span># Make sure that <span class="nv">$DISPLAY</span> is unset.
+</pre></div>
+
+
+<h2>Running Weston</h2>
+<p>That wasn't so bad, it took a little while, but now we're ready to start Weston.
+Now, let's fire up a (virtual) terminal. Make sure that you're not running an
+X terminal, ssh terminal or serial terminal.</p>
+<p>Running weston in this way depends on logind.</p>
+<div class="highlight"><pre><span></span># Make sure that <span class="nv">$DISPLAY</span> is unset.
 unset DISPLAY
 
 # And that <span class="nv">$XDG_RUNTIME_DIR</span> has been set and created.
@@ -70,4 +167,61 @@ fi
 
 # Run weston:
 weston
-</pre></div><h2>Try weston applications</h2><p>Now that we're running weston, let's try some applications. They're located in the top level directory of weston.</p><ul><li>weston-terminal</li><li>weston-flower</li><li>weston-gears</li><li>weston-smoke</li><li>weston-image</li><li>weston-view</li><li>weston-resizor</li><li>weston-eventdemo</li></ul><p>When you've started all of your favorite applications you can grab a screenshot by pressing <strong>Super + s</strong>, which will save wayland-screenshot.png in your home directory.</p></article><section id="teaser-section"><div id="teaser"><p>Tags: <a href="./tag/wayland.html">wayland </a><span id="breakdot">&middot; </span><a href="./tag/weston.html">weston </a><span id="breakdot">&middot; </span><a href="./tag/rpi.html">rpi </a><span id="breakdot">&middot; </span><a href="./tag/rpi2.html">rpi2 </a><span id="breakdot">&middot; </span><a href="./tag/kernel.html">kernel </a></p></div></section><footer><div id="footer"><p id="notices" class="smcp"><a href="/about.html">About</a><span id="breakdot">&middot;</span><a href="/index.html">Blog</a><span id="breakdot">&middot;</span><a href="/contact.html">Contact</a><span id="breakdot">&middot;</span><a href="https://github.com/robertfoss">GitHub</a><br><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a><span id="breakdot">&middot;</span> 2017 Robert Foss <span id="breakdot">&middot;</span><a href="https://github.com/robertfoss/memcpy.io">Source</a><br><a href="/"><img src="/logo.png"></a></p></div></footer></body></html>
+</pre></div>
+
+
+<h2>Try weston applications</h2>
+<p>Now that we're running weston, let's try some applications.
+They're located in the top level directory of weston.</p>
+<ul>
+<li>weston-terminal</li>
+<li>weston-flower</li>
+<li>weston-gears</li>
+<li>weston-smoke</li>
+<li>weston-image</li>
+<li>weston-view</li>
+<li>weston-resizor</li>
+<li>weston-eventdemo</li>
+</ul>
+<p>When you've started all of your favorite applications you can grab a screenshot 
+by pressing <strong>Super + s</strong>, which will save wayland-screenshot.png in your home
+directory.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/wayland.html">wayland </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/weston.html">weston </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/rpi.html">rpi </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/rpi2.html">rpi2 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/kernel.html">kernel </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,1 +1,90 @@
-@font-face{font-family:'Libre Baskerville';font-style:normal;font-weight:400;src:local('Libre Baskerville'),local('LibreBaskerville-Regular'),url(/theme/fonts/libre_baskerville_400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215}@font-face{font-family:'Libre Baskerville';font-style:normal;font-weight:700;src:local('Libre Baskerville Bold'),local('LibreBaskerville-Bold'),url(/theme/fonts/libre_baskerville_700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215}@font-face{font-family:Georgia;src:url(/theme/fonts/georgia.woff) format("woff")}@font-face{font-family:Inconsolata;src:url(/theme/fonts/m.woff2) format("woff2"),url(/theme/fonts/m.woff) format("woff")}@font-face{font-family:Calluna Sans;src:url(/theme/fonts/r.woff2) format("woff2"),url(/theme/fonts/r.woff) format("woff")}@font-face{font-family:Calluna Sans;font-weight:bold;src:url(/theme/fonts/b.woff2) format("woff2"),url(/theme/fonts/b.woff) format("woff")}@font-face{font-family:Calluna Sans;font-style:italic;src:url(/theme/fonts/i.woff2) format("woff2"),url(/theme/fonts/i.woff) format("woff")}@font-face{font-family:Calluna;src:url(/theme/fonts/sr.woff2) format("woff2"),url(/theme/fonts/sr.woff) format("woff")}@font-face{font-family:Calluna;font-weight:bold;src:url(/theme/fonts/sb.woff2) format("woff2"),url(/theme/fonts/sb.woff) format("woff")}@font-face{font-family:Calluna;font-style:italic;src:url(/theme/fonts/si.woff2) format("woff2"),url(/theme/fonts/si.woff) format("woff")}
+/* For monospace I use the font Inconsolata, designed by Raph Levien,
+ * released under the SIL Open Font License. It is available from
+ * http://levien.com/type/myfonts/inconsolata.html.
+ *
+ * For other text, I use the fonts Calluna and Calluna Sans, designed by Jos
+ * Buivenga, issued by Exljbris. The regular faces of these fonts are available
+ * free of charge. See http://www.exljbris.com/calluna.html.
+ *
+ * See the file fonts/readme.md in this repository for more details. */
+
+@font-face
+{
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Libre Baskerville'),
+       local('LibreBaskerville-Regular'),
+       url(/theme/fonts/libre_baskerville_400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face
+{
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Libre Baskerville Bold'),
+       local('LibreBaskerville-Bold'),
+       url(/theme/fonts/libre_baskerville_700.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face
+{
+  font-family: Georgia;
+  src: url(/theme/fonts/georgia.woff)  format("woff");
+}
+
+@font-face
+{
+  font-family: Inconsolata;
+  src: url(/theme/fonts/m.woff2) format("woff2"),
+       url(/theme/fonts/m.woff)  format("woff");
+}
+
+@font-face
+{
+  font-family: Calluna Sans;
+  src: url(/theme/fonts/r.woff2) format("woff2"),
+       url(/theme/fonts/r.woff)  format("woff");
+}
+
+@font-face
+{
+  font-family: Calluna Sans;
+  font-weight: bold;
+  src: url(/theme/fonts/b.woff2) format("woff2"),
+       url(/theme/fonts/b.woff)  format("woff");
+}
+
+@font-face
+{
+  font-family: Calluna Sans;
+  font-style: italic;
+  src: url(/theme/fonts/i.woff2) format("woff2"),
+       url(/theme/fonts/i.woff)  format("woff");
+}
+
+@font-face
+{
+  font-family: Calluna;
+  src: url(/theme/fonts/sr.woff2) format("woff2"),
+       url(/theme/fonts/sr.woff)  format("woff");
+}
+
+@font-face
+{
+  font-family: Calluna;
+  font-weight: bold;
+  src: url(/theme/fonts/sb.woff2) format("woff2"),
+       url(/theme/fonts/sb.woff)  format("woff");
+}
+
+@font-face
+{
+  font-family: Calluna;
+  font-style: italic;
+  src: url(/theme/fonts/si.woff2) format("woff2"),
+       url(/theme/fonts/si.woff)  format("woff");
+}

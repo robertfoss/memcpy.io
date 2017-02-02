@@ -1,1 +1,73 @@
-sub,sup,var{line-height:0}sub,sup{word-spacing:0;margin-left:.1em}sub{margin-left:-.1em}.sqrt{border-top:.08em solid #456;margin-left:-.04em;position:relative;top:.22em}.sqrt>span{padding-left:.14em;padding-right:.1em;position:relative;top:-.22em}.eqn{text-align:center;word-spacing:.35em}.frac{display:inline-block;vertical-align:middle}.numer{border-bottom:.08em solid #456;display:block;margin-top:-.18em;padding-bottom:.1em}.sep{margin-right:1em}
+/* Make sure that subscripts and superscripts do not disrupt the baseline. The
+ * fallback fonts for var elements can also disrupt the baseline, fix that.
+ * Because these elements are never on their own on a line, I can get away with
+ * setting the line height to 0. */
+sub, sup, var
+{
+  line-height: 0;
+}
+
+sub, sup
+{
+  word-spacing: 0;
+
+  /* Add a little space before superscripts, because the symbol that comes
+   * before it is usually in italics, so it needs a bit of correction. In some
+   * cases (especially for the number '2'), if the previous character is not
+   * italic, this actually makes things worse, but on average it improves the
+   * spacing. */
+  margin-left: 0.1em;
+}
+
+sub
+{
+  /* Subscripts after italics can move a bit to the left. All but one of the
+   * subscripts that are not after an italic happen to be after the
+   * double-struck F for my posts, so there there is room as well. The one case
+   * where the default margin is right is a trade off. */
+  margin-left: -0.1em;
+}
+
+.sqrt
+{
+  border-top: 0.08em solid #456;
+  margin-left: -0.04em;
+  position: relative;
+  top: 0.22em;
+}
+
+.sqrt > span
+{
+  padding-left: 0.14em;
+  padding-right: 0.1em;
+  position: relative;
+  top: -0.22em;
+}
+
+.eqn
+{
+  text-align: center;
+  word-spacing: 0.35em;
+}
+
+.frac
+{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.numer
+{
+  border-bottom: 0.08em solid #456;
+  display: block;
+
+  /* Add a bit of space between the line and the symbols, and compensate for
+   * the height of the border. */
+  margin-top: -0.18em;
+  padding-bottom: 0.1em;
+}
+
+.sep
+{
+  margin-right: 1em;
+}
