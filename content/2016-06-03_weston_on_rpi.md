@@ -104,7 +104,7 @@ Weston is a Wayland compositor, so we're going to have to build Wayland.
     cd ..
 
 #### libinput
-libinput is a dependency of Wesron, handles input devices like keyboards, touchpads and mice.
+libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.
 
     git clone git://anongit.freedesktop.org/wayland/libinput
     cd libinput
