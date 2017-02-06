@@ -1,1 +1,1 @@
-Sitemap: http://memcpy.io/sitemap.xml
+Sitemap: ./sitemap.xml
