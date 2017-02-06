@@ -105,6 +105,8 @@ cf_upload: publish
 
 github: publish
 	echo "memcpy.io" >> $(OUTPUTDIR)/CNAME
+	echo "Sitemap: http://memcpy.io/sitemap.xml"  >> $(OUTPUTDIR)/robots.txt
+	echo "google-site-verification: google6142e46ff3fe3da8.html" >> $(OUTPUTDIR)/google6142e46ff3fe3da8.html
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
