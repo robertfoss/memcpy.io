@@ -100,7 +100,7 @@ and built.&lt;/p&gt;
 
 
 &lt;h4&gt;libinput&lt;/h4&gt;
-&lt;p&gt;libinput is a dependency of Wesron, handles input devices like keyboards, touchpads and mice.&lt;/p&gt;
+&lt;p&gt;libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;git clone git://anongit.freedesktop.org/wayland/libinput&lt;/span&gt;
 &lt;span class="x"&gt;cd libinput&lt;/span&gt;
 &lt;span class="x"&gt;./autogen.sh --prefix=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;WLD&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
