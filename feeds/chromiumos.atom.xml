@@ -71,12 +71,17 @@ cros_sdk -- ./build_image --board=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Flash ChromiumOS&lt;/h2&gt;
+&lt;h2&gt;Flash ChromiumOS to storage medium&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cros_sdk -- cros flash --board=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; usb:/&lt;span class="nv"&gt;$USB_DEVICE&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Install ChromiumOS on Chromebook&lt;/h2&gt;
+&lt;h3&gt;Enter Chromebook into dev-mode&lt;/h3&gt;
+&lt;p&gt;This part is highly device specific, and depends on how the manufacturer of your device has chosen
+to implement the dev-mode switch.&lt;/p&gt;
+&lt;p&gt;A partial list of devices and how to enter them into dev-mode can be found &lt;a href="https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Flash ChromiumOS to Chromebook&lt;/h3&gt;
 &lt;p&gt;Fire up your Chrombook device and hit Ctrl+Alt+Back, followed by 'chronos' and hit enter.
 Followed by the below command to install the ChromiumOS build that was just flashed.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/usr/sbin/chromeos-install
@@ -117,7 +122,7 @@ sudo gdbserver :1234 chrome
 &lt;h2&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;ChromiumOS Depo Tools&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://www.chromium.org/chromium-os/quick-start-guide"&gt;ChromiumOS Quick Start&lt;/a&gt;&lt;br&gt;
-&lt;a href="https://www.chromium.org/chromium-os/chromiumos-design-docs/developer-mode"&gt;ChromiumOS Dev Mode&lt;/a&gt;&lt;br&gt;
+&lt;a href="https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices"&gt;ChromiumOS Dev Mode&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/debugging-tips"&gt;ChromiumOS Debug&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="chromiumos"></category><category term="chromebook"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
