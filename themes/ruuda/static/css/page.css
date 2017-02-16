@@ -405,7 +405,6 @@ footer
   background-color: #234; /* TODO: pick unified colour scheme. */
   color: #b4aaaa;
   font-family: Calluna Sans, sans-serif;
-  text-transform: lowercase;
   font-size: 1.0em;
 }
 
@@ -421,6 +420,11 @@ footer
 {
   width: 6em;
   margin-top: 1.6em;
+}
+
+#notices a
+{
+  text-transform: lowercase;
 }
 
 footer span
