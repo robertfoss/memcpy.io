@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Set up environment export DEV_DIR=&#34;/opt&#34; mkdir -p $DEV_DIR export CHROMIUM_DIR=&#34;$DEV_DIR/chromiumos&#34; mkdir -p $CHROMIUM_DIR export PATH=&#34;$DEV_DIR/depot_tools:$PATH&#34; # The BOARD variable used here is specific for the Chromebook that is # being targeted, a more generic target like &#34;amd64-generic&#34; could # be more useful for you needs export BOARD=chell # The USB_DEVICE variable refers to the USB device that will be used # for flashing ChromiumOS onto a Chromebook. # Make sure that this device does not contain anything important export USB_DEVICE=&#34;/dev/sda&#34; Install dependencies sudo apt install git-core gitk git-gui subversion curl cd $DEV_DIR git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git Get ChromiumOS source cd ${CHROMIUM_DIR} repo init -u https://chromium.googlesource.com/chromiumos/manifest.git repo sync -j25 Build ChromiumOS …">
+		<meta name="description" content="Set up environment export DEV_DIR=&#34;/opt&#34; mkdir -p $DEV_DIR export CHROMIUM_DIR=&#34;$DEV_DIR/chromiumos&#34; mkdir -p $CHROMIUM_DIR export PATH=&#34;$DEV_DIR/depot_tools:$PATH&#34; # The BOARD variable used here is specific for the Chromebook that is # being targeted, a more generic target like &#34;amd64-generic&#34; could # be more useful for you needs. export BOARD=chell # The USB_DEVICE variable refers to the USB device that will be used # for flashing ChromiumOS onto a Chromebook. # Make sure that this device does not contain anything important! export USB_DEVICE=&#34;/dev/sda&#34; Install dependencies sudo apt install git-core gitk git-gui subversion curl cd $DEV_DIR git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git Get ChromiumOS source cd ${CHROMIUM_DIR} repo init -u https://chromium.googlesource.com/chromiumos/manifest.git repo sync -j25 Build ChromiumOS …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, chromiumos, chromebook, collabora">
 	</head>
@@ -34,12 +34,12 @@
 
 <span class="err">#</span><span class="x"> The BOARD variable used here is specific for the Chromebook that is</span>
 <span class="err">#</span><span class="x"> being targeted, a more generic target like &quot;amd64-generic&quot; could</span>
-<span class="err">#</span><span class="x"> be more useful for you needs</span>
+<span class="err">#</span><span class="x"> be more useful for you needs.</span>
 <span class="x">export BOARD=chell</span>
 
 <span class="err">#</span><span class="x"> The USB_DEVICE variable refers to the USB device that will be used</span>
 <span class="err">#</span><span class="x"> for flashing ChromiumOS onto a Chromebook.</span>
-<span class="err">#</span><span class="x"> Make sure that this device does not contain anything important</span>
+<span class="err">#</span><span class="x"> Make sure that this device does not contain anything important!</span>
 <span class="x">export USB_DEVICE=&quot;/dev/sda&quot;</span>
 </pre></div>
 
@@ -70,13 +70,19 @@ cros_sdk -- ./build_image --board=<span class="cp">${</span><span class="n">BOAR
 
 
 <h2>Install ChromiumOS on Chromebook</h2>
-<p>Hit Ctrl+Alt+Back, followed by 'chronos' run the below command to install.
-    /usr/sbin/chromeos-install</p>
+<p>Fire up your Chrombook device and hit Ctrl+Alt+Back, followed by 'chronos' and hit enter.
+Followed by the below command to install the ChromiumOS build that was just flashed.</p>
+<div class="highlight"><pre><span></span>/usr/sbin/chromeos-install
+</pre></div>
+
+
 <h2>Conclusion</h2>
 <p>This is a bit of a rough outline, and is only suitable for devices Chromebook devices that already are in dev-mode.</p>
-<h2>References</h2>
-<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
 <h2>Thanks</h2>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+<h2>References</h2>
+<p><a href="http://dev.chromium.org/developers/how-tos/install-depot-tools">ChromiumOS Depo Tools</a><br>
+<a href="https://www.chromium.org/chromium-os/quick-start-guide">ChromiumOS Quick Start</a></p>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">

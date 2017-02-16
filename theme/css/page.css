@@ -413,6 +413,8 @@ footer
 {
   clear: both;
   text-align: center;
+  font-family: 'Libre Baskerville', sans-serif;
+  font-size: 0.8em;
 }
 
 #notices img
