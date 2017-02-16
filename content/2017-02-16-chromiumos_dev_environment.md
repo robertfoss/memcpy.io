@@ -40,11 +40,18 @@ Description: How to get up and running, developing ChromiumOS on actual Chromebo
     cros_sdk -- ./build_image --board=${BOARD}
 
 
-## Flash ChromiumOS
+## Flash ChromiumOS to storage medium
     cros_sdk -- cros flash --board=${BOARD} usb:/$USB_DEVICE
 
 
 ## Install ChromiumOS on Chromebook
+### Enter Chromebook into dev-mode
+This part is highly device specific, and depends on how the manufacturer of your device has chosen
+to implement the dev-mode switch.
+
+A partial list of devices and how to enter them into dev-mode can be found [here](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices).
+
+### Flash ChromiumOS to Chromebook
 Fire up your Chrombook device and hit Ctrl+Alt+Back, followed by 'chronos' and hit enter.
 Followed by the below command to install the ChromiumOS build that was just flashed.
 
@@ -87,5 +94,5 @@ This post has been a part of work undertaken by my employer [Collabora](http://w
 ## References
 [ChromiumOS Depo Tools](http://dev.chromium.org/developers/how-tos/install-depot-tools)<br>
 [ChromiumOS Quick Start](https://www.chromium.org/chromium-os/quick-start-guide)<br>
-[ChromiumOS Dev Mode](https://www.chromium.org/chromium-os/chromiumos-design-docs/developer-mode)<br>
+[ChromiumOS Dev Mode](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices)<br>
 [ChromiumOS Debug](https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/debugging-tips)
