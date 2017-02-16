@@ -116,7 +116,7 @@ sudo gdbserver :1234 chrome
 
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;This is a bit of a rough outline, and is only suitable for devices Chromebook devices that already are in dev-mode.&lt;/p&gt;
+&lt;p&gt;This is a bit of a rough outline, and is only suitable for Chromebook devices that already are in dev-mode.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;References&lt;/h2&gt;
