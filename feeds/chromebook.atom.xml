@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - chromiumos</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/chromiumos.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-02-16T10:31:00+01:00</updated><entry><title>Setting up a ChromiumOS dev environment</title><link href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html" rel="alternate"></link><published>2017-02-16T10:31:00+01:00</published><updated>2017-02-16T10:31:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</id><summary type="html">&lt;h2&gt;Set up environment&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - chromebook</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/chromebook.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-02-16T10:31:00+01:00</updated><entry><title>Setting up a ChromiumOS dev environment</title><link href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html" rel="alternate"></link><published>2017-02-16T10:31:00+01:00</published><updated>2017-02-16T10:31:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</id><summary type="html">&lt;h2&gt;Set up environment&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;export DEV_DIR=&amp;quot;/opt&amp;quot;&lt;/span&gt;
 &lt;span class="x"&gt;mkdir -p &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;span class="x"&gt;export CHROMIUM_DIR=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;/chromiumos&amp;quot;&lt;/span&gt;
@@ -118,40 +118,4 @@ sudo gdbserver :1234 chrome
 &lt;p&gt;&lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;ChromiumOS Depo Tools&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://www.chromium.org/chromium-os/quick-start-guide"&gt;ChromiumOS Quick Start&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://www.chromium.org/chromium-os/chromiumos-design-docs/developer-mode"&gt;ChromiumOS Dev Mode&lt;/a&gt;&lt;br&gt;
-&lt;a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/debugging-tips"&gt;ChromiumOS Debug&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="chromiumos"></category><category term="chromebook"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
-&lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
-was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
-&lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
-and can be found &lt;a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;That script does however not run standalone and requires a remote device
-(chromebook) to execute on. So I took the liberty of changing it to support
-local testing. The modified version can be found &lt;a href="files/2016-08-25/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This might come in handy for someone, if not, the script will at least be
-archived on this site.&lt;/p&gt;
-&lt;h2&gt;Example&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
-$ ip link
-1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
-&lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
-was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
-&lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
-and can be found &lt;a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;That script does however not run standalone and requires a remote device
-(chromebook) to execute on. So I took the liberty of changing it to support
-local testing. The modified version can be found &lt;a href="files/2016-08-25/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This might come in handy for someone, if not, the script will at least be
-archived on this site.&lt;/p&gt;
-&lt;h2&gt;Example&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
-$ ip link
-1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: wlp2s0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;1500&lt;/span&gt; qdisc pfifo_fast state UP mode DORMANT group default qlen 1000
-    link/ether 48:e2:44:f6:e8:5b brd ff:ff:ff:ff:ff:ff
-27: enx000ec689ab9e: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu &lt;span class="m"&gt;1500&lt;/span&gt; qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 1000
-    link/ether 00:0e:c6:89:ab:9e brd ff:ff:ff:ff:ff:ff
-$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;INTERFACE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;enx000ec689ab9e
-$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;NUM_ITERATIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10
-$ sudo python network_EthernetStressPlug.py &lt;span class="nv"&gt;$INTERFACE&lt;/span&gt; &lt;span class="nv"&gt;$NUM_ITERATIONS&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry></feed>
+&lt;a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/debugging-tips"&gt;ChromiumOS Debug&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="chromiumos"></category><category term="chromebook"></category><category term="collabora"></category></entry></feed>
