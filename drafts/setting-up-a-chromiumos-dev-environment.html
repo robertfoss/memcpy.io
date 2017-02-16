@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Setting up a ChromiumOS dev environment</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="Set up environment export DEV_DIR=&#34;/opt&#34; mkdir -p $DEV_DIR export CHROMIUM_DIR=&#34;$DEV_DIR/chromiumos&#34; mkdir -p $CHROMIUM_DIR export PATH=&#34;$DEV_DIR/depot_tools:$PATH&#34; # The BOARD variable used here is specific for the Chromebook that is # being targeted, a more generic target like &#34;amd64-generic&#34; could # be more useful for you needs export BOARD=chell # The USB_DEVICE variable refers to the USB device that will be used # for flashing ChromiumOS onto a Chromebook. # Make sure that this device does not contain anything important export USB_DEVICE=&#34;/dev/sda&#34; Install dependencies sudo apt install git-core gitk git-gui subversion curl cd $DEV_DIR git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git Get ChromiumOS source cd ${CHROMIUM_DIR} repo init -u https://chromium.googlesource.com/chromiumos/manifest.git repo sync -j25 Build ChromiumOS …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, chromiumos, chromebook, collabora">
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Setting up a ChromiumOS dev environment</h1>
+				<p>
+				  written by <a href="/" class="author">Robert Foss</a><br>
+				  published <time datetime="2017-02-16" itemprop="datePublished">2017-02-16</time>
+				</p>
+			</header>
+			<p>How to get up and running, developing ChromiumOS on actual Chromebook hardware.</p>
+			<h2>Set up environment</h2>
+<div class="highlight"><pre><span></span><span class="x">export DEV_DIR=&quot;/opt&quot;</span>
+<span class="x">mkdir -p </span><span class="p">$</span><span class="nv">DEV_DIR</span><span class="x"></span>
+<span class="x">export CHROMIUM_DIR=&quot;</span><span class="p">$</span><span class="nv">DEV_DIR</span><span class="x">/chromiumos&quot;</span>
+<span class="x">mkdir -p </span><span class="p">$</span><span class="nv">CHROMIUM_DIR</span><span class="x"></span>
+<span class="x">export PATH=&quot;</span><span class="p">$</span><span class="nv">DEV_DIR</span><span class="x">/depot_tools:</span><span class="p">$</span><span class="nv">PATH</span><span class="x">&quot;</span>
+
+<span class="err">#</span><span class="x"> The BOARD variable used here is specific for the Chromebook that is</span>
+<span class="err">#</span><span class="x"> being targeted, a more generic target like &quot;amd64-generic&quot; could</span>
+<span class="err">#</span><span class="x"> be more useful for you needs</span>
+<span class="x">export BOARD=chell</span>
+
+<span class="err">#</span><span class="x"> The USB_DEVICE variable refers to the USB device that will be used</span>
+<span class="err">#</span><span class="x"> for flashing ChromiumOS onto a Chromebook.</span>
+<span class="err">#</span><span class="x"> Make sure that this device does not contain anything important</span>
+<span class="x">export USB_DEVICE=&quot;/dev/sda&quot;</span>
+</pre></div>
+
+
+<h2>Install dependencies</h2>
+<div class="highlight"><pre><span></span><span class="x">sudo apt install git-core gitk git-gui subversion curl</span>
+<span class="x">cd </span><span class="p">$</span><span class="nv">DEV_DIR</span><span class="x"></span>
+<span class="x">git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git</span>
+</pre></div>
+
+
+<h2>Get ChromiumOS source</h2>
+<div class="highlight"><pre><span></span>cd <span class="cp">${</span><span class="n">CHROMIUM_DIR</span><span class="cp">}</span>
+repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
+repo sync -j25
+</pre></div>
+
+
+<h2>Build ChromiumOS</h2>
+<div class="highlight"><pre><span></span>cros_sdk -- ./build_packages --board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>
+cros_sdk -- ./build_image --board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>
+</pre></div>
+
+
+<h2>Flash ChromiumOS</h2>
+<div class="highlight"><pre><span></span>cros_sdk -- cros flash --board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span> usb:/<span class="nv">$USB_DEVICE</span>
+</pre></div>
+
+
+<h2>Install ChromiumOS on Chromebook</h2>
+<p>Hit Ctrl+Alt+Back, followed by 'chronos' run the below command to install.
+    /usr/sbin/chromeos-install</p>
+<h2>Conclusion</h2>
+<p>This is a bit of a rough outline, and is only suitable for devices Chromebook devices that already are in dev-mode.</p>
+<h2>References</h2>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+<h2>Thanks</h2>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="../tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/chromiumos.html">chromiumos </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/chromebook.html">chromebook </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
