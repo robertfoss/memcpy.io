@@ -76,6 +76,32 @@ Followed by the below command to install the ChromiumOS build that was just flas
 </pre></div>
 
 
+<h2>Debug an application</h2>
+<h3>On Chromebook</h3>
+<p>Again fire up your Chrombook device and hit Ctrl+Alt+Back, followed by 'chronos' and hit enter.</p>
+<div class="highlight"><pre><span></span># Remount the root drive read / write
+sudo mount -o remount,rw /
+
+# Open port so that gdbserver can be reached
+sudo /sbin/iptables -A INPUT  -p tcp --dport 1234 -j ACCEPT
+
+# Run gdb server, listening on port 1234 (opened in iptables command above)
+sudo gdbserver :1234 /tmp/chrome/src/BOARD-NAME_out/Debug/chrome
+</pre></div>
+
+
+<h3>On dev machine</h3>
+<div class="highlight"><pre><span></span><span class="err">#</span><span class="x"> On x86</span>
+<span class="x">cros_sdk -- sudo USE=expat emerge cross-i686-pc-linux-gnu/gdb</span>
+<span class="err">#</span><span class="x"> On ARMv7</span>
+<span class="x">cros_sdk -- sudo USE=expat emerge cross-armv7a-cros-linux-gnueabi/gdb</span>
+
+<span class="x">cros_sdk -- i686-pc-linux-gnu-gdb &quot;/build/</span><span class="p">$</span><span class="nv">BOARD</span><span class="x">/opt/google/chrome/chrome&quot;</span>
+<span class="x">(gdb) set sysroot /build/</span><span class="p">$</span><span class="nv">BOARD</span><span class="x">/</span>
+<span class="x">(gdb) target remote IP_ADDR_CHROMEBOOK:1234</span>
+</pre></div>
+
+
 <h2>Conclusion</h2>
 <p>This is a bit of a rough outline, and is only suitable for devices Chromebook devices that already are in dev-mode.</p>
 <h2>Thanks</h2>
