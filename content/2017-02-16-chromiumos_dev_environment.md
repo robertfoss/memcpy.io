@@ -2,7 +2,7 @@ Title: Setting up a ChromiumOS dev environment
 Date: 2017-02-16 10:31
 Category: chromiumos
 Tags: linux, chromiumos, chromebook, collabora
-Description: How to get up and running, developing ChromiumOS on actual Chromebook hardware.
+Description: Setting up a fully functional ChromiumOS development environment on actual Chromebook hardware
 
 
 ## Set up environment
