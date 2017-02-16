@@ -84,7 +84,7 @@ Again fire up your Chrombook device and hit Ctrl+Alt+Back, followed by 'chronos'
 
 
 ## Conclusion
-This is a bit of a rough outline, and is only suitable for devices Chromebook devices that already are in dev-mode.
+This is a bit of a rough outline, and is only suitable for Chromebook devices that already are in dev-mode.
 
 
 ## Thanks
