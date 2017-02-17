@@ -606,7 +606,7 @@ footer span
 {
   /* On narrow screens, remove the dot in the footer and make it behave like
    * a line break instead. */
-  #breakdot
+  #footer #breakdot
   {
     display: block;
     height: 0;
