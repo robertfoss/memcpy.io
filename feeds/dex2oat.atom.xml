@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-02-22T16:55:00+01:00</updated><entry><title>Precompiling APK files during Android AOSP build</title><link href="http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - dex2oat</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/dex2oat.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-02-22T16:55:00+01:00</updated><entry><title>Precompiling APK files during Android AOSP build</title><link href="http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
 
 find . -name BoardConfig.mk
@@ -78,24 +78,4 @@ make all
 
 
 &lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="apk"></category><category term="dex2oat"></category><category term="android"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="http://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><summary type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
-bash
-source build/envsetup.sh &amp;amp;&amp;amp; \
-lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
-mmm system/core/libsync/tests &amp;amp;&amp;amp; \
-adb root &amp;amp;&amp;amp; \
-adb remount &amp;amp;&amp;amp; \
-adb sync &amp;amp;&amp;amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
-bash
-source build/envsetup.sh &amp;amp;&amp;amp; \
-lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
-mmm system/core/libsync/tests &amp;amp;&amp;amp; \
-adb root &amp;amp;&amp;amp; \
-adb remount &amp;amp;&amp;amp; \
-adb sync &amp;amp;&amp;amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry></feed>
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="apk"></category><category term="dex2oat"></category><category term="android"></category><category term="collabora"></category></entry></feed>

@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - android</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 07 Dec 2016 20:23:00 +0100</lastBuildDate><item><title>Running an Android Unit Test</title><link>http://memcpy.io/running-an-android-unit-test.html</link><description>&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - android</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 22 Feb 2017 16:55:00 +0100</lastBuildDate><item><title>Precompiling APK files during Android AOSP build</title><link>http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html</link><description>&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
+
+find . -name BoardConfig.mk
+./device/huawei/angler/BoardConfig.mk
+./device/generic/mini-emulator-x86/BoardConfig.mk
+./device/generic/arm64/BoardConfig.mk
+./device/generic/mini-emulator-x86_64/BoardConfig.mk
+./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk
+./device/generic/mips/BoardConfig.mk
+./device/generic/mips64/BoardConfig.mk
+./device/generic/x86_64/BoardConfig.mk
+./device/generic/mini-emulator-arm64/BoardConfig.mk
+./device/generic/mini-emulator-mips/BoardConfig.mk
+./device/generic/x86/BoardConfig.mk
+./device/generic/armv7-a-neon/BoardConfig.mk
+./device/generic/mini-emulator-mips64/BoardConfig.mk
+./device/lge/bullhead/BoardConfig.mk
+./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk
+./device/linaro/generic/linaro_arm64/BoardConfig.mk
+./device/linaro/generic/linaro_arm64_only/BoardConfig.mk
+./device/linaro/generic/linaro_x86_64/BoardConfig.mk
+./device/linaro/generic/BoardConfig.mk
+./device/linaro/generic/linaro_arm/BoardConfig.mk
+./device/linaro/hikey/hikey/BoardConfig.mk
+
+# Edit the BoardConfig.mk that …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 22 Feb 2017 16:55:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</guid><category>aosp</category><category>apk</category><category>dex2oat</category><category>android</category><category>collabora</category></item><item><title>Running an Android Unit Test</title><link>http://memcpy.io/running-an-android-unit-test.html</link><description>&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
 bash
 source build/envsetup.sh &amp;amp;&amp;amp; \
