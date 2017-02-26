@@ -4,8 +4,7 @@
 			<header>
 				<h1>{{ article.title }}</h1>
 				<p>
-				  written by <a href="/" class="author">Robert Foss</a><br>
-				  published <time datetime="{{ article.date.strftime("%Y-%m-%d") }}" itemprop="datePublished">{{ article.date.strftime("%Y-%m-%d") }}</time>
+				Published <time datetime="{{ article.date.strftime("%Y-%m-%d") }}" itemprop="datePublished">{{ article.date.strftime("%Y-%m-%d") }}</time>
 				</p>
 			</header>
 			<p>{{ article.description }}</p>
