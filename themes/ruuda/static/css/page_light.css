@@ -214,7 +214,8 @@ ul, ol
   counter-reset: ol;
   list-style: none;
   margin-bottom: 1em;
-  padding-top: 0.4em;
+  margin-top: -0.75em;
+  list-style: inside;
 }
 
 li
