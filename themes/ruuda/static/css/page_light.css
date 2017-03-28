@@ -315,7 +315,7 @@ div.highlight pre
 
 img
 {
-  width: 100%;
+  max-width: 100%;
   height: auto;
 
   /* To align images the same as code blocks, they need to be 0.2em below the
@@ -329,6 +329,9 @@ img
   margin-top: -0.2em;
   margin-bottom: -0.6em;
   border-radius: 0.25em;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
 }
 
 video
