@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-02-22T16:55:00+01:00</updated><entry><title>Precompiling APK files during Android AOSP build</title><link href="http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-03-28T15:18:00+02:00</updated><entry><title>Android: Enabling mainline graphics</title><link href="http://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;&lt;a href="images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The traditional Android graphics stack is built ontop of the proprietary drivers of a
+GPU vendor, that expose the &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt;
+(Hardware Composer) API. SurfaceFlinger then talks to
+the hardware through the HWC API.&lt;/p&gt;
+&lt;p&gt;Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways from the previous version, for example it supports explicit fencing and using the GPU
+as a fallback when compositioning of layers.&lt;/p&gt;
+&lt;p&gt;Gustavo Padovans work on 
+&lt;a href="http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/"&gt;adding fence support&lt;/a&gt;
+to the kernel and the other components of the mainline graphics stack was successfully
+upstreamed in &lt;a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/"&gt;v4.10&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Recent work on drm_hwcomposer has added HWC2 support and support for explicit fencing.
+And with it we are now able to boot Android on the db410c …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The traditional Android graphics stack is built ontop of the proprietary drivers of a
+GPU vendor, that expose the &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt;
+(Hardware Composer) API. SurfaceFlinger then talks to
+the hardware through the HWC API.&lt;/p&gt;
+&lt;p&gt;Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways from the previous version, for example it supports explicit fencing and using the GPU
+as a fallback when compositioning of layers.&lt;/p&gt;
+&lt;p&gt;Gustavo Padovans work on 
+&lt;a href="http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/"&gt;adding fence support&lt;/a&gt;
+to the kernel and the other components of the mainline graphics stack was successfully
+upstreamed in &lt;a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/"&gt;v4.10&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Recent work on drm_hwcomposer has added HWC2 support and support for explicit fencing.
+And with it we are now able to boot Android on the db410c running the freedreno driver.
+But in theory it should work on any mainline kernel graphics stack enabled GPU.&lt;/p&gt;
+&lt;p&gt;Currently the work is being upstreamed to the
+&lt;a href="https://chromium.googlesource.com/chromiumos/drm_hwcomposer/"&gt;ChromiumOS repo&lt;/a&gt;
+which is the official upstream.&lt;/p&gt;
+&lt;p&gt;A number of projects have seen contributions to in order to enable this work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;kernel - sync_file, in-fence and out-fence support added. &lt;/li&gt;
+&lt;li&gt;libdrm - fence support added.&lt;/li&gt;
+&lt;li&gt;mesa - support for passing fences added.&lt;/li&gt;
+&lt;li&gt;intel-gpu-tools - sync and fence tests added.&lt;/li&gt;
+&lt;li&gt;drm_hwcomposer - HWC2 and fences support added.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="HWC2"></category><category term="collabora"></category></entry><entry><title>Precompiling APK files during Android AOSP build</title><link href="http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
 
 find . -name BoardConfig.mk

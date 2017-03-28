@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Android: Enabling mainline graphics</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="The traditional Android graphics stack is built ontop of the proprietary drivers of a GPU vendor, that expose the HWC (Hardware Composer) API. SurfaceFlinger then talks to the hardware through the HWC API. Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few ways from the previous version, for example it supports explicit fencing and using the GPU as a fallback when compositioning of layers. Gustavo Padovans work on adding fence support to the kernel and the other components of the mainline graphics stack was successfully upstreamed in v4.10. Recent work on drm_hwcomposer has added HWC2 support and support for explicit fencing. And with it we are now able to boot Android on the db410c …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, graphics, drm, drm_hwcomposer, hwcomposer, HWC2, collabora">
+		<meta property="og:title" content="Android: Enabling mainline graphics" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="http://memcpy.io/images/2017-03-28_android_graphics_stack.png" />
+		<meta property="og:url" content="http://memcpy.io/android-enabling-mainline-graphics.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2017-03-28" />
+		<meta property="article:section" content="aosp" />
+		<meta property="article:tag" content="android" />
+		<meta property="article:tag" content="aosp" />
+		<meta property="article:tag" content="graphics" />
+		<meta property="article:tag" content="drm" />
+		<meta property="article:tag" content="drm_hwcomposer" />
+		<meta property="article:tag" content="hwcomposer" />
+		<meta property="article:tag" content="HWC2" />
+		<meta property="article:tag" content="collabora" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Android: Enabling mainline graphics</h1>
+				<p>
+				Published <time datetime="2017-03-28" itemprop="datePublished">2017-03-28</time>
+				</p>
+			</header>
+			<p>Android uses the HWC API to communicate with graphics hardware. This API is not supported on the mainline Linux graphics stack, but by using drm_hwcomposer as a shim it now is.</p>
+			<p><a href="images/2017-03-28_android_graphics_stack.png"><img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"></a></p>
+<p>The traditional Android graphics stack is built ontop of the proprietary drivers of a
+GPU vendor, that expose the <a href="https://source.android.com/devices/graphics/implement-hwc.html">HWC</a>
+(Hardware Composer) API. SurfaceFlinger then talks to
+the hardware through the HWC API.</p>
+<p>Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways from the previous version, for example it supports explicit fencing and using the GPU
+as a fallback when compositioning of layers.</p>
+<p>Gustavo Padovans work on 
+<a href="http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/">adding fence support</a>
+to the kernel and the other components of the mainline graphics stack was successfully
+upstreamed in <a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/">v4.10</a>.</p>
+<p>Recent work on drm_hwcomposer has added HWC2 support and support for explicit fencing.
+And with it we are now able to boot Android on the db410c running the freedreno driver.
+But in theory it should work on any mainline kernel graphics stack enabled GPU.</p>
+<p>Currently the work is being upstreamed to the
+<a href="https://chromium.googlesource.com/chromiumos/drm_hwcomposer/">ChromiumOS repo</a>
+which is the official upstream.</p>
+<p>A number of projects have seen contributions to in order to enable this work:</p>
+<ul>
+<li>kernel - sync_file, in-fence and out-fence support added. </li>
+<li>libdrm - fence support added.</li>
+<li>mesa - support for passing fences added.</li>
+<li>intel-gpu-tools - sync and fence tests added.</li>
+<li>drm_hwcomposer - HWC2 and fences support added.</li>
+</ul>
+<h2>Thanks</h2>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/android.html">android </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/aosp.html">aosp </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/graphics.html">graphics </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/drm.html">drm </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/drm_hwcomposer.html">drm_hwcomposer </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/hwcomposer.html">hwcomposer </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/hwc2.html">HWC2 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
