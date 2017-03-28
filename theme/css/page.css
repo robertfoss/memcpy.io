@@ -229,19 +229,19 @@ li
   margin-left: 1em;
 }
 
-li:before
+:not(article) > li:before
 {
   display: inline-block;
   margin-left: -1em;
   width: 1em;
 }
 
-ul > li:before
+:not(article) > ul > li:before
 {
   content: '•';
 }
 
-ol > li:before
+:not(article) > ol > li:before
 {
   content: counter(ol, decimal);
   counter-increment: ol;
