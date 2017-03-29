@@ -48,7 +48,7 @@ which is the official upstream for drm_hwcomposer.&lt;/p&gt;
 &lt;li&gt;drm_hwcomposer - HWC2 and fence support added.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This drm_hwcomposer work is part of long-standing collaboration between
+&lt;p&gt;This drm_hwcomposer work is part of a long-standing collaboration between
 Google's ChromeOS team and Collabora.&lt;/p&gt;
 &lt;p&gt;A number of people have played an important role in this work:
 Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.&lt;/p&gt;
