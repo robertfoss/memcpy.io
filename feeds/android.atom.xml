@@ -39,7 +39,7 @@ But in theory it should work on any mainline kernel graphics stack enabled GPU.&
 &lt;p&gt;Currently the work is being upstreamed to the
 &lt;a href="https://chromium.googlesource.com/chromiumos/drm_hwcomposer/"&gt;ChromiumOS repo&lt;/a&gt;
 which is the official upstream for drm_hwcomposer.&lt;/p&gt;
-&lt;p&gt;A number of projects have seen contributions to in order to enable this work:&lt;/p&gt;
+&lt;p&gt;A number of projects have seen contributions in order to enable this work:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;kernel - sync_file, in-fence and out-fence support added.&lt;/li&gt;
 &lt;li&gt;libdrm - fence support added.&lt;/li&gt;
