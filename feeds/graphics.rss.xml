@@ -6,12 +6,13 @@ that would normally be done with OpenGL.
 SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
 and sends them to the display.&lt;/p&gt;
 &lt;p&gt;&lt;a href="images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The above graphic depicts the traditional Android graphics stack is built ontop of the
-proprietary drivers of a GPU vendor, that expose the HWC API which SurfaceFlinger uses
-to talk to the hardware.&lt;/p&gt;
+&lt;p&gt;The above graphic depicts the traditional Android graphics stack.&lt;/p&gt;
 &lt;p&gt;This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
 doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
-graphics stack through mesa and libdrm. Before this work drm_hwcomposer only …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Mar 2017 15:18:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</guid><category>android</category><category>aosp</category><category>graphics</category><category>drm</category><category>drm_hwcomposer</category><category>hwcomposer</category><category>hwc2</category><category>collabora</category></item><item><title>XDC 2016</title><link>http://memcpy.io/xdc-2016.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the
+HWC1 API.
+Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Mar 2017 15:18:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</guid><category>android</category><category>aosp</category><category>graphics</category><category>drm</category><category>drm_hwcomposer</category><category>hwcomposer</category><category>hwc2</category><category>collabora</category></item><item><title>XDC 2016</title><link>http://memcpy.io/xdc-2016.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
