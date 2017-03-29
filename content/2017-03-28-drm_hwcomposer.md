@@ -38,7 +38,7 @@ Currently the work is being upstreamed to the
 [ChromiumOS repo](https://chromium.googlesource.com/chromiumos/drm_hwcomposer/)
 which is the official upstream for drm_hwcomposer.
 
-A number of projects have seen contributions to in order to enable this work:
+A number of projects have seen contributions in order to enable this work:
 
   * kernel - sync_file, in-fence and out-fence support added.
   * libdrm - fence support added.
