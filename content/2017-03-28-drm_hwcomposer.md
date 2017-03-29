@@ -47,7 +47,7 @@ A number of projects have seen contributions 8in order to enable this work:
   * drm_hwcomposer - HWC2 and fence support added.
 
 ## Thanks
-This drm_hwcomposer work is part of long-standing collaboration between
+This drm_hwcomposer work is part of a long-standing collaboration between
 Google's ChromeOS team and Collabora.
 
 A number of people have played an important role in this work:
