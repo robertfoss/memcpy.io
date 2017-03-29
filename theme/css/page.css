@@ -372,8 +372,8 @@ blockquote
 /* Light pages do not have a teaser or footer, no need to include the css. */
 #teaser-section
 {
-  background-color: #c35;
-  color: #f5b2c8;
+  background-color: #142e4acc;
+  color: #888;
 }
 
 #teaser p:first-child {
@@ -435,6 +435,16 @@ footer span
 {
   margin-left: 0.25em;
   margin-right: 0.25em;
+}
+
+footer a
+{
+  color: #FFF
+}
+
+footer p
+{
+  color: #888
 }
 
 .archive p > a
