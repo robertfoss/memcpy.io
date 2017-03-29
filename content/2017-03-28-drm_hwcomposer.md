@@ -13,9 +13,7 @@ and sends them to the display.
 
 [![Alt text](images/2017-03-28_android_graphics_stack.png "Android Graphics Stack")](images/2017-03-28_android_graphics_stack.png)
 
-The above graphic depicts the traditional Android graphics stack is built ontop of the
-proprietary drivers of a GPU vendor, that expose the HWC API which SurfaceFlinger uses
-to talk to the hardware.
+The above graphic depicts the traditional Android graphics stack.
 
 This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
 doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
@@ -26,11 +24,11 @@ ways from the previous version, for example the semantics of fence support were 
 the GPU can now be used as a fallback when compositing layers.
 
 Up until recently the mainline kernel lacked the fence primitive offered by Android
-used in HWC1 and HWC2. But after Gustavo Padovans work on 
+used in HWC1 and HWC2. But after my fellow Collaboran Gustavo Padovan's work on
 [adding fence support](http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/)
 to the mainline kernel was upstreamed in
 [v4.10](http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/),
- the mainline kernel now has fence support equivalent to that of Android.
+the mainline kernel now has fence support equivalent to that of Android.
 
 The new fence support enabled work on drm_hwcomposer to add HWC2 support.
 And with it we are now able to boot Android on the db410c running the freedreno driver.
@@ -49,4 +47,7 @@ A number of projects have seen contributions to in order to enable this work:
   * drm_hwcomposer - HWC2 and fence support added.
 
 ## Thanks
+This drm_hwcomposer work is part of long-standing collaboration between
+Google's ChromeOS team and Collabora.
+
 This post has been a part of work undertaken by my employer [Collabora](http://www.collabora.com).
