@@ -1,7 +1,7 @@
 Title: Android: Enabling mainline graphics
 Date: 2017-03-28 15:18
 Category: aosp
-Tags: android, aosp, graphics, drm, drm_hwcomposer, hwcomposer, HWC2, collabora
+Tags: android, aosp, graphics, drm, drm_hwcomposer, hwcomposer, hwc2, collabora
 Description: Android uses the HWC API to communicate with graphics hardware. This API is not supported on the mainline Linux graphics stack, but by using drm_hwcomposer as a shim it now is.
 
 The  [HWC](https://source.android.com/devices/graphics/implement-hwc.html) 
