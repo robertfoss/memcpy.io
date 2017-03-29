@@ -17,7 +17,7 @@ html
 body
 {
   background-color: #f5f5f5;
-  border-top: 0.5em solid #18699f;
+  border-top: 0.5em solid #142e4acc;
   padding-top: 0.2em;
   color: #456;
   font-family: Calluna Sans, sans-serif;
@@ -93,7 +93,7 @@ header > h2
 
 header > p
 {
-  color: #18699f;
+  color: ##555555;
   padding-top: 0.5em;
   padding-bottom: 0.9em;
   margin-bottom: 0;
@@ -372,8 +372,8 @@ blockquote
 /* Light pages do not have a teaser or footer, no need to include the css. */
 #teaser-section
 {
-  background-color: #c35;
-  color: #f5b2c8;
+  background-color: #142e4acc;
+  color: #000;
 }
 
 #teaser p:first-child {
@@ -406,8 +406,8 @@ blockquote
 
 footer
 {
-  background-color: #234; /* TODO: pick unified colour scheme. */
-  color: #b4aaaa;
+  background-color: #36424f; /* TODO: pick unified colour scheme. */
+  color: #000;
   font-family: Calluna Sans, sans-serif;
   font-size: 1.0em;
 }
@@ -435,6 +435,11 @@ footer span
 {
   margin-left: 0.25em;
   margin-right: 0.25em;
+}
+
+footer a
+{
+  color: #FFF
 }
 
 .archive p > a
