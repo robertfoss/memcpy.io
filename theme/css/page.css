@@ -373,7 +373,7 @@ blockquote
 #teaser-section
 {
   background-color: #142e4acc;
-  color: #888;
+  color: #000;
 }
 
 #teaser p:first-child {
@@ -406,8 +406,8 @@ blockquote
 
 footer
 {
-  background-color: #234; /* TODO: pick unified colour scheme. */
-  color: #555555;
+  background-color: #36424f; /* TODO: pick unified colour scheme. */
+  color: #000;
   font-family: Calluna Sans, sans-serif;
   font-size: 1.0em;
 }
@@ -440,11 +440,6 @@ footer span
 footer a
 {
   color: #FFF
-}
-
-footer p
-{
-  color: #888
 }
 
 .archive p > a
