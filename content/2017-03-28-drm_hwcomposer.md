@@ -38,7 +38,7 @@ Currently the work is being upstreamed to the
 [ChromiumOS repo](https://chromium.googlesource.com/chromiumos/drm_hwcomposer/)
 which is the official upstream for drm_hwcomposer.
 
-A number of projects have seen contributions in order to enable this work:
+A number of projects have seen contributions 8in order to enable this work:
 
   * kernel - sync_file, in-fence and out-fence support added.
   * libdrm - fence support added.
@@ -49,5 +49,8 @@ A number of projects have seen contributions in order to enable this work:
 ## Thanks
 This drm_hwcomposer work is part of long-standing collaboration between
 Google's ChromeOS team and Collabora.
+
+A number of people have played an important role in this work:
+Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.
 
 This post has been a part of work undertaken by my employer [Collabora](http://www.collabora.com).
