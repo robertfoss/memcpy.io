@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="The traditional Android graphics stack is built ontop of the proprietary drivers of a GPU vendor, that expose the HWC (Hardware Composer) API. SurfaceFlinger then talks to the hardware through the HWC API. Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few ways from the previous version, for example it supports explicit fencing and using the GPU as a fallback when compositioning of layers. Gustavo Padovans work on adding fence support to the kernel and the other components of the mainline graphics stack was successfully upstreamed in v4.10. Recent work on drm_hwcomposer has added HWC2 support and support for explicit fencing. And with it we are now able to boot Android on the db410c …">
+		<meta name="description" content="The HWC (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen. The HWC abstracts objects such as overlays and 2D blitters and helps offload some work that would normally be done with OpenGL. SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them, and sends them to the display. The above graphic depicts the traditional Android graphics stack is built ontop of the proprietary drivers of a GPU vendor, that expose the HWC API which SurfaceFlinger uses to talk to the hardware. This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack doesn&#39;t offer the HWC API, drm_hwcomposer is introduced to interface with the mainline graphics stack through mesa and libdrm. Before this work drm_hwcomposer only …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, graphics, drm, drm_hwcomposer, hwcomposer, HWC2, collabora">
 		<meta property="og:title" content="Android: Enabling mainline graphics" />
@@ -40,19 +40,30 @@
 				</p>
 			</header>
 			<p>Android uses the HWC API to communicate with graphics hardware. This API is not supported on the mainline Linux graphics stack, but by using drm_hwcomposer as a shim it now is.</p>
-			<p><a href="images/2017-03-28_android_graphics_stack.png"><img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"></a></p>
-<p>The traditional Android graphics stack is built ontop of the proprietary drivers of a
-GPU vendor, that expose the <a href="https://source.android.com/devices/graphics/implement-hwc.html">HWC</a>
-(Hardware Composer) API. SurfaceFlinger then talks to
-the hardware through the HWC API.</p>
-<p>Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
-ways from the previous version, for example it supports explicit fencing and using the GPU
-as a fallback when compositioning of layers.</p>
-<p>Gustavo Padovans work on 
+			<p>The  <a href="https://source.android.com/devices/graphics/implement-hwc.html">HWC</a> 
+(Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
+The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
+that would normally be done with OpenGL.
+SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
+and sends them to the display.</p>
+<p><a href="images/2017-03-28_android_graphics_stack.png"><img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"></a></p>
+<p>The above graphic depicts the traditional Android graphics stack is built ontop of the
+proprietary drivers of a GPU vendor, that expose the HWC API which SurfaceFlinger uses
+to talk to the hardware.</p>
+<p>This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
+doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
+graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the
+HWC1 API.
+Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways from the previous version, for example the semantics of fence support were changed and
+the GPU can now be used as a fallback when compositing layers.</p>
+<p>Up until recently the mainline kernel lacked the fence primitive offered by Android
+used in HWC1 and HWC2. But after Gustavo Padovans work on 
 <a href="http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/">adding fence support</a>
-to the kernel and the other components of the mainline graphics stack was successfully
-upstreamed in <a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/">v4.10</a>.</p>
-<p>Recent work on drm_hwcomposer has added HWC2 support and support for explicit fencing.
+to the mainline kernel was upstreamed in
+<a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/">v4.10</a>,
+ the mainline kernel now has fence support equivalent to that of Android.</p>
+<p>The new fence support enabled work on drm_hwcomposer to add HWC2 support.
 And with it we are now able to boot Android on the db410c running the freedreno driver.
 But in theory it should work on any mainline kernel graphics stack enabled GPU.</p>
 <p>Currently the work is being upstreamed to the

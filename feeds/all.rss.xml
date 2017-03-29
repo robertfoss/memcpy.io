@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Mar 2017 15:18:00 +0200</lastBuildDate><item><title>Android: Enabling mainline graphics</title><link>http://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;&lt;a href="images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The traditional Android graphics stack is built ontop of the proprietary drivers of a
-GPU vendor, that expose the &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt;
-(Hardware Composer) API. SurfaceFlinger then talks to
-the hardware through the HWC API.&lt;/p&gt;
-&lt;p&gt;Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
-ways from the previous version, for example it supports explicit fencing and using the GPU
-as a fallback when compositioning of layers.&lt;/p&gt;
-&lt;p&gt;Gustavo Padovans work on 
-&lt;a href="http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/"&gt;adding fence support&lt;/a&gt;
-to the kernel and the other components of the mainline graphics stack was successfully
-upstreamed in &lt;a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/"&gt;v4.10&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Recent work on drm_hwcomposer has added HWC2 support and support for explicit fencing.
-And with it we are now able to boot Android on the db410c …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Mar 2017 15:18:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</guid><category>android</category><category>aosp</category><category>graphics</category><category>drm</category><category>drm_hwcomposer</category><category>hwcomposer</category><category>HWC2</category><category>collabora</category></item><item><title>Removing the Chromebook Write-Protect screw</title><link>http://memcpy.io/removing-the-chromebook-write-protect-screw.html</link><description>&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+<rss version="2.0"><channel><title>memcpy.io</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Mar 2017 15:18:00 +0200</lastBuildDate><item><title>Android: Enabling mainline graphics</title><link>http://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+(Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
+The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
+that would normally be done with OpenGL.
+SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
+and sends them to the display.&lt;/p&gt;
+&lt;p&gt;&lt;a href="images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The above graphic depicts the traditional Android graphics stack is built ontop of the
+proprietary drivers of a GPU vendor, that expose the HWC API which SurfaceFlinger uses
+to talk to the hardware.&lt;/p&gt;
+&lt;p&gt;This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
+doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
+graphics stack through mesa and libdrm. Before this work drm_hwcomposer only …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Mar 2017 15:18:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</guid><category>android</category><category>aosp</category><category>graphics</category><category>drm</category><category>drm_hwcomposer</category><category>hwcomposer</category><category>HWC2</category><category>collabora</category></item><item><title>Removing the Chromebook Write-Protect screw</title><link>http://memcpy.io/removing-the-chromebook-write-protect-screw.html</link><description>&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
 (HP Chromebook 13 G1) device, and verifying that it has been successfully
 removed.&lt;/p&gt;
 &lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;
