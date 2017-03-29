@@ -171,11 +171,6 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
-<loc>http://memcpy.io/tag/hwc2.html</loc>
-<lastmod>2017-03-28</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.40</priority>
-</url><url>
 <loc>http://memcpy.io/tag/led.html</loc>
 <lastmod>2016-02-07</lastmod>
 <changefreq>monthly</changefreq>
@@ -283,6 +278,11 @@
 </url><url>
 <loc>http://memcpy.io/tag/html.html</loc>
 <lastmod>2016-03-27</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>http://memcpy.io/tag/hwc2.html</loc>
+<lastmod>2017-03-28</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
