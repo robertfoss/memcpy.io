@@ -46,7 +46,7 @@ which is the official upstream for drm_hwcomposer.&lt;/p&gt;
 &lt;li&gt;libdrm - fence support added.&lt;/li&gt;
 &lt;li&gt;mesa - support for passing fences added.&lt;/li&gt;
 &lt;li&gt;intel-gpu-tools - sync and fence tests added.&lt;/li&gt;
-&lt;li&gt;drm_hwcomposer - HWC2 and fences support added.&lt;/li&gt;
+&lt;li&gt;drm_hwcomposer - HWC2 and fence support added.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="HWC2"></category><category term="collabora"></category></entry><entry><title>Removing the Chromebook Write-Protect screw</title><link href="http://memcpy.io/removing-the-chromebook-write-protect-screw.html" rel="alternate"></link><published>2017-02-27T16:55:00+01:00</published><updated>2017-02-27T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-27:/removing-the-chromebook-write-protect-screw.html</id><summary type="html">&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
