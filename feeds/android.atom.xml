@@ -39,7 +39,7 @@ But in theory it should work on any mainline kernel graphics stack enabled GPU.&
 &lt;p&gt;Currently the work is being upstreamed to the
 &lt;a href="https://chromium.googlesource.com/chromiumos/drm_hwcomposer/"&gt;ChromiumOS repo&lt;/a&gt;
 which is the official upstream for drm_hwcomposer.&lt;/p&gt;
-&lt;p&gt;A number of projects have seen contributions in order to enable this work:&lt;/p&gt;
+&lt;p&gt;A number of projects have seen contributions 8in order to enable this work:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;kernel - sync_file, in-fence and out-fence support added.&lt;/li&gt;
 &lt;li&gt;libdrm - fence support added.&lt;/li&gt;
@@ -50,6 +50,8 @@ which is the official upstream for drm_hwcomposer.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This drm_hwcomposer work is part of long-standing collaboration between
 Google's ChromeOS team and Collabora.&lt;/p&gt;
+&lt;p&gt;A number of people have played an important role in this work:
+Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.&lt;/p&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="hwc2"></category><category term="collabora"></category></entry><entry><title>Precompiling APK files during Android AOSP build</title><link href="http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
 
