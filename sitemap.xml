@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://memcpy.io/</loc>
-<lastmod>2017-03-28</lastmod>
+<lastmod>2017-04-09</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>http://memcpy.io/audio-editing-images.html</loc>
+<lastmod>2017-04-09</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>http://memcpy.io/android-enabling-mainline-graphics.html</loc>
 <lastmod>2017-03-28</lastmod>
@@ -93,6 +98,11 @@
 </url><url>
 <loc>http://memcpy.io/category/aosp.html</loc>
 <lastmod>2017-03-28</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>http://memcpy.io/category/art.html</loc>
+<lastmod>2017-04-09</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -221,6 +231,16 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>http://memcpy.io/tag/art.html</loc>
+<lastmod>2017-04-09</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>http://memcpy.io/tag/audio.html</loc>
+<lastmod>2017-04-09</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>http://memcpy.io/tag/chell.html</loc>
 <lastmod>2017-02-27</lastmod>
 <changefreq>monthly</changefreq>
@@ -291,6 +311,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>http://memcpy.io/tag/images.html</loc>
+<lastmod>2017-04-09</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>http://memcpy.io/tag/kernel.html</loc>
 <lastmod>2016-12-07</lastmod>
 <changefreq>monthly</changefreq>
@@ -342,7 +367,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2017-03-28</lastmod>
+<lastmod>2017-04-09</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>
