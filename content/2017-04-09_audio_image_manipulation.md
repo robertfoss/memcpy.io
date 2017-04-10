@@ -30,7 +30,7 @@ data as 8-bit unsigned data.
 [![Alt text](images/2017-04-09_eiffel_tower_overdrive.jpg "Eiffel tower overdrive effect")](images/2017-04-09_eiffel_tower_overdrive.jpg)
 
 Additionally when using a format like RGB the Red/Green/Blue color
-channels are locate next to eachother like <small>RRRRRRRGGGGGGGGBBBBBBBB</small>
+channels are located next to eachother like <small>RRRRRRRGGGGGGGGBBBBBBBB</small>
 which causes issues when doing things like echoes and the echo of
 of the Red 8-bit field bleeds into the Green or Blue field.
 
