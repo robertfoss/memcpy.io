@@ -5,11 +5,11 @@ if it was audio data.&lt;/p&gt;
 &lt;p&gt;The script wraps 3 individually excellent tools; &lt;a href="https://ffmpeg.org/"&gt;ffmpeg&lt;/a&gt;,
 &lt;a href="https://www.imagemagick.org/script/index.php"&gt;ImageMagick&lt;/a&gt; and
 &lt;a href="http://sox.sourceforge.net/"&gt;SoX&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The way it works is by first converting an image to a raw format like rgb
 or yuv. This is done to prevent the audio editor from destroying the structure
 of (relatively) complex formats like jpg, png or gif.&lt;/p&gt;
-&lt;p&gt;&lt;a href="images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If converting to a raw format is the first step, the second step is
 importing the raw image data into the audio editor. To do this
 in way you can expect good results from, the raw format should use
@@ -19,7 +19,7 @@ The HWC abstracts objects such as overlays and 2D blitters and helps offload som
 that would normally be done with OpenGL.
 SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
 and sends them to the display.&lt;/p&gt;
-&lt;p&gt;&lt;a href="images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="/images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The above graphic depicts the traditional Android graphics stack.&lt;/p&gt;
 &lt;p&gt;This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
 doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
