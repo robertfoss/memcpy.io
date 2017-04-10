@@ -7,7 +7,7 @@ if it was audio data.&lt;/p&gt;
 &lt;a href="http://sox.sourceforge.net/"&gt;SoX&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The way it works is by first converting an image to a raw format like rgb
-or yuv. This is done to prevent the audio editor from destroying the format
+or yuv. This is done to prevent the audio editor from destroying the structure
 of (relatively) complex formats like jpg, png or gif.&lt;/p&gt;
 &lt;p&gt;&lt;a href="images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If converting to a raw format is the first step, the second step is
@@ -21,7 +21,7 @@ if it was audio data.&lt;/p&gt;
 &lt;a href="http://sox.sourceforge.net/"&gt;SoX&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The way it works is by first converting an image to a raw format like rgb
-or yuv. This is done to prevent the audio editor from destroying the format
+or yuv. This is done to prevent the audio editor from destroying the structure
 of (relatively) complex formats like jpg, png or gif.&lt;/p&gt;
 &lt;p&gt;&lt;a href="images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If converting to a raw format is the first step, the second step is
