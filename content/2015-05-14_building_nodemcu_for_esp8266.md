@@ -5,7 +5,7 @@ Tags: NodeMCU, ESP8266
 Description: This is a simple hands-on guide to building NodeMCU and flashing it onto a raw ESP8266-01 module.
 
 
-![Alt text](images/2015-05-14_esp8266.jpg "ESP8266")
+![Alt text](/images/2015-05-14_esp8266.jpg "ESP8266")
 
 This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.
 

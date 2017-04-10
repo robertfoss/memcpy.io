@@ -4,7 +4,7 @@ Category: ESP8266
 Tags: NodeMCU, ESP8266, Setup
 Description: When first configuring any IoT device the lack of options for interaction can be problematic, so I hacked together an access-portal + captive portal application for the NodeMCU firmware.
 
-![Alt text](images/2015-07-30_screenshot.png "Screenshot")
+![Alt text](/images/2015-07-30_screenshot.png "Screenshot")
 
 The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.
 

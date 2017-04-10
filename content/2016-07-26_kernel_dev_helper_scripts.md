@@ -4,7 +4,7 @@ Category: kernel
 Tags: linux, kernel, script, collabora
 Description: A part of getting active in kernel development is finding a good workflow. These are the scripts I've used to avoid errors and increase productivity.
 
-![Alt text](images/2016-07-26_linux_development_helper_script.png "Terminal screenshot of scripts in use")
+![Alt text](/images/2016-07-26_linux_development_helper_script.png "Terminal screenshot of scripts in use")
 
 While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.

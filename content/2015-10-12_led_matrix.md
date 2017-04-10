@@ -4,7 +4,7 @@ Category: ESP8266
 Tags: ESP8266, ESP, WS2812, WS2812B, 3D Printing, CAD
 Description: A 8x8 LED panel conntected to an ESP8266 was constructed to make a kind of portable display module.
 
-![Alt text](images/2015-10-12_led_matrix_running.jpg "LED Matrix Running")
+![Alt text](/images/2015-10-12_led_matrix_running.jpg "LED Matrix Running")
 
 
 The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.
@@ -21,13 +21,13 @@ This relies on the host pc being able to connect to the ESP8266. Ideally they're
 This part was also written by [Konrad Beckmann](https://github.com/kbeckmann) as part of a larger fancier animation, but repurposed here to be used as a proof of concept.
 
 ## 3D Model
-![Alt text](images/2015-10-12_led_matrix_case.jpg "LED Matrix Case")
+![Alt text](/images/2015-10-12_led_matrix_case.jpg "LED Matrix Case")
 
 The 3D model was created using google sketchup. The case is a made out of 2 parts. A front and a lid. The front has grooves that fit the WS2812 LEDs and make sure that the matrix is firmly stuck in place but also make sure that the light from the LEDs is diffused the proper amount.
 
 
 ## Bill of materials
-![Alt text](images/2015-10-12_led_matrix_parts.jpg "LED Matrix Parts")
+![Alt text](/images/2015-10-12_led_matrix_parts.jpg "LED Matrix Parts")
 
  * 18$ [WS2812B 8x8 Matrix](http://www.aliexpress.com/item/8x8-64-LED-Matrix-WS2812-LED-5050-RGB-for-Arduino-FZ1104/32373601634.html?ws_ab_test=201407_4,201444_5,201409_4)
  * 2$ [ESP8266 ESP-01](http://www.aliexpress.com/item/Free-shipping-ESP8266-serial-WIFI-wireless-module-wireless-transceiver/32341788594.html?ws_ab_test=201407_4,201444_5,201409_4)
@@ -39,7 +39,7 @@ The 3D model was created using google sketchup. The case is a made out of 2 part
 A thing to be aware of is the fact that all orders from AliExpress will take at least 30 days to arrive to your door. Sometimes more. 
 
 ## Hardware construction
-![Alt text](images/2015-10-12_led_matrix_assembled.jpg "LED Matrix Assembled")
+![Alt text](/images/2015-10-12_led_matrix_assembled.jpg "LED Matrix Assembled")
 
 You'll have to excuse the lack of a proper schematic, but this has been a fairly organic project.
 

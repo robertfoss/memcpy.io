@@ -4,7 +4,7 @@ Category: wayland
 Tags: wayland, weston, rpi, rpi2, kernel
 Description: This is a simple guide for how to build and run Wayland & Weston on a Raspberry Pi.
 
-![Alt text](images/2016-06-03_weston.png "Weston running on a RPi2.")
+![Alt text](/images/2016-06-03_weston.png "Weston running on a RPi2.")
 
 Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration

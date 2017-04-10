@@ -4,7 +4,7 @@ Category: kernel
 Tags: linux, kernel, android, qemu, collabora
 Description: Running the Linux mainline graphics stack on Android devices is currently not a reality, but this is a viable development environment for improving the situation.
 
-![Alt text](images/2016-08-30_android_qemu.png "Android running on Qemu")
+![Alt text](/images/2016-08-30_android_qemu.png "Android running on Qemu")
 
 Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.

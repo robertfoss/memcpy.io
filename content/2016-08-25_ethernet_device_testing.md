@@ -4,7 +4,7 @@ Category: kernel
 Tags: linux, kernel, script, collabora, chromiumos
 Description: During kernel upstreaming for chromiumos devices a standalone ethernet subssystem testing script was needed.
 
-![Alt text](images/2016-08-25_ethernet_device_testing.png "Screenshot of python script")
+![Alt text](/images/2016-08-25_ethernet_device_testing.png "Screenshot of python script")
 
 During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.

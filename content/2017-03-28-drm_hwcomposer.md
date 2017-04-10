@@ -11,7 +11,7 @@ that would normally be done with OpenGL.
 SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
 and sends them to the display.
 
-[![Alt text](images/2017-03-28_android_graphics_stack.png "Android Graphics Stack")](images/2017-03-28_android_graphics_stack.png)
+[![Alt text](/images/2017-03-28_android_graphics_stack.png "Android Graphics Stack")](/images/2017-03-28_android_graphics_stack.png)
 
 The above graphic depicts the traditional Android graphics stack.
 

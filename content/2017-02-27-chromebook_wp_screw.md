@@ -15,7 +15,7 @@ code to the ChromiumOS project.
 
 
 ## Removing the Write-Protect screw
-[![Alt text](images/2017-02-27_wp_screw.jpg "WP screw on Chell Chromebook")](images/2017-02-27_wp_screw.jpg)
+[![Alt text](/images/2017-02-27_wp_screw.jpg "WP screw on Chell Chromebook")](/images/2017-02-27_wp_screw.jpg)
 
 So this is what the WP screw looks like on a Chell Chromebook. This may or may
 not be what you will find in other devices. But if you take a close look,
