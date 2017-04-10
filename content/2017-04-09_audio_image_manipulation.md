@@ -1,7 +1,7 @@
 Title: Audio editing images
 Date: 2017-04-09 21:35
 Category: art
-Tags: audio, art, images
+Tags: audio, art, images, data, bending, databending
 Description: There's nothing preventing images from being edited as audio data, however there are a few pitfalls. Which is why I wrote Audio Shop.
 
 [Audio Shop](https://github.com/robertfoss/audio_shop/) is a simple script
