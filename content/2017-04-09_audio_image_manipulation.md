@@ -15,7 +15,7 @@ The script wraps 3 individually excellent tools; [ffmpeg](https://ffmpeg.org/),
 [![Alt text](images/2017-04-09_eiffel_tower_bass.jpg "Eiffel tower bass effect")](images/2017-04-09_eiffel_tower_bass.jpg)
 
 The way it works is by first converting an image to a raw format like rgb
-or yuv. This is done to prevent the audio editor from destroying the format
+or yuv. This is done to prevent the audio editor from destroying the structure
 of (relatively) complex formats like jpg, png or gif.
 
 [![Alt text](images/2017-04-09_eiffel_tower_echo.jpg "Eiffel tower echo effect")](images/2017-04-09_eiffel_tower_echo.jpg)
