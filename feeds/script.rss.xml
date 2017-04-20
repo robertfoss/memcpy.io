@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - script</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 25 Aug 2016 13:05:00 +0200</lastBuildDate><item><title>Ethernet device stress testing</title><link>http://memcpy.io/ethernet-device-stress-testing.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - script</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 25 Aug 2016 13:05:00 +0200</lastBuildDate><item><title>Ethernet device stress testing</title><link>http://memcpy.io/ethernet-device-stress-testing.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -13,7 +13,7 @@ archived on this site.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
 $ ip link
 1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 25 Aug 2016 13:05:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</guid><category>linux</category><category>kernel</category><category>script</category><category>collabora</category><category>chromiumos</category></item><item><title>Linux kernel development shell scripts</title><link>http://memcpy.io/linux-kernel-development-shell-scripts.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 25 Aug 2016 13:05:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</guid><category>linux</category><category>kernel</category><category>script</category><category>collabora</category><category>chromiumos</category></item><item><title>Linux kernel development shell scripts</title><link>http://memcpy.io/linux-kernel-development-shell-scripts.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
 But to me the interface they provide is slightly bulky and rely

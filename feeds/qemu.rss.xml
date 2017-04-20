@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - qemu</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 30 Aug 2016 15:22:00 +0200</lastBuildDate><item><title>Building Android for Qemu with Mesa and Virgil3D</title><link>http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - qemu</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 30 Aug 2016 15:22:00 +0200</lastBuildDate><item><title>Building Android for Qemu with Mesa and Virgil3D</title><link>http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which

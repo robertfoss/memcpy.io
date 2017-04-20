@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - android</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Mar 2017 15:18:00 +0200</lastBuildDate><item><title>Android: Enabling mainline graphics</title><link>http://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+<rss version="2.0"><channel><title>memcpy.io - android</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 20 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Changing the bootanimation</title><link>http://memcpy.io/android-changing-the-bootanimation.html</link><description>&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total 28
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 20 Apr 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</guid><category>android</category><category>aosp</category><category>bootanimation</category><category>boot</category><category>animation</category><category>collabora</category></item><item><title>Android: Enabling mainline graphics</title><link>http://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.
@@ -48,7 +65,7 @@ adb root &amp;amp;&amp;amp; \
 adb remount &amp;amp;&amp;amp; \
 adb sync &amp;amp;&amp;amp; \
 adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 07 Dec 2016 20:23:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</guid><category>linux</category><category>kernel</category><category>android</category><category>aosp</category><category>adb</category></item><item><title>Building Android for Qemu with Mesa and Virgil3D</title><link>http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 07 Dec 2016 20:23:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</guid><category>linux</category><category>kernel</category><category>android</category><category>aosp</category><category>adb</category></item><item><title>Building Android for Qemu with Mesa and Virgil3D</title><link>http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which

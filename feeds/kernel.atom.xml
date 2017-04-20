@@ -19,7 +19,7 @@ adb root &amp;amp;&amp;amp; \
 adb remount &amp;amp;&amp;amp; \
 adb sync &amp;amp;&amp;amp; \
 adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry><entry><title>XDC 2016</title><link href="http://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry><entry><title>XDC 2016</title><link href="http://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
@@ -29,7 +29,7 @@ The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
 &lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
-The FPS/Watt …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+The FPS/Watt …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
@@ -64,7 +64,7 @@ So feel free to contact Martin or the Nouveau project if you are interested or c
 &lt;p&gt;Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -77,7 +77,7 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -235,7 +235,7 @@ chmod +x &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PAT
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have enabled you build the required software and run Android on
 Qemu with a virtual GPU.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -249,7 +249,7 @@ archived on this site.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
 $ ip link
 1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -271,7 +271,7 @@ $ ip link
 $ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;INTERFACE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;enx000ec689ab9e
 $ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;NUM_ITERATIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10
 $ sudo python network_EthernetStressPlug.py &lt;span class="nv"&gt;$INTERFACE&lt;/span&gt; &lt;span class="nv"&gt;$NUM_ITERATIONS&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="http://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="http://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
 But to me the interface they provide is slightly bulky and rely
@@ -302,7 +302,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
 But to me the interface they provide is slightly bulky and rely
@@ -393,7 +393,7 @@ for correctness.&lt;/p&gt;
 --to=gregkh@linuxfoundation.org  --to=jslaby@suse.com  --to=linux-serial@vger.kernel.org  --to=linux-kernel@vger.kernel.org
 
 ~/work/linux $ git send-email -1 $(get_maintainer 1)
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category></entry><entry><title>Running Weston on a Raspbian</title><link href="http://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><published>2016-06-03T10:32:00+02:00</published><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:/running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category></entry><entry><title>Running Weston on a Raspbian</title><link href="http://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><published>2016-06-03T10:32:00+02:00</published><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:/running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
 &lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration
 using pixman was needed, but this is no longer the case.&lt;/p&gt;
@@ -405,7 +405,7 @@ obsoleted by the improved drm layer.&lt;/p&gt;
 been written by the Raspberry Pi foundation and is available &lt;a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.&lt;/p&gt;
 &lt;h2&gt;Set up alternative install location&lt;/h2&gt;
-&lt;p&gt;These build instructions …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+&lt;p&gt;These build instructions …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
 &lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration
 using pixman was needed, but this is no longer the case.&lt;/p&gt;

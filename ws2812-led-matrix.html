@@ -16,7 +16,7 @@
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, ESP8266, ESP, WS2812, WS2812B, 3D Printing, CAD">
 		<meta property="og:title" content="WS2812 LED Matrix" />
 		<meta property="og:type" content="article" />
-		<meta property="og:image" content="http://memcpy.io/images/2015-10-12_led_matrix_running.jpg" />
+		<meta property="og:image" content="http://memcpy.io//images/2015-10-12_led_matrix_running.jpg" />
 		<meta property="og:url" content="http://memcpy.io/ws2812-led-matrix.html" />
 		<meta property="og:locale" content="" />
 		<meta property="og:site_name" content="memcpy.io" />
@@ -38,7 +38,7 @@
 				</p>
 			</header>
 			<p>A 8x8 LED panel conntected to an ESP8266 was constructed to make a kind of portable display module.</p>
-			<p><img alt="Alt text" src="images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"></p>
+			<p><img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"></p>
 <p>The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.</p>
 <h2>Code</h2>
 <div class="highlight"><pre><span></span>git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
@@ -50,10 +50,10 @@
 This relies on the host pc being able to connect to the ESP8266. Ideally they're on the same LAN to minimise UDP packets being lost or delayed, which causes the animation to lag or skip.
 This part was also written by <a href="https://github.com/kbeckmann">Konrad Beckmann</a> as part of a larger fancier animation, but repurposed here to be used as a proof of concept.</p>
 <h2>3D Model</h2>
-<p><img alt="Alt text" src="images/2015-10-12_led_matrix_case.jpg" title="LED Matrix Case"></p>
+<p><img alt="Alt text" src="/images/2015-10-12_led_matrix_case.jpg" title="LED Matrix Case"></p>
 <p>The 3D model was created using google sketchup. The case is a made out of 2 parts. A front and a lid. The front has grooves that fit the WS2812 LEDs and make sure that the matrix is firmly stuck in place but also make sure that the light from the LEDs is diffused the proper amount.</p>
 <h2>Bill of materials</h2>
-<p><img alt="Alt text" src="images/2015-10-12_led_matrix_parts.jpg" title="LED Matrix Parts"></p>
+<p><img alt="Alt text" src="/images/2015-10-12_led_matrix_parts.jpg" title="LED Matrix Parts"></p>
 <ul>
 <li>18$ <a href="http://www.aliexpress.com/item/8x8-64-LED-Matrix-WS2812-LED-5050-RGB-for-Arduino-FZ1104/32373601634.html?ws_ab_test=201407_4,201444_5,201409_4">WS2812B 8x8 Matrix</a></li>
 <li>2$ <a href="http://www.aliexpress.com/item/Free-shipping-ESP8266-serial-WIFI-wireless-module-wireless-transceiver/32341788594.html?ws_ab_test=201407_4,201444_5,201409_4">ESP8266 ESP-01</a></li>
@@ -64,7 +64,7 @@ This part was also written by <a href="https://github.com/kbeckmann">Konrad Beck
 </ul>
 <p>A thing to be aware of is the fact that all orders from AliExpress will take at least 30 days to arrive to your door. Sometimes more. </p>
 <h2>Hardware construction</h2>
-<p><img alt="Alt text" src="images/2015-10-12_led_matrix_assembled.jpg" title="LED Matrix Assembled"></p>
+<p><img alt="Alt text" src="/images/2015-10-12_led_matrix_assembled.jpg" title="LED Matrix Assembled"></p>
 <p>You'll have to excuse the lack of a proper schematic, but this has been a fairly organic project.</p>
 <p>The connectors of for the battery (B_VCC and B_GND), the WS2812 matrix (LED_VCC, LED_GND and LED_DATA), the ESP8266 (ESP_3V3, ESP_CH_PD, ESP_GND, ESP_GPIO2) and the AMS1117-3.3V (LDO_VCC, LDO_GND and LDO_3V3)</p>
 <ul>

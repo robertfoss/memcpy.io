@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - collabora</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/collabora.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-03-28T15:18:00+02:00</updated><entry><title>Android: Enabling mainline graphics</title><link href="http://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - collabora</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/collabora.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-20T00:00:00+02:00</updated><entry><title>Android: Changing the bootanimation</title><link href="http://memcpy.io/android-changing-the-bootanimation.html" rel="alternate"></link><published>2017-04-20T00:00:00+02:00</published><updated>2017-04-20T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</id><summary type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total 28
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total 28
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part1 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
+
+ls -la bootanimation/part0 
+total 28
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 .
+drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:40 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0000.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0001.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0002.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0003.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 XXXX.png
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that the "#" comments are mine and not actually present in the files.&lt;/p&gt;
+&lt;p&gt;An important thing to note with the zip file is needs to have compression
+turned off.&lt;/p&gt;
+&lt;h2&gt;Switch bootanimation&lt;/h2&gt;
+&lt;p&gt;Download &lt;a href="/files/2017-04-20/bootanimation.zip"&gt;bootanimation.zip&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;unzip bootanimation.zip
+cd bootanimation
+# Edit desc.txt and partN folders to your needs
+zip -0qry -i \*.txt \*.png \*.wav @ ../bootanimation.zip *.txt part*
+
+# Option 1, use adb to send bootanimation.zip
+adb root
+adb remount
+adb push bootanimation.zip /system/media/bootanimation.zip
+
+# Option 2, bake bootanimation.zip into your AOSP build
+cp bootanimation.zip /opt/aosp/out/target/product/linaro_arm/system/bootanimation.zip
+./your_favorite_buildscript_here.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;bootanimation documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="bootanimation"></category><category term="boot"></category><category term="animation"></category><category term="collabora"></category></entry><entry><title>Android: Enabling mainline graphics</title><link href="http://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.
@@ -60,7 +133,7 @@ is needed. While these devices aren't available publicly, they can
 be produced freely or possibly requested from Google if you are contributing
 code to the ChromiumOS project.&lt;/p&gt;
 &lt;h2&gt;Removing the Write-Protect screw&lt;/h2&gt;
-&lt;p&gt;&lt;a href="images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;So this is what the WP screw looks like on a Chell Chromebook. This may or may
 not be what you will find in other devices. But if you take a close look,
 you will notice that the copper pad that the the screw attaches against is
@@ -72,7 +145,7 @@ is needed. While these devices aren't available publicly, they can
 be produced freely or possibly requested from Google if you are contributing
 code to the ChromiumOS project.&lt;/p&gt;
 &lt;h2&gt;Removing the Write-Protect screw&lt;/h2&gt;
-&lt;p&gt;&lt;a href="images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;So this is what the WP screw looks like on a Chell Chromebook. This may or may
 not be what you will find in other devices. But if you take a close look,
 you will notice that the copper pad that the the screw attaches against is
@@ -307,7 +380,7 @@ sudo gdbserver :1234 chrome
 &lt;p&gt;&lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;ChromiumOS Depo Tools&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://www.chromium.org/chromium-os/quick-start-guide"&gt;ChromiumOS Quick Start&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices"&gt;ChromiumOS Dev Mode&lt;/a&gt;&lt;br&gt;
-&lt;a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/debugging-tips"&gt;ChromiumOS Debug&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="chromiumos"></category><category term="chromebook"></category><category term="collabora"></category></entry><entry><title>XDC 2016</title><link href="http://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/debugging-tips"&gt;ChromiumOS Debug&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="chromiumos"></category><category term="chromebook"></category><category term="collabora"></category></entry><entry><title>XDC 2016</title><link href="http://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
@@ -317,7 +390,7 @@ The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
 &lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
-The FPS/Watt …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+The FPS/Watt …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
@@ -352,7 +425,7 @@ So feel free to contact Martin or the Nouveau project if you are interested or c
 &lt;p&gt;Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -365,7 +438,7 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -523,7 +596,7 @@ chmod +x &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PAT
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have enabled you build the required software and run Android on
 Qemu with a virtual GPU.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="http://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -537,7 +610,7 @@ archived on this site.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
 $ ip link
 1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -559,7 +632,7 @@ $ ip link
 $ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;INTERFACE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;enx000ec689ab9e
 $ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;NUM_ITERATIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10
 $ sudo python network_EthernetStressPlug.py &lt;span class="nv"&gt;$INTERFACE&lt;/span&gt; &lt;span class="nv"&gt;$NUM_ITERATIONS&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="http://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="http://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
 But to me the interface they provide is slightly bulky and rely
@@ -590,7 +663,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
 But to me the interface they provide is slightly bulky and rely

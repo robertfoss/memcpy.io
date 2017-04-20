@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-03-28T15:18:00+02:00</updated><entry><title>Android: Enabling mainline graphics</title><link href="http://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-20T00:00:00+02:00</updated><entry><title>Android: Changing the bootanimation</title><link href="http://memcpy.io/android-changing-the-bootanimation.html" rel="alternate"></link><published>2017-04-20T00:00:00+02:00</published><updated>2017-04-20T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</id><summary type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total 28
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total 28
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part1 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
+
+ls -la bootanimation/part0 
+total 28
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 .
+drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:40 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0000.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0001.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0002.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0003.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 XXXX.png
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that the "#" comments are mine and not actually present in the files.&lt;/p&gt;
+&lt;p&gt;An important thing to note with the zip file is needs to have compression
+turned off.&lt;/p&gt;
+&lt;h2&gt;Switch bootanimation&lt;/h2&gt;
+&lt;p&gt;Download &lt;a href="/files/2017-04-20/bootanimation.zip"&gt;bootanimation.zip&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;unzip bootanimation.zip
+cd bootanimation
+# Edit desc.txt and partN folders to your needs
+zip -0qry -i \*.txt \*.png \*.wav @ ../bootanimation.zip *.txt part*
+
+# Option 1, use adb to send bootanimation.zip
+adb root
+adb remount
+adb push bootanimation.zip /system/media/bootanimation.zip
+
+# Option 2, bake bootanimation.zip into your AOSP build
+cp bootanimation.zip /opt/aosp/out/target/product/linaro_arm/system/bootanimation.zip
+./your_favorite_buildscript_here.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;bootanimation documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="bootanimation"></category><category term="boot"></category><category term="animation"></category><category term="collabora"></category></entry><entry><title>Android: Enabling mainline graphics</title><link href="http://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.
