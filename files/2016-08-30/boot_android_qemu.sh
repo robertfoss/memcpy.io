@@ -30,7 +30,7 @@ x86_64)
     ;;
 x86)
     QEMU_ARCH="x86_64"
-    KERNEL=${LINUX_PATH}/arch/x86/boot/bzImage
+    KERNEL=${LINUX_PATH}/arch/x86_64/boot/bzImage
     QEMU_OPTS="-enable-kvm -smp 4"
     KERNEL_CMDLINE='console=tty0 console=ttyS0 debug drm.debug=0x0 androidboot.selinux=permissive'
     ;;
