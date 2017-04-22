@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Android: Getting up an running on the iMX6</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone git://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android repo sync -j75 mkdir /opt/imx6_android cp /opt/imx6_android git clone git://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3 # The mkimage tool is used even if you&#39;re not # using u-boot it as a bootloader sudo apt install u-boot-tools # Fetch Kconfig, bootloaders and some scripts git clone git://git.collabora.com/git/user/robertfoss/rdu2.git . # This will destroy all data …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, sabre, rdu2, zodiac, vivante, etnaviv, collabora">
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Android: Getting up an running on the iMX6</h1>
+				<p>
+				Published <time datetime="2017-04-21" itemprop="datePublished">2017-04-21</time>
+				</p>
+			</header>
+			<p>Getting Android up and running on the iMX6 platform using an open source stack has been impossible up until recently, but you can. Here's a guide through the steps.</p>
+			<p>Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.</p>
+<h2>Common steps</h2>
+<div class="highlight"><pre><span></span>mkdir /opt/android
+repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
+cd /opt/android/.repo
+git clone git://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android
+repo sync -j75
+
+mkdir /opt/imx6_android
+cp /opt/imx6_android
+git clone git://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3
+
+# The mkimage tool is used even if you&#39;re not
+# using u-boot it as a bootloader
+sudo apt install u-boot-tools
+
+# Fetch Kconfig, bootloaders and some scripts
+git clone git://git.collabora.com/git/user/robertfoss/rdu2.git .
+
+# This will destroy all data on /dev/mmcblk0 and
+# create boot/system/cache/data ext4 partitions 
+./setup_sdcard.sh /dev/mmcblk0
+
+# Build android, the kernel, and flash it onto an SD-card
+./build_android.sh
+</pre></div>
+
+
+<h2>Hardware: RDU2</h2>
+<div class="highlight"><pre><span></span># Depending if you have a &gt;=13&quot; version of the RDU2
+# use the imx6qp, if <span class="nt">&lt;13</span><span class="err">&quot;</span> <span class="err">then</span> <span class="err">use</span> <span class="err">the</span> <span class="err">imx6q</span>
+
+<span class="na">IMX6_TYPE=</span><span class="s">imx6q</span>
+<span class="na">IMX6_TYPE=</span><span class="s">imx6qp</span>
+<span class="na">BAREBOX=</span><span class="s">&quot;zodiac/barebox-zii-</span><span class="cp">${</span><span class="n">IMX6_TYPE</span><span class="cp">}</span><span class="s">-rdu2.img&quot;</span>
+
+<span class="err">#</span> <span class="err">Flash</span> <span class="err">bootloader</span> <span class="err">to</span> <span class="err">SD-card</span>
+<span class="err">$</span> <span class="err">dd</span> <span class="na">if=</span><span class="s">${BAREBOX}</span> <span class="na">of=</span><span class="s">/dev/mmcblk0</span> <span class="na">bs=</span><span class="s">1k</span>
+<span class="err">$</span> <span class="err">sync</span>
+
+<span class="err">#</span> <span class="err">Put</span> <span class="err">SD-card</span> <span class="err">in</span> <span class="err">the</span> <span class="err">middle-most</span> <span class="err">slot</span> <span class="err">on</span> <span class="err">the</span> <span class="err">RDU2</span>
+
+<span class="err">#</span> <span class="err">Install</span> <span class="err">lrzsz,</span> <span class="err">since</span> <span class="err">it</span> <span class="err">is</span> <span class="err">used</span> <span class="err">for</span> <span class="err">a</span> <span class="err">ymodem</span> <span class="err">upload</span>
+<span class="err">$</span> <span class="err">sudo</span> <span class="err">apt</span> <span class="err">install</span> <span class="err">lrzsz</span>
+
+<span class="err">#</span> <span class="err">Connect</span> <span class="err">to</span> <span class="err">serial</span> <span class="err">device</span> <span class="err">/dev/ttyUSB2</span> <span class="err">and</span>
+<span class="err">#</span> <span class="err">/dev/ttyUSB3</span> <span class="err">with</span> <span class="err">minicom</span> 
+<span class="err">$</span> <span class="err">sudo</span> <span class="err">minicom</span> <span class="err">-s</span>
+    <span class="err">+------------------------------------------+</span>
+    <span class="err">|</span> <span class="err">A</span> <span class="err">-</span>    <span class="err">Serial</span> <span class="err">Device</span>      <span class="err">:</span> <span class="err">/dev/ttyUSB3</span>
+    <span class="err">|</span> <span class="err">B</span> <span class="err">-</span> <span class="err">Lockfile</span> <span class="err">Location</span>     <span class="err">:</span> <span class="err">/var/lock</span>
+    <span class="err">|</span> <span class="err">C</span> <span class="err">-</span>   <span class="err">Callin</span> <span class="err">Program</span>      <span class="err">:</span>
+    <span class="err">|</span> <span class="err">D</span> <span class="err">-</span>  <span class="err">Callout</span> <span class="err">Program</span>      <span class="err">:</span>
+    <span class="err">|</span> <span class="err">E</span> <span class="err">-</span>    <span class="err">Bps/Par/Bits</span>       <span class="err">:</span> <span class="err">115200</span> <span class="err">8N1</span>
+    <span class="err">|</span> <span class="err">F</span> <span class="err">-</span> <span class="err">Hardware</span> <span class="err">Flow</span> <span class="err">Control</span> <span class="err">:</span> <span class="err">No</span>
+    <span class="err">|</span> <span class="err">G</span> <span class="err">-</span> <span class="err">Software</span> <span class="err">Flow</span> <span class="err">Control</span> <span class="err">:</span> <span class="err">No</span>
+    <span class="err">|</span>
+    <span class="err">|</span>    <span class="err">Change</span> <span class="err">which</span> <span class="err">setting?</span>
+    <span class="err">+------------------------------------------+</span>
+
+<span class="err">#</span> <span class="err">Connect</span> <span class="err">to</span> <span class="err">Quark</span> <span class="err">console</span> <span class="err">on</span> <span class="err">/dev/ttyUSB3</span>
+<span class="err">#</span> <span class="err">Set</span> <span class="err">boot</span> <span class="err">SD-card</span> <span class="err">as</span> <span class="err">boot</span> <span class="err">source</span> 
+<span class="err">$</span> <span class="err">#HostBoot</span> <span class="err">s</span> <span class="err">0</span>
+<span class="err">$</span> <span class="err">reset</span>
+
+<span class="err">#</span> <span class="err">Restart</span> <span class="err">device,</span> <span class="err">connect</span> <span class="err">to</span> <span class="err">barebox</span> <span class="err">loaded</span> <span class="err">just</span> <span class="err">loaded</span>
+<span class="err">#</span> <span class="err">from</span> <span class="err">the</span> <span class="err">SD-card</span> <span class="err">on</span> <span class="err">/dev/ttyUSB2</span>
+<span class="err">pic_setwdt</span> <span class="err">0</span> <span class="err">60</span>
+<span class="err">loady</span>
+
+<span class="err">#</span> <span class="err">Using</span> <span class="err">the</span> <span class="err">minicom</span> <span class="err">select</span> <span class="err">quickly</span> <span class="err">initiate</span> <span class="err">a</span> <span class="err">ymodem</span> <span class="err">file</span>
+<span class="err">#</span> <span class="err">of</span> <span class="err">the</span> <span class="err">same</span> <span class="err">barebox</span> <span class="err">image</span> <span class="err">you</span> <span class="err">wrote</span> <span class="err">to</span> <span class="err">the</span> <span class="err">SD-card</span>
+<span class="err">#</span> <span class="err">Be</span> <span class="err">quick,</span> <span class="err">the</span> <span class="err">upload</span> <span class="err">will</span> <span class="err">timeout</span> <span class="err">after</span> <span class="err">a</span> <span class="err">few</span> <span class="err">seconds</span>
+
+<span class="err">#</span> <span class="err">Write</span> <span class="err">the</span> <span class="err">bootloader</span> <span class="err">to</span> <span class="err">SPI</span> <span class="err">NOR</span>
+<span class="err">$</span> <span class="err">erase</span> <span class="err">/dev/m25p0.barebox</span>
+
+<span class="err">#</span> <span class="err">Depending</span> <span class="err">on</span> <span class="err">your</span> <span class="err">RDU2</span> <span class="err">type</span> <span class="err">flash</span> <span class="err">one</span> <span class="err">of</span> <span class="err">the</span> <span class="err">following</span>
+<span class="err">$</span> <span class="err">cp</span> <span class="err">barebox-zii-imx6q-rdu2.img</span> <span class="err">/dev/m25p0.barebox</span>
+<span class="err">#</span> <span class="err">Or</span>
+<span class="err">$</span> <span class="err">cp</span> <span class="err">barebox-zii-imx6qp-rdu2.img</span> <span class="err">/dev/m25p0.barebox</span>
+
+<span class="err">#</span> <span class="err">Connect</span> <span class="err">to</span> <span class="err">the</span> <span class="err">Quark</span> <span class="err">console</span> <span class="err">on</span> <span class="err">/dev/ttyUSB3</span> <span class="err">again</span>
+<span class="err">#</span> <span class="err">Select</span> <span class="err">SPI</span> <span class="err">NOR</span> <span class="err">as</span> <span class="err">the</span> <span class="err">boot</span> <span class="err">source</span>
+<span class="err">$</span> <span class="err">#HostBoot</span> <span class="err">s</span> <span class="err">2</span>
+<span class="err">$</span> <span class="err">reset</span>
+
+<span class="err">#</span> <span class="err">Edit</span> <span class="err">configuration</span> <span class="err">to</span> <span class="err">automatically</span> <span class="err">boot</span> <span class="err">from</span> <span class="err">mmc</span> <span class="err">like</span> <span class="err">this:</span>
+<span class="err">$</span> <span class="err">sedit</span> <span class="err">/env/config</span>
+<span class="err">export</span> <span class="err">global.boot.</span><span class="na">default=</span><span class="s">/env/boot/mmc</span>
+<span class="err">export</span> <span class="err">global.bootm.</span><span class="na">image=</span><span class="s">/mnt/mmc1.0/android_zImage</span>
+<span class="err">export</span> <span class="err">global.bootm.</span><span class="na">initrd=</span><span class="s">/mnt/mmc1.0/android_ramdisk.img.gz</span>
+<span class="err">export</span> <span class="err">global.bootm.</span><span class="na">oftree=</span><span class="s">/mnt/mmc1.0/imx6qp-zii-rdu2.dtb</span>
+<span class="err">export</span> <span class="err">global.linux.bootargs.</span><span class="na">base=</span><span class="s">&quot;console=ttymxc0,115200 console=tty0 rw rootwait ip=dhcp buildvariant=userdebug debug ignore_loglevel root=/dev/mmcblk0p2 rootfstype=ext4 rootwait init=/init printk.devkmsg=on verbose enforcing=0 androidboot.selinux=permissive drm.debug=0x00&quot;</span>
+
+<span class="err">$</span> <span class="err">sedit</span> <span class="err">/env/boot/mmc</span>
+<span class="err">#!/bin/sh</span>
+<span class="err">detect</span> <span class="err">mmc1</span>
+<span class="err">mkdir</span> <span class="err">-p</span> <span class="err">/mnt/mmc1.0</span>
+<span class="err">automount</span> <span class="err">-d</span> <span class="err">/mnt/mmc1.0</span> <span class="err">&#39;mount</span> <span class="err">/dev/mmc1.0</span> <span class="err">/mnt/mmc1.0&#39;</span>
+<span class="err">bootm</span>
+
+<span class="err">$</span> <span class="err">pic_setwdt</span> <span class="err">0</span> <span class="err">60</span>     <span class="err">#</span> <span class="err">Disable</span> <span class="err">watchdog</span>
+
+<span class="err">$</span> <span class="err">exit</span>
+</pre></div>
+
+
+<h2>Thanks</h2>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="../tag/android.html">android </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/aosp.html">aosp </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/imx6.html">imx6 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/sabre.html">sabre </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/rdu2.html">rdu2 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/zodiac.html">zodiac </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/vivante.html">vivante </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/etnaviv.html">etnaviv </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
