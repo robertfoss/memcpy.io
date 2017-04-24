@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>memcpy.io | Android: Getting up an running on the iMX6</title>
+		<title>memcpy.io | Android: Getting up and running on the iMX6</title>
 		<link rel="icon" type="image/png" href="/logo.png" />
 		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
@@ -14,9 +14,9 @@
 		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone git://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android repo sync -j75 mkdir /opt/imx6_android cp /opt/imx6_android git clone git://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3 # The mkimage tool is used even if you&#39;re not # using u-boot it as a bootloader sudo apt install u-boot-tools # Fetch Kconfig, bootloaders and some scripts git clone git://git.collabora.com/git/user/robertfoss/rdu2.git . # This will destroy all data …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, sabre, rdu2, zodiac, vivante, etnaviv, collabora">
-		<meta property="og:title" content="Android: Getting up an running on the iMX6" />
+		<meta property="og:title" content="Android: Getting up and running on the iMX6" />
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="http://memcpy.io/android-getting-up-an-running-on-the-imx6.html" />
+		<meta property="og:url" content="http://memcpy.io/android-getting-up-and-running-on-the-imx6.html" />
 		<meta property="og:locale" content="" />
 		<meta property="og:site_name" content="memcpy.io" />
 		<meta property="article:published_time" content="2017-04-21" />
@@ -34,7 +34,7 @@
 	<body>
 		<article id="content" itemscope>
 			<header>
-				<h1>Android: Getting up an running on the iMX6</h1>
+				<h1>Android: Getting up and running on the iMX6</h1>
 				<p>
 				Published <time datetime="2017-04-21" itemprop="datePublished">2017-04-21</time>
 				</p>
@@ -68,6 +68,22 @@ git clone git://git.collabora.com/git/user/robertfoss/rdu2.git .
 </pre></div>
 
 
+<h2>Hardware: iMX6 Sabre</h2>
+<h3>Select correct dtb file for u-boot</h3>
+<div class="highlight"><pre><span></span># Uncomment the correct dtb file for your platform
+
+nano uboot_android_boot.scr
+setenv fdt_file imx6q-sabresd.dtb
+#setenv fdt_file imx6qp-sabresd.dtb
+
+# Run build script again
+./build_android.sh
+</pre></div>
+
+
+<h3>Load Android</h3>
+<p>The SD-card created in the common steps can be put into
+the middlemost slot and the device can be restarted.</p>
 <h2>Hardware: RDU2</h2>
 <h3>Install the bootloader</h3>
 <div class="highlight"><pre><span></span># Depending if you have a &gt;=13&quot; version of the RDU2
