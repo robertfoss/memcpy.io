@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - collabora</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/collabora.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-21T00:00:00+02:00</updated><entry><title>Android: Getting up and running on the iMX6</title><link href="http://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-21T00:00:00+02:00</published><updated>2017-04-21T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-21:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - collabora</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/collabora.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-24T00:00:00+02:00</updated><entry><title>Android: Getting up and running on the iMX6</title><link href="http://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-24T00:00:00+02:00</published><updated>2017-04-24T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-24:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
 &lt;h2&gt;Common steps&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir /opt/android
 repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
@@ -49,17 +49,17 @@ git clone git://git.collabora.com/git/user/robertfoss/rdu2.git .
 &lt;h2&gt;Hardware: iMX6 Sabre&lt;/h2&gt;
 &lt;h3&gt;Select correct dtb file for u-boot&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Uncomment the correct dtb file for your platform
-
 nano uboot_android_boot.scr
 setenv fdt_file imx6q-sabresd.dtb
 #setenv fdt_file imx6qp-sabresd.dtb
 
-# Run build script again
+# Run build script again, to make sure boot.scr
+# is created and moved to the SD-card
 ./build_android.sh
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Load Android&lt;/h3&gt;
+&lt;h3&gt;Start Android&lt;/h3&gt;
 &lt;p&gt;The SD-card created in the common steps can be put into
 the middlemost slot and the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
@@ -144,7 +144,7 @@ the middlemost slot and the device can be restarted.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Load Android&lt;/h3&gt;
+&lt;h3&gt;Start Android&lt;/h3&gt;
 &lt;p&gt;The SD-card created in the common steps can now be put into
 the middlemost slot and the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
@@ -155,7 +155,7 @@ the middlemost slot and the device can be restarted.&lt;/p&gt;
 &lt;li&gt;Rob Herring at Linaro for getting the ball rolling with AOSP for Zii.&lt;/li&gt;
 &lt;li&gt;Andrey Smirnov for driver support for the RDU2 such as i.MX6 PCI, ARM PL310 L2 Cache controller, RTC, and other i.MX6qp driver fixups.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="rdu2"></category><category term="zodiac"></category><category term="vivante"></category><category term="etnaviv"></category><category term="collabora"></category></entry><entry><title>Android: Changing the bootanimation</title><link href="http://memcpy.io/android-changing-the-bootanimation.html" rel="alternate"></link><published>2017-04-20T00:00:00+02:00</published><updated>2017-04-20T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</id><summary type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="rdu2"></category><category term="zodiac"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="collabora"></category></entry><entry><title>Android: Changing the bootanimation</title><link href="http://memcpy.io/android-changing-the-bootanimation.html" rel="alternate"></link><published>2017-04-20T00:00:00+02:00</published><updated>2017-04-20T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</id><summary type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
 for how to create a custom boot animation, but unfortunately it is lacking
 in actual examples.&lt;/p&gt;
 &lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
