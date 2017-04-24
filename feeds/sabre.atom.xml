@@ -60,8 +60,8 @@ setenv fdt_file imx6q-sabresd.dtb
 
 
 &lt;h3&gt;Start Android&lt;/h3&gt;
-&lt;p&gt;The SD-card created in the common steps can be put into
-the middlemost slot and the device can be restarted.&lt;/p&gt;
+&lt;p&gt;The SD-card can now be put into the middlemost slot and
+the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
 &lt;h3&gt;Install the bootloader&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Depending if you have a &amp;gt;=13&amp;quot; version of the RDU2
