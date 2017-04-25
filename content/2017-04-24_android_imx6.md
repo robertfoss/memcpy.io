@@ -15,7 +15,7 @@ This post is a bit of a living document and will be changed over time, and if yo
     repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
     cd /opt/android/.repo
     git clone git://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android
-    repo sync -j75
+    repo sync -j10
 
     mkdir /opt/imx6_android
     cp /opt/imx6_android
