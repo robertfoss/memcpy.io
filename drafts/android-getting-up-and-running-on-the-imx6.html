@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone git://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android repo sync -j75 mkdir /opt/imx6_android cp /opt/imx6_android git clone git://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3 # The mkimage tool is used even if you&#39;re not # using u-boot it as a bootloader sudo apt install u-boot-tools # Fetch Kconfig, bootloaders and some scripts git clone git://git.collabora.com/git/user/robertfoss/rdu2.git . # This will destroy all data …">
+		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss@collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode). Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone git://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android repo sync -j75 mkdir /opt/imx6_android cp /opt/imx6_android git clone git://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3 # The …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, sabre, rdu2, zodiac, vivante, etnaviv, linux, collabora">
 	</head>
@@ -25,6 +25,7 @@
 			</header>
 			<p>Getting Android up and running on the iMX6 platform using an open source graphics stack has been impossible up until recently, but now you can. Here's a guide through the steps.</p>
 			<p>Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.</p>
+<p>This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss@collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).</p>
 <h2>Common steps</h2>
 <div class="highlight"><pre><span></span>mkdir /opt/android
 repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
@@ -54,8 +55,9 @@ git clone git://git.collabora.com/git/user/robertfoss/rdu2.git .
 
 <h2>Hardware: iMX6 Sabre</h2>
 <h3>Select correct dtb file for u-boot</h3>
-<div class="highlight"><pre><span></span># Uncomment the correct dtb file for your platform
-nano uboot_android_boot.scr
+<div class="highlight"><pre><span></span>nano uboot_android_boot.scr
+
+# Uncomment the correct dtb file for your platform
 setenv fdt_file imx6q-sabresd.dtb
 #setenv fdt_file imx6qp-sabresd.dtb
 
@@ -129,6 +131,7 @@ the device can be restarted.</p>
 <span class="err">#HostBoot</span> <span class="err">s</span> <span class="err">2</span>
 <span class="err">reset</span>
 
+<span class="err">#</span> <span class="err">Connect</span> <span class="err">to</span> <span class="err">the</span> <span class="err">barebox</span> <span class="err">console</span> <span class="err">on</span> <span class="err">/dev/ttyUSB2</span> <span class="err">again</span>
 <span class="err">#</span> <span class="err">Edit</span> <span class="err">configuration</span> <span class="err">to</span> <span class="err">automatically</span> <span class="err">boot</span> <span class="err">from</span> <span class="err">mmc:</span>
 <span class="err">sedit</span> <span class="err">/env/config</span>
 <span class="err">export</span> <span class="err">global.boot.</span><span class="na">default=</span><span class="s">/env/boot/mmc</span>
