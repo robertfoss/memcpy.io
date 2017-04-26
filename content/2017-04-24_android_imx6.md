@@ -14,19 +14,19 @@ This post is a bit of a living document and will be changed over time, and if yo
     mkdir /opt/android
     repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
     cd /opt/android/.repo
-    git clone git://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android
+    git clone https://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b etnaviv-android
     repo sync -j10
 
     mkdir /opt/imx6_android
     cp /opt/imx6_android
-    git clone git://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3
+    git clone https://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3
 
     # The mkimage tool is used even if you're not
     # using u-boot it as a bootloader
     sudo apt install u-boot-tools
 
     # Fetch Kconfig, bootloaders and some scripts
-    git clone git://git.collabora.com/git/user/robertfoss/rdu2.git .
+    git clone https://git.collabora.com/git/user/robertfoss/rdu2.git .
 
     # This will destroy all data on /dev/mmcblk0 and
     # create boot/system/cache/data ext4 partitions 
