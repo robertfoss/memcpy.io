@@ -1,9 +1,8 @@
 Title: Android: Getting up and running on the iMX6
-Date: 2017-04-24
+Date: 2017-04-27
 Category: aosp
 Tags: android, aosp, imx6, sabre, rdu2, zodiac, vivante, etnaviv, linux, collabora
 Description: Getting Android up and running on the iMX6 platform using an open source graphics stack has been impossible up until recently, but now you can. Here's a guide through the steps.
-Status: draft
 
 Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.
 
