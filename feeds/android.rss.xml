@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - android</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 20 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Changing the bootanimation</title><link>http://memcpy.io/android-changing-the-bootanimation.html</link><description>&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+<rss version="2.0"><channel><title>memcpy.io - android</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 27 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Getting up and running on the iMX6</title><link>http://memcpy.io/android-getting-up-and-running-on-the-imx6.html</link><description>&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+&lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss@collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
+&lt;h2&gt;Common steps&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir /opt/android
+repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
+cd /opt/android/.repo
+git clone https://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b android-etnaviv
+repo sync -j10
+
+mkdir /opt/imx6_android
+cp /opt/imx6_android
+git clone https://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3
+
+# The …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 27 Apr 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-04-27:/android-getting-up-and-running-on-the-imx6.html</guid><category>android</category><category>aosp</category><category>imx6</category><category>sabre</category><category>rdu2</category><category>zodiac</category><category>vivante</category><category>etnaviv</category><category>linux</category><category>collabora</category></item><item><title>Android: Changing the bootanimation</title><link>http://memcpy.io/android-changing-the-bootanimation.html</link><description>&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
 for how to create a custom boot animation, but unfortunately it is lacking
 in actual examples.&lt;/p&gt;
 &lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
