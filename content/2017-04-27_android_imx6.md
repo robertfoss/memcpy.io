@@ -8,6 +8,9 @@ Since the hardware very much matters this is going to be divided into a few part
 
 This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).
 
+   Changelog:
+   2017-04-27: Added -b [device] support to build_android.sh and setup_sdcard.sh
+
 ## Common steps
 
     mkdir /opt/android
@@ -28,11 +31,11 @@ This post is a bit of a living document and will be changed over time, and if yo
     git clone https://git.collabora.com/git/user/robertfoss/rdu2.git .
 
     # This will destroy all data on /dev/mmcblk0 and
-    # create boot/system/cache/data ext4 partitions 
-    ./setup_sdcard.sh /dev/mmcblk0
+    # create boot/system/cache/data partitions
+    ./setup_sdcard.sh -b /dev/mmcblk0
     
     # Build android, the kernel, and flash it onto an SD-card
-    ./build_android.sh
+    ./build_android.sh -b /dev/mmcblk0
 
 
 ## Hardware: iMX6 Sabre
