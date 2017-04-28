@@ -6,7 +6,7 @@ Description: Getting Android up and running on the iMX6 platform using an open s
 
 Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.
 
-This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss@collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).
+This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).
 
 ## Common steps
 
