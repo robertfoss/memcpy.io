@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode). Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone https://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b android-etnaviv repo sync -j10 mkdir /opt/imx6_android cp /opt/imx6_android git clone https://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3 …">
+		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode). Changelog: 2017-04-27: Added -b [device] support to build_android.sh and setup_sdcard.sh Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone https://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b android-etnaviv repo sync -j10 mkdir /opt/imx6_android cd /opt/imx6_android git clone …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, sabre, rdu2, zodiac, vivante, etnaviv, linux, collabora">
 		<meta property="og:title" content="Android: Getting up and running on the iMX6" />
@@ -43,6 +43,8 @@
 			<p>Getting Android up and running on the iMX6 platform using an open source graphics stack has been impossible up until recently, but now you can. Here's a guide through the steps.</p>
 			<p>Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.</p>
 <p>This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).</p>
+<p>Changelog:
+   2017-04-27: Added -b [device] support to build_android.sh and setup_sdcard.sh</p>
 <h2>Common steps</h2>
 <div class="highlight"><pre><span></span>mkdir /opt/android
 repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
@@ -51,7 +53,7 @@ git clone https://git.collabora.com/git/user/robertfoss/android_manifest.git loc
 repo sync -j10
 
 mkdir /opt/imx6_android
-cp /opt/imx6_android
+cd /opt/imx6_android
 git clone https://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3
 
 # The mkimage tool is used even if you&#39;re not
@@ -62,11 +64,11 @@ sudo apt install u-boot-tools
 git clone https://git.collabora.com/git/user/robertfoss/rdu2.git .
 
 # This will destroy all data on /dev/mmcblk0 and
-# create boot/system/cache/data ext4 partitions 
-./setup_sdcard.sh /dev/mmcblk0
+# create boot/system/cache/data partitions
+./setup_sdcard.sh -b /dev/mmcblk0
 
 # Build android, the kernel, and flash it onto an SD-card
-./build_android.sh
+./build_android.sh -b /dev/mmcblk0
 </pre></div>
 
 
@@ -177,7 +179,7 @@ the middlemost slot and the device can be restarted.</p>
 <p>This work is built on efforts by a lot people:</p>
 <ul>
 <li>Pengutronix who's been doing i.MX6 platform work.</li>
-<li>Christian Gmeiner, Wladimir Van Der Laan, and the other etnviv developers.</li>
+<li>Christian Gmeiner, Wladimir Van Der Laan, and the other etanviv developers.</li>
 <li>Rob Herring at Linaro for getting the ball rolling with AOSP for Zii.</li>
 <li>Andrey Smirnov for driver support for the RDU2 such as i.MX6 PCI, ARM PL310 L2 Cache controller, RTC, and other i.MX6qp driver fixups.</li>
 </ul>
