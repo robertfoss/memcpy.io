@@ -20,7 +20,7 @@ This post is a bit of a living document and will be changed over time, and if yo
     repo sync -j10
 
     mkdir /opt/imx6_android
-    cp /opt/imx6_android
+    cd /opt/imx6_android
     git clone https://git.collabora.com/git/user/robertfoss/linux.git -b imx_rdu2_v4.11-rc3
 
     # The mkimage tool is used even if you're not
@@ -151,7 +151,7 @@ the middlemost slot and the device can be restarted.
 This work is built on efforts by a lot people:
 
   * Pengutronix who's been doing i.MX6 platform work.
-  * Christian Gmeiner, Wladimir Van Der Laan, and the other etnviv developers.
+  * Christian Gmeiner, Wladimir Van Der Laan, and the other etanviv developers.
   * Rob Herring at Linaro for getting the ball rolling with AOSP for Zii.
   * Andrey Smirnov for driver support for the RDU2 such as i.MX6 PCI, ARM PL310 L2 Cache controller, RTC, and other i.MX6qp driver fixups.
 
