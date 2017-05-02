@@ -50,7 +50,7 @@ This post is a bit of a living document and will be changed over time, and if yo
     
     # Run build script again, to make sure boot.scr
     # is created and moved to the SD-card
-    ./build_android.sh
+    ./build_android.sh -b /dev/mmcblk0
 
     
 ### Start Android
