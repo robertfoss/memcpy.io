@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode). Changelog: 2017-04-27: Added -b [device] support to build_android.sh and setup_sdcard.sh Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone https://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b android-etnaviv repo sync -j10 mkdir /opt/imx6_android cd /opt/imx6_android git clone …">
+		<meta name="description" content="Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones. This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode). Changelog: 2017-04-27: Added -b [device] support to build_android.sh and setup_sdcard.sh Common steps mkdir /opt/android repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28 cd /opt/android/.repo git clone https://git.collabora.com/git/user/robertfoss/android_manifest.git local_manifests -b android-etnaviv repo sync -j10 mkdir /opt/imx6_android cd /opt/imx6_android …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, sabre, rdu2, zodiac, vivante, etnaviv, linux, collabora">
 		<meta property="og:title" content="Android: Getting up and running on the iMX6" />
@@ -43,8 +43,11 @@
 			<p>Getting Android up and running on the iMX6 platform using an open source graphics stack has been impossible up until recently, but now you can. Here's a guide through the steps.</p>
 			<p>Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.</p>
 <p>This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).</p>
-<p>Changelog:
-   2017-04-27: Added -b [device] support to build_android.sh and setup_sdcard.sh</p>
+<div class="highlight"><pre><span></span><span class="n">Changelog</span><span class="o">:</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">27</span><span class="o">:</span> <span class="n">Added</span> <span class="o">-</span><span class="n">b</span> <span class="o">[</span><span class="n">device</span><span class="o">]</span> <span class="n">support</span> <span class="n">to</span> <span class="n">build_android</span><span class="o">.</span><span class="na">sh</span> <span class="n">and</span> <span class="n">setup_sdcard</span><span class="o">.</span><span class="na">sh</span>
+</pre></div>
+
+
 <h2>Common steps</h2>
 <div class="highlight"><pre><span></span>mkdir /opt/android
 repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
