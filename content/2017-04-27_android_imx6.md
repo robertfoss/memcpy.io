@@ -9,7 +9,8 @@ Since the hardware very much matters this is going to be divided into a few part
 This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).
 
     Changelog:
-    2017-04-27: Added -b [device] support to build_android.sh and setup_sdcard.sh
+    2017-04-27: build_android.sh, setup_sdcard.sh: Added -b [device] support to build_android.sh and setup_sdcard.sh
+    2017-05-02: build_android.sh: Don't write to SD-card without -b option
 
 ## Common steps
 
