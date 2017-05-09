@@ -12,8 +12,14 @@ This post is a bit of a living document and will be changed over time, and if yo
     2017-04-27: build_android.sh, setup_sdcard.sh: Added -b [device] support to build_android.sh and setup_sdcard.sh
     2017-05-02: build_android.sh: Don't write to SD-card without -b option
     2017-05-04: Switch git repo urls to https://customer-git.collabora.com/git/zodiac/
+    2017-05-09: Add compiler installation to apt-get
+    2017-05-09: Re-ordered some instructions
+
 
 ## Common steps
+
+    # Install mkimage tool from u-boot and a suitable compiler
+    sudo apt install u-boot-tools gcc-arm-linux-gnueabihf
 
     mkdir /opt/android
     repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
@@ -23,14 +29,12 @@ This post is a bit of a living document and will be changed over time, and if yo
 
     mkdir /opt/imx6_android
     cd /opt/imx6_android
-    git clone https://customer-git.collabora.com/git/zodiac/linux.git -b imx_rdu2_v4.11-rc3
-
-    # The mkimage tool is used even if you're not
-    # using u-boot it as a bootloader
-    sudo apt install u-boot-tools
 
     # Fetch Kconfig, bootloaders and some scripts
     git clone https://customer-git.collabora.com/git/zodiac/rdu2.git .
+
+    # Fetch the Linux Kernel
+    git clone https://customer-git.collabora.com/git/zodiac/linux.git -b imx_rdu2_v4.11-rc3
 
     # This will destroy all data on /dev/mmcblk0 and
     # create boot/system/cache/data partitions
