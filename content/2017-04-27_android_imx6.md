@@ -14,12 +14,13 @@ This post is a bit of a living document and will be changed over time, and if yo
     2017-05-04: Switch git repo urls to https://customer-git.collabora.com/git/zodiac/
     2017-05-09: Add compiler installation to apt-get
     2017-05-09: Re-ordered some instructions
+    2017-05-10: Add java installation to apt-get
 
 
 ## Common steps
 
     # Install mkimage tool from u-boot and a suitable compiler
-    sudo apt install u-boot-tools gcc-arm-linux-gnueabihf
+    sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk
 
     mkdir /opt/android
     repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
