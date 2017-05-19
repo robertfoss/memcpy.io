@@ -1,7 +1,7 @@
 Title: Android: Getting up and running on the iMX6
 Date: 2017-04-27
 Category: aosp
-Tags: android, aosp, imx6, sabre, rdu2, zodiac, vivante, etnaviv, linux, collabora
+Tags: android, aosp, imx6, sabre, rdu2, vivante, etnaviv, linux, collabora
 Description: Getting Android up and running on the iMX6 platform using an open source graphics stack has been impossible up until recently, but now you can. Here's a guide through the steps.
 
 Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.
@@ -11,10 +11,12 @@ This post is a bit of a living document and will be changed over time, and if yo
     Changelog:
     2017-04-27: build_android.sh, setup_sdcard.sh: Added -b [device] support to build_android.sh and setup_sdcard.sh
     2017-05-02: build_android.sh: Don't write to SD-card without -b option
-    2017-05-04: Switch git repo urls to https://customer-git.collabora.com/git/zodiac/
+    2017-05-04: Switch git repo urls to shared repository
     2017-05-09: Add compiler installation to apt-get
     2017-05-09: Re-ordered some instructions
     2017-05-10: Add java installation to apt-get
+    2017-05-19: Change paths to android-etnaviv instead of client
+    2017-05-19: Change kernel branch
 
 
 ## Common steps
@@ -25,17 +27,17 @@ This post is a bit of a living document and will be changed over time, and if yo
     mkdir /opt/android
     repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
     cd /opt/android/.repo
-    git clone https://customer-git.collabora.com/git/zodiac/android_manifest.git local_manifests -b android-etnaviv
+    git clone https://customer-git.collabora.com/git/android-etnaviv/android_manifest.git local_manifests -b android-etnaviv
     repo sync -j10
 
     mkdir /opt/imx6_android
     cd /opt/imx6_android
 
     # Fetch Kconfig, bootloaders and some scripts
-    git clone https://customer-git.collabora.com/git/zodiac/rdu2.git .
+    git clone https://customer-git.collabora.com/git/android-etnaviv/android-etnaviv.git .
 
     # Fetch the Linux Kernel
-    git clone https://customer-git.collabora.com/git/zodiac/linux.git -b imx_rdu2_v4.11-rc3
+    git clone https://customer-git.collabora.com/git/android-etnaviv/linux.git -b android-etnaviv
 
     # This will destroy all data on /dev/mmcblk0 and
     # create boot/system/cache/data partitions
