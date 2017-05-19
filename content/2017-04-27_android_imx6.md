@@ -57,7 +57,7 @@ This post is a bit of a living document and will be changed over time, and if yo
 
 ### Start Android
 
-The SD-card can now be put into the middlemost slot and
+The SD-card can now be put into the SD3 slot and
 the device can be restarted.
 
 
@@ -71,7 +71,8 @@ the device can be restarted.
 
 ### Start Android
 
-The SD-card can now be put into the middlemost slot and
+
+The micro-sd card can now be put into the micro-sd slot and
 the device can be restarted.
 
 
