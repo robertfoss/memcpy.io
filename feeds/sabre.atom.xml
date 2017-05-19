@@ -58,7 +58,7 @@ git clone https://customer-git.collabora.com/git/android-etnaviv/linux.git -b an
 
 
 &lt;h3&gt;Start Android&lt;/h3&gt;
-&lt;p&gt;The SD-card can now be put into the middlemost slot and
+&lt;p&gt;The SD-card can now be put into the SD3 slot and
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: iMX6 Sabrelite&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
@@ -69,7 +69,7 @@ the device can be restarted.&lt;/p&gt;
 
 
 &lt;h3&gt;Start Android&lt;/h3&gt;
-&lt;p&gt;The SD-card can now be put into the middlemost slot and
+&lt;p&gt;The micro-sd card can now be put into the micro-sd slot and
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
