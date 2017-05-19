@@ -17,6 +17,8 @@ This post is a bit of a living document and will be changed over time, and if yo
     2017-05-10: Add java installation to apt-get
     2017-05-19: Change paths to android-etnaviv instead of client
     2017-05-19: Change kernel branch
+    2017-05-19: Add -d, device flag and info about it
+    2017-05-19: Add sabrelite board info
 
 
 ## Common steps
@@ -43,25 +45,30 @@ This post is a bit of a living document and will be changed over time, and if yo
     # create boot/system/cache/data partitions
     ./setup_sdcard.sh -b /dev/mmcblk0
     
-    # Build android, the kernel, and flash it onto an SD-card
-    ./build_android.sh -b /dev/mmcblk0
-
 
 ## Hardware: iMX6 Sabre
+### Build Android and Linux
 
-### Select correct dtb file for u-boot
+    # Build android, the kernel, and flash it onto an SD-card
+    # Run build_android with the correct -d flag
+    ./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
+    ./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
 
-    nano uboot_android_boot.scr
 
-    # Uncomment the correct dtb file for your platform
-    setenv fdt_file imx6q-sabresd.dtb
-    #setenv fdt_file imx6qp-sabresd.dtb
-    
-    # Run build script again, to make sure boot.scr
-    # is created and moved to the SD-card
-    ./build_android.sh -b /dev/mmcblk0
+### Start Android
 
-    
+The SD-card can now be put into the middlemost slot and
+the device can be restarted.
+
+
+## Hardware: iMX6 Sabrelite
+### Build Android and Linux
+
+    # Build android, the kernel, and flash it onto an SD-card
+    # Run build_android with the correct -d flag
+    ./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
+
+
 ### Start Android
 
 The SD-card can now be put into the middlemost slot and
@@ -69,6 +76,13 @@ the device can be restarted.
 
 
 ## Hardware: RDU2
+### Build Android and Linux
+
+    # Build android, the kernel, and flash it onto an SD-card
+    # Run build_android with the correct -d flag
+    ./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
+    ./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
+
 ### Install the bootloader
 
     # Depending if you have a >=13" version of the RDU2
