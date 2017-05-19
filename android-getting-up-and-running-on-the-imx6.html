@@ -51,6 +51,8 @@
 <span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span> <span class="n">Add</span> <span class="n">java</span> <span class="n">installation</span> <span class="n">to</span> <span class="n">apt</span><span class="o">-</span><span class="kd">get</span>
 <span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Change</span> <span class="n">paths</span> <span class="n">to</span> <span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">client</span>
 <span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Change</span> <span class="n">kernel</span> <span class="n">branch</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Add</span> <span class="o">-</span><span class="n">d</span><span class="o">,</span> <span class="n">device</span> <span class="n">flag</span> <span class="n">and</span> <span class="n">info</span> <span class="n">about</span> <span class="n">it</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Add</span> <span class="n">sabrelite</span> <span class="n">board</span> <span class="n">info</span>
 </pre></div>
 
 
@@ -76,23 +78,26 @@ git clone https://customer-git.collabora.com/git/android-etnaviv/linux.git -b an
 # This will destroy all data on /dev/mmcblk0 and
 # create boot/system/cache/data partitions
 ./setup_sdcard.sh -b /dev/mmcblk0
-
-# Build android, the kernel, and flash it onto an SD-card
-./build_android.sh -b /dev/mmcblk0
 </pre></div>
 
 
 <h2>Hardware: iMX6 Sabre</h2>
-<h3>Select correct dtb file for u-boot</h3>
-<div class="highlight"><pre><span></span>nano uboot_android_boot.scr
+<h3>Build Android and Linux</h3>
+<div class="highlight"><pre><span></span># Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
+./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
+</pre></div>
 
-# Uncomment the correct dtb file for your platform
-setenv fdt_file imx6q-sabresd.dtb
-#setenv fdt_file imx6qp-sabresd.dtb
 
-# Run build script again, to make sure boot.scr
-# is created and moved to the SD-card
-./build_android.sh -b /dev/mmcblk0
+<h3>Start Android</h3>
+<p>The SD-card can now be put into the middlemost slot and
+the device can be restarted.</p>
+<h2>Hardware: iMX6 Sabrelite</h2>
+<h3>Build Android and Linux</h3>
+<div class="highlight"><pre><span></span># Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
 </pre></div>
 
 
@@ -100,6 +105,14 @@ setenv fdt_file imx6q-sabresd.dtb
 <p>The SD-card can now be put into the middlemost slot and
 the device can be restarted.</p>
 <h2>Hardware: RDU2</h2>
+<h3>Build Android and Linux</h3>
+<div class="highlight"><pre><span></span># Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
+./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
+</pre></div>
+
+
 <h3>Install the bootloader</h3>
 <div class="highlight"><pre><span></span># Depending if you have a &gt;=13&quot; version of the RDU2
 # use the imx6qp, if <span class="nt">&lt;13</span><span class="err">&quot;</span> <span class="err">then</span> <span class="err">use</span> <span class="err">the</span> <span class="err">imx6q</span>
