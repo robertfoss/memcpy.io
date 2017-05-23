@@ -181,12 +181,12 @@ in actual examples.&lt;/p&gt;
 &lt;p&gt;Without covering too much of the same gound as the documentation,
 let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
-total 28
-drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
-drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
 
 $ cat bootanimation/desc.txt 
 &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
@@ -198,12 +198,12 @@ in actual examples.&lt;/p&gt;
 &lt;p&gt;Without covering too much of the same gound as the documentation,
 let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
-total 28
-drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
-drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
 
 $ cat bootanimation/desc.txt 
 &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
@@ -211,14 +211,14 @@ c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; par
 c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part1 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
 
 ls -la bootanimation/part0 
-total 28
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 .
-drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:40 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0000.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0001.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0002.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0003.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 XXXX.png
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 .
+drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:40 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0000&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0001&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0002&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0003&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 XXXX.png
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -424,7 +424,7 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-2.90-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -544,16 +544,16 @@ exit
 &lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;cd &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="x"&gt;/system/core/&lt;/span&gt;
-&lt;span class="x"&gt;git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git&lt;/span&gt;
-&lt;span class="x"&gt;git fetch padovan&lt;/span&gt;
-&lt;span class="x"&gt;git checkout padovan/master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd $ANDROID_PATH/system/core/
+git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
+git fetch padovan
+git checkout padovan/master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;mkbootimg&lt;/h2&gt;
 &lt;p&gt;Fetch the make boot image script. This script later assembles the boot image, &lt;em&gt;boot.img&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;git clone https://android.googlesource.com/platform/system/core.git &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_TOOLS_PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH
 &lt;/pre&gt;&lt;/div&gt;
 
 

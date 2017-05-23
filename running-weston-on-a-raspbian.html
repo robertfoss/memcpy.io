@@ -14,19 +14,6 @@
 		<meta name="description" content="Progress in the VC4 graphics camp and the Wayland camp now enables us to run Weston on top of the drm backend for VC4 platforms. Previously software acceleration using pixman was needed, but this is no longer the case. Additionally the rpi backend for weston is now being removed since it has been obsoleted by the improved drm layer. Let&#39;s explore running hardware accelerated Weston on the Raspberry Pi. Building Linux kernel A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has been written by the Raspberry Pi foundation and is available here. As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes. Set up alternative install location These build instructions …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, wayland, weston, rpi, rpi2, kernel">
-		<meta property="og:title" content="Running Weston on a Raspbian" />
-		<meta property="og:type" content="article" />
-		<meta property="og:image" content="http://memcpy.io//images/2016-06-03_weston.png" />
-		<meta property="og:url" content="http://memcpy.io/running-weston-on-a-raspbian.html" />
-		<meta property="og:locale" content="" />
-		<meta property="og:site_name" content="memcpy.io" />
-		<meta property="article:published_time" content="2016-06-03" />
-		<meta property="article:section" content="wayland" />
-		<meta property="article:tag" content="wayland" />
-		<meta property="article:tag" content="weston" />
-		<meta property="article:tag" content="rpi" />
-		<meta property="article:tag" content="rpi2" />
-		<meta property="article:tag" content="kernel" />
 	</head>
 	<body>
 		<article id="content" itemscope>
@@ -54,16 +41,16 @@ from freedesktop.org, but altered to target VC4 and Raspbian.</p>
 <p>You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.</p>
-<div class="highlight"><pre><span></span><span class="err">#</span><span class="x"> Change WLD to any location you like</span>
-<span class="x">export WLD=~/local</span>
-<span class="x">export LD_LIBRARY_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib</span>
-<span class="x">export PKG_CONFIG_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/lib/pkgconfig/:</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/share/pkgconfig/</span>
-<span class="x">export PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/bin:</span><span class="p">$</span><span class="nv">PATH</span><span class="x"></span>
-<span class="x">export ACLOCAL_PATH=</span><span class="p">$</span><span class="nv">WLD</span><span class="x">/share/aclocal</span>
-<span class="x">export ACLOCAL=&quot;aclocal -I </span><span class="p">$</span><span class="nv">ACLOCAL_PATH</span><span class="x">&quot;</span>
+<div class="highlight"><pre><span></span># Change WLD to any location you like
+export WLD=~/local
+export LD_LIBRARY_PATH=$WLD/lib
+export PKG_CONFIG_PATH=$WLD/lib/pkgconfig/:$WLD/share/pkgconfig/
+export PATH=$WLD/bin:$PATH
+export ACLOCAL_PATH=$WLD/share/aclocal
+export ACLOCAL=&quot;aclocal -I $ACLOCAL_PATH&quot;
 
-<span class="err">#</span><span class="x"> Needed by autotools</span>
-<span class="x">mkdir -p </span><span class="p">$</span><span class="nv">WLD</span><span class="x">/share/aclocal</span>
+# Needed by autotools
+mkdir -p $WLD/share/aclocal
 </pre></div>
 
 
@@ -90,19 +77,19 @@ sudo apt-get install \
 
 <h2>Building Mesa</h2>
 <p>Configure and compile mesa with vc4, wayland and EGL support.</p>
-<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/mesa/mesa</span>
-<span class="x">cd mesa</span>
-<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
-<span class="x">  --enable-gles2 \</span>
-<span class="x">  --with-egl-platforms=x11,wayland,drm \</span>
-<span class="x">  --enable-gbm --enable-shared-glapi \</span>
-<span class="x">  --with-gallium-drivers=vc4 \</span>
-<span class="x">  --without-dri-drivers \</span>
-<span class="x">  --disable-va \</span>
-<span class="x">  --disable-vdpau \</span>
-<span class="x">  --disable-xvmc \</span>
-<span class="x">  --disable-omx</span>
-<span class="x">make -j4 &amp;&amp; make install</span>
+<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/mesa/mesa
+cd mesa
+./autogen.sh --prefix=$WLD \
+  --enable-gles2 \
+  --with-egl-platforms=x11,wayland,drm \
+  --enable-gbm --enable-shared-glapi \
+  --with-gallium-drivers=vc4 \
+  --without-dri-drivers \
+  --disable-va \
+  --disable-vdpau \
+  --disable-xvmc \
+  --disable-omx
+make -j4 &amp;&amp; make install
 </pre></div>
 
 
@@ -111,39 +98,39 @@ sudo apt-get install \
 and built.</p>
 <h4>Wayland</h4>
 <p>Weston is a Wayland compositor, so we're going to have to build Wayland.</p>
-<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/wayland</span>
-<span class="x">cd wayland</span>
-<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
-<span class="x">make -j4 &amp;&amp; make install</span>
-<span class="x">cd ..</span>
+<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/wayland/wayland
+cd wayland
+./autogen.sh --prefix=$WLD
+make -j4 &amp;&amp; make install
+cd ..
 
-<span class="x">git clone git://anongit.freedesktop.org/wayland/wayland-protocols</span>
-<span class="x">cd wayland-protocols</span>
-<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
-<span class="x">make install</span>
-<span class="x">cd ..</span>
+git clone git://anongit.freedesktop.org/wayland/wayland-protocols
+cd wayland-protocols
+./autogen.sh --prefix=$WLD
+make install
+cd ..
 </pre></div>
 
 
 <h4>libinput</h4>
 <p>libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.</p>
-<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/libinput</span>
-<span class="x">cd libinput</span>
-<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"></span>
-<span class="x">make -j4 &amp;&amp; make install</span>
-<span class="x">cd ..</span>
+<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/wayland/libinput
+cd libinput
+./autogen.sh --prefix=$WLD
+make -j4 &amp;&amp; make install
+cd ..
 </pre></div>
 
 
 <h4>Weston</h4>
 <p>Finally we've built all of the dependencies of Weston and can now build it.</p>
-<div class="highlight"><pre><span></span><span class="x">git clone git://anongit.freedesktop.org/wayland/weston</span>
-<span class="x">cd weston</span>
-<span class="x">./autogen.sh --prefix=</span><span class="p">$</span><span class="nv">WLD</span><span class="x"> \</span>
-<span class="x">  --disable-libunwind</span>
-<span class="x">make -j4 &amp;&amp;</span>
-<span class="x">sudo make install</span>
-<span class="x">cd ..</span>
+<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/wayland/weston
+cd weston
+./autogen.sh --prefix=$WLD \
+  --disable-libunwind
+make -j4 &amp;&amp;
+sudo make install
+cd ..
 </pre></div>
 
 

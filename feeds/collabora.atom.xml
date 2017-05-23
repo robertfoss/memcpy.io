@@ -181,12 +181,12 @@ in actual examples.&lt;/p&gt;
 &lt;p&gt;Without covering too much of the same gound as the documentation,
 let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
-total 28
-drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
-drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
 
 $ cat bootanimation/desc.txt 
 &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
@@ -198,12 +198,12 @@ in actual examples.&lt;/p&gt;
 &lt;p&gt;Without covering too much of the same gound as the documentation,
 let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
-total 28
-drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 .
-drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 22:39 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:21 desc.txt
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 part0
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:45 part1
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
 
 $ cat bootanimation/desc.txt 
 &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
@@ -211,14 +211,14 @@ c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; par
 c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part1 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
 
 ls -la bootanimation/part0 
-total 28
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:44 .
-drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 15:40 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0000.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0001.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0002.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 0003.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; 12:31 XXXX.png
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 .
+drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:40 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0000&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0001&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0002&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0003&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 XXXX.png
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -327,23 +327,23 @@ split into parts that are bridged by a screw being inserted.&lt;/p&gt;
 &lt;h2&gt;Disable Write-Protect&lt;/h2&gt;
 &lt;p&gt;So this is the part that requires a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt; device.
 And a ChromiumOS checkout, for some help setting one up, have a look at &lt;a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html"&gt;my previous post&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Go to your ChromiumOS checkout&lt;/span&gt;
-&lt;span class="x"&gt;cd /opt/chromiumos&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Go to your ChromiumOS checkout
+cd /opt/chromiumos
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Enter dev environment&lt;/span&gt;
-&lt;span class="x"&gt;cros_sdk&lt;/span&gt;
+# Enter dev environment
+cros_sdk
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Set device variable&lt;/span&gt;
-&lt;span class="x"&gt;export BOARD=chell&lt;/span&gt;
+# Set device variable
+export BOARD=chell
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Connect to Chromebook using a Servo device&lt;/span&gt;
-&lt;span class="x"&gt;sudo servod -b &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;BOARD&lt;/span&gt;&lt;span class="x"&gt; &amp;amp;&lt;/span&gt;
+# Connect to Chromebook using a Servo device
+sudo servod -b $BOARD &amp;amp;
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Disable WP&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; This step may vary depending on the hardware of your actual Chromebook&lt;/span&gt;
-&lt;span class="x"&gt;dut-control fw_wp:off&lt;/span&gt;
-&lt;span class="x"&gt;sudo /usr/sbin/flashrom -p ft2232_spi:type=servo-v2 --wp-disable&lt;/span&gt;
-&lt;span class="x"&gt;sudo /usr/sbin/flashrom -p ec --wp-disable&lt;/span&gt;
+# Disable WP
+# This step may vary depending on the hardware of your actual Chromebook
+dut-control fw_wp:off
+sudo /usr/sbin/flashrom -p ft2232_spi:type=servo-v2 --wp-disable
+sudo /usr/sbin/flashrom -p ec --wp-disable
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -431,28 +431,28 @@ make all
 
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="apk"></category><category term="dex2oat"></category><category term="android"></category><category term="collabora"></category></entry><entry><title>Setting up a ChromiumOS dev environment</title><link href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html" rel="alternate"></link><published>2017-02-16T10:31:00+01:00</published><updated>2017-02-16T10:31:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</id><summary type="html">&lt;h2&gt;Set up environment&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;export DEV_DIR=&amp;quot;/opt&amp;quot;&lt;/span&gt;
-&lt;span class="x"&gt;mkdir -p &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;export CHROMIUM_DIR=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;/chromiumos&amp;quot;&lt;/span&gt;
-&lt;span class="x"&gt;mkdir -p &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;CHROMIUM_DIR&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;export PATH=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;/depot_tools:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export DEV_DIR=&amp;quot;/opt&amp;quot;
+mkdir -p $DEV_DIR
+export CHROMIUM_DIR=&amp;quot;$DEV_DIR/chromiumos&amp;quot;
+mkdir -p $CHROMIUM_DIR
+export PATH=&amp;quot;$DEV_DIR/depot_tools:$PATH&amp;quot;
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; The BOARD variable used here is specific for the Chromebook that is&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; being targeted, a more generic target like &amp;quot;amd64-generic&amp;quot; could&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; be more useful for you needs.&lt;/span&gt;
-&lt;span class="x"&gt;export BOARD=chell&lt;/span&gt;
+# The BOARD variable used here is specific for the Chromebook that is
+# being targeted, a more generic target like &amp;quot;amd64-generic&amp;quot; could
+# be more useful for you needs.
+export BOARD=chell
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; The USB_DEVICE variable refers to the USB device that will be used&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; for flashing ChromiumOS onto a Chromebook.&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Make sure that this device does not contain anything important!&lt;/span&gt;
-&lt;span class="x"&gt;export USB_DEVICE=&amp;quot;/dev/sda&amp;quot;&lt;/span&gt;
+# The USB_DEVICE variable refers to the USB device that will be used
+# for flashing ChromiumOS onto a Chromebook.
+# Make sure that this device does not contain anything important!
+export USB_DEVICE=&amp;quot;/dev/sda&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo apt install git-core gitk git-gui subversion curl&lt;/span&gt;
-&lt;span class="x"&gt;cd &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install git-core gitk git-gui subversion curl
+cd $DEV_DIR
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -464,28 +464,28 @@ repo sync -j25
 
 
 &lt;h2&gt;Build ChromiumOS …&lt;/h2&gt;</summary><content type="html">&lt;h2&gt;Set up environment&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;export DEV_DIR=&amp;quot;/opt&amp;quot;&lt;/span&gt;
-&lt;span class="x"&gt;mkdir -p &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;export CHROMIUM_DIR=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;/chromiumos&amp;quot;&lt;/span&gt;
-&lt;span class="x"&gt;mkdir -p &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;CHROMIUM_DIR&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;export PATH=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;/depot_tools:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export DEV_DIR=&amp;quot;/opt&amp;quot;
+mkdir -p $DEV_DIR
+export CHROMIUM_DIR=&amp;quot;$DEV_DIR/chromiumos&amp;quot;
+mkdir -p $CHROMIUM_DIR
+export PATH=&amp;quot;$DEV_DIR/depot_tools:$PATH&amp;quot;
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; The BOARD variable used here is specific for the Chromebook that is&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; being targeted, a more generic target like &amp;quot;amd64-generic&amp;quot; could&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; be more useful for you needs.&lt;/span&gt;
-&lt;span class="x"&gt;export BOARD=chell&lt;/span&gt;
+# The BOARD variable used here is specific for the Chromebook that is
+# being targeted, a more generic target like &amp;quot;amd64-generic&amp;quot; could
+# be more useful for you needs.
+export BOARD=chell
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; The USB_DEVICE variable refers to the USB device that will be used&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; for flashing ChromiumOS onto a Chromebook.&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Make sure that this device does not contain anything important!&lt;/span&gt;
-&lt;span class="x"&gt;export USB_DEVICE=&amp;quot;/dev/sda&amp;quot;&lt;/span&gt;
+# The USB_DEVICE variable refers to the USB device that will be used
+# for flashing ChromiumOS onto a Chromebook.
+# Make sure that this device does not contain anything important!
+export USB_DEVICE=&amp;quot;/dev/sda&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo apt install git-core gitk git-gui subversion curl&lt;/span&gt;
-&lt;span class="x"&gt;cd &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;DEV_DIR&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install git-core gitk git-gui subversion curl
+cd $DEV_DIR
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -534,15 +534,15 @@ sudo gdbserver :1234 chrome
 
 
 &lt;h3&gt;On dev machine&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; On x86&lt;/span&gt;
-&lt;span class="x"&gt;cros_sdk -- sudo USE=expat emerge cross-i686-pc-linux-gnu/gdb&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; On ARMv7&lt;/span&gt;
-&lt;span class="x"&gt;cros_sdk -- sudo USE=expat emerge cross-armv7a-cros-linux-gnueabi/gdb&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# On x86
+cros_sdk -- sudo USE=expat emerge cross-i686-pc-linux-gnu/gdb
+# On ARMv7
+cros_sdk -- sudo USE=expat emerge cross-armv7a-cros-linux-gnueabi/gdb
 
-&lt;span class="x"&gt;cros_sdk -- i686-pc-linux-gnu-gdb &amp;quot;/build/&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;BOARD&lt;/span&gt;&lt;span class="x"&gt;/opt/google/chrome/chrome&amp;quot;&lt;/span&gt;
-&lt;span class="x"&gt;(gdb) set sysroot /build/&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;BOARD&lt;/span&gt;&lt;span class="x"&gt;/&lt;/span&gt;
-&lt;span class="x"&gt;(gdb) target remote IP_ADDR_CHROMEBOOK:1234&lt;/span&gt;
-&lt;span class="x"&gt;(gdb) continue&lt;/span&gt;
+cros_sdk -- i686-pc-linux-gnu-gdb &amp;quot;/build/$BOARD/opt/google/chrome/chrome&amp;quot;
+(gdb) set sysroot /build/$BOARD/
+(gdb) target remote IP_ADDR_CHROMEBOOK:1234
+(gdb) continue
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -625,7 +625,7 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-2.90-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -745,16 +745,16 @@ exit
 &lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;cd &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="x"&gt;/system/core/&lt;/span&gt;
-&lt;span class="x"&gt;git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git&lt;/span&gt;
-&lt;span class="x"&gt;git fetch padovan&lt;/span&gt;
-&lt;span class="x"&gt;git checkout padovan/master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd $ANDROID_PATH/system/core/
+git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
+git fetch padovan
+git checkout padovan/master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;mkbootimg&lt;/h2&gt;
 &lt;p&gt;Fetch the make boot image script. This script later assembles the boot image, &lt;em&gt;boot.img&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;git clone https://android.googlesource.com/platform/system/core.git &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_TOOLS_PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -783,8 +783,8 @@ archived on this site.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
 $ ip link
-1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+&lt;span class="m"&gt;1&lt;/span&gt;: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen &lt;span class="m"&gt;1&lt;/span&gt;
+    link/loopback &lt;span class="m"&gt;00&lt;/span&gt;:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -797,14 +797,14 @@ archived on this site.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
 $ ip link
-1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: wlp2s0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;1500&lt;/span&gt; qdisc pfifo_fast state UP mode DORMANT group default qlen 1000
-    link/ether 48:e2:44:f6:e8:5b brd ff:ff:ff:ff:ff:ff
-27: enx000ec689ab9e: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu &lt;span class="m"&gt;1500&lt;/span&gt; qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 1000
-    link/ether 00:0e:c6:89:ab:9e brd ff:ff:ff:ff:ff:ff
+&lt;span class="m"&gt;1&lt;/span&gt;: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen &lt;span class="m"&gt;1&lt;/span&gt;
+    link/loopback &lt;span class="m"&gt;00&lt;/span&gt;:00:00:00:00:00 brd &lt;span class="m"&gt;00&lt;/span&gt;:00:00:00:00:00
+&lt;span class="m"&gt;2&lt;/span&gt;: wlp2s0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;1500&lt;/span&gt; qdisc pfifo_fast state UP mode DORMANT group default qlen &lt;span class="m"&gt;1000&lt;/span&gt;
+    link/ether &lt;span class="m"&gt;48&lt;/span&gt;:e2:44:f6:e8:5b brd ff:ff:ff:ff:ff:ff
+&lt;span class="m"&gt;27&lt;/span&gt;: enx000ec689ab9e: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu &lt;span class="m"&gt;1500&lt;/span&gt; qdisc pfifo_fast state DOWN mode DEFAULT group default qlen &lt;span class="m"&gt;1000&lt;/span&gt;
+    link/ether &lt;span class="m"&gt;00&lt;/span&gt;:0e:c6:89:ab:9e brd ff:ff:ff:ff:ff:ff
 $ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;INTERFACE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;enx000ec689ab9e
-$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;NUM_ITERATIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10
+$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;NUM_ITERATIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;
 $ sudo python network_EthernetStressPlug.py &lt;span class="nv"&gt;$INTERFACE&lt;/span&gt; &lt;span class="nv"&gt;$NUM_ITERATIONS&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="http://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl

@@ -27,23 +27,23 @@ split into parts that are bridged by a screw being inserted.&lt;/p&gt;
 &lt;h2&gt;Disable Write-Protect&lt;/h2&gt;
 &lt;p&gt;So this is the part that requires a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt; device.
 And a ChromiumOS checkout, for some help setting one up, have a look at &lt;a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html"&gt;my previous post&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Go to your ChromiumOS checkout&lt;/span&gt;
-&lt;span class="x"&gt;cd /opt/chromiumos&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Go to your ChromiumOS checkout
+cd /opt/chromiumos
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Enter dev environment&lt;/span&gt;
-&lt;span class="x"&gt;cros_sdk&lt;/span&gt;
+# Enter dev environment
+cros_sdk
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Set device variable&lt;/span&gt;
-&lt;span class="x"&gt;export BOARD=chell&lt;/span&gt;
+# Set device variable
+export BOARD=chell
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Connect to Chromebook using a Servo device&lt;/span&gt;
-&lt;span class="x"&gt;sudo servod -b &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;BOARD&lt;/span&gt;&lt;span class="x"&gt; &amp;amp;&lt;/span&gt;
+# Connect to Chromebook using a Servo device
+sudo servod -b $BOARD &amp;amp;
 
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; Disable WP&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; This step may vary depending on the hardware of your actual Chromebook&lt;/span&gt;
-&lt;span class="x"&gt;dut-control fw_wp:off&lt;/span&gt;
-&lt;span class="x"&gt;sudo /usr/sbin/flashrom -p ft2232_spi:type=servo-v2 --wp-disable&lt;/span&gt;
-&lt;span class="x"&gt;sudo /usr/sbin/flashrom -p ec --wp-disable&lt;/span&gt;
+# Disable WP
+# This step may vary depending on the hardware of your actual Chromebook
+dut-control fw_wp:off
+sudo /usr/sbin/flashrom -p ft2232_spi:type=servo-v2 --wp-disable
+sudo /usr/sbin/flashrom -p ec --wp-disable
 &lt;/pre&gt;&lt;/div&gt;
 
 

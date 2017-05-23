@@ -129,14 +129,14 @@ A guide to building NodeMCU can be found &lt;a href="http://memset.io/building-n
 &lt;p&gt;Where init_connected.lua is where your script resides.&lt;/p&gt;</content><category term="NodeMCU"></category><category term="ESP8266"></category><category term="Setup"></category></entry><entry><title>Building NodeMCU for the ESP8266</title><link href="http://memcpy.io/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><published>2015-05-14T11:31:00+02:00</published><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-05-14:/building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
 &lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
 &lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed&lt;/span&gt;
-&lt;span class="x"&gt;cd /opt&lt;/span&gt;
-&lt;span class="x"&gt;git clone https://github.com/pfalcon/esp-open-sdk.git&lt;/span&gt;
-&lt;span class="x"&gt;cd esp-open-sdk&lt;/span&gt;
-&lt;span class="x"&gt;git submodule sync&lt;/span&gt;
-&lt;span class="x"&gt;git submodule update&lt;/span&gt;
-&lt;span class="x"&gt;make&lt;/span&gt;
-&lt;span class="x"&gt;export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
+cd /opt
+git clone https://github.com/pfalcon/esp-open-sdk.git
+cd esp-open-sdk
+git submodule sync
+git submodule update
+make
+export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -160,14 +160,14 @@ make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;p&gt;Contains a list of which …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
 &lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
 &lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed&lt;/span&gt;
-&lt;span class="x"&gt;cd /opt&lt;/span&gt;
-&lt;span class="x"&gt;git clone https://github.com/pfalcon/esp-open-sdk.git&lt;/span&gt;
-&lt;span class="x"&gt;cd esp-open-sdk&lt;/span&gt;
-&lt;span class="x"&gt;git submodule sync&lt;/span&gt;
-&lt;span class="x"&gt;git submodule update&lt;/span&gt;
-&lt;span class="x"&gt;make&lt;/span&gt;
-&lt;span class="x"&gt;export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
+cd /opt
+git clone https://github.com/pfalcon/esp-open-sdk.git
+cd esp-open-sdk
+git submodule sync
+git submodule update
+make
+export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
 &lt;/pre&gt;&lt;/div&gt;
 
 
