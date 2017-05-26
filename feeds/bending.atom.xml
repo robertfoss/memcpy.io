@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - bending</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/bending.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-09T21:35:00+02:00</updated><entry><title>Audio editing images</title><link href="http://memcpy.io/audio-editing-images.html" rel="alternate"></link><published>2017-04-09T21:35:00+02:00</published><updated>2017-04-09T21:35:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-09:/audio-editing-images.html</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/robertfoss/audio_shop/"&gt;Audio Shop&lt;/a&gt; is a simple script
+that I cobbled together that gets you started with mangling image data as
+if it was audio data.&lt;/p&gt;
+&lt;p&gt;The script wraps 3 individually excellent tools; &lt;a href="https://ffmpeg.org/"&gt;ffmpeg&lt;/a&gt;,
+&lt;a href="https://www.imagemagick.org/script/index.php"&gt;ImageMagick&lt;/a&gt; and
+&lt;a href="http://sox.sourceforge.net/"&gt;SoX&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The way it works is by first converting an image to a raw format like rgb
+or yuv. This is done to prevent the audio editor from destroying the structure
+of (relatively) complex formats like jpg, png or gif.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If converting to a raw format is the first step, the second step is
+importing the raw image data into the audio editor. To do this
+in way you can expect good results from, the raw format should use
+a bit-depth that your image editor can use. For example RGB, where …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://github.com/robertfoss/audio_shop/"&gt;Audio Shop&lt;/a&gt; is a simple script
+that I cobbled together that gets you started with mangling image data as
+if it was audio data.&lt;/p&gt;
+&lt;p&gt;The script wraps 3 individually excellent tools; &lt;a href="https://ffmpeg.org/"&gt;ffmpeg&lt;/a&gt;,
+&lt;a href="https://www.imagemagick.org/script/index.php"&gt;ImageMagick&lt;/a&gt; and
+&lt;a href="http://sox.sourceforge.net/"&gt;SoX&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The way it works is by first converting an image to a raw format like rgb
+or yuv. This is done to prevent the audio editor from destroying the structure
+of (relatively) complex formats like jpg, png or gif.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If converting to a raw format is the first step, the second step is
+importing the raw image data into the audio editor. To do this
+in way you can expect good results from, the raw format should use
+a bit-depth that your image editor can use. For example RGB, where
+each color channel is 8 bits. And the audio editor imports the raw
+data as 8-bit unsigned data.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_overdrive.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_overdrive.jpg" title="Eiffel tower overdrive effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Additionally when using a format like RGB the Red/Green/Blue color
+bits of the channels are located next to eachother like
+&lt;small&gt;RRRRRRRGGGGGGGGBBBBBBBB&lt;/small&gt; which causes issues when
+doing things like echoes and the echo of of the Red 8-bit field
+bleeds into the Green or Blue field.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_phaser.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_phaser.jpg" title="Eiffel tower phaser effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The solution to this is using a planar format where the RGB or YUV
+channels are not interleaved in the &lt;small&gt;RGBRGBRGBRGB&lt;/small&gt;
+fashion but rather &lt;small&gt;RRRRGGGGBBBB&lt;/small&gt;. A format like that
+is YUV444P.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_sinc.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_sinc.jpg" title="Eiffel tower sinc effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I hope you find this tool somewhat useful and/or fun!&lt;/p&gt;</content><category term="audio"></category><category term="art"></category><category term="images"></category><category term="data"></category><category term="bending"></category><category term="databending"></category></entry></feed>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 27 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Getting up and running on the iMX6</title><link>http://memcpy.io/android-getting-up-and-running-on-the-imx6.html</link><description>&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - collabora</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 27 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Getting up and running on the iMX6</title><link>http://memcpy.io/android-getting-up-and-running-on-the-imx6.html</link><description>&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
 &lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
 &lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
@@ -24,21 +24,7 @@ drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="
 
 $ cat bootanimation/desc.txt 
 &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
-c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 20 Apr 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</guid><category>android</category><category>aosp</category><category>bootanimation</category><category>boot</category><category>animation</category><category>collabora</category></item><item><title>Audio editing images</title><link>http://memcpy.io/audio-editing-images.html</link><description>&lt;p&gt;&lt;a href="https://github.com/robertfoss/audio_shop/"&gt;Audio Shop&lt;/a&gt; is a simple script
-that I cobbled together that gets you started with mangling image data as
-if it was audio data.&lt;/p&gt;
-&lt;p&gt;The script wraps 3 individually excellent tools; &lt;a href="https://ffmpeg.org/"&gt;ffmpeg&lt;/a&gt;,
-&lt;a href="https://www.imagemagick.org/script/index.php"&gt;ImageMagick&lt;/a&gt; and
-&lt;a href="http://sox.sourceforge.net/"&gt;SoX&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The way it works is by first converting an image to a raw format like rgb
-or yuv. This is done to prevent the audio editor from destroying the structure
-of (relatively) complex formats like jpg, png or gif.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;If converting to a raw format is the first step, the second step is
-importing the raw image data into the audio editor. To do this
-in way you can expect good results from, the raw format should use
-a bit-depth that your image editor can use. For example RGB, where …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 09 Apr 2017 21:35:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-04-09:/audio-editing-images.html</guid><category>audio</category><category>art</category><category>images</category><category>data</category><category>bending</category><category>databending</category></item><item><title>Android: Enabling mainline graphics</title><link>http://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 20 Apr 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</guid><category>android</category><category>aosp</category><category>bootanimation</category><category>boot</category><category>animation</category><category>collabora</category></item><item><title>Android: Enabling mainline graphics</title><link>http://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.
@@ -122,17 +108,7 @@ repo sync -j25
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Build ChromiumOS …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 16 Feb 2017 10:31:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</guid><category>linux</category><category>chromiumos</category><category>chromebook</category><category>collabora</category></item><item><title>Running an Android Unit Test</title><link>http://memcpy.io/running-an-android-unit-test.html</link><description>&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
-bash
-source build/envsetup.sh &amp;amp;&amp;amp; \
-lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
-mmm system/core/libsync/tests &amp;amp;&amp;amp; \
-adb root &amp;amp;&amp;amp; \
-adb remount &amp;amp;&amp;amp; \
-adb sync &amp;amp;&amp;amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 07 Dec 2016 20:23:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</guid><category>linux</category><category>kernel</category><category>android</category><category>aosp</category><category>adb</category></item><item><title>XDC 2016</title><link>http://memcpy.io/xdc-2016.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;h2&gt;Build ChromiumOS …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 16 Feb 2017 10:31:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</guid><category>linux</category><category>chromiumos</category><category>chromebook</category><category>collabora</category></item><item><title>XDC 2016</title><link>http://memcpy.io/xdc-2016.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
@@ -200,110 +176,4 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 26 Jul 2016 10:32:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</guid><category>linux</category><category>kernel</category><category>script</category><category>collabora</category></item><item><title>Running Weston on a Raspbian</title><link>http://memcpy.io/running-weston-on-a-raspbian.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
-&lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
-Weston on top of the drm backend for VC4 platforms. Previously software acceleration
-using pixman was needed, but this is no longer the case.&lt;/p&gt;
-&lt;p&gt;Additionally the rpi backend for weston is now being removed since it has been
-obsoleted by the improved drm layer.&lt;/p&gt;
-&lt;p&gt;Let's explore running hardware accelerated Weston on the Raspberry Pi.&lt;/p&gt;
-&lt;h2&gt;Building Linux kernel&lt;/h2&gt;
-&lt;p&gt;A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
-been written by the Raspberry Pi foundation and is available &lt;a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.&lt;/p&gt;
-&lt;h2&gt;Set up alternative install location&lt;/h2&gt;
-&lt;p&gt;These build instructions …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 03 Jun 2016 10:32:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-06-03:/running-weston-on-a-raspbian.html</guid><category>wayland</category><category>weston</category><category>rpi</category><category>rpi2</category><category>kernel</category></item><item><title>Coverpage template</title><link>http://memcpy.io/coverpage-template.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/coverpage/raw/media/screenshot.png" title="coverpage screenshot"&gt;&lt;/p&gt;
-&lt;p&gt;Coverpage is a single-page landing page built to showcase an idea or a product. To allow interested parties to get notified of updates, the template has mailchimp subscription integration.&lt;/p&gt;
-&lt;p&gt;A live version of the site can be found at &lt;a href="http://coverpage.memcpy.io"&gt;coverpage.memcpy.io&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Sources&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/coverpage.git
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;GitHub hosting&lt;/h2&gt;
-&lt;p&gt;This template was built with the explicit intention of having it be hosted at GitHub in a gh-pages branch.
-Therefore it includes a Makefile for pushing copy of the current design to a gh-pages branch.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 27 Mar 2016 00:34:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-03-27:/coverpage-template.html</guid><category>coverpage</category><category>html</category><category>template</category></item><item><title>ESP8266 APA102 Bulb</title><link>http://memcpy.io/esp8266-apa102-bulb.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
-&lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
-&lt;h2&gt;Software and hardware sources&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
-&lt;h3&gt;Firmware&lt;/h3&gt;
-&lt;p&gt;The firmare is based on the &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; firwmare for the ESP8266. It's running the APA102 LED driver and the enduser setup module, which I've written about &lt;a href="../user-friendly-setup-of-esp8266-gadgets.html"&gt;previously&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Additionally it's running 3 lua scripts that deal with different aspects.&lt;/p&gt;
-&lt;p&gt;There's init.lua which makes sure we're connected to a WiFi.&lt;/p&gt;
-&lt;p&gt;udp_listener.lua receives UDP packets and then sends forwards that …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 07 Feb 2016 22:46:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-02-07:/esp8266-apa102-bulb.html</guid><category>ESP8266</category><category>APA102</category><category>LED</category><category>WIFI</category></item><item><title>WS2812 LED Matrix</title><link>http://memcpy.io/ws2812-led-matrix.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
-&lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
-&lt;h2&gt;Code&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
-This relies on the host pc being able to connect to the ESP8266 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 12 Oct 2015 16:51:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2015-10-12:/ws2812-led-matrix.html</guid><category>ESP8266</category><category>ESP</category><category>WS2812</category><category>WS2812B</category><category>3D Printing</category><category>CAD</category></item><item><title>WS2812 Welding Goggles</title><link>http://memcpy.io/ws2812-welding-goggles.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-11_goggles.png" title="WS2812 Welding Goggles"&gt;&lt;/p&gt;
-&lt;p&gt;The goggles were built using an AtTiny85 module and a WS2812B strip and some bits and bobs that were laying around. A more complete BOM can be found below.&lt;/p&gt;
-&lt;h2&gt;Code&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/digispark_ws2812_waves.git
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;The animation is built ontop of the excellent &lt;a href="https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino"&gt;light_ws2812&lt;/a&gt; library. It supports the AtTiny85 better than other competing libraries like FastLED.&lt;/p&gt;
-&lt;p&gt;The animation is built around an non-float sin function and a HSV function that generates the actual colors.&lt;/p&gt;
-&lt;h2&gt;Video&lt;/h2&gt;
-&lt;video controls&gt;
-  &lt;source src="videos/2015-10-11_goggles.mp4" type="video/mp4"&gt;
-Your browser does not support the video tag.
-&lt;/video&gt;
-
-&lt;h2&gt;Bill of materials&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;6€ &lt;a href="https://www.weldorado.de/"&gt;Weldorado STROOF DIN4 Welding Goggles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;2$ &lt;a href="http://www.aliexpress.com/item/Free-shipping-GY-Digispark-Kickstarter-Mini-Development-board-TINY85-module-for-Ard-usb/32312040804.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;Digispark&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;23$ &lt;a href="http://www.aliexpress.com/item/1M-WS2812B-WS2811-IC-Chip-built-in-Black-PCB-144-leds-m-Digital-5050-RGB-LED/1838594646.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;WS2812B Strip 144 LEDs/m&lt;/a&gt; - Only about a 5th of the length needed.&lt;/li&gt;
-&lt;li&gt;2x$4 &lt;a href="http://www.aliexpress.com/item/Eachine-3D-X4-RC-Quadcopter-Spare-Parts-3-7V-300Mah-Battery/32335487012.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo 3.7V 300mAh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;$3 &lt;a href="http://www.aliexpress.com/item/F14786-4-in-1-3-7V-Lipo-Battery-Charger-USB-Interface-4-Ports-For-Hubsan-X4/32394891091.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo USB Charger&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;$6 &lt;a href="http://www.aliexpress.com/item/10-pairs-of-battery-plug-connector-1S-2-Pins-Mirco-model-battery-connector/32305697134.html"&gt;Battery connector cable …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 11 Oct 2015 13:16:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2015-10-11:/ws2812-welding-goggles.html</guid><category>AtTiny85</category><category>Digispark</category><category>WS2812</category><category>WS2812B</category><category>goggles</category></item><item><title>User friendly setup of ESP8266 gadgets</title><link>http://memcpy.io/user-friendly-setup-of-esp8266-gadgets.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-07-30_screenshot.png" title="Screenshot"&gt;&lt;/p&gt;
-&lt;p&gt;The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup"&gt;esp8266_nodemcu_wifi_setup&lt;/a&gt; is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Start ESP.&lt;/li&gt;
-&lt;li&gt;Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.&lt;/li&gt;
-&lt;li&gt;Submit credentials of your local WiFi.&lt;/li&gt;
-&lt;li&gt;The ESP reboots and connects to your local WiFi.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;What is this magic! How could a mere mortal like me summon features like this?!&lt;/h2&gt;
-&lt;p&gt;Let me tell you …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 30 Jul 2015 15:10:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2015-07-30:/user-friendly-setup-of-esp8266-gadgets.html</guid><category>NodeMCU</category><category>ESP8266</category><category>Setup</category></item><item><title>Building NodeMCU for the ESP8266</title><link>http://memcpy.io/building-nodemcu-for-the-esp8266.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
-&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
-&lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-cd /opt
-git clone https://github.com/pfalcon/esp-open-sdk.git
-cd esp-open-sdk
-git submodule sync
-git submodule update
-make
-export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Build NodeMCU&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
-cd nodemcu-firmware
-# Switch to dev branch, since it&amp;#39;s the most up to date
-git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
-make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Flash NodeMCU&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;COMPORT=/dev/ttyUSB0 make flash
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Modifying NodeMCU to fit your needs&lt;/h3&gt;
-&lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
-&lt;p&gt;Contains a list of which …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 14 May 2015 11:31:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2015-05-14:/building-nodemcu-for-the-esp8266.html</guid><category>NodeMCU</category><category>ESP8266</category></item></channel></rss>
+&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 26 Jul 2016 10:32:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</guid><category>linux</category><category>kernel</category><category>script</category><category>collabora</category></item></channel></rss>

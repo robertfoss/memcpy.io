@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - chromebook</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Mon, 27 Feb 2017 16:55:00 +0100</lastBuildDate><item><title>Removing the Chromebook Write-Protect screw</title><link>http://memcpy.io/removing-the-chromebook-write-protect-screw.html</link><description>&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+(HP Chromebook 13 G1) device, and verifying that it has been successfully
+removed.&lt;/p&gt;
+&lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;
+is needed. While these devices aren't available publicly, they can
+be produced freely or possibly requested from Google if you are contributing
+code to the ChromiumOS project.&lt;/p&gt;
+&lt;h2&gt;Removing the Write-Protect screw&lt;/h2&gt;
+&lt;p&gt;&lt;a href="/images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So this is what the WP screw looks like on a Chell Chromebook. This may or may
+not be what you will find in other devices. But if you take a close look,
+you will notice that the copper pad that the the screw attaches against is
+split into parts that are bridged by a screw …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 27 Feb 2017 16:55:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-02-27:/removing-the-chromebook-write-protect-screw.html</guid><category>chromium</category><category>chromebook</category><category>chell</category><category>wp screw</category><category>wp-screw</category><category>collabora</category></item><item><title>Setting up a ChromiumOS dev environment</title><link>http://memcpy.io/setting-up-a-chromiumos-dev-environment.html</link><description>&lt;h2&gt;Set up environment&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export DEV_DIR=&amp;quot;/opt&amp;quot;
+mkdir -p $DEV_DIR
+export CHROMIUM_DIR=&amp;quot;$DEV_DIR/chromiumos&amp;quot;
+mkdir -p $CHROMIUM_DIR
+export PATH=&amp;quot;$DEV_DIR/depot_tools:$PATH&amp;quot;
+
+# The BOARD variable used here is specific for the Chromebook that is
+# being targeted, a more generic target like &amp;quot;amd64-generic&amp;quot; could
+# be more useful for you needs.
+export BOARD=chell
+
+# The USB_DEVICE variable refers to the USB device that will be used
+# for flashing ChromiumOS onto a Chromebook.
+# Make sure that this device does not contain anything important!
+export USB_DEVICE=&amp;quot;/dev/sda&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Install dependencies&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install git-core gitk git-gui subversion curl
+cd $DEV_DIR
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Get ChromiumOS source&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;CHROMIUM_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
+repo sync -j25
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Build ChromiumOS …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 16 Feb 2017 10:31:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</guid><category>linux</category><category>chromiumos</category><category>chromebook</category><category>collabora</category></item></channel></rss>

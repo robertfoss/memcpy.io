@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - ESP8266</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/esp8266.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2016-02-07T22:46:00+01:00</updated><entry><title>ESP8266 APA102 Bulb</title><link href="http://memcpy.io/esp8266-apa102-bulb.html" rel="alternate"></link><published>2016-02-07T22:46:00+01:00</published><updated>2016-02-07T22:46:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-02-07:/esp8266-apa102-bulb.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
+&lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
+&lt;h2&gt;Software and hardware sources&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
+&lt;h3&gt;Firmware&lt;/h3&gt;
+&lt;p&gt;The firmare is based on the &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; firwmare for the ESP8266. It's running the APA102 LED driver and the enduser setup module, which I've written about &lt;a href="../user-friendly-setup-of-esp8266-gadgets.html"&gt;previously&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Additionally it's running 3 lua scripts that deal with different aspects.&lt;/p&gt;
+&lt;p&gt;There's init.lua which makes sure we're connected to a WiFi.&lt;/p&gt;
+&lt;p&gt;udp_listener.lua receives UDP packets and then sends forwards that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
+&lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
+&lt;h2&gt;Software and hardware sources&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
+&lt;h3&gt;Firmware&lt;/h3&gt;
+&lt;p&gt;The firmare is based on the &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; firwmare for the ESP8266. It's running the APA102 LED driver and the enduser setup module, which I've written about &lt;a href="../user-friendly-setup-of-esp8266-gadgets.html"&gt;previously&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Additionally it's running 3 lua scripts that deal with different aspects.&lt;/p&gt;
+&lt;p&gt;There's init.lua which makes sure we're connected to a WiFi.&lt;/p&gt;
+&lt;p&gt;udp_listener.lua receives UDP packets and then sends forwards that data to the APA102 strips.&lt;/p&gt;
+&lt;p&gt;And lastly udb_broadcast.lua which periodically broadcasts a heartbeat for this LED bulb to signal that it is alive and well.&lt;/p&gt;
+&lt;h3&gt;Host application&lt;/h3&gt;
+&lt;p&gt;The current (as of the publish date of this post) incarnation of the host application listens for bulbs that are alive on the hosts network. If a bulb is found is will be added to the list of bulbs to be animated. All animations are simple and sinusoidal and only use the time a bulb has been 'alive' as an input for the animation.&lt;/p&gt;
+&lt;h3&gt;Hardware&lt;/h3&gt;
+&lt;p&gt;The hardware is based around the ESP8266 WiFi IC and the APA102 SPI LED IC.&lt;/p&gt;
+&lt;p&gt;The flavor of ESP8266 used in this project is the ESP12-F module, since it the latest module available with the integrated antenna form factor.&lt;/p&gt;
+&lt;p&gt;APA102 was chosen instead of the much more common WS2812B chip, since it uses a SPI like protocol which isn't timing sensitive and also does not require external capacitors at next to each LED.&lt;/p&gt;
+&lt;h4&gt;v3.1 Schematic&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v3.1_schematic.png" title="v3.1: Schematic"&gt;&lt;/p&gt;
+&lt;h4&gt;v2 3D Model&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_3d_model.png" title="v2: 3D model"&gt;&lt;/p&gt;
+&lt;h4&gt;Assembled v2 hardware&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_95pct_assembled.jpg" title="v2: 95% assembled"&gt;
+&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;
+&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_hanging.jpg" title="v2: Hanging and running over WiFi"&gt;&lt;/p&gt;</content><category term="ESP8266"></category><category term="APA102"></category><category term="LED"></category><category term="WIFI"></category></entry><entry><title>WS2812 LED Matrix</title><link href="http://memcpy.io/ws2812-led-matrix.html" rel="alternate"></link><published>2015-10-12T16:51:00+02:00</published><updated>2015-10-12T16:51:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-10-12:/ws2812-led-matrix.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
+&lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
+This relies on the host pc being able to connect to the ESP8266 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
+&lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
+This relies on the host pc being able to connect to the ESP8266. Ideally they're on the same LAN to minimise UDP packets being lost or delayed, which causes the animation to lag or skip.
+This part was also written by &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt; as part of a larger fancier animation, but repurposed here to be used as a proof of concept.&lt;/p&gt;
+&lt;h2&gt;3D Model&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_case.jpg" title="LED Matrix Case"&gt;&lt;/p&gt;
+&lt;p&gt;The 3D model was created using google sketchup. The case is a made out of 2 parts. A front and a lid. The front has grooves that fit the WS2812 LEDs and make sure that the matrix is firmly stuck in place but also make sure that the light from the LEDs is diffused the proper amount.&lt;/p&gt;
+&lt;h2&gt;Bill of materials&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_parts.jpg" title="LED Matrix Parts"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;18$ &lt;a href="http://www.aliexpress.com/item/8x8-64-LED-Matrix-WS2812-LED-5050-RGB-for-Arduino-FZ1104/32373601634.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;WS2812B 8x8 Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2$ &lt;a href="http://www.aliexpress.com/item/Free-shipping-ESP8266-serial-WIFI-wireless-module-wireless-transceiver/32341788594.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;ESP8266 ESP-01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1$ &lt;a href="http://www.aliexpress.com/item/DC-5V-to-3-3V-Step-Down-Power-Supply-Module-AMS1117-3-3-LDO-800MA/32357910447.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;AMS1117-3.3 Voltage regulator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4$ &lt;a href="http://www.aliexpress.com/item/Eachine-3D-X4-RC-Quadcopter-Spare-Parts-3-7V-300Mah-Battery/32335487012.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo 3.7V 300mAh&lt;/a&gt; - A higher capacity battery is better as long as it fits inside of the case.&lt;/li&gt;
+&lt;li&gt;$3 &lt;a href="http://www.aliexpress.com/item/F14786-4-in-1-3-7V-Lipo-Battery-Charger-USB-Interface-4-Ports-For-Hubsan-X4/32394891091.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo USB Charger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;$6 &lt;a href="http://www.aliexpress.com/item/10-pairs-of-battery-plug-connector-1S-2-Pins-Mirco-model-battery-connector/32305697134.html"&gt;Battery connector cable&lt;/a&gt; - Only a few will be needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A thing to be aware of is the fact that all orders from AliExpress will take at least 30 days to arrive to your door. Sometimes more. &lt;/p&gt;
+&lt;h2&gt;Hardware construction&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_assembled.jpg" title="LED Matrix Assembled"&gt;&lt;/p&gt;
+&lt;p&gt;You'll have to excuse the lack of a proper schematic, but this has been a fairly organic project.&lt;/p&gt;
+&lt;p&gt;The connectors of for the battery (B_VCC and B_GND), the WS2812 matrix (LED_VCC, LED_GND and LED_DATA), the ESP8266 (ESP_3V3, ESP_CH_PD, ESP_GND, ESP_GPIO2) and the AMS1117-3.3V (LDO_VCC, LDO_GND and LDO_3V3)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;B_VCC + LED_VCC + LDO_VCC&lt;/li&gt;
+&lt;li&gt;B_GND + LED_GND + LDO_GND + ESP_GND&lt;/li&gt;
+&lt;li&gt;LDO_3V3 + ESP_3V3 + ESP_CH_PD&lt;/li&gt;
+&lt;li&gt;LED_DATA + ESP_GPIO2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Issues and TODOs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The AMS1117-3.3 is not ideal. The voltage drop is too high. Ideally it should be replaced with a Step-UP/DOWN converter. When the battery is running low the ESP8266 is the first part to fail. It does so while there is quite a lot of power left in the LiPo.&lt;/li&gt;
+&lt;li&gt;This setup does not work at all without a WiFi or a host computer feeding it animations. Nothing is preventing is from working without a connection, but the connection is one of the most interesting aspects of the project.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="ESP8266"></category><category term="ESP"></category><category term="WS2812"></category><category term="WS2812B"></category><category term="3D Printing"></category><category term="CAD"></category></entry><entry><title>User friendly setup of ESP8266 gadgets</title><link href="http://memcpy.io/user-friendly-setup-of-esp8266-gadgets.html" rel="alternate"></link><published>2015-07-30T15:10:00+02:00</published><updated>2015-07-30T15:10:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-07-30:/user-friendly-setup-of-esp8266-gadgets.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-07-30_screenshot.png" title="Screenshot"&gt;&lt;/p&gt;
+&lt;p&gt;The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup"&gt;esp8266_nodemcu_wifi_setup&lt;/a&gt; is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start ESP.&lt;/li&gt;
+&lt;li&gt;Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.&lt;/li&gt;
+&lt;li&gt;Submit credentials of your local WiFi.&lt;/li&gt;
+&lt;li&gt;The ESP reboots and connects to your local WiFi.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What is this magic! How could a mere mortal like me summon features like this?!&lt;/h2&gt;
+&lt;p&gt;Let me tell you …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-07-30_screenshot.png" title="Screenshot"&gt;&lt;/p&gt;
+&lt;p&gt;The ESP8266 lacks a simple end-user compatible way to be configured with the login details of the local WiFi. Running the ESP8266 in a 'captive portal' mode where every http request is hijacked and replaced with form allows the end user to submit the credentials of the local WiFi hotspot by simply connecting to an ESP8266 hosted access point.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_nodemcu_wifi_setup"&gt;esp8266_nodemcu_wifi_setup&lt;/a&gt; is designed to provide a simple interface for users to configure their ESP8266/NodeMCU based devices through.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start ESP.&lt;/li&gt;
+&lt;li&gt;Connect to the "SetupGadget" WiFi through your internet enabled thing of choice.&lt;/li&gt;
+&lt;li&gt;Submit credentials of your local WiFi.&lt;/li&gt;
+&lt;li&gt;The ESP reboots and connects to your local WiFi.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What is this magic! How could a mere mortal like me summon features like this?!&lt;/h2&gt;
+&lt;p&gt;Let me tell you..&lt;/p&gt;
+&lt;p&gt;By default DNS is not announced in the DHCP offer message, because a DNS server does not ship with NodeMCU.
+In order to announce that the ESP8266 is running a DNS server, NodeMCU has to be recompiled to support that.
+A guide to building NodeMCU can be found &lt;a href="http://memset.io/building-nodemcu-for-the-esp8266.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks to the wonderful work of Andy Reischles on &lt;a href="https://github.com/reischle/CaptiveIntraweb/tree/dev"&gt;Captive Portal&lt;/a&gt;, a lua implementation of a domain hijacking DNS server exists. Which will allow an ESP8266 to redirect all traffic to itself.&lt;/p&gt;
+&lt;h4&gt;Detailed guide&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;In dhcpserver.h, #define USE_DNS 1&lt;/li&gt;
+&lt;li&gt;Build NodeMCU.&lt;/li&gt;
+&lt;li&gt;Flash NodeMCU.&lt;/li&gt;
+&lt;li&gt;Upload all .lua files &lt;strong&gt;and&lt;/strong&gt; index.html.&lt;/li&gt;
+&lt;li&gt;Reboot ESP.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;What you need to do&lt;/h4&gt;
+&lt;p&gt;After a user has connected throught the portal and sucessfully configured the the ESP8266 with the credentials of the local WiFi, something lua service should be started so that the ESP8266 actually does something.&lt;/p&gt;
+&lt;p&gt;I would suggest adding something like this to init.lua:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dofile(&amp;quot;init_connected.lua&amp;quot;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Where init_connected.lua is where your script resides.&lt;/p&gt;</content><category term="NodeMCU"></category><category term="ESP8266"></category><category term="Setup"></category></entry><entry><title>Building NodeMCU for the ESP8266</title><link href="http://memcpy.io/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><published>2015-05-14T11:31:00+02:00</published><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-05-14:/building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
+&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
+&lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
+cd /opt
+git clone https://github.com/pfalcon/esp-open-sdk.git
+cd esp-open-sdk
+git submodule sync
+git submodule update
+make
+export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Build NodeMCU&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
+cd nodemcu-firmware
+# Switch to dev branch, since it&amp;#39;s the most up to date
+git checkout --track origin/dev
+# Make INTEGER version, since it uses less memory/space
+make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Flash NodeMCU&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;COMPORT=/dev/ttyUSB0 make flash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Modifying NodeMCU to fit your needs&lt;/h3&gt;
+&lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
+&lt;p&gt;Contains a list of which …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
+&lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
+&lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
+cd /opt
+git clone https://github.com/pfalcon/esp-open-sdk.git
+cd esp-open-sdk
+git submodule sync
+git submodule update
+make
+export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Build NodeMCU&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
+cd nodemcu-firmware
+# Switch to dev branch, since it&amp;#39;s the most up to date
+git checkout --track origin/dev
+# Make INTEGER version, since it uses less memory/space
+make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Flash NodeMCU&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;COMPORT=/dev/ttyUSB0 make flash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Modifying NodeMCU to fit your needs&lt;/h3&gt;
+&lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
+&lt;p&gt;Contains a list of which modules to include in the build.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+#define LUA_USE_MODULES_NODE
+#define LUA_USE_MODULES_FILE
+#define LUA_USE_MODULES_GPIO
+#define LUA_USE_MODULES_WIFI
+#define LUA_USE_MODULES_NET
+...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;app/include/user_config.h&lt;/h5&gt;
+&lt;p&gt;Contains NodeMCU developer options, but could be of use.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+#define DEVELOP_VERSION
+#define NODE_ERROR
+...
+&lt;/pre&gt;&lt;/div&gt;</content><category term="NodeMCU"></category><category term="ESP8266"></category></entry></feed>

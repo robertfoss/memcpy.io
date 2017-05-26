@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - images</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Sun, 09 Apr 2017 21:35:00 +0200</lastBuildDate><item><title>Audio editing images</title><link>http://memcpy.io/audio-editing-images.html</link><description>&lt;p&gt;&lt;a href="https://github.com/robertfoss/audio_shop/"&gt;Audio Shop&lt;/a&gt; is a simple script
+that I cobbled together that gets you started with mangling image data as
+if it was audio data.&lt;/p&gt;
+&lt;p&gt;The script wraps 3 individually excellent tools; &lt;a href="https://ffmpeg.org/"&gt;ffmpeg&lt;/a&gt;,
+&lt;a href="https://www.imagemagick.org/script/index.php"&gt;ImageMagick&lt;/a&gt; and
+&lt;a href="http://sox.sourceforge.net/"&gt;SoX&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_bass.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_bass.jpg" title="Eiffel tower bass effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The way it works is by first converting an image to a raw format like rgb
+or yuv. This is done to prevent the audio editor from destroying the structure
+of (relatively) complex formats like jpg, png or gif.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-04-09_eiffel_tower_echo.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-04-09_eiffel_tower_echo.jpg" title="Eiffel tower echo effect"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If converting to a raw format is the first step, the second step is
+importing the raw image data into the audio editor. To do this
+in way you can expect good results from, the raw format should use
+a bit-depth that your image editor can use. For example RGB, where …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 09 Apr 2017 21:35:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-04-09:/audio-editing-images.html</guid><category>audio</category><category>art</category><category>images</category><category>data</category><category>bending</category><category>databending</category></item></channel></rss>

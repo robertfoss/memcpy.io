@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - boot</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 20 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Changing the bootanimation</title><link>http://memcpy.io/android-changing-the-bootanimation.html</link><description>&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 20 Apr 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</guid><category>android</category><category>aosp</category><category>bootanimation</category><category>boot</category><category>animation</category><category>collabora</category></item></channel></rss>

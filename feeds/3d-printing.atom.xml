@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - 3D Printing</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/3d-printing.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2015-10-12T16:51:00+02:00</updated><entry><title>WS2812 LED Matrix</title><link href="http://memcpy.io/ws2812-led-matrix.html" rel="alternate"></link><published>2015-10-12T16:51:00+02:00</published><updated>2015-10-12T16:51:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-10-12:/ws2812-led-matrix.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
+&lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
+This relies on the host pc being able to connect to the ESP8266 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
+&lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
+This relies on the host pc being able to connect to the ESP8266. Ideally they're on the same LAN to minimise UDP packets being lost or delayed, which causes the animation to lag or skip.
+This part was also written by &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt; as part of a larger fancier animation, but repurposed here to be used as a proof of concept.&lt;/p&gt;
+&lt;h2&gt;3D Model&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_case.jpg" title="LED Matrix Case"&gt;&lt;/p&gt;
+&lt;p&gt;The 3D model was created using google sketchup. The case is a made out of 2 parts. A front and a lid. The front has grooves that fit the WS2812 LEDs and make sure that the matrix is firmly stuck in place but also make sure that the light from the LEDs is diffused the proper amount.&lt;/p&gt;
+&lt;h2&gt;Bill of materials&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_parts.jpg" title="LED Matrix Parts"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;18$ &lt;a href="http://www.aliexpress.com/item/8x8-64-LED-Matrix-WS2812-LED-5050-RGB-for-Arduino-FZ1104/32373601634.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;WS2812B 8x8 Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2$ &lt;a href="http://www.aliexpress.com/item/Free-shipping-ESP8266-serial-WIFI-wireless-module-wireless-transceiver/32341788594.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;ESP8266 ESP-01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1$ &lt;a href="http://www.aliexpress.com/item/DC-5V-to-3-3V-Step-Down-Power-Supply-Module-AMS1117-3-3-LDO-800MA/32357910447.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;AMS1117-3.3 Voltage regulator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4$ &lt;a href="http://www.aliexpress.com/item/Eachine-3D-X4-RC-Quadcopter-Spare-Parts-3-7V-300Mah-Battery/32335487012.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo 3.7V 300mAh&lt;/a&gt; - A higher capacity battery is better as long as it fits inside of the case.&lt;/li&gt;
+&lt;li&gt;$3 &lt;a href="http://www.aliexpress.com/item/F14786-4-in-1-3-7V-Lipo-Battery-Charger-USB-Interface-4-Ports-For-Hubsan-X4/32394891091.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo USB Charger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;$6 &lt;a href="http://www.aliexpress.com/item/10-pairs-of-battery-plug-connector-1S-2-Pins-Mirco-model-battery-connector/32305697134.html"&gt;Battery connector cable&lt;/a&gt; - Only a few will be needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A thing to be aware of is the fact that all orders from AliExpress will take at least 30 days to arrive to your door. Sometimes more. &lt;/p&gt;
+&lt;h2&gt;Hardware construction&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_assembled.jpg" title="LED Matrix Assembled"&gt;&lt;/p&gt;
+&lt;p&gt;You'll have to excuse the lack of a proper schematic, but this has been a fairly organic project.&lt;/p&gt;
+&lt;p&gt;The connectors of for the battery (B_VCC and B_GND), the WS2812 matrix (LED_VCC, LED_GND and LED_DATA), the ESP8266 (ESP_3V3, ESP_CH_PD, ESP_GND, ESP_GPIO2) and the AMS1117-3.3V (LDO_VCC, LDO_GND and LDO_3V3)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;B_VCC + LED_VCC + LDO_VCC&lt;/li&gt;
+&lt;li&gt;B_GND + LED_GND + LDO_GND + ESP_GND&lt;/li&gt;
+&lt;li&gt;LDO_3V3 + ESP_3V3 + ESP_CH_PD&lt;/li&gt;
+&lt;li&gt;LED_DATA + ESP_GPIO2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Issues and TODOs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The AMS1117-3.3 is not ideal. The voltage drop is too high. Ideally it should be replaced with a Step-UP/DOWN converter. When the battery is running low the ESP8266 is the first part to fail. It does so while there is quite a lot of power left in the LiPo.&lt;/li&gt;
+&lt;li&gt;This setup does not work at all without a WiFi or a host computer feeding it animations. Nothing is preventing is from working without a connection, but the connection is one of the most interesting aspects of the project.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="ESP8266"></category><category term="ESP"></category><category term="WS2812"></category><category term="WS2812B"></category><category term="3D Printing"></category><category term="CAD"></category></entry></feed>

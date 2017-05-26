@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - imx6</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/imx6.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-27T00:00:00+02:00</updated><entry><title>Android: Getting up and running on the iMX6</title><link href="http://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-27T00:00:00+02:00</published><updated>2017-04-27T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-27:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+&lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt; &lt;span class="n"&gt;without&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;option&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Switch&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;
+&lt;span class="mi"&gt;2017 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+&lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt; &lt;span class="n"&gt;without&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;option&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Switch&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;paths&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt; &lt;span class="n"&gt;instead&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;branch&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;sabrelite&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Common steps&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install mkimage tool from u-boot and a suitable compiler
+sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk
+
+mkdir /opt/android
+repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
+cd /opt/android/.repo
+git clone https://customer-git.collabora.com/git/android-etnaviv/android_manifest.git local_manifests -b android-etnaviv
+repo sync -j10
+
+mkdir /opt/imx6_android
+cd /opt/imx6_android
+
+# Fetch Kconfig, bootloaders and some scripts
+git clone https://customer-git.collabora.com/git/android-etnaviv/android-etnaviv.git .
+
+# Fetch the Linux Kernel
+git clone https://customer-git.collabora.com/git/android-etnaviv/linux.git -b android-etnaviv
+
+# This will destroy all data on /dev/mmcblk0 and
+# create boot/system/cache/data partitions
+./setup_sdcard.sh -b /dev/mmcblk0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Hardware: iMX6 Sabre&lt;/h2&gt;
+&lt;h3&gt;Build Android and Linux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
+./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Start Android&lt;/h3&gt;
+&lt;p&gt;The SD-card can now be put into the SD3 slot and
+the device can be restarted.&lt;/p&gt;
+&lt;h2&gt;Hardware: iMX6 Sabrelite&lt;/h2&gt;
+&lt;h3&gt;Build Android and Linux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Start Android&lt;/h3&gt;
+&lt;p&gt;The micro-sd card can now be put into the micro-sd slot and
+the device can be restarted.&lt;/p&gt;
+&lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
+&lt;h3&gt;Build Android and Linux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
+./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Install the bootloader&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Depending if you have a &amp;gt;=13&amp;quot; version of the RDU2
+# use the imx6qp, if &lt;span class="nt"&gt;&amp;lt;13&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;then&lt;/span&gt; &lt;span class="err"&gt;use&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;imx6q&lt;/span&gt;
+
+&lt;span class="na"&gt;IMX6_TYPE=&lt;/span&gt;&lt;span class="s"&gt;imx6q&lt;/span&gt;
+&lt;span class="na"&gt;IMX6_TYPE=&lt;/span&gt;&lt;span class="s"&gt;imx6qp&lt;/span&gt;
+&lt;span class="na"&gt;BAREBOX=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;zodiac/barebox-zii-&lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;IMX6_TYPE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="s"&gt;-rdu2.img&amp;quot;&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Flash&lt;/span&gt; &lt;span class="err"&gt;bootloader&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt;
+&lt;span class="err"&gt;dd&lt;/span&gt; &lt;span class="na"&gt;if=&lt;/span&gt;&lt;span class="s"&gt;${BAREBOX}&lt;/span&gt; &lt;span class="na"&gt;of=&lt;/span&gt;&lt;span class="s"&gt;/dev/mmcblk0&lt;/span&gt; &lt;span class="na"&gt;bs=&lt;/span&gt;&lt;span class="s"&gt;1k&lt;/span&gt;
+&lt;span class="err"&gt;sync&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Put&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;middle-most&lt;/span&gt; &lt;span class="err"&gt;slot&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;RDU2&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Install&lt;/span&gt; &lt;span class="err"&gt;lrzsz,&lt;/span&gt; &lt;span class="err"&gt;since&lt;/span&gt; &lt;span class="err"&gt;it&lt;/span&gt; &lt;span class="err"&gt;is&lt;/span&gt; &lt;span class="err"&gt;used&lt;/span&gt; &lt;span class="err"&gt;for&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;ymodem&lt;/span&gt; &lt;span class="err"&gt;upload&lt;/span&gt;
+&lt;span class="err"&gt;sudo&lt;/span&gt; &lt;span class="err"&gt;apt&lt;/span&gt; &lt;span class="err"&gt;install&lt;/span&gt; &lt;span class="err"&gt;lrzsz&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;serial&lt;/span&gt; &lt;span class="err"&gt;device&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB2&lt;/span&gt; &lt;span class="err"&gt;and&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt; &lt;span class="err"&gt;with&lt;/span&gt; &lt;span class="err"&gt;minicom&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;The&lt;/span&gt; &lt;span class="err"&gt;numbering&lt;/span&gt; &lt;span class="err"&gt;assumes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;RDU2&lt;/span&gt; &lt;span class="err"&gt;is&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;only&lt;/span&gt; &lt;span class="err"&gt;serial&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;serial&lt;/span&gt; &lt;span class="err"&gt;device&lt;/span&gt; &lt;span class="err"&gt;connected&lt;/span&gt;
+&lt;span class="err"&gt;sudo&lt;/span&gt; &lt;span class="err"&gt;minicom&lt;/span&gt; &lt;span class="err"&gt;-s&lt;/span&gt;
+    &lt;span class="err"&gt;+------------------------------------------+&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;A&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;    &lt;span class="err"&gt;Serial&lt;/span&gt; &lt;span class="err"&gt;Device&lt;/span&gt;      &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;B&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;Lockfile&lt;/span&gt; &lt;span class="err"&gt;Location&lt;/span&gt;     &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;/var/lock&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;C&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;   &lt;span class="err"&gt;Callin&lt;/span&gt; &lt;span class="err"&gt;Program&lt;/span&gt;      &lt;span class="err"&gt;:&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;D&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;  &lt;span class="err"&gt;Callout&lt;/span&gt; &lt;span class="err"&gt;Program&lt;/span&gt;      &lt;span class="err"&gt;:&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;E&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;    &lt;span class="err"&gt;Bps/Par/Bits&lt;/span&gt;       &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;115200&lt;/span&gt; &lt;span class="err"&gt;8N1&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;F&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;Hardware&lt;/span&gt; &lt;span class="err"&gt;Flow&lt;/span&gt; &lt;span class="err"&gt;Control&lt;/span&gt; &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;No&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;G&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;Software&lt;/span&gt; &lt;span class="err"&gt;Flow&lt;/span&gt; &lt;span class="err"&gt;Control&lt;/span&gt; &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;No&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt;    &lt;span class="err"&gt;Change&lt;/span&gt; &lt;span class="err"&gt;which&lt;/span&gt; &lt;span class="err"&gt;setting?&lt;/span&gt;
+    &lt;span class="err"&gt;+------------------------------------------+&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;Quark&lt;/span&gt; &lt;span class="err"&gt;console&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Set&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt; &lt;span class="err"&gt;as&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;source&lt;/span&gt; 
+&lt;span class="err"&gt;#HostBoot&lt;/span&gt; &lt;span class="err"&gt;s&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt;
+&lt;span class="err"&gt;reset&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Restart&lt;/span&gt; &lt;span class="err"&gt;device,&lt;/span&gt; &lt;span class="err"&gt;connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;barebox&lt;/span&gt; &lt;span class="err"&gt;loaded&lt;/span&gt; &lt;span class="err"&gt;just&lt;/span&gt; &lt;span class="err"&gt;loaded&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB2&lt;/span&gt;
+&lt;span class="err"&gt;pic_setwdt&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="err"&gt;60&lt;/span&gt;
+&lt;span class="err"&gt;loady&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Using&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;minicom&lt;/span&gt; &lt;span class="err"&gt;quickly&lt;/span&gt; &lt;span class="err"&gt;initiate&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;ymodem&lt;/span&gt; &lt;span class="err"&gt;file&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;of&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;same&lt;/span&gt; &lt;span class="err"&gt;barebox&lt;/span&gt; &lt;span class="err"&gt;image&lt;/span&gt; &lt;span class="err"&gt;you&lt;/span&gt; &lt;span class="err"&gt;wrote&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Be&lt;/span&gt; &lt;span class="err"&gt;quick,&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;upload&lt;/span&gt; &lt;span class="err"&gt;will&lt;/span&gt; &lt;span class="err"&gt;timeout&lt;/span&gt; &lt;span class="err"&gt;after&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;few&lt;/span&gt; &lt;span class="err"&gt;seconds&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Write&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;bootloader&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;SPI&lt;/span&gt; &lt;span class="err"&gt;NOR&lt;/span&gt;
+&lt;span class="err"&gt;erase&lt;/span&gt; &lt;span class="err"&gt;/dev/m25p0.barebox&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Depending&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;your&lt;/span&gt; &lt;span class="err"&gt;RDU2&lt;/span&gt; &lt;span class="err"&gt;type&lt;/span&gt; &lt;span class="err"&gt;flash&lt;/span&gt; &lt;span class="err"&gt;one&lt;/span&gt; &lt;span class="err"&gt;of&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;following&lt;/span&gt;
+&lt;span class="err"&gt;cp&lt;/span&gt; &lt;span class="err"&gt;barebox-zii-imx6q-rdu2.img&lt;/span&gt; &lt;span class="err"&gt;/dev/m25p0.barebox&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Or&lt;/span&gt;
+&lt;span class="err"&gt;cp&lt;/span&gt; &lt;span class="err"&gt;barebox-zii-imx6qp-rdu2.img&lt;/span&gt; &lt;span class="err"&gt;/dev/m25p0.barebox&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;Quark&lt;/span&gt; &lt;span class="err"&gt;console&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt; &lt;span class="err"&gt;again&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Set&lt;/span&gt; &lt;span class="err"&gt;SPI&lt;/span&gt; &lt;span class="err"&gt;NOR&lt;/span&gt; &lt;span class="err"&gt;as&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;source&lt;/span&gt;
+&lt;span class="err"&gt;#HostBoot&lt;/span&gt; &lt;span class="err"&gt;s&lt;/span&gt; &lt;span class="err"&gt;2&lt;/span&gt;
+&lt;span class="err"&gt;reset&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;barebox&lt;/span&gt; &lt;span class="err"&gt;console&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB2&lt;/span&gt; &lt;span class="err"&gt;again&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Edit&lt;/span&gt; &lt;span class="err"&gt;configuration&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;automatically&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;mmc:&lt;/span&gt;
+&lt;span class="err"&gt;sedit&lt;/span&gt; &lt;span class="err"&gt;/env/config&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.boot.&lt;/span&gt;&lt;span class="na"&gt;default=&lt;/span&gt;&lt;span class="s"&gt;/env/boot/mmc&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.bootm.&lt;/span&gt;&lt;span class="na"&gt;image=&lt;/span&gt;&lt;span class="s"&gt;/mnt/mmc1.0/android_zImage&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.bootm.&lt;/span&gt;&lt;span class="na"&gt;initrd=&lt;/span&gt;&lt;span class="s"&gt;/mnt/mmc1.0/android_ramdisk.img.gz&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.bootm.&lt;/span&gt;&lt;span class="na"&gt;oftree=&lt;/span&gt;&lt;span class="s"&gt;/mnt/mmc1.0/imx6qp-zii-rdu2.dtb&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.linux.bootargs.&lt;/span&gt;&lt;span class="na"&gt;base=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;console=ttymxc0,115200 console=tty0 rw rootwait ip=dhcp buildvariant=userdebug debug ignore_loglevel root=/dev/mmcblk0p2 rootfstype=ext4 rootwait init=/init printk.devkmsg=on verbose enforcing=0 androidboot.selinux=permissive drm.debug=0x00&amp;quot;&lt;/span&gt;
+
+&lt;span class="err"&gt;sedit&lt;/span&gt; &lt;span class="err"&gt;/env/boot/mmc&lt;/span&gt;
+&lt;span class="err"&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class="err"&gt;detect&lt;/span&gt; &lt;span class="err"&gt;mmc1&lt;/span&gt;
+&lt;span class="err"&gt;mkdir&lt;/span&gt; &lt;span class="err"&gt;-p&lt;/span&gt; &lt;span class="err"&gt;/mnt/mmc1.0&lt;/span&gt;
+&lt;span class="err"&gt;automount&lt;/span&gt; &lt;span class="err"&gt;-d&lt;/span&gt; &lt;span class="err"&gt;/mnt/mmc1.0&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;mount&lt;/span&gt; &lt;span class="err"&gt;/dev/mmc1.0&lt;/span&gt; &lt;span class="err"&gt;/mnt/mmc1.0&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;bootm&lt;/span&gt;
+
+&lt;span class="err"&gt;pic_setwdt&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="err"&gt;60&lt;/span&gt;     &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Disable&lt;/span&gt; &lt;span class="err"&gt;watchdog&lt;/span&gt;
+
+&lt;span class="err"&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Start Android&lt;/h3&gt;
+&lt;p&gt;The SD-card created in the common steps can now be put into
+the middlemost slot and the device can be restarted.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This work is built on efforts by a lot people:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pengutronix who's been doing i.MX6 platform work.&lt;/li&gt;
+&lt;li&gt;Christian Gmeiner, Wladimir Van Der Laan, and the other etanviv developers.&lt;/li&gt;
+&lt;li&gt;Rob Herring at Linaro for getting the ball rolling with AOSP for Zii.&lt;/li&gt;
+&lt;li&gt;Andrey Smirnov for driver support for the RDU2 such as i.MX6 PCI, ARM PL310 L2 Cache controller, RTC, and other i.MX6qp driver fixups.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="rdu2"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="collabora"></category></entry></feed>

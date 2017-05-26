@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-27T00:00:00+02:00</updated><entry><title>Android: Getting up and running on the iMX6</title><link href="http://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-27T00:00:00+02:00</published><updated>2017-04-27T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-27:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+&lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt; &lt;span class="n"&gt;without&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;option&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Switch&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;
+&lt;span class="mi"&gt;2017 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+&lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt; &lt;span class="n"&gt;without&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;option&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Switch&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;paths&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt; &lt;span class="n"&gt;instead&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;branch&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;sabrelite&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Common steps&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install mkimage tool from u-boot and a suitable compiler
+sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk
+
+mkdir /opt/android
+repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
+cd /opt/android/.repo
+git clone https://customer-git.collabora.com/git/android-etnaviv/android_manifest.git local_manifests -b android-etnaviv
+repo sync -j10
+
+mkdir /opt/imx6_android
+cd /opt/imx6_android
+
+# Fetch Kconfig, bootloaders and some scripts
+git clone https://customer-git.collabora.com/git/android-etnaviv/android-etnaviv.git .
+
+# Fetch the Linux Kernel
+git clone https://customer-git.collabora.com/git/android-etnaviv/linux.git -b android-etnaviv
+
+# This will destroy all data on /dev/mmcblk0 and
+# create boot/system/cache/data partitions
+./setup_sdcard.sh -b /dev/mmcblk0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Hardware: iMX6 Sabre&lt;/h2&gt;
+&lt;h3&gt;Build Android and Linux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
+./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Start Android&lt;/h3&gt;
+&lt;p&gt;The SD-card can now be put into the SD3 slot and
+the device can be restarted.&lt;/p&gt;
+&lt;h2&gt;Hardware: iMX6 Sabrelite&lt;/h2&gt;
+&lt;h3&gt;Build Android and Linux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Start Android&lt;/h3&gt;
+&lt;p&gt;The micro-sd card can now be put into the micro-sd slot and
+the device can be restarted.&lt;/p&gt;
+&lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
+&lt;h3&gt;Build Android and Linux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
+# Run build_android with the correct -d flag
+./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
+./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Install the bootloader&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Depending if you have a &amp;gt;=13&amp;quot; version of the RDU2
+# use the imx6qp, if &lt;span class="nt"&gt;&amp;lt;13&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;then&lt;/span&gt; &lt;span class="err"&gt;use&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;imx6q&lt;/span&gt;
+
+&lt;span class="na"&gt;IMX6_TYPE=&lt;/span&gt;&lt;span class="s"&gt;imx6q&lt;/span&gt;
+&lt;span class="na"&gt;IMX6_TYPE=&lt;/span&gt;&lt;span class="s"&gt;imx6qp&lt;/span&gt;
+&lt;span class="na"&gt;BAREBOX=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;zodiac/barebox-zii-&lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;IMX6_TYPE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="s"&gt;-rdu2.img&amp;quot;&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Flash&lt;/span&gt; &lt;span class="err"&gt;bootloader&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt;
+&lt;span class="err"&gt;dd&lt;/span&gt; &lt;span class="na"&gt;if=&lt;/span&gt;&lt;span class="s"&gt;${BAREBOX}&lt;/span&gt; &lt;span class="na"&gt;of=&lt;/span&gt;&lt;span class="s"&gt;/dev/mmcblk0&lt;/span&gt; &lt;span class="na"&gt;bs=&lt;/span&gt;&lt;span class="s"&gt;1k&lt;/span&gt;
+&lt;span class="err"&gt;sync&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Put&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;middle-most&lt;/span&gt; &lt;span class="err"&gt;slot&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;RDU2&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Install&lt;/span&gt; &lt;span class="err"&gt;lrzsz,&lt;/span&gt; &lt;span class="err"&gt;since&lt;/span&gt; &lt;span class="err"&gt;it&lt;/span&gt; &lt;span class="err"&gt;is&lt;/span&gt; &lt;span class="err"&gt;used&lt;/span&gt; &lt;span class="err"&gt;for&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;ymodem&lt;/span&gt; &lt;span class="err"&gt;upload&lt;/span&gt;
+&lt;span class="err"&gt;sudo&lt;/span&gt; &lt;span class="err"&gt;apt&lt;/span&gt; &lt;span class="err"&gt;install&lt;/span&gt; &lt;span class="err"&gt;lrzsz&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;serial&lt;/span&gt; &lt;span class="err"&gt;device&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB2&lt;/span&gt; &lt;span class="err"&gt;and&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt; &lt;span class="err"&gt;with&lt;/span&gt; &lt;span class="err"&gt;minicom&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;The&lt;/span&gt; &lt;span class="err"&gt;numbering&lt;/span&gt; &lt;span class="err"&gt;assumes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;RDU2&lt;/span&gt; &lt;span class="err"&gt;is&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;only&lt;/span&gt; &lt;span class="err"&gt;serial&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;serial&lt;/span&gt; &lt;span class="err"&gt;device&lt;/span&gt; &lt;span class="err"&gt;connected&lt;/span&gt;
+&lt;span class="err"&gt;sudo&lt;/span&gt; &lt;span class="err"&gt;minicom&lt;/span&gt; &lt;span class="err"&gt;-s&lt;/span&gt;
+    &lt;span class="err"&gt;+------------------------------------------+&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;A&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;    &lt;span class="err"&gt;Serial&lt;/span&gt; &lt;span class="err"&gt;Device&lt;/span&gt;      &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;B&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;Lockfile&lt;/span&gt; &lt;span class="err"&gt;Location&lt;/span&gt;     &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;/var/lock&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;C&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;   &lt;span class="err"&gt;Callin&lt;/span&gt; &lt;span class="err"&gt;Program&lt;/span&gt;      &lt;span class="err"&gt;:&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;D&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;  &lt;span class="err"&gt;Callout&lt;/span&gt; &lt;span class="err"&gt;Program&lt;/span&gt;      &lt;span class="err"&gt;:&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;E&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt;    &lt;span class="err"&gt;Bps/Par/Bits&lt;/span&gt;       &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;115200&lt;/span&gt; &lt;span class="err"&gt;8N1&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;F&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;Hardware&lt;/span&gt; &lt;span class="err"&gt;Flow&lt;/span&gt; &lt;span class="err"&gt;Control&lt;/span&gt; &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;No&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;G&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;Software&lt;/span&gt; &lt;span class="err"&gt;Flow&lt;/span&gt; &lt;span class="err"&gt;Control&lt;/span&gt; &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;No&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt;
+    &lt;span class="err"&gt;|&lt;/span&gt;    &lt;span class="err"&gt;Change&lt;/span&gt; &lt;span class="err"&gt;which&lt;/span&gt; &lt;span class="err"&gt;setting?&lt;/span&gt;
+    &lt;span class="err"&gt;+------------------------------------------+&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;Quark&lt;/span&gt; &lt;span class="err"&gt;console&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Set&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt; &lt;span class="err"&gt;as&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;source&lt;/span&gt; 
+&lt;span class="err"&gt;#HostBoot&lt;/span&gt; &lt;span class="err"&gt;s&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt;
+&lt;span class="err"&gt;reset&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Restart&lt;/span&gt; &lt;span class="err"&gt;device,&lt;/span&gt; &lt;span class="err"&gt;connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;barebox&lt;/span&gt; &lt;span class="err"&gt;loaded&lt;/span&gt; &lt;span class="err"&gt;just&lt;/span&gt; &lt;span class="err"&gt;loaded&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB2&lt;/span&gt;
+&lt;span class="err"&gt;pic_setwdt&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="err"&gt;60&lt;/span&gt;
+&lt;span class="err"&gt;loady&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Using&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;minicom&lt;/span&gt; &lt;span class="err"&gt;quickly&lt;/span&gt; &lt;span class="err"&gt;initiate&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;ymodem&lt;/span&gt; &lt;span class="err"&gt;file&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;of&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;same&lt;/span&gt; &lt;span class="err"&gt;barebox&lt;/span&gt; &lt;span class="err"&gt;image&lt;/span&gt; &lt;span class="err"&gt;you&lt;/span&gt; &lt;span class="err"&gt;wrote&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;SD-card&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Be&lt;/span&gt; &lt;span class="err"&gt;quick,&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;upload&lt;/span&gt; &lt;span class="err"&gt;will&lt;/span&gt; &lt;span class="err"&gt;timeout&lt;/span&gt; &lt;span class="err"&gt;after&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;few&lt;/span&gt; &lt;span class="err"&gt;seconds&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Write&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;bootloader&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;SPI&lt;/span&gt; &lt;span class="err"&gt;NOR&lt;/span&gt;
+&lt;span class="err"&gt;erase&lt;/span&gt; &lt;span class="err"&gt;/dev/m25p0.barebox&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Depending&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;your&lt;/span&gt; &lt;span class="err"&gt;RDU2&lt;/span&gt; &lt;span class="err"&gt;type&lt;/span&gt; &lt;span class="err"&gt;flash&lt;/span&gt; &lt;span class="err"&gt;one&lt;/span&gt; &lt;span class="err"&gt;of&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;following&lt;/span&gt;
+&lt;span class="err"&gt;cp&lt;/span&gt; &lt;span class="err"&gt;barebox-zii-imx6q-rdu2.img&lt;/span&gt; &lt;span class="err"&gt;/dev/m25p0.barebox&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Or&lt;/span&gt;
+&lt;span class="err"&gt;cp&lt;/span&gt; &lt;span class="err"&gt;barebox-zii-imx6qp-rdu2.img&lt;/span&gt; &lt;span class="err"&gt;/dev/m25p0.barebox&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;Quark&lt;/span&gt; &lt;span class="err"&gt;console&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB3&lt;/span&gt; &lt;span class="err"&gt;again&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Set&lt;/span&gt; &lt;span class="err"&gt;SPI&lt;/span&gt; &lt;span class="err"&gt;NOR&lt;/span&gt; &lt;span class="err"&gt;as&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;source&lt;/span&gt;
+&lt;span class="err"&gt;#HostBoot&lt;/span&gt; &lt;span class="err"&gt;s&lt;/span&gt; &lt;span class="err"&gt;2&lt;/span&gt;
+&lt;span class="err"&gt;reset&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Connect&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;barebox&lt;/span&gt; &lt;span class="err"&gt;console&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="err"&gt;/dev/ttyUSB2&lt;/span&gt; &lt;span class="err"&gt;again&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Edit&lt;/span&gt; &lt;span class="err"&gt;configuration&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;automatically&lt;/span&gt; &lt;span class="err"&gt;boot&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;mmc:&lt;/span&gt;
+&lt;span class="err"&gt;sedit&lt;/span&gt; &lt;span class="err"&gt;/env/config&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.boot.&lt;/span&gt;&lt;span class="na"&gt;default=&lt;/span&gt;&lt;span class="s"&gt;/env/boot/mmc&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.bootm.&lt;/span&gt;&lt;span class="na"&gt;image=&lt;/span&gt;&lt;span class="s"&gt;/mnt/mmc1.0/android_zImage&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.bootm.&lt;/span&gt;&lt;span class="na"&gt;initrd=&lt;/span&gt;&lt;span class="s"&gt;/mnt/mmc1.0/android_ramdisk.img.gz&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.bootm.&lt;/span&gt;&lt;span class="na"&gt;oftree=&lt;/span&gt;&lt;span class="s"&gt;/mnt/mmc1.0/imx6qp-zii-rdu2.dtb&lt;/span&gt;
+&lt;span class="err"&gt;export&lt;/span&gt; &lt;span class="err"&gt;global.linux.bootargs.&lt;/span&gt;&lt;span class="na"&gt;base=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;console=ttymxc0,115200 console=tty0 rw rootwait ip=dhcp buildvariant=userdebug debug ignore_loglevel root=/dev/mmcblk0p2 rootfstype=ext4 rootwait init=/init printk.devkmsg=on verbose enforcing=0 androidboot.selinux=permissive drm.debug=0x00&amp;quot;&lt;/span&gt;
+
+&lt;span class="err"&gt;sedit&lt;/span&gt; &lt;span class="err"&gt;/env/boot/mmc&lt;/span&gt;
+&lt;span class="err"&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class="err"&gt;detect&lt;/span&gt; &lt;span class="err"&gt;mmc1&lt;/span&gt;
+&lt;span class="err"&gt;mkdir&lt;/span&gt; &lt;span class="err"&gt;-p&lt;/span&gt; &lt;span class="err"&gt;/mnt/mmc1.0&lt;/span&gt;
+&lt;span class="err"&gt;automount&lt;/span&gt; &lt;span class="err"&gt;-d&lt;/span&gt; &lt;span class="err"&gt;/mnt/mmc1.0&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;mount&lt;/span&gt; &lt;span class="err"&gt;/dev/mmc1.0&lt;/span&gt; &lt;span class="err"&gt;/mnt/mmc1.0&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;bootm&lt;/span&gt;
+
+&lt;span class="err"&gt;pic_setwdt&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="err"&gt;60&lt;/span&gt;     &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Disable&lt;/span&gt; &lt;span class="err"&gt;watchdog&lt;/span&gt;
+
+&lt;span class="err"&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Start Android&lt;/h3&gt;
+&lt;p&gt;The SD-card created in the common steps can now be put into
+the middlemost slot and the device can be restarted.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This work is built on efforts by a lot people:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pengutronix who's been doing i.MX6 platform work.&lt;/li&gt;
+&lt;li&gt;Christian Gmeiner, Wladimir Van Der Laan, and the other etanviv developers.&lt;/li&gt;
+&lt;li&gt;Rob Herring at Linaro for getting the ball rolling with AOSP for Zii.&lt;/li&gt;
+&lt;li&gt;Andrey Smirnov for driver support for the RDU2 such as i.MX6 PCI, ARM PL310 L2 Cache controller, RTC, and other i.MX6qp driver fixups.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="rdu2"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="collabora"></category></entry><entry><title>Android: Changing the bootanimation</title><link href="http://memcpy.io/android-changing-the-bootanimation.html" rel="alternate"></link><published>2017-04-20T00:00:00+02:00</published><updated>2017-04-20T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</id><summary type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+for how to create a custom boot animation, but unfortunately it is lacking
+in actual examples.&lt;/p&gt;
+&lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
+&lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
+&lt;p&gt;Without covering too much of the same gound as the documentation,
+let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
+drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
+
+$ cat bootanimation/desc.txt 
+&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
+c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part1 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
+
+ls -la bootanimation/part0 
+total &lt;span class="m"&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 .
+drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:40 ..
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0000&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0001&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0002&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0003&lt;/span&gt;.png
+-rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 XXXX.png
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that the "#" comments are mine and not actually present in the files.&lt;/p&gt;
+&lt;p&gt;An important thing to note with the zip file is needs to have compression
+turned off.&lt;/p&gt;
+&lt;h2&gt;Switch bootanimation&lt;/h2&gt;
+&lt;p&gt;Download &lt;a href="/files/2017-04-20/bootanimation.zip"&gt;bootanimation.zip&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;unzip bootanimation.zip
+cd bootanimation
+# Edit desc.txt and partN folders to your needs
+zip -0qry -i \*.txt \*.png \*.wav @ ../bootanimation.zip *.txt part*
+
+# Option 1, use adb to send bootanimation.zip
+adb root
+adb remount
+adb push bootanimation.zip /system/media/bootanimation.zip
+
+# Option 2, bake bootanimation.zip into your AOSP build
+cp bootanimation.zip /opt/aosp/out/target/product/linaro_arm/system/bootanimation.zip
+./your_favorite_buildscript_here.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;bootanimation documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="bootanimation"></category><category term="boot"></category><category term="animation"></category><category term="collabora"></category></entry><entry><title>Android: Enabling mainline graphics</title><link href="http://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+(Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
+The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
+that would normally be done with OpenGL.
+SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
+and sends them to the display.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="/images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The above graphic depicts the traditional Android graphics stack.&lt;/p&gt;
+&lt;p&gt;This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
+doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
+graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the
+HWC1 API.
+Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+(Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
+The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
+that would normally be done with OpenGL.
+SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
+and sends them to the display.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="/images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The above graphic depicts the traditional Android graphics stack.&lt;/p&gt;
+&lt;p&gt;This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
+doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
+graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the
+HWC1 API.
+Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways from the previous version, for example the semantics of fence support were changed and
+the GPU can now be used as a fallback when compositing layers.&lt;/p&gt;
+&lt;p&gt;Up until recently the mainline kernel lacked the fence primitive offered by Android
+used in HWC1 and HWC2. But after my fellow Collaboran Gustavo Padovan's work on
+&lt;a href="http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/"&gt;adding fence support&lt;/a&gt;
+to the mainline kernel was upstreamed in
+&lt;a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/"&gt;v4.10&lt;/a&gt;,
+the mainline kernel now has fence support equivalent to that of Android.&lt;/p&gt;
+&lt;p&gt;The new fence support enabled work on drm_hwcomposer to add HWC2 support.
+And with it we are now able to boot Android on the db410c running the freedreno driver.
+But in theory it should work on any mainline kernel graphics stack enabled GPU.&lt;/p&gt;
+&lt;p&gt;Currently the work is being upstreamed to the
+&lt;a href="https://chromium.googlesource.com/chromiumos/drm_hwcomposer/"&gt;ChromiumOS repo&lt;/a&gt;
+which is the official upstream for drm_hwcomposer.&lt;/p&gt;
+&lt;p&gt;A number of projects have seen contributions 8in order to enable this work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;kernel - sync_file, in-fence and out-fence support added.&lt;/li&gt;
+&lt;li&gt;libdrm - fence support added.&lt;/li&gt;
+&lt;li&gt;mesa - support for passing fences added.&lt;/li&gt;
+&lt;li&gt;intel-gpu-tools - sync and fence tests added.&lt;/li&gt;
+&lt;li&gt;drm_hwcomposer - HWC2 and fence support added.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This drm_hwcomposer work is part of a long-standing collaboration between
+Google's ChromeOS team and Collabora.&lt;/p&gt;
+&lt;p&gt;A number of people have played an important role in this work:
+Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="hwc2"></category><category term="collabora"></category></entry><entry><title>Precompiling APK files during Android AOSP build</title><link href="http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
+
+find . -name BoardConfig.mk
+./device/huawei/angler/BoardConfig.mk
+./device/generic/mini-emulator-x86/BoardConfig.mk
+./device/generic/arm64/BoardConfig.mk
+./device/generic/mini-emulator-x86_64/BoardConfig.mk
+./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk
+./device/generic/mips/BoardConfig.mk
+./device/generic/mips64/BoardConfig.mk
+./device/generic/x86_64/BoardConfig.mk
+./device/generic/mini-emulator-arm64/BoardConfig.mk
+./device/generic/mini-emulator-mips/BoardConfig.mk
+./device/generic/x86/BoardConfig.mk
+./device/generic/armv7-a-neon/BoardConfig.mk
+./device/generic/mini-emulator-mips64/BoardConfig.mk
+./device/lge/bullhead/BoardConfig.mk
+./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk
+./device/linaro/generic/linaro_arm64/BoardConfig.mk
+./device/linaro/generic/linaro_arm64_only/BoardConfig.mk
+./device/linaro/generic/linaro_x86_64/BoardConfig.mk
+./device/linaro/generic/BoardConfig.mk
+./device/linaro/generic/linaro_arm/BoardConfig.mk
+./device/linaro/hikey/hikey/BoardConfig.mk
+
+# Edit the BoardConfig.mk that …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
+
+find . -name BoardConfig.mk
+./device/huawei/angler/BoardConfig.mk
+./device/generic/mini-emulator-x86/BoardConfig.mk
+./device/generic/arm64/BoardConfig.mk
+./device/generic/mini-emulator-x86_64/BoardConfig.mk
+./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk
+./device/generic/mips/BoardConfig.mk
+./device/generic/mips64/BoardConfig.mk
+./device/generic/x86_64/BoardConfig.mk
+./device/generic/mini-emulator-arm64/BoardConfig.mk
+./device/generic/mini-emulator-mips/BoardConfig.mk
+./device/generic/x86/BoardConfig.mk
+./device/generic/armv7-a-neon/BoardConfig.mk
+./device/generic/mini-emulator-mips64/BoardConfig.mk
+./device/lge/bullhead/BoardConfig.mk
+./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk
+./device/linaro/generic/linaro_arm64/BoardConfig.mk
+./device/linaro/generic/linaro_arm64_only/BoardConfig.mk
+./device/linaro/generic/linaro_x86_64/BoardConfig.mk
+./device/linaro/generic/BoardConfig.mk
+./device/linaro/generic/linaro_arm/BoardConfig.mk
+./device/linaro/hikey/hikey/BoardConfig.mk
+
+# Edit the BoardConfig.mk that you are using for your build
+cd device/linaro/generic/
+nano BoardConfig.mk
+
+# Add the config option
+WITH_DEXPREOPT := true
+
+# Propagate the new settings
+make defconfig
+make all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Increase system partition size&lt;/h2&gt;
+&lt;p&gt;Depending on the previous system partition size and how many APKs that are built, you may need to increase the system partition size.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nano configs/defconfig
+
+# Change the below variable to something big enough to house all of you binaries
+CONFIG_BOARD_SYSTEMIMAGE_PARTITION_SIZE=1100000000
+
+# Propagate the new settings
+make defconfig
+make all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="apk"></category><category term="dex2oat"></category><category term="android"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="http://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><summary type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
+bash
+source build/envsetup.sh &amp;amp;&amp;amp; \
+lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
+mmm system/core/libsync/tests &amp;amp;&amp;amp; \
+adb root &amp;amp;&amp;amp; \
+adb remount &amp;amp;&amp;amp; \
+adb sync &amp;amp;&amp;amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
+&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
+bash
+source build/envsetup.sh &amp;amp;&amp;amp; \
+lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
+mmm system/core/libsync/tests &amp;amp;&amp;amp; \
+adb root &amp;amp;&amp;amp; \
+adb remount &amp;amp;&amp;amp; \
+adb sync &amp;amp;&amp;amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry></feed>
