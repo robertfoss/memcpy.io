@@ -7,7 +7,6 @@
  * free of charge. See http://www.exljbris.com/calluna.html.
  *
  * See the file fonts/readme.md in this repository for more details. */
-
 @font-face
 {
   font-family: 'Libre Baskerville';
@@ -33,7 +32,7 @@
 @font-face
 {
   font-family: Georgia;
-  src: url(/theme/fonts/georgia.woff)  format("woff");
+  src: url(/theme/fonts/georgia.woff) format("woff");
 }
 
 @font-face

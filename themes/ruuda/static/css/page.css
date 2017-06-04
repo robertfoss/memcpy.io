@@ -20,7 +20,7 @@ body
   border-top: 0.5em solid #142e4acc;
   padding-top: 0.2em;
   color: #456;
-  font-family: Calluna Sans, sans-serif;
+  font-family: Maven Pro, sans-serif;
   /* Firefox applies ligatures automatically when they are available, but Chrome
    * needs to be told explicitly. Note: Blink will drop the -webkit prefix soon.
    * See https://crbug.com/537293. This is landing in Chrome 48. */
