@@ -7,6 +7,102 @@
  * free of charge. See http://www.exljbris.com/calluna.html.
  *
  * See the file fonts/readme.md in this repository for more details. */
+ 
+/* latin-ext */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Maven Pro Regular'),
+       local('MavenPro-Regular'),
+       url(/theme/fonts/maven_pro_400_latin_ext.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Maven Pro Regular'),
+       local('MavenPro-Regular'),
+       url(/theme/fonts/maven_pro_400_latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+/* latin-ext */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Maven Pro Medium'),
+       local('MavenPro-Medium'),
+       url(/theme/fonts/maven_pro_500_latin_ext.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Maven Pro Medium'),
+       local('MavenPro-Medium'),
+       url(/theme/fonts/maven_pro_500_latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+/* latin-ext */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Maven Pro Bold'),
+       local('MavenPro-Bold'),
+       url(/theme/fonts/maven_pro_700_latin_ext.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Maven Pro Bold'),
+       local('MavenPro-Bold'),
+       url(/theme/fonts/maven_pro_700_latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+/* latin-ext */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Maven Pro Black'),
+       local('MavenPro-Black'),
+       url(/theme/fonts/maven_pro_900_latin_ext.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face
+{
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Maven Pro Black'),
+       local('MavenPro-Black'),
+       url(/theme/fonts/maven_pro_900_latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
 
 @font-face
 {
@@ -33,7 +129,7 @@
 @font-face
 {
   font-family: Georgia;
-  src: url(/theme/fonts/georgia.woff)  format("woff");
+  src: url(/theme/fonts/georgia.woff) format("woff");
 }
 
 @font-face

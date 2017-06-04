@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-04-27T00:00:00+02:00</updated><entry><title>Android: Getting up and running on the iMX6</title><link href="http://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-27T00:00:00+02:00</published><updated>2017-04-27T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-27:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - aosp</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/aosp.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-06-02T00:00:00+02:00</updated><entry><title>Android: iMX6 buffer modifier support</title><link href="http://memcpy.io/android-imx6-buffer-modifier-support.html" rel="alternate"></link><published>2017-06-02T00:00:00+02:00</published><updated>2017-06-02T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-06-02:/android-imx6-buffer-modifier-support.html</id><summary type="html">&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
+platforms using no proprietary blobs at all.
+This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
+Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform.&lt;/p&gt;
+&lt;p&gt;Currently the modifiers work is the process of being upstreamed, but in the meantime it can be
+found &lt;a href="https://customer-git.collabora.com/cgit/android-etnaviv/"&gt;here&lt;/a&gt;. If you'd like to test
+this out yourself I maintain a &lt;a href="../android-getting-up-and-running-on-the-imx6.html"&gt;how-to&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;What are modifiers used for?&lt;/h2&gt;
+&lt;p&gt;So, modifiers are used to represent different properties of buffers. These properties can cover a range of
+different information about a buffer, for example …&lt;/p&gt;</summary><content type="html">&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
+platforms using no proprietary blobs at all.
+This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
+Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform.&lt;/p&gt;
+&lt;p&gt;Currently the modifiers work is the process of being upstreamed, but in the meantime it can be
+found &lt;a href="https://customer-git.collabora.com/cgit/android-etnaviv/"&gt;here&lt;/a&gt;. If you'd like to test
+this out yourself I maintain a &lt;a href="../android-getting-up-and-running-on-the-imx6.html"&gt;how-to&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;What are modifiers used for?&lt;/h2&gt;
+&lt;p&gt;So, modifiers are used to represent different properties of buffers. These properties can cover a range of
+different information about a buffer, for example compression and &lt;a href="https://en.wikipedia.org/wiki/Tiled_rendering"&gt;tiling&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For the case of the iMX6 and the Vivante GPU it is equipped with, the modifiers are related to tiling.
+The reason being that buffers can be tiled in different ways (Tiled, Super Tiled, etc.) or not at all (Linear).
+Before sending buffers out to a display, they need to have the associated tiling information made available,
+so that the actual image that is being sent out is not tiled.&lt;/p&gt;
+&lt;p&gt;This of course begs the question "Why use tiling at all?", to which the short answer is power efficiency, which
+is very desirable in the embedded as well as the mobile space.&lt;/p&gt;
+&lt;h2&gt;How was support added?&lt;/h2&gt;
+&lt;p&gt;Support was added in two places; Mesa and gbm_gralloc. Mesa has had support added to many of the buffer allocation
+functions and to GBM (which is the API provided by Mesa, that gbm_gralloc uses).&lt;/p&gt;
+&lt;p&gt;gbm_gralloc in turn had support added for using a new GBM API call, GBM_BO_IMPORT_FD_MODIFIER, which imports
+a buffer object as well as accompanying information like modifier used by the buffer object in question.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This work is built on efforts by a lot people:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://varadgautam.wordpress.com/"&gt;Varad Gautam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Lucas Stach&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.tomeuvizoso.net/"&gt;Tomeu Vizoso&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rob Herring&lt;/li&gt;
+&lt;li&gt;Emil Velikov&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.christian-gmeiner.info/"&gt;Christian Gmeiner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://laanwj.github.io/"&gt;Wladimir Van Der Laan&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="mesa"></category><category term="tiling"></category><category term="modifier"></category><category term="collabora"></category></entry><entry><title>Android: Getting up and running on the iMX6</title><link href="http://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-27T00:00:00+02:00</published><updated>2017-04-27T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-27:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
 &lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
 &lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
@@ -20,12 +65,13 @@
 &lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;branch&lt;/span&gt;
 &lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;
 &lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;sabrelite&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt; &lt;span class="n"&gt;packages&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Common steps&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install mkimage tool from u-boot and a suitable compiler
-sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install dependencies
+sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk android-tools-fsutils python-mako git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip
 
 mkdir /opt/android
 repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28

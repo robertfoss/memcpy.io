@@ -171,7 +171,7 @@ abbr, .smcp
   /* Note: Enabling letter spacing breaks small caps in Blink before version
    * 48. I fixed it in https://crrev.com/1416603005 which will go mainstream
    * with Chrome 48. */
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 abbr

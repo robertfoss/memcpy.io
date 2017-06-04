@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - modifier</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Fri, 02 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>Android: iMX6 buffer modifier support</title><link>http://memcpy.io/android-imx6-buffer-modifier-support.html</link><description>&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
+platforms using no proprietary blobs at all.
+This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
+Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform.&lt;/p&gt;
+&lt;p&gt;Currently the modifiers work is the process of being upstreamed, but in the meantime it can be
+found &lt;a href="https://customer-git.collabora.com/cgit/android-etnaviv/"&gt;here&lt;/a&gt;. If you'd like to test
+this out yourself I maintain a &lt;a href="../android-getting-up-and-running-on-the-imx6.html"&gt;how-to&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;What are modifiers used for?&lt;/h2&gt;
+&lt;p&gt;So, modifiers are used to represent different properties of buffers. These properties can cover a range of
+different information about a buffer, for example …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 02 Jun 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-06-02:/android-imx6-buffer-modifier-support.html</guid><category>android</category><category>aosp</category><category>imx6</category><category>vivante</category><category>etnaviv</category><category>linux</category><category>mesa</category><category>tiling</category><category>modifier</category><category>collabora</category></item></channel></rss>

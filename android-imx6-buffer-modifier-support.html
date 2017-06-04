@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Android: iMX6 buffer modifier support</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6 platforms using no proprietary blobs at all. This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run. Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform. Currently the modifiers work is the process of being upstreamed, but in the meantime it can be found here. If you&#39;d like to test this out yourself I maintain a how-to. What are modifiers used for? So, modifiers are used to represent different properties of buffers. These properties can cover a range of different information about a buffer, for example …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, vivante, etnaviv, linux, mesa, tiling, modifier, collabora">
+		<meta property="og:title" content="Android: iMX6 buffer modifier support" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://memcpy.io/android-imx6-buffer-modifier-support.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2017-06-02" />
+		<meta property="article:section" content="aosp" />
+		<meta property="article:tag" content="android" />
+		<meta property="article:tag" content="aosp" />
+		<meta property="article:tag" content="imx6" />
+		<meta property="article:tag" content="vivante" />
+		<meta property="article:tag" content="etnaviv" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="mesa" />
+		<meta property="article:tag" content="tiling" />
+		<meta property="article:tag" content="modifier" />
+		<meta property="article:tag" content="collabora" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Android: iMX6 buffer modifier support</h1>
+				<p>
+				Published <time datetime="2017-06-02" itemprop="datePublished">2017-06-02</time>
+				</p>
+			</header>
+			<p>GPUs like those of Intel and Vivante have properties like compression and tiling associated with buffers. Support for these properties has now been written which enables us to boot Android without tiling artifacts on iMX6 platforms.</p>
+			<iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen></iframe>
+
+<p>With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
+platforms using no proprietary blobs at all.
+This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
+Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform.</p>
+<p>Currently the modifiers work is the process of being upstreamed, but in the meantime it can be
+found <a href="https://customer-git.collabora.com/cgit/android-etnaviv/">here</a>. If you'd like to test
+this out yourself I maintain a <a href="../android-getting-up-and-running-on-the-imx6.html">how-to</a>.</p>
+<h2>What are modifiers used for?</h2>
+<p>So, modifiers are used to represent different properties of buffers. These properties can cover a range of
+different information about a buffer, for example compression and <a href="https://en.wikipedia.org/wiki/Tiled_rendering">tiling</a>.</p>
+<p>For the case of the iMX6 and the Vivante GPU it is equipped with, the modifiers are related to tiling.
+The reason being that buffers can be tiled in different ways (Tiled, Super Tiled, etc.) or not at all (Linear).
+Before sending buffers out to a display, they need to have the associated tiling information made available,
+so that the actual image that is being sent out is not tiled.</p>
+<p>This of course begs the question "Why use tiling at all?", to which the short answer is power efficiency, which
+is very desirable in the embedded as well as the mobile space.</p>
+<h2>How was support added?</h2>
+<p>Support was added in two places; Mesa and gbm_gralloc. Mesa has had support added to many of the buffer allocation
+functions and to GBM (which is the API provided by Mesa, that gbm_gralloc uses).</p>
+<p>gbm_gralloc in turn had support added for using a new GBM API call, GBM_BO_IMPORT_FD_MODIFIER, which imports
+a buffer object as well as accompanying information like modifier used by the buffer object in question.</p>
+<h2>Thanks</h2>
+<p>This work is built on efforts by a lot people:</p>
+<ul>
+<li><a href="https://varadgautam.wordpress.com/">Varad Gautam</a></li>
+<li>Lucas Stach</li>
+<li><a href="http://blog.tomeuvizoso.net/">Tomeu Vizoso</a></li>
+<li>Rob Herring</li>
+<li>Emil Velikov</li>
+<li><a href="https://www.christian-gmeiner.info/">Christian Gmeiner</a></li>
+<li><a href="https://laanwj.github.io/">Wladimir Van Der Laan</a></li>
+</ul>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/android.html">android </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/aosp.html">aosp </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/imx6.html">imx6 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/vivante.html">vivante </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/etnaviv.html">etnaviv </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/mesa.html">mesa </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/tiling.html">tiling </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/modifier.html">modifier </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
