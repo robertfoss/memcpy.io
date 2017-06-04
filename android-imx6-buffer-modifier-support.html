@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6 platforms using no proprietary blobs at all. This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run. Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform. Currently the modifiers work is the process of being upstreamed, but in the meantime it can be found here. If you&#39;d like to test this out yourself I maintain a how-to. What are modifiers used for? So, modifiers are used to represent different properties of buffers. These properties can cover a range of different information about a buffer, for example …">
+		<meta name="description" content="With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6 platforms using no proprietary blobs at all. This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run. Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform. Currently the modifiers work is in the process of being upstreamed, but in the meantime it can be found here. If you&#39;d like to test this out yourself I maintain a how-to. What are modifiers used for? Modifiers are used to represent different properties of buffers. These properties can cover a range of different information about a buffer, for example …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, vivante, etnaviv, linux, mesa, tiling, modifier, collabora">
 		<meta property="og:title" content="Android: iMX6 buffer modifier support" />
@@ -40,24 +40,24 @@
 				Published <time datetime="2017-06-02" itemprop="datePublished">2017-06-02</time>
 				</p>
 			</header>
-			<p>GPUs like those of Intel and Vivante have properties like compression and tiling associated with buffers. Support for these properties has now been written which enables us to boot Android without tiling artifacts on iMX6 platforms.</p>
+			<p>GPUs like those of Intel and Vivante support storing the contents of graphical buffers in different formats. Support for describing these formats using modifiers has now been added to Android and Mesa, enabling tiling artifact free running of Android on the iMX6 platform.</p>
 			<iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen></iframe>
 
 <p>With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
 platforms using no proprietary blobs at all.
 This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
-Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform.</p>
-<p>Currently the modifiers work is the process of being upstreamed, but in the meantime it can be
+Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform.</p>
+<p>Currently the modifiers work is in the process of being upstreamed, but in the meantime it can be
 found <a href="https://customer-git.collabora.com/cgit/android-etnaviv/">here</a>. If you'd like to test
 this out yourself I maintain a <a href="../android-getting-up-and-running-on-the-imx6.html">how-to</a>.</p>
 <h2>What are modifiers used for?</h2>
-<p>So, modifiers are used to represent different properties of buffers. These properties can cover a range of
+<p>Modifiers are used to represent different properties of buffers. These properties can cover a range of
 different information about a buffer, for example compression and <a href="https://en.wikipedia.org/wiki/Tiled_rendering">tiling</a>.</p>
-<p>For the case of the iMX6 and the Vivante GPU it is equipped with, the modifiers are related to tiling.
+<p>For the case of the iMX6 and the Vivante GPU which it is equipped with, the modifiers are related to tiling.
 The reason being that buffers can be tiled in different ways (Tiled, Super Tiled, etc.) or not at all (Linear).
 Before sending buffers out to a display, they need to have the associated tiling information made available,
 so that the actual image that is being sent out is not tiled.</p>
-<p>This of course begs the question "Why use tiling at all?", to which the short answer is power efficiency, which
+<p>This of course raises the question "Why use tiling at all?", to which the short answer is power efficiency, which
 is very desirable in the embedded as well as the mobile space.</p>
 <h2>How was support added?</h2>
 <p>Support was added in two places; Mesa and gbm_gralloc. Mesa has had support added to many of the buffer allocation

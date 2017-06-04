@@ -4,12 +4,12 @@
 &lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
 platforms using no proprietary blobs at all.
 This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
-Not only is that great win for Open Source in general, but it also makes the iMX6 platform more attractive as a platform.&lt;/p&gt;
-&lt;p&gt;Currently the modifiers work is the process of being upstreamed, but in the meantime it can be
+Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform.&lt;/p&gt;
+&lt;p&gt;Currently the modifiers work is in the process of being upstreamed, but in the meantime it can be
 found &lt;a href="https://customer-git.collabora.com/cgit/android-etnaviv/"&gt;here&lt;/a&gt;. If you'd like to test
 this out yourself I maintain a &lt;a href="../android-getting-up-and-running-on-the-imx6.html"&gt;how-to&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;What are modifiers used for?&lt;/h2&gt;
-&lt;p&gt;So, modifiers are used to represent different properties of buffers. These properties can cover a range of
+&lt;p&gt;Modifiers are used to represent different properties of buffers. These properties can cover a range of
 different information about a buffer, for example …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 02 Jun 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-06-02:/android-imx6-buffer-modifier-support.html</guid><category>android</category><category>aosp</category><category>imx6</category><category>vivante</category><category>etnaviv</category><category>linux</category><category>mesa</category><category>tiling</category><category>modifier</category><category>collabora</category></item><item><title>Android: Getting up and running on the iMX6</title><link>http://memcpy.io/android-getting-up-and-running-on-the-imx6.html</link><description>&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
 &lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
