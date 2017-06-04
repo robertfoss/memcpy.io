@@ -19,12 +19,13 @@ This post is a bit of a living document and will be changed over time, and if yo
     2017-05-19: Change kernel branch
     2017-05-19: Add -d, device flag and info about it
     2017-05-19: Add sabrelite board info
+    2017-06-03: Add more apt-get packages
 
 
 ## Common steps
 
-    # Install mkimage tool from u-boot and a suitable compiler
-    sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk
+    # Install dependencies
+    sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk android-tools-fsutils python-mako git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip
 
     mkdir /opt/android
     repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
