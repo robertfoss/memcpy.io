@@ -162,6 +162,11 @@ h3 > a
   color: inherit;
 }
 
+ul
+{
+  line-height: 1.2em;
+}
+
 abbr, .smcp
 {
   /* Use the both the caps-to-small-caps (c2sc) opentype feature, and small
