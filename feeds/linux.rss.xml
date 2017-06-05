@@ -3,8 +3,8 @@
 
 &lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
 platforms using no proprietary blobs at all.
-This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
-Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform.
+This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.&lt;/p&gt;
+&lt;p&gt;Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform.
 A further positive point is that this lays the groundwork for the iMX8 platform, and supporting it will come much easier..&lt;/p&gt;
 &lt;h2&gt;What are modifiers used for?&lt;/h2&gt;
 &lt;p&gt;Modifiers are used to represent different properties of buffers. These properties can cover a range of
