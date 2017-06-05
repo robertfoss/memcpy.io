@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>memcpy.io | Android: iMX6 buffer modifier support</title>
+		<title>memcpy.io | Android: NXP i.MX6 Buffer Modifier Support</title>
 		<link rel="icon" type="image/png" href="/logo.png" />
 		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
@@ -12,12 +12,12 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6 platforms using no proprietary blobs at all. This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run. Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform. Currently the modifiers work is in the process of being upstreamed, but in the meantime it can be found here. If you&#39;d like to test this out yourself I maintain a how-to. What are modifiers used for? Modifiers are used to represent different properties of buffers. These properties can cover a range of different information about a buffer, for example …">
+		<meta name="description" content="With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6 platforms using no proprietary blobs at all. This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run. Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform. A further positive point is that this lays the groundwork for the iMX8 platform, and supporting it will come much easier.. What are modifiers used for? Modifiers are used to represent different properties of buffers. These properties can cover a range of different information about a buffer, for example compression and tiling. For the case of the iMX6 and the …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, vivante, etnaviv, linux, mesa, tiling, modifier, collabora">
-		<meta property="og:title" content="Android: iMX6 buffer modifier support" />
+		<meta property="og:title" content="Android: NXP i.MX6 Buffer Modifier Support" />
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="http://memcpy.io/android-imx6-buffer-modifier-support.html" />
+		<meta property="og:url" content="http://memcpy.io/android-nxp-imx6-buffer-modifier-support.html" />
 		<meta property="og:locale" content="" />
 		<meta property="og:site_name" content="memcpy.io" />
 		<meta property="article:published_time" content="2017-06-02" />
@@ -36,7 +36,7 @@
 	<body>
 		<article id="content" itemscope>
 			<header>
-				<h1>Android: iMX6 buffer modifier support</h1>
+				<h1>Android: NXP i.MX6 Buffer Modifier Support</h1>
 				<p>
 				Published <time datetime="2017-06-02" itemprop="datePublished">2017-06-02</time>
 				</p>
@@ -47,10 +47,8 @@
 <p>With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
 platforms using no proprietary blobs at all.
 This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to run.
-Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform.</p>
-<p>Currently the modifiers work is in the process of being upstreamed, but in the meantime it can be
-found <a href="https://customer-git.collabora.com/cgit/android-etnaviv/">here</a>. If you'd like to test
-this out yourself I maintain a <a href="../android-getting-up-and-running-on-the-imx6.html">how-to</a>.</p>
+Not only is that a great win for Open Source in general, but it also makes the iMX6 more attractive as a platform.
+A further positive point is that this lays the groundwork for the iMX8 platform, and supporting it will come much easier..</p>
 <h2>What are modifiers used for?</h2>
 <p>Modifiers are used to represent different properties of buffers. These properties can cover a range of
 different information about a buffer, for example compression and <a href="https://en.wikipedia.org/wiki/Tiled_rendering">tiling</a>.</p>
@@ -65,18 +63,23 @@ is very desirable in the embedded as well as the mobile space.</p>
 functions and to GBM (which is the API provided by Mesa, that gbm_gralloc uses).</p>
 <p>gbm_gralloc in turn had support added for using a new GBM API call, GBM_BO_IMPORT_FD_MODIFIER, which imports
 a buffer object as well as accompanying information like modifier used by the buffer object in question.</p>
+<h2>Getting up and running</h2>
+<p>Currently the modifiers work is in the process of being upstreamed, but in the meantime it can be
+found <a href="https://customer-git.collabora.com/cgit/android-etnaviv/">here</a>. If you'd like to test
+this out yourself a How-To can be found <a href="../android-getting-up-and-running-on-the-imx6.html">here</a>.</p>
 <h2>Thanks</h2>
 <p>This work is built on efforts by a lot people:</p>
 <ul>
-<li><a href="https://varadgautam.wordpress.com/">Varad Gautam</a></li>
-<li>Lucas Stach</li>
-<li><a href="http://blog.tomeuvizoso.net/">Tomeu Vizoso</a></li>
-<li>Rob Herring</li>
-<li>Emil Velikov</li>
-<li><a href="https://www.christian-gmeiner.info/">Christian Gmeiner</a></li>
-<li><a href="https://laanwj.github.io/">Wladimir Van Der Laan</a></li>
+<li><a href="https://varadgautam.wordpress.com/">Varad Gautam</a> - Collabora</li>
+<li>Lucas Stach - Pengutronix</li>
+<li><a href="http://blog.tomeuvizoso.net/">Tomeu Vizoso</a> - Collabora</li>
+<li>Rob Herring - Linaro</li>
+<li>Emil Velikov - Collabora</li>
+<li><a href="https://www.christian-gmeiner.info/">Christian Gmeiner</a> - Independent</li>
+<li><a href="https://laanwj.github.io/">Wladimir Van Der Laan</a> - Independent</li>
 </ul>
-<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>,
+and has been funded by <a href="http://zii.aero">Zodiac Aerospace</a>.</p>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">
