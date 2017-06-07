@@ -8,5 +8,5 @@ This makes iMX6 one of the very few embedded SOCs that needs no blobs at all to 
 A further positive point is that this lays the groundwork for the iMX8 platform, and supporting it will come much easier.&lt;/p&gt;
 &lt;h2&gt;What are modifiers used for?&lt;/h2&gt;
 &lt;p&gt;Modifiers are used to represent different properties of buffers. These properties can cover a range of
-different information about a buffer, for example compression and &lt;a href="https://en.wikipedia.org/wiki/Tiled_rendering"&gt;tiling&lt;/a&gt;.&lt;/p&gt;
+different information about a buffer, for example compression and &lt;a href="https://github.com/laanwj/etna_viv/blob/master/doc/hardware.md#texture-tiling"&gt;tiling&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For the case of …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 02 Jun 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-06-02:/android-nxp-imx6-buffer-modifier-support.html</guid><category>android</category><category>aosp</category><category>imx6</category><category>vivante</category><category>etnaviv</category><category>linux</category><category>mesa</category><category>tiling</category><category>modifier</category><category>collabora</category></item></channel></rss>
