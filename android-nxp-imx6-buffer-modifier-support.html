@@ -56,8 +56,6 @@ different information about a buffer, for example compression and <a href="https
 The reason being that buffers can be tiled in different ways (Tiled, Super Tiled, etc.) or not at all (Linear).
 Before sending buffers out to a display, they need to have the associated tiling information made available,
 so that the actual image that is being sent out is not tiled.</p>
-<p>This of course raises the question "Why use tiling at all?", to which the short answer is reduced memory bandwidth, which
-translates to power savings, bot of which are desirable in the embedded as well as the mobile space.</p>
 <h2>How was support added?</h2>
 <p>Support was added in two places; Mesa and gbm_gralloc. Mesa has had support added to many of the buffer allocation
 functions and to GBM (which is the API provided by Mesa, that gbm_gralloc uses).</p>
