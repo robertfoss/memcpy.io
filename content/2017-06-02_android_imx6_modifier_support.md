@@ -16,15 +16,12 @@ A further positive point is that this lays the groundwork for the iMX8 platform,
 
 ## What are modifiers used for?
 Modifiers are used to represent different properties of buffers. These properties can cover a range of
-different information about a buffer, for example compression and [tiling](https://en.wikipedia.org/wiki/Tiled_rendering).
+different information about a buffer, for example compression and [tiling](https://github.com/laanwj/etna_viv/blob/master/doc/hardware.md#texture-tiling).
 
 For the case of the iMX6 and the Vivante GPU which it is equipped with, the modifiers are related to tiling.
 The reason being that buffers can be tiled in different ways (Tiled, Super Tiled, etc.) or not at all (Linear).
 Before sending buffers out to a display, they need to have the associated tiling information made available,
 so that the actual image that is being sent out is not tiled.
-
-This of course raises the question "Why use tiling at all?", to which the short answer is reduced memory bandwidth, which
-translates to power savings, bot of which are desirable in the embedded as well as the mobile space.
 
 
 ## How was support added?
