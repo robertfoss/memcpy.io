@@ -26,7 +26,7 @@ body
    * See https://crbug.com/537293. This is landing in Chrome 48. */
   -webkit-font-feature-settings: 'liga', 'kern';
   font-feature-settings: 'liga', 'kern';
-  line-height: 1.4em;
+  line-height: 1.3em;
 }
 
 #content, #footer
