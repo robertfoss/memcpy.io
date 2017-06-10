@@ -29,6 +29,7 @@
 sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk android-tools-fsutils python-mako git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip
 
 mkdir /opt/android
+cd /opt/android
 repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
 cd /opt/android/.repo
 git clone https://customer-git.collabora.com/git/android-etnaviv/android_manifest.git local_manifests -b android-etnaviv
