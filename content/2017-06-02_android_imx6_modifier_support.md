@@ -40,7 +40,7 @@ this out yourself a How-To can be found [here](../android-getting-up-and-running
 
 ## Thanks
 
-This work is built on efforts by a lot people:
+This work is built on the efforts of a lot people:
 
   * [Varad Gautam](https://varadgautam.wordpress.com/) - Collabora
   * Lucas Stach - Pengutronix
