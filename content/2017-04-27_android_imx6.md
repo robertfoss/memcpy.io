@@ -20,12 +20,13 @@ This post is a bit of a living document and will be changed over time, and if yo
     2017-05-19: Add -d, device flag and info about it
     2017-05-19: Add sabrelite board info
     2017-06-03: Add more apt-get packages
+    2017-06-10: Add lzop apt-get packages
 
 
 ## Common steps
 
     # Install dependencies
-    sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk android-tools-fsutils python-mako git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip
+    sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk android-tools-fsutils python-mako git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip lzop
 
     mkdir /opt/android
     cd /opt/android
