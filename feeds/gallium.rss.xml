@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - gallium</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 28 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>Performance debugging Mesa</title><link>http://memcpy.io/performance-debugging-mesa.html</link><description>&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
+<rss version="2.0"><channel><title>memcpy.io - gallium</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 28 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>Performance debugging Linux graphics on Mesa</title><link>http://memcpy.io/performance-debugging-linux-graphics-on-mesa.html</link><description>&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
 &lt;p&gt;GALLIUM_HUD is a feature that adds performance graphs to applications that describe
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
 &lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set GL/EGL/etc
@@ -19,4 +19,4 @@ export in the init.rc file of the device you are using, like
 cd android
 
 # Add export to init.rc (linaro/generic is the device I use)
-nano device/linaro/generic/init.rc …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 28 Jun 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-06-28:/performance-debugging-mesa.html</guid><category>android</category><category>aosp</category><category>linux</category><category>mesa</category><category>gallium</category><category>hud</category><category>peformance</category><category>diagnostics</category><category>debug</category><category>collabora</category></item></channel></rss>
+nano device/linaro/generic/init.rc …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 28 Jun 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-06-28:/performance-debugging-linux-graphics-on-mesa.html</guid><category>android</category><category>aosp</category><category>linux</category><category>mesa</category><category>gallium</category><category>hud</category><category>peformance</category><category>diagnostics</category><category>debug</category><category>collabora</category></item></channel></rss>
