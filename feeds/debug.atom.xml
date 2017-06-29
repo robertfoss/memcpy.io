@@ -4,7 +4,7 @@
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
 &lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc
 applications. It only works for Mesa drivers that are Gallium based, which means that
-the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD.&lt;/p&gt;
+the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD.&lt;/p&gt;
 &lt;p&gt;See GALLIUM_HUD options:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export GALLIUM_HUD=help
 glxgears
@@ -24,7 +24,7 @@ nano device/linaro/generic/init …&lt;/pre&gt;&lt;/div&gt;</summary><content ty
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
 &lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc
 applications. It only works for Mesa drivers that are Gallium based, which means that
-the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD.&lt;/p&gt;
+the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD.&lt;/p&gt;
 &lt;p&gt;See GALLIUM_HUD options:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export GALLIUM_HUD=help
 glxgears
