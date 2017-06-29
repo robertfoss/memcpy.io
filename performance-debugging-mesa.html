@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Performance debugging Mesa</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="GALLIUM_HUD GALLIUM_HUD is a feature that adds performance graphs to applications that describe various aspects like FPS, CPU usage, etc in realtime. It is enabled using an environment variable, GALLIUM_HUD, that can be set GL/EGL/etc applications. It only works for Mesa drivers that are Gallium based, which means that the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD. See GALLIUM_HUD options: export GALLIUM_HUD=help glxgears Android If you&#39;re building Android, you can supply system-wide environment values by doing an export in the init.rc file of the device you are using, like this. # Go to android source code checkout cd android # Add export to init.rc (linaro/generic is the device I use) nano device/linaro/generic/init.rc …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, linux, mesa, gallium, hud, peformance, diagnostics, debug, collabora">
+		<meta property="og:title" content="Performance debugging Mesa" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://memcpy.io/performance-debugging-mesa.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2017-06-28" />
+		<meta property="article:section" content="mesa" />
+		<meta property="article:tag" content="android" />
+		<meta property="article:tag" content="aosp" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="mesa" />
+		<meta property="article:tag" content="gallium" />
+		<meta property="article:tag" content="hud" />
+		<meta property="article:tag" content="peformance" />
+		<meta property="article:tag" content="diagnostics" />
+		<meta property="article:tag" content="debug" />
+		<meta property="article:tag" content="collabora" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Performance debugging Mesa</h1>
+				<p>
+				Published <time datetime="2017-06-28" itemprop="datePublished">2017-06-28</time>
+				</p>
+			</header>
+			<p>Debugging graphics performance in a simple and high-level manner is possible for all Gallium based Mesa drivers.</p>
+			<h2>GALLIUM_HUD</h2>
+<p>GALLIUM_HUD is a feature that adds performance graphs to applications that describe
+various aspects like FPS, CPU usage, etc in realtime.</p>
+<p>It is enabled using an environment variable, GALLIUM_HUD, that can be set GL/EGL/etc
+applications. It only works for Mesa drivers that are Gallium based, which means that
+the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD.</p>
+<p>See GALLIUM_HUD options:</p>
+<div class="highlight"><pre><span></span>export GALLIUM_HUD=help
+glxgears
+</pre></div>
+
+
+<h3>Android</h3>
+<p>If you're building Android, you can supply system-wide environment values by doing an
+export in the init.rc file of the device you are using, like 
+<a href="https://customer-git.collabora.com/cgit/android-etnaviv/android-device-linaro-generic.git/commit/?h=android-etnaviv&amp;id=48755378c388707260a8bb50e0fb62a309ded986">this</a>.</p>
+<div class="highlight"><pre><span></span># Go to android source code checkout
+cd android
+
+# Add export to init.rc (linaro/generic is the device I use)
+nano device/linaro/generic/init.rc
+export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated
+</pre></div>
+
+
+<h3>Linux</h3>
+<p>If you're using one of the usual Linux distros, GALLIUM_HUD can be enabled by setting
+the environtment variable in a place that it loaded early.</p>
+<div class="highlight"><pre><span></span># Add export to /etc/environment
+nano /etc/environment 
+export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated
+</pre></div>
+
+
+<h2>Thanks</h2>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/android.html">android </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/aosp.html">aosp </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/mesa.html">mesa </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/gallium.html">gallium </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/hud.html">hud </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/peformance.html">peformance </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/diagnostics.html">diagnostics </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/debug.html">debug </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
