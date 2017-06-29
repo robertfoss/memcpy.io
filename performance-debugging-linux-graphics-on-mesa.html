@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="GALLIUM_HUD GALLIUM_HUD is a feature that adds performance graphs to applications that describe various aspects like FPS, CPU usage, etc in realtime. It is enabled using an environment variable, GALLIUM_HUD, that can be set GL/EGL/etc applications. It only works for Mesa drivers that are Gallium based, which means that the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD. See GALLIUM_HUD options: export GALLIUM_HUD=help glxgears Android If you&#39;re building Android, you can supply system-wide environment values by doing an export in the init.rc file of the device you are using, like this. # Go to android source code checkout cd android # Add export to init.rc (linaro/generic is the device I use) nano device/linaro/generic/init.rc …">
+		<meta name="description" content="GALLIUM_HUD GALLIUM_HUD is a feature that adds performance graphs to applications that describe various aspects like FPS, CPU usage, etc in realtime. It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc applications. It only works for Mesa drivers that are Gallium based, which means that the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD. See GALLIUM_HUD options: export GALLIUM_HUD=help glxgears Android If you&#39;re building Android, you can supply system-wide environment values by doing an export in the init.rc file of the device you are using, like this. # Go to android source code checkout cd android # Add export to init.rc (linaro/generic is the device I use) nano device/linaro/generic/init …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, linux, mesa, gallium, hud, peformance, diagnostics, debug, collabora">
 		<meta property="og:title" content="Performance debugging Linux graphics on Mesa" />
@@ -45,7 +45,7 @@
 			<h2>GALLIUM_HUD</h2>
 <p>GALLIUM_HUD is a feature that adds performance graphs to applications that describe
 various aspects like FPS, CPU usage, etc in realtime.</p>
-<p>It is enabled using an environment variable, GALLIUM_HUD, that can be set GL/EGL/etc
+<p>It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc
 applications. It only works for Mesa drivers that are Gallium based, which means that
 the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD.</p>
 <p>See GALLIUM_HUD options:</p>

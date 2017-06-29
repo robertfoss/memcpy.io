@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - peformance</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/peformance.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-06-28T00:00:00+02:00</updated><entry><title>Performance debugging Linux graphics on Mesa</title><link href="http://memcpy.io/performance-debugging-linux-graphics-on-mesa.html" rel="alternate"></link><published>2017-06-28T00:00:00+02:00</published><updated>2017-06-28T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-06-28:/performance-debugging-linux-graphics-on-mesa.html</id><summary type="html">&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
 &lt;p&gt;GALLIUM_HUD is a feature that adds performance graphs to applications that describe
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
-&lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set GL/EGL/etc
+&lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc
 applications. It only works for Mesa drivers that are Gallium based, which means that
 the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD.&lt;/p&gt;
 &lt;p&gt;See GALLIUM_HUD options:&lt;/p&gt;
@@ -19,10 +19,10 @@ export in the init.rc file of the device you are using, like
 cd android
 
 # Add export to init.rc (linaro/generic is the device I use)
-nano device/linaro/generic/init.rc …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
+nano device/linaro/generic/init …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
 &lt;p&gt;GALLIUM_HUD is a feature that adds performance graphs to applications that describe
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
-&lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set GL/EGL/etc
+&lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc
 applications. It only works for Mesa drivers that are Gallium based, which means that
 the most drivers with the notable exception of some Intel drivers supports GALLIUM_HUD.&lt;/p&gt;
 &lt;p&gt;See GALLIUM_HUD options:&lt;/p&gt;
