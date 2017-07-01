@@ -1,4 +1,4 @@
-Title: Performance debugging Linux graphics on Mesa
+Title: GALLIUM_HUD: Debug Mesa Graphics Performance
 Date: 2017-06-28
 Category: mesa
 Tags: android, aosp, linux, mesa, gallium, hud, peformance, diagnostics, debug, collabora
