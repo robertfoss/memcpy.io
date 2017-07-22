@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - imx6</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Fri, 02 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>Android: NXP i.MX6 Buffer Modifier Support</title><link>http://memcpy.io/android-nxp-imx6-buffer-modifier-support.html</link><description>&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+<rss version="2.0"><channel><title>memcpy.io - imx6</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Fri, 21 Jul 2017 00:00:00 +0200</lastBuildDate><item><title>Android: NXP i.MX6 on Etnaviv Update</title><link>http://memcpy.io/android-nxp-imx6-on-etnaviv-update.html</link><description>&lt;p&gt;Since the last post a lot work has gone into upstreaming and stabilizing the
+etnaviv on Android ecosystem. This has involved Android, kernel and Mesa
+changes. Many of which are available upstream now. A How-To for getting you
+up and running on an iMX6 dev board is available &lt;a href="../android-getting-up-and-running-on-the-imx6.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Improvements&lt;/h2&gt;
+&lt;h4&gt;Modifiers support&lt;/h4&gt;
+&lt;p&gt;Modifiers support has been accepted into Mesa, GBM and gbm_gralloc.
+Modifiers were mentioned in a &lt;a href="../android-nxp-imx6-buffer-modifier-support.html"&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Etnaviv driver support for Android&lt;/h4&gt;
+&lt;p&gt;Patches enabling the etnaviv Mesa driver being built for Android have now
+landed upstream.&lt;/p&gt;
+&lt;h4&gt;Stability on Android&lt;/h4&gt;
+&lt;p&gt;A number for small stability issues present while running Android on i.MX6
+hardware have now been fixed, and the platform is now relatively stable.&lt;/p&gt;
+&lt;h4&gt;Performance diagnostics&lt;/h4&gt;
+&lt;p&gt;We have a decent understanding that the …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 21 Jul 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-07-21:/android-nxp-imx6-on-etnaviv-update.html</guid><category>android</category><category>aosp</category><category>imx6</category><category>sabre</category><category>vivante</category><category>etnaviv</category><category>linux</category><category>collabora</category></item><item><title>Android: NXP i.MX6 Buffer Modifier Support</title><link>http://memcpy.io/android-nxp-imx6-buffer-modifier-support.html</link><description>&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
 platforms using no proprietary blobs at all.

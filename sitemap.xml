@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://memcpy.io/</loc>
-<lastmod>2017-06-28</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>http://memcpy.io/android-nxp-imx6-on-etnaviv-update.html</loc>
+<lastmod>2017-07-21</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>http://memcpy.io/gallium_hud-debug-mesa-graphics-performance.html</loc>
 <lastmod>2017-06-28</lastmod>
@@ -117,7 +122,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/category/aosp.html</loc>
-<lastmod>2017-06-02</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -242,7 +247,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/android.html</loc>
-<lastmod>2017-06-28</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -252,7 +257,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/aosp.html</loc>
-<lastmod>2017-06-28</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -307,7 +312,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/collabora.html</loc>
-<lastmod>2017-06-28</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -352,7 +357,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/etnaviv.html</loc>
-<lastmod>2017-06-02</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -397,7 +402,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/imx6.html</loc>
-<lastmod>2017-06-02</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -407,7 +412,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/linux.html</loc>
-<lastmod>2017-06-28</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -447,7 +452,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/sabre.html</loc>
-<lastmod>2017-04-27</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -467,7 +472,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/vivante.html</loc>
-<lastmod>2017-06-02</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -487,7 +492,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2017-06-28</lastmod>
+<lastmod>2017-07-21</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>
