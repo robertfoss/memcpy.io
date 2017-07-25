@@ -29,7 +29,7 @@ landed upstream.&lt;/p&gt;
 &lt;p&gt;A number for small stability issues present while running Android on i.MX6
 hardware have now been fixed, and the platform is now relatively stable.&lt;/p&gt;
 &lt;h4&gt;Performance diagnostics&lt;/h4&gt;
-&lt;p&gt;We have a decent understanding that the platform is slow when running the desktop and other apps that have multiple surfaces due to rendering using CPU instead of GPU  (Probably not relevant for the blog entry.)&lt;/p&gt;
+&lt;p&gt;We have a decent understanding that the platform is slow when running the desktop and other apps that have multiple surfaces due to rendering using CPU instead of GPU.&lt;/p&gt;
 &lt;h4&gt;Etnaviv improvements&lt;/h4&gt;
 &lt;p&gt;Etnaviv performance and feature set have both been increased since Mesa v17.1.&lt;/p&gt;
 &lt;h4&gt;EGL support&lt;/h4&gt;
