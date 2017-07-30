@@ -42,7 +42,7 @@ This work is built on efforts by a lot people:
 
   * [Aleksander Morgado](https://aleksander.es/) - Independent
   * [Daniel Stone](https://fooishbar.org/) - Collabora
-  * Christian Gmeiner - Independent
+  * [Christian Gmeiner](http://christian-gmeiner.info/) - Independent
   * Emil Velikov - Collabora
   * Lucas Stach - Pengutronix
   * Rob Herring - Linaro
