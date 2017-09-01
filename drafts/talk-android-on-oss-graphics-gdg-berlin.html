@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Talk: Android on OSS Graphics @ GDG Berlin</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="Since the last post a lot work has gone into upstreaming and stabilizing the etnaviv on Android ecosystem. This has involved Android, kernel and Mesa changes. Many of which are available upstream now. A How-To for getting you up and running on an iMX6 dev board is available here. Downloads Slides.otp Slides.otp. Improvements Modifiers support Modifiers support has been accepted into Mesa, GBM and gbm_gralloc. Modifiers were mentioned in a previous post. Etnaviv driver support for Android Patches enabling the etnaviv Mesa driver being built for Android have now landed upstream. Stability on Android A number for small stability issues present while running Android on i.MX6 hardware have now been fixed, and the platform is now relatively stable. Performance diagnostics We have …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, imx6, sabre, vivante, etnaviv, linux, collabora">
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Talk: Android on OSS Graphics @ GDG Berlin</h1>
+				<p>
+				Published <time datetime="2017-07-21" itemprop="datePublished">2017-07-21</time>
+				</p>
+			</header>
+			<p>More progress is being made in the area of i.MX6, etnaviv and Android.</p>
+			<p>Since the last post a lot work has gone into upstreaming and stabilizing the
+etnaviv on Android ecosystem. This has involved Android, kernel and Mesa
+changes. Many of which are available upstream now. A How-To for getting you
+up and running on an iMX6 dev board is available <a href="../android-getting-up-and-running-on-the-imx6.html">here</a>.</p>
+<h2>Downloads</h2>
+<p><a href="/files/2017-04-20/bootanimation.zip">Slides.otp</a>
+ <a href="/files/2017-04-20/bootanimation.zip">Slides.otp</a>.</p>
+<h2>Improvements</h2>
+<h4>Modifiers support</h4>
+<p>Modifiers support has been accepted into Mesa, GBM and gbm_gralloc.
+Modifiers were mentioned in a <a href="../android-nxp-imx6-buffer-modifier-support.html">previous post</a>.</p>
+<h4>Etnaviv driver support for Android</h4>
+<p>Patches enabling the etnaviv Mesa driver being built for Android have now
+landed upstream.</p>
+<h4>Stability on Android</h4>
+<p>A number for small stability issues present while running Android on i.MX6
+hardware have now been fixed, and the platform is now relatively stable.</p>
+<h4>Performance diagnostics</h4>
+<p>We have a decent understanding that the platform is slow when running the desktop and other apps that have multiple surfaces due to rendering using CPU instead of GPU.</p>
+<h4>Etnaviv improvements</h4>
+<p>Etnaviv performance and feature set have both been increased since Mesa v17.1.</p>
+<h4>EGL support</h4>
+<p>A number of games using EGL have been successfully run on Android, some
+minor graphical issues still remain, but overall games run well and fast.</p>
+<h2>Thanks</h2>
+<p>This work is built on efforts by a lot people:</p>
+<ul>
+<li><a href="https://aleksander.es/">Aleksander Morgado</a> - Independent</li>
+<li><a href="https://fooishbar.org/">Daniel Stone</a> - Collabora</li>
+<li><a href="http://christian-gmeiner.info/">Christian Gmeiner</a> - Independent</li>
+<li>Emil Velikov - Collabora</li>
+<li>Lucas Stach - Pengutronix</li>
+<li>Rob Herring - Linaro</li>
+<li><a href="https://varadgautam.wordpress.com/">Varad Gautam</a> - Collabora</li>
+<li><a href="https://laanwj.github.io/">Wladimir Van Der Laan</a> - Independent</li>
+</ul>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>,
+and has been funded by <a href="http://zii.aero">Zodiac Inflight Innovations</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="../tag/android.html">android </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/aosp.html">aosp </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/imx6.html">imx6 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/sabre.html">sabre </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/vivante.html">vivante </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/etnaviv.html">etnaviv </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="../tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2017 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
