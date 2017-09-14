@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - oss na</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/oss-na.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-09-11T00:00:00+02:00</updated><entry><title>Talk: Android on OSS Graphics @ Open Source Summit NA</title><link href="http://memcpy.io/talk-android-on-oss-graphics-open-source-summit-na.html" rel="alternate"></link><published>2017-09-11T00:00:00+02:00</published><updated>2017-09-11T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-09-11:/talk-android-on-oss-graphics-open-source-summit-na.html</id><summary type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://ossna2017.sched.com/"&gt;Open Source Summit NA&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://ossna2017.sched.com/"&gt;Open Source Summit NA&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="talks"></category><category term="slides"></category><category term="open source summit"></category><category term="north america"></category><category term="oss na"></category><category term="ossna"></category></entry></feed>
