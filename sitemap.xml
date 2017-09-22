@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://memcpy.io/</loc>
-<lastmod>2017-09-11</lastmod>
+<lastmod>2017-09-22</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>http://memcpy.io/talk-drm_hwcomposer-a-brief-update-xdc-20117.html</loc>
+<lastmod>2017-09-22</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>http://memcpy.io/talk-android-on-oss-graphics-open-source-summit-na.html</loc>
 <lastmod>2017-09-11</lastmod>
@@ -177,7 +182,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/category/talks.html</loc>
-<lastmod>2017-09-11</lastmod>
+<lastmod>2017-09-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -267,7 +272,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/android.html</loc>
-<lastmod>2017-09-11</lastmod>
+<lastmod>2017-09-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -277,7 +282,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/aosp.html</loc>
-<lastmod>2017-09-11</lastmod>
+<lastmod>2017-09-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -502,12 +507,12 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/slides.html</loc>
-<lastmod>2017-09-11</lastmod>
+<lastmod>2017-09-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>http://memcpy.io/tag/talks.html</loc>
-<lastmod>2017-09-11</lastmod>
+<lastmod>2017-09-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -541,8 +546,18 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>http://memcpy.io/tag/x-developers-conference.html</loc>
+<lastmod>2017-09-22</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>http://memcpy.io/tag/xdc.html</loc>
+<lastmod>2017-09-22</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>http://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2017-09-11</lastmod>
+<lastmod>2017-09-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>
