@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>memcpy.io | Talk: Android on OSS Graphics @ Open Source Summit NA</title>
+		<title>memcpy.io | Fixing bluetooth on the XPS 15 9550 on Ubuntu</title>
 		<link rel="icon" type="image/png" href="/logo.png" />
 		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
@@ -12,45 +12,49 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Downloads If you&#39;re curios about the slides, you can download the PDF or the OTP. Thanks This post has been a part of work undertaken by my employer Collabora. I would like to thank the wonderful organizers of Open Source Summit NA, for hosting a great community event.">
+		<meta name="description" content="Why doesn&#39;t this work automatically? The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually. How To Download BCM-0a5c-6410.hcd and copy it into /lib/firmware/brcm/ and then reboot your device. wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/ sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd sudo reboot">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, talks, slides, open source summit, north america, oss na, ossna">
+		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, desktop, debian, ubuntu, broadcom, brcm, bluetooth, connecting, pairing, driver">
 	</head>
 	<body>
 		<article id="content" itemscope>
 			<header>
-				<h1>Talk: Android on OSS Graphics @ Open Source Summit NA</h1>
+				<h1>Fixing bluetooth on the XPS 15 9550 on Ubuntu</h1>
 				<p>
-				Published <time datetime="2017-09-11" itemprop="datePublished">2017-09-11</time>
+				Published <time datetime="2017-10-28" itemprop="datePublished">2017-10-28</time>
 				</p>
 			</header>
-			<p>Recently I gave a short talk at the Open Source Summit NA, in Los Angeles, about Running Android ontop op the Mainline Open Source Linux Graphics Stack</p>
-			<h2>Downloads</h2>
-<p>If you're curios about the slides, you can download the <a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.pdf">PDF</a> or
-the <a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.otp">OTP</a>.</p>
-<h2>Thanks</h2>
-<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
-<p>I would like to thank the wonderful organizers of <a href="https://ossna2017.sched.com/">Open Source Summit NA</a>,
-for hosting a great community event.</p>
+			<p>The bluetooth module of the Dell XPS 15 9550 has never been working for me, but copying a firmware blob onto my machine fixed my issues.</p>
+			<h2>Why doesn't this work automatically?</h2>
+<p>The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually.</p>
+<h2>How To</h2>
+<p>Download <a href="/files/2017-10-28/BCM-0a5c-6410.hcd">BCM-0a5c-6410.hcd</a> and copy it into <code>/lib/firmware/brcm/</code> and then reboot your device.</p>
+<div class="highlight"><pre><span></span>wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd
+sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/
+sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd
+sudo reboot
+</pre></div>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">
 				<p>Tags:
-					<a href="./tag/android.html">android </a>
+					<a href="./tag/desktop.html">desktop </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/aosp.html">aosp </a>
+					<a href="./tag/debian.html">debian </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/talks.html">talks </a>
+					<a href="./tag/ubuntu.html">ubuntu </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/slides.html">slides </a>
+					<a href="./tag/broadcom.html">broadcom </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/open-source-summit.html">open source summit </a>
+					<a href="./tag/brcm.html">brcm </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/north-america.html">north america </a>
+					<a href="./tag/bluetooth.html">bluetooth </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/oss-na.html">oss na </a>
+					<a href="./tag/connecting.html">connecting </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/ossna.html">ossna </a>
+					<a href="./tag/pairing.html">pairing </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/driver.html">driver </a>
 				</p>
 			</div>
 		</section>

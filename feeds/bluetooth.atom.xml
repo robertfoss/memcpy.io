@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - bluetooth</title><link href="http://memcpy.io/" rel="alternate"></link><link href="http://memcpy.io/feeds/bluetooth.atom.xml" rel="self"></link><id>http://memcpy.io/</id><updated>2017-10-28T00:00:00+02:00</updated><entry><title>Fixing bluetooth on the XPS 15 9550 on Ubuntu</title><link href="http://memcpy.io/fixing-bluetooth-on-the-xps-15-9550-on-ubuntu.html" rel="alternate"></link><published>2017-10-28T00:00:00+02:00</published><updated>2017-10-28T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-10-28:/fixing-bluetooth-on-the-xps-15-9550-on-ubuntu.html</id><summary type="html">&lt;h2&gt;Why doesn't this work automatically?&lt;/h2&gt;
+&lt;p&gt;The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually.&lt;/p&gt;
+&lt;h2&gt;How To&lt;/h2&gt;
+&lt;p&gt;Download &lt;a href="/files/2017-10-28/BCM-0a5c-6410.hcd"&gt;BCM-0a5c-6410.hcd&lt;/a&gt; and copy it into &lt;code&gt;/lib/firmware/brcm/&lt;/code&gt; and then reboot your device.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd
+sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/
+sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd
+sudo reboot
+&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Why doesn't this work automatically?&lt;/h2&gt;
+&lt;p&gt;The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually.&lt;/p&gt;
+&lt;h2&gt;How To&lt;/h2&gt;
+&lt;p&gt;Download &lt;a href="/files/2017-10-28/BCM-0a5c-6410.hcd"&gt;BCM-0a5c-6410.hcd&lt;/a&gt; and copy it into &lt;code&gt;/lib/firmware/brcm/&lt;/code&gt; and then reboot your device.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd
+sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/
+sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd
+sudo reboot
+&lt;/pre&gt;&lt;/div&gt;</content><category term="desktop"></category><category term="debian"></category><category term="ubuntu"></category><category term="broadcom"></category><category term="brcm"></category><category term="bluetooth"></category><category term="connecting"></category><category term="pairing"></category><category term="driver"></category></entry></feed>

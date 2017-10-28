@@ -15,16 +15,6 @@
 		<meta name="description" content="This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266. Build ESP8266 SDK sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed cd /opt git clone https://github.com/pfalcon/esp-open-sdk.git cd esp-open-sdk git submodule sync git submodule update make export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH Build NodeMCU git clone https://github.com/nodemcu/nodemcu-firmware.git cd nodemcu-firmware # Switch to dev branch, since it&#39;s the most up to date git checkout --track origin/dev # Make INTEGER version, since it uses less memory/space make EXTRA_CCFLAGS=&#34;-DLUA_NUMBER_INTEGRAL&#34; Flash NodeMCU COMPORT=/dev/ttyUSB0 make flash Modifying NodeMCU to fit your needs app/include/user_modules.h Contains a list of which …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, NodeMCU, ESP8266">
-		<meta property="og:title" content="Building NodeMCU for the ESP8266" />
-		<meta property="og:type" content="article" />
-		<meta property="og:image" content="http://memcpy.io//images/2015-05-14_esp8266.jpg" />
-		<meta property="og:url" content="http://memcpy.io/building-nodemcu-for-the-esp8266.html" />
-		<meta property="og:locale" content="" />
-		<meta property="og:site_name" content="memcpy.io" />
-		<meta property="article:published_time" content="2015-05-14" />
-		<meta property="article:section" content="ESP8266" />
-		<meta property="article:tag" content="NodeMCU" />
-		<meta property="article:tag" content="ESP8266" />
 	</head>
 	<body>
 		<article id="content" itemscope>
