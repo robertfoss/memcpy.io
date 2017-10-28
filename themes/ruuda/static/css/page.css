@@ -152,7 +152,6 @@ h3
   font-family: Georgia, serif;
   /* Align as p, but remove the blank line afterwards. */
   font-size: 1.1em;
-  margin-bottom: -0.4em;
   padding-top: 0.4em;
 }
 
@@ -308,7 +307,7 @@ pre
   margin-bottom: 0.6rem;
   margin-top: 0.2rem;
   overflow-x: auto;
-  padding: 1rem;
+  padding: 0.5rem;
   padding-left: 1.4rem;
   padding-right: 1.4rem;
 
