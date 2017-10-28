@@ -285,6 +285,8 @@ code
 {
   color: #c35;
   font-family: Inconsolata, Consolas, monospace;
+  font-size: 0.85em;
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 div.sourceCode
