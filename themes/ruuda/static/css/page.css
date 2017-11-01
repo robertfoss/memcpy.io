@@ -114,6 +114,11 @@ p, nav
   padding-top: 0.4em;
 }
 
+.archive p
+{
+  padding-top: 0em;
+}
+
 nav
 {
   margin-bottom: 1em;
@@ -155,6 +160,11 @@ h3
   padding-top: 0.4em;
 }
 
+.archive h3
+{
+ font-size: 1.05em;
+}
+
 h3 > a
 {
   color: inherit;
@@ -192,6 +202,14 @@ abbr, .smcp
    * 48. I fixed it in https://crrev.com/1416603005 which will go mainstream
    * with Chrome 48. */
   letter-spacing: 0.05em;
+}
+
+.archive .smcp
+{
+  letter-spacing: 0.05em;
+  margin-top: 0.6em;
+  margin-bottom: 1.6em;
+  display: block;
 }
 
 abbr
