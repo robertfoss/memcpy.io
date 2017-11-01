@@ -2,10 +2,11 @@
 {% block content %}
 		<div id="content" class="archive">
 			<header>
-				<h1>Writing</h1>
+				<h1>Talks</h1>
 			</header>
 			{% set max_year = [99999] %}
-			{% for article in articles if not 'talks' in article|taglist  %}
+			{% set talks_tag = "talks" %}
+			{% for article in articles if 'talks' in article|taglist  %}
 				{% set article_year = article.date.year %}
 				{% set last_year = max_year.pop() %}
 				{% set unnused_var = max_year.append(article_year) %}

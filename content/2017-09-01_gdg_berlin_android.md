@@ -1,4 +1,4 @@
-Title: Talk: Android on OSS Graphics @ GDG Berlin Android
+Title: Android on OSS Graphics @ GDG Berlin Android
 Date: 2017-09-01
 Category: talks
 Tags: android, android, aosp, imx6, talks, slides, GDG Berlin Android

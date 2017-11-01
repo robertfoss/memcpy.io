@@ -37,12 +37,13 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_LINKS_ON_MENU = False
 
-DIRECT_TEMPLATES = ['index', 'contact', 'about']
+DIRECT_TEMPLATES = ['index', 'talks', 'contact', 'about']
 
 MENUITEMS = (
     ('Blog', '/index.html'),
     ('About', '/about.html'),
     ('Contact', '/contact.html'),
+    ('Talks', '/talks.html'),
     ('GitHub', 'https://github.com/robertfoss'),
 )
 LINKS = ()
@@ -74,3 +75,14 @@ PLUGINS = [
     "extended_sitemap"
 #    "minification"
     ]
+
+
+def taglist(article):
+    filtered = ""
+    for tag in article.tags:
+        filtered += "" + tag.name;
+    return filtered
+
+JINJA_FILTERS = {
+    'taglist': taglist
+}
