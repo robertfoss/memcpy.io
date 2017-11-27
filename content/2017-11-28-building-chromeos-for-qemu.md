@@ -80,6 +80,7 @@ We're going to to use _x86_64_.
     cd qemu/build
     ../configure --target-list=x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb --enable-virglrenderer --enable-opengl
     make -j7
+    sudo make install
 
 
 ### Run image
