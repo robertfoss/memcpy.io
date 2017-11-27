@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - kernel</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 07 Dec 2016 20:23:00 +0100</lastBuildDate><item><title>Running an Android Unit Test</title><link>http://memcpy.io/running-an-android-unit-test.html</link><description>&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - kernel</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Fri, 24 Nov 2017 17:32:00 +0100</lastBuildDate><item><title>Building ChromeiumOS for Qemu</title><link>http://memcpy.io/building-chromeiumos-for-qemu.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-24_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;So let's start off by covering how ChromiumOS relates to ChromeOS. The
+ChromiumOS project is essentially ChromeOS minus branding and some
+packages for things like the media digital restrictions management.&lt;/p&gt;
+&lt;p&gt;But on the whole, almost everything is there, and the pieces that aren't,
+you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Install dependencies&lt;/h2&gt;
+&lt;p&gt;These dependencies were available on Ubuntu 17.10, some alternative packages
+might be needed for &lt;em&gt;your&lt;/em&gt; distributions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Virglrenderer&lt;/h2&gt;
+&lt;p&gt;This step is optional, but allows for hardware accelerated OpenGL …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 24 Nov 2017 17:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-24:/building-chromeiumos-for-qemu.html</guid><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Running an Android Unit Test</title><link>http://memcpy.io/running-an-android-unit-test.html</link><description>&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
 bash
 source build/envsetup.sh &amp;amp;&amp;amp; \

@@ -15,6 +15,22 @@
 		<meta name="description" content="The HWC (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen. The HWC abstracts objects such as overlays and 2D blitters and helps offload some work that would normally be done with OpenGL. SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them, and sends them to the display. The above graphic depicts the traditional Android graphics stack. This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack doesn&#39;t offer the HWC API, drm_hwcomposer is introduced to interface with the mainline graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the HWC1 API. Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few ways …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, graphics, drm, drm_hwcomposer, hwcomposer, hwc2, collabora">
+		<meta property="og:title" content="Android: Enabling mainline graphics" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="http://memcpy.io//images/2017-03-28_android_graphics_stack.png" />
+		<meta property="og:url" content="http://memcpy.io/android-enabling-mainline-graphics.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2017-03-28" />
+		<meta property="article:section" content="aosp" />
+		<meta property="article:tag" content="android" />
+		<meta property="article:tag" content="aosp" />
+		<meta property="article:tag" content="graphics" />
+		<meta property="article:tag" content="drm" />
+		<meta property="article:tag" content="drm_hwcomposer" />
+		<meta property="article:tag" content="hwcomposer" />
+		<meta property="article:tag" content="hwc2" />
+		<meta property="article:tag" content="collabora" />
 	</head>
 	<body>
 		<article id="content" itemscope>
