@@ -106,7 +106,7 @@ is running a Linux kernel which was built with the kconfig options `CONFIG_DRM_V
 
 
 ## Conclusion
-Hopefully this guide will have helped you to build the required software and run
-ChromiumOS on Qemu with a virtual GPU.
+Hopefully this guide will have helped you to build all of the software needed to
+run boot your very own ChromiumOS.
 
 This post has been a part of work undertaken by my employer [Collabora](http://www.collabora.com).
