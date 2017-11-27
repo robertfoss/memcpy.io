@@ -118,8 +118,8 @@ is running a Linux kernel which was built with the kconfig options &lt;code&gt;C
 
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Hopefully this guide will have helped you to build the required software and run
-ChromiumOS on Qemu with a virtual GPU.&lt;/p&gt;
+&lt;p&gt;Hopefully this guide will have helped you to build all of the software needed to
+run boot your very own ChromiumOS.&lt;/p&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="chromeos"></category><category term="chromiumos"></category><category term="chromium"></category><category term="qemu"></category><category term="ssh"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="http://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><summary type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
 bash
