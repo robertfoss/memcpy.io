@@ -45,7 +45,7 @@ I have as of yet not been able to get any graphical output (over VNC).
 
 
 ## Running Qemu ourselves
-So if the intended tools to work, we'll just have to roll up our sleeves
+So if the intended tools don't work, we'll just have to roll up our sleeves
 and do it ourselves. This is how I got ChromiumOS booting.
 
 ### Install build dependencies
