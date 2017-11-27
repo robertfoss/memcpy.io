@@ -61,7 +61,7 @@ I have as of yet not been able to get any graphical output (over VNC).&lt;/p&gt;
 
 
 &lt;h2&gt;Running Qemu ourselves&lt;/h2&gt;
-&lt;p&gt;So if the intended tools to work, we'll just have to roll up our sleeves
+&lt;p&gt;So if the intended tools don't work, we'll just have to roll up our sleeves
 and do it ourselves. This is how I got ChromiumOS booting.&lt;/p&gt;
 &lt;h3&gt;Install build dependencies&lt;/h3&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 17.10, some alternative packages
