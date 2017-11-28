@@ -7,8 +7,8 @@ packages for things like the media digital restrictions management.&lt;/p&gt;
 you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
 &lt;h2&gt;ChromiumOS&lt;/h2&gt;
 &lt;h3&gt;Depot tools&lt;/h3&gt;
-&lt;p&gt;ChromiumOS is entirely open source, however in order to build it you'll need the
-Google depot tools.&lt;/p&gt;
+&lt;p&gt;In order to check out ChromiumOS and other large Google projects,
+you'll need depot tools.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;git clone https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;//&lt;span class="n"&gt;chromium&lt;/span&gt;.&lt;span class="n"&gt;googlesource&lt;/span&gt;.&lt;span class="n"&gt;com&lt;/span&gt;/&lt;span class="n"&gt;chromium&lt;/span&gt;/&lt;span class="n"&gt;tools&lt;/span&gt;/&lt;span class="n"&gt;depot_tools&lt;/span&gt;.&lt;span class="n"&gt;git&lt;/span&gt;
 &lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PWD&lt;span class="k"&gt;)&lt;/span&gt;/depot_tools
 &lt;/pre&gt;&lt;/div&gt;
@@ -21,7 +21,8 @@ cd chromiumos
 repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git [-g minilayout]
 repo sync -j75
 cros_sdk
-export BOARD=amd64-generic …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Nov 2017 11:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</guid><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Fixing bluetooth on the XPS 15 9550 on Ubuntu</title><link>http://memcpy.io/fixing-bluetooth-on-the-xps-15-9550-on-ubuntu.html</link><description>&lt;h2&gt;Why doesn't this work automatically?&lt;/h2&gt;
+export BOARD=amd64-generic
+./setup_board --board …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Nov 2017 11:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</guid><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Fixing bluetooth on the XPS 15 9550 on Ubuntu</title><link>http://memcpy.io/fixing-bluetooth-on-the-xps-15-9550-on-ubuntu.html</link><description>&lt;h2&gt;Why doesn't this work automatically?&lt;/h2&gt;
 &lt;p&gt;The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually.&lt;/p&gt;
 &lt;h2&gt;How To&lt;/h2&gt;
 &lt;p&gt;Download &lt;a href="/files/2017-10-28/BCM-0a5c-6410.hcd"&gt;BCM-0a5c-6410.hcd&lt;/a&gt; and copy it into &lt;code&gt;/lib/firmware/brcm/&lt;/code&gt; and then reboot your device.&lt;/p&gt;
