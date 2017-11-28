@@ -15,8 +15,8 @@ you don't _need_.
 
 ## ChromiumOS
 ### Depot tools
-ChromiumOS is entirely open source, however in order to build it you'll need the
-Google depot tools.
+In order to check out ChromiumOS and other large Google projects,
+you'll need depot tools.
 
     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
     export PATH=$PATH:$(PWD)/depot_tools
