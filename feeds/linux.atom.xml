@@ -121,7 +121,7 @@ is running a Linux kernel which was built with the kconfig options &lt;code&gt;C
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have helped you to build all of the software needed to
-run boot your very own ChromiumOS.&lt;/p&gt;
+boot your very own ChromiumOS.&lt;/p&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="chromeos"></category><category term="chromiumos"></category><category term="chromium"></category><category term="qemu"></category><category term="ssh"></category><category term="collabora"></category></entry><entry><title>Android: NXP i.MX6 on Etnaviv Update</title><link href="http://memcpy.io/android-nxp-imx6-on-etnaviv-update.html" rel="alternate"></link><published>2017-07-21T00:00:00+02:00</published><updated>2017-07-21T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-07-21:/android-nxp-imx6-on-etnaviv-update.html</id><summary type="html">&lt;p&gt;Since the last post a lot work has gone into upstreaming and stabilizing the
 etnaviv on Android ecosystem. This has involved Android, kernel and Mesa
 changes. Many of which are available upstream now. A How-To for getting you

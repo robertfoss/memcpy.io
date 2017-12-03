@@ -121,7 +121,7 @@ is running a Linux kernel which was built with the kconfig options &lt;code&gt;C
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have helped you to build all of the software needed to
-run boot your very own ChromiumOS.&lt;/p&gt;
+boot your very own ChromiumOS.&lt;/p&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="chromeos"></category><category term="chromiumos"></category><category term="chromium"></category><category term="qemu"></category><category term="ssh"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="http://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
