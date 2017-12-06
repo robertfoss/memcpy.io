@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - chromium</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Nov 2017 11:32:00 +0100</lastBuildDate><item><title>Building ChromiumOS for Qemu</title><link>http://memcpy.io/building-chromiumos-for-qemu.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - chromium</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Nov 2017 11:32:00 +0100</lastBuildDate><item><title>Building ChromiumOS for Qemu</title><link>https://memcpy.io/building-chromiumos-for-qemu.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;So let's start off by covering how ChromiumOS relates to ChromeOS. The
 ChromiumOS project is essentially ChromeOS minus branding and some
 packages for things like the media digital restrictions management.&lt;/p&gt;
@@ -22,7 +22,7 @@ repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-ur
 repo sync -j75
 cros_sdk
 export BOARD=amd64-generic
-./setup_board --board …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Nov 2017 11:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</guid><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Removing the Chromebook Write-Protect screw</title><link>http://memcpy.io/removing-the-chromebook-write-protect-screw.html</link><description>&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+./setup_board --board …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Nov 2017 11:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</guid><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Removing the Chromebook Write-Protect screw</title><link>https://memcpy.io/removing-the-chromebook-write-protect-screw.html</link><description>&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
 (HP Chromebook 13 G1) device, and verifying that it has been successfully
 removed.&lt;/p&gt;
 &lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;

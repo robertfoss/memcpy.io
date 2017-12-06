@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - APA102</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Sun, 07 Feb 2016 22:46:00 +0100</lastBuildDate><item><title>ESP8266 APA102 Bulb</title><link>http://memcpy.io/esp8266-apa102-bulb.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - APA102</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Sun, 07 Feb 2016 22:46:00 +0100</lastBuildDate><item><title>ESP8266 APA102 Bulb</title><link>https://memcpy.io/esp8266-apa102-bulb.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
 &lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
 &lt;h2&gt;Software and hardware sources&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - hwcomposer</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Mar 2017 15:18:00 +0200</lastBuildDate><item><title>Android: Enabling mainline graphics</title><link>http://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+<rss version="2.0"><channel><title>memcpy.io - hwcomposer</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Mar 2017 15:18:00 +0200</lastBuildDate><item><title>Android: Enabling mainline graphics</title><link>https://memcpy.io/android-enabling-mainline-graphics.html</link><description>&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.

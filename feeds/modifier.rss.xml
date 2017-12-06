@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - modifier</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Fri, 02 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>Android: NXP i.MX6 Buffer Modifier Support</title><link>http://memcpy.io/android-nxp-imx6-buffer-modifier-support.html</link><description>&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+<rss version="2.0"><channel><title>memcpy.io - modifier</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Fri, 02 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>Android: NXP i.MX6 Buffer Modifier Support</title><link>https://memcpy.io/android-nxp-imx6-buffer-modifier-support.html</link><description>&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
 platforms using no proprietary blobs at all.

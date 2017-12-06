@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - template</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Sun, 27 Mar 2016 00:34:00 +0100</lastBuildDate><item><title>Coverpage template</title><link>http://memcpy.io/coverpage-template.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/coverpage/raw/media/screenshot.png" title="coverpage screenshot"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - template</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Sun, 27 Mar 2016 00:34:00 +0100</lastBuildDate><item><title>Coverpage template</title><link>https://memcpy.io/coverpage-template.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/coverpage/raw/media/screenshot.png" title="coverpage screenshot"&gt;&lt;/p&gt;
 &lt;p&gt;Coverpage is a single-page landing page built to showcase an idea or a product. To allow interested parties to get notified of updates, the template has mailchimp subscription integration.&lt;/p&gt;
 &lt;p&gt;A live version of the site can be found at &lt;a href="http://coverpage.memcpy.io"&gt;coverpage.memcpy.io&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Sources&lt;/h2&gt;

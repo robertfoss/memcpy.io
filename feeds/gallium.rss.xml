@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - gallium</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 28 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>GALLIUM_HUD: Debug Mesa Graphics Performance</title><link>http://memcpy.io/gallium_hud-debug-mesa-graphics-performance.html</link><description>&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
+<rss version="2.0"><channel><title>memcpy.io - gallium</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 28 Jun 2017 00:00:00 +0200</lastBuildDate><item><title>GALLIUM_HUD: Debug Mesa Graphics Performance</title><link>https://memcpy.io/gallium_hud-debug-mesa-graphics-performance.html</link><description>&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
 &lt;p&gt;GALLIUM_HUD is a feature that adds performance graphs to applications that describe
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
 &lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc

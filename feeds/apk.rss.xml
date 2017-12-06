@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - apk</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Wed, 22 Feb 2017 16:55:00 +0100</lastBuildDate><item><title>Precompiling APK files during Android AOSP build</title><link>http://memcpy.io/precompiling-apk-files-during-android-aosp-build.html</link><description>&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+<rss version="2.0"><channel><title>memcpy.io - apk</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 22 Feb 2017 16:55:00 +0100</lastBuildDate><item><title>Precompiling APK files during Android AOSP build</title><link>https://memcpy.io/precompiling-apk-files-during-android-aosp-build.html</link><description>&lt;h2&gt;Enable precompilation&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
 
 find . -name BoardConfig.mk

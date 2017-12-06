@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - images</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Sun, 09 Apr 2017 21:35:00 +0200</lastBuildDate><item><title>Audio editing images</title><link>http://memcpy.io/audio-editing-images.html</link><description>&lt;p&gt;&lt;a href="https://github.com/robertfoss/audio_shop/"&gt;Audio Shop&lt;/a&gt; is a simple script
+<rss version="2.0"><channel><title>memcpy.io - images</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Sun, 09 Apr 2017 21:35:00 +0200</lastBuildDate><item><title>Audio editing images</title><link>https://memcpy.io/audio-editing-images.html</link><description>&lt;p&gt;&lt;a href="https://github.com/robertfoss/audio_shop/"&gt;Audio Shop&lt;/a&gt; is a simple script
 that I cobbled together that gets you started with mangling image data as
 if it was audio data.&lt;/p&gt;
 &lt;p&gt;The script wraps 3 individually excellent tools; &lt;a href="https://ffmpeg.org/"&gt;ffmpeg&lt;/a&gt;,

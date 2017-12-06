@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - bootanimation</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Thu, 20 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Changing the bootanimation</title><link>http://memcpy.io/android-changing-the-bootanimation.html</link><description>&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+<rss version="2.0"><channel><title>memcpy.io - bootanimation</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Thu, 20 Apr 2017 00:00:00 +0200</lastBuildDate><item><title>Android: Changing the bootanimation</title><link>https://memcpy.io/android-changing-the-bootanimation.html</link><description>&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
 for how to create a custom boot animation, but unfortunately it is lacking
 in actual examples.&lt;/p&gt;
 &lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;

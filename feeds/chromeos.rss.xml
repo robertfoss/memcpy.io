@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - chromeos</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Nov 2017 11:32:00 +0100</lastBuildDate><item><title>Building ChromiumOS for Qemu</title><link>http://memcpy.io/building-chromiumos-for-qemu.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - chromeos</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 28 Nov 2017 11:32:00 +0100</lastBuildDate><item><title>Building ChromiumOS for Qemu</title><link>https://memcpy.io/building-chromiumos-for-qemu.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;So let's start off by covering how ChromiumOS relates to ChromeOS. The
 ChromiumOS project is essentially ChromeOS minus branding and some
 packages for things like the media digital restrictions management.&lt;/p&gt;

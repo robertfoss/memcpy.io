@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - chell</title><link>http://memcpy.io/</link><description></description><lastBuildDate>Mon, 27 Feb 2017 16:55:00 +0100</lastBuildDate><item><title>Removing the Chromebook Write-Protect screw</title><link>http://memcpy.io/removing-the-chromebook-write-protect-screw.html</link><description>&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+<rss version="2.0"><channel><title>memcpy.io - chell</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 27 Feb 2017 16:55:00 +0100</lastBuildDate><item><title>Removing the Chromebook Write-Protect screw</title><link>https://memcpy.io/removing-the-chromebook-write-protect-screw.html</link><description>&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
 (HP Chromebook 13 G1) device, and verifying that it has been successfully
 removed.&lt;/p&gt;
 &lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;
