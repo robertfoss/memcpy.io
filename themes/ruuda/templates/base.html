@@ -5,6 +5,10 @@
 		<title>
 		{%- if article -%}
 			{{ SITENAME }} | {{ article.title }}
+		{%- elif tag is defined -%}
+			{{ SITENAME }} | {{ tag }}
+		{%- elif "index" not in output_file -%}
+			{{ SITENAME }} | {{ output_file|title|replace(".html","") }}
 		{%- else -%}
 			{{ SITENAME }}
 		{%- endif -%}
