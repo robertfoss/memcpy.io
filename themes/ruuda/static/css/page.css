@@ -12,6 +12,7 @@ code, em, strong
 html
 {
   font-size: 16px;
+  height: 100%;
 }
 
 body
@@ -27,6 +28,9 @@ body
   -webkit-font-feature-settings: 'liga', 'kern';
   font-feature-settings: 'liga', 'kern';
   line-height: 1.3em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 #content, #footer
@@ -56,6 +60,7 @@ body
 #content
 {
   padding-top: 0;
+  flex-grow: 1;
 }
 
 header
