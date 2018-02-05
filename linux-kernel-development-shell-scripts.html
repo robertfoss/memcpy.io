@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl often come in handy. But to me the interface they provide is slightly bulky and rely on using patch files instead of git commits, which to me is a bit inconvenient. These scripts are all meant to be included in .bashrc or .zshrc scripts/checkpatch.pl helper 1 2 3 4 5 6 7 8 9 10 11#!/bin/bash function checkpatch { if [ -z ${1+x} ]; then exec git diff | scripts/checkpatch.pl --no-signoff -q - elif [[ $1 == *&#34;cache&#34;* ]]; then exec git diff --cached | scripts/checkpatch.pl --no-signoff -q - else NUM_COMMITS=$1 exec git diff HEAD~$NUM_COMMITS..HEAD | scripts/checkpatch.pl --no-signoff -q - fi } The checkpatch script simply wraps the patch creation process and allows …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, script, collabora">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, script, collabora">
 		<meta property="og:title" content="Linux kernel development shell scripts" />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="https://memcpy.io//images/2016-07-26_linux_development_helper_script.png" />
