@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="For the past few years a clear trend of containerization of applications and services has emerged. Having processes containerized is beneficial in a number of ways. It both improves portability and strengthens security, and if done properly the performance penalty can be low. In order to further improve security containers are commonly run in virtualized environments. This provides some new challenges in terms of supporting the accelerated graphics usecase. OpenGLES implementation Currently Collabora and Google are implementing OpenGLES 2.0 support. OpenGLES 2.0 is the least common denominator for many mobile platforms and as such is a requirement for Virgil3D to be viable on the those platforms. How does this work? There are a few parts to this implementation. Virglrenderer, virtio-gpu and QEMU. Trying …">
+		<meta name="description" content="For the past few years a clear trend of containerization of applications and services has emerged. Having processes containerized is beneficial in a number of ways. It both improves portability and strengthens security, and if done properly the performance penalty can be low. In order to further improve security containers are commonly run in virtualized environments. This provides some new challenges in terms of supporting the accelerated graphics usecase. OpenGLES implementation Currently Collabora and Google are implementing OpenGLES 2.0 support. OpenGLES 2.0 is the least common denominator for many mobile platforms and as such is a requirement for Virgil3D to be viable on the those platforms. How does this work? There are a few parts to this implementation. Virglrenderer, virtio-gpu and QEMU. This …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, gpu, virtualization, virgl, virglrenderer, opengl, vulkan, gles, collabora">
 	</head>
@@ -42,6 +42,7 @@ the those platforms.</p>
 Virglrenderer, virtio-gpu and QEMU.</p>
 <p><a href="/images/2018-02-09_virgl.svg"><img alt="Alt text" src="/images/2018-02-09_virgl.svg" title="Virtualized OpenGL Stack">
 </a></p>
+<p>This stack is commonly referred to as <a href="https://virgil3d.github.io/">Virgil3D</a>, since all of the parts originated from a project with that name.</p>
 <h2>Trying it out</h2>
 <h3>Environment</h3>
 <p>First of all, let's have a look at the development environment.
