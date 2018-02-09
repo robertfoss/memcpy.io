@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="For the past few years a clear trend of containerization of applications and services has emerged. Having binaries containerized is beneficial in a number of ways. It both improves portability and strengthens security, and if done properly the performance penalty can be low. In order to further improve security containers are commonly run in virtualized environments. This provides some new challenges in terms of supporting the accelerated graphics usecase. Trying it out Environment First of all, let&#39;s have a look at the development environment. When doing graphical development I find it quite helpful to set up a parallel graphics stack in order to not pollute or depend on the stack of the host machine more than we have to. function add_export_env { local VAR=&#34;$1&#34; shift …">
+		<meta name="description" content="For the past few years a clear trend of containerization of applications and services has emerged. Having processes containerized is beneficial in a number of ways. It both improves portability and strengthens security, and if done properly the performance penalty can be low. In order to further improve security containers are commonly run in virtualized environments. This provides some new challenges in terms of supporting the accelerated graphics usecase. OpenGLES implementation Currently Collabora and Google are implementing OpenGLES 2.0 support. OpenGLES 2.0 is the least common denominator for many mobile platforms and as such is a requirement for Virgil3D to be viable on the those platforms. Trying it out Environment First of all, let&#39;s have a look at the development environment. When doing …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, gpu, virtualization, virgl, virglrenderer, opengl, vulkan, gles, collabora">
 	</head>
@@ -24,16 +24,21 @@
 				Published <time datetime="2018-02-09" itemprop="datePublished">2018-02-09</time>
 				</p>
 			</header>
-			<p>Virtualized GPU access is becoming commonly in the containerized and virtualized application space. Let's have a look at why and how.</p>
-			<p><a href="/images/2018-02-09_virgl.svg"><img alt="Alt text" src="/images/2018-02-09_virgl.svg" title="Virtualized OpenGL Stack">
-</a>
-For the past few years a clear trend of containerization of applications
-and services has emerged. Having binaries containerized is beneficial
+			<p>Virtualized GPU access is becoming common in the containerized and virtualized application space. Let's have a look at why and how.</p>
+			<p>For the past few years a clear trend of containerization of applications
+and services has emerged. Having processes containerized is beneficial
 in a number of ways. It both improves portability and strengthens security,
 and if done properly the performance penalty can be low.</p>
 <p>In order to further improve security containers are commonly run in
 virtualized environments. This provides some new challenges in terms
 of supporting the accelerated graphics usecase.</p>
+<h2>OpenGLES implementation</h2>
+<p>Currently Collabora and Google are implementing OpenGLES 2.0
+support. OpenGLES 2.0 is the least common denominator for many mobile
+platforms and as such is a requirement for Virgil3D to be viable on
+the those platforms.</p>
+<p><a href="/images/2018-02-09_virgl.svg"><img alt="Alt text" src="/images/2018-02-09_virgl.svg" title="Virtualized OpenGL Stack">
+</a></p>
 <h2>Trying it out</h2>
 <h3>Environment</h3>
 <p>First of all, let's have a look at the development environment.
