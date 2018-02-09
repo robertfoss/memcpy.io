@@ -15,7 +15,7 @@ of supporting the accelerated graphics usecase.
 
 ### OpenGLES implementation
 Currently Collabora and Google are implementing OpenGL ES 2.0
-support. OpenGL ES 2.0 is the least common denominator for many mobile
+support. OpenGL ES 2.0 is the lowest common denominator for many mobile
 platforms and as such is a requirement for Virgil3D to be viable on
 the those platforms.
 
