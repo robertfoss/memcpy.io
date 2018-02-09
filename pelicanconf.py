@@ -32,6 +32,8 @@ TAG_FEED_RSS = 'feeds/%s.rss.xml'
 # Make pages appear in the top dir
 PAGE_URL = '{slug}.html'
 PAGE_SAVE_AS = '{slug}.html'
+DRAFT_URL = '{slug}.html'
+DRAFT_SAVE_AS = '{slug}.html'
 
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
