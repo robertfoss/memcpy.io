@@ -124,14 +124,15 @@ sudo apt-get build-dep mesa
 # Actually build Mesa
 git clone https://anongit.freedesktop.org/git/mesa/mesa.git
 cd mesa
-./configure --prefix=$ALT_LOCAL \
-          --enable-driglx-direct \
-          --enable-gles1 \
-          --enable-gles2 \
-          --enable-glx-tls \
-          --with-egl-platforms=&#39;drm x11 wayland&#39; \
-          --with-dri-drivers=&quot;i915 i965 nouveau&quot; \
-          --with-gallium-drivers=&quot;nouveau swrast radeonsi&quot;
+./configure \
+    --prefix=$ALT_LOCAL \
+    --enable-driglx-direct \
+    --enable-gles1 \
+    --enable-gles2 \
+    --enable-glx-tls \
+    --with-egl-platforms=&#39;drm x11 wayland&#39; \
+    --with-dri-drivers=&quot;i915 i965 nouveau&quot; \
+    --with-gallium-drivers=&quot;nouveau swrast radeonsi&quot;
 make -j$(nproc --ignore=1)
 make install
 </pre></div>
