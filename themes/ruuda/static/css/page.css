@@ -386,7 +386,7 @@ img
    * surrounds the image provides 1em bottom margin, so 0.4em needs to be
    * compensated, plus 0.2em for the top offset. */
   margin-top: -0.2em;
-  margin-bottom: -0.6em;
+  margin-bottom: 0.6em;
   border-radius: 0.25em;
   margin-right: auto;
   margin-left: auto;
