@@ -93,17 +93,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="474.47744"
-     inkscape:cy="178.71461"
+     inkscape:cx="623.90112"
+     inkscape:cy="312.04653"
      inkscape:document-units="mm"
-     inkscape:current-layer="g5288-6"
+     inkscape:current-layer="g5300"
      showgrid="false"
      inkscape:measure-start="0,0"
      inkscape:measure-end="0,0"
      inkscape:window-width="2140"
      inkscape:window-height="1320"
-     inkscape:window-x="1145"
-     inkscape:window-y="468"
+     inkscape:window-x="586"
+     inkscape:window-y="143"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="85"
@@ -156,44 +156,52 @@
            x="68.44886"
            id="tspan4780-9"
            sodipodi:role="line">QEMU</tspan></text>
-      <rect
-         ry="1.1794304"
-         style="fill:#43c200;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.32040045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
-         y="91.988258"
-         x="107.63213"
-         height="9.9734745"
-         width="50.255615"
-         id="rect3699-1" />
-      <text
-         id="text4864"
-         y="98.629501"
-         x="113.22944"
-         style="font-style:normal;font-weight:normal;font-size:5.99722242px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-size:5.99722242px;stroke-width:0.26458332px"
-           y="98.629501"
+      <g
+         id="g5517"
+         transform="translate(7.6293945e-6,13.677635)">
+        <rect
+           id="rect3699-1"
+           width="50.255615"
+           height="9.9734745"
+           x="107.63213"
+           y="91.988258"
+           style="fill:#43c200;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.32040045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+           ry="1.1794304" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.99722242px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="113.22944"
-           id="tspan4862"
-           sodipodi:role="line">virglrenderer</tspan></text>
-      <rect
-         ry="1.1794304"
-         style="fill:#43c200;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.32040045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
-         y="105.66589"
-         x="107.63214"
-         height="9.9734745"
-         width="50.255615"
-         id="rect3699-1-2" />
-      <text
-         id="text4864-7"
-         y="112.88841"
-         x="117.81814"
-         style="font-style:normal;font-weight:normal;font-size:5.99722242px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-size:5.99722242px;stroke-width:0.26458332px"
-           y="112.88841"
+           y="98.629501"
+           id="text4864"><tspan
+             sodipodi:role="line"
+             id="tspan4862"
+             x="113.22944"
+             y="98.629501"
+             style="font-size:5.99722242px;stroke-width:0.26458332px">virglrenderer</tspan></text>
+      </g>
+      <g
+         id="g5512"
+         transform="translate(-7.6293945e-6,-13.677635)">
+        <rect
+           id="rect3699-1-2"
+           width="50.255615"
+           height="9.9734745"
+           x="107.63214"
+           y="105.66589"
+           style="fill:#43c200;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.32040045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+           ry="1.1794304" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.99722242px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="117.81814"
-           id="tspan4862-0"
-           sodipodi:role="line">Virtio GPU</tspan></text>
+           y="112.88841"
+           id="text4864-7"><tspan
+             sodipodi:role="line"
+             id="tspan4862-0"
+             x="117.81814"
+             y="112.88841"
+             style="font-size:5.99722242px;stroke-width:0.26458332px">virtio-gpu</tspan></text>
+      </g>
     </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#43c200;stroke-width:1.05994534;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6.3596722, 1.05994537;stroke-dashoffset:0;stroke-opacity:1"
