@@ -53,13 +53,13 @@ the stack of the host machine more than we have to.</p>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">prefix_setup</span> <span class="p">{</span>
-  <span class="nx">local</span> <span class="nx">PFX</span><span class="o">=</span><span class="s2">&quot;$1&quot;</span>
+  <span class="nx">local</span> <span class="nx">PREFIX</span><span class="o">=</span><span class="s2">&quot;$1&quot;</span>
 
-  <span class="nx">add_export_env</span> <span class="nx">PATH</span> <span class="s2">&quot;$PFX/bin&quot;</span>
-  <span class="nx">add_export_env</span> <span class="nx">LD_LIBRARY_PATH</span> <span class="s2">&quot;$PFX/lib&quot;</span>
-  <span class="nx">add_export_env</span> <span class="nx">PKG_CONFIG_PATH</span> <span class="s2">&quot;$PFX/lib/pkgconfig/&quot;</span> <span class="s2">&quot;$PFX/share/pkgconfig/&quot;</span>
-  <span class="nx">add_export_env</span> <span class="nx">MANPATH</span> <span class="s2">&quot;$PFX/share/man&quot;</span>
-  <span class="kr">export</span> <span class="nx">ACLOCAL_PATH</span><span class="o">=</span><span class="s2">&quot;$PFX/share/aclocal&quot;</span>
+  <span class="nx">add_export_env</span> <span class="nx">PATH</span> <span class="s2">&quot;$PREFIX/bin&quot;</span>
+  <span class="nx">add_export_env</span> <span class="nx">LD_LIBRARY_PATH</span> <span class="s2">&quot;$PREFIX/lib&quot;</span>
+  <span class="nx">add_export_env</span> <span class="nx">PKG_CONFIG_PATH</span> <span class="s2">&quot;$PREFIX/lib/pkgconfig/&quot;</span> <span class="s2">&quot;$PREFIX/share/pkgconfig/&quot;</span>
+  <span class="nx">add_export_env</span> <span class="nx">MANPATH</span> <span class="s2">&quot;$PREFIX/share/man&quot;</span>
+  <span class="kr">export</span> <span class="nx">ACLOCAL_PATH</span><span class="o">=</span><span class="s2">&quot;$PREFIX/share/aclocal&quot;</span>
   <span class="nx">mkdir</span> <span class="o">-</span><span class="nx">p</span> <span class="s2">&quot;$ACLOCAL_PATH&quot;</span>
   <span class="kr">export</span> <span class="nx">ACLOCAL</span><span class="o">=</span><span class="s2">&quot;aclocal -I $ACLOCAL_PATH&quot;</span>
 <span class="p">}</span>
@@ -75,12 +75,29 @@ the stack of the host machine more than we have to.</p>
 </pre></div>
 
 
-<p>So the above snippet is something that I would put in my <code>.bashrc</code> or <code>.zshrc</code>.</p>
+<p>The above snippet is something that I would put in my <code>.bashrc</code> or <code>.zshrc</code>.
+Don't forget so run <code>source ~/.bashrc</code> or the equivalent after making changes.</p>
 <p>To enter the environment I simply type <code>projectshell virgl</code>.</p>
 <h3>Build libepoxy</h3>
 <p>libepoxy is a library for managing OpenGL function pointers for you.
-And it is a dependency of virglrenderer, which we'll get to in a bit.</p>
+And it is a dependency of virglrenderer, which we'll get to below.</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/anholt/libepoxy.git
+cd libepoxy
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
+</pre></div>
+
+
+<h3>Build virglrenderer</h3>
+<p>Virgilrenderer is the component that QEMU uses to provide
+accelerated rendering.</p>
+<p>It receives Gallium states from the guest kernel
+via its virtio-gpu interface, which are then translated
+into OpenGL on the host. It also translates shaders from the
+TGSI format used by Gallium into the GLSL format used by OpenGL.</p>
+<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/virglrenderer
+cd virglrenderer
 ./autogen.sh --prefix=$ALT_LOCAL
 make -j$(nproc --ignore=1)
 make install
@@ -88,7 +105,10 @@ make install
 
 
 <h3>Build libpciaccess</h3>
+<p>libpciaccess is a library for simplifying accessing devices on the PCI bus.
+It is a dependency of Mesa, which we'll get to below.</p>
 <div class="highlight"><pre><span></span>git clone git://git.freedesktop.org/git/xorg/lib/libpciaccess
+cd libpciaccess
 ./autogen.sh --prefix=$ALT_LOCAL
 make -j$(nproc --ignore=1)
 make install
@@ -96,16 +116,73 @@ make install
 
 
 <h3>Build Mesa</h3>
-<div class="highlight"><pre><span></span>git clone https://anongit.freedesktop.org/git/mesa/mesa.git
-./autogen.sh --prefix=$ALT_LOCAL
+<div class="highlight"><pre><span></span># Fetch dependencies
+sudo sed -i &#39;s/\#deb-src/deb-src/&#39; /etc/apt/sources.list
+sudo apt update
+sudo apt-get build-dep mesa
+
+# Actually build Mesa
+git clone https://anongit.freedesktop.org/git/mesa/mesa.git
+cd mesa
+./configure --prefix=$ALT_LOCAL \
+          --enable-driglx-direct \
+          --enable-gles1 \
+          --enable-gles2 \
+          --enable-glx-tls \
+          --with-egl-platforms=&#39;drm x11 wayland&#39; \
+          --with-dri-drivers=&quot;i915 i965 nouveau&quot; \
+          --with-gallium-drivers=&quot;nouveau swrast radeonsi&quot;
 make -j$(nproc --ignore=1)
 make install
 </pre></div>
 
 
+<h3>Build QEMU</h3>
+<div class="highlight"><pre><span></span>git clone git://git.qemu.org/qemu.git
+cd qemu
+./configure \
+    --prefix=$ALT_LOCAL \
+    --target-list=x86_64-softmmu \
+    --enable-kvm \
+    --disable-werror \
+    --enable-virglrenderer
+make -j$(nproc --ignore=1)
+make install
+</pre></div>
+
+
+<h2>Set up a VM</h2>
+<p>As a guest we're going to use Ubuntu 17.10, but just use the latest
+release of whatever distro you like. The kernel <em>has</em>  have been
+built with the appropriate virtio-gpu Kconfig options though.</p>
+<div class="highlight"><pre><span></span>wget http://releases.ubuntu.com/17.10/ubuntu-17.10.1-server-amd64.iso
+qemu-img create -f qcow2 ubuntu.qcow2 35G
+qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on \
+    -boot d -cdrom ubuntu-17.10.1-desktop-amd64.iso
+</pre></div>
+
+
+<h3>Run VM</h3>
+<div class="highlight"><pre><span></span>qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on
+</pre></div>
+
+
+<p>Et Voila! Your guest should now have GPU acceleration!</p>
 <h2>Conclusion</h2>
 <p>Hopefully this guide will have helped you to build all of the software needed to
-build your very own virglrenderer enabled graphics stack.</p>
+set up your very own virglrenderer enabled graphics stack.</p>
 <p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
 		</article>
 		<section id="teaser-section">
