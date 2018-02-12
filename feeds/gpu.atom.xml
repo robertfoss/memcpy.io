@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - gpu</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/gpu.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-02-09T11:17:00+01:00</updated><entry><title>Virtualizing GPU Access</title><link href="https://memcpy.io/virtualizing-gpu-access.html" rel="alternate"></link><published>2018-02-09T11:17:00+01:00</published><updated>2018-02-09T11:17:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-02-09:/virtualizing-gpu-access.html</id><summary type="html">&lt;p&gt;For the past few years a clear trend of containerization of applications
+and services has emerged. Having processes containerized is beneficial
+in a number of ways. It both improves portability and strengthens security,
+and if done properly the performance penalty can be low.&lt;/p&gt;
+&lt;p&gt;In order to further improve security containers are commonly run in
+virtualized environments. This provides some new challenges in terms
+of supporting the accelerated graphics usecase.&lt;/p&gt;
+&lt;h3&gt;OpenGL ES implementation&lt;/h3&gt;
+&lt;p&gt;Currently Collabora and Google are implementing OpenGL ES 2.0
+support. OpenGL ES 2.0 is the lowest common denominator for many mobile
+platforms and as such is a requirement for Virgil3D to be viable on
+the those platforms.&lt;/p&gt;
+&lt;p&gt;That is is the motivation for making Virgil3D work on OpenGL ES hosts.&lt;/p&gt;
+&lt;h2&gt;How …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;For the past few years a clear trend of containerization of applications
+and services has emerged. Having processes containerized is beneficial
+in a number of ways. It both improves portability and strengthens security,
+and if done properly the performance penalty can be low.&lt;/p&gt;
+&lt;p&gt;In order to further improve security containers are commonly run in
+virtualized environments. This provides some new challenges in terms
+of supporting the accelerated graphics usecase.&lt;/p&gt;
+&lt;h3&gt;OpenGL ES implementation&lt;/h3&gt;
+&lt;p&gt;Currently Collabora and Google are implementing OpenGL ES 2.0
+support. OpenGL ES 2.0 is the lowest common denominator for many mobile
+platforms and as such is a requirement for Virgil3D to be viable on
+the those platforms.&lt;/p&gt;
+&lt;p&gt;That is is the motivation for making Virgil3D work on OpenGL ES hosts.&lt;/p&gt;
+&lt;h2&gt;How does this work?&lt;/h2&gt;
+&lt;p&gt;This stack is commonly referred to as &lt;a href="https://virgil3d.github.io/"&gt;Virgil3D&lt;/a&gt;, since all of the parts originated from a project with that name.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-02-09_virgl.svg"&gt;&lt;img alt="Alt text" src="/images/2018-02-09_virgl.svg" title="Virtualized OpenGL Stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There are a few parts to this implementation.&lt;br&gt;
+QEMU, virglrenderer and virtio-gpu. They way it works is by letting the guest
+applications speak unmodified OpenGL to the Mesa. But instead of Mesa handing
+commands over to the hardware it is channeled through virtio-gpu on the guest
+to QEMU on the host.&lt;/p&gt;
+&lt;p&gt;QEMU then receives the raw graphics stack state (Gallium state) and interprets
+it using virglrenderer from the raw state into an OpenGL form, which can be
+executed as entirely normal OpenGL on the host machine.&lt;/p&gt;
+&lt;p&gt;The host OpenGL stack does not even have to be Mesa, and could for example
+be the proprietary nvidia stack.&lt;/p&gt;
+&lt;h2&gt;Trying it out&lt;/h2&gt;
+&lt;h3&gt;Environment&lt;/h3&gt;
+&lt;p&gt;First of all, let's have a look at the development environment.
+When doing graphical development I find it quite helpful to set
+up a parallel graphics stack in order to not pollute or depend on
+the stack of the host machine more than we have to.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;add_export_env&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;local&lt;/span&gt; &lt;span class="nx"&gt;VAR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
+  &lt;span class="nx"&gt;shift&lt;/span&gt;
+  &lt;span class="nx"&gt;local&lt;/span&gt; &lt;span class="nx"&gt;VAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nx"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\$$VAR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$VAL&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;];&lt;/span&gt; &lt;span class="nx"&gt;then&lt;/span&gt;
+    &lt;span class="nx"&gt;VAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;concatenate_colon&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$@&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$VAL&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="nx"&gt;VAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;concatenate_colon&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$@&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;fi&lt;/span&gt;
+  &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;export $VAR=\&amp;quot;$VAL\&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;prefix_setup&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;local&lt;/span&gt; &lt;span class="nx"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
+
+  &lt;span class="nx"&gt;add_export_env&lt;/span&gt; &lt;span class="nx"&gt;PATH&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$PREFIX/bin&amp;quot;&lt;/span&gt;
+  &lt;span class="nx"&gt;add_export_env&lt;/span&gt; &lt;span class="nx"&gt;LD_LIBRARY_PATH&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$PREFIX/lib&amp;quot;&lt;/span&gt;
+  &lt;span class="nx"&gt;add_export_env&lt;/span&gt; &lt;span class="nx"&gt;PKG_CONFIG_PATH&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$PREFIX/lib/pkgconfig/&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$PREFIX/share/pkgconfig/&amp;quot;&lt;/span&gt;
+  &lt;span class="nx"&gt;add_export_env&lt;/span&gt; &lt;span class="nx"&gt;MANPATH&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$PREFIX/share/man&amp;quot;&lt;/span&gt;
+  &lt;span class="kr"&gt;export&lt;/span&gt; &lt;span class="nx"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$PREFIX/share/aclocal&amp;quot;&lt;/span&gt;
+  &lt;span class="nx"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+  &lt;span class="kr"&gt;export&lt;/span&gt; &lt;span class="nx"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;projectshell&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt;
+    &lt;span class="nx"&gt;virgl&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;virglrenderer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="kr"&gt;export&lt;/span&gt; &lt;span class="nx"&gt;ALT_LOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/opt/local/virgl&amp;quot;&lt;/span&gt;
+        &lt;span class="nx"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL&amp;quot;&lt;/span&gt;
+        &lt;span class="nx"&gt;prefix_setup&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL&amp;quot;&lt;/span&gt;
+        &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The above snippet is something that I would put in my &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.zshrc&lt;/code&gt;.
+Don't forget so run &lt;code&gt;source ~/.bashrc&lt;/code&gt; or the equivalent after making changes.&lt;/p&gt;
+&lt;p&gt;To enter the environment I simply type &lt;code&gt;projectshell virgl&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Build libepoxy&lt;/h3&gt;
+&lt;p&gt;libepoxy is a library for managing OpenGL function pointers for you.
+And it is a dependency of virglrenderer, which we'll get to below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/anholt/libepoxy.git
+cd libepoxy
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Build virglrenderer&lt;/h3&gt;
+&lt;p&gt;Virgilrenderer is the component that QEMU uses to provide
+accelerated rendering.&lt;br&gt;
+It receives Gallium states from the guest kernel
+via its virtio-gpu interface, which are then translated
+into OpenGL on the host. It also translates shaders from the
+TGSI format used by Gallium into the GLSL format used by OpenGL.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://anongit.freedesktop.org/virglrenderer
+cd virglrenderer
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Build libpciaccess&lt;/h3&gt;
+&lt;p&gt;libpciaccess is a library for simplifying accessing devices on the PCI bus.&lt;br&gt;
+It is a dependency of Mesa, which we'll get to below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.freedesktop.org/git/xorg/lib/libpciaccess
+cd libpciaccess
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Build Mesa&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Fetch dependencies
+sudo sed -i &amp;#39;s/\#deb-src/deb-src/&amp;#39; /etc/apt/sources.list
+sudo apt update
+sudo apt-get build-dep mesa
+
+# Actually build Mesa
+git clone https://anongit.freedesktop.org/git/mesa/mesa.git
+cd mesa
+./configure \
+    --prefix=$ALT_LOCAL \
+    --enable-driglx-direct \
+    --enable-gles1 \
+    --enable-gles2 \
+    --enable-glx-tls \
+    --with-egl-platforms=&amp;#39;drm x11 wayland&amp;#39; \
+    --with-dri-drivers=&amp;quot;i915 i965 nouveau&amp;quot; \
+    --with-gallium-drivers=&amp;quot;nouveau swrast radeonsi&amp;quot;
+make -j$(nproc --ignore=1)
+make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Build QEMU&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.qemu.org/qemu.git
+cd qemu
+./configure \
+    --prefix=$ALT_LOCAL \
+    --target-list=x86_64-softmmu \
+    --enable-kvm \
+    --disable-werror \
+    --enable-virglrenderer
+make -j$(nproc --ignore=1)
+make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Set up a VM&lt;/h2&gt;
+&lt;p&gt;As a guest we're going to use Ubuntu 17.10, but just use the latest
+release of whatever distro you like. The kernel &lt;em&gt;has&lt;/em&gt;  have been
+built with the appropriate virtio-gpu Kconfig options though.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget http://releases.ubuntu.com/17.10/ubuntu-17.10.1-server-amd64.iso
+qemu-img create -f qcow2 ubuntu.qcow2 35G
+qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on \
+    -boot d -cdrom ubuntu-17.10.1-desktop-amd64.iso
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Run VM&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Et Voila! Your guest should now have GPU acceleration!&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Hopefully this guide will have helped you to build all of the software needed to
+set up your very own virglrenderer enabled graphics stack.&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="gpu"></category><category term="virtualization"></category><category term="virgl"></category><category term="virglrenderer"></category><category term="opengl"></category><category term="vulkan"></category><category term="gles"></category><category term="collabora"></category></entry></feed>
