@@ -13,7 +13,7 @@ In order to further improve security containers are commonly run in
 virtualized environments. This provides some new challenges in terms
 of supporting the accelerated graphics usecase.
 
-### OpenGLES implementation
+### OpenGL ES implementation
 Currently Collabora and Google are implementing OpenGL ES 2.0
 support. OpenGL ES 2.0 is the lowest common denominator for many mobile
 platforms and as such is a requirement for Virgil3D to be viable on
