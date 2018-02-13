@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Fixing .zsh_history corruption</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="zsh: corrupt history file /home/$USER/.zsh_history Most zsh user will have seen the above line at one time or another. And it means that re-using your shell history is no longer possible. Maybe some of it can be recovered, but more than likely some has been lost. And even if nothing important has been lost, you probably don&#39;t want to spend any time dealing with this. Make zsh maintain a backup Run this snippet in the terminal of your choice. cat &lt;&lt;EOT&gt;&gt; ~/.zshrc # Backup and restore ZSH history strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history.backup EOT What does this actually do? The …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, shell, zsh, history, .zsh_history, corruption, fix, how, to, how-to">
+		<meta property="og:title" content="Fixing .zsh_history corruption" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://memcpy.io/fixing-zsh_history-corruption.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2018-02-13" />
+		<meta property="article:section" content="linux" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="shell" />
+		<meta property="article:tag" content="zsh" />
+		<meta property="article:tag" content="history" />
+		<meta property="article:tag" content=".zsh_history" />
+		<meta property="article:tag" content="corruption" />
+		<meta property="article:tag" content="fix" />
+		<meta property="article:tag" content="how" />
+		<meta property="article:tag" content="to" />
+		<meta property="article:tag" content="how-to" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Fixing .zsh_history corruption</h1>
+				<p>
+				Published <time datetime="2018-02-13" itemprop="datePublished">2018-02-13</time>
+				</p>
+			</header>
+			<p>.zsh_history getting corrupted happens far too often, and losing you shell history is actually quite painful.</p>
+			<div class="highlight"><pre><span></span><span class="n">zsh</span><span class="o">:</span> <span class="n">corrupt</span> <span class="n">history</span> <span class="n">file</span> <span class="sr">/home/$USER/</span><span class="o">.</span><span class="na">zsh_history</span>
+</pre></div>
+
+
+<p>Most zsh user will have seen the above line at one time or another.<br>
+And it means that re-using your shell history is no longer possible.</p>
+<p>Maybe some of it can be recovered, but more than likely some has been lost.
+And even if nothing important has been lost, you probably don't want to spend any time dealing with this.</p>
+<h2>Make zsh maintain a backup</h2>
+<p>Run this snippet in the terminal of your choice.</p>
+<div class="highlight"><pre><span></span>cat &lt;&lt;EOT&gt;&gt; ~/.zshrc
+
+# Backup and restore ZSH history
+strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup
+cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history.backup
+
+EOT
+</pre></div>
+
+
+<h3>What does this actually do?</h3>
+<p>The snippet runs on every terminal open and copies your current .zsh_history into a backup file, creatively called .zsh_history.backup.<br>
+The backup file is then cleaned up and deduplicated deduplicated lines are removed. Lastly the backup is appended to your actual .zsh_history file.</p>
+<h2>Conclusion</h2>
+<p>Hopefully this guide will have helped you avoid one of the more annoying aspects of zsh.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/shell.html">shell </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/zsh.html">zsh </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/history.html">history </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/zsh_history.html">.zsh_history </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/corruption.html">corruption </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/fix.html">fix </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/how.html">how </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/to.html">to </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/how-to.html">how-to </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2018 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
