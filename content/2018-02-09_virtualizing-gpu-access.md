@@ -112,17 +112,6 @@ TGSI format used by Gallium into the GLSL format used by OpenGL.
     make -j$(nproc --ignore=1)
     make install
 
-### Build libpciaccess
-
-libpciaccess is a library for simplifying accessing devices on the PCI bus.  
-It is a dependency of Mesa, which we'll get to below.
-
-    git clone git://git.freedesktop.org/git/xorg/lib/libpciaccess
-    cd libpciaccess
-    ./autogen.sh --prefix=$ALT_LOCAL
-    make -j$(nproc --ignore=1)
-    make install
-
 ### Build Mesa
     # Fetch dependencies
     sudo sed -i 's/\#deb-src/deb-src/' /etc/apt/sources.list
@@ -132,15 +121,16 @@ It is a dependency of Mesa, which we'll get to below.
     # Actually build Mesa
     git clone https://anongit.freedesktop.org/git/mesa/mesa.git
     cd mesa
-    ./configure \
+    ./autogen.sh \
         --prefix=$ALT_LOCAL \
         --enable-driglx-direct \
         --enable-gles1 \
         --enable-gles2 \
         --enable-glx-tls \
-        --with-egl-platforms='drm x11 wayland' \
-        --with-dri-drivers="i915 i965 nouveau" \
-        --with-gallium-drivers="nouveau swrast radeonsi"
+        --with-platforms=drm,x11,wayland \
+        --with-dri-drivers=i915,i965,nouveau \
+        --with-gallium-drivers=nouveau,swrast,radeonsi \
+        --without-vulkan-drivers
     make -j$(nproc --ignore=1)
     make install
 
