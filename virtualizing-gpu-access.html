@@ -139,17 +139,6 @@ make install
 </pre></div>
 
 
-<h3>Build libpciaccess</h3>
-<p>libpciaccess is a library for simplifying accessing devices on the PCI bus.<br>
-It is a dependency of Mesa, which we'll get to below.</p>
-<div class="highlight"><pre><span></span>git clone git://git.freedesktop.org/git/xorg/lib/libpciaccess
-cd libpciaccess
-./autogen.sh --prefix=$ALT_LOCAL
-make -j$(nproc --ignore=1)
-make install
-</pre></div>
-
-
 <h3>Build Mesa</h3>
 <div class="highlight"><pre><span></span># Fetch dependencies
 sudo sed -i &#39;s/\#deb-src/deb-src/&#39; /etc/apt/sources.list
@@ -159,15 +148,16 @@ sudo apt-get build-dep mesa
 # Actually build Mesa
 git clone https://anongit.freedesktop.org/git/mesa/mesa.git
 cd mesa
-./configure \
+./autogen.sh \
     --prefix=$ALT_LOCAL \
     --enable-driglx-direct \
     --enable-gles1 \
     --enable-gles2 \
     --enable-glx-tls \
-    --with-egl-platforms=&#39;drm x11 wayland&#39; \
-    --with-dri-drivers=&quot;i915 i965 nouveau&quot; \
-    --with-gallium-drivers=&quot;nouveau swrast radeonsi&quot;
+    --with-platforms=drm,x11,wayland \
+    --with-dri-drivers=i915,i965,nouveau \
+    --with-gallium-drivers=nouveau,swrast,radeonsi \
+    --without-vulkan-drivers
 make -j$(nproc --ignore=1)
 make install
 </pre></div>
