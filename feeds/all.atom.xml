@@ -42,7 +42,8 @@ EOT
 
 &lt;h3&gt;What does this actually do?&lt;/h3&gt;
 &lt;p&gt;The snippet runs on every terminal open and copies your current .zsh_history into a backup file, creatively called .zsh_history.backup.&lt;br&gt;
-The backup file is then cleaned up and deduplicated deduplicated lines are removed. Lastly the backup is appended to your actual .zsh_history file.&lt;/p&gt;
+The backup file is cleaned up and duplicated lines are removed.&lt;br&gt;
+Lastly the backup is appended to your actual .zsh_history file.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have helped you avoid one of the more annoying aspects of zsh.&lt;/p&gt;</content><category term="linux"></category><category term="shell"></category><category term="zsh"></category><category term="history"></category><category term=".zsh_history"></category><category term="corruption"></category><category term="fix"></category><category term="how"></category><category term="to"></category><category term="how-to"></category></entry><entry><title>Virtualizing GPU Access</title><link href="https://memcpy.io/virtualizing-gpu-access.html" rel="alternate"></link><published>2018-02-09T11:17:00+01:00</published><updated>2018-02-09T11:17:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-02-09:/virtualizing-gpu-access.html</id><summary type="html">&lt;p&gt;For the past few years a clear trend of containerization of applications
 and services has emerged. Having processes containerized is beneficial
