@@ -13,11 +13,11 @@ And even if nothing important has been lost, you probably don't want to spend an
 
 # Backup and restore ZSH history
 strings ~/.zsh_history | sed &amp;#39;:a;N;$!ba;s/\\\\\n//g&amp;#39; | sort | uniq -u &amp;gt; ~/.zsh_history.backup
-cat ~/.zsh_history ~/.zsh_history.backup | sed &amp;#39;:a;N;$!ba;s/\\\\\n//g&amp;#39;| sort | uniq &amp;gt; ~/.zsh_history.backup
+cat ~/.zsh_history ~/.zsh_history.backup | sed &amp;#39;:a;N;$!ba;s/\\\\\n//g&amp;#39;| sort | uniq &amp;gt; ~/.zsh_history
 
 EOT
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;What does this actually do?&lt;/h3&gt;
-&lt;p&gt;The …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 13 Feb 2018 20:20:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-02-13:/fixing-zsh_history-corruption.html</guid><category>linux</category><category>shell</category><category>zsh</category><category>history</category><category>.zsh_history</category><category>corruption</category><category>fix</category><category>how</category><category>to</category><category>how-to</category></item></channel></rss>
+&lt;p&gt;The snippet …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 13 Feb 2018 20:20:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-02-13:/fixing-zsh_history-corruption.html</guid><category>linux</category><category>shell</category><category>zsh</category><category>history</category><category>.zsh_history</category><category>corruption</category><category>fix</category><category>how</category><category>to</category><category>how-to</category></item></channel></rss>

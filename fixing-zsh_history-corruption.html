@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="zsh: corrupt history file /home/$USER/.zsh_history Most zsh user will have seen the above line at one time or another. And it means that re-using your shell history is no longer possible. Maybe some of it can be recovered, but more than likely some has been lost. And even if nothing important has been lost, you probably don&#39;t want to spend any time dealing with this. Make zsh maintain a backup Run this snippet in the terminal of your choice. cat &lt;&lt;EOT&gt;&gt; ~/.zshrc # Backup and restore ZSH history strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history.backup EOT What does this actually do? The …">
+		<meta name="description" content="zsh: corrupt history file /home/$USER/.zsh_history Most zsh user will have seen the above line at one time or another. And it means that re-using your shell history is no longer possible. Maybe some of it can be recovered, but more than likely some has been lost. And even if nothing important has been lost, you probably don&#39;t want to spend any time dealing with this. Make zsh maintain a backup Run this snippet in the terminal of your choice. cat &lt;&lt;EOT&gt;&gt; ~/.zshrc # Backup and restore ZSH history strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history EOT What does this actually do? The snippet …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, shell, zsh, history, .zsh_history, corruption, fix, how, to, how-to">
 		<meta property="og:title" content="Fixing .zsh_history corruption" />
@@ -56,7 +56,7 @@ And even if nothing important has been lost, you probably don't want to spend an
 
 # Backup and restore ZSH history
 strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup
-cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history.backup
+cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history
 
 EOT
 </pre></div>
