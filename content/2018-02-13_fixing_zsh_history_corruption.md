@@ -1,6 +1,7 @@
 Title: Fixing .zsh_history corruption
 Date: 2018-02-13 20:20
 Category: linux
+Status: draft
 Tags: linux, shell, zsh, history, .zsh_history, corruption, fix, how, to, how-to
 Description: .zsh_history getting corrupted happens far too often, and losing you shell history is actually quite painful. Here's how to fix it.
 
