@@ -142,8 +142,13 @@ TGSI format used by Gallium into the GLSL format used by OpenGL.
     ./configure \
         --prefix=$ALT_LOCAL \
         --target-list=x86_64-softmmu \
+        --enable-gtk \
+        --with-gtkabi=3.0 \
         --enable-kvm \
-        --disable-werror \
+        --enable-spice \
+        --enable-usb-redir \
+        --enable-libusb \
+        --enable-opengl \
         --enable-virglrenderer
     make -j$(nproc --ignore=1)
     make install
