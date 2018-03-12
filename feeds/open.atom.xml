@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - open</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/open.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-03-12T00:00:00+01:00</updated><entry><title>Status of the Embedded GPU Space @ Embedded Linux Conference NA</title><link href="https://memcpy.io/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html" rel="alternate"></link><published>2018-03-12T00:00:00+01:00</published><updated>2018-03-12T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-03-12:/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2018-03-12_elc_na.png" title="Speaking @ ELC NA"&gt;&lt;/p&gt;
+&lt;p&gt;A recording of the talk will be available &lt;a href="https://elciotna18.sched.com/event/DXn1/progress-in-the-embedded-gpu-ecosystem-robert-foss-collabora-ltd?iframe=yes&amp;amp;w=100%&amp;amp;sidebar=no&amp;amp;bg=no#"&gt;here later&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-openiot-north-america-2018/program/schedule/"&gt;Embedded Linux Conference NA&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2018-03-12_elc_na.png" title="Speaking @ ELC NA"&gt;&lt;/p&gt;
+&lt;p&gt;A recording of the talk will be available &lt;a href="https://elciotna18.sched.com/event/DXn1/progress-in-the-embedded-gpu-ecosystem-robert-foss-collabora-ltd?iframe=yes&amp;amp;w=100%&amp;amp;sidebar=no&amp;amp;bg=no#"&gt;here later&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-openiot-north-america-2018/program/schedule/"&gt;Embedded Linux Conference NA&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="embedded linux conference"></category><category term="elc"></category><category term="na"></category><category term="portland"></category><category term="embedded"></category><category term="gpu"></category><category term="linux"></category><category term="driver"></category><category term="open"></category><category term="source"></category></entry></feed>
