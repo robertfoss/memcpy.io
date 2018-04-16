@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="The i.MX6 platform has for the past few years enjoyed a large effort to add upstream support to Linux and surrounding projects. Now it is at the point where nothing is really missing any more. Improvements are still being made, to the graphics driver for i.MX 6, but functionally it is complete. The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much still remains to be done. That being said, initial support for the GPU, the Vivante GC7000, is in place and is able to successfully run Wayland/Weston, glmark, etc. An upstream display/scanout driver does currently not exist, but a driver is provided …">
+		<meta name="description" content="The i.MX6 platform has for the past few years enjoyed a large effort to add upstream support to Linux and surrounding projects. Now it is at the point where nothing is really missing any more. Improvements are still being made, to the graphics driver for i.MX 6, but functionally it is complete. The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much still remains to be done. That being said, initial support for the GPU, the Vivante GC7000, is in place and is able to successfully run Wayland/Weston, glmark, etc. This should also mean that running Android ontop of the currently not-quite-upstream stack is …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, imx, i.mx, nxp, imx6, imx8, imx8m">
 	</head>
@@ -36,10 +36,12 @@ to the graphics driver for i.MX 6, but functionally it is complete.</p>
 <p>The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much
 still remains to be done.</p>
 <p>That being said, initial support for the GPU, the Vivante GC7000, is in place
-and is able to successfully run Wayland/Weston, glmark, etc.</p>
+and is able to successfully run Wayland/Weston, glmark, etc.<br>
+This should also mean that running Android ontop of the currently not-quite-upstream stack is possible using <a href="https://gitlab.freedesktop.org/drm-hwcomposer/drm-hwcomposer">drm_hwcomposer</a>.</p>
 <p>An upstream display/scanout driver does currently not exist, but a driver is provided by the NXP base support package.</p>
 <p><a href="/images/2018-04-13_timeline_imx8qm_kernel.svg"><img alt="i.MX8 Kernel Support" src="/images/2018-04-13_timeline_imx8qm_kernel.svg">
 </a></p>
+<p>But patches for the gpio, clk, netdev &amp; arm-kernel subsystems have been submitted to their respective mailing lists by Lucas Stach.</p>
 <p>The direct support for the i.MX8 that has landed in the kernel at this point is mostly done by NXP engineers.</p>
 <p>But there are lots of components that currently have no support. The Video Processor Unit IP, the Hantro G1/G2, does not have any upstream support.</p>
 <p><a href="/images/2018-04-13_timeline_imx8qm_i.mx_8_u-boot.svg"><img alt="i.MX8 U-Boot Support" src="/images/2018-04-13_timeline_imx8qm_i.mx_8_u-boot.svg">
@@ -51,6 +53,9 @@ since early 2018, and can be expected to just work.</p>
 is under active development, with many new pieces of the hardware seeing attention.</p>
 <p><a href="https://puri.sm/">Purism</a> is one of the vendors who currently is actively
 working towards full Open Source support of the i.MX8 platform.</p>
+<h2>Devboards</h2>
+<p><a href="https://www.wandboard.org/products/wandpi-8m/">WandPi 8M</a> is a series of 3 different boards based on the i.MX 8M platform.</p>
+<p><a href="https://boundarydevices.com/product/nitrogen8m-imx8/">Nitrogen 8M</a> is another i.MX 8M based option, made by Boundary Devices who also made the popular Sabre Lite series of boards for the i.MX 6.</p>
 <h2>Thanks</h2>
 <p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
 		</article>
