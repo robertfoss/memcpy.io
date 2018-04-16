@@ -36,9 +36,11 @@ to the graphics driver for i.MX 6, but functionally it is complete.</p>
 <p>The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much
 still remains to be done.</p>
 <p>That being said, initial support for the GPU, the Vivante GC7000, is in place
-and is able to successfully run Wayland/Weston, glmark, etc.<br>
+and is able to successfully run Wayland/Weston, glmark, etc.
 This should also mean that running Android ontop of the currently not-quite-upstream stack is possible using <a href="https://gitlab.freedesktop.org/drm-hwcomposer/drm-hwcomposer">drm_hwcomposer</a>.</p>
-<p>An upstream display/scanout driver does currently not exist, but a driver is provided by the NXP base support package.</p>
+<p>An upstream display/scanout driver does currently not exist, since the display IP in the i.MX 8 is different and more capable than the IP in the i.MX 6 platform, the current imx-drm driver is not capable of supporting it.
+A driver is provided by the NXP base support package.
+This BSP driver is based on KMS Atomic and supports most of the bells and whistles one would hope for, but is currently not in an upstreamable shape.</p>
 <p><a href="/images/2018-04-13_timeline_imx8qm_kernel.svg"><img alt="i.MX8 Kernel Support" src="/images/2018-04-13_timeline_imx8qm_kernel.svg">
 </a></p>
 <p>But patches for the gpio, clk, netdev &amp; arm-kernel subsystems have been submitted to their respective mailing lists by Lucas Stach.</p>
