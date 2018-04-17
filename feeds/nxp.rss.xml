@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - nxp</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Fri, 13 Apr 2018 11:39:00 +0200</lastBuildDate><item><title>Upstream Linux support for the new NXP i.MX 8M</title><link>https://memcpy.io/upstream-linux-support-for-the-new-nxp-imx-8m.html</link><description>&lt;p&gt;&lt;a href="/images/2018-04-13_dart_imx8m.png"&gt;&lt;img alt="Dart iMX 8M" src="/images/2018-04-13_dart_imx8m.png"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The i.MX6 platform has for the past few years enjoyed a large effort to add
+upstream support to Linux and surrounding projects. Now it is at the point
+where nothing is really missing any more. Improvements are still being made,
+to the graphics driver for i.MX 6, but functionally it is complete.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-04-13_timeline_vivante_kernel_and_mesa.svg"&gt;&lt;img alt="Etnaviv driver development timeline" src="/images/2018-04-13_timeline_vivante_kernel_and_mesa.svg"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much
+still remains to be done.&lt;/p&gt;
+&lt;p&gt;That being said, initial support for the GPU, the Vivante GC7000, is in place
+and is able to successfully run Wayland/Weston, glmark, etc.
+This should also mean that running Android ontop of the currently not-quite-upstream stack is …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 13 Apr 2018 11:39:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-04-13:/upstream-linux-support-for-the-new-nxp-imx-8m.html</guid><category>imx</category><category>i.mx</category><category>nxp</category><category>imx6</category><category>imx8</category><category>imx8m</category><category>8m</category></item></channel></rss>
