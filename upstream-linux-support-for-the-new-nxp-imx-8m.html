@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>memcpy.io | An NXP i.MX Update</title>
+		<title>memcpy.io | Upstream Linux support for the new NXP i.MX 8M</title>
 		<link rel="icon" type="image/png" href="/logo.png" />
 		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
@@ -14,12 +14,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="The i.MX6 platform has for the past few years enjoyed a large effort to add upstream support to Linux and surrounding projects. Now it is at the point where nothing is really missing any more. Improvements are still being made, to the graphics driver for i.MX 6, but functionally it is complete. The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much still remains to be done. That being said, initial support for the GPU, the Vivante GC7000, is in place and is able to successfully run Wayland/Weston, glmark, etc. This should also mean that running Android ontop of the currently not-quite-upstream stack is …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, imx, i.mx, nxp, imx6, imx8, imx8m">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, imx, i.mx, nxp, imx6, imx8, imx8m, 8m">
 	</head>
 	<body>
 		<article id="content" itemscope>
 			<header>
-				<h1>An NXP i.MX Update</h1>
+				<h1>Upstream Linux support for the new NXP i.MX 8M</h1>
 				<p>
 				Published <time datetime="2018-04-13" itemprop="datePublished">2018-04-13</time>
 				</p>
@@ -38,7 +38,7 @@ still remains to be done.</p>
 <p>That being said, initial support for the GPU, the Vivante GC7000, is in place
 and is able to successfully run Wayland/Weston, glmark, etc.
 This should also mean that running Android ontop of the currently not-quite-upstream stack is possible using <a href="https://gitlab.freedesktop.org/drm-hwcomposer/drm-hwcomposer">drm_hwcomposer</a>.</p>
-<p>An upstream display/scanout driver does currently not exist, since the display IP in the i.MX 8 is different and more capable than the IP in the i.MX 6 platform, the current imx-drm driver is not capable of supporting it.<br>
+<p>An upstream display/scanout driver does currently not exist, since the display IP in the i.MX 8 is different and more capable than the IP in the i.MX 6 platform, the current imx-drm driver is not capable of supporting it.
 A driver is provided by the NXP base support package.
 This BSP driver is based on KMS Atomic and supports most of the bells and whistles one would hope for, but is currently not in an upstreamable shape.</p>
 <p><a href="/images/2018-04-13_timeline_imx8qm_kernel.svg"><img alt="i.MX8 Kernel Support" src="/images/2018-04-13_timeline_imx8qm_kernel.svg">
@@ -75,6 +75,8 @@ working towards full Open Source support of the i.MX8 platform.</p>
 					<a href="./tag/imx8.html">imx8 </a>
 					<span id="breakdot">&middot; </span>
 					<a href="./tag/imx8m.html">imx8m </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/8m.html">8m </a>
 				</p>
 			</div>
 		</section>
