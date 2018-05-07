@@ -1380,6 +1380,7 @@ CONFIG_HAVE_ARCH_AUDITSYSCALL=y
 CONFIG_AUDITSYSCALL=y
 CONFIG_AUDIT_WATCH=y
 CONFIG_AUDIT_TREE=y
+CONFIG_DRM=y
 CONFIG_SECURITY_SELINUX=y
 CONFIG_SECURITY_SELINUX_BOOTPARAM=y
 CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1
@@ -1439,7 +1440,7 @@ exit
 
 &lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
-After switching to this branch, the AOSP project has to be rebuilt again. &lt;/p&gt;
+After switching to this branch, the AOSP project has to be rebuilt again.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd $ANDROID_PATH/system/core/
 git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
 git fetch padovan
