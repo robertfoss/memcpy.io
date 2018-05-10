@@ -29,10 +29,16 @@ def tag_article(instance):
 
     ogtags = [('og:title', instance.title),
               ('og:type', 'article')]
+    twittertags = [('twitter:card', 'summary_large_image'),
+                   ('twitter:creator', instance.settings.get('TWITTER', '')),
+                   ('twitter:site', instance.settings.get('TWITTER', '')),
+                   ('twitter:title', instance.title),
+                   ('twitter:description', instance.description)]
 
     image = instance.metadata.get('og_image', '')
     if image:
         ogtags.append(('og:image', image))
+        twittertags.append(('twitter:image', image))
     else:
         soup = BeautifulSoup(instance._content, 'html.parser')
         img_links = soup.find_all('img')
@@ -42,13 +48,12 @@ def tag_article(instance):
                 if instance.settings.get('SITEURL', ''):
                     img_src = instance.settings.get('SITEURL', '') + "/" + img_src
             ogtags.append(('og:image', img_src))
+            twittertags.append(('twitter:image', img_src))
 
     url = os.path.join(instance.settings.get('SITEURL', ''), instance.url)
     ogtags.append(('og:url', url))
 
-    ogtags.append(('og:description', instance.metadata.get('og_description',
-                                                           instance.metadata.get('summary',
-                                                                                 instance.summary))))
+    ogtags.append(('og:description', instance.description))
 
     default_locale = instance.settings.get('LOCALE', [])
     if default_locale:
@@ -79,8 +84,8 @@ def tag_article(instance):
             pass
 
     instance.ogtags = ogtags
+    instance.twittertags = twittertags
 
 
 def register():
     signals.content_object_init.connect(tag_article)
-

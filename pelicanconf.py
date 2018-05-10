@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from datetime import date
 
 AUTHOR = u'Robert Foss'
+TWITTER = u'@memcpy_io'
 SITENAME = u'memcpy.io'
 SITEURL = ''
 KEYWORDS = "Robert Foss, Open Source, Software, Linux, Embedded, Engineer"

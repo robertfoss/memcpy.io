@@ -61,6 +61,11 @@
 				{% endif %}
 			{% endfor %}
 		{% endif %}
+		{% if article and article.twittertags %}
+			{% for tag in article.twittertags %}
+		<meta name="{{tag[0]}}" content="{{tag[1]|striptags|e}}" />
+			{% endfor %}
+		{% endif %}
 	</head>
 	<body>
 		{% block content %}
