@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - 1515</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 04 Jun 2018 22:26:00 +0200</lastBuildDate><item><title>APA102 1515 LEDs</title><link>https://memcpy.io/apa102-1515-leds.html</link><description>&lt;p&gt;The quiescent current of the APA102 2020 LEDs is about 0.7-1.0mA. Which is rather
+high for some usecases. But recently some new option have been made available.&lt;/p&gt;
+&lt;p&gt;The APA102 1515 and the APA104 1515, both of which come in a 1.5x1.5mm package.
+Additionally the APA104 1515 IC has a quiescent current of 0.3mA, which is good
+step in the right direction.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/files/2018-06-04/apa102-1515.pdf"&gt;APA102 1515 datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/files/2018-06-04/apa104-1515.pdf"&gt;APA104 1515 datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Unfortunately only the APA104 datasheet specifies quiescent current, so the
+quiescent current of the APA102 15155 is still an unknown.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 04 Jun 2018 22:26:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-06-04:/apa102-1515-leds.html</guid><category>apa102</category><category>apa104</category><category>apa</category><category>102</category><category>104</category><category>2020</category><category>1515</category><category>led</category><category>power</category><category>usage</category><category>current</category><category>quiescent</category></item></channel></rss>
