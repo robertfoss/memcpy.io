@@ -46,7 +46,7 @@ def tag_article(instance):
             img_src = img_links[0].get('src')
             if not "http" in img_src:
                 if instance.settings.get('SITEURL', ''):
-                    img_src = instance.settings.get('SITEURL', '') + "/" + img_src
+                    img_src = instance.settings.get('SITEURL', '')  + img_src
             ogtags.append(('og:image', img_src))
             twittertags.append(('twitter:image', img_src))
 
@@ -65,7 +65,7 @@ def tag_article(instance):
     ogtags.append(('og:site_name', instance.settings.get('SITENAME', '')))
 
     ogtags.append(('article:published_time', strftime(instance.date, "%Y-%m-%d")))
-    
+
     if hasattr(instance, 'modified'):
         ogtags.append(('article:modified_time', strftime(instance.modified, "%Y-%m-%d")))
 

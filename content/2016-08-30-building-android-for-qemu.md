@@ -144,7 +144,7 @@ using bash. I had issues running *lunch* using zsh.
 
 As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
-After switching to this branch, the AOSP project has to be rebuilt again. 
+After switching to this branch, the AOSP project has to be rebuilt again.
 
     cd $ANDROID_PATH/system/core/
     git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
