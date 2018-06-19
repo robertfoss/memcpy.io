@@ -2,6 +2,7 @@ Title: Virtualizing GPU Access
 Date: 2018-02-09 11:17
 Category: graphics
 Tags: linux, gpu, virtualization, virgl, virglrenderer, opengl, vulkan, gles, collabora
+Canonical: https://www.collabora.com/news-and-blog/blog/2018/02/12/virtualizing-gpu-access/
 Description: Virtualized GPU access is becoming common in the containerized and virtualized application space. Let's have a look at why and how.
 
 For the past few years a clear trend of containerization of applications
@@ -27,7 +28,7 @@ This stack is commonly referred to as [Virgil3D](https://virgil3d.github.io/), s
 [![Alt text](/images/2018-02-09_virgl.svg "Virtualized OpenGL Stack")
 ](/images/2018-02-09_virgl.svg)
 
-There are a few parts to this implementation.  
+There are a few parts to this implementation.
 QEMU, virglrenderer and virtio-gpu. They way it works is by letting the guest
 applications speak unmodified OpenGL to the Mesa. But instead of Mesa handing
 commands over to the hardware it is channeled through virtio-gpu on the guest
@@ -100,7 +101,7 @@ And it is a dependency of virglrenderer, which we'll get to below.
 ### Build virglrenderer
 
 Virgilrenderer is the component that QEMU uses to provide
-accelerated rendering.  
+accelerated rendering.
 It receives Gallium states from the guest kernel
 via its virtio-gpu interface, which are then translated
 into OpenGL on the host. It also translates shaders from the

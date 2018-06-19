@@ -18,6 +18,9 @@
 		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
         <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		{% if article and article.canonical %}
+		<link rel="canonical" href="{{ article.canonical }}">
+		{% endif %}
 		{% if "about" in output_file or "contact" in output_file %}
 		<link rel="stylesheet" type="text/css" href="/theme/css/page_light.css">
 		{% else %}

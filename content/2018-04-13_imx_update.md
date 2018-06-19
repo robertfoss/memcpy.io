@@ -2,6 +2,7 @@ Title: Upstream Linux support for the new NXP i.MX 8M
 Date: 2018-04-13 11:39
 Category: imx
 Tags: imx, i.mx, nxp, imx6, imx8, imx8m, 8m
+Canonical: https://www.collabora.com/news-and-blog/blog/2018/04/17/an-nxp-imx-update/
 Description: A quick look into the 2018Q1 status of the i.MX 6 & 8 platforms.
 
 [![Dart iMX 8M](/images/2018-04-13_dart_imx8m.png)
