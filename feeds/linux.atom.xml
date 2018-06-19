@@ -59,7 +59,7 @@ the those platforms.&lt;/p&gt;
 &lt;p&gt;This stack is commonly referred to as &lt;a href="https://virgil3d.github.io/"&gt;Virgil3D&lt;/a&gt;, since all of the parts originated from a project with that name.&lt;/p&gt;
 &lt;p&gt;&lt;a href="/images/2018-02-09_virgl.svg"&gt;&lt;img alt="Alt text" src="/images/2018-02-09_virgl.svg" title="Virtualized OpenGL Stack"&gt;
 &lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;There are a few parts to this implementation.&lt;br&gt;
+&lt;p&gt;There are a few parts to this implementation.
 QEMU, virglrenderer and virtio-gpu. They way it works is by letting the guest
 applications speak unmodified OpenGL to the Mesa. But instead of Mesa handing
 commands over to the hardware it is channeled through virtio-gpu on the guest
@@ -126,7 +126,7 @@ make install
 
 &lt;h3&gt;Build virglrenderer&lt;/h3&gt;
 &lt;p&gt;Virgilrenderer is the component that QEMU uses to provide
-accelerated rendering.&lt;br&gt;
+accelerated rendering.
 It receives Gallium states from the guest kernel
 via its virtio-gpu interface, which are then translated
 into OpenGL on the host. It also translates shaders from the

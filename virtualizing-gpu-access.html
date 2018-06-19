@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
         <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://www.collabora.com/news-and-blog/blog/2018/02/12/virtualizing-gpu-access/">
 		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
 		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
 		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
@@ -65,7 +66,7 @@ the those platforms.</p>
 <p>This stack is commonly referred to as <a href="https://virgil3d.github.io/">Virgil3D</a>, since all of the parts originated from a project with that name.</p>
 <p><a href="/images/2018-02-09_virgl.svg"><img alt="Alt text" src="/images/2018-02-09_virgl.svg" title="Virtualized OpenGL Stack">
 </a></p>
-<p>There are a few parts to this implementation.<br>
+<p>There are a few parts to this implementation.
 QEMU, virglrenderer and virtio-gpu. They way it works is by letting the guest
 applications speak unmodified OpenGL to the Mesa. But instead of Mesa handing
 commands over to the hardware it is channeled through virtio-gpu on the guest
@@ -132,7 +133,7 @@ make install
 
 <h3>Build virglrenderer</h3>
 <p>Virgilrenderer is the component that QEMU uses to provide
-accelerated rendering.<br>
+accelerated rendering.
 It receives Gallium states from the guest kernel
 via its virtio-gpu interface, which are then translated
 into OpenGL on the host. It also translates shaders from the
