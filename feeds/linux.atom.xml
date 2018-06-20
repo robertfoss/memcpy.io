@@ -189,7 +189,7 @@ make install
 
 &lt;h2&gt;Set up a VM&lt;/h2&gt;
 &lt;p&gt;As a guest we're going to use Ubuntu 17.10, but just use the latest
-release of whatever distro you like. The kernel &lt;em&gt;has&lt;/em&gt;  have been
+release of whatever distro you like. The kernel &lt;em&gt;has&lt;/em&gt; to have been
 built with the appropriate virtio-gpu Kconfig options though.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget http://releases.ubuntu.com/17.10/ubuntu-17.10.1-server-amd64.iso
 qemu-img create -f qcow2 ubuntu.qcow2 35G
