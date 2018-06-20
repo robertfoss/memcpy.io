@@ -53,7 +53,7 @@ the stack of the host machine more than we have to.
       local IFS=':'
       echo "$*"
     }
-    
+
     function add_export_env {
       local VAR="$1"
       shift
@@ -162,7 +162,7 @@ TGSI format used by Gallium into the GLSL format used by OpenGL.
 ## Set up a VM
 
 As a guest we're going to use Ubuntu 17.10, but just use the latest
-release of whatever distro you like. The kernel _has_  have been
+release of whatever distro you like. The kernel _has_ to have been
 built with the appropriate virtio-gpu Kconfig options though.
 
     wget http://releases.ubuntu.com/17.10/ubuntu-17.10.1-server-amd64.iso
