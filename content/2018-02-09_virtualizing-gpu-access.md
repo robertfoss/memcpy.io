@@ -49,6 +49,11 @@ When doing graphical development I find it quite helpful to set
 up a parallel graphics stack in order to not pollute or depend on
 the stack of the host machine more than we have to.
 
+    function concatenate_colon {
+      local IFS=':'
+      echo "$*"
+    }
+    
     function add_export_env {
       local VAR="$1"
       shift
