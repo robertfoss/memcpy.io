@@ -82,7 +82,12 @@ be the proprietary nvidia stack.</p>
 When doing graphical development I find it quite helpful to set
 up a parallel graphics stack in order to not pollute or depend on
 the stack of the host machine more than we have to.</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">add_export_env</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">concatenate_colon</span> <span class="p">{</span>
+  <span class="nx">local</span> <span class="nx">IFS</span><span class="o">=</span><span class="s1">&#39;:&#39;</span>
+  <span class="nx">echo</span> <span class="s2">&quot;$*&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">add_export_env</span> <span class="p">{</span>
   <span class="nx">local</span> <span class="nx">VAR</span><span class="o">=</span><span class="s2">&quot;$1&quot;</span>
   <span class="nx">shift</span>
   <span class="nx">local</span> <span class="nx">VAL</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="nb">eval</span> <span class="nx">echo</span> <span class="s2">&quot;\$$VAR&quot;</span><span class="p">)</span>
