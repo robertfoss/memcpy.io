@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://memcpy.io/</loc>
-<lastmod>2018-06-04</lastmod>
+<lastmod>2018-06-22</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>https://memcpy.io/twistyplexing-a-charlieplexing-variety.html</loc>
+<lastmod>2018-06-22</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>https://memcpy.io/apa102-1515-leds.html</loc>
 <lastmod>2018-06-04</lastmod>
@@ -246,6 +251,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>https://memcpy.io/category/leds.html</loc>
+<lastmod>2018-06-22</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>https://memcpy.io/category/linux.html</loc>
 <lastmod>2016-09-23</lastmod>
 <changefreq>monthly</changefreq>
@@ -443,6 +453,11 @@
 </url><url>
 <loc>https://memcpy.io/tag/brussels.html</loc>
 <lastmod>2018-02-04</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>https://memcpy.io/tag/charlieplexing.html</loc>
+<lastmod>2018-06-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -667,7 +682,12 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/led.html</loc>
-<lastmod>2018-06-04</lastmod>
+<lastmod>2018-06-22</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>https://memcpy.io/tag/leds.html</loc>
+<lastmod>2018-06-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -683,6 +703,11 @@
 </url><url>
 <loc>https://memcpy.io/tag/modifier.html</loc>
 <lastmod>2017-06-02</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>https://memcpy.io/tag/multiplexing.html</loc>
+<lastmod>2018-06-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -841,6 +866,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>https://memcpy.io/tag/twistyplexing.html</loc>
+<lastmod>2018-06-22</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>https://memcpy.io/tag/ubuntu.html</loc>
 <lastmod>2017-10-28</lastmod>
 <changefreq>monthly</changefreq>
@@ -902,7 +932,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2018-06-04</lastmod>
+<lastmod>2018-06-22</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>
