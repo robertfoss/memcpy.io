@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/all.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-06-22T12:26:00+02:00</updated><entry><title>Twistyplexing: A Charlieplexing variety</title><link href="https://memcpy.io/twistyplexing-a-charlieplexing-variety.html" rel="alternate"></link><published>2018-06-22T12:26:00+02:00</published><updated>2018-06-22T12:26:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-06-22:/twistyplexing-a-charlieplexing-variety.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-06-22_twistyplexing.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-22_twistyplexing.png" title="A 42 LED, N == 7 Twistyplexing layout"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/all.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-06-24T22:16:00+02:00</updated><entry><title>Configuring QNAP LXC containers for VPNs using TUN</title><link href="https://memcpy.io/configuring-qnap-lxc-containers-for-vpns-using-tun.html" rel="alternate"></link><published>2018-06-24T22:16:00+02:00</published><updated>2018-06-24T22:16:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-06-24:/configuring-qnap-lxc-containers-for-vpns-using-tun.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-06-24_lxc_config.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-24_lxc_config.png" title="QNAP Container Station LXC Config"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Configuring the QNAP device&lt;/h3&gt;
+&lt;p&gt;The first step is to SSH into your QNAP device using the &lt;em&gt;admin&lt;/em&gt; account.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh admin@NAS_IP
+cat &amp;gt;&amp;gt; /share/Container/container-station-data/lib/lxc/CONTAINER_NAME/config &amp;lt;&amp;lt; EOF
+lxc.cgroup.devices.allow = c 10:200 rwm
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Configuring the container guest&lt;/h3&gt;
+&lt;p&gt;The second step is open the QNAP web-ui, open the Container Station
+application and enter the console of your container.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sed -i &amp;#39;/exit 0/d&amp;#39; /etc/rc.local
+cat &amp;gt;&amp;gt; /etc/rc.local &amp;lt;&amp;lt; EOF
+if ! [ -c /dev/net/tun ]; then
+    mkdir -p /dev/net
+    mknod -m 666 /dev/net/tun c 10 200
+fi
+
+exit 0
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lastly the container needs to be restarted, and then your VPN application
+should be able to access TUN devices and work normally.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/images/2018-06-24_lxc_config.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-24_lxc_config.png" title="QNAP Container Station LXC Config"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Configuring the QNAP device&lt;/h3&gt;
+&lt;p&gt;The first step is to SSH into your QNAP device using the &lt;em&gt;admin&lt;/em&gt; account.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh admin@NAS_IP
+cat &amp;gt;&amp;gt; /share/Container/container-station-data/lib/lxc/CONTAINER_NAME/config &amp;lt;&amp;lt; EOF
+lxc.cgroup.devices.allow = c 10:200 rwm
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Configuring the container guest&lt;/h3&gt;
+&lt;p&gt;The second step is open the QNAP web-ui, open the Container Station
+application and enter the console of your container.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sed -i &amp;#39;/exit 0/d&amp;#39; /etc/rc.local
+cat &amp;gt;&amp;gt; /etc/rc.local &amp;lt;&amp;lt; EOF
+if ! [ -c /dev/net/tun ]; then
+    mkdir -p /dev/net
+    mknod -m 666 /dev/net/tun c 10 200
+fi
+
+exit 0
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lastly the container needs to be restarted, and then your VPN application
+should be able to access TUN devices and work normally.&lt;/p&gt;</content><category term="qnap"></category><category term="container"></category><category term="station"></category><category term="lxc"></category><category term="lxd"></category><category term="vpn"></category><category term="tun"></category><category term="tap"></category></entry><entry><title>Twistyplexing: A Charlieplexing variety</title><link href="https://memcpy.io/twistyplexing-a-charlieplexing-variety.html" rel="alternate"></link><published>2018-06-22T12:26:00+02:00</published><updated>2018-06-22T12:26:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-06-22:/twistyplexing-a-charlieplexing-variety.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-06-22_twistyplexing.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-22_twistyplexing.png" title="A 42 LED, N == 7 Twistyplexing layout"&gt;
 &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The above layout has N = 7, yielding 42 LEDs.&lt;/p&gt;
 &lt;p&gt;Apart from the symmetry being visually pleasing compared to the normal

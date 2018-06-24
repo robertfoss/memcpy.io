@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - tap</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Sun, 24 Jun 2018 22:16:00 +0200</lastBuildDate><item><title>Configuring QNAP LXC containers for VPNs using TUN</title><link>https://memcpy.io/configuring-qnap-lxc-containers-for-vpns-using-tun.html</link><description>&lt;p&gt;&lt;a href="/images/2018-06-24_lxc_config.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-24_lxc_config.png" title="QNAP Container Station LXC Config"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Configuring the QNAP device&lt;/h3&gt;
+&lt;p&gt;The first step is to SSH into your QNAP device using the &lt;em&gt;admin&lt;/em&gt; account.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh admin@NAS_IP
+cat &amp;gt;&amp;gt; /share/Container/container-station-data/lib/lxc/CONTAINER_NAME/config &amp;lt;&amp;lt; EOF
+lxc.cgroup.devices.allow = c 10:200 rwm
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Configuring the container guest&lt;/h3&gt;
+&lt;p&gt;The second step is open the QNAP web-ui, open the Container Station
+application and enter the console of your container.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sed -i &amp;#39;/exit 0/d&amp;#39; /etc/rc.local
+cat &amp;gt;&amp;gt; /etc/rc.local &amp;lt;&amp;lt; EOF
+if ! [ -c /dev/net/tun ]; then
+    mkdir -p /dev/net
+    mknod -m 666 /dev/net/tun c 10 200
+fi
+
+exit 0
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lastly the container needs to be restarted, and then your VPN application
+should be able to access TUN devices and work normally.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 24 Jun 2018 22:16:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-06-24:/configuring-qnap-lxc-containers-for-vpns-using-tun.html</guid><category>qnap</category><category>container</category><category>station</category><category>lxc</category><category>lxd</category><category>vpn</category><category>tun</category><category>tap</category></item></channel></rss>
