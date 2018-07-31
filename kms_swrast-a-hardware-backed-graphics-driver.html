@@ -28,21 +28,21 @@
 			<h2>Stack overview</h2>
 <p>Let's start with having a look at a high level overview of what the
 graphics stack looks like.</p>
-<p><a href="/images/2018-07-06_kms_swrast_overview.svg"><img alt="Alt text" src="/images/2018-07-06_kms_swrast_overview.svg" title="Linux graphics stack">
+<p><a href="/images/2018-07-31_kms_swrast_overview.svg"><img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack">
 </a></p>
 <p>Before digging too much further into this, lets cover some terminology.</p>
 <p>DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
 which contains all of the graphics drivers and does all of the interfacing with
 hardware.<br>
 The DRM subsystem implements the KMS - kernel mode setting - API.</p>
-<p><a href="/images/2018-07-06_kms_swrast_mesa.svg"><img alt="Alt text" src="/images/2018-07-06_kms_swrast_mesa.svg" title="Mesa internals">
+<p><a href="/images/2018-07-31_kms_swrast_mesa.svg"><img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals">
 </a></p>
 <p>If the DRM subsystem talks to the hardware, Mesa talks to applications.
 It implements APIs like OpenGL, OpenGL ES, Vulkan, etc.
 And is built ontop of DRM and libdrm.  </p>
 <p>libdrm is a userspace library that wraps the DRM subsystem in order to simplify
 talking to drivers and avoiding common bugs in every user of DRM.</p>
-<p><a href="/images/2018-07-06_kms_swrast_detailed.svg"><img alt="Alt text" src="/images/2018-07-06_kms_swrast_detailed.svg" title="kms_swrast diagram">
+<p><a href="/images/2018-07-31_kms_swrast_detailed.svg"><img alt="Alt text" src="/images/2018-07-31_kms_swrast_detailed.svg" title="kms_swrast diagram">
 </a></p>
 <p>Looking inside Mesa we find the Gallium driver framework. It is what <em>most</em>
 of the Mesa drivers are built using, with the Intel i965 driver being the major
