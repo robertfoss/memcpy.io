@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="282.34921mm"
+   height="105.78221mm"
+   viewBox="0 0 282.34922 105.78221"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="2018-07-06_kms_swrast_mesa.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient845"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop843" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.6259427"
+     inkscape:cx="342.49734"
+     inkscape:cy="163.94128"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0"
+     inkscape:window-width="2140"
+     inkscape:window-height="1320"
+     inkscape:window-x="144"
+     inkscape:window-y="155"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="30"
+     fit-margin-right="60"
+     fit-margin-bottom="0"
+     scale-x="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(35.277082,-50.58569)">
+    <rect
+       ry="3.411598"
+       style="fill:#5c3dcc;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.74162936;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+       y="89.035721"
+       x="67.486885"
+       height="28.849079"
+       width="93.086502"
+       id="rect3699-3-5-1" />
+    <text
+       transform="scale(1.0370906,0.96423591)"
+       id="text4782-5-6-1"
+       y="109.81947"
+       x="68.105164"
+       style="font-style:normal;font-weight:normal;font-size:15.69782066px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3924455px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-size:7.05555534px;stroke-width:0.3924455px"
+         y="109.81947"
+         x="68.105164"
+         id="tspan4780-3-9-7"
+         sodipodi:role="line">Driver</tspan></text>
+    <path
+       style="fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.05999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6.36000001, 1.06000000000000005;stroke-dashoffset:0;stroke-opacity:0;fill:none"
+       d="M 187.07214,122.54945 H 47.57017 17.212643 l -22.4895834,-0.006"
+       id="path5042"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="23.547916"
+       y="111.52708"
+       id="text5046"><tspan
+         sodipodi:role="line"
+         id="tspan5044"
+         x="23.547916"
+         y="120.89085"
+         style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.26458332px" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="14.980483"
+       y="69.163757"
+       id="text5050-0-4"><tspan
+         sodipodi:role="line"
+         id="tspan5048-3-7"
+         x="14.980483"
+         y="69.163757"
+         style="fill:#666666;fill-opacity:1;stroke-width:0.26458332px">Mesa</tspan></text>
+    <g
+       id="g2978">
+      <rect
+         id="rect3699-3-5"
+         width="93.086502"
+         height="28.849079"
+         x="67.536064"
+         y="50.956505"
+         style="fill:#5c3dcc;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.74162936;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+         ry="3.411598" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:15.69782066px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3924455px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="68.152588"
+         y="70.327873"
+         id="text4782-5-6"
+         transform="scale(1.0370906,0.96423591)"><tspan
+           sodipodi:role="line"
+           id="tspan4780-3-9"
+           x="68.152588"
+           y="70.327873"
+           style="font-size:7.05555534px;stroke-width:0.3924455px">APIs</tspan></text>
+      <g
+         transform="translate(0,-0.00751209)"
+         id="g1278">
+        <g
+           id="g1267">
+          <rect
+             id="rect3699-1-0-3"
+             width="50.255615"
+             height="9.9734745"
+             x="107.63215"
+             y="54.0443"
+             style="fill:#43c200;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.32040045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+             ry="1.1794304" />
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:5.99722242px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             x="120.60006"
+             y="60.685547"
+             id="text4864-6-7"><tspan
+               sodipodi:role="line"
+               x="120.60006"
+               y="60.685547"
+               style="font-size:5.99722242px;stroke-width:0.26458332px"
+               id="tspan5382">OpenGL</tspan></text>
+        </g>
+        <g
+           id="g1262">
+          <rect
+             id="rect3699-1-0-3-0"
+             width="50.255615"
+             height="9.9734745"
+             x="107.72729"
+             y="66.759338"
+             style="fill:#43c200;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.32040045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+             ry="1.1794304" />
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:5.99722242px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             x="116.09187"
+             y="73.400589"
+             id="text4864-6-7-9"><tspan
+               sodipodi:role="line"
+               id="tspan4862-2-4-2"
+               x="116.09187"
+               y="73.400589"
+               style="font-size:5.99722242px;stroke-width:0.26458332px">OpenGL ES</tspan><tspan
+               sodipodi:role="line"
+               x="116.09187"
+               y="80.897118"
+               style="font-size:5.99722242px;stroke-width:0.26458332px"
+               id="tspan5382-5" /></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g868">
+      <rect
+         id="rect3699-3-5-1-3"
+         width="93.086502"
+         height="28.849079"
+         x="67.536568"
+         y="127.14801"
+         style="fill:#5c3dcc;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.74162936;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+         ry="3.411598" />
+      <g
+         transform="translate(-0.04917976,-0.03306276)"
+         id="g2124-6">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:15.69782066px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3924455px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="68.496773"
+           y="149.42961"
+           id="text4782-2-7-8"
+           transform="scale(1.0370906,0.96423591)"><tspan
+             sodipodi:role="line"
+             id="tspan4780-9-9-0"
+             x="68.496773"
+             y="149.42961"
+             style="font-size:7.05555534px;line-height:77.40003467%;stroke-width:0.3924455px">Gallium</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
