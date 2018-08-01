@@ -1,4 +1,4 @@
-Title: kms_swrast: A hardware backed graphics driver
+Title: kms_swrast: A hardware-backed graphics driver
 Date: 2018-07-31 09:14
 Category: graphics
 Tags: collabora, kms_swrast, drm, kms, swrast, dumb, buffer, driver, gpu
