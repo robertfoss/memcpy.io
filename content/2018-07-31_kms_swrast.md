@@ -2,8 +2,8 @@ Title: kms_swrast: A hardware-backed graphics driver
 Date: 2018-07-31 09:14
 Category: graphics
 Tags: collabora, kms_swrast, drm, kms, swrast, dumb, buffer, driver, gpu
+Canonical: https://www.collabora.com/news-and-blog/blog/2018/08/01/kms-swrast-hardware-backed-graphics-driver/
 Description: kms_swrast is a software driver, built upon the Mesa gallium driver framework, which uses kernel kms drm nodes for memory allocation.
-Status: draft
 
 ## Stack overview
 
