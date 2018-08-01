@@ -120,7 +120,7 @@ TGSI format used by Gallium into the GLSL format used by OpenGL.
 
 ### Build Mesa
     # Fetch dependencies
-    sudo sed -i 's/\#deb-src/deb-src/' /etc/apt/sources.list
+    sudo sed -i 's/\#[ ]*deb-src/deb-src/' /etc/apt/sources.list
     sudo apt update
     sudo apt-get build-dep mesa
 
