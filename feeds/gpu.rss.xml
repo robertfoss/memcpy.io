@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - gpu</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 12 Mar 2018 00:00:00 +0100</lastBuildDate><item><title>Status of the Embedded GPU Space @ Embedded Linux Conference NA</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2018-03-12_elc_na.png" title="Speaking @ ELC NA"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - gpu</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 31 Jul 2018 09:14:00 +0200</lastBuildDate><item><title>kms_swrast: A hardware-backed graphics driver</title><link>https://memcpy.io/kms_swrast-a-hardware-backed-graphics-driver.html</link><description>&lt;h2&gt;Stack overview&lt;/h2&gt;
+&lt;p&gt;Let's start with having a look at a high level overview of what the
+graphics stack looks like.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_overview.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Before digging too much further into this, lets cover some terminology.&lt;/p&gt;
+&lt;p&gt;DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
+which contains all of the graphics drivers and does all of the interfacing with
+hardware.&lt;br&gt;
+The DRM subsystem implements the KMS - kernel mode setting - API.&lt;/p&gt;
+&lt;p&gt;Mode setting is essentially configuring output settings like resolution
+for the displays that are being used. And doing it using the kernel means that
+userspace doesn't need access to setting these things directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_mesa.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The DRM subsystem talks to the hardware and Mesa is used by applications through
+the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc.
+All …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 31 Jul 2018 09:14:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-07-31:/kms_swrast-a-hardware-backed-graphics-driver.html</guid><category>collabora</category><category>kms_swrast</category><category>drm</category><category>kms</category><category>swrast</category><category>dumb</category><category>buffer</category><category>driver</category><category>gpu</category></item><item><title>Status of the Embedded GPU Space @ Embedded Linux Conference NA</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2018-03-12_elc_na.png" title="Speaking @ ELC NA"&gt;&lt;/p&gt;
 &lt;p&gt;A recording of the talk is available  &lt;a href="https://www.youtube.com/watch?v=Ag8BGMY8MOs"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.pdf"&gt;PDF&lt;/a&gt; or
