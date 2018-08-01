@@ -146,7 +146,7 @@ make install
 
 &lt;h3&gt;Build Mesa&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Fetch dependencies
-sudo sed -i &amp;#39;s/\#deb-src/deb-src/&amp;#39; /etc/apt/sources.list
+sudo sed -i &amp;#39;s/\#[ ]*deb-src/deb-src/&amp;#39; /etc/apt/sources.list
 sudo apt update
 sudo apt-get build-dep mesa
 
