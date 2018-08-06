@@ -94,8 +94,10 @@ have fewer bugs than any one driver.</p>
 hardware is actually used. Which may seem a bit odd.  </p>
 <p>So why are the kernel drivers used for a software renderer? The answer is
 two-fold.  </p>
-<p>It is what Gallium expects, and in order to not have
-to make invasive changes to it, just providing it with access to <em>some</em> driver
+<p>It is what Gallium expects, and there is a kernel driver called VGEM
+(Virtual GEM) which was created specifically for this usecase. In order to
+not have to make invasive changes to it or make the switch to VGEM right away,
+just providing it with access to <em>some</em> driver
 is the simplest possible solution. Since the actual hardware is mostly unused,
 it doesn't really matter what hardware you use.</p>
 <p>The DRM driver is actually only used for a single thing, to allocate a slice
