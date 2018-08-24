@@ -73,8 +73,10 @@ hardware is actually used. Which may seem a bit odd.
 So why are the kernel drivers used for a software renderer? The answer is
 two-fold.  
 
-It is what Gallium expects, and in order to not have
-to make invasive changes to it, just providing it with access to _some_ driver
+It is what Gallium expects, and there is a kernel driver called VGEM
+(Virtual GEM) which was created specifically for this usecase. In order to
+not have to make invasive changes to it or make the switch to VGEM right away,
+just providing it with access to _some_ driver
 is the simplest possible solution. Since the actual hardware is mostly unused,
 it doesn't really matter what hardware you use.
 
