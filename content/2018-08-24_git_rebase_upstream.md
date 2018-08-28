@@ -2,9 +2,8 @@ Title: git reset upstream
 Date: 2018-08-24 12:32
 Category: git
 Tags: collabora, git, reset, upstream, pull, synchronize
-Canonical:
+Canonical: https://www.collabora.com/news-and-blog/blog/2018/08/27/quick-hack-git-reset-upstream/
 Description: Working with a git based project that has a defacto upstream repository means that you perioducally want to fetch the canonical master branch. This can be simplified with a .gitconfig alias.
-Status: draft
 
     robertfoss@xps9570 ~/work/libdrm $ git ru
     remote: Counting objects: 234, done.
@@ -31,17 +30,20 @@ the upstream/master branch.
 Add this snippet under the `[alias]` section of your `~/.gitconfig` file.
 
     [alias]
-    	ru = "!f() { \
-    	           	REMOTES=$(git remote); \
-                   	REMOTE=\"origin\"; \
-                	case \"$REMOTES\" in \
-            		*upstream*) \
-                    		REMOTE=\"upstream\"; \
-                    		;; \
-                	esac; \
-                	git fetch $REMOTE; \
-    	           	git update-ref refs/heads/master refs/remotes/$REMOTE/master; \
-               }; f"
+        ru = "!f() { \
+            REMOTES=$(git remote); \
+            REMOTE=\"origin\"; \
+            case \"$REMOTES\" in \
+                *upstream*) \
+                    REMOTE=\"upstream\"; \
+                    ;; \
+           	esac; \
+            git fetch $REMOTE; \
+            git update-ref refs/heads/master refs/remotes/$REMOTE/master; \
+            git co master >/dev/null 2>&1; \
+            git reset --hard $REMOTE/master >/dev/null 2>&1; \
+            git checkout - >/dev/null 2>&1; \
+        }; f
 
 If you have a closer look, you'll notice that the `upstream` remote is used if
 has been added, otherwise the `origin` remote is used. This selection is
@@ -84,3 +86,6 @@ This is what `git ru` might look like when used.
 ## Thanks
 
 This post has been a part of work undertaken by my employer [Collabora](http://www.collabora.com).
+
+And thanks [@widawsky](https://twitter.com/widawsky) for pointing out some
+improvements.
