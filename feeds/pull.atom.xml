@@ -39,16 +39,19 @@ the upstream/master branch.&lt;/p&gt;
 &lt;p&gt;Add this snippet under the &lt;code&gt;[alias]&lt;/code&gt; section of your &lt;code&gt;~/.gitconfig&lt;/code&gt; file.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
     &lt;span class="na"&gt;ru&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;!f() { \&lt;/span&gt;
-&lt;span class="s"&gt;                REMOTES=$(git remote); \&lt;/span&gt;
-&lt;span class="s"&gt;                REMOTE=\&amp;quot;origin\&amp;quot;; \&lt;/span&gt;
-&lt;span class="s"&gt;                case \&amp;quot;$REMOTES\&amp;quot; in \&lt;/span&gt;
-&lt;span class="s"&gt;                *upstream*) \&lt;/span&gt;
-&lt;span class="s"&gt;                        REMOTE=\&amp;quot;upstream\&amp;quot;; \&lt;/span&gt;
-&lt;span class="s"&gt;                        ;; \&lt;/span&gt;
-&lt;span class="s"&gt;                esac; \&lt;/span&gt;
-&lt;span class="s"&gt;                git fetch $REMOTE; \&lt;/span&gt;
-&lt;span class="s"&gt;                git update-ref refs/heads/master refs/remotes/$REMOTE/master; \&lt;/span&gt;
-&lt;span class="s"&gt;           }; f&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;        REMOTES=$(git remote); \&lt;/span&gt;
+&lt;span class="s"&gt;        REMOTE=\&amp;quot;origin\&amp;quot;; \&lt;/span&gt;
+&lt;span class="s"&gt;        case \&amp;quot;$REMOTES\&amp;quot; in \&lt;/span&gt;
+&lt;span class="s"&gt;            *upstream*) \&lt;/span&gt;
+&lt;span class="s"&gt;                REMOTE=\&amp;quot;upstream\&amp;quot;; \&lt;/span&gt;
+&lt;span class="s"&gt;                ;; \&lt;/span&gt;
+&lt;span class="s"&gt;        esac; \&lt;/span&gt;
+&lt;span class="s"&gt;        git fetch $REMOTE; \&lt;/span&gt;
+&lt;span class="s"&gt;        git update-ref refs/heads/master refs/remotes/$REMOTE/master; \&lt;/span&gt;
+&lt;span class="s"&gt;        git co master &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; \&lt;/span&gt;
+&lt;span class="s"&gt;        git reset --hard $REMOTE/master &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; \&lt;/span&gt;
+&lt;span class="s"&gt;        git checkout - &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; \&lt;/span&gt;
+&lt;span class="s"&gt;    }; f&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -90,4 +93,6 @@ done using git running a shell script.&lt;/p&gt;
 
 
 &lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="collabora"></category><category term="git"></category><category term="reset"></category><category term="upstream"></category><category term="pull"></category><category term="synchronize"></category></entry></feed>
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And thanks &lt;a href="https://twitter.com/widawsky"&gt;@widawsky&lt;/a&gt; for pointing out some
+improvements.&lt;/p&gt;</content><category term="collabora"></category><category term="git"></category><category term="reset"></category><category term="upstream"></category><category term="pull"></category><category term="synchronize"></category></entry></feed>

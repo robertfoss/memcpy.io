@@ -68,16 +68,19 @@ the upstream/master branch.</p>
 <p>Add this snippet under the <code>[alias]</code> section of your <code>~/.gitconfig</code> file.</p>
 <div class="highlight"><pre><span></span><span class="k">[alias]</span>
     <span class="na">ru</span> <span class="o">=</span> <span class="s">&quot;!f() { \</span>
-<span class="s">                REMOTES=$(git remote); \</span>
-<span class="s">                REMOTE=\&quot;origin\&quot;; \</span>
-<span class="s">                case \&quot;$REMOTES\&quot; in \</span>
-<span class="s">                *upstream*) \</span>
-<span class="s">                        REMOTE=\&quot;upstream\&quot;; \</span>
-<span class="s">                        ;; \</span>
-<span class="s">                esac; \</span>
-<span class="s">                git fetch $REMOTE; \</span>
-<span class="s">                git update-ref refs/heads/master refs/remotes/$REMOTE/master; \</span>
-<span class="s">           }; f&quot;</span>
+<span class="s">        REMOTES=$(git remote); \</span>
+<span class="s">        REMOTE=\&quot;origin\&quot;; \</span>
+<span class="s">        case \&quot;$REMOTES\&quot; in \</span>
+<span class="s">            *upstream*) \</span>
+<span class="s">                REMOTE=\&quot;upstream\&quot;; \</span>
+<span class="s">                ;; \</span>
+<span class="s">        esac; \</span>
+<span class="s">        git fetch $REMOTE; \</span>
+<span class="s">        git update-ref refs/heads/master refs/remotes/$REMOTE/master; \</span>
+<span class="s">        git co master &gt;/dev/null 2&gt;&amp;1; \</span>
+<span class="s">        git reset --hard $REMOTE/master &gt;/dev/null 2&gt;&amp;1; \</span>
+<span class="s">        git checkout - &gt;/dev/null 2&gt;&amp;1; \</span>
+<span class="s">    }; f</span>
 </pre></div>
 
 
@@ -120,6 +123,8 @@ done using git running a shell script.</p>
 
 <h2>Thanks</h2>
 <p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+<p>And thanks <a href="https://twitter.com/widawsky">@widawsky</a> for pointing out some
+improvements.</p>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">
