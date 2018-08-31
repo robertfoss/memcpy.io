@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://memcpy.io/</loc>
-<lastmod>2018-08-24</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>https://memcpy.io/status-of-the-open-source-gpu-ecosystem-ossummit-na.html</loc>
+<lastmod>2018-08-31</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>https://memcpy.io/git-reset-upstream.html</loc>
 <lastmod>2018-08-24</lastmod>
@@ -292,7 +297,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/category/talks.html</loc>
-<lastmod>2018-05-10</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -587,7 +592,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/drivers.html</loc>
-<lastmod>2018-05-10</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -672,7 +677,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/graphics.html</loc>
-<lastmod>2018-05-10</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -747,7 +752,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/linux.html</loc>
-<lastmod>2018-05-10</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -797,7 +802,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/open.html</loc>
-<lastmod>2018-05-10</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -823,6 +828,11 @@
 </url><url>
 <loc>https://memcpy.io/tag/ossna.html</loc>
 <lastmod>2017-09-11</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>https://memcpy.io/tag/ossummit.html</loc>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -902,12 +912,17 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/slides.html</loc>
-<lastmod>2018-05-10</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/source.html</loc>
 <lastmod>2018-05-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>https://memcpy.io/tag/source-summit.html</loc>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -942,7 +957,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/talks.html</loc>
-<lastmod>2018-05-10</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1047,7 +1062,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2018-08-24</lastmod>
+<lastmod>2018-08-31</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>
