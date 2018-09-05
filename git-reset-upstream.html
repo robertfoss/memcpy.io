@@ -77,7 +77,7 @@ the upstream/master branch.</p>
 <span class="s">        esac; \</span>
 <span class="s">        git fetch $REMOTE; \</span>
 <span class="s">        git update-ref refs/heads/master refs/remotes/$REMOTE/master; \</span>
-<span class="s">        git co master &gt;/dev/null 2&gt;&amp;1; \</span>
+<span class="s">        git checkout master &gt;/dev/null 2&gt;&amp;1; \</span>
 <span class="s">        git reset --hard $REMOTE/master &gt;/dev/null 2&gt;&amp;1; \</span>
 <span class="s">        git checkout - &gt;/dev/null 2&gt;&amp;1; \</span>
 <span class="s">    }; f</span>

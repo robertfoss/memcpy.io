@@ -48,7 +48,7 @@ the upstream/master branch.&lt;/p&gt;
 &lt;span class="s"&gt;        esac; \&lt;/span&gt;
 &lt;span class="s"&gt;        git fetch $REMOTE; \&lt;/span&gt;
 &lt;span class="s"&gt;        git update-ref refs/heads/master refs/remotes/$REMOTE/master; \&lt;/span&gt;
-&lt;span class="s"&gt;        git co master &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; \&lt;/span&gt;
+&lt;span class="s"&gt;        git checkout master &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; \&lt;/span&gt;
 &lt;span class="s"&gt;        git reset --hard $REMOTE/master &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; \&lt;/span&gt;
 &lt;span class="s"&gt;        git checkout - &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; \&lt;/span&gt;
 &lt;span class="s"&gt;    }; f&lt;/span&gt;
