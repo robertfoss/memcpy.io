@@ -40,7 +40,7 @@ Add this snippet under the `[alias]` section of your `~/.gitconfig` file.
            	esac; \
             git fetch $REMOTE; \
             git update-ref refs/heads/master refs/remotes/$REMOTE/master; \
-            git co master >/dev/null 2>&1; \
+            git checkout master >/dev/null 2>&1; \
             git reset --hard $REMOTE/master >/dev/null 2>&1; \
             git checkout - >/dev/null 2>&1; \
         }; f
