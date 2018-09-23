@@ -137,7 +137,7 @@ TGSI format used by Gallium into the GLSL format used by OpenGL.
         --enable-texture-float \
         --with-platforms=drm,x11,wayland \
         --with-dri-drivers=i915,i965,nouveau \
-        --with-gallium-drivers=nouveau,swrast,radeonsi \
+        --with-gallium-drivers=nouveau,swrast,radeonsi,virgl \
         --without-vulkan-drivers
     make -j$(nproc --ignore=1)
     make install
