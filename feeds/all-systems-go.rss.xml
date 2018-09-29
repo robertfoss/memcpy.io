@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - all systems go</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Sat, 29 Sep 2018 00:00:00 +0200</lastBuildDate><item><title>Android on Mainline Graphics @ All Systems Go</title><link>https://memcpy.io/android-on-mainline-graphics-all-systems-go.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://all-systems-go.io/"&gt;All Systems Go!&lt;/a&gt;, the &lt;a href="https://twitter.com/ASGConf"&gt;@ASGConf&lt;/a&gt; for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 29 Sep 2018 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-09-29:/android-on-mainline-graphics-all-systems-go.html</guid><category>talks</category><category>slides</category><category>all systems go</category><category>linux</category><category>graphics</category><category>drivers</category></item></channel></rss>
