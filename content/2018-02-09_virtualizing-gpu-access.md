@@ -111,7 +111,6 @@ It receives Gallium states from the guest kernel
 via its virtio-gpu interface, which are then translated
 into OpenGL on the host. It also translates shaders from the
 TGSI format used by Gallium into the GLSL format used by OpenGL.
-    ./autogen.sh --prefix=$ALT_LOCAL
 
     git clone git://anongit.freedesktop.org/virglrenderer
     cd virglrenderer
