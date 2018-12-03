@@ -12,9 +12,9 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Setup container on LXC Host In order to give Docker in the guest privileges, the guest container itself has to be given privileges. There is no simple switch for doing this in LXC unfortunately, but a few config options will do the trick. lxc launch images:ubuntu/bionic container lxc config set container security.nesting true lxc config set container security.privileged true cat &lt;&lt;EOT | lxc config set container raw.lxc - lxc.cgroup.devices.allow = a lxc.cap.drop = EOT lxc restart container Setup docker on container Just to verify that this works, start a privileged Docker container inside of the LXC container. $ lxc exec container bash $ docker run --privileged hello-world Unable to find image &#39;hello-world:latest&#39; locally latest: Pulling from library/hello-world d1725b59e92d: Pull …">
+		<meta name="description" content="The architecture is a bit of container matroska, but what we&#39;re trying to achieve is running Docker privileged inside of a LXC container on a baremetal host. Setup container on LXC Host In order to give Docker in the guest privileges, the guest container itself has to be given privileges. There is no simple switch for doing this in LXC unfortunately, but a few config options will do the trick. lxc launch images:ubuntu/bionic container lxc config set container security.nesting true lxc config set container security.privileged true cat &lt;&lt;EOT | lxc config set container raw.lxc - lxc.cgroup.devices.allow = a lxc.cap.drop = EOT lxc restart container Setup docker on container Just to verify that this works, start a privileged Docker container …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, virtualization, lxc, lxd, docker, privileges">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, virtualization, lxc, lxd, docker, privileged">
 		<meta property="og:title" content="Running Docker privileged inside of LXC / LXD" />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="https://memcpy.io/images/2018-12-03_docker.png" />
@@ -28,7 +28,7 @@
 		<meta property="article:tag" content="lxc" />
 		<meta property="article:tag" content="lxd" />
 		<meta property="article:tag" content="docker" />
-		<meta property="article:tag" content="privileges" />
+		<meta property="article:tag" content="privileged" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:creator" content="@memcpy_io" />
 		<meta name="twitter:site" content="@memcpy_io" />
@@ -45,7 +45,10 @@
 				</p>
 			</header>
 			<p>Being able to run Docker containers inside of LXC containers comes in quite handy due to them solving slightly different issues.</p>
-			<p><a href="/images/2018-12-03_docker.png"><img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC">
+			<p>The architecture is a bit of container matroska, but what we're trying to
+achieve is running Docker privileged inside of a LXC container on a baremetal
+host.</p>
+<p><a href="/images/2018-12-03_docker.png"><img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC">
 </a></p>
 <h2>Setup container on LXC Host</h2>
 <p>In order to give Docker in the guest privileges, the guest container
@@ -116,7 +119,7 @@ by Stéphane Graber.</p>
 					<span id="breakdot">&middot; </span>
 					<a href="./tag/docker.html">docker </a>
 					<span id="breakdot">&middot; </span>
-					<a href="./tag/privileges.html">privileges </a>
+					<a href="./tag/privileged.html">privileged </a>
 				</p>
 			</div>
 		</section>

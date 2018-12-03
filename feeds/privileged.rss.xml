@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - docker</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 03 Dec 2018 19:00:00 +0100</lastBuildDate><item><title>Running Docker privileged inside of LXC / LXD</title><link>https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html</link><description>&lt;p&gt;The architecture is a bit of container matroska, but what we're trying to
+<rss version="2.0"><channel><title>memcpy.io - privileged</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 03 Dec 2018 19:00:00 +0100</lastBuildDate><item><title>Running Docker privileged inside of LXC / LXD</title><link>https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html</link><description>&lt;p&gt;The architecture is a bit of container matroska, but what we're trying to
 achieve is running Docker privileged inside of a LXC container on a baremetal
 host.&lt;/p&gt;
 &lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;

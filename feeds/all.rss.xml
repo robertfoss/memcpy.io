@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 03 Dec 2018 19:00:00 +0100</lastBuildDate><item><title>Running Docker privileged inside of LXC / LXD</title><link>https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html</link><description>&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
+<rss version="2.0"><channel><title>memcpy.io</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 03 Dec 2018 19:00:00 +0100</lastBuildDate><item><title>Running Docker privileged inside of LXC / LXD</title><link>https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html</link><description>&lt;p&gt;The architecture is a bit of container matroska, but what we're trying to
+achieve is running Docker privileged inside of a LXC container on a baremetal
+host.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
 &lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Setup container on LXC Host&lt;/h2&gt;
 &lt;p&gt;In order to give Docker in the guest privileges, the guest container
@@ -20,13 +23,7 @@ lxc restart container
 
 
 &lt;h2&gt;Setup docker on container&lt;/h2&gt;
-&lt;p&gt;Just to verify that this works, start a privileged Docker container inside
-of the LXC container.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lxc &lt;span class="nb"&gt;exec&lt;/span&gt; container bash
-$ docker run --privileged hello-world
-Unable to find image &lt;span class="s1"&gt;&amp;#39;hello-world:latest&amp;#39;&lt;/span&gt; locally
-latest: Pulling from library/hello-world
-d1725b59e92d: Pull …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 03 Dec 2018 19:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-12-03:/running-docker-privileged-inside-of-lxc-lxd.html</guid><category>linux</category><category>virtualization</category><category>lxc</category><category>lxd</category><category>docker</category><category>privileges</category></item><item><title>Android on Mainline Graphics @ All Systems Go</title><link>https://memcpy.io/android-on-mainline-graphics-all-systems-go.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
+&lt;p&gt;Just to verify that this works, start a privileged Docker container …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 03 Dec 2018 19:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-12-03:/running-docker-privileged-inside-of-lxc-lxd.html</guid><category>linux</category><category>virtualization</category><category>lxc</category><category>lxd</category><category>docker</category><category>privileged</category></item><item><title>Android on Mainline Graphics @ All Systems Go</title><link>https://memcpy.io/android-on-mainline-graphics-all-systems-go.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;

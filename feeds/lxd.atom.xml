@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - lxd</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/lxd.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-12-03T19:00:00+01:00</updated><entry><title>Running Docker privileged inside of LXC / LXD</title><link href="https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html" rel="alternate"></link><published>2018-12-03T19:00:00+01:00</published><updated>2018-12-03T19:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-12-03:/running-docker-privileged-inside-of-lxc-lxd.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - lxd</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/lxd.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-12-03T19:00:00+01:00</updated><entry><title>Running Docker privileged inside of LXC / LXD</title><link href="https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html" rel="alternate"></link><published>2018-12-03T19:00:00+01:00</published><updated>2018-12-03T19:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-12-03:/running-docker-privileged-inside-of-lxc-lxd.html</id><summary type="html">&lt;p&gt;The architecture is a bit of container matroska, but what we're trying to
+achieve is running Docker privileged inside of a LXC container on a baremetal
+host.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
 &lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Setup container on LXC Host&lt;/h2&gt;
 &lt;p&gt;In order to give Docker in the guest privileges, the guest container
@@ -20,13 +23,10 @@ lxc restart container
 
 
 &lt;h2&gt;Setup docker on container&lt;/h2&gt;
-&lt;p&gt;Just to verify that this works, start a privileged Docker container inside
-of the LXC container.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lxc &lt;span class="nb"&gt;exec&lt;/span&gt; container bash
-$ docker run --privileged hello-world
-Unable to find image &lt;span class="s1"&gt;&amp;#39;hello-world:latest&amp;#39;&lt;/span&gt; locally
-latest: Pulling from library/hello-world
-d1725b59e92d: Pull …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
+&lt;p&gt;Just to verify that this works, start a privileged Docker container …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The architecture is a bit of container matroska, but what we're trying to
+achieve is running Docker privileged inside of a LXC container on a baremetal
+host.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
 &lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Setup container on LXC Host&lt;/h2&gt;
 &lt;p&gt;In order to give Docker in the guest privileges, the guest container
@@ -82,7 +82,7 @@ https://docs.docker.com/get-started/
 
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This write-up is based &lt;a href="https://github.com/lxc/lxd/issues/4902"&gt;info&lt;/a&gt; provided
-by Stéphane Graber.&lt;/p&gt;</content><category term="linux"></category><category term="virtualization"></category><category term="lxc"></category><category term="lxd"></category><category term="docker"></category><category term="privileges"></category></entry><entry><title>Configuring QNAP LXC containers for VPNs using TUN</title><link href="https://memcpy.io/configuring-qnap-lxc-containers-for-vpns-using-tun.html" rel="alternate"></link><published>2018-06-24T22:16:00+02:00</published><updated>2018-06-24T22:16:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-06-24:/configuring-qnap-lxc-containers-for-vpns-using-tun.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-06-24_lxc_config.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-24_lxc_config.png" title="QNAP Container Station LXC Config"&gt;
+by Stéphane Graber.&lt;/p&gt;</content><category term="linux"></category><category term="virtualization"></category><category term="lxc"></category><category term="lxd"></category><category term="docker"></category><category term="privileged"></category></entry><entry><title>Configuring QNAP LXC containers for VPNs using TUN</title><link href="https://memcpy.io/configuring-qnap-lxc-containers-for-vpns-using-tun.html" rel="alternate"></link><published>2018-06-24T22:16:00+02:00</published><updated>2018-06-24T22:16:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-06-24:/configuring-qnap-lxc-containers-for-vpns-using-tun.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-06-24_lxc_config.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-24_lxc_config.png" title="QNAP Container Station LXC Config"&gt;
 &lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Configuring the QNAP device&lt;/h3&gt;
 &lt;p&gt;The first step is to SSH into your QNAP device using the &lt;em&gt;admin&lt;/em&gt; account.&lt;/p&gt;
