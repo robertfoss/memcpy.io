@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/all.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-09-29T00:00:00+02:00</updated><entry><title>Android on Mainline Graphics @ All Systems Go</title><link href="https://memcpy.io/android-on-mainline-graphics-all-systems-go.html" rel="alternate"></link><published>2018-09-29T00:00:00+02:00</published><updated>2018-09-29T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-09-29:/android-on-mainline-graphics-all-systems-go.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/all.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-12-03T19:00:00+01:00</updated><entry><title>Running Docker privileged inside of LXC / LXD</title><link href="https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html" rel="alternate"></link><published>2018-12-03T19:00:00+01:00</published><updated>2018-12-03T19:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-12-03:/running-docker-privileged-inside-of-lxc-lxd.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Setup container on LXC Host&lt;/h2&gt;
+&lt;p&gt;In order to give Docker in the guest privileges, the guest container
+itself has to be given privileges.&lt;/p&gt;
+&lt;p&gt;There is no simple switch for doing this in LXC unfortunately, but a few
+config options will do the trick.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lxc launch images:ubuntu/bionic container
+
+lxc config set container security.nesting true
+lxc config set container security.privileged true
+cat &amp;lt;&amp;lt;EOT | lxc config set container raw.lxc -
+lxc.cgroup.devices.allow = a
+lxc.cap.drop =
+EOT
+
+lxc restart container
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Setup docker on container&lt;/h2&gt;
+&lt;p&gt;Just to verify that this works, start a privileged Docker container inside
+of the LXC container.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lxc &lt;span class="nb"&gt;exec&lt;/span&gt; container bash
+$ docker run --privileged hello-world
+Unable to find image &lt;span class="s1"&gt;&amp;#39;hello-world:latest&amp;#39;&lt;/span&gt; locally
+latest: Pulling from library/hello-world
+d1725b59e92d: Pull …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Setup container on LXC Host&lt;/h2&gt;
+&lt;p&gt;In order to give Docker in the guest privileges, the guest container
+itself has to be given privileges.&lt;/p&gt;
+&lt;p&gt;There is no simple switch for doing this in LXC unfortunately, but a few
+config options will do the trick.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lxc launch images:ubuntu/bionic container
+
+lxc config set container security.nesting true
+lxc config set container security.privileged true
+cat &amp;lt;&amp;lt;EOT | lxc config set container raw.lxc -
+lxc.cgroup.devices.allow = a
+lxc.cap.drop =
+EOT
+
+lxc restart container
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Setup docker on container&lt;/h2&gt;
+&lt;p&gt;Just to verify that this works, start a privileged Docker container inside
+of the LXC container.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lxc &lt;span class="nb"&gt;exec&lt;/span&gt; container bash
+$ docker run --privileged hello-world
+Unable to find image &lt;span class="s1"&gt;&amp;#39;hello-world:latest&amp;#39;&lt;/span&gt; locally
+latest: Pulling from library/hello-world
+d1725b59e92d: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788
+Status: Downloaded newer image &lt;span class="k"&gt;for&lt;/span&gt; hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+&lt;span class="m"&gt;1&lt;/span&gt;. The Docker client contacted the Docker daemon.
+&lt;span class="m"&gt;2&lt;/span&gt;. The Docker daemon pulled the &lt;span class="s2"&gt;&amp;quot;hello-world&amp;quot;&lt;/span&gt; image from the Docker Hub.
+&lt;span class="o"&gt;(&lt;/span&gt;amd64&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="m"&gt;3&lt;/span&gt;. The Docker daemon created a new container from that image which runs the
+executable that produces the output you are currently reading.
+&lt;span class="m"&gt;4&lt;/span&gt;. The Docker daemon streamed that output to the Docker client, which sent it
+to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+$ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+https://hub.docker.com/
+
+For more examples and ideas, visit:
+https://docs.docker.com/get-started/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This write-up is based &lt;a href="https://github.com/lxc/lxd/issues/4902"&gt;info&lt;/a&gt; provided
+by Stéphane Graber.&lt;/p&gt;</content><category term="linux"></category><category term="virtualization"></category><category term="lxc"></category><category term="lxd"></category><category term="docker"></category><category term="privileges"></category></entry><entry><title>Android on Mainline Graphics @ All Systems Go</title><link href="https://memcpy.io/android-on-mainline-graphics-all-systems-go.html" rel="alternate"></link><published>2018-09-29T00:00:00+02:00</published><updated>2018-09-29T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-09-29:/android-on-mainline-graphics-all-systems-go.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;

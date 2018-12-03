@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://memcpy.io/</loc>
-<lastmod>2018-09-29</lastmod>
+<lastmod>2018-12-03</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html</loc>
+<lastmod>2018-12-03</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>https://memcpy.io/android-on-mainline-graphics-all-systems-go.html</loc>
 <lastmod>2018-09-29</lastmod>
@@ -287,7 +292,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/category/linux.html</loc>
-<lastmod>2016-09-23</lastmod>
+<lastmod>2018-12-03</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -596,6 +601,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>https://memcpy.io/tag/docker.html</loc>
+<lastmod>2018-12-03</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>https://memcpy.io/tag/driver.html</loc>
 <lastmod>2018-07-31</lastmod>
 <changefreq>monthly</changefreq>
@@ -762,17 +772,17 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/linux.html</loc>
-<lastmod>2018-09-29</lastmod>
+<lastmod>2018-12-03</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/lxc.html</loc>
-<lastmod>2018-06-24</lastmod>
+<lastmod>2018-12-03</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/lxd.html</loc>
-<lastmod>2018-06-24</lastmod>
+<lastmod>2018-12-03</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -868,6 +878,11 @@
 </url><url>
 <loc>https://memcpy.io/tag/prague.html</loc>
 <lastmod>2017-10-25</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>https://memcpy.io/tag/privileges.html</loc>
+<lastmod>2018-12-03</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1027,7 +1042,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/virtualization.html</loc>
-<lastmod>2018-02-09</lastmod>
+<lastmod>2018-12-03</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1072,7 +1087,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2018-09-29</lastmod>
+<lastmod>2018-12-03</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>
