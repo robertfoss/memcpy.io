@@ -85,6 +85,7 @@ the stack of the host machine more than we have to.
         	mkdir -p "$ALT_LOCAL"
     		prefix_setup "$ALT_LOCAL"
     		;;
+      esac
     }
 
 The above snippet is something that I would put in my `.bashrc` or `.zshrc`.
@@ -175,7 +176,7 @@ built with the appropriate virtio-gpu Kconfig options though.
         -net user,hostfwd=tcp::2222-:22 \
         -vga virtio \
         -display sdl,gl=on \
-        -boot d -cdrom ubuntu-17.10.1-desktop-amd64.iso
+        -boot d -cdrom ubuntu-17.10.1-server-amd64.iso
 
 ### Run VM
 
