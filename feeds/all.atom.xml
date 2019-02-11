@@ -569,6 +569,7 @@ the stack of the host machine more than we have to.&lt;/p&gt;
         &lt;span class="nx"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL&amp;quot;&lt;/span&gt;
         &lt;span class="nx"&gt;prefix_setup&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL&amp;quot;&lt;/span&gt;
         &lt;span class="p"&gt;;;&lt;/span&gt;
+  &lt;span class="nx"&gt;esac&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -659,7 +660,7 @@ qemu-system-x86_64 \
     -net user,hostfwd=tcp::2222-:22 \
     -vga virtio \
     -display sdl,gl=on \
-    -boot d -cdrom ubuntu-17.10.1-desktop-amd64.iso
+    -boot d -cdrom ubuntu-17.10.1-server-amd64.iso
 &lt;/pre&gt;&lt;/div&gt;
 
 

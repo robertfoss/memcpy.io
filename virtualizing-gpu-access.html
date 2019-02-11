@@ -118,6 +118,7 @@ the stack of the host machine more than we have to.</p>
         <span class="nx">mkdir</span> <span class="o">-</span><span class="nx">p</span> <span class="s2">&quot;$ALT_LOCAL&quot;</span>
         <span class="nx">prefix_setup</span> <span class="s2">&quot;$ALT_LOCAL&quot;</span>
         <span class="p">;;</span>
+  <span class="nx">esac</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -208,7 +209,7 @@ qemu-system-x86_64 \
     -net user,hostfwd=tcp::2222-:22 \
     -vga virtio \
     -display sdl,gl=on \
-    -boot d -cdrom ubuntu-17.10.1-desktop-amd64.iso
+    -boot d -cdrom ubuntu-17.10.1-server-amd64.iso
 </pre></div>
 
 
@@ -267,7 +268,7 @@ set up your very own virglrenderer enabled graphics stack.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2018 Robert Foss
+					2019 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>
