@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | An Overview on the Panfrost driver</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="The process of reverse engineering ARM GPUs has been going on for a long time, starting with Luc Verhaegens work on the low-end Mali 2/3/400 series of GPUs based on the ARM Utgard family of GPUs. This driver has recently seen a lot new attention and is itself progressing quickly, which means it will be accepted in the kernel and mesa soon. A piece of trivia is that this GPU architecture was what ARM received when they purchased the Norwegian GPU IP vendor Falanx Microsystems. The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures respectively, both of which are quite different from the 2/3/400 series. However the T and G-series are somewhat similar at least …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, open source, gpu, driver, arm, mali, panfrost">
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>An Overview on the Panfrost driver</h1>
+				<p>
+				Published <time datetime="2019-03-12" itemprop="datePublished">2019-03-12</time>
+				</p>
+			</header>
+			<p>During the past few months a lot of progress has been made on the Open Source ARM Mali GPU driver front, culminating in the Panfrost driver now being available for Mali T and G-series of GPUs.</p>
+			<p><img alt="ARM driver timeline" src="/images/2019-03-12_arm_driver_timeline.png"></p>
+<p>The process of reverse engineering ARM GPUs has been going on for a long time,
+starting with <a href="https://github.com/libv">Luc Verhaegens</a> work on the low-end Mali 2/3/400 series of GPUs based
+on the ARM Utgard family of GPUs.<br>
+This driver has recently seen a lot new attention and is itself progressing quickly,
+which means it will be accepted in the kernel and mesa soon.<br>
+A piece of trivia is that this GPU architecture was what ARM received when they
+purchased the Norwegian GPU IP vendor Falanx Microsystems.</p>
+<p>The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
+respectively, both of which are quite different from the 2/3/400 series.
+However the T and G-series are somewhat similar at least when it comes to the
+way a driver can be built for them. This is why the Panfrost driver is aiming
+to support both architectures with one driver.</p>
+<p><img alt="Panfrost demo" src="/images/2019-03-12_panfrost_demo.jpg"></p>
+<p>At <a href="https://www.embedded-world.de/en">Embedded World 2019</a> Collabora demoed the
+panfrost driver running kmscube (pictured to the right).
+The singleboard computer used was a <a href="https://rockpi.org">Radxa Rock Pi 4</a>,
+which was generously sent to us by <a href="https://twitter.com/hipboi_">Tom Cubie</a>.</p>
+<p>Panfrost currently runs simple 3D applications like kmscube, the Wayland based
+Weston desktop and even more complex 3D benchmarks like glmark2.</p>
+<p>This is still a new driver and it is in heavy development currently.</p>
+<h2>Current status</h2>
+<p>There are two semi-parallel parts under development currently; the new kernel
+driver and the mesa userspace driver.</p>
+<p><img alt="Panfrost demo" src="/images/2019-03-12_panfrost.svg"></p>
+<p>The new kernel drivers is intended to replace the Open Source driver that ARM
+provides for its Mali GPUs (mali_kbase). Up until recently the mesa panfrost
+has been used with a shim between the ARM kernel driver and the userspace driver.
+While the ARM kernel driver exists, it cannot accepted into the upstream Linux
+kernel project for a multiple reasons. It's doesn't expose the DRM or
+Atomic KMS API that is expected of modern GPU drivers in the kernel.</p>
+<p>As for the panfrost mesa driver, this driver is under heavy development
+and is seeing fixes, improvements to the compiler and new features added at a
+rapid pace.
+This driver is being built ontop of the common Gallium driver framework in
+mesa, which means that it will be relatively easy to move features from other
+drivers to the panfrost driver.<br>
+Additionally the panfrost driver uses the NIR intermediate representation (IR) for
+its compiler, which is the most common and most modern IR that mesa implements.
+This again means that new and upcoming features like OpenCL for example, will
+be portable from the other Gallium/NIR drivers to panfrost.</p>
+<h2>Thanks</h2>
+<p>These drivers are community drivers, but have been spearheaded by
+<a href="https://rosenzweig.io/blog/">Alyssa Rosenzweig</a>,
+<a href="https://twitter.com/_Lyude">Lyude Paul</a>,
+<a href="https://github.com/cwabbott0">Connor Abott</a>,
+<a href="https://github.com/robherring">Rob Herring</a> and
+Collaboras very own <a href="https://blog.tomeuvizoso.net">Tomeu Vizoso</a>.</p>
+<p>I would also like to thank <a href="https://twitter.com/hipboi_">Tom Cubie</a> for sending
+out Rock Pi 4 boards to not just me, but the wider panfrost development community.</p>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/open-source.html">open source </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/gpu.html">gpu </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/driver.html">driver </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/arm.html">arm </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/mali.html">mali </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/panfrost.html">panfrost </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2019 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
