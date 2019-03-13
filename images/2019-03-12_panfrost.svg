@@ -26,10 +26,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="604.61393"
+     inkscape:cx="421.11393"
      inkscape:cy="-42.640627"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g952-1"
      showgrid="false"
      inkscape:measure-start="0,0"
      inkscape:measure-end="0,0"
@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -194,7 +194,7 @@
              id="tspan4780-9-9-2-1"
              x="58.4212"
              y="52.314907"
-             style="font-size:7.05555534px;line-height:77.40003467%;stroke-width:0.3924455px">panfrost</tspan></text>
+             style="font-size:7.05555534px;line-height:77.40003467%;stroke-width:0.3924455px">drm/panfrost</tspan></text>
       </g>
     </g>
     <path
