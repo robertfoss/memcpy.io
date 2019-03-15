@@ -4,12 +4,12 @@
 starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
 on the Arm Utgard family of GPUs.&lt;br&gt;
 This driver has recently seen a lot new attention and is itself progressing quickly,
-which means it will be accepted in the kernel.&lt;br&gt;
+which means it will likely be accepted into the kernel soon.&lt;br&gt;
 A piece of trivia is that this GPU architecture was what Arm received when they
 purchased the Norwegian GPU IP vendor Falanx Microsystems.&lt;/p&gt;
 &lt;p&gt;The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
 respectively, both of which are quite different from the 2/3/400 series.
-However the T and G-series are somewhat similar at least when it comes …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>linux</category><category>open source</category><category>gpu</category><category>driver</category><category>arm</category><category>mali</category><category>panfrost</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
+However the T and G-series are somewhat similar at least when …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>linux</category><category>open source</category><category>gpu</category><category>driver</category><category>arm</category><category>mali</category><category>panfrost</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
