@@ -4,7 +4,7 @@
 starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
 on the Arm Utgard family of GPUs.&lt;br&gt;
 This driver has recently seen a lot new attention and is itself progressing quickly,
-which means it will be accepted into the kernel.&lt;br&gt;
+which means it will be accepted in the kernel.&lt;br&gt;
 A piece of trivia is that this GPU architecture was what Arm received when they
 purchased the Norwegian GPU IP vendor Falanx Microsystems.&lt;/p&gt;
 &lt;p&gt;The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
