@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="2019-03-12_panfrost.svg">
+   sodipodi:docname="2019-03-13_panfrost.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="421.11393"
-     inkscape:cy="-42.640627"
+     inkscape:zoom="2"
+     inkscape:cx="530.05591"
+     inkscape:cy="22.879651"
      inkscape:document-units="mm"
-     inkscape:current-layer="g952-1"
+     inkscape:current-layer="g1057"
      showgrid="false"
      inkscape:measure-start="0,0"
      inkscape:measure-end="0,0"
@@ -138,29 +138,34 @@
          style="stroke-width:0.26458332px" /></text>
     <g
        id="g1057">
-      <g
-         id="g952">
-        <rect
-           id="rect3699-5-8-4"
-           width="55.302902"
-           height="29.079361"
-           x="57.665604"
-           y="33.424454"
-           style="fill:#5c3dcc;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.83278418;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
-           ry="3.4388304" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:15.69782066px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3924455px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+      <rect
+         ry="1.6179856"
+         style="fill:#5c3dcc;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.833;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+         y="48.952618"
+         x="57.665604"
+         height="13.681973"
+         width="55.302902"
+         id="rect3699-5-8-4" />
+      <text
+         transform="scale(1.0370906,0.96423591)"
+         id="text4782-2-7-9"
+         y="59.711315"
+         x="58.4212"
+         style="font-style:normal;font-weight:normal;font-size:15.69782066px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3924455px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:7.05555534px;line-height:77.40003467%;stroke-width:0.3924455px"
+           y="59.711315"
            x="58.4212"
-           y="52.314907"
-           id="text4782-2-7-9"
-           transform="scale(1.0370906,0.96423591)"><tspan
-             sodipodi:role="line"
-             id="tspan4780-9-9-2"
-             x="58.4212"
-             y="52.314907"
-             style="font-size:7.05555534px;line-height:77.40003467%;stroke-width:0.3924455px">mali_kbase</tspan></text>
-      </g>
+           id="tspan4780-9-9-2"
+           sodipodi:role="line">mali_kbase</tspan></text>
+      <rect
+         ry="1.5722671"
+         style="fill:#5c3dcc;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.833;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+         y="33.289616"
+         x="57.85376"
+         height="13.295369"
+         width="55.302902"
+         id="rect3699-5-8-4-8" />
       <text
          id="text5050-0-4-8-3"
          y="41.048916"
@@ -196,6 +201,18 @@
              y="52.314907"
              style="font-size:7.05555534px;line-height:77.40003467%;stroke-width:0.3924455px">drm/panfrost</tspan></text>
       </g>
+      <text
+         transform="scale(1.0370906,0.96423591)"
+         id="text4782-2-7-9-0"
+         y="43.266891"
+         x="58.4212"
+         style="font-style:normal;font-weight:normal;font-size:15.69782066px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3924455px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:7.05555534px;line-height:77.40003467%;stroke-width:0.3924455px"
+           y="43.266891"
+           x="58.4212"
+           id="tspan4780-9-9-2-4"
+           sodipodi:role="line">shim</tspan></text>
     </g>
     <path
        style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#666666;stroke-width:0.50365418;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.02923314, 4.02923314;stroke-dashoffset:0.5;stroke-opacity:1"
