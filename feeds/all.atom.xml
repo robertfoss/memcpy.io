@@ -46,7 +46,7 @@ DRM API that userspace expects of modern GPU drivers in the kernel.&lt;/p&gt;
 &lt;p&gt;As for the Panfrost Mesa driver, this driver is under heavy development
 and is seeing fixes, improvements to the compiler and new features added at a
 rapid pace.
-This driver is being built ontop of the common Gallium driver framework in
+This driver is being built on top of the common Gallium driver framework in
 Mesa, which means that it will be relatively easy to move features from other
 drivers to the Panfrost driver.&lt;br&gt;
 Additionally the Panfrost driver uses the NIR intermediate representation (IR) for
