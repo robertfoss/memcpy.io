@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://memcpy.io/</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>https://memcpy.io/running-android-with-wayland.html</loc>
+<lastmod>2019-04-01</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>https://memcpy.io/an-overview-of-the-panfrost-driver.html</loc>
 <lastmod>2019-03-13</lastmod>
@@ -277,7 +282,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/category/graphics.html</loc>
-<lastmod>2018-07-31</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -361,6 +366,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>https://memcpy.io/tag/3d.html</loc>
+<lastmod>2019-03-13</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>https://memcpy.io/tag/8m.html</loc>
 <lastmod>2018-04-13</lastmod>
 <changefreq>monthly</changefreq>
@@ -421,6 +431,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>https://memcpy.io/tag/acceleration.html</loc>
+<lastmod>2019-03-13</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>https://memcpy.io/tag/adb.html</loc>
 <lastmod>2016-12-07</lastmod>
 <changefreq>monthly</changefreq>
@@ -432,7 +447,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/android.html</loc>
-<lastmod>2018-04-23</lastmod>
+<lastmod>2019-03-13</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -467,7 +482,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/arm.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -622,7 +637,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/driver.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -707,12 +722,12 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/gpu.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/graphics.html</loc>
-<lastmod>2019-02-27</lastmod>
+<lastmod>2019-03-13</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -787,7 +802,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/linux.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -802,7 +817,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/mali.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -847,7 +862,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/open-source.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -887,7 +902,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/panfrost.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1092,7 +1107,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/wayland.html</loc>
-<lastmod>2016-06-03</lastmod>
+<lastmod>2019-03-13</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1122,7 +1137,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2019-04-01</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>

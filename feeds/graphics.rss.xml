@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - graphics</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 27 Feb 2019 00:00:00 +0100</lastBuildDate><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - graphics</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 13 Mar 2019 16:25:00 +0100</lastBuildDate><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;div style="text-align:center;"&gt;
+&lt;iframe src="https://drive.google.com/file/d/1GqOHbaI2ZcBkYnWBpMXy-LgCyLgzdLRg/preview" width="640" height="480"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
+this is a quick overview of how it works.&lt;/p&gt;
+&lt;p&gt;== What is SPURV?
+SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/spurv.svg"&gt;&lt;/p&gt;
+&lt;p&gt;==== Android target device
+This component integrates SPURV into Android, and it does so by using the
+&lt;code&gt;device&lt;/code&gt; infrastructure that the Android codebase provides.&lt;/p&gt;
+&lt;p&gt;Devices are normally used to customize an Android build to the
+specific needs of a given hardware platform, like a new smartphone
+SOC. In the case of SPURV, we're targeting being run inside of
+a &lt;code&gt;systemd-nspawn&lt;/code&gt; container.&lt;/p&gt;
+&lt;p&gt;==== SPURV Audio
+This component bridges the Android Audio Hardware Abtraction Layer (HAL) to
+the host ALSA stack.&lt;/p&gt;
+&lt;p&gt;==== SPURV HWComposer
+Integrates Android windows into Wayland. It does so by implementing a HWC-to-Wayland …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;

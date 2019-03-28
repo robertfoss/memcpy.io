@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - wayland</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Fri, 03 Jun 2016 10:32:00 +0200</lastBuildDate><item><title>Running Weston on a Raspbian</title><link>https://memcpy.io/running-weston-on-a-raspbian.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - wayland</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 13 Mar 2019 16:25:00 +0100</lastBuildDate><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;div style="text-align:center;"&gt;
+&lt;iframe src="https://drive.google.com/file/d/1GqOHbaI2ZcBkYnWBpMXy-LgCyLgzdLRg/preview" width="640" height="480"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
+this is a quick overview of how it works.&lt;/p&gt;
+&lt;p&gt;== What is SPURV?
+SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/spurv.svg"&gt;&lt;/p&gt;
+&lt;p&gt;==== Android target device
+This component integrates SPURV into Android, and it does so by using the
+&lt;code&gt;device&lt;/code&gt; infrastructure that the Android codebase provides.&lt;/p&gt;
+&lt;p&gt;Devices are normally used to customize an Android build to the
+specific needs of a given hardware platform, like a new smartphone
+SOC. In the case of SPURV, we're targeting being run inside of
+a &lt;code&gt;systemd-nspawn&lt;/code&gt; container.&lt;/p&gt;
+&lt;p&gt;==== SPURV Audio
+This component bridges the Android Audio Hardware Abtraction Layer (HAL) to
+the host ALSA stack.&lt;/p&gt;
+&lt;p&gt;==== SPURV HWComposer
+Integrates Android windows into Wayland. It does so by implementing a HWC-to-Wayland …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>Running Weston on a Raspbian</title><link>https://memcpy.io/running-weston-on-a-raspbian.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
 &lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration
 using pixman was needed, but this is no longer the case.&lt;/p&gt;
