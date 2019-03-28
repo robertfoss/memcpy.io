@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="228.44884mm"
-   height="188.89062mm"
-   viewBox="0 0 228.44884 188.89062"
+   width="318.44922mm"
+   height="188.59062mm"
+   viewBox="0 0 318.44922 188.59062"
    version="1.1"
    id="svg5155"
-   sodipodi:docname="spurv.svg"
+   sodipodi:docname="2019_spurv.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    inkscape:export-filename="/home/robertfoss/tmp/spurv.png"
    inkscape:export-xdpi="96"
@@ -60,8 +60,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="569.48162"
-     inkscape:cy="383.85542"
+     inkscape:cx="608.48893"
+     inkscape:cy="383.8555"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -70,16 +70,16 @@
      inkscape:window-x="1352"
      inkscape:window-y="364"
      inkscape:window-maximized="0"
-     fit-margin-top="2"
-     fit-margin-left="5"
-     fit-margin-right="1"
+     fit-margin-top="1.7"
+     fit-margin-left="50"
+     fit-margin-right="46"
      fit-margin-bottom="2">
     <inkscape:grid
        type="xygrid"
        id="grid6036"
        visible="true"
-       originx="137.29168"
-       originy="-110.05178" />
+       originx="182.29167"
+       originy="-110.05175" />
   </sodipodi:namedview>
   <metadata
      id="metadata5152">
@@ -97,7 +97,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(137.29167,1.9424119)">
+     transform="translate(182.29167,1.6424119)">
     <path
        style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.05999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6.36000007, 1.06000001;stroke-dashoffset:0;stroke-opacity:0"
        d="M 63.290681,133.7737 H -76.211286 -106.56881 l -22.48959,-0.006"
