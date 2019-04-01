@@ -24,7 +24,7 @@
 				Published <time datetime="2019-04-01" itemprop="datePublished">2019-04-01</time>
 				</p>
 			</header>
-			<p>Now it's possible run Android applications in the same graphical environment as traditional Linux applications.</p>
+			<p>Now it's possible run Android applications in the same graphical environment as traditional Linux applications with full 3D acceleration.</p>
 			<p>Running Android has some advantages compared to native Linux applications,
 for example with regard to the availability of applications and application
 developers.</p>
@@ -86,17 +86,16 @@ the Android build to our requirements.</p>
 <p>The way SPURV is implemented means that a full OS is being run in a container,
 which has implications both positive and negative.</p>
 <p>One of the positive effects is increased isolation of Android applications,
-which means improved security and potentially privacy for untrusted applications.</p>
+which means improved security and privacy for potentially untrusted applications.</p>
 <p>Additionally, this approach allows for Android applications to be run next to
 Wayland based applications in a desktop environment.</p>
-<p>The downsides relate to hardware access and performance. All hardware access that
-is needed by Android has to be passed into the container.
+<p>The downsides relate to hardware access and performance. All hardware access
+that is needed by Android has to be passed into the container.
 Besides manually having to configure such access using <code>systemd-nspawn</code>,
 there are also performance costs associated with running a container.
 One part of this is the static cost of having to load an entire OS on top
 of the base OS, but there are also additional runtime performance penalties
 for applications in the container.</p>
-<p>There is a performance penalty, especially if the Android application is</p>
 <h2>Acknowledgements</h2>
 <ul>
 <li>Pengutronix</li>
