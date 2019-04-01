@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Our experimental containerized Android environment is called SPURV, and this is a quick overview of how it works. What is SPURV? SPURV consists of a few different parts, all living in the same repository. Android target device This component integrates SPURV into Android, and it does so by using the device infrastructure that the Android codebase provides. Devices are normally used to customize an Android build to the specific needs of a given hardware platform, like a new smartphone SOC. In the case of SPURV, we&#39;re targeting being run inside of a systemd-nspawn container. SPURV Audio This component bridges the Android Audio Hardware Abtraction Layer (HAL) to the host ALSA stack. SPURV HWComposer Integrates Android windows into Wayland. It does so by implementing a HWC-to-Wayland …">
+		<meta name="description" content="Running Android has some advantages compared to native Linux applications, for example with regard to the availability of applications and application developers. For current non-Android systems, this work enables a path forward to running Android applications in the same graphical environment as traditional non-Android applications are run. Our experimental containerized Android environment is called SPURV, and this is a quick overview of how it works. What is SPURV? SPURV consists of a few different parts, all living in the same repository. Android target device This component integrates SPURV into Android, and it does so by using the device infrastructure that the Android codebase provides. Devices are normally used to customize an Android build to the specific needs of a given hardware platform, like a new …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, open source, graphics, wayland, android, 3d, acceleration">
 	</head>
@@ -24,9 +24,15 @@
 				Published <time datetime="2019-04-01" itemprop="datePublished">2019-04-01</time>
 				</p>
 			</header>
-			<p>Running Android has many advantages compared to native Linux applications, both when it comes to security and the availability of applications.</p>
-			<div style#"text-align:center;">
-<iframe width="800" height="430" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<p>Now it's possible run Android applications in the same graphical environment as traditional Linux applications.</p>
+			<p>Running Android has some advantages compared to native Linux applications,
+for example with regard to the availability of applications and application
+developers.</p>
+<p>For current non-Android systems, this work enables a path forward to running
+Android applications in the same graphical environment as traditional non-Android
+applications are run.</p>
+<div style#"text-align:center;">
+<iframe width="830" height="460" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <p>Our experimental containerized Android environment is called SPURV, and
@@ -92,7 +98,7 @@ for applications in the container.</p>
 <h2>Acknowledgements</h2>
 <ul>
 <li>Pengutronix</li>
-<li>Kinetic (??)</li>
+<li>Kinetic</li>
 <li>Zodiac</li>
 <li>Boundary Devices</li>
 </ul>
