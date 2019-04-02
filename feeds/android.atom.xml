@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - android</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/android.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-04-23T00:00:00+02:00</updated><entry><title>Running Android on the Mainline Graphics Stack @ FossNorth</title><link href="https://memcpy.io/running-android-on-the-mainline-graphics-stack-fossnorth.html" rel="alternate"></link><published>2018-04-23T00:00:00+02:00</published><updated>2018-04-23T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-04-23:/running-android-on-the-mainline-graphics-stack-fossnorth.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-04-23_intro.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - android</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/android.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2019-04-01T18:07:00+02:00</updated><entry><title>Running Android next to Wayland</title><link href="https://memcpy.io/running-android-next-to-wayland.html" rel="alternate"></link><published>2019-04-01T18:07:00+02:00</published><updated>2019-04-01T18:07:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</id><summary type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+for example with regard to the availability of applications and application
+developers.&lt;/p&gt;
+&lt;p&gt;For current non-Android systems, this work enables a path forward to running
+Android applications in the same graphical environment as traditional non-Android
+applications are run.&lt;/p&gt;
+&lt;div style#"text-align:center;"&gt;
+&lt;iframe width="830" height="460" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
+this is a quick overview of how it works.&lt;/p&gt;
+&lt;h2&gt;What is SPURV?&lt;/h2&gt;
+&lt;p&gt;SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/2019_spurv.svg"&gt;&lt;/p&gt;
+&lt;h3&gt;Android target device&lt;/h3&gt;
+&lt;p&gt;This component integrates SPURV into Android, and it does so by using the
+&lt;code&gt;device&lt;/code&gt; infrastructure that the Android codebase provides.&lt;/p&gt;
+&lt;p&gt;Devices are normally used to customize an Android build to the
+specific needs of a given hardware platform, like a new …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+for example with regard to the availability of applications and application
+developers.&lt;/p&gt;
+&lt;p&gt;For current non-Android systems, this work enables a path forward to running
+Android applications in the same graphical environment as traditional non-Android
+applications are run.&lt;/p&gt;
+&lt;div style#"text-align:center;"&gt;
+&lt;iframe width="830" height="460" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
+this is a quick overview of how it works.&lt;/p&gt;
+&lt;h2&gt;What is SPURV?&lt;/h2&gt;
+&lt;p&gt;SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/2019_spurv.svg"&gt;&lt;/p&gt;
+&lt;h3&gt;Android target device&lt;/h3&gt;
+&lt;p&gt;This component integrates SPURV into Android, and it does so by using the
+&lt;code&gt;device&lt;/code&gt; infrastructure that the Android codebase provides.&lt;/p&gt;
+&lt;p&gt;Devices are normally used to customize an Android build to the
+specific needs of a given hardware platform, like a new smartphone
+SOC. In the case of SPURV, we're targeting being run inside of
+a &lt;code&gt;systemd-nspawn&lt;/code&gt; container.&lt;/p&gt;
+&lt;h3&gt;SPURV Audio&lt;/h3&gt;
+&lt;p&gt;This component bridges the Android Audio Hardware Abtraction Layer (HAL) to
+the host ALSA stack.&lt;/p&gt;
+&lt;h3&gt;SPURV HWComposer&lt;/h3&gt;
+&lt;p&gt;Integrates Android windows into Wayland. It does so by implementing a HWC-to-Wayland bridge.&lt;/p&gt;
+&lt;p&gt;HWC is the Android API for implementing display &amp;amp; buffer management, and what it essentiallyW
+does in interpret all of the different display buffers that Android applications produce,
+and organizes them into one cohesive Desktop.&lt;/p&gt;
+&lt;p&gt;This protocol is conceptually not unlike the Wayland protocol, which allows for the HWC to
+be translated into Wayland. This is essentially what the SPURV HWComposer does.&lt;/p&gt;
+&lt;p&gt;Additionally it deals with input, like touch screen events and passes them along from Wayland
+to Android, this however is unrelated to the HWC API.&lt;/p&gt;
+&lt;h3&gt;SPURV DHCP&lt;/h3&gt;
+&lt;p&gt;This is a simple DHCP implementation, which serves to enable the Android
+network stack to run properly within a container.&lt;/p&gt;
+&lt;h3&gt;How does it work?&lt;/h3&gt;
+&lt;p&gt;The SPURV Android target device behaves as a faux Android device, and tailors
+the Android build to our requirements.&lt;/p&gt;
+&lt;p&gt;Functions SPURV performs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Customizes defaults.&lt;/li&gt;
+&lt;li&gt;Configures network.&lt;/li&gt;
+&lt;li&gt;Enables an audio bridge from Android to ALSA.&lt;/li&gt;
+&lt;li&gt;Enables a graphics bridge from Android to Wayland.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;How can I use it?&lt;/h2&gt;
+&lt;p&gt;Full build instructions as can be found on our &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/README.md"&gt;GitLab&lt;/a&gt; for the &lt;a href="https://gitlab.collabora.com/spurv"&gt;SPURV project&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;An overview of setting up:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fetch Android (AOSP) and the Linux kernel,&lt;/li&gt;
+&lt;li&gt;Integrate SPURV into Android,&lt;/li&gt;
+&lt;li&gt;Build Android &amp;amp; Linux Kernel,&lt;/li&gt;
+&lt;li&gt;Build a debootstrap based root filesystem, and&lt;/li&gt;
+&lt;li&gt;Flash Kernel, Android and root filesystem to the device of your choice.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Caveats&lt;/h2&gt;
+&lt;p&gt;The way SPURV is implemented means that a full OS is being run in a container,
+which has implications both positive and negative.&lt;/p&gt;
+&lt;p&gt;One of the positive effects is increased isolation of Android applications,
+which means improved security and privacy for potentially untrusted applications.&lt;/p&gt;
+&lt;p&gt;Additionally, this approach allows for Android applications to be run next to
+Wayland based applications in a desktop environment.&lt;/p&gt;
+&lt;p&gt;The downsides relate to hardware access and performance. All hardware access
+that is needed by Android has to be passed into the container.
+Besides manually having to configure such access using &lt;code&gt;systemd-nspawn&lt;/code&gt;,
+there are also performance costs associated with running a container.
+One part of this is the static cost of having to load an entire OS on top
+of the base OS, but there are also additional runtime performance penalties
+for applications in the container.&lt;/p&gt;
+&lt;h2&gt;Acknowledgements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Pengutronix&lt;/li&gt;
+&lt;li&gt;Kinetic&lt;/li&gt;
+&lt;li&gt;Zodiac&lt;/li&gt;
+&lt;li&gt;Boundary Devices&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category></entry><entry><title>Running Android on the Mainline Graphics Stack @ FossNorth</title><link href="https://memcpy.io/running-android-on-the-mainline-graphics-stack-fossnorth.html" rel="alternate"></link><published>2018-04-23T00:00:00+02:00</published><updated>2018-04-23T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-04-23:/running-android-on-the-mainline-graphics-stack-fossnorth.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-04-23_intro.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;

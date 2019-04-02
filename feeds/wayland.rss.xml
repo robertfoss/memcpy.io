@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - wayland</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Fri, 03 Jun 2016 10:32:00 +0200</lastBuildDate><item><title>Running Weston on a Raspbian</title><link>https://memcpy.io/running-weston-on-a-raspbian.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>memcpy.io - wayland</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 01 Apr 2019 18:07:00 +0200</lastBuildDate><item><title>Running Android next to Wayland</title><link>https://memcpy.io/running-android-next-to-wayland.html</link><description>&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+for example with regard to the availability of applications and application
+developers.&lt;/p&gt;
+&lt;p&gt;For current non-Android systems, this work enables a path forward to running
+Android applications in the same graphical environment as traditional non-Android
+applications are run.&lt;/p&gt;
+&lt;div style#"text-align:center;"&gt;
+&lt;iframe width="830" height="460" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
+this is a quick overview of how it works.&lt;/p&gt;
+&lt;h2&gt;What is SPURV?&lt;/h2&gt;
+&lt;p&gt;SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/2019_spurv.svg"&gt;&lt;/p&gt;
+&lt;h3&gt;Android target device&lt;/h3&gt;
+&lt;p&gt;This component integrates SPURV into Android, and it does so by using the
+&lt;code&gt;device&lt;/code&gt; infrastructure that the Android codebase provides.&lt;/p&gt;
+&lt;p&gt;Devices are normally used to customize an Android build to the
+specific needs of a given hardware platform, like a new …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 01 Apr 2019 18:07:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>Running Weston on a Raspbian</title><link>https://memcpy.io/running-weston-on-a-raspbian.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
 &lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration
 using pixman was needed, but this is no longer the case.&lt;/p&gt;
