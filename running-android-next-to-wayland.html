@@ -71,7 +71,7 @@ SOC. In the case of SPURV, we're targeting being run inside of
 a <code>systemd-nspawn</code> container.</p>
 <h3>SPURV Audio</h3>
 <p>This component bridges the Android Audio Hardware Abtraction Layer (HAL) to
-the host ALSA stack.</p>
+the host PulseAudio stack.</p>
 <h3>SPURV HWComposer</h3>
 <p>Integrates Android windows into Wayland. It does so by implementing a HWC-to-Wayland bridge.</p>
 <p>HWC is the Android API for implementing display &amp; buffer management, and what it essentially
@@ -88,7 +88,7 @@ the Android build to our requirements.</p>
 <ul>
 <li>Customizes defaults.</li>
 <li>Configures network.</li>
-<li>Enables an audio bridge from Android to pulseaudio.</li>
+<li>Enables an audio bridge from Android to PulseAudio.</li>
 <li>Enables a graphics bridge from Android to Wayland.</li>
 </ul>
 <h2>How can I use it?</h2>

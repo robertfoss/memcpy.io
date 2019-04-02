@@ -60,15 +60,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="608.48893"
+     inkscape:cx="477.4175"
      inkscape:cy="383.8555"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g6064"
      showgrid="true"
      inkscape:window-width="2363"
      inkscape:window-height="1429"
-     inkscape:window-x="1352"
-     inkscape:window-y="364"
+     inkscape:window-x="961"
+     inkscape:window-y="556"
      inkscape:window-maximized="0"
      fit-margin-top="1.7"
      fit-margin-left="50"
@@ -89,7 +89,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -231,7 +231,7 @@
            y="99.54216"
            x="-59.11631"
            id="tspan4780-9-9-2"
-           sodipodi:role="line">ALSA</tspan></text>
+           sodipodi:role="line">PulseAudio</tspan></text>
     </g>
     <g
        id="g5993-3"
