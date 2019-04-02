@@ -74,16 +74,13 @@ a <code>systemd-nspawn</code> container.</p>
 the host ALSA stack.</p>
 <h3>SPURV HWComposer</h3>
 <p>Integrates Android windows into Wayland. It does so by implementing a HWC-to-Wayland bridge.</p>
-<p>HWC is the Android API for implementing display &amp; buffer management, and what it essentiallyW
+<p>HWC is the Android API for implementing display &amp; buffer management, and what it essentially
 does in interpret all of the different display buffers that Android applications produce,
 and organizes them into one cohesive Desktop.</p>
 <p>This protocol is conceptually not unlike the Wayland protocol, which allows for the HWC to
 be translated into Wayland. This is essentially what the SPURV HWComposer does.</p>
 <p>Additionally it deals with input, like touch screen events and passes them along from Wayland
 to Android, this however is unrelated to the HWC API.</p>
-<h3>SPURV DHCP</h3>
-<p>This is a simple DHCP implementation, which serves to enable the Android
-network stack to run properly within a container.</p>
 <h3>How does it work?</h3>
 <p>The SPURV Android target device behaves as a faux Android device, and tailors
 the Android build to our requirements.</p>
@@ -91,7 +88,7 @@ the Android build to our requirements.</p>
 <ul>
 <li>Customizes defaults.</li>
 <li>Configures network.</li>
-<li>Enables an audio bridge from Android to ALSA.</li>
+<li>Enables an audio bridge from Android to pulseaudio.</li>
 <li>Enables a graphics bridge from Android to Wayland.</li>
 </ul>
 <h2>How can I use it?</h2>
