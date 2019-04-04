@@ -93,10 +93,10 @@ the Android build to our requirements.&lt;/p&gt;
 in our build scripts, but also optimizing the experience.&lt;/p&gt;
 &lt;p&gt;In no particular order, this is what we would like to look at next:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Running on the i.MX8M with the etnaviv graphics driver.&lt;/li&gt;
+&lt;li&gt;Bring-up on the i.MX8M with the etnaviv graphics driver.&lt;/li&gt;
 &lt;li&gt;Slimming things down so it takes less time to start an app and consumes less
    RAM for the case where the goal is to just to run a single app.&lt;/li&gt;
-&lt;li&gt;Running on x86 with Ubuntu and providing source for all.&lt;/li&gt;
+&lt;li&gt;Bring-up on x86 with Ubuntu, publishing runtime binaries.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Caveats&lt;/h2&gt;
 &lt;p&gt;The way SPURV is implemented means that a full OS is being run in a container,
