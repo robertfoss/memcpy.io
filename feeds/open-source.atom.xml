@@ -9,16 +9,15 @@ applications are run.&lt;/p&gt;
 &lt;iframe width="830" height="460" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
-this is a quick overview of how it works.&lt;/p&gt;
 &lt;h2&gt;What is SPURV?&lt;/h2&gt;
-&lt;p&gt;SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/2019_spurv.svg"&gt;&lt;/p&gt;
-&lt;h3&gt;Android target device&lt;/h3&gt;
-&lt;p&gt;This component integrates SPURV into Android, and it does so by using the
-&lt;code&gt;device&lt;/code&gt; infrastructure that the Android codebase provides.&lt;/p&gt;
-&lt;p&gt;Devices are normally used to customize an Android build to the
-specific needs of a given hardware platform, like a new …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+&lt;p&gt;SPURV is our experimental containerized Android environment, and
+this is a quick overview of what it is.&lt;/p&gt;
+&lt;h3&gt;Other Android Compatibility Layers&lt;/h3&gt;
+&lt;p&gt;This means that Anbox which is LXC based, is different from SPURV in terms of
+how hardware is accessed. The hardware access that Anbox provides in indirect,
+and through the Qemu Pipes functionality, which is something it adopted from
+the Android (goldfish) emulator.&lt;/p&gt;
+&lt;p&gt;Shashlik and Genimobile are Android on Linux integration layers both based …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
 for example with regard to the availability of applications and application
 developers.&lt;/p&gt;
 &lt;p&gt;For current non-Android systems, this work enables a path forward to running
@@ -28,10 +27,27 @@ applications are run.&lt;/p&gt;
 &lt;iframe width="830" height="460" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
-this is a quick overview of how it works.&lt;/p&gt;
 &lt;h2&gt;What is SPURV?&lt;/h2&gt;
-&lt;p&gt;SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
+&lt;p&gt;SPURV is our experimental containerized Android environment, and
+this is a quick overview of what it is.&lt;/p&gt;
+&lt;h3&gt;Other Android Compatibility Layers&lt;/h3&gt;
+&lt;p&gt;This means that Anbox which is LXC based, is different from SPURV in terms of
+how hardware is accessed. The hardware access that Anbox provides in indirect,
+and through the Qemu Pipes functionality, which is something it adopted from
+the Android (goldfish) emulator.&lt;/p&gt;
+&lt;p&gt;Shashlik and Genimobile are Android on Linux integration layers both based on
+Qemu, which means even better security properties than Anbox and certainly SPURV,
+but at the cost of an even larger performance penalty.&lt;/p&gt;
+&lt;h3&gt;Direct Hardware Access&lt;/h3&gt;
+&lt;p&gt;SPURV is different from other Linux desktop integrations for Android
+since it offers direct hardware access to the Android application.
+This is a choice we made for performance reasons. But has drawbacks, especially
+when it comes to security.&lt;br&gt;
+Using direct hardware access does however grant us increased GPU and CPU
+performance, which is important since we're targeting embedded platforms
+which can have very limited resources.&lt;/p&gt;
+&lt;h2&gt;Components&lt;/h2&gt;
+&lt;p&gt;SPURV consists of a few different parts, all living in the same &lt;a href="https://gitlab.collabora.com/spurv/"&gt;project&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/2019_spurv.svg"&gt;&lt;/p&gt;
 &lt;h3&gt;Android target device&lt;/h3&gt;
 &lt;p&gt;This component integrates SPURV into Android, and it does so by using the
@@ -71,6 +87,16 @@ the Android build to our requirements.&lt;/p&gt;
 &lt;li&gt;Build Android &amp;amp; Linux Kernel,&lt;/li&gt;
 &lt;li&gt;Build a debootstrap based root filesystem, and&lt;/li&gt;
 &lt;li&gt;Flash Kernel, Android and root filesystem to the device of your choice.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What comes next?&lt;/h2&gt;
+&lt;p&gt;The next few steps will be adding support for more hardware platforms
+in our build scripts, but also optimizing the experience.&lt;/p&gt;
+&lt;p&gt;In no particular order, this is what we would like to look at next:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Running on the i.MX8M with the etnaviv graphics driver.&lt;/li&gt;
+&lt;li&gt;Slimming things down so it takes less time to start an app and consumes less
+   RAM for the case where the goal is to just to run a single app.&lt;/li&gt;
+&lt;li&gt;Running on x86 with Ubuntu and providing source for all.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Caveats&lt;/h2&gt;
 &lt;p&gt;The way SPURV is implemented means that a full OS is being run in a container,

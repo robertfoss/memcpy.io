@@ -9,16 +9,15 @@ applications are run.&lt;/p&gt;
 &lt;iframe width="830" height="460" src="https://www.youtube.com/embed/594fIHWQSj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Our experimental containerized Android environment is called SPURV, and
-this is a quick overview of how it works.&lt;/p&gt;
 &lt;h2&gt;What is SPURV?&lt;/h2&gt;
-&lt;p&gt;SPURV consists of a few different parts, all living in the same repository.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="An overview of the SPURV stack" src="/images/2019_spurv.svg"&gt;&lt;/p&gt;
-&lt;h3&gt;Android target device&lt;/h3&gt;
-&lt;p&gt;This component integrates SPURV into Android, and it does so by using the
-&lt;code&gt;device&lt;/code&gt; infrastructure that the Android codebase provides.&lt;/p&gt;
-&lt;p&gt;Devices are normally used to customize an Android build to the
-specific needs of a given hardware platform, like a new …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 01 Apr 2019 18:07:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
+&lt;p&gt;SPURV is our experimental containerized Android environment, and
+this is a quick overview of what it is.&lt;/p&gt;
+&lt;h3&gt;Other Android Compatibility Layers&lt;/h3&gt;
+&lt;p&gt;This means that Anbox which is LXC based, is different from SPURV in terms of
+how hardware is accessed. The hardware access that Anbox provides in indirect,
+and through the Qemu Pipes functionality, which is something it adopted from
+the Android (goldfish) emulator.&lt;/p&gt;
+&lt;p&gt;Shashlik and Genimobile are Android on Linux integration layers both based …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 01 Apr 2019 18:07:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
