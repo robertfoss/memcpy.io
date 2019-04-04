@@ -12,12 +12,12 @@ applications are run.&lt;/p&gt;
 &lt;h2&gt;What is SPURV?&lt;/h2&gt;
 &lt;p&gt;SPURV is our experimental containerized Android environment, and
 this is a quick overview of what it is.&lt;/p&gt;
+&lt;p&gt;It's aptly named after the &lt;a href="https://en.wikipedia.org/wiki/SPURV"&gt;first robotic fish&lt;/a&gt;
+since a common Android naming scheme is fish-themed names.&lt;/p&gt;
 &lt;h3&gt;Other Android Compatibility Layers&lt;/h3&gt;
 &lt;p&gt;This means that Anbox which is LXC based, is different from SPURV in terms of
 how hardware is accessed. The hardware access that Anbox provides in indirect,
-and through the Qemu Pipes functionality, which is something it adopted from
-the Android (goldfish) emulator.&lt;/p&gt;
-&lt;p&gt;Shashlik and Genimobile are Android on Linux integration layers both based …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+and through the Qemu Pipes functionality, which is something it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
 for example with regard to the availability of applications and application
 developers.&lt;/p&gt;
 &lt;p&gt;For current non-Android systems, this work enables a path forward to running
@@ -30,6 +30,8 @@ applications are run.&lt;/p&gt;
 &lt;h2&gt;What is SPURV?&lt;/h2&gt;
 &lt;p&gt;SPURV is our experimental containerized Android environment, and
 this is a quick overview of what it is.&lt;/p&gt;
+&lt;p&gt;It's aptly named after the &lt;a href="https://en.wikipedia.org/wiki/SPURV"&gt;first robotic fish&lt;/a&gt;
+since a common Android naming scheme is fish-themed names.&lt;/p&gt;
 &lt;h3&gt;Other Android Compatibility Layers&lt;/h3&gt;
 &lt;p&gt;This means that Anbox which is LXC based, is different from SPURV in terms of
 how hardware is accessed. The hardware access that Anbox provides in indirect,

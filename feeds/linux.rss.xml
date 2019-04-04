@@ -12,12 +12,12 @@ applications are run.&lt;/p&gt;
 &lt;h2&gt;What is SPURV?&lt;/h2&gt;
 &lt;p&gt;SPURV is our experimental containerized Android environment, and
 this is a quick overview of what it is.&lt;/p&gt;
+&lt;p&gt;It's aptly named after the &lt;a href="https://en.wikipedia.org/wiki/SPURV"&gt;first robotic fish&lt;/a&gt;
+since a common Android naming scheme is fish-themed names.&lt;/p&gt;
 &lt;h3&gt;Other Android Compatibility Layers&lt;/h3&gt;
 &lt;p&gt;This means that Anbox which is LXC based, is different from SPURV in terms of
 how hardware is accessed. The hardware access that Anbox provides in indirect,
-and through the Qemu Pipes functionality, which is something it adopted from
-the Android (goldfish) emulator.&lt;/p&gt;
-&lt;p&gt;Shashlik and Genimobile are Android on Linux integration layers both based …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 01 Apr 2019 18:07:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
+and through the Qemu Pipes functionality, which is something it …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 01 Apr 2019 18:07:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
 &lt;p&gt;The process of reverse engineering Arm GPUs has been going on for a long time,
 starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
 on the Arm Utgard family of GPUs.&lt;br&gt;
