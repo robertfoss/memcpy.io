@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="A previous post introduced the SPURV Android compatibility layer for Wayland based Linux environment. In this post we&#39;re going to dig into how you can run an Android application on the very common i.MX6 based Nitrogen6_MAX board from Boundary Devices. Build SPURV for Nitrogen6_MAX Build Android mkdir android; cd android repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10 git clone https://gitlab.collabora.com/zodiac/android_manifest.git .repo/local_manifests/ repo sync -j15 . build/envsetup.sh lunch spurv-eng make -j12 cd .. Build Linux Kernel git clone https://gitlab.collabora.com/zodiac/linux.git -b android-container cd linux sh ../android/device/freedesktop/spurv/build-kernel.sh cd .. Create root filesystem Just a kernel does not make an OS, so we&#39;re using Debian …">
+		<meta name="description" content="A previous post introduced the SPURV Android compatibility layer for Wayland based Linux environment. In this post we&#39;re going to dig into how you can run an Android application on the very common i.MX6 based Nitrogen6_MAX board from Boundary Devices. Build SPURV for Nitrogen6_MAX Build Android mkdir android; cd android repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10 git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/ repo sync -j15 . build/envsetup.sh lunch spurv-eng make -j12 cd .. Build Linux Kernel git clone https://gitlab.collabora.com/zodiac/linux.git -b android-container cd linux sh ../android/device/freedesktop/spurv/build-kernel.sh cd .. Create root filesystem Just a kernel does not make an OS, so we&#39;re using Debian …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, open source, graphics, wayland, android, 3d, acceleration, imx6, nitrogen6">
 		<meta property="og:title" content="Running Android and Wayland on Embedded Devices" />
@@ -46,7 +46,7 @@
 				</p>
 			</header>
 			<p>Let's get Android running next to Wayland on an i.MX6 based Nitrogen6_MAX board.</p>
-			<p><a href="/running-android-next-to-wayland.html">A previous post</a> introduced the <a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/">SPURV</a>
+			<p><a href="/running-android-next-to-wayland.html">A previous post</a> introduced the <a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/">SPURV</a>
 Android compatibility layer for Wayland based Linux environment.<br>
 In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based <a href="https://boundarydevices.com/product/nitrogen6max/">Nitrogen6_MAX</a>
@@ -55,7 +55,7 @@ board from <a href="https://boundarydevices.com/">Boundary Devices</a>.</p>
 <h3>Build Android</h3>
 <div class="highlight"><pre><span></span>mkdir android; cd android
 repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
-git clone https://gitlab.collabora.com/zodiac/android_manifest.git .repo/local_manifests/
+git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/
 repo sync -j15
 . build/envsetup.sh
 lunch spurv-eng
@@ -98,7 +98,7 @@ This is where the Nitrogen6_MAX devboard targeting comes in.  </p>
 </pre></div>
 
 
-<p>The platform specific parts are contained in <a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/uboot_nitrogen6qp-max.scr">uboot_nitrogen6qp-max.scr</a>
+<p>The platform specific parts are contained in <a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/uboot_nitrogen6qp-max.scr">uboot_nitrogen6qp-max.scr</a>
 and <a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/create_image.sh">create_image.sh</a>.</p>
 <h2>Boot!</h2>
 <p>Pop the flashed SD-card into your device and restart it.
