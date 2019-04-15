@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - wayland</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 01 Apr 2019 18:07:00 +0200</lastBuildDate><item><title>Running Android next to Wayland</title><link>https://memcpy.io/running-android-next-to-wayland.html</link><description>&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+<rss version="2.0"><channel><title>memcpy.io - wayland</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 15 Apr 2019 15:44:00 +0200</lastBuildDate><item><title>Running Android and Wayland on Embedded Devices</title><link>https://memcpy.io/running-android-and-wayland-on-embedded-devices.html</link><description>&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
+Android compatibility layer for Wayland based Linux environment.&lt;br&gt;
+In this post we're going to dig into how you can run an Android application
+on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
+board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Build SPURV for Nitrogen6_MAX&lt;/h2&gt;
+&lt;h3&gt;Build Android&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir android; cd android
+repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
+git clone https://gitlab.collabora.com/zodiac/android_manifest.git .repo/local_manifests/
+repo sync -j15
+. build/envsetup.sh
+lunch spurv-eng
+make -j12
+cd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Build Linux Kernel&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://gitlab.collabora.com/zodiac/linux.git -b android-container
+cd linux
+sh ../android/device/freedesktop/spurv/build-kernel.sh
+cd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Create root filesystem&lt;/h3&gt;
+&lt;p&gt;Just a kernel does not make an OS, so we're using Debian …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 15 Apr 2019 15:44:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-15:/running-android-and-wayland-on-embedded-devices.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category><category>imx6</category><category>nitrogen6</category></item><item><title>Running Android next to Wayland</title><link>https://memcpy.io/running-android-next-to-wayland.html</link><description>&lt;p&gt;Running Android has some advantages compared to native Linux applications,
 for example with regard to the availability of applications and application
 developers.&lt;/p&gt;
 &lt;p&gt;For current non-Android systems, this work enables a path forward to running

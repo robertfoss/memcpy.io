@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Running Android and Wayland on Embedded Devices</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
+		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="A previous post introduced the SPURV Android compatibility layer for Wayland based Linux environment. In this post we&#39;re going to dig into how you can run an Android application on the very common i.MX6 based Nitrogen6_MAX board from Boundary Devices. Build SPURV for Nitrogen6_MAX Build Android mkdir android; cd android repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10 git clone https://gitlab.collabora.com/zodiac/android_manifest.git .repo/local_manifests/ repo sync -j15 . build/envsetup.sh lunch spurv-eng make -j12 cd .. Build Linux Kernel git clone https://gitlab.collabora.com/zodiac/linux.git -b android-container cd linux sh ../android/device/freedesktop/spurv/build-kernel.sh cd .. Create root filesystem Just a kernel does not make an OS, so we&#39;re using Debian …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, open source, graphics, wayland, android, 3d, acceleration, imx6, nitrogen6">
+		<meta property="og:title" content="Running Android and Wayland on Embedded Devices" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://memcpy.io/running-android-and-wayland-on-embedded-devices.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2019-04-15" />
+		<meta property="article:section" content="android" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="open source" />
+		<meta property="article:tag" content="graphics" />
+		<meta property="article:tag" content="wayland" />
+		<meta property="article:tag" content="android" />
+		<meta property="article:tag" content="3d" />
+		<meta property="article:tag" content="acceleration" />
+		<meta property="article:tag" content="imx6" />
+		<meta property="article:tag" content="nitrogen6" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Running Android and Wayland on Embedded Devices" />
+		<meta name="twitter:description" content="Let&#39;s get Android running next to Wayland on an i.MX6 based Nitrogen6_MAX board." />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Running Android and Wayland on Embedded Devices</h1>
+				<p>
+				Published <time datetime="2019-04-15" itemprop="datePublished">2019-04-15</time>
+				</p>
+			</header>
+			<p>Let's get Android running next to Wayland on an i.MX6 based Nitrogen6_MAX board.</p>
+			<p><a href="/running-android-next-to-wayland.html">A previous post</a> introduced the <a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/">SPURV</a>
+Android compatibility layer for Wayland based Linux environment.<br>
+In this post we're going to dig into how you can run an Android application
+on the very common i.MX6 based <a href="https://boundarydevices.com/product/nitrogen6max/">Nitrogen6_MAX</a>
+board from <a href="https://boundarydevices.com/">Boundary Devices</a>.</p>
+<h2>Build SPURV for Nitrogen6_MAX</h2>
+<h3>Build Android</h3>
+<div class="highlight"><pre><span></span>mkdir android; cd android
+repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
+git clone https://gitlab.collabora.com/zodiac/android_manifest.git .repo/local_manifests/
+repo sync -j15
+. build/envsetup.sh
+lunch spurv-eng
+make -j12
+cd ..
+</pre></div>
+
+
+<h3>Build Linux Kernel</h3>
+<div class="highlight"><pre><span></span>git clone https://gitlab.collabora.com/zodiac/linux.git -b android-container
+cd linux
+sh ../android/device/freedesktop/spurv/build-kernel.sh
+cd ..
+</pre></div>
+
+
+<h3>Create root filesystem</h3>
+<p>Just a kernel does not make an OS, so we're using Debian as a base.<br>
+The way we're going to create the root filesystem is using <code>debootstrap</code>,
+which is a tool for creating Debian based OS images.</p>
+<div class="highlight"><pre><span></span>sudo apt install debootstrap qemu-user-static
+sudo debootstrap --include=systemd,weston,systemd-container,udev,sudo,openssh-server,iputils-ping,pulseaudio,psmisc,bc --arch armhf --variant minbase testing rootfs http://deb.debian.org/debian/
+sudo chroot rootfs adduser aosp --ingroup sudo
+</pre></div>
+
+
+<p>If you'd like to make further changes to the OS, you can simply chroot into the
+root directory, and and <code>qemu-user-static</code> will automatically run the ARM binaries
+inside of QEMU, which makes the process of running binaries from foreign
+architectures transparent.</p>
+<div class="highlight"><pre><span></span>sudo chroot rootfs
+ls -la /
+</pre></div>
+
+
+<h3>Create &amp; flash image</h3>
+<p>Now we're ready to integrate all of the above into one coeherent image.
+This is where the Nitrogen6_MAX devboard targeting comes in.  </p>
+<div class="highlight"><pre><span></span>android/device/freedesktop/spurv/create_image.sh -b /dev/mmcblk0
+</pre></div>
+
+
+<p>The platform specific parts are contained in <a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/uboot_nitrogen6qp-max.scr">uboot_nitrogen6qp-max.scr</a>
+and <a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/create_image.sh">create_image.sh</a>.</p>
+<h2>Boot!</h2>
+<p>Pop the flashed SD-card into your device and restart it.
+When it has booted, log in as <code>root/root</code>.</p>
+<p>In order to start Android, run one of these two commands:</p>
+<div class="highlight"><pre><span></span># Launch just and Android application
+/home/aosp/run.sh
+
+# Launch some Wayland applications and an Android one
+/home/aosp/run_demo.sh
+</pre></div>
+
+
+<p>Starting the Android application might take a minute or two.</p>
+<h2>Acknowledgements</h2>
+<p>A lot of different contributors enabled this work, both direcctly and indirectly.</p>
+<ul>
+<li>Boundary Devices</li>
+<li>Pengutronix</li>
+<li>Zodiac</li>
+</ul>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="./tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/open-source.html">open source </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/graphics.html">graphics </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/wayland.html">wayland </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/android.html">android </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/3d.html">3d </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/acceleration.html">acceleration </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/imx6.html">imx6 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/nitrogen6.html">nitrogen6 </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2019 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
