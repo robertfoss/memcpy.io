@@ -12,7 +12,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="A previous post introduced the SPURV Android compatibility layer for Wayland based Linux environment. In this post we&#39;re going to dig into how you can run an Android application on the very common i.MX6 based Nitrogen6_MAX board from Boundary Devices. Build SPURV for Nitrogen6_MAX Build Android mkdir android; cd android repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10 git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/ repo sync -j15 . build/envsetup.sh lunch spurv-eng make -j12 cd .. Build Linux Kernel git clone https://gitlab.collabora.com/zodiac/linux.git -b android-container cd linux sh ../android/device/freedesktop/spurv/build-kernel.sh cd .. Create root filesystem Just a kernel does not make an OS, so we&#39;re using Debian …">
+		<meta name="description" content="A previous post introduced the SPURV Android compatibility layer for Wayland based Linux environment. In this post we&#39;re going to dig into how you can run an Android application on the very common i.MX6 based Nitrogen6_MAX board from Boundary Devices. Install dependencies sudo apt install \ apt-transport-https \ bmap-tools \ ca-certificates \ curl \ git \ gnupg2 \ repo \ software-properties-common \ u-boot-tools \ qemu-kvm Set up Docker container for building # Install Docker curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - sudo add-apt-repository &#34;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&#34; sudo apt update sudo apt install docker-ce # Set up privileges for Docker sudo usermod -aG docker ${USER} su - ${USER} # Fetch Docker image docker pull godebos/debos:latest Build Build Android mkdir android; cd android repo …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, open source, graphics, wayland, android, 3d, acceleration, imx6, nitrogen6">
 	</head>
@@ -21,7 +21,7 @@
 			<header>
 				<h1>Running Android and Wayland on Embedded Devices</h1>
 				<p>
-				Published <time datetime="2019-04-15" itemprop="datePublished">2019-04-15</time>
+				Published <time datetime="2019-04-19" itemprop="datePublished">2019-04-19</time>
 				</p>
 			</header>
 			<p>Let's get Android running next to Wayland on an i.MX6 based Nitrogen6_MAX board.</p>
@@ -30,7 +30,38 @@ Android compatibility layer for Wayland based Linux environment.<br>
 In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based <a href="https://boundarydevices.com/product/nitrogen6max/">Nitrogen6_MAX</a>
 board from <a href="https://boundarydevices.com/">Boundary Devices</a>.</p>
-<h2>Build SPURV for Nitrogen6_MAX</h2>
+<h2>Install dependencies</h2>
+<div class="highlight"><pre><span></span>sudo apt install \
+    apt-transport-https \
+    bmap-tools \
+    ca-certificates \
+    curl \
+    git \
+    gnupg2 \
+    repo \
+    software-properties-common \
+    u-boot-tools \
+    qemu-kvm
+</pre></div>
+
+
+<h2>Set up Docker container for building</h2>
+<div class="highlight"><pre><span></span># Install Docker
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&quot;
+sudo apt update
+sudo apt install docker-ce
+
+# Set up privileges for Docker
+sudo usermod -aG docker <span class="cp">${</span><span class="n">USER</span><span class="cp">}</span>
+su - <span class="cp">${</span><span class="n">USER</span><span class="cp">}</span>
+
+# Fetch Docker image
+docker pull godebos/debos:latest
+</pre></div>
+
+
+<h2>Build</h2>
 <h3>Build Android</h3>
 <div class="highlight"><pre><span></span>mkdir android; cd android
 repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
@@ -44,7 +75,7 @@ cd ..
 
 
 <h3>Build Linux Kernel</h3>
-<div class="highlight"><pre><span></span>git clone https://gitlab.collabora.com/zodiac/linux.git -b android-container
+<div class="highlight"><pre><span></span>git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5
 cd linux
 sh ../android/device/freedesktop/spurv/build-kernel.sh
 cd ..
@@ -53,47 +84,31 @@ cd ..
 
 <h3>Create root filesystem</h3>
 <p>Just a kernel does not make an OS, so we're using Debian as a base.<br>
-The way we're going to create the root filesystem is using <code>debootstrap</code>,
+The way we're going to create the root filesystem is using <code>debos</code>,
 which is a tool for creating Debian based OS images.</p>
-<div class="highlight"><pre><span></span>sudo apt install debootstrap qemu-user-static
-sudo debootstrap --include=systemd,weston,systemd-container,udev,sudo,openssh-server,iputils-ping,pulseaudio,psmisc,bc --arch armhf --variant minbase testing rootfs http://deb.debian.org/debian/
-sudo chroot rootfs adduser aosp --ingroup sudo
-</pre></div>
-
-
-<p>If you'd like to make further changes to the OS, you can simply chroot into the
-root directory, and and <code>qemu-user-static</code> will automatically run the ARM binaries
-inside of QEMU, which makes the process of running binaries from foreign
-architectures transparent.</p>
-<div class="highlight"><pre><span></span>sudo chroot rootfs
-ls -la /
-</pre></div>
-
-
 <h3>Create &amp; flash image</h3>
-<p>Now we're ready to integrate all of the above into one coeherent image.
+<p>Now we're ready to integrate all of the above into one coherent image.
 This is where the Nitrogen6_MAX devboard targeting comes in.  </p>
-<div class="highlight"><pre><span></span>android/device/freedesktop/spurv/create_image.sh -b /dev/mmcblk0
+<div class="highlight"><pre><span></span>git clone https://gitlab.collabora.com/spurv/linux.git
+sudo debos/build_image.sh -b /dev/mmcblk0
 </pre></div>
 
 
-<p>The platform specific parts are contained in <a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/uboot_nitrogen6qp-max.scr">uboot_nitrogen6qp-max.scr</a>
-and <a href="https://gitlab.collabora.com/zodiac/device_freedesktop/blob/master/spurv/create_image.sh">create_image.sh</a>.</p>
+<p>The platform specific parts are contained in <a href="https://gitlab.collabora.com/spurv/debos/blob/master/uboot_nitrogen6qp-max.scr">uboot_nitrogen6qp-max.scr</a>
+and <a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image.sh">build_image.sh</a>.</p>
 <h2>Boot!</h2>
-<p>Pop the flashed SD-card into your device and restart it.
-When it has booted, log in as <code>root/root</code>.</p>
+<p>Pop the flashed SD-card into your device and restart it, and then log in as
+<code>root/root</code>.</p>
 <p>In order to start Android, run one of these two commands:</p>
 <div class="highlight"><pre><span></span># Launch just and Android application
 /home/aosp/run.sh
-
-# Launch some Wayland applications and an Android one
-/home/aosp/run_demo.sh
 </pre></div>
 
 
-<p>Starting the Android application might take a minute or two.</p>
-<h2>Acknowledgements</h2>
-<p>A lot of different contributors enabled this work, both direcctly and indirectly.</p>
+<p>Starting the Android application might take a minute or two, but Weston should
+start immediately.</p>
+<h2>Acknowledgments</h2>
+<p>A lot of different contributors enabled this work, both directly and indirectly.</p>
 <ul>
 <li>Boundary Devices</li>
 <li>Pengutronix</li>
