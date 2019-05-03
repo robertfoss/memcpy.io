@@ -7,14 +7,34 @@
 		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
         <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
-		<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="memcpy.io atom feed" />
-		<link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS feed" />
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="zsh: corrupt history file /home/$USER/.zsh_history Most zsh user will have seen the above line at one time or another. And it means that re-using your shell history is no longer possible. Maybe some of it can be recovered, but more than likely some has been lost. And even if nothing important has been lost, you probably don&#39;t want to spend any time dealing with this. Make zsh maintain a backup Run this snippet in the terminal of your choice. cat &lt;&lt;EOT&gt;&gt; ~/.zshrc # Backup and restore ZSH history strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history EOT What does this actually do? The snippet …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, shell, zsh, history, .zsh_history, corruption, fix, how, to, how-to">
+		<meta property="og:title" content="Fixing .zsh_history corruption" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://memcpy.io/fixing-zsh_history-corruption.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2018-02-13" />
+		<meta property="article:section" content="linux" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="shell" />
+		<meta property="article:tag" content="zsh" />
+		<meta property="article:tag" content="history" />
+		<meta property="article:tag" content=".zsh_history" />
+		<meta property="article:tag" content="corruption" />
+		<meta property="article:tag" content="fix" />
+		<meta property="article:tag" content="how" />
+		<meta property="article:tag" content="to" />
+		<meta property="article:tag" content="how-to" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Fixing .zsh_history corruption" />
+		<meta name="twitter:description" content=".zsh_history getting corrupted happens far too often, and losing you shell history is actually quite painful. Here&#39;s how to fix it." />
 	</head>
 	<body>
 		<article id="content" itemscope>
