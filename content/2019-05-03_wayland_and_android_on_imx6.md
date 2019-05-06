@@ -72,7 +72,7 @@ which is a tool for creating Debian based OS images.
 Now we're ready to integrate all of the above into one coherent image.
 This is where the Nitrogen6_MAX devboard targeting comes in.  
 
-    git clone https://gitlab.collabora.com/spurv/linux.git
+    git clone https://gitlab.collabora.com/spurv/debos.git
     sudo debos/build_image.sh -b /dev/mmcblk0
 
 The platform specific parts are contained in [uboot_nitrogen6qp-max.scr](https://gitlab.collabora.com/spurv/debos/blob/master/uboot_nitrogen6qp-max.scr)
