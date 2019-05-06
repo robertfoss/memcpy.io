@@ -102,7 +102,7 @@ which is a tool for creating Debian based OS images.&lt;/p&gt;
 &lt;h3&gt;Create &amp;amp; flash image&lt;/h3&gt;
 &lt;p&gt;Now we're ready to integrate all of the above into one coherent image.
 This is where the Nitrogen6_MAX devboard targeting comes in.  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://gitlab.collabora.com/spurv/linux.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://gitlab.collabora.com/spurv/debos.git
 sudo debos/build_image.sh -b /dev/mmcblk0
 &lt;/pre&gt;&lt;/div&gt;
 
