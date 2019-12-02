@@ -14,29 +14,6 @@
 		<meta name="description" content="Stack overview Let&#39;s start with having a look at a high level overview of what the graphics stack looks like. Before digging too much further into this, lets cover some terminology. DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem, which contains all of the graphics drivers and does all of the interfacing with hardware. The DRM subsystem implements the KMS - kernel mode setting - API. Mode setting is essentially configuring output settings like resolution for the displays that are being used. And doing it using the kernel means that userspace doesn&#39;t need access to setting these things directly. The DRM subsystem talks to the hardware and Mesa is used by applications through the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc. All …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, collabora, kms_swrast, drm, kms, swrast, dumb, buffer, driver, gpu">
-		<meta property="og:title" content="kms_swrast: A hardware-backed graphics driver" />
-		<meta property="og:type" content="article" />
-		<meta property="og:image" content="https://memcpy.io/images/2018-07-31_kms_swrast_overview.svg" />
-		<meta property="og:url" content="https://memcpy.io/kms_swrast-a-hardware-backed-graphics-driver.html" />
-		<meta property="og:locale" content="" />
-		<meta property="og:site_name" content="memcpy.io" />
-		<meta property="article:published_time" content="2018-07-31" />
-		<meta property="article:section" content="graphics" />
-		<meta property="article:tag" content="collabora" />
-		<meta property="article:tag" content="kms_swrast" />
-		<meta property="article:tag" content="drm" />
-		<meta property="article:tag" content="kms" />
-		<meta property="article:tag" content="swrast" />
-		<meta property="article:tag" content="dumb" />
-		<meta property="article:tag" content="buffer" />
-		<meta property="article:tag" content="driver" />
-		<meta property="article:tag" content="gpu" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:creator" content="@memcpy_io" />
-		<meta name="twitter:site" content="@memcpy_io" />
-		<meta name="twitter:title" content="kms_swrast: A hardware-backed graphics driver" />
-		<meta name="twitter:description" content="kms_swrast is a software driver, built upon the Mesa gallium driver framework, which uses kernel kms drm nodes for memory allocation." />
-		<meta name="twitter:image" content="https://memcpy.io/images/2018-07-31_kms_swrast_overview.svg" />
 	</head>
 	<body>
 		<article id="content" itemscope>
