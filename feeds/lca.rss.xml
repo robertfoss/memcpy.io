@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - lca</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 15 Jan 2020 00:00:00 +0100</lastBuildDate><item><title>Panfrost: Liberating ARM GPUs @ Linux Conf Au</title><link>https://memcpy.io/panfrost-liberating-arm-gpus-linux-conf-au.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/files/2020-01-15/title.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Diagrams&lt;/h2&gt;
+&lt;h4&gt;Overview&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_overview.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_overview.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Kernel&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_kernel_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_kernel_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_kernel_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_kernel_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Userspace&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_userspace_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_userspace_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_2.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_userspace_3.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_3.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa overview&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_overview.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_overview.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa Gallium&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_gallium_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_gallium_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_gallium_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_gallium_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa Winsys&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_winsys_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_winsys_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_winsys_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_winsys_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa Compiler&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_compiler_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_compiler_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_2.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_compiler_3.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_3.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h2&gt;License&lt;/h2&gt;
+&lt;p&gt;All of the material you can find on this page is licensed under the
+&lt;a href="https://opensource.org/licenses/MIT"&gt;MIT&lt;/a&gt; license, and you are free to use,
+modify and re-distribute these materials however you like.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://linux.conf.au/"&gt;Linux Conf Au&lt;/a&gt; for hosting the event.
+This was my first LCA, and I think it may be the best Linux conference out of all of them.&lt;/p&gt;
+&lt;p&gt;I would also like to thank the organizers for paying for my flights,
+without it I would not have been able to give this talk.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 15 Jan 2020 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2020-01-15:/panfrost-liberating-arm-gpus-linux-conf-au.html</guid><category>talks</category><category>slides</category><category>linux</category><category>conf</category><category>au</category><category>lca</category><category>graphics</category><category>open source</category><category>drivers</category></item></channel></rss>

@@ -13,6 +13,26 @@
 		<meta name="description" content="The architecture is a bit of container matroska, but what we&#39;re trying to achieve is running Docker privileged inside of a LXC container on a baremetal host. Setup container on LXC Host In order to give Docker in the guest privileges, the guest container itself has to be given privileges. There is no simple switch for doing this in LXC unfortunately, but a few config options will do the trick. lxc launch images:ubuntu/bionic container lxc config set container security.nesting true lxc config set container security.privileged true cat &lt;&lt;EOT | lxc config set container raw.lxc - lxc.cgroup.devices.allow = a lxc.cap.drop = EOT lxc restart container Setup docker on container Just to verify that this works, start a privileged Docker container …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, virtualization, lxc, lxd, docker, privileged">
+		<meta property="og:title" content="Running Docker privileged inside of LXC / LXD" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="https://memcpy.io/images/2018-12-03_docker.png" />
+		<meta property="og:url" content="https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2018-12-03" />
+		<meta property="article:section" content="linux" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="virtualization" />
+		<meta property="article:tag" content="lxc" />
+		<meta property="article:tag" content="lxd" />
+		<meta property="article:tag" content="docker" />
+		<meta property="article:tag" content="privileged" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Running Docker privileged inside of LXC / LXD" />
+		<meta name="twitter:description" content="Being able to run Docker containers inside of LXC containers comes in quite handy due to them solving slightly different issues." />
+		<meta name="twitter:image" content="https://memcpy.io/images/2018-12-03_docker.png" />
 	</head>
 	<body>
 		<article id="content" itemscope>
@@ -116,7 +136,7 @@ by Stéphane Graber.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2019 Robert Foss
+					2020 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

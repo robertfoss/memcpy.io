@@ -13,6 +13,22 @@
 		<meta name="description" content="Set up environment export DEV_DIR=&#34;/opt&#34; mkdir -p $DEV_DIR export CHROMIUM_DIR=&#34;$DEV_DIR/chromiumos&#34; mkdir -p $CHROMIUM_DIR export PATH=&#34;$DEV_DIR/depot_tools:$PATH&#34; # The BOARD variable used here is specific for the Chromebook that is # being targeted, a more generic target like &#34;amd64-generic&#34; could # be more useful for you needs. export BOARD=chell # The USB_DEVICE variable refers to the USB device that will be used # for flashing ChromiumOS onto a Chromebook. # Make sure that this device does not contain anything important! export USB_DEVICE=&#34;/dev/sda&#34; Install dependencies sudo apt install git-core gitk git-gui subversion curl cd $DEV_DIR git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git Get ChromiumOS source cd ${CHROMIUM_DIR} repo init -u https://chromium.googlesource.com/chromiumos/manifest.git repo sync -j25 Build ChromiumOS …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, chromiumos, chromebook, collabora">
+		<meta property="og:title" content="Setting up a ChromiumOS dev environment" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://memcpy.io/setting-up-a-chromiumos-dev-environment.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2017-02-16" />
+		<meta property="article:section" content="chromiumos" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="chromiumos" />
+		<meta property="article:tag" content="chromebook" />
+		<meta property="article:tag" content="collabora" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Setting up a ChromiumOS dev environment" />
+		<meta name="twitter:description" content="Setting up a fully functional ChromiumOS development environment on actual Chromebook hardware" />
 	</head>
 	<body>
 		<article id="content" itemscope>
@@ -144,7 +160,7 @@ cros_sdk -- i686-pc-linux-gnu-gdb &quot;/build/$BOARD/opt/google/chrome/chrome&q
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2019 Robert Foss
+					2020 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

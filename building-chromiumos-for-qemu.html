@@ -13,6 +13,28 @@
 		<meta name="description" content="So let&#39;s start off by covering how ChromiumOS relates to ChromeOS. The ChromiumOS project is essentially ChromeOS minus branding and some packages for things like the media digital restrictions management. But on the whole, almost everything is there, and the pieces that aren&#39;t, you don&#39;t need. ChromiumOS Depot tools In order to check out ChromiumOS and other large Google projects, you&#39;ll need depot tools. git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git export PATH=$PATH:$(PWD)/depot_tools Maybe you&#39;d want to add the PATH export to your .bashrc. Building ChromiumOS mkdir chromiumos cd chromiumos repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git [-g minilayout] repo sync -j75 cros_sdk export BOARD=amd64-generic ./setup_board --board …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, chromeos, chromiumos, chromium, qemu, ssh, collabora">
+		<meta property="og:title" content="Building ChromiumOS for Qemu" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="https://memcpy.io/images/2017-11-28_chromeos_qemu.png" />
+		<meta property="og:url" content="https://memcpy.io/building-chromiumos-for-qemu.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2017-11-28" />
+		<meta property="article:section" content="kernel" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="kernel" />
+		<meta property="article:tag" content="chromeos" />
+		<meta property="article:tag" content="chromiumos" />
+		<meta property="article:tag" content="chromium" />
+		<meta property="article:tag" content="qemu" />
+		<meta property="article:tag" content="ssh" />
+		<meta property="article:tag" content="collabora" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Building ChromiumOS for Qemu" />
+		<meta name="twitter:description" content="Getting ChromiumOS building is reasonably easy, but running it under Qemu requires some work." />
+		<meta name="twitter:image" content="https://memcpy.io/images/2017-11-28_chromeos_qemu.png" />
 	</head>
 	<body>
 		<article id="content" itemscope>
@@ -161,7 +183,7 @@ boot your very own ChromiumOS.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2019 Robert Foss
+					2020 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>
