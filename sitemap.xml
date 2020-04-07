@@ -2,12 +2,12 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://memcpy.io/</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
 </url><url>
 <loc>https://memcpy.io/speed-up-git-log-graph-18x-times.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.80</priority>
 </url><url>
@@ -297,7 +297,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/category/developer.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -607,7 +607,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/commit.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -732,7 +732,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/format.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -757,7 +757,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/git.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -777,7 +777,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/graph.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -862,7 +862,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/lg.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -872,7 +872,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/log.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1002,7 +1002,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/pretty.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1067,7 +1067,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/slow.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1082,7 +1082,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/speed-up.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1227,22 +1227,22 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/author/robert-foss.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/talks.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/contact.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/about.html</loc>
-<lastmod>2020-06-06</lastmod>
+<lastmod>2020-04-07</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>
