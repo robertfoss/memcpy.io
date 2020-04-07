@@ -35,4 +35,4 @@ git lg  &lt;span class="m"&gt;0&lt;/span&gt;.72s user &lt;span class="m"&gt;0&lt
 &lt;p&gt;This is a speed up of ~18x, compared to the older versions.&lt;/p&gt;
 &lt;p&gt;The way this works is that &lt;a href="https://git-scm.com/docs/commit-graph"&gt;commit-graph&lt;/a&gt;
 file stores the commit graph structure along with some extra metadata to
-speed up graph in the &lt;code&gt;.git/objects/info&lt;/code&gt; directory.&lt;/p&gt;</content><category term="git"></category><category term="lg"></category><category term="log"></category><category term="format"></category><category term="pretty"></category><category term="slow"></category><category term="speed up"></category><category term="commit"></category><category term="graph"></category></entry></feed>
+speed up graph in the &lt;code&gt;.git/objects/info&lt;/code&gt; directory.&lt;/p&gt;</content><category term="git"></category><category term="log"></category><category term="format"></category><category term="pretty"></category><category term="slow"></category><category term="speed up"></category><category term="commit"></category><category term="graph"></category></entry></feed>
