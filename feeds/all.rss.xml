@@ -6,7 +6,7 @@ git lg  &lt;span class="m"&gt;13&lt;/span&gt;.34s user &lt;span class="m"&gt;0&l
 git config --global core.commitGraph &lt;span class="nb"&gt;true&lt;/span&gt;
 git config --global gc.writeCommitGraph &lt;span class="nb"&gt;true&lt;/span&gt;
 
-&lt;span class="c1"&gt;# Command added in git v2.120&lt;/span&gt;
+&lt;span class="c1"&gt;# Command added in git v2.20&lt;/span&gt;
 git commit-graph write
 
 $ &lt;span class="nb"&gt;time&lt;/span&gt; git lg
@@ -17,7 +17,7 @@ git lg  &lt;span class="m"&gt;0&lt;/span&gt;.72s user &lt;span class="m"&gt;0&lt
 &lt;p&gt;This is a speed up of ~18x, compared to the older versions.&lt;/p&gt;
 &lt;p&gt;The way this works is that &lt;a href="https://git-scm.com/docs/commit-graph"&gt;commit-graph&lt;/a&gt;
 file stores the commit graph structure along with some extra metadata to
-speed up graph in the &lt;code&gt;.git/objects/info&lt;/code&gt; directory.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 06 Jun 2020 16:09:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2020-06-06:/speed-up-git-log-graph-18x-times.html</guid><category>git</category><category>lg</category><category>log</category><category>format</category><category>pretty</category><category>slow</category><category>speed up</category><category>performance</category><category>commit-graph</category><category>commit</category><category>graph</category></item><item><title>Panfrost: Liberating ARM GPUs @ Linux Conf Au</title><link>https://memcpy.io/panfrost-liberating-arm-gpus-linux-conf-au.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/files/2020-01-15/title.png"&gt;&lt;/p&gt;
+speed up graph in the &lt;code&gt;.git/objects/info&lt;/code&gt; directory.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 06 Jun 2020 16:09:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2020-06-06:/speed-up-git-log-graph-18x-times.html</guid><category>git</category><category>lg</category><category>log</category><category>format</category><category>pretty</category><category>slow</category><category>speed up</category><category>commit</category><category>graph</category></item><item><title>Panfrost: Liberating ARM GPUs @ Linux Conf Au</title><link>https://memcpy.io/panfrost-liberating-arm-gpus-linux-conf-au.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/files/2020-01-15/title.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
