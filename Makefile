@@ -1,4 +1,4 @@
-PY?=python
+PY?=python3
 PELICAN?=pelican
 PELICANOPTS=-v -D
 
@@ -65,16 +65,16 @@ regenerate:
 
 serve:
 ifdef PORT
-	cd $(OUTPUTDIR) && $(PY) -m pelican.server $(PORT)
+	cd $(OUTPUTDIR) && pelican -l -p $(PORT)
 else
-	cd $(OUTPUTDIR) && $(PY) -m pelican.server
+	cd $(OUTPUTDIR) && pelican -l
 endif
 
 devserver: regenerate
 ifdef PORT
 	$(BASEDIR)/develop_server.sh restart $(PORT)
 else
-	$(BASEDIR)/develop_server.sh restart
+	$(BASEDIR)/develop_server.sh restart 8000
 endif
 
 stopserver:
