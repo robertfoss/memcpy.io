@@ -1,7 +1,7 @@
 Title: Speed up `git log --graph` 18x times
 Date: 2020-04-07 15:06
 Category: developer
-Tags: git, log, format, pretty, slow, speed up, commit, graph
+Tags: git, lg, log, format, pretty, slow, speed up, commit, graph
 Description: For large repositories 'git log --graph' can be slow, but for git v2.20+ it can be sped up.
 
     $ time git lg
@@ -19,6 +19,6 @@ Description: For large repositories 'git log --graph' can be slow, but for git v
 
 This is a speed up of ~18x, compared to the older versions.
 
-The way this works is that [commit-graph](https://git-scm.com/docs/commit-graph)
+The way this works is that the [commit-graph](https://git-scm.com/docs/commit-graph)
 file stores the commit graph structure along with some extra metadata to
 speed up graph in the `.git/objects/info` directory.
