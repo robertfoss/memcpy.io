@@ -10,9 +10,9 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="$ time git lg git lg 13.34s user 0.87s system 84% cpu 16.845 total # True by default as of git v2.24 git config --global core.commitGraph true git config --global gc.writeCommitGraph true # Command added in git v2.20 git commit-graph write $ time git lg git lg 0.72s user 0.14s system 74% cpu 1.154 total This is a speed up of ~18x, compared to the older versions. The way this works is that commit-graph file stores the commit graph structure along with some extra metadata to speed up graph in the .git/objects/info directory.">
+		<meta name="description" content="$ time git lg git lg 13.34s user 0.87s system 84% cpu 16.845 total # True by default as of git v2.24 git config --global core.commitGraph true git config --global gc.writeCommitGraph true # Command added in git v2.20 git commit-graph write $ time git lg git lg 0.72s user 0.14s system 74% cpu 1.154 total This is a speed up of ~18x, compared to the older versions. The way this works is that the commit-graph file stores the commit graph structure along with some extra metadata to speed up graph in the .git/objects/info directory.">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, git, log, format, pretty, slow, speed up, commit, graph">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, git, lg, log, format, pretty, slow, speed up, commit, graph">
 		<meta property="og:title" content="Speed up `git log --graph` 18x times" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="https://memcpy.io/speed-up-git-log-graph-18x-times.html" />
@@ -21,6 +21,7 @@
 		<meta property="article:published_time" content="2020-04-07" />
 		<meta property="article:section" content="developer" />
 		<meta property="article:tag" content="git" />
+		<meta property="article:tag" content="lg" />
 		<meta property="article:tag" content="log" />
 		<meta property="article:tag" content="format" />
 		<meta property="article:tag" content="pretty" />
@@ -59,7 +60,7 @@ git lg  <span class="m">0</span>.72s user <span class="m">0</span>.14s system <s
 
 
 <p>This is a speed up of ~18x, compared to the older versions.</p>
-<p>The way this works is that <a href="https://git-scm.com/docs/commit-graph">commit-graph</a>
+<p>The way this works is that the <a href="https://git-scm.com/docs/commit-graph">commit-graph</a>
 file stores the commit graph structure along with some extra metadata to
 speed up graph in the <code>.git/objects/info</code> directory.</p>
 		</article>
@@ -67,6 +68,8 @@ speed up graph in the <code>.git/objects/info</code> directory.</p>
 			<div id="teaser">
 				<p>Tags:
 					<a href="./tag/git.html">git </a>
+					<span id="breakdot">&middot; </span>
+					<a href="./tag/lg.html">lg </a>
 					<span id="breakdot">&middot; </span>
 					<a href="./tag/log.html">log </a>
 					<span id="breakdot">&middot; </span>

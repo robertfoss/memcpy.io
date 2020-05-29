@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - format</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 07 Apr 2020 15:06:00 +0200</lastBuildDate><item><title>Speed up `git log --graph` 18x times</title><link>https://memcpy.io/speed-up-git-log-graph-18x-times.html</link><description>&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;time&lt;/span&gt; git lg
+<rss version="2.0"><channel><title>memcpy.io - lg</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 07 Apr 2020 15:06:00 +0200</lastBuildDate><item><title>Speed up `git log --graph` 18x times</title><link>https://memcpy.io/speed-up-git-log-graph-18x-times.html</link><description>&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;time&lt;/span&gt; git lg
 git lg  &lt;span class="m"&gt;13&lt;/span&gt;.34s user &lt;span class="m"&gt;0&lt;/span&gt;.87s system &lt;span class="m"&gt;84&lt;/span&gt;% cpu &lt;span class="m"&gt;16&lt;/span&gt;.845 total
 
 &lt;span class="c1"&gt;# True by default as of git v2.24&lt;/span&gt;
