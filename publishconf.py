@@ -11,7 +11,7 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 SITEURL = 'https://memcpy.io'
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 
 DELETE_OUTPUT_DIRECTORY = True
