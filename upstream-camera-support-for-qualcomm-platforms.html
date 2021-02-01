@@ -86,8 +86,8 @@ support is that only basic cropping &amp; rotation is implemented currently.</p>
 <p>An obstacle caused by this limited ISPIF functionality is that we're not able to do format
 conversions using the ISP. So whatever format the camera sensor is outputting, we're going
 to output to userspace. This can be a problem for Bayer pixel format sensors, because
-they're poorly supported by userspace applications and required at least debayering being
-done in a post-processing step.</p>
+they're poorly supported by userspace applications and requires at least debayering being
+done in a post-processing step before the output can be viewed.</p>
 <h3>Qualcomm ISP Gen 2 - Titan</h3>
 <p>The next iteration of the Qualcomm ISP architecture is called Titan. The changes from Gen1
 to Gen2/Titan can be summarized in two parts.</p>
