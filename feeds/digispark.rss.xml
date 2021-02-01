@@ -2,9 +2,8 @@
 <rss version="2.0"><channel><title>memcpy.io - Digispark</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Sun, 11 Oct 2015 13:16:00 +0200</lastBuildDate><item><title>WS2812 Welding Goggles</title><link>https://memcpy.io/ws2812-welding-goggles.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-11_goggles.png" title="WS2812 Welding Goggles"&gt;&lt;/p&gt;
 &lt;p&gt;The goggles were built using an AtTiny85 module and a WS2812B strip and some bits and bobs that were laying around. A more complete BOM can be found below.&lt;/p&gt;
 &lt;h2&gt;Code&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/digispark_ws2812_waves.git
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/robertfoss/digispark_ws2812_waves.git&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The animation is built ontop of the excellent &lt;a href="https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino"&gt;light_ws2812&lt;/a&gt; library. It supports the AtTiny85 better than other competing libraries like FastLED.&lt;/p&gt;
 &lt;p&gt;The animation is built around an non-float sin function and a HSV function that generates the actual colors.&lt;/p&gt;
@@ -21,4 +20,4 @@ Your browser does not support the video tag.
 &lt;li&gt;23$ &lt;a href="http://www.aliexpress.com/item/1M-WS2812B-WS2811-IC-Chip-built-in-Black-PCB-144-leds-m-Digital-5050-RGB-LED/1838594646.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;WS2812B Strip 144 LEDs/m&lt;/a&gt; - Only about a 5th of the length needed.&lt;/li&gt;
 &lt;li&gt;2x$4 &lt;a href="http://www.aliexpress.com/item/Eachine-3D-X4-RC-Quadcopter-Spare-Parts-3-7V-300Mah-Battery/32335487012.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo 3.7V 300mAh&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;$3 &lt;a href="http://www.aliexpress.com/item/F14786-4-in-1-3-7V-Lipo-Battery-Charger-USB-Interface-4-Ports-For-Hubsan-X4/32394891091.html?ws_ab_test=201407_4,201444_5,201409_4"&gt;LiPo USB Charger&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;$6 &lt;a href="http://www.aliexpress.com/item/10-pairs-of-battery-plug-connector-1S-2-Pins-Mirco-model-battery-connector/32305697134.html"&gt;Battery connector cable …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 11 Oct 2015 13:16:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2015-10-11:/ws2812-welding-goggles.html</guid><category>AtTiny85</category><category>Digispark</category><category>WS2812</category><category>WS2812B</category><category>goggles</category></item></channel></rss>
+&lt;li&gt;$6 &lt;a href="http://www.aliexpress.com/item/10-pairs-of-battery-plug-connector-1S-2-Pins-Mirco-model-battery-connector/32305697134.html"&gt;Battery connector cable …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 11 Oct 2015 13:16:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2015-10-11:/ws2812-welding-goggles.html</guid><category>WS2812</category><category>AtTiny85</category><category>Digispark</category><category>WS2812</category><category>WS2812B</category><category>goggles</category></item></channel></rss>

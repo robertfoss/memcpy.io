@@ -43,52 +43,48 @@
 			<p><img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"></p>
 <p>This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.</p>
 <h3>Build ESP8266 SDK</h3>
-<div class="highlight"><pre><span></span>sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-cd /opt
-git clone https://github.com/pfalcon/esp-open-sdk.git
-cd esp-open-sdk
-git submodule sync
-git submodule update
-make
-export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed</span>
+<span class="err">cd /opt</span>
+<span class="err">git clone https://github.com/pfalcon/esp-open-sdk.git</span>
+<span class="err">cd esp-open-sdk</span>
+<span class="err">git submodule sync</span>
+<span class="err">git submodule update</span>
+<span class="err">make</span>
+<span class="err">export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH</span>
+</code></pre></div>
 
 <h3>Build NodeMCU</h3>
-<div class="highlight"><pre><span></span>git clone https://github.com/nodemcu/nodemcu-firmware.git
-cd nodemcu-firmware
-# Switch to dev branch, since it&#39;s the most up to date
-git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
-make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">git clone https://github.com/nodemcu/nodemcu-firmware.git</span>
+<span class="err">cd nodemcu-firmware</span>
+<span class="err"># Switch to dev branch, since it&#39;s the most up to date</span>
+<span class="err">git checkout --track origin/dev</span>
+<span class="err"># Make INTEGER version, since it uses less memory/space</span>
+<span class="err">make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;</span>
+</code></pre></div>
 
 <h3>Flash NodeMCU</h3>
-<div class="highlight"><pre><span></span>COMPORT=/dev/ttyUSB0 make flash
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">COMPORT=/dev/ttyUSB0 make flash</span>
+</code></pre></div>
 
 <h3>Modifying NodeMCU to fit your needs</h3>
 <h5>app/include/user_modules.h</h5>
 <p>Contains a list of which modules to include in the build.</p>
-<div class="highlight"><pre><span></span>...
-#define LUA_USE_MODULES_NODE
-#define LUA_USE_MODULES_FILE
-#define LUA_USE_MODULES_GPIO
-#define LUA_USE_MODULES_WIFI
-#define LUA_USE_MODULES_NET
-...
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="err">#define LUA_USE_MODULES_NODE</span>
+<span class="err">#define LUA_USE_MODULES_FILE</span>
+<span class="err">#define LUA_USE_MODULES_GPIO</span>
+<span class="err">#define LUA_USE_MODULES_WIFI</span>
+<span class="err">#define LUA_USE_MODULES_NET</span>
+<span class="err">...</span>
+</code></pre></div>
 
 <h5>app/include/user_config.h</h5>
 <p>Contains NodeMCU developer options, but could be of use.</p>
-<div class="highlight"><pre><span></span>...
-#define DEVELOP_VERSION
-#define NODE_ERROR
-...
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="err">#define DEVELOP_VERSION</span>
+<span class="err">#define NODE_ERROR</span>
+<span class="err">...</span>
+</code></pre></div>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">
@@ -114,7 +110,7 @@ make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

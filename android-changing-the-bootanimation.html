@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="There exists official documentation for how to create a custom boot animation, but unfortunately it is lacking in actual examples. So this guide is a bit more hands on. Structure of bootanimation.zip Without covering too much of the same gound as the documentation, let&#39;s have a quick look at what is in a simple bootanimation.zip. $ ls -la bootanimation total 28 drwxr-xr-x 4 hottuna hottuna 4096 Apr 19 22:39 . drwxr-xr-x 8 hottuna hottuna 4096 Apr 19 22:39 .. -rw-r--r-- 1 hottuna hottuna 92 Apr 19 15:21 desc.txt drwxr-xr-x 2 hottuna hottuna 4096 Apr 19 12:44 part0 drwxr-xr-x 2 hottuna hottuna 4096 Apr 19 12:45 part1 $ cat bootanimation/desc.txt 1920 1080 30 # WIDTH HEIGHT FPS c 5 15 part0 …">
+		<meta name="description" content="There exists official documentation for how to create a custom boot animation, but unfortunately it is lacking in actual examples. So this guide is a bit more hands on. Structure of bootanimation.zip Without covering too much of the same gound as the documentation, let&#39;s have a quick look at what is in a simple bootanimation.zip. $ ls -la bootanimation total 28 drwxr-xr-x 4 hottuna hottuna 4096 Apr 19 22:39 . drwxr-xr-x 8 hottuna hottuna 4096 Apr 19 22:39 .. -rw-r--r-- 1 hottuna hottuna 92 Apr 19 15:21 desc.txt drwxr-xr-x 2 hottuna hottuna 4096 Apr 19 12:44 part0 drwxr-xr-x 2 hottuna hottuna 4096 Apr 19 12:45 part1 $ cat bootanimation/desc.txt …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, bootanimation, boot, animation, collabora">
 		<meta property="og:title" content="Android: Changing the bootanimation" />
@@ -49,51 +49,49 @@ in actual examples.</p>
 <h2>Structure of bootanimation.zip</h2>
 <p>Without covering too much of the same gound as the documentation,
 let's have a quick look at what is in a simple bootanimation.zip.</p>
-<div class="highlight"><pre><span></span>$ ls -la bootanimation
-total <span class="m">28</span>
-drwxr-xr-x <span class="m">4</span> hottuna hottuna <span class="m">4096</span> Apr <span class="m">19</span> <span class="m">22</span>:39 .
-drwxr-xr-x <span class="m">8</span> hottuna hottuna <span class="m">4096</span> Apr <span class="m">19</span> <span class="m">22</span>:39 ..
--rw-r--r-- <span class="m">1</span> hottuna hottuna   <span class="m">92</span> Apr <span class="m">19</span> <span class="m">15</span>:21 desc.txt
-drwxr-xr-x <span class="m">2</span> hottuna hottuna <span class="m">4096</span> Apr <span class="m">19</span> <span class="m">12</span>:44 part0
-drwxr-xr-x <span class="m">2</span> hottuna hottuna <span class="m">4096</span> Apr <span class="m">19</span> <span class="m">12</span>:45 part1
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">la</span><span class="w"> </span><span class="n">bootanimation</span><span class="w"></span>
+<span class="n">total</span><span class="w"> </span><span class="mi">28</span><span class="w"></span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="mi">22</span><span class="err">:</span><span class="mi">39</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="mi">22</span><span class="err">:</span><span class="mi">39</span><span class="w"> </span><span class="p">..</span><span class="w"></span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 hottuna hottuna   92 Apr 19 15:21 desc.txt</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">44</span><span class="w"> </span><span class="n">part0</span><span class="w"></span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">45</span><span class="w"> </span><span class="n">part1</span><span class="w"></span>
 
-$ cat bootanimation/desc.txt 
-<span class="m">1920</span> <span class="m">1080</span> <span class="m">30</span>         <span class="c1"># WIDTH HEIGHT FPS</span>
-c <span class="m">5</span> <span class="m">15</span> part0 FFFFFF  <span class="c1"># TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]</span>
-c <span class="m">5</span> <span class="m">15</span> part1 FFFFFF  <span class="c1"># TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]</span>
+<span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="n">bootanimation</span><span class="o">/</span><span class="k">desc</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>
+<span class="mi">1920</span><span class="w"> </span><span class="mi">1080</span><span class="w"> </span><span class="mi">30</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="n">WIDTH</span><span class="w"> </span><span class="n">HEIGHT</span><span class="w"> </span><span class="n">FPS</span><span class="w"></span>
+<span class="n">c</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">part0</span><span class="w"> </span><span class="n">FFFFFF</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">TYPE</span><span class="w"> </span><span class="nf">COUNT</span><span class="w"> </span><span class="n">PAUSE</span><span class="w"> </span><span class="k">PATH</span><span class="w"> </span><span class="o">[</span><span class="n">#RGBHEX</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">CLOCK</span><span class="o">]</span><span class="w"></span>
+<span class="n">c</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">part1</span><span class="w"> </span><span class="n">FFFFFF</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">TYPE</span><span class="w"> </span><span class="nf">COUNT</span><span class="w"> </span><span class="n">PAUSE</span><span class="w"> </span><span class="k">PATH</span><span class="w"> </span><span class="o">[</span><span class="n">#RGBHEX</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">CLOCK</span><span class="o">]</span><span class="w"></span>
 
-ls -la bootanimation/part0 
-total <span class="m">28</span>
-drwxr-xr-x <span class="m">2</span> hottuna hottuna  <span class="m">4096</span> Apr <span class="m">19</span> <span class="m">12</span>:44 .
-drwxr-xr-x <span class="m">6</span> hottuna hottuna  <span class="m">4096</span> Apr <span class="m">19</span> <span class="m">15</span>:40 ..
--rw-r--r-- <span class="m">1</span> hottuna hottuna <span class="m">10688</span> Apr <span class="m">19</span> <span class="m">12</span>:31 <span class="m">0000</span>.png
--rw-r--r-- <span class="m">1</span> hottuna hottuna <span class="m">10688</span> Apr <span class="m">19</span> <span class="m">12</span>:31 <span class="m">0001</span>.png
--rw-r--r-- <span class="m">1</span> hottuna hottuna <span class="m">10688</span> Apr <span class="m">19</span> <span class="m">12</span>:31 <span class="m">0002</span>.png
--rw-r--r-- <span class="m">1</span> hottuna hottuna <span class="m">10688</span> Apr <span class="m">19</span> <span class="m">12</span>:31 <span class="m">0003</span>.png
--rw-r--r-- <span class="m">1</span> hottuna hottuna <span class="m">10688</span> Apr <span class="m">19</span> <span class="m">12</span>:31 XXXX.png
-</pre></div>
-
+<span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">la</span><span class="w"> </span><span class="n">bootanimation</span><span class="o">/</span><span class="n">part0</span><span class="w"> </span>
+<span class="n">total</span><span class="w"> </span><span class="mi">28</span><span class="w"></span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="n">hottuna</span><span class="w">  </span><span class="mi">4096</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">44</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="n">hottuna</span><span class="w"> </span><span class="n">hottuna</span><span class="w">  </span><span class="mi">4096</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">40</span><span class="w"> </span><span class="p">..</span><span class="w"></span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0000.png</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0001.png</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0002.png</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0003.png</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 hottuna hottuna 10688 Apr 19 12:31 XXXX.png</span>
+</code></pre></div>
 
 <p>Note that the "#" comments are mine and not actually present in the files.</p>
 <p>An important thing to note with the zip file is needs to have compression
 turned off.</p>
 <h2>Switch bootanimation</h2>
 <p>Download <a href="/files/2017-04-20/bootanimation.zip">bootanimation.zip</a>.</p>
-<div class="highlight"><pre><span></span>unzip bootanimation.zip
-cd bootanimation
-# Edit desc.txt and partN folders to your needs
-zip -0qry -i \*.txt \*.png \*.wav @ ../bootanimation.zip *.txt part*
+<div class="highlight"><pre><span></span><code><span class="n">unzip</span> <span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span>
+<span class="n">cd</span> <span class="n">bootanimation</span>
+<span class="o">#</span> <span class="n">Edit</span> <span class="k">desc</span><span class="p">.</span><span class="n">txt</span> <span class="k">and</span> <span class="n">partN</span> <span class="n">folders</span> <span class="k">to</span> <span class="n">your</span> <span class="n">needs</span>
+<span class="n">zip</span> <span class="o">-</span><span class="mi">0</span><span class="n">qry</span> <span class="o">-</span><span class="n">i</span> <span class="err">\</span><span class="o">*</span><span class="p">.</span><span class="n">txt</span> <span class="err">\</span><span class="o">*</span><span class="p">.</span><span class="n">png</span> <span class="err">\</span><span class="o">*</span><span class="p">.</span><span class="n">wav</span> <span class="o">@</span> <span class="p">..</span><span class="o">/</span><span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span> <span class="o">*</span><span class="p">.</span><span class="n">txt</span> <span class="n">part</span><span class="o">*</span>
 
-# Option 1, use adb to send bootanimation.zip
-adb root
-adb remount
-adb push bootanimation.zip /system/media/bootanimation.zip
+<span class="o">#</span> <span class="k">Option</span> <span class="mi">1</span><span class="p">,</span> <span class="n">use</span> <span class="n">adb</span> <span class="k">to</span> <span class="n">send</span> <span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span>
+<span class="n">adb</span> <span class="n">root</span>
+<span class="n">adb</span> <span class="n">remount</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span> <span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span>
 
-# Option 2, bake bootanimation.zip into your AOSP build
-cp bootanimation.zip /opt/aosp/out/target/product/linaro_arm/system/bootanimation.zip
-./your_favorite_buildscript_here.sh
-</pre></div>
-
+<span class="o">#</span> <span class="k">Option</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bake</span> <span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span> <span class="k">into</span> <span class="n">your</span> <span class="n">AOSP</span> <span class="n">build</span>
+<span class="n">cp</span> <span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">aosp</span><span class="o">/</span><span class="k">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">linaro_arm</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">bootanimation</span><span class="p">.</span><span class="n">zip</span>
+<span class="p">.</span><span class="o">/</span><span class="n">your_favorite_buildscript_here</span><span class="p">.</span><span class="n">sh</span>
+</code></pre></div>
 
 <h2>References</h2>
 <p><a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md">bootanimation documentation</a></p>
@@ -132,7 +130,7 @@ cp bootanimation.zip /opt/aosp/out/target/product/linaro_arm/system/bootanimatio
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

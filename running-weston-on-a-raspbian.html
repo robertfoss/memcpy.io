@@ -60,105 +60,98 @@ from freedesktop.org, but altered to target VC4 and Raspbian.</p>
 <p>You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.</p>
-<div class="highlight"><pre><span></span># Change WLD to any location you like
-export WLD=~/local
-export LD_LIBRARY_PATH=$WLD/lib
-export PKG_CONFIG_PATH=$WLD/lib/pkgconfig/:$WLD/share/pkgconfig/
-export PATH=$WLD/bin:$PATH
-export ACLOCAL_PATH=$WLD/share/aclocal
-export ACLOCAL=&quot;aclocal -I $ACLOCAL_PATH&quot;
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Change</span> <span class="n">WLD</span> <span class="k">to</span> <span class="k">any</span> <span class="k">location</span> <span class="n">you</span> <span class="k">like</span>
+<span class="n">export</span> <span class="n">WLD</span><span class="o">=~/</span><span class="k">local</span>
+<span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=</span><span class="err">$</span><span class="n">WLD</span><span class="o">/</span><span class="n">lib</span>
+<span class="n">export</span> <span class="n">PKG_CONFIG_PATH</span><span class="o">=</span><span class="err">$</span><span class="n">WLD</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span><span class="o">/</span><span class="p">:</span><span class="err">$</span><span class="n">WLD</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">pkgconfig</span><span class="o">/</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="err">$</span><span class="n">WLD</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="err">$</span><span class="n">PATH</span>
+<span class="n">export</span> <span class="n">ACLOCAL_PATH</span><span class="o">=</span><span class="err">$</span><span class="n">WLD</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">aclocal</span>
+<span class="n">export</span> <span class="n">ACLOCAL</span><span class="o">=</span><span class="ss">&quot;aclocal -I $ACLOCAL_PATH&quot;</span>
 
-# Needed by autotools
-mkdir -p $WLD/share/aclocal
-</pre></div>
-
+<span class="o">#</span> <span class="n">Needed</span> <span class="k">by</span> <span class="n">autotools</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="err">$</span><span class="n">WLD</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">aclocal</span>
+</code></pre></div>
 
 <h2>Installing dependencies</h2>
 <p>Start by installing the build dependencies of mesa, weston and wayland.</p>
-<div class="highlight"><pre><span></span># Enable source packages
-sudo sed -e &quot;s/#\sdeb-src/deb-src/g&quot; -i /etc/apt/sources.list
-sudo apt update
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err"># Enable source packages</span>
+<span class="err">sudo sed -e &quot;s/#\sdeb-src/deb-src/g&quot; -i /etc/apt/sources.list</span>
+<span class="err">sudo apt update</span>
+</code></pre></div>
 
 <p>The above step can alternatively be completed using the GUI of your
 package manager, by enabling source packages.</p>
-<div class="highlight"><pre><span></span># Install build dependencies of mesa
-sudo apt-get build-dep mesa
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Install</span> <span class="n">build</span> <span class="n">dependencies</span> <span class="k">of</span> <span class="n">mesa</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">build</span><span class="o">-</span><span class="n">dep</span> <span class="n">mesa</span>
 
-# Install build dependencies of wayland/weston
-sudo apt-get install \
-  libevdev libevdev-dev \
-  libwacom libwacom-dev \
-  libxkbcommon libxkbcommon-dev
-</pre></div>
-
+<span class="o">#</span> <span class="n">Install</span> <span class="n">build</span> <span class="n">dependencies</span> <span class="k">of</span> <span class="n">wayland</span><span class="o">/</span><span class="n">weston</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="err">\</span>
+  <span class="n">libevdev</span> <span class="n">libevdev</span><span class="o">-</span><span class="n">dev</span> <span class="err">\</span>
+  <span class="n">libwacom</span> <span class="n">libwacom</span><span class="o">-</span><span class="n">dev</span> <span class="err">\</span>
+  <span class="n">libxkbcommon</span> <span class="n">libxkbcommon</span><span class="o">-</span><span class="n">dev</span>
+</code></pre></div>
 
 <h2>Building Mesa</h2>
 <p>Configure and compile mesa with vc4, wayland and EGL support.</p>
-<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/mesa/mesa
-cd mesa
-./autogen.sh --prefix=$WLD \
-  --enable-gles2 \
-  --with-egl-platforms=x11,wayland,drm \
-  --enable-gbm --enable-shared-glapi \
-  --with-gallium-drivers=vc4 \
-  --without-dri-drivers \
-  --disable-va \
-  --disable-vdpau \
-  --disable-xvmc \
-  --disable-omx
-make -j4 &amp;&amp; make install
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">git clone git://anongit.freedesktop.org/mesa/mesa</span>
+<span class="err">cd mesa</span>
+<span class="err">./autogen.sh --prefix=$WLD \</span>
+<span class="err">  --enable-gles2 \</span>
+<span class="err">  --with-egl-platforms=x11,wayland,drm \</span>
+<span class="err">  --enable-gbm --enable-shared-glapi \</span>
+<span class="err">  --with-gallium-drivers=vc4 \</span>
+<span class="err">  --without-dri-drivers \</span>
+<span class="err">  --disable-va \</span>
+<span class="err">  --disable-vdpau \</span>
+<span class="err">  --disable-xvmc \</span>
+<span class="err">  --disable-omx</span>
+<span class="err">make -j4 &amp;&amp; make install</span>
+</code></pre></div>
 
 <h2>Building Weston and dependencies</h2>
 <p>Weston and Wayland have a number of dependencies that also need to be fetched
 and built.</p>
 <h4>Wayland</h4>
 <p>Weston is a Wayland compositor, so we're going to have to build Wayland.</p>
-<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/wayland/wayland
-cd wayland
-./autogen.sh --prefix=$WLD
-make -j4 &amp;&amp; make install
-cd ..
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">anongit</span><span class="p">.</span><span class="n">freedesktop</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">wayland</span><span class="o">/</span><span class="n">wayland</span>
+<span class="n">cd</span> <span class="n">wayland</span>
+<span class="p">.</span><span class="o">/</span><span class="n">autogen</span><span class="p">.</span><span class="n">sh</span> <span class="c1">--prefix=$WLD</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j4</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">install</span>
+<span class="n">cd</span> <span class="p">..</span>
 
-git clone git://anongit.freedesktop.org/wayland/wayland-protocols
-cd wayland-protocols
-./autogen.sh --prefix=$WLD
-make install
-cd ..
-</pre></div>
-
+<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">anongit</span><span class="p">.</span><span class="n">freedesktop</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">wayland</span><span class="o">/</span><span class="n">wayland</span><span class="o">-</span><span class="n">protocols</span>
+<span class="n">cd</span> <span class="n">wayland</span><span class="o">-</span><span class="n">protocols</span>
+<span class="p">.</span><span class="o">/</span><span class="n">autogen</span><span class="p">.</span><span class="n">sh</span> <span class="c1">--prefix=$WLD</span>
+<span class="n">make</span> <span class="n">install</span>
+<span class="n">cd</span> <span class="p">..</span>
+</code></pre></div>
 
 <h4>libinput</h4>
 <p>libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.</p>
-<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/wayland/libinput
-cd libinput
-./autogen.sh --prefix=$WLD
-make -j4 &amp;&amp; make install
-cd ..
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">git clone git://anongit.freedesktop.org/wayland/libinput</span>
+<span class="err">cd libinput</span>
+<span class="err">./autogen.sh --prefix=$WLD</span>
+<span class="err">make -j4 &amp;&amp; make install</span>
+<span class="err">cd ..</span>
+</code></pre></div>
 
 <h4>Weston</h4>
 <p>Finally we've built all of the dependencies of Weston and can now build it.</p>
-<div class="highlight"><pre><span></span>git clone git://anongit.freedesktop.org/wayland/weston
-cd weston
-./autogen.sh --prefix=$WLD \
-  --disable-libunwind
-make -j4 &amp;&amp;
-sudo make install
-cd ..
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">git clone git://anongit.freedesktop.org/wayland/weston</span>
+<span class="err">cd weston</span>
+<span class="err">./autogen.sh --prefix=$WLD \</span>
+<span class="err">  --disable-libunwind</span>
+<span class="err">make -j4 &amp;&amp;</span>
+<span class="err">sudo make install</span>
+<span class="err">cd ..</span>
+</code></pre></div>
 
 <h2>Running Weston</h2>
 <p>That wasn't so bad, it took a little while, but now we're ready to start Weston.
 Now, let's fire up a (virtual) terminal. Make sure that you're not running an
 X terminal, ssh terminal or serial terminal.</p>
 <p>Running weston in this way depends on logind.</p>
-<div class="highlight"><pre><span></span># Make sure that <span class="nv">$DISPLAY</span> is unset.
+<div class="highlight"><pre><span></span><code># Make sure that <span class="nv">$DISPLAY</span> is unset.
 unset DISPLAY
 
 # And that <span class="nv">$XDG_RUNTIME_DIR</span> has been set and created.
@@ -172,8 +165,7 @@ fi
 
 # Run weston:
 weston
-</pre></div>
-
+</code></pre></div>
 
 <h2>Try weston applications</h2>
 <p>Now that we're running weston, let's try some applications.
@@ -222,7 +214,7 @@ directory.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

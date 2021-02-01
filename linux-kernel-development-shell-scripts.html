@@ -59,7 +59,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> checkpatch <span class="o">{</span>
   <span class="k">if</span> <span class="o">[</span> -z <span class="si">${</span><span class="nv">1</span><span class="p">+x</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="nb">exec</span> git diff <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
@@ -70,20 +70,18 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
     <span class="nb">exec</span> git diff HEAD~<span class="nv">$NUM_COMMITS</span>..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">fi</span>
 <span class="o">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
-
 <p>The checkpatch script simply wraps the patch creation process and allows you to
 right away specify which </p>
 <h4>Example</h4>
-<div class="highlight"><pre><span></span>~/work/linux $ checkpatch 15
-WARNING: ENOSYS means &#39;invalid syscall nr&#39; and nothing else
-#349: FILE: drivers/tty/serial/sh-sci.c:3026:
-+   if (IS_ERR(sciport-&gt;gpios) &amp;&amp; PTR_ERR(sciport-&gt;gpios) != -ENOSYS)
+<div class="highlight"><pre><span></span><code><span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="n">linux</span> <span class="err">$</span> <span class="n">checkpatch</span> <span class="mi">15</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">ENOSYS</span> <span class="n">means</span> <span class="s1">&#39;invalid syscall nr&#39;</span> <span class="k">and</span> <span class="k">nothing</span> <span class="k">else</span>
+<span class="o">#</span><span class="mi">349</span><span class="p">:</span> <span class="n">FILE</span><span class="p">:</span> <span class="n">drivers</span><span class="o">/</span><span class="n">tty</span><span class="o">/</span><span class="nb">serial</span><span class="o">/</span><span class="n">sh</span><span class="o">-</span><span class="n">sci</span><span class="p">.</span><span class="k">c</span><span class="p">:</span><span class="mi">3026</span><span class="p">:</span>
+<span class="o">+</span>   <span class="k">if</span> <span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">sciport</span><span class="o">-&gt;</span><span class="n">gpios</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">sciport</span><span class="o">-&gt;</span><span class="n">gpios</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="n">ENOSYS</span><span class="p">)</span>
 
-total: 0 errors, 1 warnings, 385 lines checked
-</pre></div>
-
+<span class="n">total</span><span class="p">:</span> <span class="mi">0</span> <span class="n">errors</span><span class="p">,</span> <span class="mi">1</span> <span class="n">warnings</span><span class="p">,</span> <span class="mi">385</span> <span class="n">lines</span> <span class="k">checked</span>
+</code></pre></div>
 
 <p>In this example the 15 last commits are checked against scripts/checkpatch.pl
 for correctness.</p>
@@ -106,7 +104,7 @@ for correctness.</p>
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> get_maintainer <span class="o">{</span>
   <span class="nv">NUM_COMMITS</span><span class="o">=</span><span class="nv">$1</span>
 
@@ -116,24 +114,23 @@ for correctness.</p>
   <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/(.*//g&#39;</span><span class="k">)</span>
 
   <span class="c1"># Remove names from email addresses</span>
-  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/.*&lt;//g&#39;</span><span class="k">)</span>
+  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/.*&lt;!--/g&#39;</span><span class="k">)</span>
 
   <span class="c1"># Remove left over character</span>
-  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/&gt;//g&#39;</span><span class="k">)</span>
+  <span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/--&gt;//g&#39;</span><span class="k">)</span>
 
   <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> email<span class="p">;</span> <span class="k">do</span>
     <span class="nb">echo</span> -n <span class="s2">&quot;--to=</span><span class="si">${</span><span class="nv">email</span><span class="si">}</span><span class="s2">  &quot;</span><span class="p">;</span>
   <span class="k">done</span>
 <span class="o">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
-
 <h4>Example</h4>
-<div class="highlight"><pre><span></span>~/work/linux $ get_maintainer 1
---to=gregkh@linuxfoundation.org  --to=jslaby@suse.com  --to=linux-serial@vger.kernel.org  --to=linux-kernel@vger.kernel.org
+<div class="highlight"><pre><span></span><code><span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="n">linux</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">get_maintainer</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="c1">--to=gregkh@linuxfoundation.org  --to=jslaby@suse.com  --to=linux-serial@vger.kernel.org  --to=linux-kernel@vger.kernel.org</span>
 
-~/work/linux $ git send-email -1 $(get_maintainer 1)
-</pre></div>
+<span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="n">linux</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">send</span><span class="o">-</span><span class="n">email</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="n">get_maintainer</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">
@@ -163,7 +160,7 @@ for correctness.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

@@ -35,8 +35,7 @@ A guide to building NodeMCU can be found &lt;a href="http://memset.io/building-n
 &lt;h4&gt;What you need to do&lt;/h4&gt;
 &lt;p&gt;After a user has connected throught the portal and sucessfully configured the the ESP8266 with the credentials of the local WiFi, something lua service should be started so that the ESP8266 actually does something.&lt;/p&gt;
 &lt;p&gt;I would suggest adding something like this to init.lua:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dofile(&amp;quot;init_connected.lua&amp;quot;)
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;dofile(&amp;quot;init_connected.lua&amp;quot;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
-&lt;p&gt;Where init_connected.lua is where your script resides.&lt;/p&gt;</content><category term="NodeMCU"></category><category term="ESP8266"></category><category term="Setup"></category></entry></feed>
+&lt;p&gt;Where init_connected.lua is where your script resides.&lt;/p&gt;</content><category term="ESP8266"></category><category term="NodeMCU"></category><category term="ESP8266"></category><category term="Setup"></category></entry></feed>

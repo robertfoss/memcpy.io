@@ -50,27 +50,25 @@
 </a></p>
 <h3>Configuring the QNAP device</h3>
 <p>The first step is to SSH into your QNAP device using the <em>admin</em> account.</p>
-<div class="highlight"><pre><span></span>ssh admin@NAS_IP
-cat &gt;&gt; /share/Container/container-station-data/lib/lxc/CONTAINER_NAME/config &lt;&lt; EOF
-lxc.cgroup.devices.allow = c 10:200 rwm
-EOF
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">ssh admin@NAS_IP</span>
+<span class="err">cat &gt;&gt; /share/Container/container-station-data/lib/lxc/CONTAINER_NAME/config &lt;&lt; EOF</span>
+<span class="err">lxc.cgroup.devices.allow = c 10:200 rwm</span>
+<span class="err">EOF</span>
+</code></pre></div>
 
 <h3>Configuring the container guest</h3>
 <p>The second step is open the QNAP web-ui, open the Container Station
 application and enter the console of your container.</p>
-<div class="highlight"><pre><span></span>sed -i &#39;/exit 0/d&#39; /etc/rc.local
-cat &gt;&gt; /etc/rc.local &lt;&lt; EOF
-if ! [ -c /dev/net/tun ]; then
-    mkdir -p /dev/net
-    mknod -m 666 /dev/net/tun c 10 200
-fi
+<div class="highlight"><pre><span></span><code><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;/exit 0/d&#39;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rc</span><span class="p">.</span><span class="k">local</span>
+<span class="n">cat</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rc</span><span class="p">.</span><span class="k">local</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
+<span class="k">if</span> <span class="o">!</span> <span class="p">[</span> <span class="o">-</span><span class="k">c</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">tun</span> <span class="p">];</span> <span class="k">then</span>
+    <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">net</span>
+    <span class="n">mknod</span> <span class="o">-</span><span class="n">m</span> <span class="mi">666</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">tun</span> <span class="k">c</span> <span class="mi">10</span> <span class="mi">200</span>
+<span class="n">fi</span>
 
-exit 0
-EOF
-</pre></div>
-
+<span class="n">exit</span> <span class="mi">0</span>
+<span class="n">EOF</span>
+</code></pre></div>
 
 <p>Lastly the container needs to be restarted, and then your VPN application
 should be able to access TUN devices and work normally.</p>
@@ -111,7 +109,7 @@ should be able to access TUN devices and work normally.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

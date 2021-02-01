@@ -60,25 +60,24 @@ split into parts that are bridged by a screw being inserted.</p>
 <h2>Disable Write-Protect</h2>
 <p>So this is the part that requires a <a href="http://dev.chromium.org/developers/how-tos/install-depot-tools">Servo</a> device.
 And a ChromiumOS checkout, for some help setting one up, have a look at <a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html">my previous post</a>.</p>
-<div class="highlight"><pre><span></span># Go to your ChromiumOS checkout
-cd /opt/chromiumos
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">ChromiumOS</span><span class="w"> </span><span class="n">checkout</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">chromiumos</span><span class="w"></span>
 
-# Enter dev environment
-cros_sdk
+<span class="err">#</span><span class="w"> </span><span class="n">Enter</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="n">environment</span><span class="w"></span>
+<span class="n">cros_sdk</span><span class="w"></span>
 
-# Set device variable
-export BOARD=chell
+<span class="err">#</span><span class="w"> </span><span class="k">Set</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="k">variable</span><span class="w"></span>
+<span class="n">export</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=</span><span class="n">chell</span><span class="w"></span>
 
-# Connect to Chromebook using a Servo device
-sudo servod -b $BOARD &amp;
+<span class="err">#</span><span class="w"> </span><span class="k">Connect</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">Chromebook</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Servo</span><span class="w"> </span><span class="n">device</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">servod</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="err">$</span><span class="n">BOARD</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
 
-# Disable WP
-# This step may vary depending on the hardware of your actual Chromebook
-dut-control fw_wp:off
-sudo /usr/sbin/flashrom -p ft2232_spi:type=servo-v2 --wp-disable
-sudo /usr/sbin/flashrom -p ec --wp-disable
-</pre></div>
-
+<span class="err">#</span><span class="w"> </span><span class="n">Disable</span><span class="w"> </span><span class="n">WP</span><span class="w"></span>
+<span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">vary</span><span class="w"> </span><span class="n">depending</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hardware</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="n">Chromebook</span><span class="w"></span>
+<span class="n">dut</span><span class="o">-</span><span class="n">control</span><span class="w"> </span><span class="nl">fw_wp</span><span class="p">:</span><span class="k">off</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="nl">ft2232_spi</span><span class="p">:</span><span class="n">type</span><span class="o">=</span><span class="n">servo</span><span class="o">-</span><span class="n">v2</span><span class="w"> </span><span class="c1">--wp-disable</span>
+<span class="n">sudo</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">ec</span><span class="w"> </span><span class="c1">--wp-disable</span>
+</code></pre></div>
 
 <h2>References</h2>
 <p><a href="http://dev.chromium.org/developers/how-tos/install-depot-tools">ChromiumOS Servo</a><br>
@@ -118,7 +117,7 @@ sudo /usr/sbin/flashrom -p ec --wp-disable
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

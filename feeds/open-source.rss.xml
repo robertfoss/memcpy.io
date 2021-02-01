@@ -33,40 +33,39 @@ modify and re-distribute these materials however you like.&lt;/p&gt;
 &lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://linux.conf.au/"&gt;Linux Conf Au&lt;/a&gt; for hosting the event.
 This was my first LCA, and I think it may be the best Linux conference out of all of them.&lt;/p&gt;
 &lt;p&gt;I would also like to thank the organizers for paying for my flights,
-without it I would not have been able to give this talk.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 15 Jan 2020 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2020-01-15:/panfrost-liberating-arm-gpus-linux-conf-au.html</guid><category>talks</category><category>slides</category><category>linux</category><category>conf</category><category>au</category><category>lca</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Panfrost the Open Source Arm GPU Driver @ ELC NA</title><link>https://memcpy.io/panfrost-the-open-source-arm-gpu-driver-elc-na.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-22_panfrost_gpu_driver_elc_na.png"&gt;&lt;/p&gt;
+without it I would not have been able to give this talk.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 15 Jan 2020 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2020-01-15:/panfrost-liberating-arm-gpus-linux-conf-au.html</guid><category>talks</category><category>talks</category><category>slides</category><category>linux</category><category>conf</category><category>au</category><category>lca</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Panfrost the Open Source Arm GPU Driver @ ELC NA</title><link>https://memcpy.io/panfrost-the-open-source-arm-gpu-driver-elc-na.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-22_panfrost_gpu_driver_elc_na.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 22 Sep 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-09-22:/panfrost-the-open-source-arm-gpu-driver-elc-na.html</guid><category>talks</category><category>slides</category><category>embedded</category><category>linux</category><category>elc</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Status of the Embedded GPU Space @ ELC NA</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-elc-na.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-21_embedded_gpu_elc_na.png"&gt;&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 22 Sep 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-09-22:/panfrost-the-open-source-arm-gpu-driver-elc-na.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded</category><category>linux</category><category>elc</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Status of the Embedded GPU Space @ ELC NA</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-elc-na.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-21_embedded_gpu_elc_na.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 21 Sep 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-09-21:/status-of-the-embedded-gpu-space-elc-na.html</guid><category>talks</category><category>slides</category><category>embedded</category><category>linux</category><category>elc</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Running Android and Wayland on Embedded Devices</title><link>https://memcpy.io/running-android-and-wayland-on-embedded-devices.html</link><description>&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 21 Sep 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-09-21:/status-of-the-embedded-gpu-space-elc-na.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded</category><category>linux</category><category>elc</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Running Android and Wayland on Embedded Devices</title><link>https://memcpy.io/running-android-and-wayland-on-embedded-devices.html</link><description>&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
 Android compatibility layer for Wayland based Linux environment.&lt;br&gt;
 In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
 board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install \
-    apt-transport-https \
-    bmap-tools \
-    ca-certificates \
-    curl \
-    git \
-    gnupg2 \
-    repo \
-    software-properties-common \
-    u-boot-tools \
-    qemu-kvm
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install \&lt;/span&gt;
+&lt;span class="err"&gt;    apt-transport-https \&lt;/span&gt;
+&lt;span class="err"&gt;    bmap-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    ca-certificates \&lt;/span&gt;
+&lt;span class="err"&gt;    curl \&lt;/span&gt;
+&lt;span class="err"&gt;    git \&lt;/span&gt;
+&lt;span class="err"&gt;    gnupg2 \&lt;/span&gt;
+&lt;span class="err"&gt;    repo \&lt;/span&gt;
+&lt;span class="err"&gt;    software-properties-common \&lt;/span&gt;
+&lt;span class="err"&gt;    u-boot-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    qemu-kvm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up Docker container for building&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install Docker
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install Docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;
 sudo apt update
@@ -78,13 +77,12 @@ su - &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&g
 
 # Fetch Docker image
 docker pull godebos/debos:latest
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Build&lt;/h2&gt;
 &lt;h3&gt;Build Android&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir android; cd android
-repo …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 03 May 2019 10:39:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-05-03:/running-android-and-wayland-on-embedded-devices.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category><category>imx6</category><category>nitrogen6</category></item><item><title>Running Android next to Wayland</title><link>https://memcpy.io/running-android-next-to-wayland.html</link><description>&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mkdir android; cd android&lt;/span&gt;
+&lt;span class="err"&gt;repo …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 03 May 2019 10:39:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-05-03:/running-android-and-wayland-on-embedded-devices.html</guid><category>android</category><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category><category>imx6</category><category>nitrogen6</category></item><item><title>Running Android next to Wayland</title><link>https://memcpy.io/running-android-next-to-wayland.html</link><description>&lt;p&gt;Running Android has some advantages compared to native Linux applications,
 for example with regard to the availability of applications and application
 developers.&lt;/p&gt;
 &lt;p&gt;For current non-Android systems, this work enables a path forward to running
@@ -103,7 +101,7 @@ ancestor Goldfish, the Android emulator.&lt;/p&gt;
 &lt;h3&gt;Other Android Compatibility Layers&lt;/h3&gt;
 &lt;p&gt;This means that Anbox which is LXC based, is different from SPURV in terms of
 how hardware is accessed. The hardware access that Anbox provides in indirect,
-and …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 01 Apr 2019 18:07:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</guid><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
+and …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 01 Apr 2019 18:07:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</guid><category>android</category><category>linux</category><category>open source</category><category>graphics</category><category>wayland</category><category>android</category><category>3d</category><category>acceleration</category></item><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
 &lt;p&gt;The process of reverse engineering Arm GPUs has been going on for a long time,
 starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
 on the Arm Utgard family of GPUs.&lt;br&gt;
@@ -113,10 +111,10 @@ A piece of trivia is that this GPU architecture was what Arm received when they
 purchased the Norwegian GPU IP vendor Falanx Microsystems.&lt;/p&gt;
 &lt;p&gt;The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
 respectively, both of which are quite different from the 2/3/400 series.
-However the T and G-series are somewhat similar at least when …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>linux</category><category>open source</category><category>gpu</category><category>driver</category><category>arm</category><category>mali</category><category>panfrost</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
+However the T and G-series are somewhat similar at least when …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>graphics</category><category>linux</category><category>open source</category><category>gpu</category><category>driver</category><category>arm</category><category>mali</category><category>panfrost</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt; and of course the &lt;a href="files/2019-02-27/2019_embedded-world_embedded-gpu-space.pdf"&gt;whitepaper&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.embedded-world.de/en"&gt;Embedded World&lt;/a&gt; for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 27 Feb 2019 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-02-27:/status-of-the-embedded-gpu-space-embedded-world.html</guid><category>talks</category><category>slides</category><category>embedded</category><category>world</category><category>graphics</category><category>open source</category><category>drivers</category><category>linux</category></item></channel></rss>
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.embedded-world.de/en"&gt;Embedded World&lt;/a&gt; for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 27 Feb 2019 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-02-27:/status-of-the-embedded-gpu-space-embedded-world.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded</category><category>world</category><category>graphics</category><category>open source</category><category>drivers</category><category>linux</category></item></channel></rss>

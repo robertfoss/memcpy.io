@@ -51,22 +51,21 @@ In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based <a href="https://boundarydevices.com/product/nitrogen6max/">Nitrogen6_MAX</a>
 board from <a href="https://boundarydevices.com/">Boundary Devices</a>.</p>
 <h2>Install dependencies</h2>
-<div class="highlight"><pre><span></span>sudo apt install \
-    apt-transport-https \
-    bmap-tools \
-    ca-certificates \
-    curl \
-    git \
-    gnupg2 \
-    repo \
-    software-properties-common \
-    u-boot-tools \
-    qemu-kvm
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">sudo apt install \</span>
+<span class="err">    apt-transport-https \</span>
+<span class="err">    bmap-tools \</span>
+<span class="err">    ca-certificates \</span>
+<span class="err">    curl \</span>
+<span class="err">    git \</span>
+<span class="err">    gnupg2 \</span>
+<span class="err">    repo \</span>
+<span class="err">    software-properties-common \</span>
+<span class="err">    u-boot-tools \</span>
+<span class="err">    qemu-kvm</span>
+</code></pre></div>
 
 <h2>Set up Docker container for building</h2>
-<div class="highlight"><pre><span></span># Install Docker
+<div class="highlight"><pre><span></span><code># Install Docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&quot;
 sudo apt update
@@ -78,29 +77,26 @@ su - <span class="cp">${</span><span class="n">USER</span><span class="cp">}</sp
 
 # Fetch Docker image
 docker pull godebos/debos:latest
-</pre></div>
-
+</code></pre></div>
 
 <h2>Build</h2>
 <h3>Build Android</h3>
-<div class="highlight"><pre><span></span>mkdir android; cd android
-repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
-git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/
-repo sync -j15
-. build/envsetup.sh
-lunch spurv-eng
-make -j12
-cd ..
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">mkdir android; cd android</span>
+<span class="err">repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10</span>
+<span class="err">git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/</span>
+<span class="err">repo sync -j15</span>
+<span class="err">. build/envsetup.sh</span>
+<span class="err">lunch spurv-eng</span>
+<span class="err">make -j12</span>
+<span class="err">cd ..</span>
+</code></pre></div>
 
 <h3>Build Linux Kernel</h3>
-<div class="highlight"><pre><span></span>git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5
-cd linux
-sh ../android/device/freedesktop/spurv/build-kernel.sh
-cd ..
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5</span>
+<span class="err">cd linux</span>
+<span class="err">sh ../android/device/freedesktop/spurv/build-kernel.sh</span>
+<span class="err">cd ..</span>
+</code></pre></div>
 
 <h3>Create root filesystem</h3>
 <p>Just a kernel does not make an OS, so we're using Debian as a base.<br>
@@ -109,10 +105,9 @@ which is a tool for creating Debian based OS images.</p>
 <h3>Create &amp; flash image</h3>
 <p>Now we're ready to integrate all of the above into one coherent image.
 This is where the Nitrogen6_MAX devboard targeting comes in.  </p>
-<div class="highlight"><pre><span></span>git clone https://gitlab.collabora.com/spurv/debos.git
-sudo debos/build_image.sh -b /dev/mmcblk0
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">git clone https://gitlab.collabora.com/spurv/debos.git</span>
+<span class="err">sudo debos/build_image.sh -b /dev/mmcblk0</span>
+</code></pre></div>
 
 <p>The platform specific parts are contained in <a href="https://gitlab.collabora.com/spurv/debos/blob/master/uboot_nitrogen6qp-max.scr">uboot_nitrogen6qp-max.scr</a>
 and <a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image.sh">build_image.sh</a>.</p>
@@ -120,10 +115,9 @@ and <a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image.sh
 <p>Pop the flashed SD-card into your device and restart it, and then log in as
 <code>root/root</code>.</p>
 <p>In order to start Android, run one of these two commands:</p>
-<div class="highlight"><pre><span></span># Launch just and Android application
-/home/aosp/run.sh
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err"># Launch just and Android application</span>
+<span class="err">/home/aosp/run.sh</span>
+</code></pre></div>
 
 <p>Starting the Android application might take a minute or two, but Weston should
 start immediately.</p>
@@ -174,7 +168,7 @@ start immediately.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

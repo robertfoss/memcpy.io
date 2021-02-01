@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - graphics</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/graphics.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2020-01-15T00:00:00+01:00</updated><entry><title>Panfrost: Liberating ARM GPUs @ Linux Conf Au</title><link href="https://memcpy.io/panfrost-liberating-arm-gpus-linux-conf-au.html" rel="alternate"></link><published>2020-01-15T00:00:00+01:00</published><updated>2020-01-15T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2020-01-15:/panfrost-liberating-arm-gpus-linux-conf-au.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/files/2020-01-15/title.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - graphics</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/graphics.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2020-01-15T00:00:00+01:00</updated><entry><title>Panfrost: Liberating ARM GPUs @ Linux Conf Au</title><link href="https://memcpy.io/panfrost-liberating-arm-gpus-linux-conf-au.html" rel="alternate"></link><published>2020-01-15T00:00:00+01:00</published><updated>2020-01-15T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2020-01-15:/panfrost-liberating-arm-gpus-linux-conf-au.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/files/2020-01-15/title.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
@@ -33,86 +33,39 @@ modify and re-distribute these materials however you like.&lt;/p&gt;
 &lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://linux.conf.au/"&gt;Linux Conf Au&lt;/a&gt; for hosting the event.
 This was my first LCA, and I think it may be the best Linux conference out of all of them.&lt;/p&gt;
 &lt;p&gt;I would also like to thank the organizers for paying for my flights,
-without it I would not have been able to give this talk.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/files/2020-01-15/title.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Diagrams&lt;/h2&gt;
-&lt;h4&gt;Overview&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_overview.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_overview.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h4&gt;Kernel&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_kernel_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_kernel_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a href="/files/2020-01-15/diagram_kernel_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_kernel_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h4&gt;Userspace&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_userspace_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a href="/files/2020-01-15/diagram_userspace_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_2.svg"&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a href="/files/2020-01-15/diagram_userspace_3.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_3.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h4&gt;Mesa overview&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_overview.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_overview.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h4&gt;Mesa Gallium&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_gallium_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_gallium_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a href="/files/2020-01-15/diagram_mesa_gallium_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_gallium_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h4&gt;Mesa Winsys&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_winsys_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_winsys_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a href="/files/2020-01-15/diagram_mesa_winsys_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_winsys_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h4&gt;Mesa Compiler&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_compiler_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a href="/files/2020-01-15/diagram_mesa_compiler_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_2.svg"&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a href="/files/2020-01-15/diagram_mesa_compiler_3.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_3.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h2&gt;License&lt;/h2&gt;
-&lt;p&gt;All of the material you can find on this page is licensed under the
-&lt;a href="https://opensource.org/licenses/MIT"&gt;MIT&lt;/a&gt; license, and you are free to use,
-modify and re-distribute these materials however you like.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://linux.conf.au/"&gt;Linux Conf Au&lt;/a&gt; for hosting the event.
-This was my first LCA, and I think it may be the best Linux conference out of all of them.&lt;/p&gt;
-&lt;p&gt;I would also like to thank the organizers for paying for my flights,
-without it I would not have been able to give this talk.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="linux"></category><category term="conf"></category><category term="au"></category><category term="lca"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category></entry><entry><title>Panfrost the Open Source Arm GPU Driver @ ELC NA</title><link href="https://memcpy.io/panfrost-the-open-source-arm-gpu-driver-elc-na.html" rel="alternate"></link><published>2019-09-22T00:00:00+02:00</published><updated>2019-09-22T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-09-22:/panfrost-the-open-source-arm-gpu-driver-elc-na.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-22_panfrost_gpu_driver_elc_na.png"&gt;&lt;/p&gt;
+without it I would not have been able to give this talk.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="linux"></category><category term="conf"></category><category term="au"></category><category term="lca"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category></entry><entry><title>Panfrost the Open Source Arm GPU Driver @ ELC NA</title><link href="https://memcpy.io/panfrost-the-open-source-arm-gpu-driver-elc-na.html" rel="alternate"></link><published>2019-09-22T00:00:00+02:00</published><updated>2019-09-22T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-09-22:/panfrost-the-open-source-arm-gpu-driver-elc-na.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-22_panfrost_gpu_driver_elc_na.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-22_panfrost_gpu_driver_elc_na.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="embedded"></category><category term="linux"></category><category term="elc"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category></entry><entry><title>Status of the Embedded GPU Space @ ELC NA</title><link href="https://memcpy.io/status-of-the-embedded-gpu-space-elc-na.html" rel="alternate"></link><published>2019-09-21T00:00:00+02:00</published><updated>2019-09-21T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-09-21:/status-of-the-embedded-gpu-space-elc-na.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-21_embedded_gpu_elc_na.png"&gt;&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="embedded"></category><category term="linux"></category><category term="elc"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category></entry><entry><title>Status of the Embedded GPU Space @ ELC NA</title><link href="https://memcpy.io/status-of-the-embedded-gpu-space-elc-na.html" rel="alternate"></link><published>2019-09-21T00:00:00+02:00</published><updated>2019-09-21T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-09-21:/status-of-the-embedded-gpu-space-elc-na.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-21_embedded_gpu_elc_na.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-21_embedded_gpu_elc_na.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="embedded"></category><category term="linux"></category><category term="elc"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category></entry><entry><title>Running Android and Wayland on Embedded Devices</title><link href="https://memcpy.io/running-android-and-wayland-on-embedded-devices.html" rel="alternate"></link><published>2019-05-03T10:39:00+02:00</published><updated>2019-05-03T10:39:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-05-03:/running-android-and-wayland-on-embedded-devices.html</id><summary type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="embedded"></category><category term="linux"></category><category term="elc"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category></entry><entry><title>Running Android and Wayland on Embedded Devices</title><link href="https://memcpy.io/running-android-and-wayland-on-embedded-devices.html" rel="alternate"></link><published>2019-05-03T10:39:00+02:00</published><updated>2019-05-03T10:39:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-05-03:/running-android-and-wayland-on-embedded-devices.html</id><summary type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
 Android compatibility layer for Wayland based Linux environment.&lt;br&gt;
 In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
 board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install \
-    apt-transport-https \
-    bmap-tools \
-    ca-certificates \
-    curl \
-    git \
-    gnupg2 \
-    repo \
-    software-properties-common \
-    u-boot-tools \
-    qemu-kvm
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install \&lt;/span&gt;
+&lt;span class="err"&gt;    apt-transport-https \&lt;/span&gt;
+&lt;span class="err"&gt;    bmap-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    ca-certificates \&lt;/span&gt;
+&lt;span class="err"&gt;    curl \&lt;/span&gt;
+&lt;span class="err"&gt;    git \&lt;/span&gt;
+&lt;span class="err"&gt;    gnupg2 \&lt;/span&gt;
+&lt;span class="err"&gt;    repo \&lt;/span&gt;
+&lt;span class="err"&gt;    software-properties-common \&lt;/span&gt;
+&lt;span class="err"&gt;    u-boot-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    qemu-kvm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up Docker container for building&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install Docker
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install Docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;
 sudo apt update
@@ -124,34 +77,32 @@ su - &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&g
 
 # Fetch Docker image
 docker pull godebos/debos:latest
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Build&lt;/h2&gt;
 &lt;h3&gt;Build Android&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir android; cd android
-repo …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mkdir android; cd android&lt;/span&gt;
+&lt;span class="err"&gt;repo …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
 Android compatibility layer for Wayland based Linux environment.&lt;br&gt;
 In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
 board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install \
-    apt-transport-https \
-    bmap-tools \
-    ca-certificates \
-    curl \
-    git \
-    gnupg2 \
-    repo \
-    software-properties-common \
-    u-boot-tools \
-    qemu-kvm
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install \&lt;/span&gt;
+&lt;span class="err"&gt;    apt-transport-https \&lt;/span&gt;
+&lt;span class="err"&gt;    bmap-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    ca-certificates \&lt;/span&gt;
+&lt;span class="err"&gt;    curl \&lt;/span&gt;
+&lt;span class="err"&gt;    git \&lt;/span&gt;
+&lt;span class="err"&gt;    gnupg2 \&lt;/span&gt;
+&lt;span class="err"&gt;    repo \&lt;/span&gt;
+&lt;span class="err"&gt;    software-properties-common \&lt;/span&gt;
+&lt;span class="err"&gt;    u-boot-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    qemu-kvm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up Docker container for building&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install Docker
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install Docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;
 sudo apt update
@@ -163,29 +114,26 @@ su - &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&g
 
 # Fetch Docker image
 docker pull godebos/debos:latest
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Build&lt;/h2&gt;
 &lt;h3&gt;Build Android&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir android; cd android
-repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
-git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/
-repo sync -j15
-. build/envsetup.sh
-lunch spurv-eng
-make -j12
-cd ..
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mkdir android; cd android&lt;/span&gt;
+&lt;span class="err"&gt;repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10&lt;/span&gt;
+&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/&lt;/span&gt;
+&lt;span class="err"&gt;repo sync -j15&lt;/span&gt;
+&lt;span class="err"&gt;. build/envsetup.sh&lt;/span&gt;
+&lt;span class="err"&gt;lunch spurv-eng&lt;/span&gt;
+&lt;span class="err"&gt;make -j12&lt;/span&gt;
+&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Build Linux Kernel&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5
-cd linux
-sh ../android/device/freedesktop/spurv/build-kernel.sh
-cd ..
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5&lt;/span&gt;
+&lt;span class="err"&gt;cd linux&lt;/span&gt;
+&lt;span class="err"&gt;sh ../android/device/freedesktop/spurv/build-kernel.sh&lt;/span&gt;
+&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Create root filesystem&lt;/h3&gt;
 &lt;p&gt;Just a kernel does not make an OS, so we're using Debian as a base.&lt;br&gt;
@@ -194,10 +142,9 @@ which is a tool for creating Debian based OS images.&lt;/p&gt;
 &lt;h3&gt;Create &amp;amp; flash image&lt;/h3&gt;
 &lt;p&gt;Now we're ready to integrate all of the above into one coherent image.
 This is where the Nitrogen6_MAX devboard targeting comes in.  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://gitlab.collabora.com/spurv/debos.git
-sudo debos/build_image.sh -b /dev/mmcblk0
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/debos.git&lt;/span&gt;
+&lt;span class="err"&gt;sudo debos/build_image.sh -b /dev/mmcblk0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The platform specific parts are contained in &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/uboot_nitrogen6qp-max.scr"&gt;uboot_nitrogen6qp-max.scr&lt;/a&gt;
 and &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image.sh"&gt;build_image.sh&lt;/a&gt;.&lt;/p&gt;
@@ -205,10 +152,9 @@ and &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image
 &lt;p&gt;Pop the flashed SD-card into your device and restart it, and then log in as
 &lt;code&gt;root/root&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In order to start Android, run one of these two commands:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Launch just and Android application
-/home/aosp/run.sh
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Launch just and Android application&lt;/span&gt;
+&lt;span class="err"&gt;/home/aosp/run.sh&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Starting the Android application might take a minute or two, but Weston should
 start immediately.&lt;/p&gt;
@@ -219,7 +165,7 @@ start immediately.&lt;/p&gt;
 &lt;li&gt;Pengutronix&lt;/li&gt;
 &lt;li&gt;Zodiac&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category><category term="imx6"></category><category term="nitrogen6"></category></entry><entry><title>Running Android next to Wayland</title><link href="https://memcpy.io/running-android-next-to-wayland.html" rel="alternate"></link><published>2019-04-01T18:07:00+02:00</published><updated>2019-04-01T18:07:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</id><summary type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category><category term="imx6"></category><category term="nitrogen6"></category></entry><entry><title>Running Android next to Wayland</title><link href="https://memcpy.io/running-android-next-to-wayland.html" rel="alternate"></link><published>2019-04-01T18:07:00+02:00</published><updated>2019-04-01T18:07:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</id><summary type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
 for example with regard to the availability of applications and application
 developers.&lt;/p&gt;
 &lt;p&gt;For current non-Android systems, this work enables a path forward to running
@@ -342,57 +288,32 @@ for applications in the container.&lt;/p&gt;
 &lt;li&gt;Zodiac&lt;/li&gt;
 &lt;li&gt;Boundary Devices&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category></entry><entry><title>Status of the Embedded GPU Space @ Embedded World</title><link href="https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html" rel="alternate"></link><published>2019-02-27T00:00:00+01:00</published><updated>2019-02-27T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-02-27:/status-of-the-embedded-gpu-space-embedded-world.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category></entry><entry><title>Status of the Embedded GPU Space @ Embedded World</title><link href="https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html" rel="alternate"></link><published>2019-02-27T00:00:00+01:00</published><updated>2019-02-27T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-02-27:/status-of-the-embedded-gpu-space-embedded-world.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt; and of course the &lt;a href="files/2019-02-27/2019_embedded-world_embedded-gpu-space.pdf"&gt;whitepaper&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.embedded-world.de/en"&gt;Embedded World&lt;/a&gt; for hosting a great event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt; and of course the &lt;a href="files/2019-02-27/2019_embedded-world_embedded-gpu-space.pdf"&gt;whitepaper&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.embedded-world.de/en"&gt;Embedded World&lt;/a&gt; for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="embedded"></category><category term="world"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category><category term="linux"></category></entry><entry><title>Android on Mainline Graphics @ All Systems Go</title><link href="https://memcpy.io/android-on-mainline-graphics-all-systems-go.html" rel="alternate"></link><published>2018-09-29T00:00:00+02:00</published><updated>2018-09-29T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-09-29:/android-on-mainline-graphics-all-systems-go.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.embedded-world.de/en"&gt;Embedded World&lt;/a&gt; for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="embedded"></category><category term="world"></category><category term="graphics"></category><category term="open source"></category><category term="drivers"></category><category term="linux"></category></entry><entry><title>Android on Mainline Graphics @ All Systems Go</title><link href="https://memcpy.io/android-on-mainline-graphics-all-systems-go.html" rel="alternate"></link><published>2018-09-29T00:00:00+02:00</published><updated>2018-09-29T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-09-29:/android-on-mainline-graphics-all-systems-go.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://all-systems-go.io/"&gt;All Systems Go!&lt;/a&gt;, the &lt;a href="https://twitter.com/ASGConf"&gt;@ASGConf&lt;/a&gt; for hosting a great event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://all-systems-go.io/"&gt;All Systems Go!&lt;/a&gt;, the &lt;a href="https://twitter.com/ASGConf"&gt;@ASGConf&lt;/a&gt; for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="all systems go"></category><category term="linux"></category><category term="graphics"></category><category term="drivers"></category></entry><entry><title>Status of the Open Source GPU Ecosystem @ OSSummit NA</title><link href="https://memcpy.io/status-of-the-open-source-gpu-ecosystem-ossummit-na.html" rel="alternate"></link><published>2018-08-31T00:00:00+02:00</published><updated>2018-08-31T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-08-31:/status-of-the-open-source-gpu-ecosystem-ossummit-na.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-08-31_ossummit.png"&gt;&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://all-systems-go.io/"&gt;All Systems Go!&lt;/a&gt;, the &lt;a href="https://twitter.com/ASGConf"&gt;@ASGConf&lt;/a&gt; for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="all systems go"></category><category term="linux"></category><category term="graphics"></category><category term="drivers"></category></entry><entry><title>Status of the Open Source GPU Ecosystem @ OSSummit NA</title><link href="https://memcpy.io/status-of-the-open-source-gpu-ecosystem-ossummit-na.html" rel="alternate"></link><published>2018-08-31T00:00:00+02:00</published><updated>2018-08-31T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-08-31:/status-of-the-open-source-gpu-ecosystem-ossummit-na.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-08-31_ossummit.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-08-31/2018_gfx_status_ossummit_na.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-08-31/2018_gfx_status_ossummit_na.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/open-source-summit-north-america-2018/"&gt;OSSummit NA&lt;/a&gt;, the &lt;a href="https://www.linuxfoundation.org/"&gt;Linux Foundation&lt;/a&gt; for hosting a great event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-08-31_ossummit.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-08-31/2018_gfx_status_ossummit_na.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2018-08-31/2018_gfx_status_ossummit_na.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/open-source-summit-north-america-2018/"&gt;OSSummit NA&lt;/a&gt;, the &lt;a href="https://www.linuxfoundation.org/"&gt;Linux Foundation&lt;/a&gt; for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="ossummit"></category><category term="open"></category><category term="source summit"></category><category term="linux"></category><category term="graphics"></category><category term="drivers"></category></entry><entry><title>Status of the Open Source Graphics Ecosystem @ OpenTechSummit</title><link href="https://memcpy.io/status-of-the-open-source-graphics-ecosystem-opentechsummit.html" rel="alternate"></link><published>2018-05-10T00:00:00+02:00</published><updated>2018-05-10T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-05-10:/status-of-the-open-source-graphics-ecosystem-opentechsummit.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-05-10_opentechsummit.png"&gt;&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/open-source-summit-north-america-2018/"&gt;OSSummit NA&lt;/a&gt;, the &lt;a href="https://www.linuxfoundation.org/"&gt;Linux Foundation&lt;/a&gt; for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="ossummit"></category><category term="open"></category><category term="source summit"></category><category term="linux"></category><category term="graphics"></category><category term="drivers"></category></entry><entry><title>Status of the Open Source Graphics Ecosystem @ OpenTechSummit</title><link href="https://memcpy.io/status-of-the-open-source-graphics-ecosystem-opentechsummit.html" rel="alternate"></link><published>2018-05-10T00:00:00+02:00</published><updated>2018-05-10T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-05-10:/status-of-the-open-source-graphics-ecosystem-opentechsummit.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-05-10_opentechsummit.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-05-10/2018_opentechsummit.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-05-10/2018_opentechsummit.odp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://opentechsummit.net/"&gt;OpenTechSummit&lt;/a&gt;, specifically &lt;a href="https://twitter.com/hpdang"&gt;@hpdang&lt;/a&gt; and &lt;a href="https://twitter.com/mariobehling"&gt;@mariobehling&lt;/a&gt;
-for hosting a great event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-05-10_opentechsummit.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-05-10/2018_opentechsummit.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2018-05-10/2018_opentechsummit.odp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://opentechsummit.net/"&gt;OpenTechSummit&lt;/a&gt;, specifically &lt;a href="https://twitter.com/hpdang"&gt;@hpdang&lt;/a&gt; and &lt;a href="https://twitter.com/mariobehling"&gt;@mariobehling&lt;/a&gt;
-for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="graphics"></category><category term="linux"></category><category term="drivers"></category><category term="open"></category><category term="tech"></category><category term="summit"></category><category term="opentechsummit"></category><category term="source"></category></entry><entry><title>Android: Enabling mainline graphics</title><link href="https://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="graphics"></category><category term="linux"></category><category term="drivers"></category><category term="open"></category><category term="tech"></category><category term="summit"></category><category term="opentechsummit"></category><category term="source"></category></entry><entry><title>Android: Enabling mainline graphics</title><link href="https://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.
@@ -445,7 +366,7 @@ which is the official upstream for drm_hwcomposer.&lt;/p&gt;
 Google's ChromeOS team and Collabora.&lt;/p&gt;
 &lt;p&gt;A number of people have played an important role in this work:
 Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.&lt;/p&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="hwc2"></category><category term="collabora"></category></entry><entry><title>XDC 2016</title><link href="https://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="hwc2"></category><category term="collabora"></category></entry><entry><title>XDC 2016</title><link href="https://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
@@ -490,4 +411,4 @@ So feel free to contact Martin or the Nouveau project if you are interested or c
 &lt;p&gt;Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry></feed>
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry></feed>

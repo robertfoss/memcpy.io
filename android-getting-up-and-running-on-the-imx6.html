@@ -47,82 +47,77 @@
 			<p>Getting Android up and running on the iMX6 platform using an open source graphics stack has been impossible up until recently, but now you can. Here's a guide through the steps.</p>
 			<p>Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.</p>
 <p>This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).</p>
-<div class="highlight"><pre><span></span><span class="n">Changelog</span><span class="o">:</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">27</span><span class="o">:</span> <span class="n">build_android</span><span class="o">.</span><span class="na">sh</span><span class="o">,</span> <span class="n">setup_sdcard</span><span class="o">.</span><span class="na">sh</span><span class="o">:</span> <span class="n">Added</span> <span class="o">-</span><span class="n">b</span> <span class="o">[</span><span class="n">device</span><span class="o">]</span> <span class="n">support</span> <span class="n">to</span> <span class="n">build_android</span><span class="o">.</span><span class="na">sh</span> <span class="n">and</span> <span class="n">setup_sdcard</span><span class="o">.</span><span class="na">sh</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">02</span><span class="o">:</span> <span class="n">build_android</span><span class="o">.</span><span class="na">sh</span><span class="o">:</span> <span class="n">Don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">write</span> <span class="n">to</span> <span class="n">SD</span><span class="o">-</span><span class="n">card</span> <span class="n">without</span> <span class="o">-</span><span class="n">b</span> <span class="n">option</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">04</span><span class="o">:</span> <span class="n">Switch</span> <span class="n">git</span> <span class="n">repo</span> <span class="n">urls</span> <span class="n">to</span> <span class="n">shared</span> <span class="n">repository</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">09</span><span class="o">:</span> <span class="n">Add</span> <span class="n">compiler</span> <span class="n">installation</span> <span class="n">to</span> <span class="n">apt</span><span class="o">-</span><span class="kd">get</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">09</span><span class="o">:</span> <span class="n">Re</span><span class="o">-</span><span class="n">ordered</span> <span class="n">some</span> <span class="n">instructions</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span> <span class="n">Add</span> <span class="n">java</span> <span class="n">installation</span> <span class="n">to</span> <span class="n">apt</span><span class="o">-</span><span class="kd">get</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Change</span> <span class="n">paths</span> <span class="n">to</span> <span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">client</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Change</span> <span class="n">kernel</span> <span class="n">branch</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Add</span> <span class="o">-</span><span class="n">d</span><span class="o">,</span> <span class="n">device</span> <span class="n">flag</span> <span class="n">and</span> <span class="n">info</span> <span class="n">about</span> <span class="n">it</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="o">:</span> <span class="n">Add</span> <span class="n">sabrelite</span> <span class="n">board</span> <span class="n">info</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">03</span><span class="o">:</span> <span class="n">Add</span> <span class="n">more</span> <span class="n">apt</span><span class="o">-</span><span class="kd">get</span> <span class="n">packages</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span> <span class="n">Add</span> <span class="n">lzop</span> <span class="n">apt</span><span class="o">-</span><span class="kd">get</span> <span class="n">packages</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nl">Changelog</span><span class="p">:</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">27</span><span class="err">:</span><span class="w"> </span><span class="n">build_android</span><span class="p">.</span><span class="n">sh</span><span class="p">,</span><span class="w"> </span><span class="n">setup_sdcard</span><span class="p">.</span><span class="nl">sh</span><span class="p">:</span><span class="w"> </span><span class="n">Added</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="o">[</span><span class="n">device</span><span class="o">]</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">build_android</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">setup_sdcard</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">02</span><span class="err">:</span><span class="w"> </span><span class="n">build_android</span><span class="p">.</span><span class="nl">sh</span><span class="p">:</span><span class="w"> </span><span class="n">Don</span><span class="err">&#39;</span><span class="n">t</span><span class="w"> </span><span class="k">write</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">SD</span><span class="o">-</span><span class="n">card</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="k">option</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">04</span><span class="err">:</span><span class="w"> </span><span class="n">Switch</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="n">urls</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="n">repository</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">09</span><span class="err">:</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="n">compiler</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">09</span><span class="err">:</span><span class="w"> </span><span class="n">Re</span><span class="o">-</span><span class="n">ordered</span><span class="w"> </span><span class="ow">some</span><span class="w"> </span><span class="n">instructions</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">10</span><span class="err">:</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="n">java</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="err">:</span><span class="w"> </span><span class="n">Change</span><span class="w"> </span><span class="n">paths</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="w"> </span><span class="n">instead</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">client</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="err">:</span><span class="w"> </span><span class="n">Change</span><span class="w"> </span><span class="n">kernel</span><span class="w"> </span><span class="n">branch</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="err">:</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">it</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span><span class="err">:</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="n">sabrelite</span><span class="w"> </span><span class="n">board</span><span class="w"> </span><span class="n">info</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">03</span><span class="err">:</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="n">packages</span><span class="w"></span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">10</span><span class="err">:</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="n">lzop</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="n">packages</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Common steps</h2>
-<div class="highlight"><pre><span></span># Install dependencies
-sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk android-tools-fsutils python-mako git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip lzop
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Install</span> <span class="n">dependencies</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">tools</span> <span class="n">gcc</span><span class="o">-</span><span class="n">arm</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnueabihf</span> <span class="n">openjdk</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">jdk</span> <span class="n">android</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">fsutils</span> <span class="n">python</span><span class="o">-</span><span class="n">mako</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">gnupg</span> <span class="n">flex</span> <span class="n">bison</span> <span class="n">gperf</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">zip</span> <span class="n">curl</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span> <span class="n">gcc</span><span class="o">-</span><span class="n">multilib</span> <span class="k">g</span><span class="o">++-</span><span class="n">multilib</span> <span class="n">libc6</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">i386</span> <span class="n">lib32ncurses5</span><span class="o">-</span><span class="n">dev</span> <span class="n">x11proto</span><span class="o">-</span><span class="n">core</span><span class="o">-</span><span class="n">dev</span> <span class="n">libx11</span><span class="o">-</span><span class="n">dev</span> <span class="n">lib32z</span><span class="o">-</span><span class="n">dev</span> <span class="n">ccache</span> <span class="n">libgl1</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span><span class="o">-</span><span class="n">utils</span> <span class="n">xsltproc</span> <span class="n">unzip</span> <span class="n">lzop</span>
 
-mkdir /opt/android
-cd /opt/android
-repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
-cd /opt/android/.repo
-git clone https://customer-git.collabora.com/git/android-etnaviv/android_manifest.git local_manifests -b android-etnaviv
-repo sync -j10
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span>
+<span class="n">repo</span> <span class="n">init</span> <span class="o">-</span><span class="n">u</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">android</span><span class="p">.</span><span class="n">googlesource</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">manifest</span> <span class="o">-</span><span class="n">b</span> <span class="n">android</span><span class="o">-</span><span class="mi">7</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="n">_r28</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="p">.</span><span class="n">collabora</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">android_manifest</span><span class="p">.</span><span class="n">git</span> <span class="n">local_manifests</span> <span class="o">-</span><span class="n">b</span> <span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span>
+<span class="n">repo</span> <span class="n">sync</span> <span class="o">-</span><span class="n">j10</span>
 
-mkdir /opt/imx6_android
-cd /opt/imx6_android
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">imx6_android</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">imx6_android</span>
 
-# Fetch Kconfig, bootloaders and some scripts
-git clone https://customer-git.collabora.com/git/android-etnaviv/android-etnaviv.git .
+<span class="o">#</span> <span class="k">Fetch</span> <span class="n">Kconfig</span><span class="p">,</span> <span class="n">bootloaders</span> <span class="k">and</span> <span class="k">some</span> <span class="n">scripts</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="p">.</span><span class="n">collabora</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="p">.</span><span class="n">git</span> <span class="p">.</span>
 
-# Fetch the Linux Kernel
-git clone https://customer-git.collabora.com/git/android-etnaviv/linux.git -b android-etnaviv
+<span class="o">#</span> <span class="k">Fetch</span> <span class="n">the</span> <span class="n">Linux</span> <span class="n">Kernel</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="p">.</span><span class="n">collabora</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">linux</span><span class="p">.</span><span class="n">git</span> <span class="o">-</span><span class="n">b</span> <span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span>
 
-# This will destroy all data on /dev/mmcblk0 and
-# create boot/system/cache/data partitions
-./setup_sdcard.sh -b /dev/mmcblk0
-</pre></div>
-
+<span class="o">#</span> <span class="n">This</span> <span class="n">will</span> <span class="k">destroy</span> <span class="k">all</span> <span class="k">data</span> <span class="k">on</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mmcblk0</span> <span class="k">and</span>
+<span class="o">#</span> <span class="k">create</span> <span class="n">boot</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="k">data</span> <span class="n">partitions</span>
+<span class="p">.</span><span class="o">/</span><span class="n">setup_sdcard</span><span class="p">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mmcblk0</span>
+</code></pre></div>
 
 <h2>Hardware: iMX6 Sabre</h2>
 <h3>Build Android and Linux</h3>
-<div class="highlight"><pre><span></span># Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
-./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
-./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err"># Build android, the kernel, and flash it onto an SD-card</span>
+<span class="err"># Run build_android with the correct -d flag</span>
+<span class="err">./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre</span>
+<span class="err">./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre</span>
+</code></pre></div>
 
 <h3>Start Android</h3>
 <p>The SD-card can now be put into the SD3 slot and
 the device can be restarted.</p>
 <h2>Hardware: iMX6 Sabrelite</h2>
 <h3>Build Android and Linux</h3>
-<div class="highlight"><pre><span></span># Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
-./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err"># Build android, the kernel, and flash it onto an SD-card</span>
+<span class="err"># Run build_android with the correct -d flag</span>
+<span class="err">./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite</span>
+</code></pre></div>
 
 <h3>Start Android</h3>
 <p>The micro-sd card can now be put into the micro-sd slot and
 the device can be restarted.</p>
 <h2>Hardware: RDU2</h2>
 <h3>Build Android and Linux</h3>
-<div class="highlight"><pre><span></span># Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
-./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
-./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err"># Build android, the kernel, and flash it onto an SD-card</span>
+<span class="err"># Run build_android with the correct -d flag</span>
+<span class="err">./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2</span>
+<span class="err">./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2</span>
+</code></pre></div>
 
 <h3>Install the bootloader</h3>
-<div class="highlight"><pre><span></span># Depending if you have a &gt;=13&quot; version of the RDU2
+<div class="highlight"><pre><span></span><code># Depending if you have a &gt;=13&quot; version of the RDU2
 # use the imx6qp, if <span class="nt">&lt;13</span><span class="err">&quot;</span> <span class="err">then</span> <span class="err">use</span> <span class="err">the</span> <span class="err">imx6q</span>
 
 <span class="na">IMX6_TYPE=</span><span class="s">imx6q</span>
@@ -200,8 +195,7 @@ the device can be restarted.</p>
 <span class="err">pic_setwdt</span> <span class="err">0</span> <span class="err">60</span>     <span class="err">#</span> <span class="err">Disable</span> <span class="err">watchdog</span>
 
 <span class="err">exit</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>Start Android</h3>
 <p>The SD-card created in the common steps can now be put into
@@ -254,7 +248,7 @@ the middlemost slot and the device can be restarted.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

@@ -9,20 +9,19 @@ you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Depot tools&lt;/h3&gt;
 &lt;p&gt;In order to check out ChromiumOS and other large Google projects,
 you'll need depot tools.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;git clone https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;//&lt;span class="n"&gt;chromium&lt;/span&gt;.&lt;span class="n"&gt;googlesource&lt;/span&gt;.&lt;span class="n"&gt;com&lt;/span&gt;/&lt;span class="n"&gt;chromium&lt;/span&gt;/&lt;span class="n"&gt;tools&lt;/span&gt;/&lt;span class="n"&gt;depot_tools&lt;/span&gt;.&lt;span class="n"&gt;git&lt;/span&gt;
-&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PWD&lt;span class="k"&gt;)&lt;/span&gt;/depot_tools
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git&lt;/span&gt;
+&lt;span class="err"&gt;export PATH=$PATH:$(PWD)/depot_tools&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Maybe you'd want to add the PATH export to your .bashrc.&lt;/p&gt;
 &lt;h3&gt;Building ChromiumOS&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir chromiumos
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir chromiumos
 cd chromiumos
 repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git [-g minilayout]
 repo sync -j75
 cros_sdk
 export BOARD=amd64-generic
-./setup_board --board …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
+./setup_board --board …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;So let's start off by covering how ChromiumOS relates to ChromeOS. The
 ChromiumOS project is essentially ChromeOS minus branding and some
 packages for things like the media digital restrictions management.&lt;/p&gt;
@@ -32,14 +31,13 @@ you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Depot tools&lt;/h3&gt;
 &lt;p&gt;In order to check out ChromiumOS and other large Google projects,
 you'll need depot tools.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;git clone https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;//&lt;span class="n"&gt;chromium&lt;/span&gt;.&lt;span class="n"&gt;googlesource&lt;/span&gt;.&lt;span class="n"&gt;com&lt;/span&gt;/&lt;span class="n"&gt;chromium&lt;/span&gt;/&lt;span class="n"&gt;tools&lt;/span&gt;/&lt;span class="n"&gt;depot_tools&lt;/span&gt;.&lt;span class="n"&gt;git&lt;/span&gt;
-&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PWD&lt;span class="k"&gt;)&lt;/span&gt;/depot_tools
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git&lt;/span&gt;
+&lt;span class="err"&gt;export PATH=$PATH:$(PWD)/depot_tools&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Maybe you'd want to add the PATH export to your .bashrc.&lt;/p&gt;
 &lt;h3&gt;Building ChromiumOS&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir chromiumos
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir chromiumos
 cd chromiumos
 repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git [-g minilayout]
 repo sync -j75
@@ -49,17 +47,15 @@ export BOARD=amd64-generic
 ./build_packages --board=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 ./build_image --board=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; --boot_args &amp;quot;earlyprintk=serial,keep console=tty0&amp;quot; --noenable_rootfs_verification test
 ./image_to_vm.sh --board=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; --test_image
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;How to (not) boot ChromiumOS&lt;/h3&gt;
 &lt;p&gt;So, this is a command baked into ChromiumOS using the &lt;code&gt;cros_start_vm&lt;/code&gt; command,
 but at least on my machine it does not seem to boot properly.
 I have as of yet not been able to get any graphical output (over VNC).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cros_sdk
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cros_sdk
 ./bin/cros_start_vm --image_path=../build/images/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/latest/chromiumos_qemu_image.bin --board=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Running Qemu ourselves&lt;/h2&gt;
 &lt;p&gt;So if the intended tools don't work, we'll just have to roll up our sleeves
@@ -67,9 +63,8 @@ and do it ourselves. This is how I got ChromiumOS booting.&lt;/p&gt;
 &lt;h3&gt;Install build dependencies&lt;/h3&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 17.10, some alternative packages
 might be needed for &lt;em&gt;your&lt;/em&gt; distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install autoconf libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Virglrenderer&lt;/h3&gt;
 &lt;p&gt;Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
@@ -78,71 +73,58 @@ graphics capabilities of the host machine.&lt;/p&gt;
 the guest system.
 If you don't want to use Virgl, remove it from the Qemu configure step and
 the Qemu runtime flags.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.freedesktop.org/git/virglrenderer
-cd virglrenderer
-./autogen.sh
-make -j7
-sudo make install
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://git.freedesktop.org/git/virglrenderer&lt;/span&gt;
+&lt;span class="err"&gt;cd virglrenderer&lt;/span&gt;
+&lt;span class="err"&gt;./autogen.sh&lt;/span&gt;
+&lt;span class="err"&gt;make -j7&lt;/span&gt;
+&lt;span class="err"&gt;sudo make install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Qemu&lt;/h3&gt;
 &lt;p&gt;Qemu is a full system emulator, and supports a multitude of machine architectures.
 We're going to to use &lt;em&gt;x86_64&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.qemu-project.org/qemu.git
-mkdir -p qemu/build
-cd qemu/build
-../configure --target-list=x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb --enable-virglrenderer --enable-opengl
-make -j7
-sudo make install
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://git.qemu-project.org/qemu.git&lt;/span&gt;
+&lt;span class="err"&gt;mkdir -p qemu/build&lt;/span&gt;
+&lt;span class="err"&gt;cd qemu/build&lt;/span&gt;
+&lt;span class="err"&gt;../configure --target-list=x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb --enable-virglrenderer --enable-opengl&lt;/span&gt;
+&lt;span class="err"&gt;make -j7&lt;/span&gt;
+&lt;span class="err"&gt;sudo make install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Run image&lt;/h3&gt;
 &lt;p&gt;Now you can boot the image using Qemu.&lt;/p&gt;
 &lt;p&gt;Note that running Qemu with the virtio options requires that your host machine
 is running a Linux kernel which was built with the kconfig options &lt;code&gt;CONFIG_DRM_VIRTIO&lt;/code&gt;,
 &lt;code&gt;CONFIG_VIRT_DRIVERS&lt;/code&gt; and &lt;code&gt;CONFIG_VIRTIO_XXXX&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd chromiumos
-/usr/local/bin/qemu-system-x86_64 \
-    -enable-kvm \
-    -m 2G \
-    -smp 4 \
-    -hda src/build/images/amd64-generic/latest/chromiumos_qemu_image.bin \
-    -vga virtio \
-    -net nic,model=virtio \
-    -net user,hostfwd=tcp:127.0.0.1:9222-:22 \
-    -usb -usbdevice keyboard \
-    -usbdevice mouse \
-    -device virtio-gpu-pci,virgl \
-    -display gtk,gl=on
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd chromiumos&lt;/span&gt;
+&lt;span class="err"&gt;/usr/local/bin/qemu-system-x86_64 \&lt;/span&gt;
+&lt;span class="err"&gt;    -enable-kvm \&lt;/span&gt;
+&lt;span class="err"&gt;    -m 2G \&lt;/span&gt;
+&lt;span class="err"&gt;    -smp 4 \&lt;/span&gt;
+&lt;span class="err"&gt;    -hda src/build/images/amd64-generic/latest/chromiumos_qemu_image.bin \&lt;/span&gt;
+&lt;span class="err"&gt;    -vga virtio \&lt;/span&gt;
+&lt;span class="err"&gt;    -net nic,model=virtio \&lt;/span&gt;
+&lt;span class="err"&gt;    -net user,hostfwd=tcp:127.0.0.1:9222-:22 \&lt;/span&gt;
+&lt;span class="err"&gt;    -usb -usbdevice keyboard \&lt;/span&gt;
+&lt;span class="err"&gt;    -usbdevice mouse \&lt;/span&gt;
+&lt;span class="err"&gt;    -device virtio-gpu-pci,virgl \&lt;/span&gt;
+&lt;span class="err"&gt;    -display gtk,gl=on&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have helped you to build all of the software needed to
 boot your very own ChromiumOS.&lt;/p&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="chromeos"></category><category term="chromiumos"></category><category term="chromium"></category><category term="qemu"></category><category term="ssh"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="https://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><summary type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
-bash
-source build/envsetup.sh &amp;amp;&amp;amp; \
-lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
-mmm system/core/libsync/tests &amp;amp;&amp;amp; \
-adb root &amp;amp;&amp;amp; \
-adb remount &amp;amp;&amp;amp; \
-adb sync &amp;amp;&amp;amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
-bash
-source build/envsetup.sh &amp;amp;&amp;amp; \
-lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
-mmm system/core/libsync/tests &amp;amp;&amp;amp; \
-adb root &amp;amp;&amp;amp; \
-adb remount &amp;amp;&amp;amp; \
-adb sync &amp;amp;&amp;amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry><entry><title>XDC 2016</title><link href="https://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="chromeos"></category><category term="chromiumos"></category><category term="chromium"></category><category term="qemu"></category><category term="ssh"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="https://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd aosp&lt;/span&gt;
+&lt;span class="err"&gt;bash&lt;/span&gt;
+&lt;span class="err"&gt;source build/envsetup.sh &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;mmm system/core/libsync/tests &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb root &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb remount &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb sync &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="android"></category><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry><entry><title>XDC 2016</title><link href="https://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
 &lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
 The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
@@ -187,7 +169,7 @@ So feel free to contact Martin or the Nouveau project if you are interested or c
 &lt;p&gt;Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="https://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="https://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -200,7 +182,7 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -213,42 +195,38 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up paths&lt;/h2&gt;
 &lt;p&gt;Naturally all of the paths below are configurable, this is just what I used.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export PROJECT_PATH=&amp;quot;/opt/qemu_android&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;export PROJECT_PATH=&amp;quot;/opt/qemu_android&amp;quot;
 export VIRGLRENDERER_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/virglrenderer&amp;quot;
 export QEMU_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/qemu&amp;quot;
 export LINUX_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/linux&amp;quot;
 export ANDROID_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/android&amp;quot;
 export ANDROID_TOOLS_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/android-tools&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Virglrenderer&lt;/h2&gt;
 &lt;p&gt;Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
 graphics capabilities of the host machine.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.freedesktop.org/git/virglrenderer &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.freedesktop.org/git/virglrenderer &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 ./autogen.sh
 make -j7
 sudo make install
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Qemu&lt;/h2&gt;
 &lt;p&gt;Qemu is a full system emulator, and supports a multitude of machine architectures.
 We're going to to use x86_64 but also build support for arm64/aarch64.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.qemu-project.org/qemu.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.qemu-project.org/qemu.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
 ../configure --target-list=aarch64-softmmu,x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb
 make -j7
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Linux kernel&lt;/h2&gt;
 &lt;p&gt;Build trunk of mainline linux kernel.&lt;/p&gt;
@@ -256,60 +234,58 @@ make -j7
 this guide, &lt;em&gt;https://git.kernel.org/pub/scm/linux/kernel/git/padovan/linux.git&lt;/em&gt;
 and the &lt;em&gt;fences&lt;/em&gt; branch was used due to SW_SYNC not yet being included in upstream.
 Inclusion is targeted for &lt;em&gt;v4.9&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 wget http://memcpy.io/files/2016-08-30/Kconfig -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/.config
 make oldconfig
 make -j7
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; If you decide not to use the &lt;em&gt;.config&lt;/em&gt; linked in this step, a few
 Kconfig options need to be set:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CONFIG_ANDROID=y
-CONFIG_ANDROID_BINDER_IPC=y
-CONFIG_AUDIT=y
-CONFIG_HAVE_ARCH_AUDITSYSCALL=y
-CONFIG_AUDITSYSCALL=y
-CONFIG_AUDIT_WATCH=y
-CONFIG_AUDIT_TREE=y
-CONFIG_DRM=y
-CONFIG_SECURITY_SELINUX=y
-CONFIG_SECURITY_SELINUX_BOOTPARAM=y
-CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1
-CONFIG_SECURITY_SELINUX_DISABLE=y
-CONFIG_SECURITY_SELINUX_DEVELOP=y
-CONFIG_SECURITY_SELINUX_AVC_STATS=y
-CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0
-CONFIG_DEFAULT_SECURITY_SELINUX=y
-CONFIG_DEFAULT_SECURITY=&amp;quot;selinux&amp;quot;
-CONFIG_VIRTIO_BLK=y
-CONFIG_SCSI_VIRTIO=y
-CONFIG_VIRTIO_NET=y
-CONFIG_VIRTIO_CONSOLE=y
-CONFIG_HW_RANDOM_VIRTIO=y
-CONFIG_DRM_VIRTIO_GPU=y
-CONFIG_VIRT_DRIVERS=y
-CONFIG_VIRTIO=y
-CONFIG_VIRTIO_PCI=y
-CONFIG_VIRTIO_PCI_LEGACY=y
-CONFIG_VIRTIO_BALLOON=y
-CONFIG_VIRTIO_INPUT=y
-CONFIG_VIRTIO_MMIO=y
-CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y
-CONFIG_NET_9P=y
-CONFIG_NET_9P_VIRTIO=y
-CONFIG_SYNC=y
-CONFIG_SW_SYNC=y
-CONFIG_SYNC_FILE=y
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;CONFIG_ANDROID=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_ANDROID_BINDER_IPC=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDIT=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_HAVE_ARCH_AUDITSYSCALL=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDITSYSCALL=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDIT_WATCH=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDIT_TREE=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DRM=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_BOOTPARAM=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_DISABLE=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_DEVELOP=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_AVC_STATS=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DEFAULT_SECURITY_SELINUX=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DEFAULT_SECURITY=&amp;quot;selinux&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_BLK=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SCSI_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_NET=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_CONSOLE=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_HW_RANDOM_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DRM_VIRTIO_GPU=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRT_DRIVERS=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_PCI=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_PCI_LEGACY=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_BALLOON=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_INPUT=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_MMIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_NET_9P=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_NET_9P_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SYNC=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SW_SYNC=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SYNC_FILE=y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Android&lt;/h2&gt;
 &lt;p&gt;Build the Android Open Source Project.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; When running &lt;em&gt;source build/envsetup.sh&lt;/em&gt; make sure that you are
 using bash. I had issues running &lt;em&gt;lunch&lt;/em&gt; using zsh.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 repo init -u https://android.googlesource.com/platform/manifest -b master
 cd .repo
@@ -328,38 +304,34 @@ lunch
 make -j7
 # We don&amp;#39;t need to use bash any longer
 exit
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd $ANDROID_PATH/system/core/
-git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
-git fetch padovan
-git checkout padovan/master
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd $ANDROID_PATH/system/core/&lt;/span&gt;
+&lt;span class="err"&gt;git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git&lt;/span&gt;
+&lt;span class="err"&gt;git fetch padovan&lt;/span&gt;
+&lt;span class="err"&gt;git checkout padovan/master&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;mkbootimg&lt;/h2&gt;
 &lt;p&gt;Fetch the make boot image script. This script later assembles the boot image, &lt;em&gt;boot.img&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Run Qemu machine&lt;/h2&gt;
 &lt;p&gt;When running the below script, make sure that the all of the paths from step two
 have been exported.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 chmod +x &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh x86_64
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have enabled you build the required software and run Android on
 Qemu with a virtual GPU.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="https://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="https://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -370,10 +342,10 @@ local testing. The modified version can be found &lt;a href="files/2016-08-25/ne
 &lt;p&gt;This might come in handy for someone, if not, the script will at least be
 archived on this site.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo pip2.7 install autotest
 $ ip link
 &lt;span class="m"&gt;1&lt;/span&gt;: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen &lt;span class="m"&gt;1&lt;/span&gt;
-    link/loopback &lt;span class="m"&gt;00&lt;/span&gt;:00:00 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+    link/loopback &lt;span class="m"&gt;00&lt;/span&gt;:00:00 …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -384,7 +356,7 @@ local testing. The modified version can be found &lt;a href="files/2016-08-25/ne
 &lt;p&gt;This might come in handy for someone, if not, the script will at least be
 archived on this site.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo pip2.7 install autotest
 $ ip link
 &lt;span class="m"&gt;1&lt;/span&gt;: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen &lt;span class="m"&gt;1&lt;/span&gt;
     link/loopback &lt;span class="m"&gt;00&lt;/span&gt;:00:00:00:00:00 brd &lt;span class="m"&gt;00&lt;/span&gt;:00:00:00:00:00
@@ -395,7 +367,7 @@ $ ip link
 $ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;INTERFACE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;enx000ec689ab9e
 $ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;NUM_ITERATIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;
 $ sudo python network_EthernetStressPlug.py &lt;span class="nv"&gt;$INTERFACE&lt;/span&gt; &lt;span class="nv"&gt;$NUM_ITERATIONS&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="https://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="https://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
 But to me the interface they provide is slightly bulky and rely
@@ -412,7 +384,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="k"&gt;function&lt;/span&gt; checkpatch &lt;span class="o"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;+x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nb"&gt;exec&lt;/span&gt; git diff &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
@@ -423,9 +395,8 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
     &lt;span class="nb"&gt;exec&lt;/span&gt; git diff HEAD~&lt;span class="nv"&gt;$NUM_COMMITS&lt;/span&gt;..HEAD &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
   &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
 &lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
 often come in handy.
@@ -443,7 +414,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="k"&gt;function&lt;/span&gt; checkpatch &lt;span class="o"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;+x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nb"&gt;exec&lt;/span&gt; git diff &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
@@ -454,20 +425,18 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
     &lt;span class="nb"&gt;exec&lt;/span&gt; git diff HEAD~&lt;span class="nv"&gt;$NUM_COMMITS&lt;/span&gt;..HEAD &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
   &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;The checkpatch script simply wraps the patch creation process and allows you to
 right away specify which &lt;/p&gt;
 &lt;h4&gt;Example&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/work/linux $ checkpatch 15
-WARNING: ENOSYS means &amp;#39;invalid syscall nr&amp;#39; and nothing else
-#349: FILE: drivers/tty/serial/sh-sci.c:3026:
-+   if (IS_ERR(sciport-&amp;gt;gpios) &amp;amp;&amp;amp; PTR_ERR(sciport-&amp;gt;gpios) != -ENOSYS)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="k"&gt;work&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;checkpatch&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt;
+&lt;span class="n"&gt;WARNING&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ENOSYS&lt;/span&gt; &lt;span class="n"&gt;means&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;invalid syscall nr&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;nothing&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;349&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;FILE&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;drivers&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tty&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;serial&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;sci&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;3026&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IS_ERR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sciport&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;gpios&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;PTR_ERR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sciport&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;gpios&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ENOSYS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-total: 0 errors, 1 warnings, 385 lines checked
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;warnings&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;385&lt;/span&gt; &lt;span class="n"&gt;lines&lt;/span&gt; &lt;span class="k"&gt;checked&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;In this example the 15 last commits are checked against scripts/checkpatch.pl
 for correctness.&lt;/p&gt;
@@ -490,7 +459,7 @@ for correctness.&lt;/p&gt;
 16
 17
 18
-19&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+19&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="k"&gt;function&lt;/span&gt; get_maintainer &lt;span class="o"&gt;{&lt;/span&gt;
   &lt;span class="nv"&gt;NUM_COMMITS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
 
@@ -500,24 +469,23 @@ for correctness.&lt;/p&gt;
   &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/(.*//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 
   &lt;span class="c1"&gt;# Remove names from email addresses&lt;/span&gt;
-  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/.*&amp;lt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/.*&amp;lt;!--/g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 
   &lt;span class="c1"&gt;# Remove left over character&lt;/span&gt;
-  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/&amp;gt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+  &lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/--&amp;gt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 
   &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;read&lt;/span&gt; email&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; -n &lt;span class="s2"&gt;&amp;quot;--to=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;email&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;  &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;done&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;h4&gt;Example&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/work/linux $ get_maintainer 1
---to=gregkh@linuxfoundation.org  --to=jslaby@suse.com  --to=linux-serial@vger.kernel.org  --to=linux-kernel@vger.kernel.org
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="k"&gt;work&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;get_maintainer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="c1"&gt;--to=gregkh@linuxfoundation.org  --to=jslaby@suse.com  --to=linux-serial@vger.kernel.org  --to=linux-kernel@vger.kernel.org&lt;/span&gt;
 
-~/work/linux $ git send-email -1 $(get_maintainer 1)
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category></entry><entry><title>Running Weston on a Raspbian</title><link href="https://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><published>2016-06-03T10:32:00+02:00</published><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:/running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="k"&gt;work&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;get_maintainer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category></entry><entry><title>Running Weston on a Raspbian</title><link href="https://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><published>2016-06-03T10:32:00+02:00</published><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:/running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
 &lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
 Weston on top of the drm backend for VC4 platforms. Previously software acceleration
 using pixman was needed, but this is no longer the case.&lt;/p&gt;
@@ -546,105 +514,98 @@ from freedesktop.org, but altered to target VC4 and Raspbian.&lt;/p&gt;
 &lt;p&gt;You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Change WLD to any location you like
-export WLD=~/local
-export LD_LIBRARY_PATH=$WLD/lib
-export PKG_CONFIG_PATH=$WLD/lib/pkgconfig/:$WLD/share/pkgconfig/
-export PATH=$WLD/bin:$PATH
-export ACLOCAL_PATH=$WLD/share/aclocal
-export ACLOCAL=&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;WLD&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;any&lt;/span&gt; &lt;span class="k"&gt;location&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="k"&gt;like&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;=~/&lt;/span&gt;&lt;span class="k"&gt;local&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PKG_CONFIG_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
 
-# Needed by autotools
-mkdir -p $WLD/share/aclocal
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Needed&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;autotools&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Installing dependencies&lt;/h2&gt;
 &lt;p&gt;Start by installing the build dependencies of mesa, weston and wayland.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Enable source packages
-sudo sed -e &amp;quot;s/#\sdeb-src/deb-src/g&amp;quot; -i /etc/apt/sources.list
-sudo apt update
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Enable source packages&lt;/span&gt;
+&lt;span class="err"&gt;sudo sed -e &amp;quot;s/#\sdeb-src/deb-src/g&amp;quot; -i /etc/apt/sources.list&lt;/span&gt;
+&lt;span class="err"&gt;sudo apt update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The above step can alternatively be completed using the GUI of your
 package manager, by enabling source packages.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install build dependencies of mesa
-sudo apt-get build-dep mesa
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Install&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;mesa&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dep&lt;/span&gt; &lt;span class="n"&gt;mesa&lt;/span&gt;
 
-# Install build dependencies of wayland/weston
-sudo apt-get install \
-  libevdev libevdev-dev \
-  libwacom libwacom-dev \
-  libxkbcommon libxkbcommon-dev
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Install&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;weston&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;
+  &lt;span class="n"&gt;libevdev&lt;/span&gt; &lt;span class="n"&gt;libevdev&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;
+  &lt;span class="n"&gt;libwacom&lt;/span&gt; &lt;span class="n"&gt;libwacom&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;
+  &lt;span class="n"&gt;libxkbcommon&lt;/span&gt; &lt;span class="n"&gt;libxkbcommon&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Building Mesa&lt;/h2&gt;
 &lt;p&gt;Configure and compile mesa with vc4, wayland and EGL support.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://anongit.freedesktop.org/mesa/mesa
-cd mesa
-./autogen.sh --prefix=$WLD \
-  --enable-gles2 \
-  --with-egl-platforms=x11,wayland,drm \
-  --enable-gbm --enable-shared-glapi \
-  --with-gallium-drivers=vc4 \
-  --without-dri-drivers \
-  --disable-va \
-  --disable-vdpau \
-  --disable-xvmc \
-  --disable-omx
-make -j4 &amp;amp;&amp;amp; make install
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://anongit.freedesktop.org/mesa/mesa&lt;/span&gt;
+&lt;span class="err"&gt;cd mesa&lt;/span&gt;
+&lt;span class="err"&gt;./autogen.sh --prefix=$WLD \&lt;/span&gt;
+&lt;span class="err"&gt;  --enable-gles2 \&lt;/span&gt;
+&lt;span class="err"&gt;  --with-egl-platforms=x11,wayland,drm \&lt;/span&gt;
+&lt;span class="err"&gt;  --enable-gbm --enable-shared-glapi \&lt;/span&gt;
+&lt;span class="err"&gt;  --with-gallium-drivers=vc4 \&lt;/span&gt;
+&lt;span class="err"&gt;  --without-dri-drivers \&lt;/span&gt;
+&lt;span class="err"&gt;  --disable-va \&lt;/span&gt;
+&lt;span class="err"&gt;  --disable-vdpau \&lt;/span&gt;
+&lt;span class="err"&gt;  --disable-xvmc \&lt;/span&gt;
+&lt;span class="err"&gt;  --disable-omx&lt;/span&gt;
+&lt;span class="err"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Building Weston and dependencies&lt;/h2&gt;
 &lt;p&gt;Weston and Wayland have a number of dependencies that also need to be fetched
 and built.&lt;/p&gt;
 &lt;h4&gt;Wayland&lt;/h4&gt;
 &lt;p&gt;Weston is a Wayland compositor, so we're going to have to build Wayland.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://anongit.freedesktop.org/wayland/wayland
-cd wayland
-./autogen.sh --prefix=$WLD
-make -j4 &amp;amp;&amp;amp; make install
-cd ..
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;anongit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;freedesktop&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;wayland&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;autogen&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="c1"&gt;--prefix=$WLD&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j4&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt;
 
-git clone git://anongit.freedesktop.org/wayland/wayland-protocols
-cd wayland-protocols
-./autogen.sh --prefix=$WLD
-make install
-cd ..
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;anongit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;freedesktop&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;protocols&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;protocols&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;autogen&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="c1"&gt;--prefix=$WLD&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4&gt;libinput&lt;/h4&gt;
 &lt;p&gt;libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://anongit.freedesktop.org/wayland/libinput
-cd libinput
-./autogen.sh --prefix=$WLD
-make -j4 &amp;amp;&amp;amp; make install
-cd ..
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://anongit.freedesktop.org/wayland/libinput&lt;/span&gt;
+&lt;span class="err"&gt;cd libinput&lt;/span&gt;
+&lt;span class="err"&gt;./autogen.sh --prefix=$WLD&lt;/span&gt;
+&lt;span class="err"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4&gt;Weston&lt;/h4&gt;
 &lt;p&gt;Finally we've built all of the dependencies of Weston and can now build it.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://anongit.freedesktop.org/wayland/weston
-cd weston
-./autogen.sh --prefix=$WLD \
-  --disable-libunwind
-make -j4 &amp;amp;&amp;amp;
-sudo make install
-cd ..
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://anongit.freedesktop.org/wayland/weston&lt;/span&gt;
+&lt;span class="err"&gt;cd weston&lt;/span&gt;
+&lt;span class="err"&gt;./autogen.sh --prefix=$WLD \&lt;/span&gt;
+&lt;span class="err"&gt;  --disable-libunwind&lt;/span&gt;
+&lt;span class="err"&gt;make -j4 &amp;amp;&amp;amp;&lt;/span&gt;
+&lt;span class="err"&gt;sudo make install&lt;/span&gt;
+&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Running Weston&lt;/h2&gt;
 &lt;p&gt;That wasn't so bad, it took a little while, but now we're ready to start Weston.
 Now, let's fire up a (virtual) terminal. Make sure that you're not running an
 X terminal, ssh terminal or serial terminal.&lt;/p&gt;
 &lt;p&gt;Running weston in this way depends on logind.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Make sure that &lt;span class="nv"&gt;$DISPLAY&lt;/span&gt; is unset.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Make sure that &lt;span class="nv"&gt;$DISPLAY&lt;/span&gt; is unset.
 unset DISPLAY
 
 # And that &lt;span class="nv"&gt;$XDG_RUNTIME_DIR&lt;/span&gt; has been set and created.
@@ -658,8 +619,7 @@ fi
 
 # Run weston:
 weston
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Try weston applications&lt;/h2&gt;
 &lt;p&gt;Now that we're running weston, let's try some applications.
@@ -676,4 +636,4 @@ They're located in the top level directory of weston.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;When you've started all of your favorite applications you can grab a screenshot 
 by pressing &lt;strong&gt;Super + s&lt;/strong&gt;, which will save wayland-screenshot.png in your home
-directory.&lt;/p&gt;</content><category term="wayland"></category><category term="weston"></category><category term="rpi"></category><category term="rpi2"></category><category term="kernel"></category></entry></feed>
+directory.&lt;/p&gt;</content><category term="wayland"></category><category term="wayland"></category><category term="weston"></category><category term="rpi"></category><category term="rpi2"></category><category term="kernel"></category></entry></feed>

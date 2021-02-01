@@ -46,9 +46,8 @@
 				</p>
 			</header>
 			<p>.zsh_history getting corrupted happens far too often, and losing you shell history is actually quite painful. Here's how to fix it.</p>
-			<div class="highlight"><pre><span></span><span class="n">zsh</span><span class="o">:</span> <span class="n">corrupt</span> <span class="n">history</span> <span class="n">file</span> <span class="sr">/home/$USER/</span><span class="o">.</span><span class="na">zsh_history</span>
-</pre></div>
-
+			<div class="highlight"><pre><span></span><code><span class="n">zsh</span><span class="o">:</span> <span class="n">corrupt</span> <span class="n">history</span> <span class="n">file</span> <span class="sr">/home/$USER/</span><span class="o">.</span><span class="na">zsh_history</span>
+</code></pre></div>
 
 <p>Most zsh user will have seen the above line at one time or another.<br>
 And it means that re-using your shell history is no longer possible.</p>
@@ -56,15 +55,14 @@ And it means that re-using your shell history is no longer possible.</p>
 And even if nothing important has been lost, you probably don't want to spend any time dealing with this.</p>
 <h2>Make zsh maintain a backup</h2>
 <p>Run this snippet in the terminal of your choice.</p>
-<div class="highlight"><pre><span></span>cat &lt;&lt;EOT&gt;&gt; ~/.zshrc
+<div class="highlight"><pre><span></span><code><span class="n">cat</span> <span class="o">&lt;&lt;</span><span class="n">EOT</span><span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
 
-# Backup and restore ZSH history
-strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup
-cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history
+<span class="o">#</span> <span class="n">Backup</span> <span class="k">and</span> <span class="n">restore</span> <span class="n">ZSH</span> <span class="n">history</span>
+<span class="n">strings</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span> <span class="o">|</span> <span class="n">sed</span> <span class="s1">&#39;:a;N;$!ba;s/\\\\\n//g&#39;</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">u</span> <span class="o">&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span><span class="p">.</span><span class="n">backup</span>
+<span class="n">cat</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span><span class="p">.</span><span class="n">backup</span> <span class="o">|</span> <span class="n">sed</span> <span class="s1">&#39;:a;N;$!ba;s/\\\\\n//g&#39;</span><span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span>
 
-EOT
-</pre></div>
-
+<span class="n">EOT</span>
+</code></pre></div>
 
 <h3>What does this actually do?</h3>
 <p>The snippet runs on every terminal open and copies your current .zsh_history into a backup file, creatively called .zsh_history.backup.<br>
@@ -113,7 +111,7 @@ Lastly the backup is appended to your actual .zsh_history file.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

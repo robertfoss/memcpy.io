@@ -35,87 +35,79 @@ A guide to building NodeMCU can be found &lt;a href="http://memset.io/building-n
 &lt;h4&gt;What you need to do&lt;/h4&gt;
 &lt;p&gt;After a user has connected throught the portal and sucessfully configured the the ESP8266 with the credentials of the local WiFi, something lua service should be started so that the ESP8266 actually does something.&lt;/p&gt;
 &lt;p&gt;I would suggest adding something like this to init.lua:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dofile(&amp;quot;init_connected.lua&amp;quot;)
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;dofile(&amp;quot;init_connected.lua&amp;quot;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
-&lt;p&gt;Where init_connected.lua is where your script resides.&lt;/p&gt;</content><category term="NodeMCU"></category><category term="ESP8266"></category><category term="Setup"></category></entry><entry><title>Building NodeMCU for the ESP8266</title><link href="https://memcpy.io/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><published>2015-05-14T11:31:00+02:00</published><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-05-14:/building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
+&lt;p&gt;Where init_connected.lua is where your script resides.&lt;/p&gt;</content><category term="ESP8266"></category><category term="NodeMCU"></category><category term="ESP8266"></category><category term="Setup"></category></entry><entry><title>Building NodeMCU for the ESP8266</title><link href="https://memcpy.io/building-nodemcu-for-the-esp8266.html" rel="alternate"></link><published>2015-05-14T11:31:00+02:00</published><updated>2015-05-14T11:31:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-05-14:/building-nodemcu-for-the-esp8266.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
 &lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
 &lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-cd /opt
-git clone https://github.com/pfalcon/esp-open-sdk.git
-cd esp-open-sdk
-git submodule sync
-git submodule update
-make
-export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed&lt;/span&gt;
+&lt;span class="err"&gt;cd /opt&lt;/span&gt;
+&lt;span class="err"&gt;git clone https://github.com/pfalcon/esp-open-sdk.git&lt;/span&gt;
+&lt;span class="err"&gt;cd esp-open-sdk&lt;/span&gt;
+&lt;span class="err"&gt;git submodule sync&lt;/span&gt;
+&lt;span class="err"&gt;git submodule update&lt;/span&gt;
+&lt;span class="err"&gt;make&lt;/span&gt;
+&lt;span class="err"&gt;export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Build NodeMCU&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
-cd nodemcu-firmware
-# Switch to dev branch, since it&amp;#39;s the most up to date
-git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
-make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git&lt;/span&gt;
+&lt;span class="err"&gt;cd nodemcu-firmware&lt;/span&gt;
+&lt;span class="err"&gt;# Switch to dev branch, since it&amp;#39;s the most up to date&lt;/span&gt;
+&lt;span class="err"&gt;git checkout --track origin/dev&lt;/span&gt;
+&lt;span class="err"&gt;# Make INTEGER version, since it uses less memory/space&lt;/span&gt;
+&lt;span class="err"&gt;make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Flash NodeMCU&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;COMPORT=/dev/ttyUSB0 make flash
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;COMPORT=/dev/ttyUSB0 make flash&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Modifying NodeMCU to fit your needs&lt;/h3&gt;
 &lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
 &lt;p&gt;Contains a list of which …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-05-14_esp8266.jpg" title="ESP8266"&gt;&lt;/p&gt;
 &lt;p&gt;This is a simple step-by-step guide to building and flashing NodeMCU for the ESP8266.&lt;/p&gt;
 &lt;h3&gt;Build ESP8266 SDK&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-cd /opt
-git clone https://github.com/pfalcon/esp-open-sdk.git
-cd esp-open-sdk
-git submodule sync
-git submodule update
-make
-export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf flex bison texinfo gawk ncurses-dev libexpat-dev python sed&lt;/span&gt;
+&lt;span class="err"&gt;cd /opt&lt;/span&gt;
+&lt;span class="err"&gt;git clone https://github.com/pfalcon/esp-open-sdk.git&lt;/span&gt;
+&lt;span class="err"&gt;cd esp-open-sdk&lt;/span&gt;
+&lt;span class="err"&gt;git submodule sync&lt;/span&gt;
+&lt;span class="err"&gt;git submodule update&lt;/span&gt;
+&lt;span class="err"&gt;make&lt;/span&gt;
+&lt;span class="err"&gt;export PATH=/opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Build NodeMCU&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
-cd nodemcu-firmware
-# Switch to dev branch, since it&amp;#39;s the most up to date
-git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
-make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git&lt;/span&gt;
+&lt;span class="err"&gt;cd nodemcu-firmware&lt;/span&gt;
+&lt;span class="err"&gt;# Switch to dev branch, since it&amp;#39;s the most up to date&lt;/span&gt;
+&lt;span class="err"&gt;git checkout --track origin/dev&lt;/span&gt;
+&lt;span class="err"&gt;# Make INTEGER version, since it uses less memory/space&lt;/span&gt;
+&lt;span class="err"&gt;make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Flash NodeMCU&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;COMPORT=/dev/ttyUSB0 make flash
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;COMPORT=/dev/ttyUSB0 make flash&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Modifying NodeMCU to fit your needs&lt;/h3&gt;
 &lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
 &lt;p&gt;Contains a list of which modules to include in the build.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
-#define LUA_USE_MODULES_NODE
-#define LUA_USE_MODULES_FILE
-#define LUA_USE_MODULES_GPIO
-#define LUA_USE_MODULES_WIFI
-#define LUA_USE_MODULES_NET
-...
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;span class="err"&gt;#define LUA_USE_MODULES_NODE&lt;/span&gt;
+&lt;span class="err"&gt;#define LUA_USE_MODULES_FILE&lt;/span&gt;
+&lt;span class="err"&gt;#define LUA_USE_MODULES_GPIO&lt;/span&gt;
+&lt;span class="err"&gt;#define LUA_USE_MODULES_WIFI&lt;/span&gt;
+&lt;span class="err"&gt;#define LUA_USE_MODULES_NET&lt;/span&gt;
+&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h5&gt;app/include/user_config.h&lt;/h5&gt;
 &lt;p&gt;Contains NodeMCU developer options, but could be of use.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
-#define DEVELOP_VERSION
-#define NODE_ERROR
-...
-&lt;/pre&gt;&lt;/div&gt;</content><category term="NodeMCU"></category><category term="ESP8266"></category></entry></feed>
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;span class="err"&gt;#define DEVELOP_VERSION&lt;/span&gt;
+&lt;span class="err"&gt;#define NODE_ERROR&lt;/span&gt;
+&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="ESP8266"></category><category term="NodeMCU"></category><category term="ESP8266"></category></entry></feed>

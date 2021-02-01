@@ -53,32 +53,29 @@ various aspects like FPS, CPU usage, etc in realtime.</p>
 applications. It only works for Mesa drivers that are Gallium based, which means that
 the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD.</p>
 <p>See GALLIUM_HUD options:</p>
-<div class="highlight"><pre><span></span>export GALLIUM_HUD=help
-glxgears
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">export GALLIUM_HUD=help</span>
+<span class="err">glxgears</span>
+</code></pre></div>
 
 <h3>Android</h3>
 <p>If you're building Android, you can supply system-wide environment values by doing an
 export in the init.rc file of the device you are using, like 
 <a href="https://customer-git.collabora.com/cgit/android-etnaviv/android-device-linaro-generic.git/commit/?h=android-etnaviv&amp;id=48755378c388707260a8bb50e0fb62a309ded986">this</a>.</p>
-<div class="highlight"><pre><span></span># Go to android source code checkout
-cd android
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">android</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">checkout</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="n">android</span><span class="w"></span>
 
-# Add export to init.rc (linaro/generic is the device I use)
-nano device/linaro/generic/init.rc
-export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated
-</pre></div>
-
+<span class="err">#</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">init</span><span class="p">.</span><span class="n">rc</span><span class="w"> </span><span class="p">(</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="k">use</span><span class="p">)</span><span class="w"></span>
+<span class="n">nano</span><span class="w"> </span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">rc</span><span class="w"></span>
+<span class="n">export</span><span class="w"> </span><span class="n">GALLIUM_HUD</span><span class="w"> </span><span class="n">cpu</span><span class="p">,</span><span class="n">cpu0</span><span class="o">+</span><span class="n">cpu1</span><span class="o">+</span><span class="n">cpu2</span><span class="o">+</span><span class="n">cpu3</span><span class="p">;</span><span class="n">pixels</span><span class="o">-</span><span class="n">rendered</span><span class="p">,</span><span class="n">fps</span><span class="p">,</span><span class="n">primitives</span><span class="o">-</span><span class="n">generated</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Linux</h3>
 <p>If you're using one of the usual Linux distros, GALLIUM_HUD can be enabled by setting
 the environtment variable in a place that it loaded early.</p>
-<div class="highlight"><pre><span></span># Add export to /etc/environment
-nano /etc/environment 
-export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err"># Add export to /etc/environment</span>
+<span class="err">nano /etc/environment </span>
+<span class="err">export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated</span>
+</code></pre></div>
 
 <h2>Thanks</h2>
 <p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
@@ -123,7 +120,7 @@ export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-genera
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

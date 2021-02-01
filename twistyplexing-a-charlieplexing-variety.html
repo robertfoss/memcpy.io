@@ -52,11 +52,10 @@ in the schematic.</p>
 <h2>Avoiding lookup tables</h2>
 <p>The major advantage of twistyplexing is the ability to avoid lookup tables
 and replace them with some relatively straight forward arithmetic.</p>
-<div class="highlight"><pre><span></span>row = led_number / (N - 1)
-column = led_number % (N - 1)
-anode = (row + column + 1) % N
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">row = led_number / (N - 1)</span>
+<span class="err">column = led_number % (N - 1)</span>
+<span class="err">anode = (row + column + 1) % N</span>
+</code></pre></div>
 
 <p>Of course the cathode still has to be controlled, but its pin id already
 defined by the <strong>row</strong> variable above.</p>
@@ -93,7 +92,7 @@ defined by the <strong>row</strong> variable above.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

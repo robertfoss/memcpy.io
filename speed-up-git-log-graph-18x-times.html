@@ -45,7 +45,7 @@
 				</p>
 			</header>
 			<p>For large repositories 'git log --graph' can be slow, but for git v2.20+ it can be sped up.</p>
-			<div class="highlight"><pre><span></span>$ <span class="nb">time</span> git lg
+			<div class="highlight"><pre><span></span><code>$ <span class="nb">time</span> git lg
 git lg  <span class="m">13</span>.34s user <span class="m">0</span>.87s system <span class="m">84</span>% cpu <span class="m">16</span>.845 total
 
 <span class="c1"># True by default as of git v2.24</span>
@@ -57,8 +57,7 @@ git commit-graph write
 
 $ <span class="nb">time</span> git lg
 git lg  <span class="m">0</span>.72s user <span class="m">0</span>.14s system <span class="m">74</span>% cpu <span class="m">1</span>.154 total
-</pre></div>
-
+</code></pre></div>
 
 <p>This is a speed up of ~18x, compared to the older versions.</p>
 <p>The way this works is that the <a href="https://git-scm.com/docs/commit-graph">commit-graph</a>
@@ -103,7 +102,7 @@ speed up graph in the <code>.git/objects/info</code> directory.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

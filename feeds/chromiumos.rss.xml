@@ -9,53 +9,49 @@ you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Depot tools&lt;/h3&gt;
 &lt;p&gt;In order to check out ChromiumOS and other large Google projects,
 you'll need depot tools.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;git clone https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;//&lt;span class="n"&gt;chromium&lt;/span&gt;.&lt;span class="n"&gt;googlesource&lt;/span&gt;.&lt;span class="n"&gt;com&lt;/span&gt;/&lt;span class="n"&gt;chromium&lt;/span&gt;/&lt;span class="n"&gt;tools&lt;/span&gt;/&lt;span class="n"&gt;depot_tools&lt;/span&gt;.&lt;span class="n"&gt;git&lt;/span&gt;
-&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PWD&lt;span class="k"&gt;)&lt;/span&gt;/depot_tools
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git&lt;/span&gt;
+&lt;span class="err"&gt;export PATH=$PATH:$(PWD)/depot_tools&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Maybe you'd want to add the PATH export to your .bashrc.&lt;/p&gt;
 &lt;h3&gt;Building ChromiumOS&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir chromiumos
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir chromiumos
 cd chromiumos
 repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git [-g minilayout]
 repo sync -j75
 cros_sdk
 export BOARD=amd64-generic
-./setup_board --board …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Nov 2017 11:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</guid><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Setting up a ChromiumOS dev environment</title><link>https://memcpy.io/setting-up-a-chromiumos-dev-environment.html</link><description>&lt;h2&gt;Set up environment&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export DEV_DIR=&amp;quot;/opt&amp;quot;
-mkdir -p $DEV_DIR
-export CHROMIUM_DIR=&amp;quot;$DEV_DIR/chromiumos&amp;quot;
-mkdir -p $CHROMIUM_DIR
-export PATH=&amp;quot;$DEV_DIR/depot_tools:$PATH&amp;quot;
+./setup_board --board …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Nov 2017 11:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Setting up a ChromiumOS dev environment</title><link>https://memcpy.io/setting-up-a-chromiumos-dev-environment.html</link><description>&lt;h2&gt;Set up environment&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;DEV_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;/opt&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;DEV_DIR&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;CHROMIUM_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;$DEV_DIR/chromiumos&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;CHROMIUM_DIR&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;$DEV_DIR/depot_tools:$PATH&amp;quot;&lt;/span&gt;
 
-# The BOARD variable used here is specific for the Chromebook that is
-# being targeted, a more generic target like &amp;quot;amd64-generic&amp;quot; could
-# be more useful for you needs.
-export BOARD=chell
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;BOARD&lt;/span&gt; &lt;span class="k"&gt;variable&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;here&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;specific&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;Chromebook&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;being&lt;/span&gt; &lt;span class="n"&gt;targeted&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;more&lt;/span&gt; &lt;span class="n"&gt;generic&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="k"&gt;like&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;amd64-generic&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="k"&gt;more&lt;/span&gt; &lt;span class="n"&gt;useful&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;needs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;chell&lt;/span&gt;
 
-# The USB_DEVICE variable refers to the USB device that will be used
-# for flashing ChromiumOS onto a Chromebook.
-# Make sure that this device does not contain anything important!
-export USB_DEVICE=&amp;quot;/dev/sda&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;USB_DEVICE&lt;/span&gt; &lt;span class="k"&gt;variable&lt;/span&gt; &lt;span class="n"&gt;refers&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;USB&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;flashing&lt;/span&gt; &lt;span class="n"&gt;ChromiumOS&lt;/span&gt; &lt;span class="n"&gt;onto&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;Chromebook&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Make&lt;/span&gt; &lt;span class="n"&gt;sure&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;contain&lt;/span&gt; &lt;span class="n"&gt;anything&lt;/span&gt; &lt;span class="n"&gt;important&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;USB_DEVICE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;/dev/sda&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install git-core gitk git-gui subversion curl
-cd $DEV_DIR
-git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install git-core gitk git-gui subversion curl&lt;/span&gt;
+&lt;span class="err"&gt;cd $DEV_DIR&lt;/span&gt;
+&lt;span class="err"&gt;git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Get ChromiumOS source&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;CHROMIUM_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;CHROMIUM_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
 repo sync -j25
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
-&lt;h2&gt;Build ChromiumOS …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 16 Feb 2017 10:31:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</guid><category>linux</category><category>chromiumos</category><category>chromebook</category><category>collabora</category></item><item><title>Ethernet device stress testing</title><link>https://memcpy.io/ethernet-device-stress-testing.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+&lt;h2&gt;Build ChromiumOS …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 16 Feb 2017 10:31:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-02-16:/setting-up-a-chromiumos-dev-environment.html</guid><category>chromiumos</category><category>linux</category><category>chromiumos</category><category>chromebook</category><category>collabora</category></item><item><title>Ethernet device stress testing</title><link>https://memcpy.io/ethernet-device-stress-testing.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
 &lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
 was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
 &lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
@@ -66,7 +62,7 @@ local testing. The modified version can be found &lt;a href="files/2016-08-25/ne
 &lt;p&gt;This might come in handy for someone, if not, the script will at least be
 archived on this site.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2.7 install autotest
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo pip2.7 install autotest
 $ ip link
 &lt;span class="m"&gt;1&lt;/span&gt;: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN mode DEFAULT group default qlen &lt;span class="m"&gt;1&lt;/span&gt;
-    link/loopback &lt;span class="m"&gt;00&lt;/span&gt;:00:00 …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 25 Aug 2016 13:05:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</guid><category>linux</category><category>kernel</category><category>script</category><category>collabora</category><category>chromiumos</category></item></channel></rss>
+    link/loopback &lt;span class="m"&gt;00&lt;/span&gt;:00:00 …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 25 Aug 2016 13:05:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>script</category><category>collabora</category><category>chromiumos</category></item></channel></rss>

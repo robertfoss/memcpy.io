@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Enable precompilation cd /opt/aosp_checkout/ find . -name BoardConfig.mk ./device/huawei/angler/BoardConfig.mk ./device/generic/mini-emulator-x86/BoardConfig.mk ./device/generic/arm64/BoardConfig.mk ./device/generic/mini-emulator-x86_64/BoardConfig.mk ./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk ./device/generic/mips/BoardConfig.mk ./device/generic/mips64/BoardConfig.mk ./device/generic/x86_64/BoardConfig.mk ./device/generic/mini-emulator-arm64/BoardConfig.mk ./device/generic/mini-emulator-mips/BoardConfig.mk ./device/generic/x86/BoardConfig.mk ./device/generic/armv7-a-neon/BoardConfig.mk ./device/generic/mini-emulator-mips64/BoardConfig.mk ./device/lge/bullhead/BoardConfig.mk ./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk ./device/linaro/generic/linaro_arm64/BoardConfig.mk ./device/linaro/generic/linaro_arm64_only/BoardConfig.mk ./device/linaro/generic/linaro_x86_64/BoardConfig.mk ./device/linaro/generic/BoardConfig.mk ./device/linaro/generic/linaro_arm/BoardConfig.mk ./device/linaro/hikey/hikey/BoardConfig.mk # Edit the BoardConfig.mk that …">
+		<meta name="description" content="Enable precompilation cd /opt/aosp_checkout/ find . -name BoardConfig.mk ./device/huawei/angler/BoardConfig.mk ./device/generic/mini-emulator-x86/BoardConfig.mk ./device/generic/arm64/BoardConfig.mk ./device/generic/mini-emulator-x86_64/BoardConfig.mk ./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk ./device/generic/mips/BoardConfig.mk ./device/generic/mips64/BoardConfig.mk ./device/generic/x86_64/BoardConfig.mk ./device/generic/mini-emulator-arm64/BoardConfig.mk ./device/generic/mini-emulator-mips/BoardConfig.mk ./device/generic/x86/BoardConfig.mk ./device/generic/armv7-a-neon/BoardConfig.mk ./device/generic/mini-emulator-mips64/BoardConfig.mk ./device/lge/bullhead/BoardConfig.mk ./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk ./device/linaro/generic/linaro_arm64/BoardConfig.mk ./device/linaro/generic/linaro_arm64_only/BoardConfig.mk ./device/linaro/generic/linaro_x86_64/BoardConfig.mk ./device/linaro/generic/BoardConfig.mk ./device …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, aosp, apk, dex2oat, android, collabora">
 		<meta property="og:title" content="Precompiling APK files during Android AOSP build" />
@@ -42,56 +42,54 @@
 			</header>
 			<p>By precompiling APK files during AOSP build a few minutes can be shaved off of the development iteration time on most commonly found Android hardware.</p>
 			<h2>Enable precompilation</h2>
-<div class="highlight"><pre><span></span>cd /opt/aosp_checkout/
+<div class="highlight"><pre><span></span><code><span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">aosp_checkout</span><span class="o">/</span>
 
-find . -name BoardConfig.mk
-./device/huawei/angler/BoardConfig.mk
-./device/generic/mini-emulator-x86/BoardConfig.mk
-./device/generic/arm64/BoardConfig.mk
-./device/generic/mini-emulator-x86_64/BoardConfig.mk
-./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk
-./device/generic/mips/BoardConfig.mk
-./device/generic/mips64/BoardConfig.mk
-./device/generic/x86_64/BoardConfig.mk
-./device/generic/mini-emulator-arm64/BoardConfig.mk
-./device/generic/mini-emulator-mips/BoardConfig.mk
-./device/generic/x86/BoardConfig.mk
-./device/generic/armv7-a-neon/BoardConfig.mk
-./device/generic/mini-emulator-mips64/BoardConfig.mk
-./device/lge/bullhead/BoardConfig.mk
-./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk
-./device/linaro/generic/linaro_arm64/BoardConfig.mk
-./device/linaro/generic/linaro_arm64_only/BoardConfig.mk
-./device/linaro/generic/linaro_x86_64/BoardConfig.mk
-./device/linaro/generic/BoardConfig.mk
-./device/linaro/generic/linaro_arm/BoardConfig.mk
-./device/linaro/hikey/hikey/BoardConfig.mk
+<span class="n">find</span> <span class="p">.</span> <span class="o">-</span><span class="n">name</span> <span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">huawei</span><span class="o">/</span><span class="n">angler</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mini</span><span class="o">-</span><span class="n">emulator</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mini</span><span class="o">-</span><span class="n">emulator</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mini</span><span class="o">-</span><span class="n">emulator</span><span class="o">-</span><span class="n">armv7</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">neon</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mips</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mips64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mini</span><span class="o">-</span><span class="n">emulator</span><span class="o">-</span><span class="n">arm64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mini</span><span class="o">-</span><span class="n">emulator</span><span class="o">-</span><span class="n">mips</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">armv7</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">neon</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">mini</span><span class="o">-</span><span class="n">emulator</span><span class="o">-</span><span class="n">mips64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">lge</span><span class="o">/</span><span class="n">bullhead</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">linaro_x86_64_only</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">linaro_arm64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">linaro_arm64_only</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">linaro_x86_64</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">linaro_arm</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
+<span class="p">.</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">hikey</span><span class="o">/</span><span class="n">hikey</span><span class="o">/</span><span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
 
-# Edit the BoardConfig.mk that you are using for your build
-cd device/linaro/generic/
-nano BoardConfig.mk
+<span class="o">#</span> <span class="n">Edit</span> <span class="n">the</span> <span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span> <span class="n">that</span> <span class="n">you</span> <span class="k">are</span> <span class="k">using</span> <span class="k">for</span> <span class="n">your</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span>
+<span class="n">nano</span> <span class="n">BoardConfig</span><span class="p">.</span><span class="n">mk</span>
 
-# Add the config option
-WITH_DEXPREOPT := true
+<span class="o">#</span> <span class="k">Add</span> <span class="n">the</span> <span class="n">config</span> <span class="k">option</span>
+<span class="n">WITH_DEXPREOPT</span> <span class="p">:</span><span class="o">=</span> <span class="k">true</span>
 
-# Propagate the new settings
-make defconfig
-make all
-</pre></div>
-
+<span class="o">#</span> <span class="n">Propagate</span> <span class="n">the</span> <span class="k">new</span> <span class="n">settings</span>
+<span class="n">make</span> <span class="n">defconfig</span>
+<span class="n">make</span> <span class="k">all</span>
+</code></pre></div>
 
 <h2>Increase system partition size</h2>
 <p>Depending on the previous system partition size and how many APKs that are built, you may need to increase the system partition size.</p>
-<div class="highlight"><pre><span></span>nano configs/defconfig
+<div class="highlight"><pre><span></span><code><span class="n">nano</span> <span class="n">configs</span><span class="o">/</span><span class="n">defconfig</span>
 
-# Change the below variable to something big enough to house all of you binaries
-CONFIG_BOARD_SYSTEMIMAGE_PARTITION_SIZE=1100000000
+<span class="o">#</span> <span class="n">Change</span> <span class="n">the</span> <span class="n">below</span> <span class="k">variable</span> <span class="k">to</span> <span class="n">something</span> <span class="n">big</span> <span class="n">enough</span> <span class="k">to</span> <span class="n">house</span> <span class="k">all</span> <span class="k">of</span> <span class="n">you</span> <span class="n">binaries</span>
+<span class="n">CONFIG_BOARD_SYSTEMIMAGE_PARTITION_SIZE</span><span class="o">=</span><span class="mi">1100000000</span>
 
-# Propagate the new settings
-make defconfig
-make all
-</pre></div>
-
+<span class="o">#</span> <span class="n">Propagate</span> <span class="n">the</span> <span class="k">new</span> <span class="n">settings</span>
+<span class="n">make</span> <span class="n">defconfig</span>
+<span class="n">make</span> <span class="k">all</span>
+</code></pre></div>
 
 <h2>Thanks</h2>
 <p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
@@ -126,7 +124,7 @@ make all
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

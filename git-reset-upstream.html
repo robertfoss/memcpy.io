@@ -42,7 +42,7 @@
 				</p>
 			</header>
 			<p>Working with a git based project that has a defacto upstream repository means that you perioducally want to fetch the canonical master branch. This can be simplified with a .gitconfig alias.</p>
-			<div class="highlight"><pre><span></span><span class="n">robertfoss</span><span class="p">@</span><span class="n">xps9570</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">libdrm</span> <span class="err">$</span> <span class="n">git</span> <span class="n">ru</span>
+			<div class="highlight"><pre><span></span><code><span class="n">robertfoss</span><span class="p">@</span><span class="n">xps9570</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">libdrm</span> <span class="err">$</span> <span class="n">git</span> <span class="n">ru</span>
 <span class="nl">remote</span><span class="p">:</span> <span class="n">Counting</span> <span class="nl">objects</span><span class="p">:</span> <span class="mi">234</span><span class="p">,</span> <span class="n">done</span><span class="p">.</span>
 <span class="nl">remote</span><span class="p">:</span> <span class="n">Compressing</span> <span class="nl">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">233</span><span class="o">/</span><span class="mi">233</span><span class="p">),</span> <span class="n">done</span><span class="p">.</span>
 <span class="nl">remote</span><span class="p">:</span> <span class="n">Total</span> <span class="mi">234</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">177</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">)</span>
@@ -52,8 +52,7 @@
    <span class="n">cb592ac8166e</span><span class="p">..</span><span class="n">bcb9d976cd91</span>  <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">upstream</span><span class="o">/</span><span class="n">master</span>
  <span class="o">*</span> <span class="p">[</span><span class="n">new</span> <span class="n">tag</span><span class="p">]</span>                   <span class="n">libdrm</span><span class="o">-</span><span class="mf">2.4.93</span> <span class="o">-&gt;</span> <span class="n">libdrm</span><span class="o">-</span><span class="mf">2.4.93</span>
  <span class="o">*</span> <span class="p">[</span><span class="n">new</span> <span class="n">tag</span><span class="p">]</span>                   <span class="n">libdrm</span><span class="o">-</span><span class="mf">2.4.94</span> <span class="o">-&gt;</span> <span class="n">libdrm</span><span class="o">-</span><span class="mf">2.4.94</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>The idea here is that we by issuing a single short command can fetch the
 latest master branch from the upstream repository of the codebase we're
@@ -64,7 +63,7 @@ upstream/master one.</p>
 the upstream/master branch.</p>
 <h2>~/.gitconfig</h2>
 <p>Add this snippet under the <code>[alias]</code> section of your <code>~/.gitconfig</code> file.</p>
-<div class="highlight"><pre><span></span><span class="k">[alias]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[alias]</span>
     <span class="na">ru</span> <span class="o">=</span> <span class="s">&quot;!f() { \</span>
 <span class="s">        REMOTES=$(git remote); \</span>
 <span class="s">        REMOTE=\&quot;origin\&quot;; \</span>
@@ -79,15 +78,14 @@ the upstream/master branch.</p>
 <span class="s">        git reset --hard $REMOTE/master &gt;/dev/null 2&gt;&amp;1; \</span>
 <span class="s">        git checkout - &gt;/dev/null 2&gt;&amp;1; \</span>
 <span class="s">    }; f</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>If you have a closer look, you'll notice that the <code>upstream</code> remote is used if
 has been added, otherwise the <code>origin</code> remote is used. This selection is
 done using git running a shell script.</p>
 <h2>Example</h2>
 <p>This is what <code>git ru</code> might look like when used.</p>
-<div class="highlight"><pre><span></span><span class="n">robertfoss</span><span class="p">@</span><span class="n">xps9570</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">libdrm</span> <span class="err">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
+<div class="highlight"><pre><span></span><code><span class="n">robertfoss</span><span class="p">@</span><span class="n">xps9570</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">libdrm</span> <span class="err">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
 <span class="n">origin</span>  <span class="n">git</span><span class="p">@</span><span class="n">gitlab</span><span class="p">.</span><span class="n">collabora</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">robertfoss</span><span class="o">/</span><span class="n">libdrm</span><span class="p">.</span><span class="n">git</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
 <span class="n">origin</span>  <span class="n">git</span><span class="p">@</span><span class="n">gitlab</span><span class="p">.</span><span class="n">collabora</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">robertfoss</span><span class="o">/</span><span class="n">libdrm</span><span class="p">.</span><span class="n">git</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
 <span class="n">upstream</span>    <span class="nl">git</span><span class="p">:</span><span class="c1">//anongit.freedesktop.org/mesa/drm (fetch)</span>
@@ -116,8 +114,7 @@ done using git running a shell script.</p>
 <span class="mi">8389</span><span class="n">c5454804</span> <span class="o">-</span> <span class="p">(</span><span class="nl">tag</span><span class="p">:</span> <span class="n">libdrm</span><span class="o">-</span><span class="mf">2.4.94</span><span class="p">)</span> <span class="n">Bump</span> <span class="n">to</span> <span class="n">version</span> <span class="mf">2.4.94</span> <span class="p">(</span><span class="mi">19</span> <span class="n">hours</span> <span class="n">ago</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">Kristian</span> <span class="n">H</span><span class="p">.</span> <span class="n">Kristensen</span><span class="o">&gt;</span>
 <span class="n">f0c642e8df41</span> <span class="o">-</span> <span class="nl">libdrm</span><span class="p">:</span> <span class="n">add</span> <span class="n">msm</span> <span class="n">drm</span> <span class="n">uapi</span> <span class="n">header</span> <span class="p">(</span><span class="mi">25</span> <span class="n">hours</span> <span class="n">ago</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">Tanmay</span> <span class="n">Shah</span><span class="o">&gt;</span>
 <span class="p">[</span><span class="n">snip</span><span class="p">]</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Thanks</h2>
 <p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
@@ -156,7 +153,7 @@ improvements.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

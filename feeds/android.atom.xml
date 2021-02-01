@@ -5,22 +5,21 @@ In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
 board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install \
-    apt-transport-https \
-    bmap-tools \
-    ca-certificates \
-    curl \
-    git \
-    gnupg2 \
-    repo \
-    software-properties-common \
-    u-boot-tools \
-    qemu-kvm
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install \&lt;/span&gt;
+&lt;span class="err"&gt;    apt-transport-https \&lt;/span&gt;
+&lt;span class="err"&gt;    bmap-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    ca-certificates \&lt;/span&gt;
+&lt;span class="err"&gt;    curl \&lt;/span&gt;
+&lt;span class="err"&gt;    git \&lt;/span&gt;
+&lt;span class="err"&gt;    gnupg2 \&lt;/span&gt;
+&lt;span class="err"&gt;    repo \&lt;/span&gt;
+&lt;span class="err"&gt;    software-properties-common \&lt;/span&gt;
+&lt;span class="err"&gt;    u-boot-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    qemu-kvm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up Docker container for building&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install Docker
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install Docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;
 sudo apt update
@@ -32,34 +31,32 @@ su - &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&g
 
 # Fetch Docker image
 docker pull godebos/debos:latest
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Build&lt;/h2&gt;
 &lt;h3&gt;Build Android&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir android; cd android
-repo …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mkdir android; cd android&lt;/span&gt;
+&lt;span class="err"&gt;repo …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
 Android compatibility layer for Wayland based Linux environment.&lt;br&gt;
 In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
 board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install \
-    apt-transport-https \
-    bmap-tools \
-    ca-certificates \
-    curl \
-    git \
-    gnupg2 \
-    repo \
-    software-properties-common \
-    u-boot-tools \
-    qemu-kvm
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install \&lt;/span&gt;
+&lt;span class="err"&gt;    apt-transport-https \&lt;/span&gt;
+&lt;span class="err"&gt;    bmap-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    ca-certificates \&lt;/span&gt;
+&lt;span class="err"&gt;    curl \&lt;/span&gt;
+&lt;span class="err"&gt;    git \&lt;/span&gt;
+&lt;span class="err"&gt;    gnupg2 \&lt;/span&gt;
+&lt;span class="err"&gt;    repo \&lt;/span&gt;
+&lt;span class="err"&gt;    software-properties-common \&lt;/span&gt;
+&lt;span class="err"&gt;    u-boot-tools \&lt;/span&gt;
+&lt;span class="err"&gt;    qemu-kvm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up Docker container for building&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install Docker
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install Docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;
 sudo apt update
@@ -71,29 +68,26 @@ su - &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&g
 
 # Fetch Docker image
 docker pull godebos/debos:latest
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Build&lt;/h2&gt;
 &lt;h3&gt;Build Android&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir android; cd android
-repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
-git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/
-repo sync -j15
-. build/envsetup.sh
-lunch spurv-eng
-make -j12
-cd ..
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mkdir android; cd android&lt;/span&gt;
+&lt;span class="err"&gt;repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10&lt;/span&gt;
+&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/&lt;/span&gt;
+&lt;span class="err"&gt;repo sync -j15&lt;/span&gt;
+&lt;span class="err"&gt;. build/envsetup.sh&lt;/span&gt;
+&lt;span class="err"&gt;lunch spurv-eng&lt;/span&gt;
+&lt;span class="err"&gt;make -j12&lt;/span&gt;
+&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Build Linux Kernel&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5
-cd linux
-sh ../android/device/freedesktop/spurv/build-kernel.sh
-cd ..
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5&lt;/span&gt;
+&lt;span class="err"&gt;cd linux&lt;/span&gt;
+&lt;span class="err"&gt;sh ../android/device/freedesktop/spurv/build-kernel.sh&lt;/span&gt;
+&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Create root filesystem&lt;/h3&gt;
 &lt;p&gt;Just a kernel does not make an OS, so we're using Debian as a base.&lt;br&gt;
@@ -102,10 +96,9 @@ which is a tool for creating Debian based OS images.&lt;/p&gt;
 &lt;h3&gt;Create &amp;amp; flash image&lt;/h3&gt;
 &lt;p&gt;Now we're ready to integrate all of the above into one coherent image.
 This is where the Nitrogen6_MAX devboard targeting comes in.  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://gitlab.collabora.com/spurv/debos.git
-sudo debos/build_image.sh -b /dev/mmcblk0
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/debos.git&lt;/span&gt;
+&lt;span class="err"&gt;sudo debos/build_image.sh -b /dev/mmcblk0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The platform specific parts are contained in &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/uboot_nitrogen6qp-max.scr"&gt;uboot_nitrogen6qp-max.scr&lt;/a&gt;
 and &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image.sh"&gt;build_image.sh&lt;/a&gt;.&lt;/p&gt;
@@ -113,10 +106,9 @@ and &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image
 &lt;p&gt;Pop the flashed SD-card into your device and restart it, and then log in as
 &lt;code&gt;root/root&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In order to start Android, run one of these two commands:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Launch just and Android application
-/home/aosp/run.sh
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Launch just and Android application&lt;/span&gt;
+&lt;span class="err"&gt;/home/aosp/run.sh&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Starting the Android application might take a minute or two, but Weston should
 start immediately.&lt;/p&gt;
@@ -127,7 +119,7 @@ start immediately.&lt;/p&gt;
 &lt;li&gt;Pengutronix&lt;/li&gt;
 &lt;li&gt;Zodiac&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category><category term="imx6"></category><category term="nitrogen6"></category></entry><entry><title>Running Android next to Wayland</title><link href="https://memcpy.io/running-android-next-to-wayland.html" rel="alternate"></link><published>2019-04-01T18:07:00+02:00</published><updated>2019-04-01T18:07:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</id><summary type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category><category term="imx6"></category><category term="nitrogen6"></category></entry><entry><title>Running Android next to Wayland</title><link href="https://memcpy.io/running-android-next-to-wayland.html" rel="alternate"></link><published>2019-04-01T18:07:00+02:00</published><updated>2019-04-01T18:07:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-04-01:/running-android-next-to-wayland.html</id><summary type="html">&lt;p&gt;Running Android has some advantages compared to native Linux applications,
 for example with regard to the availability of applications and application
 developers.&lt;/p&gt;
 &lt;p&gt;For current non-Android systems, this work enables a path forward to running
@@ -250,35 +242,21 @@ for applications in the container.&lt;/p&gt;
 &lt;li&gt;Zodiac&lt;/li&gt;
 &lt;li&gt;Boundary Devices&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category></entry><entry><title>Running Android on the Mainline Graphics Stack @ FossNorth</title><link href="https://memcpy.io/running-android-on-the-mainline-graphics-stack-fossnorth.html" rel="alternate"></link><published>2018-04-23T00:00:00+02:00</published><updated>2018-04-23T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-04-23:/running-android-on-the-mainline-graphics-stack-fossnorth.html</id><summary type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-04-23_intro.png"&gt;&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="linux"></category><category term="open source"></category><category term="graphics"></category><category term="wayland"></category><category term="android"></category><category term="3d"></category><category term="acceleration"></category></entry><entry><title>Running Android on the Mainline Graphics Stack @ FossNorth</title><link href="https://memcpy.io/running-android-on-the-mainline-graphics-stack-fossnorth.html" rel="alternate"></link><published>2018-04-23T00:00:00+02:00</published><updated>2018-04-23T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-04-23:/running-android-on-the-mainline-graphics-stack-fossnorth.html</id><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-04-23_intro.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="http://foss-north.se/2018/schedule.html"&gt;FossNorth&lt;/a&gt;, specifically &lt;a href="https://twitter.com/e8johan"&gt;@e8johan&lt;/a&gt;
-for hosting a great event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-04-23_intro.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="http://foss-north.se/2018/schedule.html"&gt;FossNorth&lt;/a&gt;, specifically &lt;a href="https://twitter.com/e8johan"&gt;@e8johan&lt;/a&gt;
-for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="slides"></category><category term="fossnorth"></category><category term="foss"></category><category term="north"></category><category term="aosp"></category><category term="android"></category><category term="open"></category><category term="source"></category></entry><entry><title>Android on Mainline Graphics @ FOSDEM</title><link href="https://memcpy.io/android-on-mainline-graphics-fosdem.html" rel="alternate"></link><published>2018-02-04T00:00:00+01:00</published><updated>2018-02-04T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-02-04:/android-on-mainline-graphics-fosdem.html</id><summary type="html">&lt;p&gt;&lt;a href="https://fosdem.org"&gt;&lt;img alt="Alt text" src="/images/2018-02-04_fosdem.png" title="FOSDEM"&gt;&lt;/a&gt;&lt;/p&gt;
+for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="fossnorth"></category><category term="foss"></category><category term="north"></category><category term="aosp"></category><category term="android"></category><category term="open"></category><category term="source"></category></entry><entry><title>Android on Mainline Graphics @ FOSDEM</title><link href="https://memcpy.io/android-on-mainline-graphics-fosdem.html" rel="alternate"></link><published>2018-02-04T00:00:00+01:00</published><updated>2018-02-04T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-02-04:/android-on-mainline-graphics-fosdem.html</id><content type="html">&lt;p&gt;&lt;a href="https://fosdem.org"&gt;&lt;img alt="Alt text" src="/images/2018-02-04_fosdem.png" title="FOSDEM"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;A recording of the talk can be found &lt;a href="https://fosdem.org/2018/schedule/event/android_graphics/"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-02-04/2018_fosdem_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2018-02-04/2018_fosdem_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers and volunteers of &lt;a href="https://fosdem.org/"&gt;FOSDEM&lt;/a&gt;, for hosting a great community event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://fosdem.org"&gt;&lt;img alt="Alt text" src="/images/2018-02-04_fosdem.png" title="FOSDEM"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;A recording of the talk can be found &lt;a href="https://fosdem.org/2018/schedule/event/android_graphics/"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-02-04/2018_fosdem_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2018-02-04/2018_fosdem_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers and volunteers of &lt;a href="https://fosdem.org/"&gt;FOSDEM&lt;/a&gt;, for hosting a great community event.&lt;/p&gt;</content><category term="fosdem"></category><category term="2018"></category><category term="brussels"></category><category term="android"></category><category term="aosp"></category><category term="talk"></category><category term="slides"></category><category term="conference"></category></entry><entry><title>Android on Mainline Graphics @ Embedded Linux Conference EU</title><link href="https://memcpy.io/android-on-mainline-graphics-embedded-linux-conference-eu.html" rel="alternate"></link><published>2017-10-25T00:00:00+02:00</published><updated>2017-10-25T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-10-25:/android-on-mainline-graphics-embedded-linux-conference-eu.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-10-25_speaking_photo.jpg" title="Speaking @ ELC EU"&gt;&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers and volunteers of &lt;a href="https://fosdem.org/"&gt;FOSDEM&lt;/a&gt;, for hosting a great community event.&lt;/p&gt;</content><category term="talks"></category><category term="fosdem"></category><category term="2018"></category><category term="brussels"></category><category term="android"></category><category term="aosp"></category><category term="talk"></category><category term="slides"></category><category term="conference"></category></entry><entry><title>Android on Mainline Graphics @ Embedded Linux Conference EU</title><link href="https://memcpy.io/android-on-mainline-graphics-embedded-linux-conference-eu.html" rel="alternate"></link><published>2017-10-25T00:00:00+02:00</published><updated>2017-10-25T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-10-25:/android-on-mainline-graphics-embedded-linux-conference-eu.html</id><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-10-25_speaking_photo.jpg" title="Speaking @ ELC EU"&gt;&lt;/p&gt;
 &lt;p&gt;A recording of the talk can be found &lt;a href="https://www.youtube.com/watch?v=D9OUcQs0TnQ"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2017-10-25/2017_elc_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
@@ -286,47 +264,23 @@ the &lt;a href="/files/2017-10-25/2017_elc_running_android_on_mainline_gfx.otp"&
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://osseu17.sched.com/"&gt;Embedded Linux Conference EU&lt;/a&gt;,
-for hosting a great community event.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-10-25_speaking_photo.jpg" title="Speaking @ ELC EU"&gt;&lt;/p&gt;
-&lt;p&gt;A recording of the talk can be found &lt;a href="https://www.youtube.com/watch?v=D9OUcQs0TnQ"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2017-10-25/2017_elc_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2017-10-25/2017_elc_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://osseu17.sched.com/"&gt;Embedded Linux Conference EU&lt;/a&gt;,
-for hosting a great community event.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="talks"></category><category term="slides"></category><category term="embedded linux conference"></category><category term="elc"></category><category term="eu"></category><category term="prague"></category></entry><entry><title>drm_hwcomposer: A brief update @ XDC 20117</title><link href="https://memcpy.io/drm_hwcomposer-a-brief-update-xdc-20117.html" rel="alternate"></link><published>2017-09-22T00:00:00+02:00</published><updated>2017-09-22T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-09-22:/drm_hwcomposer-a-brief-update-xdc-20117.html</id><summary type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
+for hosting a great community event.&lt;/p&gt;</content><category term="talks"></category><category term="android"></category><category term="aosp"></category><category term="talks"></category><category term="slides"></category><category term="embedded linux conference"></category><category term="elc"></category><category term="eu"></category><category term="prague"></category></entry><entry><title>drm_hwcomposer: A brief update @ XDC 20117</title><link href="https://memcpy.io/drm_hwcomposer-a-brief-update-xdc-20117.html" rel="alternate"></link><published>2017-09-22T00:00:00+02:00</published><updated>2017-09-22T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-09-22:/drm_hwcomposer-a-brief-update-xdc-20117.html</id><content type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-22/xdc_drm_hwcomposer.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2017-09-22/xdc_drm_hwcomposer.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.x.org/wiki/Events/XDC2017/"&gt;XDC&lt;/a&gt;,
-and Google for hosting a great community event.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-22/xdc_drm_hwcomposer.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2017-09-22/xdc_drm_hwcomposer.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.x.org/wiki/Events/XDC2017/"&gt;XDC&lt;/a&gt;,
-and Google for hosting a great community event.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="talks"></category><category term="slides"></category><category term="xdc"></category><category term="x developers conference"></category></entry><entry><title>Android on Mainline Graphics @ Open Source Summit NA</title><link href="https://memcpy.io/android-on-mainline-graphics-open-source-summit-na.html" rel="alternate"></link><published>2017-09-11T00:00:00+02:00</published><updated>2017-09-11T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-09-11:/android-on-mainline-graphics-open-source-summit-na.html</id><summary type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
+and Google for hosting a great community event.&lt;/p&gt;</content><category term="talks"></category><category term="android"></category><category term="aosp"></category><category term="talks"></category><category term="slides"></category><category term="xdc"></category><category term="x developers conference"></category></entry><entry><title>Android on Mainline Graphics @ Open Source Summit NA</title><link href="https://memcpy.io/android-on-mainline-graphics-open-source-summit-na.html" rel="alternate"></link><published>2017-09-11T00:00:00+02:00</published><updated>2017-09-11T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-09-11:/android-on-mainline-graphics-open-source-summit-na.html</id><content type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
 the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://ossna2017.sched.com/"&gt;Open Source Summit NA&lt;/a&gt;,
-for hosting a great community event.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://ossna2017.sched.com/"&gt;Open Source Summit NA&lt;/a&gt;,
-for hosting a great community event.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="talks"></category><category term="slides"></category><category term="open source summit"></category><category term="north america"></category><category term="oss na"></category><category term="ossna"></category></entry><entry><title>Android on Mainline Graphics @ GDG Berlin Android</title><link href="https://memcpy.io/android-on-mainline-graphics-gdg-berlin-android.html" rel="alternate"></link><published>2017-09-01T00:00:00+02:00</published><updated>2017-09-01T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-09-01:/android-on-mainline-graphics-gdg-berlin-android.html</id><summary type="html">&lt;p&gt;I would like to thank the wonderful organizers, &lt;a href="https://www.meetup.com/GDG-Berlin-Android"&gt;GDG Berlin Android&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;</content><category term="talks"></category><category term="android"></category><category term="aosp"></category><category term="talks"></category><category term="slides"></category><category term="open source summit"></category><category term="north america"></category><category term="oss na"></category><category term="ossna"></category></entry><entry><title>Android on Mainline Graphics @ GDG Berlin Android</title><link href="https://memcpy.io/android-on-mainline-graphics-gdg-berlin-android.html" rel="alternate"></link><published>2017-09-01T00:00:00+02:00</published><updated>2017-09-01T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-09-01:/android-on-mainline-graphics-gdg-berlin-android.html</id><content type="html">&lt;p&gt;I would like to thank the wonderful organizers, &lt;a href="https://www.meetup.com/GDG-Berlin-Android"&gt;GDG Berlin Android&lt;/a&gt;,
 for hosting a great community event.&lt;/p&gt;
 &lt;h2&gt;Downloads&lt;/h2&gt;
 &lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-01/gdg_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2017-09-01/gdg_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I would like to thank the wonderful organizers, &lt;a href="https://www.meetup.com/GDG-Berlin-Android"&gt;GDG Berlin Android&lt;/a&gt;,
-for hosting a great community event.&lt;/p&gt;
-&lt;h2&gt;Downloads&lt;/h2&gt;
-&lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-01/gdg_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
-the &lt;a href="/files/2017-09-01/gdg_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="talks"></category><category term="slides"></category><category term="GDG Berlin Android"></category></entry><entry><title>Android: NXP i.MX6 on Etnaviv Update</title><link href="https://memcpy.io/android-nxp-imx6-on-etnaviv-update.html" rel="alternate"></link><published>2017-07-21T00:00:00+02:00</published><updated>2017-07-21T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-07-21:/android-nxp-imx6-on-etnaviv-update.html</id><summary type="html">&lt;p&gt;Since the last post a lot work has gone into upstreaming and stabilizing the
+the &lt;a href="/files/2017-09-01/gdg_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;</content><category term="talks"></category><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="talks"></category><category term="slides"></category><category term="GDG Berlin Android"></category></entry><entry><title>Android: NXP i.MX6 on Etnaviv Update</title><link href="https://memcpy.io/android-nxp-imx6-on-etnaviv-update.html" rel="alternate"></link><published>2017-07-21T00:00:00+02:00</published><updated>2017-07-21T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-07-21:/android-nxp-imx6-on-etnaviv-update.html</id><summary type="html">&lt;p&gt;Since the last post a lot work has gone into upstreaming and stabilizing the
 etnaviv on Android ecosystem. This has involved Android, kernel and Mesa
 changes. Many of which are available upstream now. A How-To for getting you
 up and running on an iMX6 dev board is available &lt;a href="../android-getting-up-and-running-on-the-imx6.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -375,62 +329,58 @@ minor graphical issues still remain, but overall games run well and fast.&lt;/p&
 &lt;li&gt;&lt;a href="https://laanwj.github.io/"&gt;Wladimir Van Der Laan&lt;/a&gt; - Independent&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;,
-and has been funded by &lt;a href="http://zii.aero"&gt;Zodiac Inflight Innovations&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="collabora"></category></entry><entry><title>GALLIUM_HUD: Debug Mesa Graphics Performance</title><link href="https://memcpy.io/gallium_hud-debug-mesa-graphics-performance.html" rel="alternate"></link><published>2017-06-28T00:00:00+02:00</published><updated>2017-06-28T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-06-28:/gallium_hud-debug-mesa-graphics-performance.html</id><summary type="html">&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
+and has been funded by &lt;a href="http://zii.aero"&gt;Zodiac Inflight Innovations&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="collabora"></category></entry><entry><title>GALLIUM_HUD: Debug Mesa Graphics Performance</title><link href="https://memcpy.io/gallium_hud-debug-mesa-graphics-performance.html" rel="alternate"></link><published>2017-06-28T00:00:00+02:00</published><updated>2017-06-28T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-06-28:/gallium_hud-debug-mesa-graphics-performance.html</id><summary type="html">&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
 &lt;p&gt;GALLIUM_HUD is a feature that adds performance graphs to applications that describe
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
 &lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc
 applications. It only works for Mesa drivers that are Gallium based, which means that
 the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD.&lt;/p&gt;
 &lt;p&gt;See GALLIUM_HUD options:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export GALLIUM_HUD=help
-glxgears
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;export GALLIUM_HUD=help&lt;/span&gt;
+&lt;span class="err"&gt;glxgears&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Android&lt;/h3&gt;
 &lt;p&gt;If you're building Android, you can supply system-wide environment values by doing an
 export in the init.rc file of the device you are using, like 
 &lt;a href="https://customer-git.collabora.com/cgit/android-etnaviv/android-device-linaro-generic.git/commit/?h=android-etnaviv&amp;amp;id=48755378c388707260a8bb50e0fb62a309ded986"&gt;this&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Go to android source code checkout
-cd android
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Go&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;checkout&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-# Add export to init.rc (linaro/generic is the device I use)
-nano device/linaro/generic/init …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;nano&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;init …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;GALLIUM_HUD&lt;/h2&gt;
 &lt;p&gt;GALLIUM_HUD is a feature that adds performance graphs to applications that describe
 various aspects like FPS, CPU usage, etc in realtime.&lt;/p&gt;
 &lt;p&gt;It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc
 applications. It only works for Mesa drivers that are Gallium based, which means that
 the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD.&lt;/p&gt;
 &lt;p&gt;See GALLIUM_HUD options:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export GALLIUM_HUD=help
-glxgears
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;export GALLIUM_HUD=help&lt;/span&gt;
+&lt;span class="err"&gt;glxgears&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Android&lt;/h3&gt;
 &lt;p&gt;If you're building Android, you can supply system-wide environment values by doing an
 export in the init.rc file of the device you are using, like 
 &lt;a href="https://customer-git.collabora.com/cgit/android-etnaviv/android-device-linaro-generic.git/commit/?h=android-etnaviv&amp;amp;id=48755378c388707260a8bb50e0fb62a309ded986"&gt;this&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Go to android source code checkout
-cd android
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Go&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;checkout&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-# Add export to init.rc (linaro/generic is the device I use)
-nano device/linaro/generic/init.rc
-export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;nano&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;GALLIUM_HUD&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cpu&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cpu0&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;cpu1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;cpu2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;cpu3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;pixels&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rendered&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;fps&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;primitives&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;generated&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Linux&lt;/h3&gt;
 &lt;p&gt;If you're using one of the usual Linux distros, GALLIUM_HUD can be enabled by setting
 the environtment variable in a place that it loaded early.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Add export to /etc/environment
-nano /etc/environment 
-export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Add export to /etc/environment&lt;/span&gt;
+&lt;span class="err"&gt;nano /etc/environment &lt;/span&gt;
+&lt;span class="err"&gt;export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="linux"></category><category term="mesa"></category><category term="gallium"></category><category term="hud"></category><category term="peformance"></category><category term="diagnostics"></category><category term="debug"></category><category term="collabora"></category></entry><entry><title>Android: NXP i.MX6 Buffer Modifier Support</title><link href="https://memcpy.io/android-nxp-imx6-buffer-modifier-support.html" rel="alternate"></link><published>2017-06-02T00:00:00+02:00</published><updated>2017-06-02T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-06-02:/android-nxp-imx6-buffer-modifier-support.html</id><summary type="html">&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="mesa"></category><category term="android"></category><category term="aosp"></category><category term="linux"></category><category term="mesa"></category><category term="gallium"></category><category term="hud"></category><category term="peformance"></category><category term="diagnostics"></category><category term="debug"></category><category term="collabora"></category></entry><entry><title>Android: NXP i.MX6 Buffer Modifier Support</title><link href="https://memcpy.io/android-nxp-imx6-buffer-modifier-support.html" rel="alternate"></link><published>2017-06-02T00:00:00+02:00</published><updated>2017-06-02T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-06-02:/android-nxp-imx6-buffer-modifier-support.html</id><summary type="html">&lt;iframe width="100%" height="380" src="https://www.youtube.com/embed/Dn7hOa9WiYk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;With modifier support added to Mesa and gbm_gralloc, it is now possible to boot Android on iMX6
 platforms using no proprietary blobs at all.
@@ -475,92 +425,87 @@ this out yourself a How-To can be found &lt;a href="../android-getting-up-and-ru
 &lt;li&gt;&lt;a href="https://laanwj.github.io/"&gt;Wladimir Van Der Laan&lt;/a&gt; - Independent&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;,
-and has been funded by &lt;a href="http://zii.aero"&gt;Zodiac Inflight Innovations&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="mesa"></category><category term="tiling"></category><category term="modifier"></category><category term="collabora"></category></entry><entry><title>Android: Getting up and running on the iMX6</title><link href="https://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-27T00:00:00+02:00</published><updated>2017-04-27T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-27:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+and has been funded by &lt;a href="http://zii.aero"&gt;Zodiac Inflight Innovations&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="mesa"></category><category term="tiling"></category><category term="modifier"></category><category term="collabora"></category></entry><entry><title>Android: Getting up and running on the iMX6</title><link href="https://memcpy.io/android-getting-up-and-running-on-the-imx6.html" rel="alternate"></link><published>2017-04-27T00:00:00+02:00</published><updated>2017-04-27T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-27:/android-getting-up-and-running-on-the-imx6.html</id><summary type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
 &lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt; &lt;span class="n"&gt;without&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;option&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Switch&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;
-&lt;span class="mi"&gt;2017 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nl"&gt;Changelog&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;sh&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Added&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;support&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;sh&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;write&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;without&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;option&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Switch&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;compiler&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;installation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;some&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;instructions&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Since the hardware very much matters this is going to be divided into a few parts, the common steps and the hardware specific ones.&lt;/p&gt;
 &lt;p&gt;This post is a bit of a living document and will be changed over time, and if you have any questions about it, please reach out through email (robert.foss at collabora.com) or irc (tomeu or robertfoss on #dri-devel on freenode).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Changelog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Added&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt; &lt;span class="n"&gt;without&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;option&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Switch&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;paths&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt; &lt;span class="n"&gt;instead&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;branch&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;sabrelite&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt; &lt;span class="n"&gt;packages&lt;/span&gt;
-&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;lzop&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;get&lt;/span&gt; &lt;span class="n"&gt;packages&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nl"&gt;Changelog&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;sh&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Added&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;support&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_android&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;sh&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;write&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;card&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;without&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;option&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Switch&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;compiler&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;installation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Re&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ordered&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;some&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;instructions&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;installation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Change&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;paths&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;instead&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Change&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;branch&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;about&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sabrelite&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;more&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;lzop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Common steps&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Install dependencies
-sudo apt install u-boot-tools gcc-arm-linux-gnueabihf openjdk-8-jdk android-tools-fsutils python-mako git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip lzop
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Install&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;boot&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt; &lt;span class="n"&gt;gcc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;arm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gnueabihf&lt;/span&gt; &lt;span class="n"&gt;openjdk&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jdk&lt;/span&gt; &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fsutils&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mako&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt; &lt;span class="n"&gt;gnupg&lt;/span&gt; &lt;span class="n"&gt;flex&lt;/span&gt; &lt;span class="n"&gt;bison&lt;/span&gt; &lt;span class="n"&gt;gperf&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;essential&lt;/span&gt; &lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="n"&gt;zlib1g&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;gcc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;multilib&lt;/span&gt; &lt;span class="k"&gt;g&lt;/span&gt;&lt;span class="o"&gt;++-&lt;/span&gt;&lt;span class="n"&gt;multilib&lt;/span&gt; &lt;span class="n"&gt;libc6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i386&lt;/span&gt; &lt;span class="n"&gt;lib32ncurses5&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;x11proto&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;libx11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;lib32z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;ccache&lt;/span&gt; &lt;span class="n"&gt;libgl1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mesa&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;libxml2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt; &lt;span class="n"&gt;xsltproc&lt;/span&gt; &lt;span class="n"&gt;unzip&lt;/span&gt; &lt;span class="n"&gt;lzop&lt;/span&gt;
 
-mkdir /opt/android
-cd /opt/android
-repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.1_r28
-cd /opt/android/.repo
-git clone https://customer-git.collabora.com/git/android-etnaviv/android_manifest.git local_manifests -b android-etnaviv
-repo sync -j10
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;platform&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;_r28&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;customer&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collabora&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android_manifest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;local_manifests&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;sync&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j10&lt;/span&gt;
 
-mkdir /opt/imx6_android
-cd /opt/imx6_android
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;imx6_android&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;imx6_android&lt;/span&gt;
 
-# Fetch Kconfig, bootloaders and some scripts
-git clone https://customer-git.collabora.com/git/android-etnaviv/android-etnaviv.git .
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Fetch&lt;/span&gt; &lt;span class="n"&gt;Kconfig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bootloaders&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;some&lt;/span&gt; &lt;span class="n"&gt;scripts&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;customer&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collabora&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
 
-# Fetch the Linux Kernel
-git clone https://customer-git.collabora.com/git/android-etnaviv/linux.git -b android-etnaviv
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Fetch&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;Linux&lt;/span&gt; &lt;span class="n"&gt;Kernel&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;customer&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collabora&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;etnaviv&lt;/span&gt;
 
-# This will destroy all data on /dev/mmcblk0 and
-# create boot/system/cache/data partitions
-./setup_sdcard.sh -b /dev/mmcblk0
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;destroy&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mmcblk0&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;create&lt;/span&gt; &lt;span class="n"&gt;boot&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;system&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;cache&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt; &lt;span class="n"&gt;partitions&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setup_sdcard&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mmcblk0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Hardware: iMX6 Sabre&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
-./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
-./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Build android, the kernel, and flash it onto an SD-card&lt;/span&gt;
+&lt;span class="err"&gt;# Run build_android with the correct -d flag&lt;/span&gt;
+&lt;span class="err"&gt;./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre&lt;/span&gt;
+&lt;span class="err"&gt;./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Start Android&lt;/h3&gt;
 &lt;p&gt;The SD-card can now be put into the SD3 slot and
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: iMX6 Sabrelite&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
-./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Build android, the kernel, and flash it onto an SD-card&lt;/span&gt;
+&lt;span class="err"&gt;# Run build_android with the correct -d flag&lt;/span&gt;
+&lt;span class="err"&gt;./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Start Android&lt;/h3&gt;
 &lt;p&gt;The micro-sd card can now be put into the micro-sd slot and
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
-./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
-./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Build android, the kernel, and flash it onto an SD-card&lt;/span&gt;
+&lt;span class="err"&gt;# Run build_android with the correct -d flag&lt;/span&gt;
+&lt;span class="err"&gt;./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2&lt;/span&gt;
+&lt;span class="err"&gt;./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Install the bootloader&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Depending if you have a &amp;gt;=13&amp;quot; version of the RDU2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Depending if you have a &amp;gt;=13&amp;quot; version of the RDU2
 # use the imx6qp, if &lt;span class="nt"&gt;&amp;lt;13&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;then&lt;/span&gt; &lt;span class="err"&gt;use&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;imx6q&lt;/span&gt;
 
 &lt;span class="na"&gt;IMX6_TYPE=&lt;/span&gt;&lt;span class="s"&gt;imx6q&lt;/span&gt;
@@ -638,8 +583,7 @@ the device can be restarted.&lt;/p&gt;
 &lt;span class="err"&gt;pic_setwdt&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="err"&gt;60&lt;/span&gt;     &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;Disable&lt;/span&gt; &lt;span class="err"&gt;watchdog&lt;/span&gt;
 
 &lt;span class="err"&gt;exit&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Start Android&lt;/h3&gt;
 &lt;p&gt;The SD-card created in the common steps can now be put into
@@ -652,80 +596,76 @@ the middlemost slot and the device can be restarted.&lt;/p&gt;
 &lt;li&gt;Rob Herring at Linaro for getting the ball rolling with AOSP for Zii.&lt;/li&gt;
 &lt;li&gt;Andrey Smirnov for driver support for the RDU2 such as i.MX6 PCI, ARM PL310 L2 Cache controller, RTC, and other i.MX6qp driver fixups.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="rdu2"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="collabora"></category></entry><entry><title>Android: Changing the bootanimation</title><link href="https://memcpy.io/android-changing-the-bootanimation.html" rel="alternate"></link><published>2017-04-20T00:00:00+02:00</published><updated>2017-04-20T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</id><summary type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="android"></category><category term="aosp"></category><category term="imx6"></category><category term="sabre"></category><category term="rdu2"></category><category term="vivante"></category><category term="etnaviv"></category><category term="linux"></category><category term="collabora"></category></entry><entry><title>Android: Changing the bootanimation</title><link href="https://memcpy.io/android-changing-the-bootanimation.html" rel="alternate"></link><published>2017-04-20T00:00:00+02:00</published><updated>2017-04-20T00:00:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-04-20:/android-changing-the-bootanimation.html</id><summary type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
 for how to create a custom boot animation, but unfortunately it is lacking
 in actual examples.&lt;/p&gt;
 &lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
 &lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
 &lt;p&gt;Without covering too much of the same gound as the documentation,
 let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
-total &lt;span class="m"&gt;28&lt;/span&gt;
-drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
-drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="c1"&gt;--r-- 1 hottuna hottuna   92 Apr 19 15:21 desc.txt&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;part0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;part1&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-$ cat bootanimation/desc.txt 
-&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
-c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
+&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;desc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;There exists &lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;official documentation&lt;/a&gt;
 for how to create a custom boot animation, but unfortunately it is lacking
 in actual examples.&lt;/p&gt;
 &lt;p&gt;So this guide is a bit more hands on.&lt;/p&gt;
 &lt;h2&gt;Structure of bootanimation.zip&lt;/h2&gt;
 &lt;p&gt;Without covering too much of the same gound as the documentation,
 let's have a quick look at what is in a simple bootanimation.zip.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la bootanimation
-total &lt;span class="m"&gt;28&lt;/span&gt;
-drwxr-xr-x &lt;span class="m"&gt;4&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 .
-drwxr-xr-x &lt;span class="m"&gt;8&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;22&lt;/span&gt;:39 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna   &lt;span class="m"&gt;92&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:21 desc.txt
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 part0
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:45 part1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="c1"&gt;--r-- 1 hottuna hottuna   92 Apr 19 15:21 desc.txt&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;part0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;part1&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-$ cat bootanimation/desc.txt 
-&lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;         &lt;span class="c1"&gt;# WIDTH HEIGHT FPS&lt;/span&gt;
-c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part0 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
-c &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt; part1 FFFFFF  &lt;span class="c1"&gt;# TYPE COUNT PAUSE PATH [#RGBHEX] [CLOCK]&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;desc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="mi"&gt;1920&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1080&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;WIDTH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HEIGHT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;FPS&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;part0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;FFFFFF&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TYPE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;COUNT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PAUSE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PATH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;#RGBHEX&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;CLOCK&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;part1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;FFFFFF&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TYPE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;COUNT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PAUSE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PATH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;#RGBHEX&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;CLOCK&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-ls -la bootanimation/part0 
-total &lt;span class="m"&gt;28&lt;/span&gt;
-drwxr-xr-x &lt;span class="m"&gt;2&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:44 .
-drwxr-xr-x &lt;span class="m"&gt;6&lt;/span&gt; hottuna hottuna  &lt;span class="m"&gt;4096&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:40 ..
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0000&lt;/span&gt;.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0001&lt;/span&gt;.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0002&lt;/span&gt;.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 &lt;span class="m"&gt;0003&lt;/span&gt;.png
--rw-r--r-- &lt;span class="m"&gt;1&lt;/span&gt; hottuna hottuna &lt;span class="m"&gt;10688&lt;/span&gt; Apr &lt;span class="m"&gt;19&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;:31 XXXX.png
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;part0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;drwxr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hottuna&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="c1"&gt;--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0000.png&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="c1"&gt;--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0001.png&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="c1"&gt;--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0002.png&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="c1"&gt;--r-- 1 hottuna hottuna 10688 Apr 19 12:31 0003.png&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="c1"&gt;--r-- 1 hottuna hottuna 10688 Apr 19 12:31 XXXX.png&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Note that the "#" comments are mine and not actually present in the files.&lt;/p&gt;
 &lt;p&gt;An important thing to note with the zip file is needs to have compression
 turned off.&lt;/p&gt;
 &lt;h2&gt;Switch bootanimation&lt;/h2&gt;
 &lt;p&gt;Download &lt;a href="/files/2017-04-20/bootanimation.zip"&gt;bootanimation.zip&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;unzip bootanimation.zip
-cd bootanimation
-# Edit desc.txt and partN folders to your needs
-zip -0qry -i \*.txt \*.png \*.wav @ ../bootanimation.zip *.txt part*
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;unzip&lt;/span&gt; &lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;bootanimation&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Edit&lt;/span&gt; &lt;span class="k"&gt;desc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;partN&lt;/span&gt; &lt;span class="n"&gt;folders&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;needs&lt;/span&gt;
+&lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;qry&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wav&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;part&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
 
-# Option 1, use adb to send bootanimation.zip
-adb root
-adb remount
-adb push bootanimation.zip /system/media/bootanimation.zip
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt;
+&lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;
+&lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="n"&gt;remount&lt;/span&gt;
+&lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;system&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt;
 
-# Option 2, bake bootanimation.zip into your AOSP build
-cp bootanimation.zip /opt/aosp/out/target/product/linaro_arm/system/bootanimation.zip
-./your_favorite_buildscript_here.sh
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bake&lt;/span&gt; &lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="k"&gt;into&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;AOSP&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;
+&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aosp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;out&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_arm&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;system&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bootanimation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your_favorite_buildscript_here&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md"&gt;bootanimation documentation&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="bootanimation"></category><category term="boot"></category><category term="animation"></category><category term="collabora"></category></entry><entry><title>Android: Enabling mainline graphics</title><link href="https://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="android"></category><category term="aosp"></category><category term="bootanimation"></category><category term="boot"></category><category term="animation"></category><category term="collabora"></category></entry><entry><title>Android: Enabling mainline graphics</title><link href="https://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.
@@ -778,106 +718,91 @@ which is the official upstream for drm_hwcomposer.&lt;/p&gt;
 Google's ChromeOS team and Collabora.&lt;/p&gt;
 &lt;p&gt;A number of people have played an important role in this work:
 Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.&lt;/p&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="hwc2"></category><category term="collabora"></category></entry><entry><title>Precompiling APK files during Android AOSP build</title><link href="https://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="hwc2"></category><category term="collabora"></category></entry><entry><title>Precompiling APK files during Android AOSP build</title><link href="https://memcpy.io/precompiling-apk-files-during-android-aosp-build.html" rel="alternate"></link><published>2017-02-22T16:55:00+01:00</published><updated>2017-02-22T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-22:/precompiling-apk-files-during-android-aosp-build.html</id><summary type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aosp_checkout&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
 
-find . -name BoardConfig.mk
-./device/huawei/angler/BoardConfig.mk
-./device/generic/mini-emulator-x86/BoardConfig.mk
-./device/generic/arm64/BoardConfig.mk
-./device/generic/mini-emulator-x86_64/BoardConfig.mk
-./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk
-./device/generic/mips/BoardConfig.mk
-./device/generic/mips64/BoardConfig.mk
-./device/generic/x86_64/BoardConfig.mk
-./device/generic/mini-emulator-arm64/BoardConfig.mk
-./device/generic/mini-emulator-mips/BoardConfig.mk
-./device/generic/x86/BoardConfig.mk
-./device/generic/armv7-a-neon/BoardConfig.mk
-./device/generic/mini-emulator-mips64/BoardConfig.mk
-./device/lge/bullhead/BoardConfig.mk
-./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk
-./device/linaro/generic/linaro_arm64/BoardConfig.mk
-./device/linaro/generic/linaro_arm64_only/BoardConfig.mk
-./device/linaro/generic/linaro_x86_64/BoardConfig.mk
-./device/linaro/generic/BoardConfig.mk
-./device/linaro/generic/linaro_arm/BoardConfig.mk
-./device/linaro/hikey/hikey/BoardConfig.mk
+&lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;huawei&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;angler&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x86&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;arm64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;armv7&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;neon&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mips&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mips64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;arm64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mips&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x86&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;armv7&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;neon&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mips64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lge&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bullhead&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_x86_64_only&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_arm64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_arm64_only&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_x86_64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aosp_checkout&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
 
-# Edit the BoardConfig.mk that …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Enable precompilation&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /opt/aosp_checkout/
+&lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;huawei&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;angler&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x86&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;arm64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;armv7&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;neon&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mips&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mips64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;arm64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mips&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x86&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;armv7&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;neon&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mini&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;emulator&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mips64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lge&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bullhead&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_x86_64_only&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_arm64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_arm64_only&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_x86_64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro_arm&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hikey&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hikey&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
 
-find . -name BoardConfig.mk
-./device/huawei/angler/BoardConfig.mk
-./device/generic/mini-emulator-x86/BoardConfig.mk
-./device/generic/arm64/BoardConfig.mk
-./device/generic/mini-emulator-x86_64/BoardConfig.mk
-./device/generic/mini-emulator-armv7-a-neon/BoardConfig.mk
-./device/generic/mips/BoardConfig.mk
-./device/generic/mips64/BoardConfig.mk
-./device/generic/x86_64/BoardConfig.mk
-./device/generic/mini-emulator-arm64/BoardConfig.mk
-./device/generic/mini-emulator-mips/BoardConfig.mk
-./device/generic/x86/BoardConfig.mk
-./device/generic/armv7-a-neon/BoardConfig.mk
-./device/generic/mini-emulator-mips64/BoardConfig.mk
-./device/lge/bullhead/BoardConfig.mk
-./device/linaro/generic/linaro_x86_64_only/BoardConfig.mk
-./device/linaro/generic/linaro_arm64/BoardConfig.mk
-./device/linaro/generic/linaro_arm64_only/BoardConfig.mk
-./device/linaro/generic/linaro_x86_64/BoardConfig.mk
-./device/linaro/generic/BoardConfig.mk
-./device/linaro/generic/linaro_arm/BoardConfig.mk
-./device/linaro/hikey/hikey/BoardConfig.mk
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Edit&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="k"&gt;are&lt;/span&gt; &lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linaro&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;nano&lt;/span&gt; &lt;span class="n"&gt;BoardConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mk&lt;/span&gt;
 
-# Edit the BoardConfig.mk that you are using for your build
-cd device/linaro/generic/
-nano BoardConfig.mk
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="k"&gt;option&lt;/span&gt;
+&lt;span class="n"&gt;WITH_DEXPREOPT&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;
 
-# Add the config option
-WITH_DEXPREOPT := true
-
-# Propagate the new settings
-make defconfig
-make all
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Propagate&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;defconfig&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Increase system partition size&lt;/h2&gt;
 &lt;p&gt;Depending on the previous system partition size and how many APKs that are built, you may need to increase the system partition size.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nano configs/defconfig
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nano&lt;/span&gt; &lt;span class="n"&gt;configs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;defconfig&lt;/span&gt;
 
-# Change the below variable to something big enough to house all of you binaries
-CONFIG_BOARD_SYSTEMIMAGE_PARTITION_SIZE=1100000000
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;below&lt;/span&gt; &lt;span class="k"&gt;variable&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;something&lt;/span&gt; &lt;span class="n"&gt;big&lt;/span&gt; &lt;span class="n"&gt;enough&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;house&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;binaries&lt;/span&gt;
+&lt;span class="n"&gt;CONFIG_BOARD_SYSTEMIMAGE_PARTITION_SIZE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1100000000&lt;/span&gt;
 
-# Propagate the new settings
-make defconfig
-make all
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Propagate&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;defconfig&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="apk"></category><category term="dex2oat"></category><category term="android"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="https://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><summary type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
-bash
-source build/envsetup.sh &amp;amp;&amp;amp; \
-lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
-mmm system/core/libsync/tests &amp;amp;&amp;amp; \
-adb root &amp;amp;&amp;amp; \
-adb remount &amp;amp;&amp;amp; \
-adb sync &amp;amp;&amp;amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd aosp
-bash
-source build/envsetup.sh &amp;amp;&amp;amp; \
-lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
-mmm system/core/libsync/tests &amp;amp;&amp;amp; \
-adb root &amp;amp;&amp;amp; \
-adb remount &amp;amp;&amp;amp; \
-adb sync &amp;amp;&amp;amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="https://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="android"></category><category term="aosp"></category><category term="apk"></category><category term="dex2oat"></category><category term="android"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="https://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd aosp&lt;/span&gt;
+&lt;span class="err"&gt;bash&lt;/span&gt;
+&lt;span class="err"&gt;source build/envsetup.sh &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;mmm system/core/libsync/tests &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb root &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb remount &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb sync &amp;amp;&amp;amp; \&lt;/span&gt;
+&lt;span class="err"&gt;adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="android"></category><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="https://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -890,7 +815,7 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
 &lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
 not necessarily possible using the stock emulator.
 For my purposes I need access to a GPU and be able to modify the driver, which
@@ -903,42 +828,38 @@ been slightly streamlined and had physical hardware support stripped out.&lt;/p&
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
 &lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up paths&lt;/h2&gt;
 &lt;p&gt;Naturally all of the paths below are configurable, this is just what I used.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export PROJECT_PATH=&amp;quot;/opt/qemu_android&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;export PROJECT_PATH=&amp;quot;/opt/qemu_android&amp;quot;
 export VIRGLRENDERER_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/virglrenderer&amp;quot;
 export QEMU_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/qemu&amp;quot;
 export LINUX_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/linux&amp;quot;
 export ANDROID_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/android&amp;quot;
 export ANDROID_TOOLS_PATH=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/android-tools&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Virglrenderer&lt;/h2&gt;
 &lt;p&gt;Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
 graphics capabilities of the host machine.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.freedesktop.org/git/virglrenderer &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.freedesktop.org/git/virglrenderer &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 ./autogen.sh
 make -j7
 sudo make install
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Qemu&lt;/h2&gt;
 &lt;p&gt;Qemu is a full system emulator, and supports a multitude of machine architectures.
 We're going to to use x86_64 but also build support for arm64/aarch64.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.qemu-project.org/qemu.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.qemu-project.org/qemu.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
 ../configure --target-list=aarch64-softmmu,x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb
 make -j7
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Linux kernel&lt;/h2&gt;
 &lt;p&gt;Build trunk of mainline linux kernel.&lt;/p&gt;
@@ -946,60 +867,58 @@ make -j7
 this guide, &lt;em&gt;https://git.kernel.org/pub/scm/linux/kernel/git/padovan/linux.git&lt;/em&gt;
 and the &lt;em&gt;fences&lt;/em&gt; branch was used due to SW_SYNC not yet being included in upstream.
 Inclusion is targeted for &lt;em&gt;v4.9&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 wget http://memcpy.io/files/2016-08-30/Kconfig -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/.config
 make oldconfig
 make -j7
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; If you decide not to use the &lt;em&gt;.config&lt;/em&gt; linked in this step, a few
 Kconfig options need to be set:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CONFIG_ANDROID=y
-CONFIG_ANDROID_BINDER_IPC=y
-CONFIG_AUDIT=y
-CONFIG_HAVE_ARCH_AUDITSYSCALL=y
-CONFIG_AUDITSYSCALL=y
-CONFIG_AUDIT_WATCH=y
-CONFIG_AUDIT_TREE=y
-CONFIG_DRM=y
-CONFIG_SECURITY_SELINUX=y
-CONFIG_SECURITY_SELINUX_BOOTPARAM=y
-CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1
-CONFIG_SECURITY_SELINUX_DISABLE=y
-CONFIG_SECURITY_SELINUX_DEVELOP=y
-CONFIG_SECURITY_SELINUX_AVC_STATS=y
-CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0
-CONFIG_DEFAULT_SECURITY_SELINUX=y
-CONFIG_DEFAULT_SECURITY=&amp;quot;selinux&amp;quot;
-CONFIG_VIRTIO_BLK=y
-CONFIG_SCSI_VIRTIO=y
-CONFIG_VIRTIO_NET=y
-CONFIG_VIRTIO_CONSOLE=y
-CONFIG_HW_RANDOM_VIRTIO=y
-CONFIG_DRM_VIRTIO_GPU=y
-CONFIG_VIRT_DRIVERS=y
-CONFIG_VIRTIO=y
-CONFIG_VIRTIO_PCI=y
-CONFIG_VIRTIO_PCI_LEGACY=y
-CONFIG_VIRTIO_BALLOON=y
-CONFIG_VIRTIO_INPUT=y
-CONFIG_VIRTIO_MMIO=y
-CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y
-CONFIG_NET_9P=y
-CONFIG_NET_9P_VIRTIO=y
-CONFIG_SYNC=y
-CONFIG_SW_SYNC=y
-CONFIG_SYNC_FILE=y
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;CONFIG_ANDROID=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_ANDROID_BINDER_IPC=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDIT=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_HAVE_ARCH_AUDITSYSCALL=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDITSYSCALL=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDIT_WATCH=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_AUDIT_TREE=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DRM=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_BOOTPARAM=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_DISABLE=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_DEVELOP=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_AVC_STATS=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DEFAULT_SECURITY_SELINUX=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DEFAULT_SECURITY=&amp;quot;selinux&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_BLK=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SCSI_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_NET=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_CONSOLE=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_HW_RANDOM_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_DRM_VIRTIO_GPU=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRT_DRIVERS=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_PCI=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_PCI_LEGACY=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_BALLOON=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_INPUT=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_MMIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_NET_9P=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_NET_9P_VIRTIO=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SYNC=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SW_SYNC=y&lt;/span&gt;
+&lt;span class="err"&gt;CONFIG_SYNC_FILE=y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Android&lt;/h2&gt;
 &lt;p&gt;Build the Android Open Source Project.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; When running &lt;em&gt;source build/envsetup.sh&lt;/em&gt; make sure that you are
 using bash. I had issues running &lt;em&gt;lunch&lt;/em&gt; using zsh.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 cd &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
 repo init -u https://android.googlesource.com/platform/manifest -b master
 cd .repo
@@ -1018,35 +937,31 @@ lunch
 make -j7
 # We don&amp;#39;t need to use bash any longer
 exit
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd $ANDROID_PATH/system/core/
-git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
-git fetch padovan
-git checkout padovan/master
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd $ANDROID_PATH/system/core/&lt;/span&gt;
+&lt;span class="err"&gt;git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git&lt;/span&gt;
+&lt;span class="err"&gt;git fetch padovan&lt;/span&gt;
+&lt;span class="err"&gt;git checkout padovan/master&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;mkbootimg&lt;/h2&gt;
 &lt;p&gt;Fetch the make boot image script. This script later assembles the boot image, &lt;em&gt;boot.img&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Run Qemu machine&lt;/h2&gt;
 &lt;p&gt;When running the below script, make sure that the all of the paths from step two
 have been exported.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 chmod +x &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
 &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh x86_64
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Hopefully this guide will have enabled you build the required software and run Android on
 Qemu with a virtual GPU.
-This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry></feed>
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry></feed>

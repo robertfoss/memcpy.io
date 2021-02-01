@@ -8,13 +8,12 @@ in the schematic.&lt;/p&gt;
 &lt;h2&gt;Avoiding lookup tables&lt;/h2&gt;
 &lt;p&gt;The major advantage of twistyplexing is the ability to avoid lookup tables
 and replace them with some relatively straight forward arithmetic.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;row = led_number / (N - 1)
-column = led_number % (N - 1)
-anode = (row + column + 1) % N
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;row = led_number / (N - 1)&lt;/span&gt;
+&lt;span class="err"&gt;column = led_number % (N - 1)&lt;/span&gt;
+&lt;span class="err"&gt;anode = (row + column + 1) % N&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Of course the cathode still has to be controlled, but its pin id already
 defined by the &lt;strong&gt;row&lt;/strong&gt; variable above.&lt;/p&gt;
 &lt;h2&gt;Thanks&lt;/h2&gt;
-&lt;p&gt;The Twistyplexing concept was created by Tom Yu, and defined in &lt;a href="https://argonblue.wordpress.com/2012/06/30/twistyplexing-a-new-topology-for-led-multiplexing/"&gt;this&lt;/a&gt; blog post.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 22 Jun 2018 12:26:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-06-22:/twistyplexing-a-charlieplexing-variety.html</guid><category>twistyplexing</category><category>charlieplexing</category><category>multiplexing</category><category>led</category><category>leds</category></item></channel></rss>
+&lt;p&gt;The Twistyplexing concept was created by Tom Yu, and defined in &lt;a href="https://argonblue.wordpress.com/2012/06/30/twistyplexing-a-new-topology-for-led-multiplexing/"&gt;this&lt;/a&gt; blog post.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 22 Jun 2018 12:26:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-06-22:/twistyplexing-a-charlieplexing-variety.html</guid><category>leds</category><category>twistyplexing</category><category>charlieplexing</category><category>multiplexing</category><category>led</category><category>leds</category></item></channel></rss>

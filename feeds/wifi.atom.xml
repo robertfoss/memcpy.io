@@ -2,9 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - WIFI</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/wifi.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2016-02-07T22:46:00+01:00</updated><entry><title>ESP8266 APA102 Bulb</title><link href="https://memcpy.io/esp8266-apa102-bulb.html" rel="alternate"></link><published>2016-02-07T22:46:00+01:00</published><updated>2016-02-07T22:46:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-02-07:/esp8266-apa102-bulb.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
 &lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
 &lt;h2&gt;Software and hardware sources&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
 &lt;h3&gt;Firmware&lt;/h3&gt;
@@ -14,9 +13,8 @@
 &lt;p&gt;udp_listener.lua receives UDP packets and then sends forwards that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
 &lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
 &lt;h2&gt;Software and hardware sources&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
 &lt;h3&gt;Firmware&lt;/h3&gt;
@@ -38,4 +36,4 @@
 &lt;h4&gt;Assembled v2 hardware&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_95pct_assembled.jpg" title="v2: 95% assembled"&gt;
 &lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;
-&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_hanging.jpg" title="v2: Hanging and running over WiFi"&gt;&lt;/p&gt;</content><category term="ESP8266"></category><category term="APA102"></category><category term="LED"></category><category term="WIFI"></category></entry></feed>
+&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_hanging.jpg" title="v2: Hanging and running over WiFi"&gt;&lt;/p&gt;</content><category term="ESP8266"></category><category term="ESP8266"></category><category term="APA102"></category><category term="LED"></category><category term="WIFI"></category></entry></feed>

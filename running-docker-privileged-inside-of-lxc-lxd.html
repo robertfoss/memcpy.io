@@ -54,23 +54,22 @@ host.</p>
 itself has to be given privileges.</p>
 <p>There is no simple switch for doing this in LXC unfortunately, but a few
 config options will do the trick.</p>
-<div class="highlight"><pre><span></span>lxc launch images:ubuntu/bionic container
+<div class="highlight"><pre><span></span><code><span class="n">lxc</span> <span class="n">launch</span> <span class="n">images</span><span class="p">:</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">bionic</span> <span class="n">container</span>
 
-lxc config set container security.nesting true
-lxc config set container security.privileged true
-cat &lt;&lt;EOT | lxc config set container raw.lxc -
-lxc.cgroup.devices.allow = a
-lxc.cap.drop =
-EOT
+<span class="n">lxc</span> <span class="n">config</span> <span class="k">set</span> <span class="n">container</span> <span class="k">security</span><span class="p">.</span><span class="n">nesting</span> <span class="k">true</span>
+<span class="n">lxc</span> <span class="n">config</span> <span class="k">set</span> <span class="n">container</span> <span class="k">security</span><span class="p">.</span><span class="n">privileged</span> <span class="k">true</span>
+<span class="n">cat</span> <span class="o">&lt;&lt;</span><span class="n">EOT</span> <span class="o">|</span> <span class="n">lxc</span> <span class="n">config</span> <span class="k">set</span> <span class="n">container</span> <span class="n">raw</span><span class="p">.</span><span class="n">lxc</span> <span class="o">-</span>
+<span class="n">lxc</span><span class="p">.</span><span class="n">cgroup</span><span class="p">.</span><span class="n">devices</span><span class="p">.</span><span class="n">allow</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">lxc</span><span class="p">.</span><span class="n">cap</span><span class="p">.</span><span class="k">drop</span> <span class="o">=</span>
+<span class="n">EOT</span>
 
-lxc restart container
-</pre></div>
-
+<span class="n">lxc</span> <span class="k">restart</span> <span class="n">container</span>
+</code></pre></div>
 
 <h2>Setup docker on container</h2>
 <p>Just to verify that this works, start a privileged Docker container inside
 of the LXC container.</p>
-<div class="highlight"><pre><span></span>$ lxc <span class="nb">exec</span> container bash
+<div class="highlight"><pre><span></span><code>$ lxc <span class="nb">exec</span> container bash
 $ docker run --privileged hello-world
 Unable to find image <span class="s1">&#39;hello-world:latest&#39;</span> locally
 latest: Pulling from library/hello-world
@@ -98,8 +97,7 @@ https://hub.docker.com/
 
 For more examples and ideas, visit:
 https://docs.docker.com/get-started/
-</pre></div>
-
+</code></pre></div>
 
 <h2>Thanks</h2>
 <p>This write-up is based <a href="https://github.com/lxc/lxd/issues/4902">info</a> provided
@@ -137,7 +135,7 @@ by Stéphane Graber.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

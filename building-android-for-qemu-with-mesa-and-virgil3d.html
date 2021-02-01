@@ -56,42 +56,38 @@ been slightly streamlined and had physical hardware support stripped out.</p>
 <h2>Install dependencies</h2>
 <p>These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.</p>
-<div class="highlight"><pre><span></span>sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver</span>
+</code></pre></div>
 
 <h2>Set up paths</h2>
 <p>Naturally all of the paths below are configurable, this is just what I used.</p>
-<div class="highlight"><pre><span></span>export PROJECT_PATH=&quot;/opt/qemu_android&quot;
+<div class="highlight"><pre><span></span><code>export PROJECT_PATH=&quot;/opt/qemu_android&quot;
 export VIRGLRENDERER_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/virglrenderer&quot;
 export QEMU_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/qemu&quot;
 export LINUX_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/linux&quot;
 export ANDROID_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/android&quot;
 export ANDROID_TOOLS_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/android-tools&quot;
-</pre></div>
-
+</code></pre></div>
 
 <h2>Virglrenderer</h2>
 <p>Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
 graphics capabilities of the host machine.</p>
-<div class="highlight"><pre><span></span>git clone git://git.freedesktop.org/git/virglrenderer <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span><code>git clone git://git.freedesktop.org/git/virglrenderer <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
 ./autogen.sh
 make -j7
 sudo make install
-</pre></div>
-
+</code></pre></div>
 
 <h2>Qemu</h2>
 <p>Qemu is a full system emulator, and supports a multitude of machine architectures.
 We're going to to use x86_64 but also build support for arm64/aarch64.</p>
-<div class="highlight"><pre><span></span>git clone git://git.qemu-project.org/qemu.git <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span><code>git clone git://git.qemu-project.org/qemu.git <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>
 mkdir <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
 cd <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
 ../configure --target-list=aarch64-softmmu,x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb
 make -j7
-</pre></div>
-
+</code></pre></div>
 
 <h2>Linux kernel</h2>
 <p>Build trunk of mainline linux kernel.</p>
@@ -99,60 +95,58 @@ make -j7
 this guide, <em>https://git.kernel.org/pub/scm/linux/kernel/git/padovan/linux.git</em>
 and the <em>fences</em> branch was used due to SW_SYNC not yet being included in upstream.
 Inclusion is targeted for <em>v4.9</em>.</p>
-<div class="highlight"><pre><span></span>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span><code>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
 wget http://memcpy.io/files/2016-08-30/Kconfig -O <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/.config
 make oldconfig
 make -j7
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Important:</strong> If you decide not to use the <em>.config</em> linked in this step, a few
 Kconfig options need to be set:</p>
-<div class="highlight"><pre><span></span>CONFIG_ANDROID=y
-CONFIG_ANDROID_BINDER_IPC=y
-CONFIG_AUDIT=y
-CONFIG_HAVE_ARCH_AUDITSYSCALL=y
-CONFIG_AUDITSYSCALL=y
-CONFIG_AUDIT_WATCH=y
-CONFIG_AUDIT_TREE=y
-CONFIG_DRM=y
-CONFIG_SECURITY_SELINUX=y
-CONFIG_SECURITY_SELINUX_BOOTPARAM=y
-CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1
-CONFIG_SECURITY_SELINUX_DISABLE=y
-CONFIG_SECURITY_SELINUX_DEVELOP=y
-CONFIG_SECURITY_SELINUX_AVC_STATS=y
-CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0
-CONFIG_DEFAULT_SECURITY_SELINUX=y
-CONFIG_DEFAULT_SECURITY=&quot;selinux&quot;
-CONFIG_VIRTIO_BLK=y
-CONFIG_SCSI_VIRTIO=y
-CONFIG_VIRTIO_NET=y
-CONFIG_VIRTIO_CONSOLE=y
-CONFIG_HW_RANDOM_VIRTIO=y
-CONFIG_DRM_VIRTIO_GPU=y
-CONFIG_VIRT_DRIVERS=y
-CONFIG_VIRTIO=y
-CONFIG_VIRTIO_PCI=y
-CONFIG_VIRTIO_PCI_LEGACY=y
-CONFIG_VIRTIO_BALLOON=y
-CONFIG_VIRTIO_INPUT=y
-CONFIG_VIRTIO_MMIO=y
-CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y
-CONFIG_NET_9P=y
-CONFIG_NET_9P_VIRTIO=y
-CONFIG_SYNC=y
-CONFIG_SW_SYNC=y
-CONFIG_SYNC_FILE=y
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">CONFIG_ANDROID=y</span>
+<span class="err">CONFIG_ANDROID_BINDER_IPC=y</span>
+<span class="err">CONFIG_AUDIT=y</span>
+<span class="err">CONFIG_HAVE_ARCH_AUDITSYSCALL=y</span>
+<span class="err">CONFIG_AUDITSYSCALL=y</span>
+<span class="err">CONFIG_AUDIT_WATCH=y</span>
+<span class="err">CONFIG_AUDIT_TREE=y</span>
+<span class="err">CONFIG_DRM=y</span>
+<span class="err">CONFIG_SECURITY_SELINUX=y</span>
+<span class="err">CONFIG_SECURITY_SELINUX_BOOTPARAM=y</span>
+<span class="err">CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1</span>
+<span class="err">CONFIG_SECURITY_SELINUX_DISABLE=y</span>
+<span class="err">CONFIG_SECURITY_SELINUX_DEVELOP=y</span>
+<span class="err">CONFIG_SECURITY_SELINUX_AVC_STATS=y</span>
+<span class="err">CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0</span>
+<span class="err">CONFIG_DEFAULT_SECURITY_SELINUX=y</span>
+<span class="err">CONFIG_DEFAULT_SECURITY=&quot;selinux&quot;</span>
+<span class="err">CONFIG_VIRTIO_BLK=y</span>
+<span class="err">CONFIG_SCSI_VIRTIO=y</span>
+<span class="err">CONFIG_VIRTIO_NET=y</span>
+<span class="err">CONFIG_VIRTIO_CONSOLE=y</span>
+<span class="err">CONFIG_HW_RANDOM_VIRTIO=y</span>
+<span class="err">CONFIG_DRM_VIRTIO_GPU=y</span>
+<span class="err">CONFIG_VIRT_DRIVERS=y</span>
+<span class="err">CONFIG_VIRTIO=y</span>
+<span class="err">CONFIG_VIRTIO_PCI=y</span>
+<span class="err">CONFIG_VIRTIO_PCI_LEGACY=y</span>
+<span class="err">CONFIG_VIRTIO_BALLOON=y</span>
+<span class="err">CONFIG_VIRTIO_INPUT=y</span>
+<span class="err">CONFIG_VIRTIO_MMIO=y</span>
+<span class="err">CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y</span>
+<span class="err">CONFIG_NET_9P=y</span>
+<span class="err">CONFIG_NET_9P_VIRTIO=y</span>
+<span class="err">CONFIG_SYNC=y</span>
+<span class="err">CONFIG_SW_SYNC=y</span>
+<span class="err">CONFIG_SYNC_FILE=y</span>
+</code></pre></div>
 
 <h2>Android</h2>
 <p>Build the Android Open Source Project.</p>
 <p><strong>Important:</strong> When running <em>source build/envsetup.sh</em> make sure that you are
 using bash. I had issues running <em>lunch</em> using zsh.</p>
-<div class="highlight"><pre><span></span>mkdir <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span><code>mkdir <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
 cd <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
 repo init -u https://android.googlesource.com/platform/manifest -b master
 cd .repo
@@ -171,33 +165,29 @@ lunch
 make -j7
 # We don&#39;t need to use bash any longer
 exit
-</pre></div>
-
+</code></pre></div>
 
 <p>As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again.</p>
-<div class="highlight"><pre><span></span>cd $ANDROID_PATH/system/core/
-git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
-git fetch padovan
-git checkout padovan/master
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">cd $ANDROID_PATH/system/core/</span>
+<span class="err">git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git</span>
+<span class="err">git fetch padovan</span>
+<span class="err">git checkout padovan/master</span>
+</code></pre></div>
 
 <h2>mkbootimg</h2>
 <p>Fetch the make boot image script. This script later assembles the boot image, <em>boot.img</em>.</p>
-<div class="highlight"><pre><span></span>git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH</span>
+</code></pre></div>
 
 <h2>Run Qemu machine</h2>
 <p>When running the below script, make sure that the all of the paths from step two
 have been exported.</p>
-<div class="highlight"><pre><span></span>wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
+<div class="highlight"><pre><span></span><code>wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
 chmod +x <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
 <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh x86_64
-</pre></div>
-
+</code></pre></div>
 
 <h2>Conclusion</h2>
 <p>Hopefully this guide will have enabled you build the required software and run Android on
@@ -234,7 +224,7 @@ This post has been a part of work undertaken by my employer <a href="http://www.
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

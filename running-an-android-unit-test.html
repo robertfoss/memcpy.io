@@ -42,16 +42,16 @@
 			</header>
 			<p>Running specific AOSP unit tests on an Android device is not entirely obvious, so this is what I cobbled together.</p>
 			<p>A similar approach can be used for any Android module.</p>
-<div class="highlight"><pre><span></span>cd aosp
-bash
-source build/envsetup.sh &amp;&amp; \
-lunch linaro_arm64-userdebug &amp;&amp; \
-mmm system/core/libsync/tests &amp;&amp; \
-adb root &amp;&amp; \
-adb remount &amp;&amp; \
-adb sync &amp;&amp; \
-adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">cd aosp</span>
+<span class="err">bash</span>
+<span class="err">source build/envsetup.sh &amp;&amp; \</span>
+<span class="err">lunch linaro_arm64-userdebug &amp;&amp; \</span>
+<span class="err">mmm system/core/libsync/tests &amp;&amp; \</span>
+<span class="err">adb root &amp;&amp; \</span>
+<span class="err">adb remount &amp;&amp; \</span>
+<span class="err">adb sync &amp;&amp; \</span>
+<span class="err">adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests</span>
+</code></pre></div>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">
@@ -83,7 +83,7 @@ adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2020 Robert Foss
+					2021 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>
