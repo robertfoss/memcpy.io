@@ -11,7 +11,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Linaro has been working together with Qualcomm to enable camera suport on their platforms since 2017. The CAMSS driver was written to support the ISP IP-block with the same name that is present on Qualcomm SOCs coming from the smartphone space. The first board targeted by this work was the DragonBoard 410C, which was followed in 2018 by DragonBoard 820C support. Recently support for the Snapdragon 660 SOC was added to the driver, which will be a part of the v5.11 Linux Kernel release. These SOCs all contain the CAMSS version of the ISP architecture. Currently support for the ISP found in the Snapdragon 845 SOC &amp; the DragonBoard 845C is in the process of being upstreamed on the mailinglists. The ISP has however seen …">
+		<meta name="description" content="Linaro has been working together with Qualcomm to enable camera support on their platforms since 2017. The CAMSS driver was written to support the ISP IP-block with the same name that is present on Qualcomm SOCs coming from the smartphone space. The first board targeted by this work was the DragonBoard 410C, which was followed in 2018 by DragonBoard 820C support. Recently support for the Snapdragon 660 SOC was added to the driver, which will be a part of the v5.11 Linux Kernel release. These SOCs all contain the CAMSS version of the ISP architecture. Currently support for the ISP found in the Snapdragon 845 SOC &amp; the DragonBoard 845C is in the process of being upstreamed on the mailinglists. The ISP has however seen …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, camera, v4l2, qualcomm, camss, sdm845">
 		<meta property="og:title" content="Upstream camera support for Qualcomm platforms" />
@@ -45,9 +45,9 @@
 				</p>
 			</header>
 			<p>The CAMSS driver for Qualcomm ISPs isn't new, but now has support for the next generation of ISP architecture.</p>
-			<p>Linaro has been working together with Qualcomm to enable camera suport on their platforms since 2017.
-The CAMSS driver was written to support the ISP IP-block with the same name that is present on
-Qualcomm SOCs coming from the smartphone space.</p>
+			<p>Linaro has been working together with Qualcomm to enable camera support on their platforms
+since 2017. The CAMSS driver was written to support the ISP IP-block with the same name
+that is present on Qualcomm SOCs coming from the smartphone space.</p>
 <p>The first board targeted by this work was the DragonBoard 410C, which was followed in 2018 by
 DragonBoard 820C support. Recently support for the Snapdragon 660 SOC was added to the driver,
 which will be a part of the v5.11 Linux Kernel release. These SOCs all contain the CAMSS
@@ -57,7 +57,7 @@ the process of being upstreamed on the mailinglists. The ISP has however seen ma
 changes and is no longer referred to as CAMSS, but this generation of the ISP architecture
 is called Titan.</p>
 <h2>Overview</h2>
-<p>CAMSS is V4L2 Linux driver which focuses on supporting the basic usecases of the ISP,
+<p>CAMSS is a V4L2 Linux driver which focuses on supporting the basic usecases of the ISP,
 such as receiving the physical CSI2 signals from sensors, decoding it, and then
 writing it to memory. This leaves a lot of functionality typically provided
 by an ISP unimplemented, but that is intentional as our priority is to enable
