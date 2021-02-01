@@ -218,7 +218,8 @@ ul, ol
   counter-reset: ol;
   list-style: none;
   margin-bottom: 1em;
-  list-style: inside;
+  list-style: outside;
+  margin-left: 1em;
 }
 
 li
