@@ -94,12 +94,12 @@ called CAMSS by Qualcomm.</p>
 <p><a href="/images/2021-02-02_camss_gen1.svg"><img alt="Alt text" src="/images/2021-02-02_camss_gen1.svg" title="Qualcomm CAMSS ISP Generation 1">
 </a></p>
 <p>The CSIPHY, CSID &amp; VFE IP-blocks are relatively fully featured, but some functionality like
-Virtual Channels are not implemented. However a more substantial limitation of the ISPIF
+Virtual Channels are not implemented. However, a more substantial limitation of the ISPIF
 support is that only basic cropping &amp; rotation is implemented currently.</p>
 <p>An obstacle caused by this limited ISPIF functionality is that we're not able to do format
 conversions using the ISP. So whatever format the camera sensor is outputting, we're going
 to output to userspace. This can be a problem for Bayer pixel format sensors, because
-they're poorly supported by userspace applications and requires at least debayering being
+they're poorly supported by userspace applications and require at least debayering being
 done in a post-processing step before the output can be viewed.</p>
 <h3>Qualcomm ISP Gen 2 - Titan</h3>
 <p>The next iteration of the Qualcomm ISP architecture is called Titan. The changes from Gen1
@@ -108,24 +108,24 @@ to Gen2/Titan can be summarized in two parts.</p>
 </a></p>
 <p>The Titan frontend blocks (CSIPHY, CSID &amp; VFE) are almost identical with only minor
 structural changes and improvements.</p>
-<p>However the image processing pipeline has been revamped, and the ISPIF no longer exists.
+<p>However, the image processing pipeline has been revamped, and the ISPIF no longer exists.
 What replaces it is an embedded CPU which is fed commands and in turn configures the
 data processing blocks itself. Adding support for this CPU is beyond the current scope
-of CAMSS due to the amount of work it would take to enable &amp; the lack of documentation
+of CAMSS due to the amount of work it would take to enable and the lack of documentation
 for the CPU command stream.</p>
 <h2>Future</h2>
 <p>Currently <a href="https://libcamera.org/index.html">libcamera</a> is a very useful development tool
 for working with CAMSS. It is more flexible than most V4L2 applications and using the
-<a href="https://libcamera.org/getting-started.html">libcamera/qcam</a> application it's possible
+<a href="https://libcamera.org/getting-started.html">libcamera/qcam</a> application makes it possible
 to view live output of even Bayer camera sensors without the ISP doing any debayering.</p>
-<p>Further developments regarding software &amp; GPU debayering are expected for libcamera,
+<p>Further developments regarding software and GPU debayering are expected for libcamera,
 and hopefully we'll see libcamera debayering enabled for all of its data paths
 soon enough.</p>
 <h2>Acknowledgments</h2>
 <p>A lot of different contributors enabled this work, both directly and indirectly.</p>
 <ul>
-<li>Jonathan Marek for trail-blazing Titan driver work.</li>
-<li>Andrey Konovalov for testing, finding bugs &amp; being a great sounding board.</li>
+<li><a href="https://gitlab.freedesktop.org/flto">Jonathan Marek</a> for trail-blazing Titan driver work.</li>
+<li><a href="https://github.com/andrey-konovalov">Andrey Konovalov</a> for testing, finding bugs &amp; being a great sounding board.</li>
 <li>Qualcomm for sponsoring &amp; providing hardware documentation.</li>
 </ul>
 <p>This post has been a part of work undertaken by my employer <a href="http://www.linaro.org">Linaro</a>.</p>
