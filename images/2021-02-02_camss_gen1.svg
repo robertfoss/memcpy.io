@@ -13,7 +13,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="2021-02-02_camss_gen1.svg">
+   sodipodi:docname="2021-02-02_camss_gen1.svg"
+   inkscape:export-filename="/home/robertfoss/projects/memcpy.io/content/images/2021-02-02_camss_gen1.png"
+   inkscape:export-xdpi="300.05539"
+   inkscape:export-ydpi="300.05539">
   <defs
      id="defs2">
     <marker
@@ -234,9 +237,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.19816864"
-     inkscape:cx="201.45921"
-     inkscape:cy="889.64314"
+     inkscape:zoom="1.1210111"
+     inkscape:cx="591.90202"
+     inkscape:cy="611.75313"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -244,8 +247,8 @@
      inkscape:measure-end="0,0"
      inkscape:window-width="2263"
      inkscape:window-height="1320"
-     inkscape:window-x="1577"
-     inkscape:window-y="751"
+     inkscape:window-x="938"
+     inkscape:window-y="546"
      inkscape:window-maximized="0"
      fit-margin-top="10"
      fit-margin-left="90"
@@ -261,7 +264,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -368,17 +371,6 @@
          y="132.04651"
          x="-455.50919"
          sodipodi:role="line">CSI2</tspan></text>
-    <text
-       id="text4864-6-7-4-4"
-       y="261.69489"
-       x="-360.51614"
-       style="font-style:normal;font-weight:normal;font-size:5.99723px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         id="tspan5382-8-7"
-         style="font-size:5.99723px;fill:#666666;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:3.9;stroke-dasharray:none"
-         y="261.69489"
-         x="-360.51614"
-         sodipodi:role="line">Pixel Interface</tspan></text>
     <g
        id="g1136"
        transform="translate(-396.46662,77.901026)">
@@ -447,75 +439,94 @@
              sodipodi:role="line">CSID</tspan></text>
       </g>
     </g>
-    <g
-       id="g1172-9"
-       transform="translate(-393.87496,254.18738)">
-      <g
-         id="g1162-4">
-        <rect
-           ry="3.411598"
-           style="fill:#99cc33;fill-opacity:1;stroke:#8fab54;stroke-width:0.741629;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
-           y="-33.731438"
-           x="-17.909079"
-           height="28.849079"
-           width="93.086502"
-           id="rect3699-3-5-6" />
-        <text
-           transform="scale(1.0370906,0.96423591)"
-           id="text4782-5-6-9"
-           y="-17.501194"
-           x="-14.236688"
-           style="font-style:normal;font-weight:normal;font-size:15.6978px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.392446px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           xml:space="preserve"><tspan
-             style="font-size:7.05556px;stroke-width:0.392446px"
-             y="-17.501194"
-             x="-14.236688"
-             id="tspan4780-3-9-2"
-             sodipodi:role="line">VFE</tspan></text>
-      </g>
-    </g>
-    <g
-       id="g1172-8"
-       transform="translate(-393.82079,303.47589)">
-      <g
-         id="g1162-1">
-        <rect
-           ry="3.411598"
-           style="fill:#99cc33;fill-opacity:1;stroke:#8fab54;stroke-width:0.741629;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
-           y="-33.731438"
-           x="-17.909079"
-           height="28.849079"
-           width="93.086502"
-           id="rect3699-3-5-2" />
-        <text
-           transform="scale(1.0370906,0.96423591)"
-           id="text4782-5-6-8"
-           y="-17.501194"
-           x="-14.236688"
-           style="font-style:normal;font-weight:normal;font-size:15.6978px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.392446px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           xml:space="preserve"><tspan
-             style="font-size:7.05556px;stroke-width:0.392446px"
-             y="-17.501194"
-             x="-14.236688"
-             id="tspan4780-3-9-93"
-             sodipodi:role="line">ISPIF</tspan></text>
-      </g>
-    </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend-9-7)"
        d="m -365.19816,154.07271 v 11.93578"
        id="path1274"
        sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend-0-6-4)"
-       d="M -365.19816,203.36123 V 215.297"
-       id="path1274-1"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend-1-2-1)"
-       d="m -365.19816,252.64975 v 11.93576"
-       id="path1274-8"
-       sodipodi:nodetypes="cc" />
+    <g
+       id="g1050"
+       transform="translate(0.27207234,49.288515)">
+      <g
+         id="g1172-9"
+         transform="translate(-393.87496,254.18738)">
+        <g
+           id="g1162-4">
+          <rect
+             ry="3.411598"
+             style="fill:#99cc33;fill-opacity:1;stroke:#8fab54;stroke-width:0.741629;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+             y="-33.731438"
+             x="-17.909079"
+             height="28.849079"
+             width="93.086502"
+             id="rect3699-3-5-6" />
+          <text
+             transform="scale(1.0370906,0.96423591)"
+             id="text4782-5-6-9"
+             y="-17.501194"
+             x="-14.236688"
+             style="font-style:normal;font-weight:normal;font-size:15.6978px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.392446px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-size:7.05556px;stroke-width:0.392446px"
+               y="-17.501194"
+               x="-14.236688"
+               id="tspan4780-3-9-2"
+               sodipodi:role="line">VFE</tspan></text>
+        </g>
+      </g>
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend-0-6-4)"
+         d="M -365.19816,203.36123 V 215.297"
+         id="path1274-1"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g1024"
+       transform="translate(-0.27207234,-49.288515)">
+      <text
+         id="text4864-6-7-4-4"
+         y="261.69489"
+         x="-360.51614"
+         style="font-style:normal;font-weight:normal;font-size:5.99723px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan5382-8-7"
+           style="font-size:5.99723px;fill:#666666;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:3.9;stroke-dasharray:none"
+           y="261.69489"
+           x="-360.51614"
+           sodipodi:role="line">Pixel Interface</tspan></text>
+      <g
+         id="g1172-8"
+         transform="translate(-393.82079,303.47589)">
+        <g
+           id="g1162-1">
+          <rect
+             ry="3.411598"
+             style="fill:#99cc33;fill-opacity:1;stroke:#8fab54;stroke-width:0.741629;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;image-rendering:auto"
+             y="-33.731438"
+             x="-17.909079"
+             height="28.849079"
+             width="93.086502"
+             id="rect3699-3-5-2" />
+          <text
+             transform="scale(1.0370906,0.96423591)"
+             id="text4782-5-6-8"
+             y="-17.501194"
+             x="-14.236688"
+             style="font-style:normal;font-weight:normal;font-size:15.6978px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.392446px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-size:7.05556px;stroke-width:0.392446px"
+               y="-17.501194"
+               x="-14.236688"
+               id="tspan4780-3-9-93"
+               sodipodi:role="line">ISPIF</tspan></text>
+        </g>
+      </g>
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend-1-2-1)"
+         d="m -365.19816,252.64975 v 11.93576"
+         id="path1274-8"
+         sodipodi:nodetypes="cc" />
+    </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:3.9;stroke-dasharray:3.6, 3.6;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1917-4-8)"
        d="m -467.12499,136.31497 h 38.15858 4.45249"
