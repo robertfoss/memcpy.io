@@ -11,16 +11,16 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Linaro has been working together with Qualcomm to enable camera support on their platforms since 2017. The CAMSS driver was written to support the ISP IP-block with the same name that is present on Qualcomm SoCs coming from the smartphone space. The first development board targeted by this work was the DragonBoard 410C, which was followed in 2018 by DragonBoard 820C support. Recently support for the Snapdragon 660 SoC was added to the driver, which will be part of the v5.11 Linux Kernel release. These SoCs all contain the CAMSS version of the ISP architecture. Currently, support for the ISP found in the Snapdragon 845 SoC and the DragonBoard 845C is in the process of being upstreamed to the mailinglists. Having seen major changes …">
+		<meta name="description" content="Linaro has been working together with Qualcomm to enable camera support on their platformssince 2017. The Open Source CAMSS driver was written to support the ISP IP-block with the same name that is present on Qualcomm SoCs coming from the smartphone space. The first development board targeted by this work was the DragonBoard 410C, which was followed in 2018 by DragonBoard 820C support. Recently support for the Snapdragon 660 SoC was added to the driver, which will be part of the v5.11 Linux Kernel release. These SoCs all contain the CAMSS (Camera SubSystem) version of the ISP architecture. Currently, support for the ISP found in the Snapdragon 845 SoC and the DragonBoard 845C is in the process of being upstreamed to the mailinglists. Having …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, camera, v4l2, qualcomm, camss, sdm845">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, camera, v4l2, qualcomm, camss, sdm845, yocto, open embedded, db845c">
 		<meta property="og:title" content="Upstream camera support for Qualcomm platforms" />
 		<meta property="og:type" content="article" />
-		<meta property="og:image" content="https://memcpy.io/images/2021-02-02_camss_gen1.svg" />
+		<meta property="og:image" content="https://memcpy.io/images/2021-02-23_camss_gen1.svg" />
 		<meta property="og:url" content="https://memcpy.io/upstream-camera-support-for-qualcomm-platforms.html" />
 		<meta property="og:locale" content="" />
 		<meta property="og:site_name" content="memcpy.io" />
-		<meta property="article:published_time" content="2021-02-12" />
+		<meta property="article:published_time" content="2021-02-23" />
 		<meta property="article:section" content="kernel" />
 		<meta property="article:tag" content="linux" />
 		<meta property="article:tag" content="kernel" />
@@ -29,39 +29,42 @@
 		<meta property="article:tag" content="qualcomm" />
 		<meta property="article:tag" content="camss" />
 		<meta property="article:tag" content="sdm845" />
+		<meta property="article:tag" content="yocto" />
+		<meta property="article:tag" content="open embedded" />
+		<meta property="article:tag" content="db845c" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:creator" content="@memcpy_io" />
 		<meta name="twitter:site" content="@memcpy_io" />
 		<meta name="twitter:title" content="Upstream camera support for Qualcomm platforms" />
 		<meta name="twitter:description" content="The CAMSS driver for Qualcomm Image Signal Processors (ISPs) isn&#39;t new, but now has support for the next generation of ISP architecture." />
-		<meta name="twitter:image" content="https://memcpy.io/images/2021-02-02_camss_gen1.svg" />
+		<meta name="twitter:image" content="https://memcpy.io/images/2021-02-23_camss_gen1.svg" />
 	</head>
 	<body>
 		<article id="content" itemscope>
 			<header>
 				<h1>Upstream camera support for Qualcomm platforms</h1>
 				<p>
-				Published <time datetime="2021-02-12" itemprop="datePublished">2021-02-12</time>
+				Published <time datetime="2021-02-23" itemprop="datePublished">2021-02-23</time>
 				</p>
 			</header>
 			<p>The CAMSS driver for Qualcomm Image Signal Processors (ISPs) isn't new, but now has support for the next generation of ISP architecture.</p>
-			<p>Linaro has been working together with Qualcomm to enable camera support on their platforms
-since 2017. The CAMSS driver was written to support the ISP IP-block with the same name
-that is present on Qualcomm SoCs coming from the smartphone space.</p>
+			<p><a href="https://www.linaro.org/">Linaro</a> has been working together with Qualcomm to enable camera support on
+their platformssince 2017. The Open Source CAMSS driver was written to support the ISP IP-block with
+the same name that is present on Qualcomm SoCs coming from the smartphone space.</p>
 <p>The first development board targeted by this work was the DragonBoard 410C, which was followed in 2018 by
 DragonBoard 820C support. Recently support for the Snapdragon 660 SoC was added to the driver,
 which will be part of the v5.11 Linux Kernel release. These SoCs all contain the CAMSS
-version of the ISP architecture.</p>
+(Camera SubSystem) version of the ISP architecture.</p>
 <p>Currently, support for the ISP found in the Snapdragon 845 SoC and the DragonBoard 845C is in
 the process of being upstreamed to the mailinglists. Having seen major changes, the ISP is
-no longer referred to as CAMSS but is instead known as Titan.</p>
+no longer referred to as CAMSS, but is instead known as Titan.</p>
 <p>The Titan architecture offers improvements in resolution, framerates and most other dimensions
 of the ISP, and is the latest architecture shipped on modern Qualcomm chipsets.</p>
 <h2>Overview</h2>
-<p>CAMSS is a V4L2 Linux driver which focuses on supporting the basic use cases of the ISP,
-such as receiving the physical CSI2 signals from sensors, decoding it, and then
-writing it to memory. This leaves a lot of functionality typically provided
-by an ISP unimplemented, but that is intentional as our priority is to enable the
+<p>CAMSS is a V4L2 (Video for Linux 2) Linux driver which focuses on supporting the basic use cases of the ISP,
+such as receiving the <a href="https://www.mipi.org/specifications/csi-2">MIPI CSI-2</a> signals from the sensors,
+decoding them, and then writing them to memory. This leaves a lot of functionality typically provided
+by an ISP unimplemented, but that is intentional as the development priority has been to enable the
 data path from camera sensor to userspace.</p>
 <p>The sub-components that the CAMSS drivers supports are the following:</p>
 <ul>
@@ -69,7 +72,7 @@ data path from camera sensor to userspace.</p>
 <p>CSIPHY - the CSI PHYsical layer manages the physical electrical signals sent by camera sensors.</p>
 </li>
 <li>
-<p>CSID - the CSI Decoder decodes the CSI2 encoded data transmitted by sensors</p>
+<p>CSID - the CSI Decoder decodes the CSI-2 encoded data transmitted by the sensors</p>
 </li>
 <li>
 <p>VFE - the Video Front End formats received data and exposes it through to further hardware blocks.
@@ -85,51 +88,55 @@ data path from camera sensor to userspace.</p>
 </li>
 <li>
 <p>ISPIF - the Image Signal Processor InterFace ties together a lot of specialized hardware blocks
-           into a data pipeline which each does some further processing</p>
+           into a data pipeline which can provide various levels of additionalprocessing.</p>
 </li>
 </ul>
 <h3>Qualcomm ISP Gen 1 - CAMSS</h3>
-<p>The first generation of ISP hardware block supported by the (aptly named) CAMSS driver is
+<p>The first generation of the ISP hardware block supported by the (aptly named) CAMSS driver is
 called CAMSS by Qualcomm.</p>
-<p><a href="/images/2021-02-02_camss_gen1.svg"><img alt="Alt text" src="/images/2021-02-02_camss_gen1.svg" title="Qualcomm CAMSS ISP Generation 1">
+<p><a href="/images/2021-02-23_camss_gen1.svg"><img alt="Alt text" src="/images/2021-02-23_camss_gen1.svg" title="Qualcomm CAMSS ISP Generation 1">
 </a></p>
 <p>The CSIPHY, CSID &amp; VFE IP-blocks are relatively fully featured, but some functionality like
 Virtual Channels are not implemented. However, a more substantial limitation of the ISPIF
-support is that only basic cropping and rotation is implemented currently.</p>
-<p>An obstacle caused by this limited ISPIF functionality is that we're not able to do format
-conversions using the ISP. So whatever format the camera sensor is outputting, we're going
-to output to userspace. This can be a problem for Bayer pixel format sensors, because
-they're poorly supported by userspace applications and require at least debayering being
+support is that only basic cropping and rotation is currently implemented.</p>
+<p>An obstacle caused by this limited ISPIF functionality is that it's not able to do format
+conversions using the ISP. So whatever format the camera sensor is outputting, is directly
+output to userspace. This can be a problem for Bayer pixel format sensors, because
+they're poorly supported by userspace applications and require at least debayering to be
 done in a post-processing step before the output can be viewed.</p>
 <h3>Qualcomm ISP Gen 2 - Titan</h3>
 <p>The next iteration of the Qualcomm ISP architecture is called Titan. The changes from Gen1
 to Gen2/Titan can be summarized in two parts.</p>
-<p><a href="/images/2021-02-02_camss_gen2_titan.svg"><img alt="Alt text" src="/images/2021-02-02_camss_gen2_titan.svg" title="Qualcomm CAMSS ISP Generation 2, Titan">
+<p><a href="/images/2021-02-23_camss_gen2_titan.svg"><img alt="Alt text" src="/images/2021-02-23_camss_gen2_titan.svg" title="Qualcomm CAMSS ISP Generation 2, Titan">
 </a></p>
-<p>The Titan frontend blocks (CSIPHY, CSID &amp; VFE) are almost identical with only minor
-structural changes and improvements.</p>
+<p>The Titan frontend blocks (CSIPHY, CSID &amp; VFE) are almost identical between Gen1 and Gen2
+with only minor structural changes and improvements.</p>
 <p>However, the image processing pipeline has been revamped, and the ISPIF no longer exists.
 What replaces it is an embedded CPU which is fed commands and in turn configures the
-data processing blocks itself. Adding support for this CPU is beyond the current scope
+data processing blocks. Adding support for this CPU is beyond the current scope
 of CAMSS due to the amount of work it would take to enable and the lack of documentation
-for the CPU command stream.</p>
+for the CPU command stream. However, userspace applications are able to manage some of this
+post processing. This is enough to support the most basic use cases, but many will be CPU/GPU
+intensive and likely not have the same quality as an ISP based implementation would.</p>
 <h2>Future</h2>
 <p>Linaro will continue to maintain this driver, and is likely to extend it to support
-some further hardware platforms. However, contributions are very welcome and platforms
+additional hardware platforms. However, contributions are very welcome and platforms
 like the SDM630 and SSDM660 have already had support contributed to the CAMSS driver.</p>
 <p>Currently <a href="https://libcamera.org/index.html">libcamera</a> is a very useful development tool
-for working with CAMSS. It is more flexible than most V4L2 applications and using the
+for working with CAMSS. It is more flexible than most V4L2 applications, and using the
 <a href="https://libcamera.org/getting-started.html">libcamera/qcam</a> application makes it possible
 to view live output of even Bayer camera sensors without the ISP doing any debayering.</p>
 <p>Recent Linaro contributions towards libcamera have enabled GPU accelerated format conversion
 and debayering for the <a href="https://libcamera.org/getting-started.html">libcamera/qcam</a> test
 application, you can read more about that
-<a href="https://www.linaro.org/blog/accelerating-libcamera-qcam-format-conversion-using-opengl-shaders/">here</a>.</p>
-<p>Other Linaro contributions to the Linux camera landscape include work on both on the
-userspace side with libcamera and on the kernel side with camera sensor drivers,
+<a href="https://www.linaro.org/blog/accelerating-libcamera-qcam-format-conversion-using-opengl-shaders/">here</a>.
+Linaro has also contributed the Open Embedded <a href="http://cgit.openembedded.org/meta-openembedded/tree/meta-multimedia/recipes-multimedia/libcamera/libcamera.bb?h=master">libcamera recipe</a>
+for developers building their products with Yocto Project based Linux distributions.</p>
+<p>Other Linaro contributions to the Linux camera landscape include work in both
+userspace with libcamera and in the kernel with camera sensor drivers,
 ISP drivers and V4L2 API work.</p>
 <p>Further developments regarding software and GPU debayering are expected for libcamera,
-and hopefully we'll see libcamera debayering enabled for all of its data paths
+and hopefully the community will see libcamera debayering enabled for all of its data paths
 soon enough.</p>
 <h2>Acknowledgments</h2>
 <p>A lot of different contributors enabled this work, both directly and indirectly.</p>
@@ -139,7 +146,7 @@ soon enough.</p>
 <li><a href="https://github.com/andrey-konovalov">Andrey Konovalov</a> for testing, finding bugs &amp; being a great sounding board.</li>
 <li>Qualcomm for sponsoring and providing hardware documentation.</li>
 </ul>
-<p>This post has been a part of work undertaken by my employer <a href="http://www.linaro.org">Linaro</a>.</p>
+<p>This post has been a part of work undertaken by my employer <a href="https://www.linaro.org/blog/upstream-camera-support-for-qualcomm-platforms/">Linaro</a>.</p>
 		</article>
 		<section id="teaser-section">
 			<div id="teaser">
@@ -157,6 +164,12 @@ soon enough.</p>
 					<a href="https://memcpy.io/tag/camss.html">camss </a>
 					<span id="breakdot">&middot; </span>
 					<a href="https://memcpy.io/tag/sdm845.html">sdm845 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/yocto.html">yocto </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/open-embedded.html">open embedded </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/db845c.html">db845c </a>
 				</p>
 			</div>
 		</section>
