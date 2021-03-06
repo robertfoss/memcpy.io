@@ -415,7 +415,8 @@ blockquote
 #teaser-section
 {
   background-color: rgba(20,46,74,0.8);
-  color: #000;
+  color: #fff;
+  font-weight: bolder;
 }
 
 #teaser p:first-child {
@@ -423,7 +424,7 @@ blockquote
 }
 
 #teaser a {
-  color: #fff; /* TODO: Pick good colour scheme. */
+  color: #fff;
   font-family: Georgia, serif;
 
   /* Fix baseline alignment of the teaser in Firefox. At different viewport
@@ -431,7 +432,8 @@ blockquote
    * value that corrects the error at all sizes. The value below works for
    * large sizes. */
   line-height: 0;
-  font-size: 0.9em;
+  font-size: 0.85em;
+  font-weight: normal;
 }
 
 #teaser a:after
