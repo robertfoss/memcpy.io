@@ -421,6 +421,7 @@ blockquote
 
 #teaser p:first-child {
   margin-bottom: 0.3em;
+  text-align: center;
 }
 
 #teaser a {
