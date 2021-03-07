@@ -305,9 +305,13 @@ th, td
 code
 {
   color: #c35;
-  font-family: Inconsolata, Consolas, monospace;
+  font-family: monospace;
+  font-size: 0.80em;
+}
+
+pre > code
+{
   font-size: 0.85em;
-  background-color: rgba(0, 0, 0, 0.08);
 }
 
 div.sourceCode
@@ -411,7 +415,8 @@ blockquote
 #teaser-section
 {
   background-color: rgba(20,46,74,0.8);
-  color: #000;
+  color: #fff;
+  font-weight: bolder;
 }
 
 #teaser p:first-child {
@@ -419,7 +424,7 @@ blockquote
 }
 
 #teaser a {
-  color: #fff; /* TODO: Pick good colour scheme. */
+  color: #fff;
   font-family: Georgia, serif;
 
   /* Fix baseline alignment of the teaser in Firefox. At different viewport
@@ -427,7 +432,8 @@ blockquote
    * value that corrects the error at all sizes. The value below works for
    * large sizes. */
   line-height: 0;
-  font-size: 0.9em;
+  font-size: 0.85em;
+  font-weight: normal;
 }
 
 #teaser a:after
@@ -454,7 +460,7 @@ footer
 {
   clear: both;
   text-align: center;
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family: 'Calluna Sans', sans-serif;
   font-size: 0.8em;
 }
 

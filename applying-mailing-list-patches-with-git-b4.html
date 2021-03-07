@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Applying mailing list patches with 'git b4'</title>
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/applying-mailing-list-patches-with-git-b4.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="b4 was created by Konstantin Ryabitsev and has become a very frequently used tool for me. It supports a lot of different ways for interacting with the Linux Kernel mailing lists. Of these the b4 am subcommand is what I primarily use. This subcommand downloads all of the patches belonging to a patch series and drops them into a .mbox file. But! It doesn&#39;t apply them to the repository we&#39;re currently in, and herein lies the itch that I would like to scratch. The inspiration for this hack is based on the much nicer script that @stellarhopper authored and @widawsky pointed out to me. But in order to give it more of a git feel, I opted to make it a git alias. $ cat ~/.gitconfig …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, development, shell, git, alias, b4, gitconfig, mbox, am, mailing, list">
+		<meta property="og:title" content="Applying mailing list patches with &#39;git b4&#39;" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="https://memcpy.io/images/2021-03-08_git_b4.png" />
+		<meta property="og:url" content="https://memcpy.io/applying-mailing-list-patches-with-git-b4.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2021-03-08" />
+		<meta property="article:section" content="linux" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="kernel" />
+		<meta property="article:tag" content="development" />
+		<meta property="article:tag" content="shell" />
+		<meta property="article:tag" content="git" />
+		<meta property="article:tag" content="alias" />
+		<meta property="article:tag" content="b4" />
+		<meta property="article:tag" content="gitconfig" />
+		<meta property="article:tag" content="mbox" />
+		<meta property="article:tag" content="am" />
+		<meta property="article:tag" content="mailing" />
+		<meta property="article:tag" content="list" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Applying mailing list patches with &#39;git b4&#39;" />
+		<meta name="twitter:description" content="b4 helps improve the workflow for mailing list based Linux kernel development, but doesn&#39;t offer direct git integration. Let&#39;s whip up a &#39;git b4&#39; alias." />
+		<meta name="twitter:image" content="https://memcpy.io/images/2021-03-08_git_b4.png" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Applying mailing list patches with 'git b4'</h1>
+				<p>
+				Published <time datetime="2021-03-08" itemprop="datePublished">2021-03-08</time>
+				</p>
+			</header>
+			<p>b4 helps improve the workflow for mailing list based Linux kernel development, but doesn't offer direct git integration. Let's whip up a 'git b4' alias.</p>
+			<p><a href="/images/2021-03-08_git_b4.png"><img alt="Alt text" src="/images/2021-03-08_git_b4.png" title="git b4 shell output">
+</a></p>
+<p><a href="https://people.kernel.org/monsieuricon/introducing-b4-and-patch-attestation">b4</a> was created by
+<a href="https://people.kernel.org/monsieuricon/">Konstantin Ryabitsev</a> and has become a very frequently
+used tool for me.</p>
+<p>It supports a lot of different ways for interacting with the Linux Kernel mailing lists.
+Of these the <code>b4 am</code> subcommand is what I primarily use. This subcommand downloads all of
+the patches belonging to a patch series and drops them into a <code>.mbox</code> file. But! It doesn't
+apply them to the repository we're currently in, and herein lies the itch that I would like
+to scratch.</p>
+<p>The inspiration for this hack is based on the
+<a href="https://twitter.com/widawsky/status/1365378004914905088">much nicer script</a> that
+<a href="https://twitter.com/stellarhopper">@stellarhopper</a> authored and
+<a href="https://twitter.com/widawsky">@widawsky</a>
+pointed out to me. But in order to give it more of a git feel, I opted to make it a git alias.</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">gitconfig</span><span class="w"></span>
+<span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+<span class="o">[</span><span class="n">alias</span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">b4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;!f() \</span>
+<span class="ss">    {\</span>
+<span class="ss">        b4 am $1 -l -o /tmp/ 2&gt;&amp;1 | \n\</span>
+<span class="ss">        $( \n\</span>
+<span class="ss">            mbx=$( \n\</span>
+<span class="ss">                awk &#39;/^Writing .*\\.mbx/{ print $2 }&#39; \n\</span>
+<span class="ss">            );  \n\</span>
+<span class="ss">            [ -z \&quot;</span><span class="err">$</span><span class="n">mbx</span><span class="err">\</span><span class="ss">&quot; ] ||  \n\</span>
+<span class="ss">                git am \&quot;</span><span class="err">$</span><span class="n">mbx</span><span class="err">\</span><span class="ss">&quot; 1&gt;&amp;2; \n\</span>
+<span class="ss">        );  \n\</span>
+<span class="ss">    }; f&quot;</span><span class="w"></span>
+<span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+</code></pre></div>
+
+<p>I apologize in advance for the escaped hellscape that is this snippet, a hierarchy of
+escapes is required to conform to the git function syntax when using both multiple lines and
+quoted strings.</p>
+<p>A git syntax escape <a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae">script</a>
+written by <a href="https://gist.github.com/HaleTom">Tom Hale</a> made the escaping much easier.</p>
+<h3>Example</h3>
+<p>After dropping the above snippet into your <code>.gitconfig</code>, go find the <code>Message-Id</code> for the LKML
+patch or series you want to apply.</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> linux
+linux$ git b4 <span class="m">1607651182</span>-12307-1-git-send-email-victor.liu@nxp.com
+</code></pre></div>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/kernel.html">kernel </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/development.html">development </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/shell.html">shell </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/git.html">git </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/alias.html">alias </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/b4.html">b4 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/gitconfig.html">gitconfig </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/mbox.html">mbox </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/am.html">am </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/mailing.html">mailing </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/list.html">list </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2021 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.png"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

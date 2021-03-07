@@ -267,9 +267,13 @@ th, td
 code
 {
   color: #c35;
-  font-family: Inconsolata, Consolas, monospace;
+  font-family: monospace;
+  font-size: 0.80em;
+}
+
+pre > code
+{
   font-size: 0.85em;
-  background-color: rgba(0, 0, 0, 0.08);
 }
 
 div.sourceCode
