@@ -70,7 +70,7 @@ Naturally my original idea is the ugly.</p>
 <h3>The Good</h3>
 <p><a href="https://twitter.com/gregkh/status/1368932670206525441?s=20">@gregkh suggested</a> a really short
 and to the point approach, where <code>b4 am</code> simply pipes the <code>.mbox</code> file to <code>git am</code>. I think
-this is ideal in this specific case since it avoids most the complexity of writing git alias
+it is ideal in this specific case since it avoids most the complexity of writing git alias
 functions but at the same time doesn't require any external script files.</p>
 <p><a href="/images/2021-03-08_git_b4_gkh.png"><img alt="Alt text" src="/images/2021-03-08_git_b4_gkh.png" title="git b4 shell output - @gregkh approach">
 </a></p>
@@ -125,8 +125,6 @@ that <a href="https://twitter.com/stellarhopper">@stellarhopper</a> had used.</p
 <p>I apologize in advance for the escaped hellscape that is this snippet. A hierarchy of
 escapes is required to conform to the git function syntax when using both multiple lines and
 quoted strings.</p>
-<p>A git syntax escape <a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae">script</a>
-written by <a href="https://gist.github.com/HaleTom">Tom Hale</a> made the escaping much easier.</p>
 <div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">gitconfig</span><span class="w"></span>
 <span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 <span class="o">[</span><span class="n">alias</span><span class="o">]</span><span class="w"></span>
@@ -144,6 +142,8 @@ written by <a href="https://gist.github.com/HaleTom">Tom Hale</a> made the escap
 <span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 </code></pre></div>
 
+<p>A git syntax escape <a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae">script</a>
+written by <a href="https://gist.github.com/HaleTom">Tom Hale</a> made the escaping much easier.</p>
 <h2>Example</h2>
 <p>After picking your favorite approach, go find the <code>Message-Id</code> for the LKML
 patch or series you want to apply.</p>

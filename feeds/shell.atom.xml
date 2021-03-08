@@ -34,7 +34,7 @@ Naturally my original idea is the ugly.&lt;/p&gt;
 &lt;h3&gt;The Good&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://twitter.com/gregkh/status/1368932670206525441?s=20"&gt;@gregkh suggested&lt;/a&gt; a really short
 and to the point approach, where &lt;code&gt;b4 am&lt;/code&gt; simply pipes the &lt;code&gt;.mbox&lt;/code&gt; file to &lt;code&gt;git am&lt;/code&gt;. I think
-this is ideal in this specific case since it avoids most the complexity of writing git alias
+it is ideal in this specific case since it avoids most the complexity of writing git alias
 functions but at the same time doesn't require any external script files.&lt;/p&gt;
 &lt;p&gt;&lt;a href="/images/2021-03-08_git_b4_gkh.png"&gt;&lt;img alt="Alt text" src="/images/2021-03-08_git_b4_gkh.png" title="git b4 shell output - @gregkh approach"&gt;
 &lt;/a&gt;&lt;/p&gt;
@@ -89,8 +89,6 @@ that &lt;a href="https://twitter.com/stellarhopper"&gt;@stellarhopper&lt;/a&gt; 
 &lt;p&gt;I apologize in advance for the escaped hellscape that is this snippet. A hierarchy of
 escapes is required to conform to the git function syntax when using both multiple lines and
 quoted strings.&lt;/p&gt;
-&lt;p&gt;A git syntax escape &lt;a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae"&gt;script&lt;/a&gt;
-written by &lt;a href="https://gist.github.com/HaleTom"&gt;Tom Hale&lt;/a&gt; made the escaping much easier.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gitconfig&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;snip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
@@ -108,6 +106,8 @@ written by &lt;a href="https://gist.github.com/HaleTom"&gt;Tom Hale&lt;/a&gt; ma
 &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;snip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;A git syntax escape &lt;a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae"&gt;script&lt;/a&gt;
+written by &lt;a href="https://gist.github.com/HaleTom"&gt;Tom Hale&lt;/a&gt; made the escaping much easier.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
 &lt;p&gt;After picking your favorite approach, go find the &lt;code&gt;Message-Id&lt;/code&gt; for the LKML
 patch or series you want to apply.&lt;/p&gt;
