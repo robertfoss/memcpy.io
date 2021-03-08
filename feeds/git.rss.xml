@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>memcpy.io - git</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 07 Apr 2020 15:06:00 +0200</lastBuildDate><item><title>Speed up `git log --graph` 18x times</title><link>https://memcpy.io/speed-up-git-log-graph-18x-times.html</link><description>&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;time&lt;/span&gt; git lg
+<rss version="2.0"><channel><title>memcpy.io - git</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 08 Mar 2021 12:23:00 +0100</lastBuildDate><item><title>Applying mailing list patches with 'git b4'</title><link>https://memcpy.io/applying-mailing-list-patches-with-git-b4.html</link><description>&lt;p&gt;&lt;a href="/images/2021-03-08_git_b4.png"&gt;&lt;img alt="Alt text" src="/images/2021-03-08_git_b4.png" title="git b4 shell output"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://people.kernel.org/monsieuricon/introducing-b4-and-patch-attestation"&gt;b4&lt;/a&gt; was created by
+&lt;a href="https://people.kernel.org/monsieuricon/"&gt;Konstantin Ryabitsev&lt;/a&gt; and has become a very frequently
+used tool for me.&lt;/p&gt;
+&lt;p&gt;It supports a lot of different ways for interacting with the Linux Kernel mailing lists.
+Of these the &lt;code&gt;b4 am&lt;/code&gt; subcommand is what I primarily use. This subcommand downloads all of
+the patches belonging to a patch series and drops them into a &lt;code&gt;.mbox&lt;/code&gt; file. But! It doesn't
+apply them to the repository we're currently in, and herein lies the itch that I would like
+to scratch.&lt;/p&gt;
+&lt;p&gt;The inspiration for this hack is based on the
+&lt;a href="https://twitter.com/widawsky/status/1365378004914905088"&gt;much nicer script&lt;/a&gt; that
+&lt;a href="https://twitter.com/stellarhopper"&gt;@stellarhopper&lt;/a&gt; authored and
+&lt;a href="https://twitter.com/widawsky"&gt;@widawsky&lt;/a&gt;
+pointed out to me. But in order to give it more of a git feel, I opted to make it a git alias.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gitconfig …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 08 Mar 2021 12:23:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2021-03-08:/applying-mailing-list-patches-with-git-b4.html</guid><category>linux</category><category>linux</category><category>kernel</category><category>development</category><category>shell</category><category>git</category><category>alias</category><category>b4</category><category>gitconfig</category><category>mbox</category><category>am</category><category>mailing</category><category>list</category></item><item><title>Speed up `git log --graph` 18x times</title><link>https://memcpy.io/speed-up-git-log-graph-18x-times.html</link><description>&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;time&lt;/span&gt; git lg
 git lg  &lt;span class="m"&gt;13&lt;/span&gt;.34s user &lt;span class="m"&gt;0&lt;/span&gt;.87s system &lt;span class="m"&gt;84&lt;/span&gt;% cpu &lt;span class="m"&gt;16&lt;/span&gt;.845 total
 
 &lt;span class="c1"&gt;# True by default as of git v2.24&lt;/span&gt;
