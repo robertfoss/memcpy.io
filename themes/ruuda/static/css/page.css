@@ -50,6 +50,8 @@ body
   font-size: 0.75em;
   font-weight: normal;
 
+  white-space: nowrap;
+
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   padding-left: 1.4em;
