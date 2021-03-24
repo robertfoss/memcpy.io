@@ -45,6 +45,11 @@ body
 
 #teaser
 {
+  color: rgba(255,255 ,255 ,0.8);
+  font-family: 'Calluna Sans', sans-serif;
+  font-size: 0.75em;
+  font-weight: normal;
+
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   padding-left: 1.4em;
@@ -415,7 +420,6 @@ blockquote
 #teaser-section
 {
   background-color: rgba(20,46,74,0.8);
-  color: #fff;
   font-weight: bolder;
 }
 
@@ -425,22 +429,21 @@ blockquote
 }
 
 #teaser a {
-  color: #fff;
-  font-family: Georgia, serif;
+  color: rgba(255,255 ,255 ,0.8);
+  font-family: 'Calluna Sans', sans-serif;
 
   /* Fix baseline alignment of the teaser in Firefox. At different viewport
    * widths and zoom levels, the error is different, and there is no one
    * value that corrects the error at all sizes. The value below works for
    * large sizes. */
   line-height: 0;
-  font-size: 0.85em;
+  font-size: 0.9em;
   font-weight: normal;
 }
 
 #teaser a:after
 {
   /* U+00a0 is a non-breaking space. */
-  color: #fff;
 }
 
 #teaser > h2
