@@ -28,8 +28,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 FEED_ALL_RSS = 'feeds/all.rss.xml'
-TAG_FEED_ATOM = 'feeds/%s.atom.xml'
-TAG_FEED_RSS = 'feeds/%s.rss.xml'
+TAG_FEED_ATOM = 'feeds/{slug}.atom.xml'
+TAG_FEED_RSS = 'feeds/{slug}.rss.xml'
 
 # Make pages appear in the top dir
 PAGE_URL = '{slug}.html'
