@@ -11,9 +11,9 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Developing Linux for Android on Qemu allows you to do some things that are not necessarily possible using the stock emulator. For my purposes I need access to a GPU and be able to modify the driver, which is where Virgilrenderer and Qemu comes in handy. The guide below helps you compile Android and run it on top of Qemu with Mesa/Virgilrenderer supplying a virtual GPU. Because of this, the following guide is aimed at Linux hosts. This guide is based on Rob Herrings fantastic guide, but has been slightly streamlined and had physical hardware support stripped out. Install dependencies These dependencies were available on Ubuntu 16.04, some alternative packages might be needed for other distributions. sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev …">
+		<meta name="description" content="Developing Linux for Android on Qemu allows you to do some things that are not necessarily possible using the stock emulator. For my purposes I need access to a GPU and be able to modify the driver, which is where Virgilrenderer and Qemu comes in handy. The guide below helps you compile Android and run it on top of Qemu with Mesa/Virgilrenderer supplying a virtual GPU. Because of this, the following guide is aimed at Linux hosts. This guide is based on Rob Herrings fantastic guide, but has been slightly streamlined and had physical hardware support stripped out. Install dependencies These dependencies were available on Ubuntu 16.04, some alternative packages might be needed for other distributions. sudo apt install autoconf gcc-aarch64-linux …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, android, qemu, collabora">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, kernel, android, qemu, collabora">
 		<meta property="og:title" content="Building Android for Qemu with Mesa and Virgil3D" />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="https://memcpy.io/images/2016-08-30_android_qemu.png" />
@@ -56,17 +56,17 @@ been slightly streamlined and had physical hardware support stripped out.</p>
 <h2>Install dependencies</h2>
 <p>These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.</p>
-<div class="highlight"><pre><span></span><code><span class="err">sudo apt install autoconf gcc-aarch64-linux-gnu libaio-dev libbluetooth-dev libbrlapi-dev libbz2-dev libcap-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgles2-mesa-dev libglib2.0-dev libgtk-3-dev libibverbs-dev libjpeg8-dev liblzo2-dev libncurses5-dev libnuma-dev librbd-dev librdmacm-dev libsasl2-dev libsdl1.2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh2-1-dev libspice-server-dev libspice-server1 libtool libusb-1.0-0 libusb-1.0-0-dev libvde-dev libvdeplug-dev libvte-dev libxen-dev valgrind xfslibs-dev xutils-dev zlib1g-dev libusbredirhost-dev usbredirserver</span>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">autoconf</span> <span class="n">gcc</span><span class="o">-</span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span> <span class="n">libaio</span><span class="o">-</span><span class="n">dev</span> <span class="n">libbluetooth</span><span class="o">-</span><span class="n">dev</span> <span class="n">libbrlapi</span><span class="o">-</span><span class="n">dev</span> <span class="n">libbz2</span><span class="o">-</span><span class="n">dev</span> <span class="n">libcap</span><span class="o">-</span><span class="n">dev</span> <span class="n">libcap</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="n">dev</span> <span class="n">libcurl4</span><span class="o">-</span><span class="n">gnutls</span><span class="o">-</span><span class="n">dev</span> <span class="n">libepoxy</span><span class="o">-</span><span class="n">dev</span> <span class="n">libfdt</span><span class="o">-</span><span class="n">dev</span> <span class="n">libgbm</span><span class="o">-</span><span class="n">dev</span> <span class="n">libgles2</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="n">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">dev</span> <span class="n">libibverbs</span><span class="o">-</span><span class="n">dev</span> <span class="n">libjpeg8</span><span class="o">-</span><span class="n">dev</span> <span class="n">liblzo2</span><span class="o">-</span><span class="n">dev</span> <span class="n">libncurses5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libnuma</span><span class="o">-</span><span class="n">dev</span> <span class="n">librbd</span><span class="o">-</span><span class="n">dev</span> <span class="n">librdmacm</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsasl2</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsdl1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsdl2</span><span class="o">-</span><span class="n">dev</span> <span class="n">libseccomp</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsnappy</span><span class="o">-</span><span class="n">dev</span> <span class="n">libssh2</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">dev</span> <span class="n">libspice</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dev</span> <span class="n">libspice</span><span class="o">-</span><span class="n">server1</span> <span class="n">libtool</span> <span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span> <span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="n">libvde</span><span class="o">-</span><span class="n">dev</span> <span class="n">libvdeplug</span><span class="o">-</span><span class="n">dev</span> <span class="n">libvte</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxen</span><span class="o">-</span><span class="n">dev</span> <span class="n">valgrind</span> <span class="n">xfslibs</span><span class="o">-</span><span class="n">dev</span> <span class="n">xutils</span><span class="o">-</span><span class="n">dev</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span> <span class="n">libusbredirhost</span><span class="o">-</span><span class="n">dev</span> <span class="n">usbredirserver</span>
 </code></pre></div>
 
 <h2>Set up paths</h2>
 <p>Naturally all of the paths below are configurable, this is just what I used.</p>
-<div class="highlight"><pre><span></span><code>export PROJECT_PATH=&quot;/opt/qemu_android&quot;
-export VIRGLRENDERER_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/virglrenderer&quot;
-export QEMU_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/qemu&quot;
-export LINUX_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/linux&quot;
-export ANDROID_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/android&quot;
-export ANDROID_TOOLS_PATH=&quot;<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/android-tools&quot;
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="n">PROJECT_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/qemu_android&quot;</span>
+<span class="k">export</span> <span class="n">VIRGLRENDERER_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/virglrenderer&quot;</span>
+<span class="k">export</span> <span class="n">QEMU_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/qemu&quot;</span>
+<span class="k">export</span> <span class="n">LINUX_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/linux&quot;</span>
+<span class="k">export</span> <span class="n">ANDROID_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/android&quot;</span>
+<span class="k">export</span> <span class="n">ANDROID_TOOLS_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/android-tools&quot;</span>
 </code></pre></div>
 
 <h2>Virglrenderer</h2>
@@ -104,42 +104,42 @@ make -j7
 
 <p><strong>Important:</strong> If you decide not to use the <em>.config</em> linked in this step, a few
 Kconfig options need to be set:</p>
-<div class="highlight"><pre><span></span><code><span class="err">CONFIG_ANDROID=y</span>
-<span class="err">CONFIG_ANDROID_BINDER_IPC=y</span>
-<span class="err">CONFIG_AUDIT=y</span>
-<span class="err">CONFIG_HAVE_ARCH_AUDITSYSCALL=y</span>
-<span class="err">CONFIG_AUDITSYSCALL=y</span>
-<span class="err">CONFIG_AUDIT_WATCH=y</span>
-<span class="err">CONFIG_AUDIT_TREE=y</span>
-<span class="err">CONFIG_DRM=y</span>
-<span class="err">CONFIG_SECURITY_SELINUX=y</span>
-<span class="err">CONFIG_SECURITY_SELINUX_BOOTPARAM=y</span>
-<span class="err">CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1</span>
-<span class="err">CONFIG_SECURITY_SELINUX_DISABLE=y</span>
-<span class="err">CONFIG_SECURITY_SELINUX_DEVELOP=y</span>
-<span class="err">CONFIG_SECURITY_SELINUX_AVC_STATS=y</span>
-<span class="err">CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0</span>
-<span class="err">CONFIG_DEFAULT_SECURITY_SELINUX=y</span>
-<span class="err">CONFIG_DEFAULT_SECURITY=&quot;selinux&quot;</span>
-<span class="err">CONFIG_VIRTIO_BLK=y</span>
-<span class="err">CONFIG_SCSI_VIRTIO=y</span>
-<span class="err">CONFIG_VIRTIO_NET=y</span>
-<span class="err">CONFIG_VIRTIO_CONSOLE=y</span>
-<span class="err">CONFIG_HW_RANDOM_VIRTIO=y</span>
-<span class="err">CONFIG_DRM_VIRTIO_GPU=y</span>
-<span class="err">CONFIG_VIRT_DRIVERS=y</span>
-<span class="err">CONFIG_VIRTIO=y</span>
-<span class="err">CONFIG_VIRTIO_PCI=y</span>
-<span class="err">CONFIG_VIRTIO_PCI_LEGACY=y</span>
-<span class="err">CONFIG_VIRTIO_BALLOON=y</span>
-<span class="err">CONFIG_VIRTIO_INPUT=y</span>
-<span class="err">CONFIG_VIRTIO_MMIO=y</span>
-<span class="err">CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y</span>
-<span class="err">CONFIG_NET_9P=y</span>
-<span class="err">CONFIG_NET_9P_VIRTIO=y</span>
-<span class="err">CONFIG_SYNC=y</span>
-<span class="err">CONFIG_SW_SYNC=y</span>
-<span class="err">CONFIG_SYNC_FILE=y</span>
+<div class="highlight"><pre><span></span><code>CONFIG_ANDROID=y
+CONFIG_ANDROID_BINDER_IPC=y
+CONFIG_AUDIT=y
+CONFIG_HAVE_ARCH_AUDITSYSCALL=y
+CONFIG_AUDITSYSCALL=y
+CONFIG_AUDIT_WATCH=y
+CONFIG_AUDIT_TREE=y
+CONFIG_DRM=y
+CONFIG_SECURITY_SELINUX=y
+CONFIG_SECURITY_SELINUX_BOOTPARAM=y
+CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1
+CONFIG_SECURITY_SELINUX_DISABLE=y
+CONFIG_SECURITY_SELINUX_DEVELOP=y
+CONFIG_SECURITY_SELINUX_AVC_STATS=y
+CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0
+CONFIG_DEFAULT_SECURITY_SELINUX=y
+CONFIG_DEFAULT_SECURITY=&quot;selinux&quot;
+CONFIG_VIRTIO_BLK=y
+CONFIG_SCSI_VIRTIO=y
+CONFIG_VIRTIO_NET=y
+CONFIG_VIRTIO_CONSOLE=y
+CONFIG_HW_RANDOM_VIRTIO=y
+CONFIG_DRM_VIRTIO_GPU=y
+CONFIG_VIRT_DRIVERS=y
+CONFIG_VIRTIO=y
+CONFIG_VIRTIO_PCI=y
+CONFIG_VIRTIO_PCI_LEGACY=y
+CONFIG_VIRTIO_BALLOON=y
+CONFIG_VIRTIO_INPUT=y
+CONFIG_VIRTIO_MMIO=y
+CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y
+CONFIG_NET_9P=y
+CONFIG_NET_9P_VIRTIO=y
+CONFIG_SYNC=y
+CONFIG_SW_SYNC=y
+CONFIG_SYNC_FILE=y
 </code></pre></div>
 
 <h2>Android</h2>
@@ -170,15 +170,15 @@ exit
 <p>As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
 into AOSP, and therefore have to be included manually until it is upstreamed.
 After switching to this branch, the AOSP project has to be rebuilt again.</p>
-<div class="highlight"><pre><span></span><code><span class="err">cd $ANDROID_PATH/system/core/</span>
-<span class="err">git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git</span>
-<span class="err">git fetch padovan</span>
-<span class="err">git checkout padovan/master</span>
+<div class="highlight"><pre><span></span><code>cd $ANDROID_PATH/system/core/
+git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
+git fetch padovan
+git checkout padovan/master
 </code></pre></div>
 
 <h2>mkbootimg</h2>
 <p>Fetch the make boot image script. This script later assembles the boot image, <em>boot.img</em>.</p>
-<div class="highlight"><pre><span></span><code><span class="err">git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH</span>
+<div class="highlight"><pre><span></span><code>git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH
 </code></pre></div>
 
 <h2>Run Qemu machine</h2>

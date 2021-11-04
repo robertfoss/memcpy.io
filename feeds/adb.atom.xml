@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - adb</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/adb.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2016-12-07T20:23:00+01:00</updated><entry><title>Running an Android Unit Test</title><link href="https://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd aosp&lt;/span&gt;
-&lt;span class="err"&gt;bash&lt;/span&gt;
-&lt;span class="err"&gt;source build/envsetup.sh &amp;amp;&amp;amp; \&lt;/span&gt;
-&lt;span class="err"&gt;lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \&lt;/span&gt;
-&lt;span class="err"&gt;mmm system/core/libsync/tests &amp;amp;&amp;amp; \&lt;/span&gt;
-&lt;span class="err"&gt;adb root &amp;amp;&amp;amp; \&lt;/span&gt;
-&lt;span class="err"&gt;adb remount &amp;amp;&amp;amp; \&lt;/span&gt;
-&lt;span class="err"&gt;adb sync &amp;amp;&amp;amp; \&lt;/span&gt;
-&lt;span class="err"&gt;adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd aosp
+bash
+source build/envsetup.sh &amp;amp;&amp;amp; \
+lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
+mmm system/core/libsync/tests &amp;amp;&amp;amp; \
+adb root &amp;amp;&amp;amp; \
+adb remount &amp;amp;&amp;amp; \
+adb sync &amp;amp;&amp;amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="android"></category><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry></feed>

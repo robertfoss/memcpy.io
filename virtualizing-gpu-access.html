@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="For the past few years a clear trend of containerization of applications and services has emerged. Having processes containerized is beneficial in a number of ways. It both improves portability and strengthens security, and if done properly the performance penalty can be low. In order to further improve security containers are commonly run in virtualized environments. This provides some new challenges in terms of supporting the accelerated graphics usecase. OpenGL ES implementation Currently Collabora and Google are implementing OpenGL ES 2.0 support. OpenGL ES 2.0 is the lowest common denominator for many mobile platforms and as such is a requirement for Virgil3D to be viable on the those platforms. That is is the motivation for making Virgil3D work on OpenGL ES hosts. How …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, gpu, virtualization, virgl, virglrenderer, opengl, vulkan, gles, collabora">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, gpu, virtualization, virgl, virglrenderer, opengl, vulkan, gles, collabora">
 		<meta property="og:title" content="Virtualizing GPU Access" />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="https://memcpy.io/images/2018-02-09_virgl.svg" />
@@ -80,44 +80,44 @@ be the proprietary nvidia stack.</p>
 When doing graphical development I find it quite helpful to set
 up a parallel graphics stack in order to not pollute or depend on
 the stack of the host machine more than we have to.</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="n">concatenate_colon</span> <span class="p">{</span>
-  <span class="n">local</span> <span class="n">IFS</span><span class="o">=</span><span class="sc">&#39;:&#39;</span>
-  <span class="n">echo</span> <span class="s">&quot;$*&quot;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="w"> </span><span class="n">concatenate_colon</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">IFS</span><span class="o">=</span><span class="sc">&#39;:&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;$*&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">function</span> <span class="n">add_export_env</span> <span class="p">{</span>
-  <span class="n">local</span> <span class="n">VAR</span><span class="o">=</span><span class="s">&quot;$1&quot;</span>
-  <span class="n">shift</span>
-  <span class="n">local</span> <span class="n">VAL</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">eval</span> <span class="n">echo</span> <span class="s">&quot;\$$VAR&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">[</span> <span class="s">&quot;$VAL&quot;</span> <span class="p">];</span> <span class="n">then</span>
-    <span class="n">VAL</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">concatenate_colon</span> <span class="s">&quot;$@&quot;</span> <span class="s">&quot;$VAL&quot;</span><span class="p">);</span>
-  <span class="k">else</span>
-    <span class="n">VAL</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">concatenate_colon</span> <span class="s">&quot;$@&quot;</span><span class="p">);</span>
-  <span class="n">fi</span>
-  <span class="n">eval</span> <span class="s">&quot;export $VAR=</span><span class="se">\&quot;</span><span class="s">$VAL</span><span class="se">\&quot;</span><span class="s">&quot;</span>
-<span class="p">}</span>
+<span class="n">function</span><span class="w"> </span><span class="n">add_export_env</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">VAR</span><span class="o">=</span><span class="s">&quot;$1&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">shift</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">eval</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;\$$VAR&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s">&quot;$VAL&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
+<span class="w">    </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">concatenate_colon</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="w"> </span><span class="s">&quot;$VAL&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">concatenate_colon</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fi</span><span class="w"></span>
+<span class="w">  </span><span class="n">eval</span><span class="w"> </span><span class="s">&quot;export $VAR=</span><span class="se">\&quot;</span><span class="s">$VAL</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">function</span> <span class="n">prefix_setup</span> <span class="p">{</span>
-  <span class="n">local</span> <span class="n">PREFIX</span><span class="o">=</span><span class="s">&quot;$1&quot;</span>
+<span class="n">function</span><span class="w"> </span><span class="n">prefix_setup</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">PREFIX</span><span class="o">=</span><span class="s">&quot;$1&quot;</span><span class="w"></span>
 
-  <span class="n">add_export_env</span> <span class="n">PATH</span> <span class="s">&quot;$PREFIX/bin&quot;</span>
-  <span class="n">add_export_env</span> <span class="n">LD_LIBRARY_PATH</span> <span class="s">&quot;$PREFIX/lib&quot;</span>
-  <span class="n">add_export_env</span> <span class="n">PKG_CONFIG_PATH</span> <span class="s">&quot;$PREFIX/lib/pkgconfig/&quot;</span> <span class="s">&quot;$PREFIX/share/pkgconfig/&quot;</span>
-  <span class="n">add_export_env</span> <span class="n">MANPATH</span> <span class="s">&quot;$PREFIX/share/man&quot;</span>
-  <span class="n">export</span> <span class="n">ACLOCAL_PATH</span><span class="o">=</span><span class="s">&quot;$PREFIX/share/aclocal&quot;</span>
-  <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="s">&quot;$ACLOCAL_PATH&quot;</span>
-  <span class="n">export</span> <span class="n">ACLOCAL</span><span class="o">=</span><span class="s">&quot;aclocal -I $ACLOCAL_PATH&quot;</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/bin&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/lib&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">PKG_CONFIG_PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/lib/pkgconfig/&quot;</span><span class="w"> </span><span class="s">&quot;$PREFIX/share/pkgconfig/&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">MANPATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/share/man&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">export</span><span class="w"> </span><span class="n">ACLOCAL_PATH</span><span class="o">=</span><span class="s">&quot;$PREFIX/share/aclocal&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$ACLOCAL_PATH&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">export</span><span class="w"> </span><span class="n">ACLOCAL</span><span class="o">=</span><span class="s">&quot;aclocal -I $ACLOCAL_PATH&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">function</span> <span class="n">projectshell</span> <span class="p">{</span>
-  <span class="k">case</span> <span class="s">&quot;$1&quot;</span> <span class="k">in</span>
-    <span class="n">virgl</span> <span class="o">|</span> <span class="n">virglrenderer</span><span class="p">)</span>
-        <span class="n">export</span> <span class="n">ALT_LOCAL</span><span class="o">=</span><span class="s">&quot;/opt/local/virgl&quot;</span>
-        <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="s">&quot;$ALT_LOCAL&quot;</span>
-        <span class="n">prefix_setup</span> <span class="s">&quot;$ALT_LOCAL&quot;</span>
-        <span class="p">;;</span>
-  <span class="n">esac</span>
-<span class="p">}</span>
+<span class="n">function</span><span class="w"> </span><span class="n">projectshell</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;$1&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"></span>
+<span class="w">    </span><span class="n">virgl</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">virglrenderer</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">export</span><span class="w"> </span><span class="n">ALT_LOCAL</span><span class="o">=</span><span class="s">&quot;/opt/local/virgl&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="n">prefix_setup</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">;;</span><span class="w"></span>
+<span class="w">  </span><span class="n">esac</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>The above snippet is something that I would put in my <code>.bashrc</code> or <code>.zshrc</code>.
@@ -126,11 +126,11 @@ Don't forget so run <code>source ~/.bashrc</code> or the equivalent after making
 <h3>Build libepoxy</h3>
 <p>libepoxy is a library for managing OpenGL function pointers for you.
 And it is a dependency of virglrenderer, which we'll get to below.</p>
-<div class="highlight"><pre><span></span><code><span class="err">git clone https://github.com/anholt/libepoxy.git</span>
-<span class="err">cd libepoxy</span>
-<span class="err">./autogen.sh --prefix=$ALT_LOCAL</span>
-<span class="err">make -j$(nproc --ignore=1)</span>
-<span class="err">make install</span>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/anholt/libepoxy.git
+cd libepoxy
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
 </code></pre></div>
 
 <h3>Build virglrenderer</h3>
@@ -140,79 +140,79 @@ It receives Gallium states from the guest kernel
 via its virtio-gpu interface, which are then translated
 into OpenGL on the host. It also translates shaders from the
 TGSI format used by Gallium into the GLSL format used by OpenGL.</p>
-<div class="highlight"><pre><span></span><code><span class="err">git clone git://anongit.freedesktop.org/virglrenderer</span>
-<span class="err">cd virglrenderer</span>
-<span class="err">./autogen.sh --prefix=$ALT_LOCAL</span>
-<span class="err">make -j$(nproc --ignore=1)</span>
-<span class="err">make install</span>
+<div class="highlight"><pre><span></span><code>git clone git://anongit.freedesktop.org/virglrenderer
+cd virglrenderer
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
 </code></pre></div>
 
 <h3>Build Mesa</h3>
-<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="k">Fetch</span> <span class="n">dependencies</span>
-<span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/\#[ ]*deb-src/deb-src/&#39;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="p">.</span><span class="n">list</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="k">update</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">build</span><span class="o">-</span><span class="n">dep</span> <span class="n">mesa</span>
+<div class="highlight"><pre><span></span><code># Fetch dependencies
+sudo sed -i &#39;s/\#[ ]*deb-src/deb-src/&#39; /etc/apt/sources.list
+sudo apt update
+sudo apt-get build-dep mesa
 
-<span class="o">#</span> <span class="n">Actually</span> <span class="n">build</span> <span class="n">Mesa</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">anongit</span><span class="p">.</span><span class="n">freedesktop</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">mesa</span><span class="o">/</span><span class="n">mesa</span><span class="p">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">mesa</span>
-<span class="p">.</span><span class="o">/</span><span class="n">autogen</span><span class="p">.</span><span class="n">sh</span> <span class="err">\</span>
-    <span class="c1">--prefix=$ALT_LOCAL \</span>
-    <span class="c1">--enable-driglx-direct \</span>
-    <span class="c1">--enable-gles1 \</span>
-    <span class="c1">--enable-gles2 \</span>
-    <span class="c1">--enable-glx-tls \</span>
-    <span class="c1">--enable-texture-float \</span>
-    <span class="c1">--with-platforms=drm,x11,wayland \</span>
-    <span class="c1">--with-dri-drivers=i915,i965,nouveau \</span>
-    <span class="c1">--with-gallium-drivers=nouveau,swrast,radeonsi,virgl \</span>
-    <span class="c1">--without-vulkan-drivers</span>
-<span class="n">make</span> <span class="o">-</span><span class="n">j$</span><span class="p">(</span><span class="n">nproc</span> <span class="c1">--ignore=1)</span>
-<span class="n">make</span> <span class="n">install</span>
+# Actually build Mesa
+git clone https://anongit.freedesktop.org/git/mesa/mesa.git
+cd mesa
+./autogen.sh \
+    --prefix=$ALT_LOCAL \
+    --enable-driglx-direct \
+    --enable-gles1 \
+    --enable-gles2 \
+    --enable-glx-tls \
+    --enable-texture-float \
+    --with-platforms=drm,x11,wayland \
+    --with-dri-drivers=i915,i965,nouveau \
+    --with-gallium-drivers=nouveau,swrast,radeonsi,virgl \
+    --without-vulkan-drivers
+make -j$(nproc --ignore=1)
+make install
 </code></pre></div>
 
 <h3>Build QEMU</h3>
-<div class="highlight"><pre><span></span><code><span class="err">git clone git://git.qemu.org/qemu.git</span>
-<span class="err">cd qemu</span>
-<span class="err">./configure \</span>
-<span class="err">    --prefix=$ALT_LOCAL \</span>
-<span class="err">    --target-list=x86_64-softmmu \</span>
-<span class="err">    --enable-gtk \</span>
-<span class="err">    --with-gtkabi=3.0 \</span>
-<span class="err">    --enable-kvm \</span>
-<span class="err">    --enable-spice \</span>
-<span class="err">    --enable-usb-redir \</span>
-<span class="err">    --enable-libusb \</span>
-<span class="err">    --enable-opengl \</span>
-<span class="err">    --enable-virglrenderer</span>
-<span class="err">make -j$(nproc --ignore=1)</span>
-<span class="err">make install</span>
+<div class="highlight"><pre><span></span><code>git clone git://git.qemu.org/qemu.git
+cd qemu
+./configure \
+    --prefix=$ALT_LOCAL \
+    --target-list=x86_64-softmmu \
+    --enable-gtk \
+    --with-gtkabi=3.0 \
+    --enable-kvm \
+    --enable-spice \
+    --enable-usb-redir \
+    --enable-libusb \
+    --enable-opengl \
+    --enable-virglrenderer
+make -j$(nproc --ignore=1)
+make install
 </code></pre></div>
 
 <h2>Set up a VM</h2>
 <p>As a guest we're going to use Ubuntu 17.10, but just use the latest
 release of whatever distro you like. The kernel <em>has</em> to have been
 built with the appropriate virtio-gpu Kconfig options though.</p>
-<div class="highlight"><pre><span></span><code><span class="err">wget http://releases.ubuntu.com/17.10/ubuntu-17.10.1-server-amd64.iso</span>
-<span class="err">qemu-img create -f qcow2 ubuntu.qcow2 35G</span>
-<span class="err">qemu-system-x86_64 \</span>
-<span class="err">    -enable-kvm -M q35 -smp 2 -m 4G \</span>
-<span class="err">    -hda ubuntu.qcow2 \</span>
-<span class="err">    -net nic,model=virtio \</span>
-<span class="err">    -net user,hostfwd=tcp::2222-:22 \</span>
-<span class="err">    -vga virtio \</span>
-<span class="err">    -display sdl,gl=on \</span>
-<span class="err">    -boot d -cdrom ubuntu-17.10.1-server-amd64.iso</span>
+<div class="highlight"><pre><span></span><code>wget http://releases.ubuntu.com/17.10/ubuntu-17.10.1-server-amd64.iso
+qemu-img create -f qcow2 ubuntu.qcow2 35G
+qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on \
+    -boot d -cdrom ubuntu-17.10.1-server-amd64.iso
 </code></pre></div>
 
 <h3>Run VM</h3>
-<div class="highlight"><pre><span></span><code><span class="err">qemu-system-x86_64 \</span>
-<span class="err">    -enable-kvm -M q35 -smp 2 -m 4G \</span>
-<span class="err">    -hda ubuntu.qcow2 \</span>
-<span class="err">    -net nic,model=virtio \</span>
-<span class="err">    -net user,hostfwd=tcp::2222-:22 \</span>
-<span class="err">    -vga virtio \</span>
-<span class="err">    -display sdl,gl=on</span>
+<div class="highlight"><pre><span></span><code>qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on
 </code></pre></div>
 
 <p>Et Voila! Your guest should now have GPU acceleration!</p>

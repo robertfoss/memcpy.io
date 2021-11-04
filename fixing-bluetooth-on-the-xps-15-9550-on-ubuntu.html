@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="Why doesn&#39;t this work automatically? The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually. How To Download BCM-0a5c-6410.hcd and copy it into /lib/firmware/brcm/ and then reboot your device. wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/ sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd sudo reboot">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, desktop, debian, ubuntu, broadcom, brcm, bluetooth, connecting, pairing, driver">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, desktop, debian, ubuntu, broadcom, brcm, bluetooth, connecting, pairing, driver">
 		<meta property="og:title" content="Fixing bluetooth on the XPS 15 9550 on Ubuntu" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="https://memcpy.io/fixing-bluetooth-on-the-xps-15-9550-on-ubuntu.html" />
@@ -49,10 +49,10 @@
 <p>The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually.</p>
 <h2>How To</h2>
 <p>Download <a href="/files/2017-10-28/BCM-0a5c-6410.hcd">BCM-0a5c-6410.hcd</a> and copy it into <code>/lib/firmware/brcm/</code> and then reboot your device.</p>
-<div class="highlight"><pre><span></span><code><span class="err">wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd</span>
-<span class="err">sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/</span>
-<span class="err">sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd</span>
-<span class="err">sudo reboot</span>
+<div class="highlight"><pre><span></span><code>wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd
+sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/
+sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd
+sudo reboot
 </code></pre></div>
 		</article>
 		<section id="teaser-section">

@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="This post will look specifically at removing the WP screw from a Chell (HP Chromebook 13 G1) device, and verifying that it has been successfully removed. To actually flash firmware to Chromebook machines, a device called a Servo is needed. While these devices aren&#39;t available publicly, they can be produced freely or possibly requested from Google if you are contributing code to the ChromiumOS project. Removing the Write-Protect screw So this is what the WP screw looks like on a Chell Chromebook. This may or may not be what you will find in other devices. But if you take a close look, you will notice that the copper pad that the the screw attaches against is split into parts that are bridged by a screw …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, chromium, chromebook, chell, wp screw, wp-screw, collabora">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, chromium, chromebook, chell, wp screw, wp-screw, collabora">
 		<meta property="og:title" content="Removing the Chromebook Write-Protect screw" />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="https://memcpy.io/images/2017-02-27_wp_screw.jpg" />
@@ -60,23 +60,23 @@ split into parts that are bridged by a screw being inserted.</p>
 <h2>Disable Write-Protect</h2>
 <p>So this is the part that requires a <a href="http://dev.chromium.org/developers/how-tos/install-depot-tools">Servo</a> device.
 And a ChromiumOS checkout, for some help setting one up, have a look at <a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html">my previous post</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">ChromiumOS</span><span class="w"> </span><span class="n">checkout</span><span class="w"></span>
-<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">chromiumos</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Go to your ChromiumOS checkout</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">chromiumos</span>
 
-<span class="err">#</span><span class="w"> </span><span class="n">Enter</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="n">environment</span><span class="w"></span>
-<span class="n">cros_sdk</span><span class="w"></span>
+<span class="c1"># Enter dev environment</span>
+<span class="n">cros_sdk</span>
 
-<span class="err">#</span><span class="w"> </span><span class="k">Set</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="k">variable</span><span class="w"></span>
-<span class="n">export</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=</span><span class="n">chell</span><span class="w"></span>
+<span class="c1"># Set device variable</span>
+<span class="k">export</span> <span class="n">BOARD</span><span class="o">=</span><span class="n">chell</span>
 
-<span class="err">#</span><span class="w"> </span><span class="k">Connect</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">Chromebook</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Servo</span><span class="w"> </span><span class="n">device</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">servod</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="err">$</span><span class="n">BOARD</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="c1"># Connect to Chromebook using a Servo device</span>
+<span class="n">sudo</span> <span class="n">servod</span> <span class="o">-</span><span class="n">b</span> <span class="o">$</span><span class="n">BOARD</span> <span class="o">&amp;</span>
 
-<span class="err">#</span><span class="w"> </span><span class="n">Disable</span><span class="w"> </span><span class="n">WP</span><span class="w"></span>
-<span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">vary</span><span class="w"> </span><span class="n">depending</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hardware</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="n">Chromebook</span><span class="w"></span>
-<span class="n">dut</span><span class="o">-</span><span class="n">control</span><span class="w"> </span><span class="nl">fw_wp</span><span class="p">:</span><span class="k">off</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="nl">ft2232_spi</span><span class="p">:</span><span class="n">type</span><span class="o">=</span><span class="n">servo</span><span class="o">-</span><span class="n">v2</span><span class="w"> </span><span class="c1">--wp-disable</span>
-<span class="n">sudo</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">ec</span><span class="w"> </span><span class="c1">--wp-disable</span>
+<span class="c1"># Disable WP</span>
+<span class="c1"># This step may vary depending on the hardware of your actual Chromebook</span>
+<span class="n">dut</span><span class="o">-</span><span class="n">control</span> <span class="n">fw_wp</span><span class="p">:</span><span class="n">off</span>
+<span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span> <span class="o">-</span><span class="n">p</span> <span class="n">ft2232_spi</span><span class="p">:</span><span class="n">type</span><span class="o">=</span><span class="n">servo</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">wp</span><span class="o">-</span><span class="n">disable</span>
+<span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span> <span class="o">-</span><span class="n">p</span> <span class="n">ec</span> <span class="o">--</span><span class="n">wp</span><span class="o">-</span><span class="n">disable</span>
 </code></pre></div>
 
 <h2>References</h2>

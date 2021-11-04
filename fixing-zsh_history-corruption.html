@@ -11,9 +11,9 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="zsh: corrupt history file /home/$USER/.zsh_history Most zsh user will have seen the above line at one time or another. And it means that re-using your shell history is no longer possible. Maybe some of it can be recovered, but more than likely some has been lost. And even if nothing important has been lost, you probably don&#39;t want to spend any time dealing with this. Make zsh maintain a backup Run this snippet in the terminal of your choice. cat &lt;&lt;EOT&gt;&gt; ~/.zshrc # Backup and restore ZSH history strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history EOT What does this actually do? The snippet …">
+		<meta name="description" content="zsh: corrupt history file /home/$USER/.zsh_history Most zsh user will have seen the above line at one time or another. And it means that re-using your shell history is no longer possible. Maybe some of it can be recovered, but more than likely some has been lost. And even if nothing important has been lost, you probably don&#39;t want to spend any time dealing with this. Make zsh maintain a backup Run this snippet in the terminal of your choice. cat &lt;&lt;EOT&gt;&gt; ~/.zshrc # Backup and restore ZSH history strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history EOT What …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, shell, zsh, history, .zsh_history, corruption, fix, how, to, how-to">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, shell, zsh, history, .zsh_history, corruption, fix, how, to, how-to">
 		<meta property="og:title" content="Fixing .zsh_history corruption" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="https://memcpy.io/fixing-zsh_history-corruption.html" />
@@ -55,13 +55,13 @@ And it means that re-using your shell history is no longer possible.</p>
 And even if nothing important has been lost, you probably don't want to spend any time dealing with this.</p>
 <h2>Make zsh maintain a backup</h2>
 <p>Run this snippet in the terminal of your choice.</p>
-<div class="highlight"><pre><span></span><code><span class="n">cat</span> <span class="o">&lt;&lt;</span><span class="n">EOT</span><span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
+<div class="highlight"><pre><span></span><code>cat &lt;&lt;EOT&gt;&gt; ~/.zshrc
 
-<span class="o">#</span> <span class="n">Backup</span> <span class="k">and</span> <span class="n">restore</span> <span class="n">ZSH</span> <span class="n">history</span>
-<span class="n">strings</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span> <span class="o">|</span> <span class="n">sed</span> <span class="s1">&#39;:a;N;$!ba;s/\\\\\n//g&#39;</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">u</span> <span class="o">&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span><span class="p">.</span><span class="n">backup</span>
-<span class="n">cat</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span><span class="p">.</span><span class="n">backup</span> <span class="o">|</span> <span class="n">sed</span> <span class="s1">&#39;:a;N;$!ba;s/\\\\\n//g&#39;</span><span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">zsh_history</span>
+# Backup and restore ZSH history
+strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup
+cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history
 
-<span class="n">EOT</span>
+EOT
 </code></pre></div>
 
 <h3>What does this actually do?</h3>

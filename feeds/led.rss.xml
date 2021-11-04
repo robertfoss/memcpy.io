@@ -8,9 +8,9 @@ in the schematic.&lt;/p&gt;
 &lt;h2&gt;Avoiding lookup tables&lt;/h2&gt;
 &lt;p&gt;The major advantage of twistyplexing is the ability to avoid lookup tables
 and replace them with some relatively straight forward arithmetic.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;row = led_number / (N - 1)&lt;/span&gt;
-&lt;span class="err"&gt;column = led_number % (N - 1)&lt;/span&gt;
-&lt;span class="err"&gt;anode = (row + column + 1) % N&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;row = led_number / (N - 1)
+column = led_number % (N - 1)
+anode = (row + column + 1) % N
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Of course the cathode still has to be controlled, but its pin id already
@@ -36,7 +36,7 @@ set to the mA range, connected between the power supply and the APA102 breakout 
 &lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 20 Feb 2018 22:26:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-02-20:/apa102-led-current-usage.html</guid><category>apa102</category><category>apa102</category><category>2020</category><category>led</category><category>power</category><category>usage</category><category>current</category><category>quiescent</category></item><item><title>ESP8266 APA102 Bulb</title><link>https://memcpy.io/esp8266-apa102-bulb.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="https://github.com/robertfoss/esp8266_apa102_bulb/raw/media/v2_running.jpg" title="v2: Assembled and running over WiFi"&gt;&lt;/p&gt;
 &lt;p&gt;The product of this project is a WiFi connected LED bulb. Every LED on this bulb is individually programmable over the WiFi, by simply sending UDP packets to the bulb.&lt;/p&gt;
 &lt;h2&gt;Software and hardware sources&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/robertfoss/esp8266_apa102_bulb.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;a href="https://github.com/robertfoss/esp8266_apa102_bulb"&gt;This project&lt;/a&gt; consists of 3 parts: the software running on the led bulb, the software running on some host computer and the hardware.&lt;/p&gt;
@@ -44,4 +44,4 @@ set to the mA range, connected between the power supply and the APA102 breakout 
 &lt;p&gt;The firmare is based on the &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; firwmare for the ESP8266. It's running the APA102 LED driver and the enduser setup module, which I've written about &lt;a href="../user-friendly-setup-of-esp8266-gadgets.html"&gt;previously&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Additionally it's running 3 lua scripts that deal with different aspects.&lt;/p&gt;
 &lt;p&gt;There's init.lua which makes sure we're connected to a WiFi.&lt;/p&gt;
-&lt;p&gt;udp_listener.lua receives UDP packets and then sends forwards that …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 07 Feb 2016 22:46:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-02-07:/esp8266-apa102-bulb.html</guid><category>ESP8266</category><category>ESP8266</category><category>APA102</category><category>LED</category><category>WIFI</category></item></channel></rss>
+&lt;p&gt;udp_listener.lua receives UDP packets and then …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 07 Feb 2016 22:46:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-02-07:/esp8266-apa102-bulb.html</guid><category>ESP8266</category><category>ESP8266</category><category>APA102</category><category>LED</category><category>WIFI</category></item></channel></rss>

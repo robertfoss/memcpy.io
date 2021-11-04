@@ -11,8 +11,7 @@ and sends them to the display.&lt;/p&gt;
 doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
 graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the
 HWC1 API.
-Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
-ways …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
 (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
 The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
 that would normally be done with OpenGL.

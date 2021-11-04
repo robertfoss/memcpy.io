@@ -2,15 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - CAD</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/cad.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2015-10-12T16:51:00+02:00</updated><entry><title>WS2812 LED Matrix</title><link href="https://memcpy.io/ws2812-led-matrix.html" rel="alternate"></link><published>2015-10-12T16:51:00+02:00</published><updated>2015-10-12T16:51:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2015-10-12:/ws2812-led-matrix.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
 &lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
 &lt;h2&gt;Code&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The second part is run on a host pc. It's a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266.
-This relies on the host pc being able to connect to the ESP8266 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
+This relies on the host pc being able to connect to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"&gt;&lt;/p&gt;
 &lt;p&gt;The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.&lt;/p&gt;
 &lt;h2&gt;Code&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with &lt;a href="https://github.com/nodemcu/nodemcu-firmware"&gt;NodeMCU&lt;/a&gt; and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent &lt;a href="https://github.com/kbeckmann"&gt;Konrad Beckmann&lt;/a&gt;.&lt;/p&gt;

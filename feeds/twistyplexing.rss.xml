@@ -8,9 +8,9 @@ in the schematic.&lt;/p&gt;
 &lt;h2&gt;Avoiding lookup tables&lt;/h2&gt;
 &lt;p&gt;The major advantage of twistyplexing is the ability to avoid lookup tables
 and replace them with some relatively straight forward arithmetic.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;row = led_number / (N - 1)&lt;/span&gt;
-&lt;span class="err"&gt;column = led_number % (N - 1)&lt;/span&gt;
-&lt;span class="err"&gt;anode = (row + column + 1) % N&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;row = led_number / (N - 1)
+column = led_number % (N - 1)
+anode = (row + column + 1) % N
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Of course the cathode still has to be controlled, but its pin id already

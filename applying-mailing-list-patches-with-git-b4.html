@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="It was created by Konstantin Ryabitsev and has become a very frequently used tool for me. It supports a lot of different ways for interacting with the Linux Kernel mailing lists. Of these the b4 am subcommand is what I primarily use. This subcommand downloads all of the patches belonging to a patch series and drops them into a .mbox file. But! It doesn&#39;t apply them to the repository we&#39;re currently in, and herein lies the itch that I would like to scratch. The inspiration for this post is the script that @stellarhopper authored and @widawsky pointed out to me. The Good, the Bad &amp; the Ugly After first publishing this post, people on the twittersphere suggested some alternative approaches, and it would seem that there …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, development, shell, git, alias, b4, gitconfig, mbox, am, mailing, list">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, kernel, development, shell, git, alias, b4, gitconfig, mbox, am, mailing, list">
 		<meta property="og:title" content="Applying mailing list patches with &#39;git b4&#39;" />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="https://memcpy.io/images/2021-03-08_git_b4_gkh.png" />
@@ -98,18 +98,18 @@ Using bash, this was less of an issue. I'd think this is due to the really neat 
 used, <code>tee &gt;(find_apply_mbx)</code>.</p>
 <p>For the general case of running a script as a part of git, I think this is the way to
 go. The only downside to me is that the script is an external file.</p>
-<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">cat</span> <span class="o">~/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">b4am</span>
+<div class="highlight"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">b4am</span><span class="w"></span>
 <span class="cp">#!/bin/bash -eE</span>
 
-<span class="n">find_apply_mbx</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">mbx</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">awk</span> <span class="err">&#39;</span><span class="o">/^</span><span class="n">Writing</span> <span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="p">.</span><span class="n">mbx</span><span class="o">/</span><span class="p">{</span> <span class="n">print</span> <span class="err">$</span><span class="mi">2</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">[[</span> <span class="err">$</span><span class="n">mbx</span> <span class="p">]];</span> <span class="n">then</span>
-        <span class="n">git</span> <span class="n">am</span> <span class="s">&quot;$mbx&quot;</span>
-    <span class="n">fi</span>
-<span class="p">}</span>
+<span class="n">find_apply_mbx</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">mbx</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">awk</span><span class="w"> </span><span class="err">&#39;</span><span class="o">/^</span><span class="n">Writing</span><span class="w"> </span><span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="p">.</span><span class="n">mbx</span><span class="o">/</span><span class="p">{</span><span class="w"> </span><span class="n">print</span><span class="w"> </span><span class="n">$2</span><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="n">$mbx</span><span class="w"> </span><span class="p">]];</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
+<span class="w">        </span><span class="n">git</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="s">&quot;$mbx&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">fi</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">b4</span> <span class="n">am</span> <span class="o">-</span><span class="n">cls</span> <span class="s">&quot;$@&quot;</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">tee</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">find_apply_mbx</span><span class="p">)</span>
+<span class="n">b4</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="o">-</span><span class="n">cls</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tee</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="n">find_apply_mbx</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 <h3>The Ugly</h3>

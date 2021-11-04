@@ -51,88 +51,81 @@ In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
 board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install \&lt;/span&gt;
-&lt;span class="err"&gt;    apt-transport-https \&lt;/span&gt;
-&lt;span class="err"&gt;    bmap-tools \&lt;/span&gt;
-&lt;span class="err"&gt;    ca-certificates \&lt;/span&gt;
-&lt;span class="err"&gt;    curl \&lt;/span&gt;
-&lt;span class="err"&gt;    git \&lt;/span&gt;
-&lt;span class="err"&gt;    gnupg2 \&lt;/span&gt;
-&lt;span class="err"&gt;    repo \&lt;/span&gt;
-&lt;span class="err"&gt;    software-properties-common \&lt;/span&gt;
-&lt;span class="err"&gt;    u-boot-tools \&lt;/span&gt;
-&lt;span class="err"&gt;    qemu-kvm&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; \
+    &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;transport&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt; \
+    &lt;span class="n"&gt;bmap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt; \
+    &lt;span class="n"&gt;ca&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;certificates&lt;/span&gt; \
+    &lt;span class="n"&gt;curl&lt;/span&gt; \
+    &lt;span class="n"&gt;git&lt;/span&gt; \
+    &lt;span class="n"&gt;gnupg2&lt;/span&gt; \
+    &lt;span class="n"&gt;repo&lt;/span&gt; \
+    &lt;span class="n"&gt;software&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;properties&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;common&lt;/span&gt; \
+    &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;boot&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt; \
+    &lt;span class="n"&gt;qemu&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;kvm&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up Docker container for building&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install Docker
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;
-sudo apt update
-sudo apt install docker-ce
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Install Docker&lt;/span&gt;
+&lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fsSL&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debian&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gpg&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ce&lt;/span&gt;
 
-# Set up privileges for Docker
-sudo usermod -aG docker &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
-su - &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;# Set up privileges for Docker&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;usermod&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aG&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;su&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
-# Fetch Docker image
-docker pull godebos/debos:latest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2&gt;Build&lt;/h2&gt;
-&lt;h3&gt;Build Android&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mkdir android; cd android&lt;/span&gt;
-&lt;span class="err"&gt;repo …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
+&lt;span class="c1"&gt;# Fetch …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/running-android-next-to-wayland.html"&gt;A previous post&lt;/a&gt; introduced the &lt;a href="https://gitlab.collabora.com/spurv/device_freedesktop/blob/master/spurv/"&gt;SPURV&lt;/a&gt;
 Android compatibility layer for Wayland based Linux environment.&lt;br&gt;
 In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based &lt;a href="https://boundarydevices.com/product/nitrogen6max/"&gt;Nitrogen6_MAX&lt;/a&gt;
 board from &lt;a href="https://boundarydevices.com/"&gt;Boundary Devices&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Install dependencies&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo apt install \&lt;/span&gt;
-&lt;span class="err"&gt;    apt-transport-https \&lt;/span&gt;
-&lt;span class="err"&gt;    bmap-tools \&lt;/span&gt;
-&lt;span class="err"&gt;    ca-certificates \&lt;/span&gt;
-&lt;span class="err"&gt;    curl \&lt;/span&gt;
-&lt;span class="err"&gt;    git \&lt;/span&gt;
-&lt;span class="err"&gt;    gnupg2 \&lt;/span&gt;
-&lt;span class="err"&gt;    repo \&lt;/span&gt;
-&lt;span class="err"&gt;    software-properties-common \&lt;/span&gt;
-&lt;span class="err"&gt;    u-boot-tools \&lt;/span&gt;
-&lt;span class="err"&gt;    qemu-kvm&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; \
+    &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;transport&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt; \
+    &lt;span class="n"&gt;bmap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt; \
+    &lt;span class="n"&gt;ca&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;certificates&lt;/span&gt; \
+    &lt;span class="n"&gt;curl&lt;/span&gt; \
+    &lt;span class="n"&gt;git&lt;/span&gt; \
+    &lt;span class="n"&gt;gnupg2&lt;/span&gt; \
+    &lt;span class="n"&gt;repo&lt;/span&gt; \
+    &lt;span class="n"&gt;software&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;properties&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;common&lt;/span&gt; \
+    &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;boot&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt; \
+    &lt;span class="n"&gt;qemu&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;kvm&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Set up Docker container for building&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install Docker
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;
-sudo apt update
-sudo apt install docker-ce
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Install Docker&lt;/span&gt;
+&lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fsSL&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debian&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gpg&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ce&lt;/span&gt;
 
-# Set up privileges for Docker
-sudo usermod -aG docker &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
-su - &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;# Set up privileges for Docker&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;usermod&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aG&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;su&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
-# Fetch Docker image
-docker pull godebos/debos:latest
+&lt;span class="c1"&gt;# Fetch Docker image&lt;/span&gt;
+&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;pull&lt;/span&gt; &lt;span class="n"&gt;godebos&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;latest&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Build&lt;/h2&gt;
 &lt;h3&gt;Build Android&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mkdir android; cd android&lt;/span&gt;
-&lt;span class="err"&gt;repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10&lt;/span&gt;
-&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/&lt;/span&gt;
-&lt;span class="err"&gt;repo sync -j15&lt;/span&gt;
-&lt;span class="err"&gt;. build/envsetup.sh&lt;/span&gt;
-&lt;span class="err"&gt;lunch spurv-eng&lt;/span&gt;
-&lt;span class="err"&gt;make -j12&lt;/span&gt;
-&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir android; cd android
+repo init -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r10
+git clone https://gitlab.collabora.com/spurv/android_manifest.git .repo/local_manifests/
+repo sync -j15
+. build/envsetup.sh
+lunch spurv-eng
+make -j12
+cd ..
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Build Linux Kernel&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5&lt;/span&gt;
-&lt;span class="err"&gt;cd linux&lt;/span&gt;
-&lt;span class="err"&gt;sh ../android/device/freedesktop/spurv/build-kernel.sh&lt;/span&gt;
-&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://gitlab.collabora.com/spurv/linux.git -b android-container_v5.1-rc5
+cd linux
+sh ../android/device/freedesktop/spurv/build-kernel.sh
+cd ..
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Create root filesystem&lt;/h3&gt;
@@ -142,8 +135,8 @@ which is a tool for creating Debian based OS images.&lt;/p&gt;
 &lt;h3&gt;Create &amp;amp; flash image&lt;/h3&gt;
 &lt;p&gt;Now we're ready to integrate all of the above into one coherent image.
 This is where the Nitrogen6_MAX devboard targeting comes in.  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://gitlab.collabora.com/spurv/debos.git&lt;/span&gt;
-&lt;span class="err"&gt;sudo debos/build_image.sh -b /dev/mmcblk0&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://gitlab.collabora.com/spurv/debos.git
+sudo debos/build_image.sh -b /dev/mmcblk0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The platform specific parts are contained in &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/uboot_nitrogen6qp-max.scr"&gt;uboot_nitrogen6qp-max.scr&lt;/a&gt;
@@ -152,8 +145,8 @@ and &lt;a href="https://gitlab.collabora.com/spurv/debos/blob/master/build_image
 &lt;p&gt;Pop the flashed SD-card into your device and restart it, and then log in as
 &lt;code&gt;root/root&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In order to start Android, run one of these two commands:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Launch just and Android application&lt;/span&gt;
-&lt;span class="err"&gt;/home/aosp/run.sh&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Launch just and Android application
+/home/aosp/run.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Starting the Android application might take a minute or two, but Weston should

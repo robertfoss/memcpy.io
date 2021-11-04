@@ -9,16 +9,16 @@ host.&lt;/p&gt;
 itself has to be given privileges.&lt;/p&gt;
 &lt;p&gt;There is no simple switch for doing this in LXC unfortunately, but a few
 config options will do the trick.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;lxc&lt;/span&gt; &lt;span class="n"&gt;launch&lt;/span&gt; &lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ubuntu&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bionic&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;lxc launch images:ubuntu/bionic container
 
-&lt;span class="n"&gt;lxc&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt; &lt;span class="k"&gt;security&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nesting&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;
-&lt;span class="n"&gt;lxc&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt; &lt;span class="k"&gt;security&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;privileged&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;
-&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;EOT&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;lxc&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt; &lt;span class="n"&gt;raw&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lxc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;
-&lt;span class="n"&gt;lxc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cgroup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;devices&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;allow&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
-&lt;span class="n"&gt;lxc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;drop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
-&lt;span class="n"&gt;EOT&lt;/span&gt;
+lxc config set container security.nesting true
+lxc config set container security.privileged true
+cat &amp;lt;&amp;lt;EOT | lxc config set container raw.lxc -
+lxc.cgroup.devices.allow = a
+lxc.cap.drop =
+EOT
 
-&lt;span class="n"&gt;lxc&lt;/span&gt; &lt;span class="k"&gt;restart&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;
+lxc restart container
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Setup docker on container&lt;/h2&gt;

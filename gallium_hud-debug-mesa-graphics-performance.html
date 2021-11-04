@@ -11,9 +11,9 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="GALLIUM_HUD GALLIUM_HUD is a feature that adds performance graphs to applications that describe various aspects like FPS, CPU usage, etc in realtime. It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc applications. It only works for Mesa drivers that are Gallium based, which means that the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD. See GALLIUM_HUD options: export GALLIUM_HUD=help glxgears Android If you&#39;re building Android, you can supply system-wide environment values by doing an export in the init.rc file of the device you are using, like this. # Go to android source code checkout cd android # Add export to init.rc (linaro/generic is the device I use) nano device/linaro/generic/init …">
+		<meta name="description" content="GALLIUM_HUD GALLIUM_HUD is a feature that adds performance graphs to applications that describe various aspects like FPS, CPU usage, etc in realtime. It is enabled using an environment variable, GALLIUM_HUD, that can be set for GL/EGL/etc applications. It only works for Mesa drivers that are Gallium based, which means that the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD. See GALLIUM_HUD options: export GALLIUM_HUD=help glxgears Android If you&#39;re building Android, you can supply system-wide environment values by doing an export in the init.rc file of the device you are using, like this. # Go to android source code checkout cd android # Add export to init.rc (linaro/generic is the device I …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, android, aosp, linux, mesa, gallium, hud, peformance, diagnostics, debug, collabora">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, android, aosp, linux, mesa, gallium, hud, peformance, diagnostics, debug, collabora">
 		<meta property="og:title" content="GALLIUM_HUD: Debug Mesa Graphics Performance" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="https://memcpy.io/gallium_hud-debug-mesa-graphics-performance.html" />
@@ -53,28 +53,28 @@ various aspects like FPS, CPU usage, etc in realtime.</p>
 applications. It only works for Mesa drivers that are Gallium based, which means that
 the most drivers (with the notable exception of some Intel drivers) support GALLIUM_HUD.</p>
 <p>See GALLIUM_HUD options:</p>
-<div class="highlight"><pre><span></span><code><span class="err">export GALLIUM_HUD=help</span>
-<span class="err">glxgears</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="n">GALLIUM_HUD</span><span class="o">=</span><span class="n">help</span>
+<span class="n">glxgears</span>
 </code></pre></div>
 
 <h3>Android</h3>
 <p>If you're building Android, you can supply system-wide environment values by doing an
 export in the init.rc file of the device you are using, like 
 <a href="https://customer-git.collabora.com/cgit/android-etnaviv/android-device-linaro-generic.git/commit/?h=android-etnaviv&amp;id=48755378c388707260a8bb50e0fb62a309ded986">this</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">android</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">checkout</span><span class="w"></span>
-<span class="n">cd</span><span class="w"> </span><span class="n">android</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Go to android source code checkout</span>
+<span class="n">cd</span> <span class="n">android</span>
 
-<span class="err">#</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">init</span><span class="p">.</span><span class="n">rc</span><span class="w"> </span><span class="p">(</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="k">use</span><span class="p">)</span><span class="w"></span>
-<span class="n">nano</span><span class="w"> </span><span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">rc</span><span class="w"></span>
-<span class="n">export</span><span class="w"> </span><span class="n">GALLIUM_HUD</span><span class="w"> </span><span class="n">cpu</span><span class="p">,</span><span class="n">cpu0</span><span class="o">+</span><span class="n">cpu1</span><span class="o">+</span><span class="n">cpu2</span><span class="o">+</span><span class="n">cpu3</span><span class="p">;</span><span class="n">pixels</span><span class="o">-</span><span class="n">rendered</span><span class="p">,</span><span class="n">fps</span><span class="p">,</span><span class="n">primitives</span><span class="o">-</span><span class="n">generated</span><span class="w"></span>
+<span class="c1"># Add export to init.rc (linaro/generic is the device I use)</span>
+<span class="n">nano</span> <span class="n">device</span><span class="o">/</span><span class="n">linaro</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">rc</span>
+<span class="k">export</span> <span class="n">GALLIUM_HUD</span> <span class="n">cpu</span><span class="p">,</span><span class="n">cpu0</span><span class="o">+</span><span class="n">cpu1</span><span class="o">+</span><span class="n">cpu2</span><span class="o">+</span><span class="n">cpu3</span><span class="p">;</span><span class="n">pixels</span><span class="o">-</span><span class="n">rendered</span><span class="p">,</span><span class="n">fps</span><span class="p">,</span><span class="n">primitives</span><span class="o">-</span><span class="n">generated</span>
 </code></pre></div>
 
 <h3>Linux</h3>
 <p>If you're using one of the usual Linux distros, GALLIUM_HUD can be enabled by setting
 the environtment variable in a place that it loaded early.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># Add export to /etc/environment</span>
-<span class="err">nano /etc/environment </span>
-<span class="err">export GALLIUM_HUD cpu,cpu0+cpu1+cpu2+cpu3;pixels-rendered,fps,primitives-generated</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add export to /etc/environment</span>
+<span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">environment</span> 
+<span class="k">export</span> <span class="n">GALLIUM_HUD</span> <span class="n">cpu</span><span class="p">,</span><span class="n">cpu0</span><span class="o">+</span><span class="n">cpu1</span><span class="o">+</span><span class="n">cpu2</span><span class="o">+</span><span class="n">cpu3</span><span class="p">;</span><span class="n">pixels</span><span class="o">-</span><span class="n">rendered</span><span class="p">,</span><span class="n">fps</span><span class="p">,</span><span class="n">primitives</span><span class="o">-</span><span class="n">generated</span>
 </code></pre></div>
 
 <h2>Thanks</h2>

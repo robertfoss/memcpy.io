@@ -28,52 +28,52 @@ from freedesktop.org, but altered to target VC4 and Raspbian.&lt;/p&gt;
 &lt;p&gt;You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Change&lt;/span&gt; &lt;span class="n"&gt;WLD&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;any&lt;/span&gt; &lt;span class="k"&gt;location&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="k"&gt;like&lt;/span&gt;
-&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;=~/&lt;/span&gt;&lt;span class="k"&gt;local&lt;/span&gt;
-&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;
-&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PKG_CONFIG_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;
-&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
-&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Change WLD to any location you like&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;=~/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PKG_CONFIG_PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
 
-&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Needed&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;autotools&lt;/span&gt;
-&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
+&lt;span class="c1"&gt;# Needed by autotools&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Installing dependencies&lt;/h2&gt;
 &lt;p&gt;Start by installing the build dependencies of mesa, weston and wayland.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Enable source packages&lt;/span&gt;
-&lt;span class="err"&gt;sudo sed -e &amp;quot;s/#\sdeb-src/deb-src/g&amp;quot; -i /etc/apt/sources.list&lt;/span&gt;
-&lt;span class="err"&gt;sudo apt update&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Enable source packages
+sudo sed -e &amp;quot;s/#\sdeb-src/deb-src/g&amp;quot; -i /etc/apt/sources.list
+sudo apt update
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The above step can alternatively be completed using the GUI of your
 package manager, by enabling source packages.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Install&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;mesa&lt;/span&gt;
-&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dep&lt;/span&gt; &lt;span class="n"&gt;mesa&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install build dependencies of mesa
+sudo apt-get build-dep mesa
 
-&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Install&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;weston&lt;/span&gt;
-&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;
-  &lt;span class="n"&gt;libevdev&lt;/span&gt; &lt;span class="n"&gt;libevdev&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;
-  &lt;span class="n"&gt;libwacom&lt;/span&gt; &lt;span class="n"&gt;libwacom&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;
-  &lt;span class="n"&gt;libxkbcommon&lt;/span&gt; &lt;span class="n"&gt;libxkbcommon&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+# Install build dependencies of wayland/weston
+sudo apt-get install \
+  libevdev libevdev-dev \
+  libwacom libwacom-dev \
+  libxkbcommon libxkbcommon-dev
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Building Mesa&lt;/h2&gt;
 &lt;p&gt;Configure and compile mesa with vc4, wayland and EGL support.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://anongit.freedesktop.org/mesa/mesa&lt;/span&gt;
-&lt;span class="err"&gt;cd mesa&lt;/span&gt;
-&lt;span class="err"&gt;./autogen.sh --prefix=$WLD \&lt;/span&gt;
-&lt;span class="err"&gt;  --enable-gles2 \&lt;/span&gt;
-&lt;span class="err"&gt;  --with-egl-platforms=x11,wayland,drm \&lt;/span&gt;
-&lt;span class="err"&gt;  --enable-gbm --enable-shared-glapi \&lt;/span&gt;
-&lt;span class="err"&gt;  --with-gallium-drivers=vc4 \&lt;/span&gt;
-&lt;span class="err"&gt;  --without-dri-drivers \&lt;/span&gt;
-&lt;span class="err"&gt;  --disable-va \&lt;/span&gt;
-&lt;span class="err"&gt;  --disable-vdpau \&lt;/span&gt;
-&lt;span class="err"&gt;  --disable-xvmc \&lt;/span&gt;
-&lt;span class="err"&gt;  --disable-omx&lt;/span&gt;
-&lt;span class="err"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/mesa/mesa
+cd mesa
+./autogen.sh --prefix=$WLD \
+  --enable-gles2 \
+  --with-egl-platforms=x11,wayland,drm \
+  --enable-gbm --enable-shared-glapi \
+  --with-gallium-drivers=vc4 \
+  --without-dri-drivers \
+  --disable-va \
+  --disable-vdpau \
+  --disable-xvmc \
+  --disable-omx
+make -j4 &amp;amp;&amp;amp; make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Building Weston and dependencies&lt;/h2&gt;
@@ -81,37 +81,37 @@ package manager, by enabling source packages.&lt;/p&gt;
 and built.&lt;/p&gt;
 &lt;h4&gt;Wayland&lt;/h4&gt;
 &lt;p&gt;Weston is a Wayland compositor, so we're going to have to build Wayland.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;anongit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;freedesktop&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;wayland&lt;/span&gt;
-&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;autogen&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="c1"&gt;--prefix=$WLD&lt;/span&gt;
-&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j4&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/wayland/wayland
+cd wayland
+./autogen.sh --prefix=$WLD
+make -j4 &amp;amp;&amp;amp; make install
+cd ..
 
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;anongit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;freedesktop&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;protocols&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;wayland&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;protocols&lt;/span&gt;
-&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;autogen&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="c1"&gt;--prefix=$WLD&lt;/span&gt;
-&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt;
+git clone git://anongit.freedesktop.org/wayland/wayland-protocols
+cd wayland-protocols
+./autogen.sh --prefix=$WLD
+make install
+cd ..
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4&gt;libinput&lt;/h4&gt;
 &lt;p&gt;libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://anongit.freedesktop.org/wayland/libinput&lt;/span&gt;
-&lt;span class="err"&gt;cd libinput&lt;/span&gt;
-&lt;span class="err"&gt;./autogen.sh --prefix=$WLD&lt;/span&gt;
-&lt;span class="err"&gt;make -j4 &amp;amp;&amp;amp; make install&lt;/span&gt;
-&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/wayland/libinput
+cd libinput
+./autogen.sh --prefix=$WLD
+make -j4 &amp;amp;&amp;amp; make install
+cd ..
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4&gt;Weston&lt;/h4&gt;
 &lt;p&gt;Finally we've built all of the dependencies of Weston and can now build it.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone git://anongit.freedesktop.org/wayland/weston&lt;/span&gt;
-&lt;span class="err"&gt;cd weston&lt;/span&gt;
-&lt;span class="err"&gt;./autogen.sh --prefix=$WLD \&lt;/span&gt;
-&lt;span class="err"&gt;  --disable-libunwind&lt;/span&gt;
-&lt;span class="err"&gt;make -j4 &amp;amp;&amp;amp;&lt;/span&gt;
-&lt;span class="err"&gt;sudo make install&lt;/span&gt;
-&lt;span class="err"&gt;cd ..&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/wayland/weston
+cd weston
+./autogen.sh --prefix=$WLD \
+  --disable-libunwind
+make -j4 &amp;amp;&amp;amp;
+sudo make install
+cd ..
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Running Weston&lt;/h2&gt;
@@ -119,20 +119,20 @@ and built.&lt;/p&gt;
 Now, let's fire up a (virtual) terminal. Make sure that you're not running an
 X terminal, ssh terminal or serial terminal.&lt;/p&gt;
 &lt;p&gt;Running weston in this way depends on logind.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Make sure that &lt;span class="nv"&gt;$DISPLAY&lt;/span&gt; is unset.
-unset DISPLAY
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Make sure that $DISPLAY is unset.&lt;/span&gt;
+&lt;span class="n"&gt;unset&lt;/span&gt; &lt;span class="n"&gt;DISPLAY&lt;/span&gt;
 
-# And that &lt;span class="nv"&gt;$XDG_RUNTIME_DIR&lt;/span&gt; has been set and created.
-if test -z &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;; then
-  export XDG_RUNTIME_DIR=/tmp/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;UID&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;-runtime-dir
-  if ! test -d &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;; then
-    mkdir &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
-    chmod 0700 &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;1
-  fi
-fi
+&lt;span class="c1"&gt;# And that $XDG_RUNTIME_DIR has been set and created.&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt;
+  &lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;/$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;UID&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;runtime&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dir&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt;
+    &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;chmod&lt;/span&gt; &lt;span class="mi"&gt;0700&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="n"&gt;fi&lt;/span&gt;
+&lt;span class="n"&gt;fi&lt;/span&gt;
 
-# Run weston:
-weston
+&lt;span class="c1"&gt;# Run weston:&lt;/span&gt;
+&lt;span class="n"&gt;weston&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Try weston applications&lt;/h2&gt;

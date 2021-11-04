@@ -11,9 +11,9 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software. Code git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with NodeMCU and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent Konrad Beckmann. The second part is run on a host pc. It&#39;s a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266. This relies on the host pc being able to connect to the ESP8266 …">
+		<meta name="description" content="The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software. Code git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with NodeMCU and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent Konrad Beckmann. The second part is run on a host pc. It&#39;s a simple python script that generates a framebuffer from a sinusoidal animation and transmits it over UDP to the IP of the ESP8266. This relies on the host pc being able to connect to …">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, ESP8266, ESP, WS2812, WS2812B, 3D Printing, CAD">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, ESP8266, ESP, WS2812, WS2812B, 3D Printing, CAD">
 		<meta property="og:title" content="WS2812 LED Matrix" />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="https://memcpy.io/images/2015-10-12_led_matrix_running.jpg" />
@@ -47,7 +47,7 @@
 			<p><img alt="Alt text" src="/images/2015-10-12_led_matrix_running.jpg" title="LED Matrix Running"></p>
 <p>The LED Matrix is constructed out of a WS2812B 8x8 panel, a 3D printed case, an ESP8266, a LiPo battery and some software.</p>
 <h2>Code</h2>
-<div class="highlight"><pre><span></span><code><span class="err">git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git</span>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/robertfoss/esp8266_ws2812_matrix.git
 </code></pre></div>
 
 <p>The software is divided into two parts. The receiving end is run on the ESP8266 that has been flashed with <a href="https://github.com/nodemcu/nodemcu-firmware">NodeMCU</a> and is a simple lua script that receives UDP packets and forwards them to the excellent WS2812 module created by the the equally excellent <a href="https://github.com/kbeckmann">Konrad Beckmann</a>.</p>

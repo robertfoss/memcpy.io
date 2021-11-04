@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Loading kernel modules with boot img</title>
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/loading-kernel-modules-with-boot-img.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="A basic example of the git alias function syntax looks like this. [alias] shortcut = &#34;!f() \ {\ echo Hello world!; \ }; f&#34; This syntax defines a function f and then calls it. These aliases are executed in a sh shell, which means there&#39;s no access to Bash / Zsh specific functionality. Every command is ended with a ; and each line ended with a \. This is easy enough to grok. But when we try to clean up the above snippet and add some quotes to &#34;Hello world!&#34;, we hit this obtuse error message. }; f: 1: Syntax error: end of file unexpected (expecting &#34;}&#34;) This syntax error is caused by quotes needing to be escaped. The reason for this comes down to how git tokenizes and executes these functions. If you&#39;re curious …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, bootimg, cpio, modules, .ko, archive, concatenate, kconfig">
+		<meta property="og:title" content="Loading kernel modules with boot img" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://memcpy.io/loading-kernel-modules-with-boot-img.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2021-11-04" />
+		<meta property="article:section" content="linux" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="bootimg" />
+		<meta property="article:tag" content="cpio" />
+		<meta property="article:tag" content="modules" />
+		<meta property="article:tag" content=".ko" />
+		<meta property="article:tag" content="archive" />
+		<meta property="article:tag" content="concatenate" />
+		<meta property="article:tag" content="kconfig" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Loading kernel modules with boot img" />
+		<meta name="twitter:description" content="Most kernel kconfigs use drivers built as modules, this makes a lot of sense in Linux distributions. However during kernel development it is a hassle to manually copy freshly built modules onto the device under development." />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Loading kernel modules with boot img</h1>
+				<p>
+				Published <time datetime="2021-11-04" itemprop="datePublished">2021-11-04</time>
+				</p>
+			</header>
+			<p>Most kernel kconfigs use drivers built as modules, this makes a lot of sense in Linux distributions. However during kernel development it is a hassle to manually copy freshly built modules onto the device under development.</p>
+			<p>A basic example of the git alias function syntax looks like this.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[alias]</span>
+    <span class="na">shortcut</span> <span class="o">=</span> <span class="s">&quot;!f() \</span>
+    <span class="na">{\</span>
+        <span class="na">echo Hello world!; \</span>
+    <span class="na">}; f&quot;</span>
+</code></pre></div>
+
+<p>This syntax defines a function <code>f</code> and then calls it. These aliases are executed in a <code>sh</code> shell,
+which means there's no access to Bash / Zsh specific functionality.</p>
+<p>Every command is ended with a <code>;</code> and each line ended with a <code>\</code>. This is easy enough
+to grok. But when we try to clean up the above snippet and add some quotes to
+<code>"Hello world!"</code>, we hit this obtuse error message.</p>
+<div class="highlight"><pre><span></span><code>}<span class="c1">; f: 1: Syntax error: end of file unexpected (expecting &quot;}&quot;)</span>
+</code></pre></div>
+
+<p>This syntax error is caused by quotes needing to be escaped. The reason for this
+comes down to how git tokenizes and executes these functions. If you're curious
+about how it's managed internally, have a look at
+<a href="https://git.kernel.org/pub/scm/git/git.git/tree/run-command.c?h=v2.31.0-rc1#n267">git/run-commands.c</a>.</p>
+<p><a href="https://gist.github.com/HaleTom">Tom Hale</a> wrote this
+<a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae">script</a>
+for doing automatic escaping.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">quote</span><span class="ss">()</span> {
+    <span class="nv">printf</span> <span class="o">%</span><span class="nv">s</span> <span class="s2">&quot;</span><span class="s">$1</span><span class="s2">&quot;</span> <span class="o">|</span> <span class="nv">sed</span> <span class="o">-</span><span class="nv">r</span> <span class="s1">&#39;</span><span class="s">s/([&quot;</span><span class="se">\\</span><span class="s">])/</span><span class="se">\\</span><span class="s">\1/g</span><span class="s1">&#39;</span><span class="c1">;</span>
+}
+
+<span class="nv">IFS</span><span class="o">=</span>$<span class="ss">(</span><span class="nv">printf</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="ss">)</span>
+<span class="nv">printf</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s">!&quot;</span><span class="s1">&#39;</span>
+<span class="nv">read</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">previous</span>
+
+<span class="k">while</span> <span class="nv">read</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">line</span><span class="c1">; do</span>
+    <span class="nv">quote</span> <span class="s2">&quot;</span><span class="s">$previous</span><span class="s2">&quot;</span>
+    <span class="nv">printf</span> <span class="s1">&#39;</span><span class="s"> </span><span class="se">\\</span><span class="s">n</span><span class="se">\\\n</span><span class="s1">&#39;</span>
+    <span class="nv">previous</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">$line</span><span class="s2">&quot;</span>
+<span class="nv">done</span>
+
+<span class="nv">quote</span> <span class="s2">&quot;</span><span class="s">$previous</span><span class="s2">&quot;</span>
+<span class="nv">printf</span> <span class="s2">&quot;</span><span class="s"> #\</span><span class="s2">&quot;</span>\<span class="nv">n</span><span class="s2">&quot;</span><span class="s">;</span>
+</code></pre></div>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/bootimg.html">bootimg </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/cpio.html">cpio </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/modules.html">modules </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/ko.html">.ko </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/archive.html">archive </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/concatenate.html">concatenate </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/kconfig.html">kconfig </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2021 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.svg"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

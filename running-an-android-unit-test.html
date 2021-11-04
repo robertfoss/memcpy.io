@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
 		<meta name="description" content="A similar approach can be used for any Android module. cd aosp bash source build/envsetup.sh &amp;&amp; \ lunch linaro_arm64-userdebug &amp;&amp; \ mmm system/core/libsync/tests &amp;&amp; \ adb root &amp;&amp; \ adb remount &amp;&amp; \ adb sync &amp;&amp; \ adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests">
 		<meta name="author" content="Robert Foss">
-		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Embedded, Engineer, linux, kernel, android, aosp, adb">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, kernel, android, aosp, adb">
 		<meta property="og:title" content="Running an Android Unit Test" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="https://memcpy.io/running-an-android-unit-test.html" />
@@ -42,15 +42,15 @@
 			</header>
 			<p>Running specific AOSP unit tests on an Android device is not entirely obvious, so this is what I cobbled together.</p>
 			<p>A similar approach can be used for any Android module.</p>
-<div class="highlight"><pre><span></span><code><span class="err">cd aosp</span>
-<span class="err">bash</span>
-<span class="err">source build/envsetup.sh &amp;&amp; \</span>
-<span class="err">lunch linaro_arm64-userdebug &amp;&amp; \</span>
-<span class="err">mmm system/core/libsync/tests &amp;&amp; \</span>
-<span class="err">adb root &amp;&amp; \</span>
-<span class="err">adb remount &amp;&amp; \</span>
-<span class="err">adb sync &amp;&amp; \</span>
-<span class="err">adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests</span>
+<div class="highlight"><pre><span></span><code>cd aosp
+bash
+source build/envsetup.sh &amp;&amp; \
+lunch linaro_arm64-userdebug &amp;&amp; \
+mmm system/core/libsync/tests &amp;&amp; \
+adb root &amp;&amp; \
+adb remount &amp;&amp; \
+adb sync &amp;&amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
 </code></pre></div>
 		</article>
 		<section id="teaser-section">
