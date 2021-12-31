@@ -1,0 +1,5 @@
+# we operate these Tor relays
+# memcpy1
+7+QdeMJGtCK/kxEmnZuzyYmeYOBnlaWRfoaYGR7480s
+# memcpy 2
+ukg6dpnPkPkv4COOm+zu8oWliumnsh0vYND2IIGsvSQ
