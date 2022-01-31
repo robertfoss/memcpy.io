@@ -6,7 +6,7 @@ from datetime import date
 AUTHOR = u'Robert Foss'
 TWITTER = u'@memcpy_io'
 SITENAME = u'memcpy.io'
-SITEURL = 'http://localhost'
+SITEURL = 'http://localhost:8000'
 RELATIVE_URLS = True
 KEYWORDS = "Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer"
 
