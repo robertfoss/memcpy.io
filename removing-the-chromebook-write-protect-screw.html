@@ -63,23 +63,23 @@ split into parts that are bridged by a screw being inserted.</p>
 <h2>Disable Write-Protect</h2>
 <p>So this is the part that requires a <a href="http://dev.chromium.org/developers/how-tos/install-depot-tools">Servo</a> device.
 And a ChromiumOS checkout, for some help setting one up, have a look at <a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html">my previous post</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Go to your ChromiumOS checkout</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">chromiumos</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Go to your ChromiumOS checkout</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">chromiumos</span><span class="w"></span>
 
-<span class="c1"># Enter dev environment</span>
-<span class="n">cros_sdk</span>
+<span class="c1"># Enter dev environment</span><span class="w"></span>
+<span class="n">cros_sdk</span><span class="w"></span>
 
-<span class="c1"># Set device variable</span>
-<span class="k">export</span> <span class="n">BOARD</span><span class="o">=</span><span class="n">chell</span>
+<span class="c1"># Set device variable</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=</span><span class="n">chell</span><span class="w"></span>
 
-<span class="c1"># Connect to Chromebook using a Servo device</span>
-<span class="n">sudo</span> <span class="n">servod</span> <span class="o">-</span><span class="n">b</span> <span class="o">$</span><span class="n">BOARD</span> <span class="o">&amp;</span>
+<span class="c1"># Connect to Chromebook using a Servo device</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">servod</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="o">$</span><span class="n">BOARD</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
 
-<span class="c1"># Disable WP</span>
-<span class="c1"># This step may vary depending on the hardware of your actual Chromebook</span>
-<span class="n">dut</span><span class="o">-</span><span class="n">control</span> <span class="n">fw_wp</span><span class="p">:</span><span class="n">off</span>
-<span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span> <span class="o">-</span><span class="n">p</span> <span class="n">ft2232_spi</span><span class="p">:</span><span class="n">type</span><span class="o">=</span><span class="n">servo</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">wp</span><span class="o">-</span><span class="n">disable</span>
-<span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span> <span class="o">-</span><span class="n">p</span> <span class="n">ec</span> <span class="o">--</span><span class="n">wp</span><span class="o">-</span><span class="n">disable</span>
+<span class="c1"># Disable WP</span><span class="w"></span>
+<span class="c1"># This step may vary depending on the hardware of your actual Chromebook</span><span class="w"></span>
+<span class="n">dut</span><span class="o">-</span><span class="n">control</span><span class="w"> </span><span class="n">fw_wp</span><span class="p">:</span><span class="n">off</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">ft2232_spi</span><span class="p">:</span><span class="n">type</span><span class="o">=</span><span class="n">servo</span><span class="o">-</span><span class="n">v2</span><span class="w"> </span><span class="o">--</span><span class="n">wp</span><span class="o">-</span><span class="n">disable</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">flashrom</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">ec</span><span class="w"> </span><span class="o">--</span><span class="n">wp</span><span class="o">-</span><span class="n">disable</span><span class="w"></span>
 </code></pre></div>
 
 <h2>References</h2>

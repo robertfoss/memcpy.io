@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>memcpy.io - list</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Thu, 04 Nov 2021 20:10:00 +0100</lastBuildDate><item><title>Git Alias function syntax</title><link>https://memcpy.io/git-alias-function-syntax.html</link><description>&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-    &lt;span class="na"&gt;shortcut&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;
-    &lt;span class="na"&gt;{\&lt;/span&gt;
-        &lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;
-    &lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;{\&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,

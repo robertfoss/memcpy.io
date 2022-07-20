@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - nic</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 20 Jul 2022 10:48:00 +0200</lastBuildDate><item><title>Configuring Linux VLANs</title><link>https://memcpy.io/configuring-linux-vlans.html</link><description>&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ vlan
+Device not provided
+
+    vlan &lt;span class="nv"&gt;$DEV&lt;/span&gt; &lt;span class="nv"&gt;$VLAN&lt;/span&gt; &lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+
+    vlan eth0 &lt;span class="m"&gt;42&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.31.155.1/27
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is a achieved by pasting the below function into your &lt;code&gt;.bashrc&lt;/code&gt; / &lt;code&gt;.zshrc&lt;/code&gt; and issuing a &lt;code&gt;source .bashrc&lt;/code&gt; or &lt;code&gt;source .zshrc&lt;/code&gt; correspondingly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;function vlan {
+    DEV=$1
+    VLAN=$2
+    ADDR=$3
+
+    HELP=&amp;quot;
+
+    vlan \&lt;span class="nv"&gt;$DEV&lt;/span&gt; \&lt;span class="nv"&gt;$VLAN&lt;/span&gt; \&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+
+    vlan eth0 42 10.31.155.1/27
+&amp;quot;
+
+    if [ -z &amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&amp;quot; ]; then
+        echo &amp;quot;Device not provided&amp;quot;
+        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+        return 1
+    fi
+
+    ip link | grep &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;DEV&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;: &amp;quot; &amp;gt;/dev/null 2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
+    if [ $? -ne 0 ]; then
+        echo &amp;quot;\&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;\&amp;quot; is not a valid device&amp;quot;
+        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+        return 1
+    fi
+
+    if [ -z &amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&amp;quot; ]; then
+        echo &amp;quot;VLAN not provided&amp;quot;
+        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+        exit 1
+    fi
+    REGEX=&amp;#39;^[0-9]+$&amp;#39;
+    if ! [[ &lt;span class="nv"&gt;$VLAN&lt;/span&gt; =~ &lt;span class="nv"&gt;$REGEX&lt;/span&gt; ]] ; then
+        echo &amp;quot;\&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;\&amp;quot; is not a number&amp;quot; &amp;gt;&lt;span class="ni"&gt;&amp;amp;2;&lt;/span&gt; exit 1
+        echo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 20 Jul 2022 10:48:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2022-07-20:/configuring-linux-vlans.html</guid><category>networking</category><category>linux</category><category>network</category><category>vlan</category><category>interface</category><category>configure</category><category>nic</category></item></channel></rss>

@@ -52,11 +52,11 @@
 			</header>
 			<p>Git aliases are an easy way to customize commands, however it is tempting to be more expressive and use shell script functions. This is supported, but the syntax and escaping can be hard to overcome.</p>
 			<p>A basic example of the git alias function syntax looks like this.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[alias]</span>
-    <span class="na">shortcut</span> <span class="o">=</span> <span class="s">&quot;!f() \</span>
-    <span class="na">{\</span>
-        <span class="na">echo Hello world!; \</span>
-    <span class="na">}; f&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">[alias]</span><span class="w"></span>
+<span class="w">    </span><span class="na">shortcut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() \</span><span class="w"></span>
+<span class="w">    </span><span class="na">{\</span><span class="w"></span>
+<span class="w">        </span><span class="na">echo Hello world!; \</span><span class="w"></span>
+<span class="w">    </span><span class="na">}; f&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p>This syntax defines a function <code>f</code> and then calls it. These aliases are executed in a <code>sh</code> shell,

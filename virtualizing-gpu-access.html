@@ -113,14 +113,14 @@ the stack of the host machine more than we have to.</p>
 <span class="p">}</span><span class="w"></span>
 
 <span class="n">function</span><span class="w"> </span><span class="n">projectshell</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;$1&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"></span>
-<span class="w">    </span><span class="n">virgl</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">virglrenderer</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">export</span><span class="w"> </span><span class="n">ALT_LOCAL</span><span class="o">=</span><span class="s">&quot;/opt/local/virgl&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="n">prefix_setup</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">;;</span><span class="w"></span>
-<span class="w">  </span><span class="n">esac</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;$1&quot;</span><span class="w"> </span><span class="no">in</span><span class="w"></span>
+<span class="w">    </span><span class="no">virgl</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="no">virglrenderer</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="no">export</span><span class="w"> </span><span class="no">ALT_LOCAL</span><span class="o">=</span><span class="s">&quot;/opt/local/virgl&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="no">mkdir</span><span class="w"> </span><span class="o">-</span><span class="no">p</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="no">prefix_setup</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="err">;;</span><span class="w"></span>
+<span class="w">  </span><span class="no">esac</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>The above snippet is something that I would put in my <code>.bashrc</code> or <code>.zshrc</code>.

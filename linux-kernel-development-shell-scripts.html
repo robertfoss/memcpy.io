@@ -52,7 +52,7 @@ But to me the interface they provide is slightly bulky and rely
 on using patch files instead of git commits, which to me is a bit inconvenient.</p>
 <p>These scripts are all meant to be included in <strong>.bashrc</strong> or <strong>.zshrc</strong></p>
 <h2>scripts/checkpatch.pl helper</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -62,7 +62,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> checkpatch <span class="o">{</span>
   <span class="k">if</span> <span class="o">[</span> -z <span class="si">${</span><span class="nv">1</span><span class="p">+x</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="nb">exec</span> git diff <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
@@ -73,23 +73,23 @@ on using patch files instead of git commits, which to me is a bit inconvenient.<
     <span class="nb">exec</span> git diff HEAD~<span class="nv">$NUM_COMMITS</span>..HEAD <span class="p">|</span> scripts/checkpatch.pl --no-signoff -q -
   <span class="k">fi</span>
 <span class="o">}</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>The checkpatch script simply wraps the patch creation process and allows you to
 right away specify which </p>
 <h4>Example</h4>
-<div class="highlight"><pre><span></span><code><span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">linux</span> <span class="err">$</span> <span class="n">checkpatch</span> <span class="mi">15</span>
-<span class="n">WARNING</span><span class="o">:</span> <span class="n">ENOSYS</span> <span class="n">means</span> <span class="s">&#39;invalid syscall nr&#39;</span> <span class="kr">and</span> <span class="n">nothing</span> <span class="n">else</span>
-<span class="cp">#349: FILE: drivers/tty/serial/sh-sci.c:3026:</span>
-<span class="o">+</span>   <span class="nf">if</span> <span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">sciport</span><span class="o">-&gt;</span><span class="n">gpios</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">sciport</span><span class="o">-&gt;</span><span class="n">gpios</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="n">ENOSYS</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">linux</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">checkpatch</span><span class="w"> </span><span class="mi">15</span><span class="w"></span>
+<span class="n">WARNING</span><span class="o">:</span><span class="w"> </span><span class="n">ENOSYS</span><span class="w"> </span><span class="n">means</span><span class="w"> </span><span class="s">&#39;invalid syscall nr&#39;</span><span class="w"> </span><span class="kr">and</span><span class="w"> </span><span class="n">nothing</span><span class="w"> </span><span class="n">else</span><span class="w"></span>
+<span class="cp">#349: FILE: drivers/tty/serial/sh-sci.c:3026:</span><span class="w"></span>
+<span class="o">+</span><span class="w">   </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">sciport</span><span class="o">-&gt;</span><span class="n">gpios</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">PTR_ERR</span><span class="p">(</span><span class="n">sciport</span><span class="o">-&gt;</span><span class="n">gpios</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="n">ENOSYS</span><span class="p">)</span><span class="w"></span>
 
-<span class="n">total</span><span class="o">:</span> <span class="mi">0</span> <span class="n">errors</span><span class="p">,</span> <span class="mi">1</span> <span class="n">warnings</span><span class="p">,</span> <span class="mi">385</span> <span class="n">lines</span> <span class="n">checked</span>
+<span class="n">total</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">errors</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">warnings</span><span class="p">,</span><span class="w"> </span><span class="mi">385</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="n">checked</span><span class="w"></span>
 </code></pre></div>
 
 <p>In this example the 15 last commits are checked against scripts/checkpatch.pl
 for correctness.</p>
 <h2>scripts/get_maintainer.pl helper</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -107,7 +107,7 @@ for correctness.</p>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="k">function</span> get_maintainer <span class="o">{</span>
   <span class="nv">NUM_COMMITS</span><span class="o">=</span><span class="nv">$1</span>
 
@@ -126,8 +126,8 @@ for correctness.</p>
     <span class="nb">echo</span> -n <span class="s2">&quot;--to=</span><span class="si">${</span><span class="nv">email</span><span class="si">}</span><span class="s2">  &quot;</span><span class="p">;</span>
   <span class="k">done</span>
 <span class="o">}</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <h4>Example</h4>
 <div class="highlight"><pre><span></span><code><span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="n">linux</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">get_maintainer</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="o">--</span><span class="k">to</span><span class="o">=</span><span class="n">gregkh</span><span class="nv">@linuxfoundation</span><span class="p">.</span><span class="n">org</span><span class="w">  </span><span class="o">--</span><span class="k">to</span><span class="o">=</span><span class="n">jslaby</span><span class="nv">@suse</span><span class="p">.</span><span class="n">com</span><span class="w">  </span><span class="o">--</span><span class="k">to</span><span class="o">=</span><span class="n">linux</span><span class="o">-</span><span class="n">serial</span><span class="nv">@vger</span><span class="p">.</span><span class="n">kernel</span><span class="p">.</span><span class="n">org</span><span class="w">  </span><span class="o">--</span><span class="k">to</span><span class="o">=</span><span class="n">linux</span><span class="o">-</span><span class="n">kernel</span><span class="nv">@vger</span><span class="p">.</span><span class="n">kernel</span><span class="p">.</span><span class="n">org</span><span class="w"></span>

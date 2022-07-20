@@ -66,28 +66,28 @@
 </code></pre></div>
 
 <h2>Common steps</h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install dependencies</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">tools</span> <span class="n">gcc</span><span class="o">-</span><span class="n">arm</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnueabihf</span> <span class="n">openjdk</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">jdk</span> <span class="n">android</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">fsutils</span> <span class="n">python</span><span class="o">-</span><span class="n">mako</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">gnupg</span> <span class="n">flex</span> <span class="n">bison</span> <span class="n">gperf</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">zip</span> <span class="n">curl</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span> <span class="n">gcc</span><span class="o">-</span><span class="n">multilib</span> <span class="n">g</span><span class="o">++-</span><span class="n">multilib</span> <span class="n">libc6</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">i386</span> <span class="n">lib32ncurses5</span><span class="o">-</span><span class="n">dev</span> <span class="n">x11proto</span><span class="o">-</span><span class="n">core</span><span class="o">-</span><span class="n">dev</span> <span class="n">libx11</span><span class="o">-</span><span class="n">dev</span> <span class="n">lib32z</span><span class="o">-</span><span class="n">dev</span> <span class="n">ccache</span> <span class="n">libgl1</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span><span class="o">-</span><span class="n">utils</span> <span class="n">xsltproc</span> <span class="n">unzip</span> <span class="n">lzop</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install dependencies</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">gcc</span><span class="o">-</span><span class="n">arm</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnueabihf</span><span class="w"> </span><span class="n">openjdk</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">jdk</span><span class="w"> </span><span class="n">android</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">fsutils</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">mako</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="n">core</span><span class="w"> </span><span class="n">gnupg</span><span class="w"> </span><span class="n">flex</span><span class="w"> </span><span class="n">bison</span><span class="w"> </span><span class="n">gperf</span><span class="w"> </span><span class="n">build</span><span class="o">-</span><span class="n">essential</span><span class="w"> </span><span class="n">zip</span><span class="w"> </span><span class="n">curl</span><span class="w"> </span><span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">gcc</span><span class="o">-</span><span class="n">multilib</span><span class="w"> </span><span class="n">g</span><span class="o">++-</span><span class="n">multilib</span><span class="w"> </span><span class="n">libc6</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">i386</span><span class="w"> </span><span class="n">lib32ncurses5</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">x11proto</span><span class="o">-</span><span class="n">core</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libx11</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">lib32z</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">ccache</span><span class="w"> </span><span class="n">libgl1</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libxml2</span><span class="o">-</span><span class="n">utils</span><span class="w"> </span><span class="n">xsltproc</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">lzop</span><span class="w"></span>
 
-<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span>
-<span class="n">repo</span> <span class="n">init</span> <span class="o">-</span><span class="n">u</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">android</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">manifest</span> <span class="o">-</span><span class="n">b</span> <span class="n">android</span><span class="o">-</span><span class="mf">7.1</span><span class="o">.</span><span class="mi">1</span><span class="n">_r28</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span><span class="o">/.</span><span class="n">repo</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="o">.</span><span class="n">collabora</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">android_manifest</span><span class="o">.</span><span class="n">git</span> <span class="n">local_manifests</span> <span class="o">-</span><span class="n">b</span> <span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span>
-<span class="n">repo</span> <span class="n">sync</span> <span class="o">-</span><span class="n">j10</span>
+<span class="n">mkdir</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span><span class="w"></span>
+<span class="n">repo</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">android</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">manifest</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="n">android</span><span class="o">-</span><span class="mf">7.1</span><span class="o">.</span><span class="mi">1</span><span class="n">_r28</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">android</span><span class="o">/.</span><span class="n">repo</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="o">.</span><span class="n">collabora</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">android_manifest</span><span class="o">.</span><span class="n">git</span><span class="w"> </span><span class="n">local_manifests</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="w"></span>
+<span class="n">repo</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="o">-</span><span class="n">j10</span><span class="w"></span>
 
-<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">imx6_android</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">imx6_android</span>
+<span class="n">mkdir</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">imx6_android</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">imx6_android</span><span class="w"></span>
 
-<span class="c1"># Fetch Kconfig, bootloaders and some scripts</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="o">.</span><span class="n">collabora</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">.</span><span class="n">git</span> <span class="o">.</span>
+<span class="c1"># Fetch Kconfig, bootloaders and some scripts</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="o">.</span><span class="n">collabora</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">.</span><span class="n">git</span><span class="w"> </span><span class="o">.</span><span class="w"></span>
 
-<span class="c1"># Fetch the Linux Kernel</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="o">.</span><span class="n">collabora</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">linux</span><span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">b</span> <span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span>
+<span class="c1"># Fetch the Linux Kernel</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">git</span><span class="o">.</span><span class="n">collabora</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="o">/</span><span class="n">linux</span><span class="o">.</span><span class="n">git</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="n">android</span><span class="o">-</span><span class="n">etnaviv</span><span class="w"></span>
 
-<span class="c1"># This will destroy all data on /dev/mmcblk0 and</span>
-<span class="c1"># create boot/system/cache/data partitions</span>
-<span class="o">./</span><span class="n">setup_sdcard</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mmcblk0</span>
+<span class="c1"># This will destroy all data on /dev/mmcblk0 and</span><span class="w"></span>
+<span class="c1"># create boot/system/cache/data partitions</span><span class="w"></span>
+<span class="o">./</span><span class="n">setup_sdcard</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mmcblk0</span><span class="w"></span>
 </code></pre></div>
 
 <h2>Hardware: iMX6 Sabre</h2>
@@ -120,84 +120,84 @@ the device can be restarted.</p>
 </code></pre></div>
 
 <h3>Install the bootloader</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Depending if you have a &gt;=13&quot; version of the RDU2</span>
-<span class="c1"># use the imx6qp, if &lt;13&quot; then use the imx6q</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Depending if you have a &gt;=13&quot; version of the RDU2</span><span class="w"></span>
+<span class="c1"># use the imx6qp, if &lt;13&quot; then use the imx6q</span><span class="w"></span>
 
-<span class="n">IMX6_TYPE</span><span class="o">=</span><span class="n">imx6q</span>
-<span class="n">IMX6_TYPE</span><span class="o">=</span><span class="n">imx6qp</span>
-<span class="n">BAREBOX</span><span class="o">=</span><span class="s2">&quot;zodiac/barebox-zii-${IMX6_TYPE}-rdu2.img&quot;</span>
+<span class="n">IMX6_TYPE</span><span class="o">=</span><span class="n">imx6q</span><span class="w"></span>
+<span class="n">IMX6_TYPE</span><span class="o">=</span><span class="n">imx6qp</span><span class="w"></span>
+<span class="n">BAREBOX</span><span class="o">=</span><span class="s2">&quot;zodiac/barebox-zii-${IMX6_TYPE}-rdu2.img&quot;</span><span class="w"></span>
 
-<span class="c1"># Flash bootloader to SD-card</span>
-<span class="n">dd</span> <span class="k">if</span><span class="o">=$</span><span class="p">{</span><span class="n">BAREBOX</span><span class="p">}</span> <span class="n">of</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">mmcblk0</span> <span class="n">bs</span><span class="o">=</span><span class="mi">1</span><span class="n">k</span>
-<span class="n">sync</span>
+<span class="c1"># Flash bootloader to SD-card</span><span class="w"></span>
+<span class="n">dd</span><span class="w"> </span><span class="k">if</span><span class="o">=$</span><span class="p">{</span><span class="n">BAREBOX</span><span class="p">}</span><span class="w"> </span><span class="n">of</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">mmcblk0</span><span class="w"> </span><span class="n">bs</span><span class="o">=</span><span class="mi">1</span><span class="n">k</span><span class="w"></span>
+<span class="n">sync</span><span class="w"></span>
 
-<span class="c1"># Put SD-card in the middle-most slot on the RDU2</span>
+<span class="c1"># Put SD-card in the middle-most slot on the RDU2</span><span class="w"></span>
 
-<span class="c1"># Install lrzsz, since it is used for a ymodem upload</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">lrzsz</span>
+<span class="c1"># Install lrzsz, since it is used for a ymodem upload</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">lrzsz</span><span class="w"></span>
 
-<span class="c1"># Connect to serial device /dev/ttyUSB2 and</span>
-<span class="c1"># /dev/ttyUSB3 with minicom</span>
-<span class="c1"># The numbering assumes the RDU2 is the only serial</span>
-<span class="c1"># serial device connected</span>
-<span class="n">sudo</span> <span class="n">minicom</span> <span class="o">-</span><span class="n">s</span>
-    <span class="o">+------------------------------------------+</span>
-    <span class="o">|</span> <span class="n">A</span> <span class="o">-</span>    <span class="n">Serial</span> <span class="n">Device</span>      <span class="p">:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB3</span>
-    <span class="o">|</span> <span class="n">B</span> <span class="o">-</span> <span class="n">Lockfile</span> <span class="n">Location</span>     <span class="p">:</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lock</span>
-    <span class="o">|</span> <span class="n">C</span> <span class="o">-</span>   <span class="n">Callin</span> <span class="n">Program</span>      <span class="p">:</span>
-    <span class="o">|</span> <span class="n">D</span> <span class="o">-</span>  <span class="n">Callout</span> <span class="n">Program</span>      <span class="p">:</span>
-    <span class="o">|</span> <span class="n">E</span> <span class="o">-</span>    <span class="n">Bps</span><span class="o">/</span><span class="n">Par</span><span class="o">/</span><span class="n">Bits</span>       <span class="p">:</span> <span class="mi">115200</span> <span class="mi">8</span><span class="n">N1</span>
-    <span class="o">|</span> <span class="n">F</span> <span class="o">-</span> <span class="n">Hardware</span> <span class="n">Flow</span> <span class="n">Control</span> <span class="p">:</span> <span class="n">No</span>
-    <span class="o">|</span> <span class="n">G</span> <span class="o">-</span> <span class="n">Software</span> <span class="n">Flow</span> <span class="n">Control</span> <span class="p">:</span> <span class="n">No</span>
-    <span class="o">|</span>
-    <span class="o">|</span>    <span class="n">Change</span> <span class="n">which</span> <span class="n">setting</span><span class="err">?</span>
-    <span class="o">+------------------------------------------+</span>
+<span class="c1"># Connect to serial device /dev/ttyUSB2 and</span><span class="w"></span>
+<span class="c1"># /dev/ttyUSB3 with minicom</span><span class="w"></span>
+<span class="c1"># The numbering assumes the RDU2 is the only serial</span><span class="w"></span>
+<span class="c1"># serial device connected</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">minicom</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"></span>
+<span class="w">    </span><span class="o">+------------------------------------------+</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w">    </span><span class="n">Serial</span><span class="w"> </span><span class="n">Device</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB3</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Lockfile</span><span class="w"> </span><span class="n">Location</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lock</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">-</span><span class="w">   </span><span class="n">Callin</span><span class="w"> </span><span class="n">Program</span><span class="w">      </span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="n">Callout</span><span class="w"> </span><span class="n">Program</span><span class="w">      </span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="w">    </span><span class="n">Bps</span><span class="o">/</span><span class="n">Par</span><span class="o">/</span><span class="n">Bits</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="mi">115200</span><span class="w"> </span><span class="mi">8</span><span class="n">N1</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Hardware</span><span class="w"> </span><span class="n">Flow</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">No</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Software</span><span class="w"> </span><span class="n">Flow</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">No</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w"></span>
+<span class="w">    </span><span class="o">|</span><span class="w">    </span><span class="n">Change</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">setting</span><span class="err">?</span><span class="w"></span>
+<span class="w">    </span><span class="o">+------------------------------------------+</span><span class="w"></span>
 
-<span class="c1"># Connect to Quark console on /dev/ttyUSB3</span>
-<span class="c1"># Set boot SD-card as boot source </span>
-<span class="c1">#HostBoot s 0</span>
-<span class="n">reset</span>
+<span class="c1"># Connect to Quark console on /dev/ttyUSB3</span><span class="w"></span>
+<span class="c1"># Set boot SD-card as boot source </span><span class="w"></span>
+<span class="c1">#HostBoot s 0</span><span class="w"></span>
+<span class="n">reset</span><span class="w"></span>
 
-<span class="c1"># Restart device, connect to barebox loaded just loaded</span>
-<span class="c1"># from the SD-card on /dev/ttyUSB2</span>
-<span class="n">pic_setwdt</span> <span class="mi">0</span> <span class="mi">60</span>
-<span class="n">loady</span>
+<span class="c1"># Restart device, connect to barebox loaded just loaded</span><span class="w"></span>
+<span class="c1"># from the SD-card on /dev/ttyUSB2</span><span class="w"></span>
+<span class="n">pic_setwdt</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="n">loady</span><span class="w"></span>
 
-<span class="c1"># Using the minicom quickly initiate a ymodem file</span>
-<span class="c1"># of the same barebox image you wrote to the SD-card</span>
-<span class="c1"># Be quick, the upload will timeout after a few seconds</span>
+<span class="c1"># Using the minicom quickly initiate a ymodem file</span><span class="w"></span>
+<span class="c1"># of the same barebox image you wrote to the SD-card</span><span class="w"></span>
+<span class="c1"># Be quick, the upload will timeout after a few seconds</span><span class="w"></span>
 
-<span class="c1"># Write the bootloader to SPI NOR</span>
-<span class="n">erase</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">m25p0</span><span class="o">.</span><span class="n">barebox</span>
-<span class="c1"># Depending on your RDU2 type flash one of the following</span>
-<span class="n">cp</span> <span class="n">barebox</span><span class="o">-</span><span class="n">zii</span><span class="o">-</span><span class="n">imx6q</span><span class="o">-</span><span class="n">rdu2</span><span class="o">.</span><span class="n">img</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">m25p0</span><span class="o">.</span><span class="n">barebox</span>
-<span class="c1"># Or</span>
-<span class="n">cp</span> <span class="n">barebox</span><span class="o">-</span><span class="n">zii</span><span class="o">-</span><span class="n">imx6qp</span><span class="o">-</span><span class="n">rdu2</span><span class="o">.</span><span class="n">img</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">m25p0</span><span class="o">.</span><span class="n">barebox</span>
+<span class="c1"># Write the bootloader to SPI NOR</span><span class="w"></span>
+<span class="n">erase</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">m25p0</span><span class="o">.</span><span class="n">barebox</span><span class="w"></span>
+<span class="c1"># Depending on your RDU2 type flash one of the following</span><span class="w"></span>
+<span class="n">cp</span><span class="w"> </span><span class="n">barebox</span><span class="o">-</span><span class="n">zii</span><span class="o">-</span><span class="n">imx6q</span><span class="o">-</span><span class="n">rdu2</span><span class="o">.</span><span class="n">img</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">m25p0</span><span class="o">.</span><span class="n">barebox</span><span class="w"></span>
+<span class="c1"># Or</span><span class="w"></span>
+<span class="n">cp</span><span class="w"> </span><span class="n">barebox</span><span class="o">-</span><span class="n">zii</span><span class="o">-</span><span class="n">imx6qp</span><span class="o">-</span><span class="n">rdu2</span><span class="o">.</span><span class="n">img</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">m25p0</span><span class="o">.</span><span class="n">barebox</span><span class="w"></span>
 
-<span class="c1"># Connect to the Quark console on /dev/ttyUSB3 again</span>
-<span class="c1"># Set SPI NOR as the boot source</span>
-<span class="c1">#HostBoot s 2</span>
-<span class="n">reset</span>
+<span class="c1"># Connect to the Quark console on /dev/ttyUSB3 again</span><span class="w"></span>
+<span class="c1"># Set SPI NOR as the boot source</span><span class="w"></span>
+<span class="c1">#HostBoot s 2</span><span class="w"></span>
+<span class="n">reset</span><span class="w"></span>
 
-<span class="c1"># Connect to the barebox console on /dev/ttyUSB2 again</span>
-<span class="c1"># Edit configuration to automatically boot from mmc:</span>
-<span class="n">sedit</span> <span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="n">config</span>
-<span class="k">export</span> <span class="n">global</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">default</span><span class="o">=/</span><span class="n">env</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">mmc</span>
-<span class="k">export</span> <span class="n">global</span><span class="o">.</span><span class="n">bootm</span><span class="o">.</span><span class="n">image</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">android_zImage</span>
-<span class="k">export</span> <span class="n">global</span><span class="o">.</span><span class="n">bootm</span><span class="o">.</span><span class="n">initrd</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">android_ramdisk</span><span class="o">.</span><span class="n">img</span><span class="o">.</span><span class="n">gz</span>
-<span class="k">export</span> <span class="n">global</span><span class="o">.</span><span class="n">bootm</span><span class="o">.</span><span class="n">oftree</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">imx6qp</span><span class="o">-</span><span class="n">zii</span><span class="o">-</span><span class="n">rdu2</span><span class="o">.</span><span class="n">dtb</span>
-<span class="k">export</span> <span class="n">global</span><span class="o">.</span><span class="n">linux</span><span class="o">.</span><span class="n">bootargs</span><span class="o">.</span><span class="n">base</span><span class="o">=</span><span class="s2">&quot;console=ttymxc0,115200 console=tty0 rw rootwait ip=dhcp buildvariant=userdebug debug ignore_loglevel root=/dev/mmcblk0p2 rootfstype=ext4 rootwait init=/init printk.devkmsg=on verbose enforcing=0 androidboot.selinux=permissive drm.debug=0x00&quot;</span>
+<span class="c1"># Connect to the barebox console on /dev/ttyUSB2 again</span><span class="w"></span>
+<span class="c1"># Edit configuration to automatically boot from mmc:</span><span class="w"></span>
+<span class="n">sedit</span><span class="w"> </span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">global</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">default</span><span class="o">=/</span><span class="n">env</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">mmc</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">global</span><span class="o">.</span><span class="n">bootm</span><span class="o">.</span><span class="n">image</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">android_zImage</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">global</span><span class="o">.</span><span class="n">bootm</span><span class="o">.</span><span class="n">initrd</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">android_ramdisk</span><span class="o">.</span><span class="n">img</span><span class="o">.</span><span class="n">gz</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">global</span><span class="o">.</span><span class="n">bootm</span><span class="o">.</span><span class="n">oftree</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">imx6qp</span><span class="o">-</span><span class="n">zii</span><span class="o">-</span><span class="n">rdu2</span><span class="o">.</span><span class="n">dtb</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">global</span><span class="o">.</span><span class="n">linux</span><span class="o">.</span><span class="n">bootargs</span><span class="o">.</span><span class="n">base</span><span class="o">=</span><span class="s2">&quot;console=ttymxc0,115200 console=tty0 rw rootwait ip=dhcp buildvariant=userdebug debug ignore_loglevel root=/dev/mmcblk0p2 rootfstype=ext4 rootwait init=/init printk.devkmsg=on verbose enforcing=0 androidboot.selinux=permissive drm.debug=0x00&quot;</span><span class="w"></span>
 
-<span class="n">sedit</span> <span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">mmc</span>
-<span class="c1">#!/bin/sh</span>
-<span class="n">detect</span> <span class="n">mmc1</span>
-<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">automount</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span> <span class="s1">&#39;mount /dev/mmc1.0 /mnt/mmc1.0&#39;</span>
-<span class="n">bootm</span>
+<span class="n">sedit</span><span class="w"> </span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">mmc</span><span class="w"></span>
+<span class="c1">#!/bin/sh</span><span class="w"></span>
+<span class="n">detect</span><span class="w"> </span><span class="n">mmc1</span><span class="w"></span>
+<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+<span class="n">automount</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">mmc1</span><span class="o">.</span><span class="mi">0</span><span class="w"> </span><span class="s1">&#39;mount /dev/mmc1.0 /mnt/mmc1.0&#39;</span><span class="w"></span>
+<span class="n">bootm</span><span class="w"></span>
 
-<span class="n">pic_setwdt</span> <span class="mi">0</span> <span class="mi">60</span>     <span class="c1"># Disable watchdog</span>
+<span class="n">pic_setwdt</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w">     </span><span class="c1"># Disable watchdog</span><span class="w"></span>
 
-<span class="n">exit</span>
+<span class="n">exit</span><span class="w"></span>
 </code></pre></div>
 
 <h3>Start Android</h3>

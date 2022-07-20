@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - alias</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/alias.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2021-11-04T20:10:00+01:00</updated><entry><title>Git Alias function syntax</title><link href="https://memcpy.io/git-alias-function-syntax.html" rel="alternate"></link><published>2021-11-04T20:10:00+01:00</published><updated>2021-11-04T20:10:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2021-11-04:/git-alias-function-syntax.html</id><summary type="html">&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-    &lt;span class="na"&gt;shortcut&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;
-    &lt;span class="na"&gt;{\&lt;/span&gt;
-        &lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;
-    &lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;{\&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,
@@ -17,11 +17,11 @@ to grok. But when we try to clean up the above snippet and add some quotes to
 
 &lt;p&gt;This syntax error is caused by quotes needing to be escaped. The reason for this
 comes down to how git tokenizes and executes these functions. If you're curious …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-    &lt;span class="na"&gt;shortcut&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;
-    &lt;span class="na"&gt;{\&lt;/span&gt;
-        &lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;
-    &lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;{\&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,

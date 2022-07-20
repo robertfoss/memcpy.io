@@ -63,16 +63,16 @@ from freedesktop.org, but altered to target VC4 and Raspbian.</p>
 <p>You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Change WLD to any location you like</span>
-<span class="k">export</span> <span class="n">WLD</span><span class="o">=~/</span><span class="n">local</span>
-<span class="k">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">lib</span>
-<span class="k">export</span> <span class="n">PKG_CONFIG_PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span><span class="o">/</span><span class="p">:</span><span class="o">$</span><span class="n">WLD</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pkgconfig</span><span class="o">/</span>
-<span class="k">export</span> <span class="n">PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span>
-<span class="k">export</span> <span class="n">ACLOCAL_PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">aclocal</span>
-<span class="k">export</span> <span class="n">ACLOCAL</span><span class="o">=</span><span class="s2">&quot;aclocal -I $ACLOCAL_PATH&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Change WLD to any location you like</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">WLD</span><span class="o">=~/</span><span class="n">local</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">lib</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">PKG_CONFIG_PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span><span class="o">/</span><span class="p">:</span><span class="o">$</span><span class="n">WLD</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pkgconfig</span><span class="o">/</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">ACLOCAL_PATH</span><span class="o">=$</span><span class="n">WLD</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">aclocal</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">ACLOCAL</span><span class="o">=</span><span class="s2">&quot;aclocal -I $ACLOCAL_PATH&quot;</span><span class="w"></span>
 
-<span class="c1"># Needed by autotools</span>
-<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">$</span><span class="n">WLD</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">aclocal</span>
+<span class="c1"># Needed by autotools</span><span class="w"></span>
+<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">$</span><span class="n">WLD</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">aclocal</span><span class="w"></span>
 </code></pre></div>
 
 <h2>Installing dependencies</h2>
@@ -154,20 +154,20 @@ cd ..
 Now, let's fire up a (virtual) terminal. Make sure that you're not running an
 X terminal, ssh terminal or serial terminal.</p>
 <p>Running weston in this way depends on logind.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Make sure that $DISPLAY is unset.</span>
-<span class="n">unset</span> <span class="n">DISPLAY</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Make sure that $DISPLAY is unset.</span><span class="w"></span>
+<span class="n">unset</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"></span>
 
-<span class="c1"># And that $XDG_RUNTIME_DIR has been set and created.</span>
-<span class="k">if</span> <span class="n">test</span> <span class="o">-</span><span class="n">z</span> <span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span><span class="p">;</span> <span class="n">then</span>
-  <span class="k">export</span> <span class="n">XDG_RUNTIME_DIR</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/$</span><span class="p">{</span><span class="n">UID</span><span class="p">}</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dir</span>
-  <span class="k">if</span> <span class="o">!</span> <span class="n">test</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span><span class="p">;</span> <span class="n">then</span>
-    <span class="n">mkdir</span> <span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span>
-    <span class="n">chmod</span> <span class="mi">0700</span> <span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span><span class="mi">1</span>
-  <span class="n">fi</span>
-<span class="n">fi</span>
+<span class="c1"># And that $XDG_RUNTIME_DIR has been set and created.</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">-</span><span class="n">z</span><span class="w"> </span><span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
+<span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="n">XDG_RUNTIME_DIR</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/$</span><span class="p">{</span><span class="n">UID</span><span class="p">}</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
+<span class="w">    </span><span class="n">mkdir</span><span class="w"> </span><span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">chmod</span><span class="w"> </span><span class="mi">0700</span><span class="w"> </span><span class="s2">&quot;${XDG_RUNTIME_DIR}&quot;</span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="n">fi</span><span class="w"></span>
+<span class="n">fi</span><span class="w"></span>
 
-<span class="c1"># Run weston:</span>
-<span class="n">weston</span>
+<span class="c1"># Run weston:</span><span class="w"></span>
+<span class="n">weston</span><span class="w"></span>
 </code></pre></div>
 
 <h2>Try weston applications</h2>

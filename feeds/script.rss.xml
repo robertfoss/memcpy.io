@@ -20,7 +20,7 @@ But to me the interface they provide is slightly bulky and rely
 on using patch files instead of git commits, which to me is a bit inconvenient.&lt;/p&gt;
 &lt;p&gt;These scripts are all meant to be included in &lt;strong&gt;.bashrc&lt;/strong&gt; or &lt;strong&gt;.zshrc&lt;/strong&gt;&lt;/p&gt;
 &lt;h2&gt;scripts/checkpatch.pl helper&lt;/h2&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
 &lt;span class="normal"&gt; 4&lt;/span&gt;
@@ -30,7 +30,7 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
 &lt;span class="normal"&gt; 8&lt;/span&gt;
 &lt;span class="normal"&gt; 9&lt;/span&gt;
 &lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="k"&gt;function&lt;/span&gt; checkpatch &lt;span class="o"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;+x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nb"&gt;exec&lt;/span&gt; git diff &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
@@ -41,6 +41,6 @@ on using patch files instead of git commits, which to me is a bit inconvenient.&
     &lt;span class="nb"&gt;exec&lt;/span&gt; git diff HEAD~&lt;span class="nv"&gt;$NUM_COMMITS&lt;/span&gt;..HEAD &lt;span class="p"&gt;|&lt;/span&gt; scripts/checkpatch.pl --no-signoff -q -
   &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
 &lt;p&gt;The checkpatch script simply wraps the patch creation …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 26 Jul 2016 10:32:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>script</category><category>collabora</category></item></channel></rss>
