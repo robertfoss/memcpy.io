@@ -41,6 +41,7 @@
 		{% if TAG_FEED_RSS and tag %}
 		<link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
 		{% endif %}
+		<meta name="google-site-verification" content="M7TRHJxGB04WWoywNbib8VC7rcbyjs7aMI2Bnkh6XqA" />
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
