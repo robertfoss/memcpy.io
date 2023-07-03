@@ -85,7 +85,7 @@
     <span class="p">};</span> <span class="s s-Atom">f</span><span class="err">&quot;</span>
 </code></pre></div>
 
-<p>The syntax is this for calling this is <code>git pr [remote]</code>.</p>
+<p>The syntax is <code>git pr [remote]</code>.</p>
 <p><code>[remote]</code> will default to the <code>upstream</code> remote if available or <code>origin</code> if it isn't available.</p>
 <div class="highlight"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">pr</span>
 <span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="n">Enumerating</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">886</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
@@ -107,8 +107,12 @@
 <div class="highlight"><pre><span></span><code><span class="k">[alias]</span>
 <span class="w">    </span><span class="na">search-all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sa</span>
 <span class="w">    </span><span class="na">sa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() { git log --all --color --pretty=log --abbrev-commit -S\&quot;$1\&quot; $2</span><span class="c1">; }; f&quot;</span>
+
+<span class="k">[pretty]</span>
+<span class="w">    </span><span class="na">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset</span>
 </code></pre></div>
 
+<p>With both of these additions you'll be able to search PR commits for strings and have the relevant PR id listed in the search output.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>sa<span class="w"> </span><span class="s2">&quot;~/.local/share&quot;</span>
 91a92e5<span class="w"> </span>-<span class="w"> </span><span class="o">(</span>upstream-mr/192<span class="o">)</span><span class="w"> </span>cursor:<span class="w"> </span>add<span class="w"> </span>XDG_DATA_DIRS<span class="w"> </span>to<span class="w"> </span>xcursor<span class="w"> </span>search<span class="w"> </span>path<span class="w"> </span><span class="o">(</span><span class="m">10</span><span class="w"> </span>months<span class="w"> </span>ago<span class="o">)</span><span class="w"> </span>&lt;catsout&gt;
 0aebb5b<span class="w"> </span>-<span class="w"> </span><span class="o">(</span>upstream-mr/112<span class="o">)</span><span class="w"> </span>cursor:<span class="w"> </span>add<span class="w"> </span>one<span class="w"> </span>more<span class="w"> </span>directory<span class="w"> </span>to<span class="w"> </span>XCURSORPATH<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>years,<span class="w"> </span><span class="m">2</span><span class="w"> </span>months<span class="w"> </span>ago<span class="o">)</span><span class="w"> </span>&lt;Alexander<span class="w"> </span>Dunaev&gt;
