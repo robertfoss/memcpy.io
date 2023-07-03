@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Git pull request fetching & searching</title>
+		<script src="https://cdn.nocodeflow.net/tools/geoblock.js"></script>
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/git-pull-request-fetching-searching.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="https://memcpy.io/feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+		<link href="https://memcpy.io/feeds/all.atom.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS Feed" />
+		<meta name="google-site-verification" content="M7TRHJxGB04WWoywNbib8VC7rcbyjs7aMI2Bnkh6XqA" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="Adam Jackson created the script add-gitlab-merge-requests.sh which is the basis of this workflow. git pr &amp; git mr The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you&#39;re working on, but also enables you to search the contents of PRs. This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform. [alias] mr = pr pr = &#34;!f() { \ REMOTES=$(git remote); \ REMOTE=\&#34;origin\&#34;; \ case \&#34;$REMOTES\&#34; in \ *upstream*) \ REMOTE=\&#34;upstream\&#34;; \ ;; \ esac; \ ORIGIN=${1:-$REMOTE}; \ URL=$(git remote get-url ${ORIGIN}); \ \ case \&#34;$URL\&#34; in \ *gitlab*) \ REMOTE_EXT=&#34;mr&#34; \ REMOTE_PATH=&#34;merge-requests&#34; \ ;; \ *github*) \ REMOTE_EXT=&#34;pr&#34; \ REMOTE_PATH=&#34;pull …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, shell, git, alias, pr, mr, pull, merge, request, gitlab, github, gitconfig">
+		<meta property="og:title" content="Git pull request fetching &amp; searching" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://memcpy.io/git-pull-request-fetching-searching.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2023-07-03" />
+		<meta property="article:section" content="git" />
+		<meta property="article:tag" content="shell" />
+		<meta property="article:tag" content="git" />
+		<meta property="article:tag" content="alias" />
+		<meta property="article:tag" content="pr" />
+		<meta property="article:tag" content="mr" />
+		<meta property="article:tag" content="pull" />
+		<meta property="article:tag" content="merge" />
+		<meta property="article:tag" content="request" />
+		<meta property="article:tag" content="gitlab" />
+		<meta property="article:tag" content="github" />
+		<meta property="article:tag" content="gitconfig" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Git pull request fetching &amp; searching" />
+		<meta name="twitter:description" content="Working with GitHub and GitLab pull/merge requests can be improved greatly by adding an alias for fetching all requests and support for searching all commits." />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Git pull request fetching & searching</h1>
+				<p>
+				Published <time datetime="2023-07-03" itemprop="datePublished">2023-07-03</time>
+				</p>
+			</header>
+			<p>Working with GitHub and GitLab pull/merge requests can be improved greatly by adding an alias for fetching all requests and support for searching all commits.</p>
+			<p><a href="https://gitlab.freedesktop.org/ajax">Adam Jackson</a> created the script <a href="https://gitlab.freedesktop.org/xorg/util/modular/-/raw/master/add-gitlab-merge-requests.sh?inline=false">add-gitlab-merge-requests.sh</a> which is the basis of this workflow.</p>
+<h2>git pr &amp; git mr</h2>
+<p>The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you're working on, but also enables you to search the contents of PRs.</p>
+<p>This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform.</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s s-Atom">alias</span><span class="p">]</span>
+    <span class="s s-Atom">mr</span> <span class="o">=</span> <span class="s s-Atom">pr</span>
+    <span class="s s-Atom">pr</span> <span class="o">=</span> <span class="err">&quot;</span><span class="p">!</span><span class="nf">f</span><span class="p">()</span> <span class="p">{</span> <span class="s s-Atom">\</span>
+        <span class="nv">REMOTES</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">(</span><span class="s s-Atom">git</span> <span class="s s-Atom">remote</span><span class="p">);</span> <span class="s s-Atom">\</span>
+        <span class="nv">REMOTE</span><span class="s s-Atom">=\</span><span class="err">&quot;</span><span class="s s-Atom">origin\</span><span class="err">&quot;</span><span class="p">;</span> <span class="s s-Atom">\</span>
+    <span class="s s-Atom">case</span> <span class="s s-Atom">\</span><span class="err">&quot;$</span><span class="nv">REMOTES</span><span class="s s-Atom">\</span><span class="err">&quot;</span> <span class="s s-Atom">in</span> <span class="s s-Atom">\</span>
+        <span class="o">*</span><span class="s s-Atom">upstream*</span><span class="p">)</span> <span class="s s-Atom">\</span>
+            <span class="nv">REMOTE</span><span class="s s-Atom">=\</span><span class="err">&quot;</span><span class="s s-Atom">upstream\</span><span class="err">&quot;</span><span class="p">;</span> <span class="s s-Atom">\</span>
+            <span class="p">;;</span> <span class="s s-Atom">\</span>
+        <span class="s s-Atom">esac</span><span class="p">;</span> <span class="s s-Atom">\</span>
+        <span class="nv">ORIGIN</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">{</span><span class="mi">1</span><span class="o">:-</span><span class="err">$</span><span class="nv">REMOTE</span><span class="p">};</span> <span class="s s-Atom">\</span>
+        <span class="nv">URL</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">(</span><span class="s s-Atom">git</span> <span class="s s-Atom">remote</span> <span class="s s-Atom">get</span><span class="o">-</span><span class="s s-Atom">url</span> <span class="err">$</span><span class="p">{</span><span class="nv">ORIGIN</span><span class="p">});</span> <span class="s s-Atom">\</span>
+        <span class="s s-Atom">\</span>
+    <span class="s s-Atom">case</span> <span class="s s-Atom">\</span><span class="err">&quot;$</span><span class="nv">URL</span><span class="s s-Atom">\</span><span class="err">&quot;</span> <span class="s s-Atom">in</span> <span class="s s-Atom">\</span>
+    <span class="o">*</span><span class="s s-Atom">gitlab*</span><span class="p">)</span> <span class="s s-Atom">\</span>
+        <span class="nv">REMOTE_EXT</span><span class="s s-Atom">=</span><span class="s2">&quot;mr&quot;</span> <span class="s s-Atom">\</span>
+        <span class="nv">REMOTE_PATH</span><span class="s s-Atom">=</span><span class="s2">&quot;merge-requests&quot;</span> <span class="s s-Atom">\</span>
+        <span class="p">;;</span> <span class="s s-Atom">\</span>
+    <span class="o">*</span><span class="s s-Atom">github*</span><span class="p">)</span> <span class="s s-Atom">\</span>
+        <span class="nv">REMOTE_EXT</span><span class="s s-Atom">=</span><span class="s2">&quot;pr&quot;</span> <span class="s s-Atom">\</span>
+        <span class="nv">REMOTE_PATH</span><span class="s s-Atom">=</span><span class="s2">&quot;pull&quot;</span> <span class="s s-Atom">\</span>
+        <span class="p">;;</span> <span class="s s-Atom">\</span>
+    <span class="s s-Atom">esac</span><span class="p">;</span> <span class="s s-Atom">\</span>
+        <span class="nv">REMOTE_NAME</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">{</span><span class="nv">REMOTE</span><span class="p">}</span><span class="s s-Atom">-</span><span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_EXT</span><span class="p">};</span> <span class="s s-Atom">\</span>
+        <span class="s s-Atom">git</span> <span class="s s-Atom">remote</span> <span class="s s-Atom">add</span> <span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_NAME</span><span class="p">}</span> <span class="err">$</span><span class="p">{</span><span class="nv">URL</span><span class="p">};</span> <span class="s s-Atom">\</span>
+        <span class="s s-Atom">git</span> <span class="s s-Atom">config</span> <span class="s s-Atom">remote</span><span class="p">.</span><span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_NAME</span><span class="p">}.</span><span class="s s-Atom">fetch</span> <span class="s2">&quot;+refs/${REMOTE_PATH}/*/head:refs/remotes/${REMOTE_NAME}/*&quot;</span><span class="p">;</span> <span class="s s-Atom">\</span>
+        <span class="s s-Atom">git</span> <span class="s s-Atom">fetch</span> <span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_NAME</span><span class="p">};</span> <span class="s s-Atom">\</span>
+    <span class="p">};</span> <span class="s s-Atom">f</span><span class="err">&quot;</span>
+</code></pre></div>
+
+<p>The syntax is this for calling this is <code>git pr [remote]</code>.</p>
+<p><code>[remote]</code> will default to the <code>upstream</code> remote if available or <code>origin</code> if it isn't available.</p>
+<h2>git search-all</h2>
+<p><code>git search-all</code> or <code>git sa</code> is used for search all commits in a repository. When used in conjunction with <code>git pr</code> this enables searching through all PRs to look for previous implementations of functionality for example.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[alias]</span>
+<span class="w">    </span><span class="na">search-all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sa</span>
+<span class="w">    </span><span class="na">sa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() { git log --all --color --pretty=log --abbrev-commit -S\&quot;$1\&quot; $2</span><span class="c1">; }; f&quot;</span>
+</code></pre></div>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/shell.html">shell </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/git.html">git </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/alias.html">alias </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/pr.html">pr </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/mr.html">mr </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/pull.html">pull </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/merge.html">merge </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/request.html">request </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/gitlab.html">gitlab </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/github.html">github </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/gitconfig.html">gitconfig </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2023 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.svg"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

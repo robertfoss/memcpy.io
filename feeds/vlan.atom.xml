@@ -1,110 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - vlan</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/vlan.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2022-07-20T10:48:00+02:00</updated><entry><title>Configuring Linux VLANs</title><link href="https://memcpy.io/configuring-linux-vlans.html" rel="alternate"></link><published>2022-07-20T10:48:00+02:00</published><updated>2022-07-20T10:48:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2022-07-20:/configuring-linux-vlans.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ vlan
-Device not provided
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - vlan</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/vlan.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2022-07-20T10:48:00+02:00</updated><entry><title>Configuring Linux VLANs</title><link href="https://memcpy.io/configuring-linux-vlans.html" rel="alternate"></link><published>2022-07-20T10:48:00+02:00</published><updated>2022-07-20T10:48:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2022-07-20:/configuring-linux-vlans.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;vlan
+Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided
 
-    vlan &lt;span class="nv"&gt;$DEV&lt;/span&gt; &lt;span class="nv"&gt;$VLAN&lt;/span&gt; &lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
 
-    vlan eth0 &lt;span class="m"&gt;42&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.31.155.1/27
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;42&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.31.155.1/27
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This is a achieved by pasting the below function into your &lt;code&gt;.bashrc&lt;/code&gt; / &lt;code&gt;.zshrc&lt;/code&gt; and issuing a &lt;code&gt;source .bashrc&lt;/code&gt; or &lt;code&gt;source .zshrc&lt;/code&gt; correspondingly.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;function vlan {
-    DEV=$1
-    VLAN=$2
-    ADDR=$3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;function&lt;span class="w"&gt; &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt;    &lt;/span&gt;DEV=$1
+&lt;span class="w"&gt;    &lt;/span&gt;VLAN=$2
+&lt;span class="w"&gt;    &lt;/span&gt;ADDR=$3
 
-    HELP=&amp;quot;
+&lt;span class="w"&gt;    &lt;/span&gt;HELP=&amp;quot;
 
-    vlan \&lt;span class="nv"&gt;$DEV&lt;/span&gt; \&lt;span class="nv"&gt;$VLAN&lt;/span&gt; \&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
 
-    vlan eth0 42 10.31.155.1/27
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;42&lt;span class="w"&gt; &lt;/span&gt;10.31.155.1/27
 &amp;quot;
 
-    if [ -z &amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&amp;quot; ]; then
-        echo &amp;quot;Device not provided&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        return 1
-    fi
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
 
-    ip link | grep &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;DEV&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;: &amp;quot; &amp;gt;/dev/null 2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
-    if [ $? -ne 0 ]; then
-        echo &amp;quot;\&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;\&amp;quot; is not a valid device&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        return 1
-    fi
+&lt;span class="w"&gt;    &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;DEV&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;$?&lt;span class="w"&gt; &lt;/span&gt;-ne&lt;span class="w"&gt; &lt;/span&gt;0&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;valid&lt;span class="w"&gt; &lt;/span&gt;device&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
 
-    if [ -z &amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&amp;quot; ]; then
-        echo &amp;quot;VLAN not provided&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        exit 1
-    fi
-    REGEX=&amp;#39;^[0-9]+$&amp;#39;
-    if ! [[ &lt;span class="nv"&gt;$VLAN&lt;/span&gt; =~ &lt;span class="nv"&gt;$REGEX&lt;/span&gt; ]] ; then
-        echo &amp;quot;\&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;\&amp;quot; is not a number&amp;quot; &amp;gt;&lt;span class="ni"&gt;&amp;amp;2;&lt;/span&gt; exit 1
-        echo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ vlan
-Device not provided
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;VLAN&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;REGEX=&amp;#39;^[0-9]+$&amp;#39;
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;[[&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;=~&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$REGEX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;]]&lt;span class="w"&gt; &lt;/span&gt;;&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;number&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="ni"&gt;&amp;amp;2;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;        &lt;/span&gt;echo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;vlan
+Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided
 
-    vlan &lt;span class="nv"&gt;$DEV&lt;/span&gt; &lt;span class="nv"&gt;$VLAN&lt;/span&gt; &lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
 
-    vlan eth0 &lt;span class="m"&gt;42&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.31.155.1/27
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;42&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.31.155.1/27
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This is a achieved by pasting the below function into your &lt;code&gt;.bashrc&lt;/code&gt; / &lt;code&gt;.zshrc&lt;/code&gt; and issuing a &lt;code&gt;source .bashrc&lt;/code&gt; or &lt;code&gt;source .zshrc&lt;/code&gt; correspondingly.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;function vlan {
-    DEV=$1
-    VLAN=$2
-    ADDR=$3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;function&lt;span class="w"&gt; &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt;    &lt;/span&gt;DEV=$1
+&lt;span class="w"&gt;    &lt;/span&gt;VLAN=$2
+&lt;span class="w"&gt;    &lt;/span&gt;ADDR=$3
 
-    HELP=&amp;quot;
+&lt;span class="w"&gt;    &lt;/span&gt;HELP=&amp;quot;
 
-    vlan \&lt;span class="nv"&gt;$DEV&lt;/span&gt; \&lt;span class="nv"&gt;$VLAN&lt;/span&gt; \&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
 
-    vlan eth0 42 10.31.155.1/27
+&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;42&lt;span class="w"&gt; &lt;/span&gt;10.31.155.1/27
 &amp;quot;
 
-    if [ -z &amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&amp;quot; ]; then
-        echo &amp;quot;Device not provided&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        return 1
-    fi
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
 
-    ip link | grep &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;DEV&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;: &amp;quot; &amp;gt;/dev/null 2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
-    if [ $? -ne 0 ]; then
-        echo &amp;quot;\&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;\&amp;quot; is not a valid device&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        return 1
-    fi
+&lt;span class="w"&gt;    &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;DEV&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;$?&lt;span class="w"&gt; &lt;/span&gt;-ne&lt;span class="w"&gt; &lt;/span&gt;0&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;valid&lt;span class="w"&gt; &lt;/span&gt;device&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
 
-    if [ -z &amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&amp;quot; ]; then
-        echo &amp;quot;VLAN not provided&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        exit 1
-    fi
-    REGEX=&amp;#39;^[0-9]+$&amp;#39;
-    if ! [[ &lt;span class="nv"&gt;$VLAN&lt;/span&gt; =~ &lt;span class="nv"&gt;$REGEX&lt;/span&gt; ]] ; then
-        echo &amp;quot;\&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;\&amp;quot; is not a number&amp;quot; &amp;gt;&lt;span class="ni"&gt;&amp;amp;2;&lt;/span&gt; exit 1
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        return 1
-    fi
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;VLAN&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;REGEX=&amp;#39;^[0-9]+$&amp;#39;
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;[[&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;=~&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$REGEX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;]]&lt;span class="w"&gt; &lt;/span&gt;;&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;number&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="ni"&gt;&amp;amp;2;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
 
-    if [ -z &amp;quot;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&amp;quot; ]; then
-        echo &amp;quot;IP address not provided&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        return 1
-    fi
-    ipcalc -cs &lt;span class="nv"&gt;$ADDR&lt;/span&gt; &amp;gt;/dev/null 2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
-    if [ $? -ne 0 ]; then
-        echo &amp;quot;\&amp;quot;$$ADDR\&amp;quot; is not a valid address&amp;quot;
-        echo &amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-        return 1
-    fi
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;IP&lt;span class="w"&gt; &lt;/span&gt;address&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;ipcalc&lt;span class="w"&gt; &lt;/span&gt;-cs&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;$?&lt;span class="w"&gt; &lt;/span&gt;-ne&lt;span class="w"&gt; &lt;/span&gt;0&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;$$ADDR\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;valid&lt;span class="w"&gt; &lt;/span&gt;address&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
+&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
+&lt;span class="w"&gt;    &lt;/span&gt;fi
 
-    VLAN_DEV=vlan_&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VLAN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
-    SUBNET=&amp;quot;$(ipcalc &lt;span class="nv"&gt;$ADDR&lt;/span&gt; | grep Network: | cut -d&amp;#39; &amp;#39; -f4)&amp;quot;
+&lt;span class="w"&gt;    &lt;/span&gt;VLAN_DEV=vlan_&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VLAN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;SUBNET=&amp;quot;$(ipcalc&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;Network:&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;cut&lt;span class="w"&gt; &lt;/span&gt;-d&amp;#39;&lt;span class="w"&gt; &lt;/span&gt;&amp;#39;&lt;span class="w"&gt; &lt;/span&gt;-f4)&amp;quot;
 
-    sudo ip link add link &lt;span class="nv"&gt;$DEV&lt;/span&gt; name &lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt; type vlan id &lt;span class="nv"&gt;$VLAN&lt;/span&gt;
-    sudo ip addr add &lt;span class="nv"&gt;$ADDR&lt;/span&gt; dev &lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt; metric 20
-    sudo ip link set dev &lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt; up
+&lt;span class="w"&gt;    &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;name&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;type&lt;span class="w"&gt; &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;id&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;addr&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;dev&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;metric&lt;span class="w"&gt; &lt;/span&gt;20
+&lt;span class="w"&gt;    &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;set&lt;span class="w"&gt; &lt;/span&gt;dev&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;up
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 

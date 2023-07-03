@@ -15,7 +15,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="The HWC (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen. The HWC abstracts objects such as overlays and 2D blitters and helps offload some work that would normally be done with OpenGL. SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them, and sends them to the display. The above graphic depicts the traditional Android graphics stack. This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack doesn&#39;t offer the HWC API, drm_hwcomposer is introduced to interface with the mainline graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the HWC1 API. Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in …">
+		<meta name="description" content="The HWC (Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen. The HWC abstracts objects such as overlays and 2D blitters and helps offload some work that would normally be done with OpenGL. SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them, and sends them to the display. The above graphic depicts the traditional Android graphics stack. This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack doesn&#39;t offer the HWC API, drm_hwcomposer is introduced to interface with the mainline graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the HWC1 API. Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few ways …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, android, aosp, graphics, drm, drm_hwcomposer, hwcomposer, hwc2, collabora">
 		<meta property="og:title" content="Android: Enabling mainline graphics" />
@@ -128,7 +128,7 @@ Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

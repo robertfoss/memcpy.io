@@ -53,11 +53,11 @@
 			</header>
 			<p>Git aliases are an easy way to customize commands, however it is tempting to be more expressive and use shell script functions. This is supported, but the syntax and escaping can be hard to overcome.</p>
 			<p>A basic example of the git alias function syntax looks like this.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[alias]</span><span class="w"></span>
-<span class="w">    </span><span class="na">shortcut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() \</span><span class="w"></span>
-<span class="w">    </span><span class="na">{\</span><span class="w"></span>
-<span class="w">        </span><span class="na">echo Hello world!; \</span><span class="w"></span>
-<span class="w">    </span><span class="na">}; f&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">[alias]</span>
+<span class="w">    </span><span class="na">shortcut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() </span>\
+<span class="w">    </span><span class="s">{</span>\
+<span class="w">        </span><span class="s">echo Hello world!; </span>\
+<span class="w">    </span><span class="s">}; f&quot;</span>
 </code></pre></div>
 
 <p>This syntax defines a function <code>f</code> and then calls it. These aliases are executed in a <code>sh</code> shell,
@@ -75,22 +75,22 @@ about how it's managed internally, have a look at
 <p><a href="https://gist.github.com/HaleTom">Tom Hale</a> wrote this
 <a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae">script</a>
 for doing automatic escaping.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">quote</span><span class="ss">()</span> {
-    <span class="nv">printf</span> <span class="o">%</span><span class="nv">s</span> <span class="s2">&quot;</span><span class="s">$1</span><span class="s2">&quot;</span> <span class="o">|</span> <span class="nv">sed</span> <span class="o">-</span><span class="nv">r</span> <span class="s1">&#39;</span><span class="s">s/([&quot;</span><span class="se">\\</span><span class="s">])/</span><span class="se">\\</span><span class="s">\1/g</span><span class="s1">&#39;</span><span class="c1">;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">quote</span><span class="ss">()</span><span class="w"> </span>{
+<span class="w">    </span><span class="nv">printf</span><span class="w"> </span><span class="o">%</span><span class="nv">s</span><span class="w"> </span><span class="s2">&quot;$1&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">sed</span><span class="w"> </span><span class="o">-</span><span class="nv">r</span><span class="w"> </span><span class="s1">&#39;s/([&quot;\\])/\\\1/g&#39;</span><span class="c1">;</span>
 }
 
-<span class="nv">IFS</span><span class="o">=</span>$<span class="ss">(</span><span class="nv">printf</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="ss">)</span>
-<span class="nv">printf</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s">!&quot;</span><span class="s1">&#39;</span>
-<span class="nv">read</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">previous</span>
+<span class="nv">IFS</span><span class="o">=</span>$<span class="ss">(</span><span class="nv">printf</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="ss">)</span>
+<span class="nv">printf</span><span class="w"> </span><span class="s1">&#39;\n!&quot;&#39;</span>
+<span class="nv">read</span><span class="w"> </span><span class="o">-</span><span class="nv">r</span><span class="w"> </span><span class="nv">previous</span>
 
-<span class="k">while</span> <span class="nv">read</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">line</span><span class="c1">; do</span>
-    <span class="nv">quote</span> <span class="s2">&quot;</span><span class="s">$previous</span><span class="s2">&quot;</span>
-    <span class="nv">printf</span> <span class="s1">&#39;</span><span class="s"> </span><span class="se">\\</span><span class="s">n</span><span class="se">\\\n</span><span class="s1">&#39;</span>
-    <span class="nv">previous</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">$line</span><span class="s2">&quot;</span>
+<span class="k">while</span><span class="w"> </span><span class="nv">read</span><span class="w"> </span><span class="o">-</span><span class="nv">r</span><span class="w"> </span><span class="nv">line</span><span class="c1">; do</span>
+<span class="w">    </span><span class="nv">quote</span><span class="w"> </span><span class="s2">&quot;$previous&quot;</span>
+<span class="w">    </span><span class="nv">printf</span><span class="w"> </span><span class="s1">&#39; \\n\\\n&#39;</span>
+<span class="w">    </span><span class="nv">previous</span><span class="o">=</span><span class="s2">&quot;$line&quot;</span>
 <span class="nv">done</span>
 
-<span class="nv">quote</span> <span class="s2">&quot;</span><span class="s">$previous</span><span class="s2">&quot;</span>
-<span class="nv">printf</span> <span class="s2">&quot;</span><span class="s"> #\</span><span class="s2">&quot;</span>\<span class="nv">n</span><span class="s2">&quot;</span><span class="s">;</span>
+<span class="nv">quote</span><span class="w"> </span><span class="s2">&quot;$previous&quot;</span>
+<span class="nv">printf</span><span class="w"> </span><span class="s2">&quot; #\&quot;</span>\<span class="nv">n</span><span class="err">&quot;;</span>
 </code></pre></div>
 		</article>
 		<section id="teaser-section">
@@ -137,7 +137,7 @@ for doing automatic escaping.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

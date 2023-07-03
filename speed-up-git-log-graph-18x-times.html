@@ -49,18 +49,18 @@
 				</p>
 			</header>
 			<p>For large repositories 'git log --graph' can be slow, but for git v2.20+ it can be sped up.</p>
-			<div class="highlight"><pre><span></span><code>$ <span class="nb">time</span> git lg
-git lg  <span class="m">13</span>.34s user <span class="m">0</span>.87s system <span class="m">84</span>% cpu <span class="m">16</span>.845 total
+			<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">time</span><span class="w"> </span>git<span class="w"> </span>lg
+git<span class="w"> </span>lg<span class="w">  </span><span class="m">13</span>.34s<span class="w"> </span>user<span class="w"> </span><span class="m">0</span>.87s<span class="w"> </span>system<span class="w"> </span><span class="m">84</span>%<span class="w"> </span>cpu<span class="w"> </span><span class="m">16</span>.845<span class="w"> </span>total
 
 <span class="c1"># True by default as of git v2.24</span>
-git config --global core.commitGraph <span class="nb">true</span>
-git config --global gc.writeCommitGraph <span class="nb">true</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.commitGraph<span class="w"> </span><span class="nb">true</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>gc.writeCommitGraph<span class="w"> </span><span class="nb">true</span>
 
 <span class="c1"># Command added in git v2.20</span>
-git commit-graph write
+git<span class="w"> </span>commit-graph<span class="w"> </span>write
 
-$ <span class="nb">time</span> git lg
-git lg  <span class="m">0</span>.72s user <span class="m">0</span>.14s system <span class="m">74</span>% cpu <span class="m">1</span>.154 total
+$<span class="w"> </span><span class="nb">time</span><span class="w"> </span>git<span class="w"> </span>lg
+git<span class="w"> </span>lg<span class="w">  </span><span class="m">0</span>.72s<span class="w"> </span>user<span class="w"> </span><span class="m">0</span>.14s<span class="w"> </span>system<span class="w"> </span><span class="m">74</span>%<span class="w"> </span>cpu<span class="w"> </span><span class="m">1</span>.154<span class="w"> </span>total
 </code></pre></div>
 
 <p>This is a speed up of ~18x, compared to the older versions.</p>
@@ -106,7 +106,7 @@ speed up graph in the <code>.git/objects/info</code> directory.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

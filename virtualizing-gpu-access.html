@@ -84,44 +84,44 @@ be the proprietary nvidia stack.</p>
 When doing graphical development I find it quite helpful to set
 up a parallel graphics stack in order to not pollute or depend on
 the stack of the host machine more than we have to.</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="w"> </span><span class="n">concatenate_colon</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">IFS</span><span class="o">=</span><span class="sc">&#39;:&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;$*&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="w"> </span><span class="n">concatenate_colon</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">IFS</span><span class="o">=</span><span class="sc">&#39;:&#39;</span>
+<span class="w">  </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;$*&quot;</span>
+<span class="p">}</span>
 
-<span class="n">function</span><span class="w"> </span><span class="n">add_export_env</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">VAR</span><span class="o">=</span><span class="s">&quot;$1&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">shift</span><span class="w"></span>
-<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">eval</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;\$$VAR&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s">&quot;$VAL&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
-<span class="w">    </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">concatenate_colon</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="w"> </span><span class="s">&quot;$VAL&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">else</span><span class="w"></span>
-<span class="w">    </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">concatenate_colon</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">fi</span><span class="w"></span>
-<span class="w">  </span><span class="n">eval</span><span class="w"> </span><span class="s">&quot;export $VAR=</span><span class="se">\&quot;</span><span class="s">$VAL</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="n">function</span><span class="w"> </span><span class="n">add_export_env</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">VAR</span><span class="o">=</span><span class="s">&quot;$1&quot;</span>
+<span class="w">  </span><span class="n">shift</span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">eval</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;\$$VAR&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s">&quot;$VAL&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="n">then</span>
+<span class="w">    </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">concatenate_colon</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="w"> </span><span class="s">&quot;$VAL&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="n">VAL</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">concatenate_colon</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">fi</span>
+<span class="w">  </span><span class="n">eval</span><span class="w"> </span><span class="s">&quot;export $VAR=</span><span class="se">\&quot;</span><span class="s">$VAL</span><span class="se">\&quot;</span><span class="s">&quot;</span>
+<span class="p">}</span>
 
-<span class="n">function</span><span class="w"> </span><span class="n">prefix_setup</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">PREFIX</span><span class="o">=</span><span class="s">&quot;$1&quot;</span><span class="w"></span>
+<span class="n">function</span><span class="w"> </span><span class="n">prefix_setup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">PREFIX</span><span class="o">=</span><span class="s">&quot;$1&quot;</span>
 
-<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/bin&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/lib&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">PKG_CONFIG_PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/lib/pkgconfig/&quot;</span><span class="w"> </span><span class="s">&quot;$PREFIX/share/pkgconfig/&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">MANPATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/share/man&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">export</span><span class="w"> </span><span class="n">ACLOCAL_PATH</span><span class="o">=</span><span class="s">&quot;$PREFIX/share/aclocal&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$ACLOCAL_PATH&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">export</span><span class="w"> </span><span class="n">ACLOCAL</span><span class="o">=</span><span class="s">&quot;aclocal -I $ACLOCAL_PATH&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/bin&quot;</span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/lib&quot;</span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">PKG_CONFIG_PATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/lib/pkgconfig/&quot;</span><span class="w"> </span><span class="s">&quot;$PREFIX/share/pkgconfig/&quot;</span>
+<span class="w">  </span><span class="n">add_export_env</span><span class="w"> </span><span class="n">MANPATH</span><span class="w"> </span><span class="s">&quot;$PREFIX/share/man&quot;</span>
+<span class="w">  </span><span class="n">export</span><span class="w"> </span><span class="n">ACLOCAL_PATH</span><span class="o">=</span><span class="s">&quot;$PREFIX/share/aclocal&quot;</span>
+<span class="w">  </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$ACLOCAL_PATH&quot;</span>
+<span class="w">  </span><span class="n">export</span><span class="w"> </span><span class="n">ACLOCAL</span><span class="o">=</span><span class="s">&quot;aclocal -I $ACLOCAL_PATH&quot;</span>
+<span class="p">}</span>
 
-<span class="n">function</span><span class="w"> </span><span class="n">projectshell</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;$1&quot;</span><span class="w"> </span><span class="no">in</span><span class="w"></span>
-<span class="w">    </span><span class="no">virgl</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="no">virglrenderer</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="no">export</span><span class="w"> </span><span class="no">ALT_LOCAL</span><span class="o">=</span><span class="s">&quot;/opt/local/virgl&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="no">mkdir</span><span class="w"> </span><span class="o">-</span><span class="no">p</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="no">prefix_setup</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="err">;;</span><span class="w"></span>
-<span class="w">  </span><span class="no">esac</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<span class="n">function</span><span class="w"> </span><span class="n">projectshell</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;$1&quot;</span><span class="w"> </span><span class="no">in</span>
+<span class="w">    </span><span class="no">virgl</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="no">virglrenderer</span><span class="p">)</span>
+<span class="w">        </span><span class="no">export</span><span class="w"> </span><span class="no">ALT_LOCAL</span><span class="o">=</span><span class="s">&quot;/opt/local/virgl&quot;</span>
+<span class="w">        </span><span class="no">mkdir</span><span class="w"> </span><span class="o">-</span><span class="no">p</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span>
+<span class="w">        </span><span class="no">prefix_setup</span><span class="w"> </span><span class="s">&quot;$ALT_LOCAL&quot;</span>
+<span class="w">        </span><span class="err">;;</span>
+<span class="w">  </span><span class="no">esac</span>
+<span class="err">}</span>
 </code></pre></div>
 
 <p>The above snippet is something that I would put in my <code>.bashrc</code> or <code>.zshrc</code>.
@@ -263,7 +263,7 @@ set up your very own virglrenderer enabled graphics stack.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

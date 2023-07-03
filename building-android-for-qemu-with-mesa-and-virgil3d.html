@@ -60,37 +60,37 @@ been slightly streamlined and had physical hardware support stripped out.</p>
 <h2>Install dependencies</h2>
 <p>These dependencies were available on Ubuntu 16.04, some alternative packages
 might be needed for other distributions.</p>
-<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">autoconf</span><span class="w"> </span><span class="n">gcc</span><span class="o">-</span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="w"> </span><span class="n">libaio</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbluetooth</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbrlapi</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbz2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcap</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcap</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcurl4</span><span class="o">-</span><span class="n">gnutls</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libepoxy</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libfdt</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgbm</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgles2</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libibverbs</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libjpeg8</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">liblzo2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libncurses5</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libnuma</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">librbd</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">librdmacm</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsasl2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsdl1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsdl2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libseccomp</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsnappy</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libssh2</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libspice</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libspice</span><span class="o">-</span><span class="n">server1</span><span class="w"> </span><span class="n">libtool</span><span class="w"> </span><span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="w"> </span><span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvde</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvdeplug</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvte</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libxen</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">valgrind</span><span class="w"> </span><span class="n">xfslibs</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">xutils</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libusbredirhost</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">usbredirserver</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">autoconf</span><span class="w"> </span><span class="n">gcc</span><span class="o">-</span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="w"> </span><span class="n">libaio</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbluetooth</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbrlapi</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbz2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcap</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcap</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcurl4</span><span class="o">-</span><span class="n">gnutls</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libepoxy</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libfdt</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgbm</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgles2</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libibverbs</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libjpeg8</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">liblzo2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libncurses5</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libnuma</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">librbd</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">librdmacm</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsasl2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsdl1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsdl2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libseccomp</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsnappy</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libssh2</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libspice</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libspice</span><span class="o">-</span><span class="n">server1</span><span class="w"> </span><span class="n">libtool</span><span class="w"> </span><span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="w"> </span><span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvde</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvdeplug</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvte</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libxen</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">valgrind</span><span class="w"> </span><span class="n">xfslibs</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">xutils</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libusbredirhost</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">usbredirserver</span>
 </code></pre></div>
 
 <h2>Set up paths</h2>
 <p>Naturally all of the paths below are configurable, this is just what I used.</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">PROJECT_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/qemu_android&quot;</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">VIRGLRENDERER_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/virglrenderer&quot;</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">QEMU_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/qemu&quot;</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">LINUX_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/linux&quot;</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">ANDROID_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/android&quot;</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">ANDROID_TOOLS_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/android-tools&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">PROJECT_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/qemu_android&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">VIRGLRENDERER_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/virglrenderer&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">QEMU_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/qemu&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">LINUX_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/linux&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">ANDROID_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/android&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">ANDROID_TOOLS_PATH</span><span class="o">=</span><span class="s2">&quot;${PROJECT_PATH}/android-tools&quot;</span>
 </code></pre></div>
 
 <h2>Virglrenderer</h2>
 <p>Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
 graphics capabilities of the host machine.</p>
-<div class="highlight"><pre><span></span><code>git clone git://git.freedesktop.org/git/virglrenderer <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
-cd <span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git://git.freedesktop.org/git/virglrenderer<span class="w"> </span><span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
+cd<span class="w"> </span><span class="cp">${</span><span class="n">VIRGLRENDERER_PATH</span><span class="cp">}</span>
 ./autogen.sh
-make -j7
-sudo make install
+make<span class="w"> </span>-j7
+sudo<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 
 <h2>Qemu</h2>
 <p>Qemu is a full system emulator, and supports a multitude of machine architectures.
 We're going to to use x86_64 but also build support for arm64/aarch64.</p>
-<div class="highlight"><pre><span></span><code>git clone git://git.qemu-project.org/qemu.git <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>
-mkdir <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
-cd <span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
-../configure --target-list=aarch64-softmmu,x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb
-make -j7
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git://git.qemu-project.org/qemu.git<span class="w"> </span><span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>
+mkdir<span class="w"> </span><span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
+cd<span class="w"> </span><span class="cp">${</span><span class="n">QEMU_PATH</span><span class="cp">}</span>/build
+../configure<span class="w"> </span>--target-list=aarch64-softmmu,x86_64-softmmu<span class="w"> </span>--enable-gtk<span class="w"> </span>--with-gtkabi=3.0<span class="w"> </span>--enable-kvm<span class="w"> </span>--enable-spice<span class="w"> </span>--enable-usb-redir<span class="w"> </span>--enable-libusb
+make<span class="w"> </span>-j7
 </code></pre></div>
 
 <h2>Linux kernel</h2>
@@ -99,11 +99,11 @@ make -j7
 this guide, <em>https://git.kernel.org/pub/scm/linux/kernel/git/padovan/linux.git</em>
 and the <em>fences</em> branch was used due to SW_SYNC not yet being included in upstream.
 Inclusion is targeted for <em>v4.9</em>.</p>
-<div class="highlight"><pre><span></span><code>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
-cd <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
-wget http://memcpy.io/files/2016-08-30/Kconfig -O <span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/.config
-make oldconfig
-make -j7
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git<span class="w"> </span><span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
+cd<span class="w"> </span><span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>
+wget<span class="w"> </span>http://memcpy.io/files/2016-08-30/Kconfig<span class="w"> </span>-O<span class="w"> </span><span class="cp">${</span><span class="n">LINUX_PATH</span><span class="cp">}</span>/.config
+make<span class="w"> </span>oldconfig
+make<span class="w"> </span>-j7
 </code></pre></div>
 
 <p><strong>Important:</strong> If you decide not to use the <em>.config</em> linked in this step, a few
@@ -150,24 +150,24 @@ CONFIG_SYNC_FILE=y
 <p>Build the Android Open Source Project.</p>
 <p><strong>Important:</strong> When running <em>source build/envsetup.sh</em> make sure that you are
 using bash. I had issues running <em>lunch</em> using zsh.</p>
-<div class="highlight"><pre><span></span><code>mkdir <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
-cd <span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
-repo init -u https://android.googlesource.com/platform/manifest -b master
-cd .repo
-git clone https://github.com/robherring/android_manifest.git -b android-6.0 local_manifests
-cd ..
-repo sync -j20
-cd device/linaro/generic
-make defconfig
-make all
-cd ../../..
-# The following snippet must be run in bash
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span><span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
+cd<span class="w"> </span><span class="cp">${</span><span class="n">ANDROID_PATH</span><span class="cp">}</span>
+repo<span class="w"> </span>init<span class="w"> </span>-u<span class="w"> </span>https://android.googlesource.com/platform/manifest<span class="w"> </span>-b<span class="w"> </span>master
+cd<span class="w"> </span>.repo
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/robherring/android_manifest.git<span class="w"> </span>-b<span class="w"> </span>android-6.0<span class="w"> </span>local_manifests
+cd<span class="w"> </span>..
+repo<span class="w"> </span>sync<span class="w"> </span>-j20
+cd<span class="w"> </span>device/linaro/generic
+make<span class="w"> </span>defconfig
+make<span class="w"> </span>all
+cd<span class="w"> </span>../../..
+#<span class="w"> </span>The<span class="w"> </span>following<span class="w"> </span>snippet<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>run<span class="w"> </span>in<span class="w"> </span>bash
 bash
-source build/envsetup.sh
-# Select linaro_x86_64-userdebug
+source<span class="w"> </span>build/envsetup.sh
+#<span class="w"> </span>Select<span class="w"> </span>linaro_x86_64-userdebug
 lunch
-make -j7
-# We don&#39;t need to use bash any longer
+make<span class="w"> </span>-j7
+#<span class="w"> </span>We<span class="w"> </span>don&#39;t<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>bash<span class="w"> </span>any<span class="w"> </span>longer
 exit
 </code></pre></div>
 
@@ -188,9 +188,9 @@ git checkout padovan/master
 <h2>Run Qemu machine</h2>
 <p>When running the below script, make sure that the all of the paths from step two
 have been exported.</p>
-<div class="highlight"><pre><span></span><code>wget http://memcpy.io/files/2016-08-30/boot_android_qemu.sh -O <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
-chmod +x <span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
-<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh x86_64
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>http://memcpy.io/files/2016-08-30/boot_android_qemu.sh<span class="w"> </span>-O<span class="w"> </span><span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
+chmod<span class="w"> </span>+x<span class="w"> </span><span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh
+<span class="cp">${</span><span class="n">PROJECT_PATH</span><span class="cp">}</span>/boot_android_qemu.sh<span class="w"> </span>x86_64
 </code></pre></div>
 
 <h2>Conclusion</h2>
@@ -228,7 +228,7 @@ This post has been a part of work undertaken by my employer <a href="http://www.
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

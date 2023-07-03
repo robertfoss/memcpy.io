@@ -15,7 +15,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Set up environment export DEV_DIR=&#34;/opt&#34; mkdir -p $DEV_DIR export CHROMIUM_DIR=&#34;$DEV_DIR/chromiumos&#34; mkdir -p $CHROMIUM_DIR export PATH=&#34;$DEV_DIR/depot_tools:$PATH&#34; # The BOARD variable used here is specific for the Chromebook that is # being targeted, a more generic target like &#34;amd64-generic&#34; could # be more useful for you needs. export BOARD=chell # The USB_DEVICE variable refers to the USB device that will be used # for flashing ChromiumOS onto a Chromebook. # Make sure that this device does not contain anything important! export USB_DEVICE=&#34;/dev/sda&#34; Install dependencies sudo apt install git-core gitk git-gui subversion curl cd $DEV_DIR git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git Get ChromiumOS source cd ${CHROMIUM_DIR} repo …">
+		<meta name="description" content="Set up environment export DEV_DIR=&#34;/opt&#34; mkdir -p $DEV_DIR export CHROMIUM_DIR=&#34;$DEV_DIR/chromiumos&#34; mkdir -p $CHROMIUM_DIR export PATH=&#34;$DEV_DIR/depot_tools:$PATH&#34; # The BOARD variable used here is specific for the Chromebook that is # being targeted, a more generic target like &#34;amd64-generic&#34; could # be more useful for you needs. export BOARD=chell # The USB_DEVICE variable refers to the USB device that will be used # for flashing ChromiumOS onto a Chromebook. # Make sure that this device does not contain anything important! export USB_DEVICE=&#34;/dev/sda&#34; Install dependencies sudo apt install git-core gitk git-gui subversion curl cd $DEV_DIR git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git Get ChromiumOS source cd ${CHROMIUM_DIR} repo init -u https://chromium.googlesource.com/chromiumos/manifest.git repo sync -j25 …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, chromiumos, chromebook, collabora">
 		<meta property="og:title" content="Setting up a ChromiumOS dev environment" />
@@ -45,42 +45,42 @@
 			</header>
 			<p>Setting up a fully functional ChromiumOS development environment on actual Chromebook hardware</p>
 			<h2>Set up environment</h2>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">DEV_DIR</span><span class="o">=</span><span class="s2">&quot;/opt&quot;</span><span class="w"></span>
-<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">$</span><span class="n">DEV_DIR</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">CHROMIUM_DIR</span><span class="o">=</span><span class="s2">&quot;$DEV_DIR/chromiumos&quot;</span><span class="w"></span>
-<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">$</span><span class="n">CHROMIUM_DIR</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$DEV_DIR/depot_tools:$PATH&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">DEV_DIR</span><span class="o">=</span><span class="s2">&quot;/opt&quot;</span>
+<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">$</span><span class="n">DEV_DIR</span>
+<span class="k">export</span><span class="w"> </span><span class="n">CHROMIUM_DIR</span><span class="o">=</span><span class="s2">&quot;$DEV_DIR/chromiumos&quot;</span>
+<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">$</span><span class="n">CHROMIUM_DIR</span>
+<span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$DEV_DIR/depot_tools:$PATH&quot;</span>
 
-<span class="c1"># The BOARD variable used here is specific for the Chromebook that is</span><span class="w"></span>
-<span class="c1"># being targeted, a more generic target like &quot;amd64-generic&quot; could</span><span class="w"></span>
-<span class="c1"># be more useful for you needs.</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=</span><span class="n">chell</span><span class="w"></span>
+<span class="c1"># The BOARD variable used here is specific for the Chromebook that is</span>
+<span class="c1"># being targeted, a more generic target like &quot;amd64-generic&quot; could</span>
+<span class="c1"># be more useful for you needs.</span>
+<span class="k">export</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=</span><span class="n">chell</span>
 
-<span class="c1"># The USB_DEVICE variable refers to the USB device that will be used</span><span class="w"></span>
-<span class="c1"># for flashing ChromiumOS onto a Chromebook.</span><span class="w"></span>
-<span class="c1"># Make sure that this device does not contain anything important!</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">USB_DEVICE</span><span class="o">=</span><span class="s2">&quot;/dev/sda&quot;</span><span class="w"></span>
+<span class="c1"># The USB_DEVICE variable refers to the USB device that will be used</span>
+<span class="c1"># for flashing ChromiumOS onto a Chromebook.</span>
+<span class="c1"># Make sure that this device does not contain anything important!</span>
+<span class="k">export</span><span class="w"> </span><span class="n">USB_DEVICE</span><span class="o">=</span><span class="s2">&quot;/dev/sda&quot;</span>
 </code></pre></div>
 
 <h2>Install dependencies</h2>
-<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="n">core</span><span class="w"> </span><span class="n">gitk</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="n">gui</span><span class="w"> </span><span class="n">subversion</span><span class="w"> </span><span class="n">curl</span><span class="w"></span>
-<span class="n">cd</span><span class="w"> </span><span class="o">$</span><span class="n">DEV_DIR</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">chromium</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chromium</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">depot_tools</span><span class="o">.</span><span class="n">git</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="n">core</span><span class="w"> </span><span class="n">gitk</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="n">gui</span><span class="w"> </span><span class="n">subversion</span><span class="w"> </span><span class="n">curl</span>
+<span class="n">cd</span><span class="w"> </span><span class="o">$</span><span class="n">DEV_DIR</span>
+<span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">chromium</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chromium</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">depot_tools</span><span class="o">.</span><span class="n">git</span>
 </code></pre></div>
 
 <h2>Get ChromiumOS source</h2>
-<div class="highlight"><pre><span></span><code>cd <span class="cp">${</span><span class="n">CHROMIUM_DIR</span><span class="cp">}</span>
-repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
-repo sync -j25
+<div class="highlight"><pre><span></span><code>cd<span class="w"> </span><span class="cp">${</span><span class="n">CHROMIUM_DIR</span><span class="cp">}</span>
+repo<span class="w"> </span>init<span class="w"> </span>-u<span class="w"> </span>https://chromium.googlesource.com/chromiumos/manifest.git
+repo<span class="w"> </span>sync<span class="w"> </span>-j25
 </code></pre></div>
 
 <h2>Build ChromiumOS</h2>
-<div class="highlight"><pre><span></span><code>cros_sdk -- ./build_packages --board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>
-cros_sdk -- ./build_image --board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>
+<div class="highlight"><pre><span></span><code>cros_sdk<span class="w"> </span>--<span class="w"> </span>./build_packages<span class="w"> </span>--board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>
+cros_sdk<span class="w"> </span>--<span class="w"> </span>./build_image<span class="w"> </span>--board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>
 </code></pre></div>
 
 <h2>Flash ChromiumOS to storage medium</h2>
-<div class="highlight"><pre><span></span><code>cros_sdk -- cros flash --board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span> usb:/<span class="nv">$USB_DEVICE</span>
+<div class="highlight"><pre><span></span><code>cros_sdk<span class="w"> </span>--<span class="w"> </span>cros<span class="w"> </span>flash<span class="w"> </span>--board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span><span class="w"> </span>usb:/<span class="nv">$USB_DEVICE</span>
 </code></pre></div>
 
 <h2>Install ChromiumOS on Chromebook</h2>
@@ -108,15 +108,15 @@ sudo gdbserver :1234 chrome
 </code></pre></div>
 
 <h3>On dev machine</h3>
-<div class="highlight"><pre><span></span><code># <span class="nv">On</span> <span class="nv">x86</span>
-<span class="nv">cros_sdk</span> <span class="o">--</span> <span class="nv">sudo</span> <span class="nv">USE</span><span class="o">=</span><span class="nv">expat</span> <span class="nv">emerge</span> <span class="nv">cross</span><span class="o">-</span><span class="nv">i686</span><span class="o">-</span><span class="nv">pc</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnu</span><span class="o">/</span><span class="nv">gdb</span>
-# <span class="nv">On</span> <span class="nv">ARMv7</span>
-<span class="nv">cros_sdk</span> <span class="o">--</span> <span class="nv">sudo</span> <span class="nv">USE</span><span class="o">=</span><span class="nv">expat</span> <span class="nv">emerge</span> <span class="nv">cross</span><span class="o">-</span><span class="nv">armv7a</span><span class="o">-</span><span class="nv">cros</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnueabi</span><span class="o">/</span><span class="nv">gdb</span>
+<div class="highlight"><pre><span></span><code>#<span class="w"> </span><span class="nv">On</span><span class="w"> </span><span class="nv">x86</span>
+<span class="nv">cros_sdk</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">sudo</span><span class="w"> </span><span class="nv">USE</span><span class="o">=</span><span class="nv">expat</span><span class="w"> </span><span class="nv">emerge</span><span class="w"> </span><span class="nv">cross</span><span class="o">-</span><span class="nv">i686</span><span class="o">-</span><span class="nv">pc</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnu</span><span class="o">/</span><span class="nv">gdb</span>
+#<span class="w"> </span><span class="nv">On</span><span class="w"> </span><span class="nv">ARMv7</span>
+<span class="nv">cros_sdk</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">sudo</span><span class="w"> </span><span class="nv">USE</span><span class="o">=</span><span class="nv">expat</span><span class="w"> </span><span class="nv">emerge</span><span class="w"> </span><span class="nv">cross</span><span class="o">-</span><span class="nv">armv7a</span><span class="o">-</span><span class="nv">cros</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnueabi</span><span class="o">/</span><span class="nv">gdb</span>
 
-<span class="nv">cros_sdk</span> <span class="o">--</span> <span class="nv">i686</span><span class="o">-</span><span class="nv">pc</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnu</span><span class="o">-</span><span class="nv">gdb</span> <span class="s2">&quot;</span><span class="s">/build/$BOARD/opt/google/chrome/chrome</span><span class="s2">&quot;</span>
-<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span> <span class="nv">set</span> <span class="nv">sysroot</span> <span class="o">/</span><span class="nv">build</span><span class="o">/</span><span class="mh">$B</span><span class="nv">OARD</span><span class="o">/</span>
-<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span> <span class="nv">target</span> <span class="nv">remote</span> <span class="nv">IP_ADDR_CHROMEBOOK</span>:<span class="mi">1234</span>
-<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span> <span class="k">continue</span>
+<span class="nv">cros_sdk</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">i686</span><span class="o">-</span><span class="nv">pc</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnu</span><span class="o">-</span><span class="nv">gdb</span><span class="w"> </span><span class="s2">&quot;/build/$BOARD/opt/google/chrome/chrome&quot;</span>
+<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">sysroot</span><span class="w"> </span><span class="o">/</span><span class="nv">build</span><span class="o">/</span><span class="mh">$B</span><span class="nv">OARD</span><span class="o">/</span>
+<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="nv">remote</span><span class="w"> </span><span class="nv">IP_ADDR_CHROMEBOOK</span>:<span class="mi">1234</span>
+<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span><span class="w"> </span><span class="k">continue</span>
 </code></pre></div>
 
 <h2>Conclusion</h2>
@@ -157,7 +157,7 @@ sudo gdbserver :1234 chrome
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

@@ -15,7 +15,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="A previous post introduced the SPURV Android compatibility layer for Wayland based Linux environment. In this post we&#39;re going to dig into how you can run an Android application on the very common i.MX6 based Nitrogen6_MAX board from Boundary Devices. Install dependencies sudo apt install \ apt-transport-https \ bmap-tools \ ca-certificates \ curl \ git \ gnupg2 \ repo \ software-properties-common \ u-boot-tools \ qemu-kvm Set up Docker container for building # Install Docker curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - sudo add-apt-repository &#34;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&#34; sudo apt update sudo apt install docker-ce # Set up privileges for Docker sudo usermod -aG docker ${USER} su - ${USER} # Fetch …">
+		<meta name="description" content="A previous post introduced the SPURV Android compatibility layer for Wayland based Linux environment. In this post we&#39;re going to dig into how you can run an Android application on the very common i.MX6 based Nitrogen6_MAX board from Boundary Devices. Install dependencies sudo apt install \ apt-transport-https \ bmap-tools \ ca-certificates \ curl \ git \ gnupg2 \ repo \ software-properties-common \ u-boot-tools \ qemu-kvm Set up Docker container for building # Install Docker curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - sudo add-apt-repository &#34;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&#34; sudo apt update sudo apt install docker-ce # Set up privileges for Docker sudo usermod -aG docker ${USER} su - ${USER} # Fetch Docker image …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, open source, graphics, wayland, android, 3d, acceleration, imx6, nitrogen6">
 		<meta property="og:title" content="Running Android and Wayland on Embedded Devices" />
@@ -55,32 +55,32 @@ In this post we're going to dig into how you can run an Android application
 on the very common i.MX6 based <a href="https://boundarydevices.com/product/nitrogen6max/">Nitrogen6_MAX</a>
 board from <a href="https://boundarydevices.com/">Boundary Devices</a>.</p>
 <h2>Install dependencies</h2>
-<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">bmap</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">curl</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">git</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">gnupg2</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">repo</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span>\<span class="w"></span>
-<span class="w">    </span><span class="n">qemu</span><span class="o">-</span><span class="n">kvm</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">bmap</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">curl</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">git</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">gnupg2</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">repo</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span>\
+<span class="w">    </span><span class="n">qemu</span><span class="o">-</span><span class="n">kvm</span>
 </code></pre></div>
 
 <h2>Set up Docker container for building</h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install Docker</span><span class="w"></span>
-<span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">fsSL</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">gpg</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">-</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span><span class="w"> </span><span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&quot;</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install Docker</span>
+<span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">fsSL</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">gpg</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">-</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span><span class="w"> </span><span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&quot;</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">docker</span><span class="o">-</span><span class="n">ce</span>
 
-<span class="c1"># Set up privileges for Docker</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">usermod</span><span class="w"> </span><span class="o">-</span><span class="n">aG</span><span class="w"> </span><span class="n">docker</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">USER</span><span class="p">}</span><span class="w"></span>
-<span class="n">su</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">USER</span><span class="p">}</span><span class="w"></span>
+<span class="c1"># Set up privileges for Docker</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">usermod</span><span class="w"> </span><span class="o">-</span><span class="n">aG</span><span class="w"> </span><span class="n">docker</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">USER</span><span class="p">}</span>
+<span class="n">su</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">USER</span><span class="p">}</span>
 
-<span class="c1"># Fetch Docker image</span><span class="w"></span>
-<span class="n">docker</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="n">godebos</span><span class="o">/</span><span class="n">debos</span><span class="p">:</span><span class="n">latest</span><span class="w"></span>
+<span class="c1"># Fetch Docker image</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="n">godebos</span><span class="o">/</span><span class="n">debos</span><span class="p">:</span><span class="n">latest</span>
 </code></pre></div>
 
 <h2>Build</h2>
@@ -172,7 +172,7 @@ start immediately.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

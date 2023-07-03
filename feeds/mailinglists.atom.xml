@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - mailinglists</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/mailinglists.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2021-11-04T20:10:00+01:00</updated><entry><title>Git Alias function syntax</title><link href="https://memcpy.io/git-alias-function-syntax.html" rel="alternate"></link><published>2021-11-04T20:10:00+01:00</published><updated>2021-11-04T20:10:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2021-11-04:/git-alias-function-syntax.html</id><summary type="html">&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;{\&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;{&lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;echo Hello world!; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,
@@ -17,11 +17,11 @@ to grok. But when we try to clean up the above snippet and add some quotes to
 
 &lt;p&gt;This syntax error is caused by quotes needing to be escaped. The reason for this
 comes down to how git tokenizes and executes these functions. If you're curious …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;{\&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="na"&gt;echo Hello world!; \&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;}; f&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;{&lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;echo Hello world!; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,
@@ -39,20 +39,20 @@ about how it's managed internally, have a look at
 &lt;p&gt;&lt;a href="https://gist.github.com/HaleTom"&gt;Tom Hale&lt;/a&gt; wrote this
 &lt;a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae"&gt;script&lt;/a&gt;
 for doing automatic escaping.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;quote&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt; {
-    &lt;span class="nv"&gt;printf&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;sed&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;s/([&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;])/&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;\1/g&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;quote&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;sed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/([&amp;quot;\\])/\\\1/g&amp;#39;&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
 }
 
-&lt;span class="nv"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;$&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;printf&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
-&lt;span class="nv"&gt;printf&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;!&amp;quot;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
-&lt;span class="nv"&gt;read&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt; &lt;span class="nv"&gt;previous&lt;/span&gt;
+&lt;span class="nv"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;$&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\n!&amp;quot;&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;previous&lt;/span&gt;
 
-&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nv"&gt;read&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt; &lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="c1"&gt;; do&lt;/span&gt;
-    &lt;span class="nv"&gt;quote&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;$previous&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="nv"&gt;printf&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt; &lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;n&lt;/span&gt;&lt;span class="se"&gt;\\\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
-    &lt;span class="nv"&gt;previous&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;$line&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="c1"&gt;; do&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;quote&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$previous&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; \\n\\\n&amp;#39;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;previous&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$line&amp;quot;&lt;/span&gt;
 &lt;span class="nv"&gt;done&lt;/span&gt;
 
-&lt;span class="nv"&gt;quote&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;$previous&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="nv"&gt;printf&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt; #\&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;\&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;;&lt;/span&gt;
+&lt;span class="nv"&gt;quote&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$previous&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; #\&amp;quot;&lt;/span&gt;\&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="shell"></category><category term="git"></category><category term="alias"></category><category term="b4"></category><category term="gitconfig"></category><category term="mbox"></category><category term="am"></category><category term="kernel"></category><category term="mailing"></category><category term="list"></category><category term="mailinglists"></category></entry></feed>

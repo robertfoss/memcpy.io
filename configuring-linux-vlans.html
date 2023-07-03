@@ -46,70 +46,70 @@
 				</p>
 			</header>
 			<p>Setting up a VLAN for a network interface in Linux is a little bit convoluted. Let's write a Bash/ZSH function for simplifying the process.</p>
-			<div class="highlight"><pre><span></span><code>$ vlan
-Device not provided
+			<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vlan
+Device<span class="w"> </span>not<span class="w"> </span>provided
 
-    vlan <span class="nv">$DEV</span> <span class="nv">$VLAN</span> <span class="nv">$SUBNET</span>
+<span class="w">    </span>vlan<span class="w"> </span><span class="nv">$DEV</span><span class="w"> </span><span class="nv">$VLAN</span><span class="w"> </span><span class="nv">$SUBNET</span>
 
-    vlan eth0 <span class="m">42</span> <span class="m">10</span>.31.155.1/27
+<span class="w">    </span>vlan<span class="w"> </span>eth0<span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">10</span>.31.155.1/27
 </code></pre></div>
 
 <p>This is a achieved by pasting the below function into your <code>.bashrc</code> / <code>.zshrc</code> and issuing a <code>source .bashrc</code> or <code>source .zshrc</code> correspondingly.</p>
-<div class="highlight"><pre><span></span><code>function vlan {
-    DEV=$1
-    VLAN=$2
-    ADDR=$3
+<div class="highlight"><pre><span></span><code>function<span class="w"> </span>vlan<span class="w"> </span>{
+<span class="w">    </span>DEV=$1
+<span class="w">    </span>VLAN=$2
+<span class="w">    </span>ADDR=$3
 
-    HELP=&quot;
+<span class="w">    </span>HELP=&quot;
 
-    vlan \<span class="nv">$DEV</span> \<span class="nv">$VLAN</span> \<span class="nv">$SUBNET</span>
+<span class="w">    </span>vlan<span class="w"> </span>\<span class="nv">$DEV</span><span class="w"> </span>\<span class="nv">$VLAN</span><span class="w"> </span>\<span class="nv">$SUBNET</span>
 
-    vlan eth0 42 10.31.155.1/27
+<span class="w">    </span>vlan<span class="w"> </span>eth0<span class="w"> </span>42<span class="w"> </span>10.31.155.1/27
 &quot;
 
-    if [ -z &quot;<span class="nv">$DEV</span>&quot; ]; then
-        echo &quot;Device not provided&quot;
-        echo &quot;<span class="nv">$HELP</span>&quot;
-        return 1
-    fi
+<span class="w">    </span>if<span class="w"> </span>[<span class="w"> </span>-z<span class="w"> </span>&quot;<span class="nv">$DEV</span>&quot;<span class="w"> </span>];<span class="w"> </span>then
+<span class="w">        </span>echo<span class="w"> </span>&quot;Device<span class="w"> </span>not<span class="w"> </span>provided&quot;
+<span class="w">        </span>echo<span class="w"> </span>&quot;<span class="nv">$HELP</span>&quot;
+<span class="w">        </span>return<span class="w"> </span>1
+<span class="w">    </span>fi
 
-    ip link | grep &quot;<span class="cp">${</span><span class="n">DEV</span><span class="cp">}</span>: &quot; &gt;/dev/null 2&gt;<span class="err">&amp;</span>1
-    if [ $? -ne 0 ]; then
-        echo &quot;\&quot;<span class="nv">$DEV</span>\&quot; is not a valid device&quot;
-        echo &quot;<span class="nv">$HELP</span>&quot;
-        return 1
-    fi
+<span class="w">    </span>ip<span class="w"> </span>link<span class="w"> </span>|<span class="w"> </span>grep<span class="w"> </span>&quot;<span class="cp">${</span><span class="n">DEV</span><span class="cp">}</span>:<span class="w"> </span>&quot;<span class="w"> </span>&gt;/dev/null<span class="w"> </span>2&gt;<span class="err">&amp;</span>1
+<span class="w">    </span>if<span class="w"> </span>[<span class="w"> </span>$?<span class="w"> </span>-ne<span class="w"> </span>0<span class="w"> </span>];<span class="w"> </span>then
+<span class="w">        </span>echo<span class="w"> </span>&quot;\&quot;<span class="nv">$DEV</span>\&quot;<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>valid<span class="w"> </span>device&quot;
+<span class="w">        </span>echo<span class="w"> </span>&quot;<span class="nv">$HELP</span>&quot;
+<span class="w">        </span>return<span class="w"> </span>1
+<span class="w">    </span>fi
 
-    if [ -z &quot;<span class="nv">$VLAN</span>&quot; ]; then
-        echo &quot;VLAN not provided&quot;
-        echo &quot;<span class="nv">$HELP</span>&quot;
-        exit 1
-    fi
-    REGEX=&#39;^[0-9]+$&#39;
-    if ! [[ <span class="nv">$VLAN</span> =~ <span class="nv">$REGEX</span> ]] ; then
-        echo &quot;\&quot;<span class="nv">$VLAN</span>\&quot; is not a number&quot; &gt;<span class="ni">&amp;2;</span> exit 1
-        echo &quot;<span class="nv">$HELP</span>&quot;
-        return 1
-    fi
+<span class="w">    </span>if<span class="w"> </span>[<span class="w"> </span>-z<span class="w"> </span>&quot;<span class="nv">$VLAN</span>&quot;<span class="w"> </span>];<span class="w"> </span>then
+<span class="w">        </span>echo<span class="w"> </span>&quot;VLAN<span class="w"> </span>not<span class="w"> </span>provided&quot;
+<span class="w">        </span>echo<span class="w"> </span>&quot;<span class="nv">$HELP</span>&quot;
+<span class="w">        </span>exit<span class="w"> </span>1
+<span class="w">    </span>fi
+<span class="w">    </span>REGEX=&#39;^[0-9]+$&#39;
+<span class="w">    </span>if<span class="w"> </span>!<span class="w"> </span>[[<span class="w"> </span><span class="nv">$VLAN</span><span class="w"> </span>=~<span class="w"> </span><span class="nv">$REGEX</span><span class="w"> </span>]]<span class="w"> </span>;<span class="w"> </span>then
+<span class="w">        </span>echo<span class="w"> </span>&quot;\&quot;<span class="nv">$VLAN</span>\&quot;<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>number&quot;<span class="w"> </span>&gt;<span class="ni">&amp;2;</span><span class="w"> </span>exit<span class="w"> </span>1
+<span class="w">        </span>echo<span class="w"> </span>&quot;<span class="nv">$HELP</span>&quot;
+<span class="w">        </span>return<span class="w"> </span>1
+<span class="w">    </span>fi
 
-    if [ -z &quot;<span class="nv">$ADDR</span>&quot; ]; then
-        echo &quot;IP address not provided&quot;
-        echo &quot;<span class="nv">$HELP</span>&quot;
-        return 1
-    fi
-    ipcalc -cs <span class="nv">$ADDR</span> &gt;/dev/null 2&gt;<span class="err">&amp;</span>1
-    if [ $? -ne 0 ]; then
-        echo &quot;\&quot;$$ADDR\&quot; is not a valid address&quot;
-        echo &quot;<span class="nv">$HELP</span>&quot;
-        return 1
-    fi
+<span class="w">    </span>if<span class="w"> </span>[<span class="w"> </span>-z<span class="w"> </span>&quot;<span class="nv">$ADDR</span>&quot;<span class="w"> </span>];<span class="w"> </span>then
+<span class="w">        </span>echo<span class="w"> </span>&quot;IP<span class="w"> </span>address<span class="w"> </span>not<span class="w"> </span>provided&quot;
+<span class="w">        </span>echo<span class="w"> </span>&quot;<span class="nv">$HELP</span>&quot;
+<span class="w">        </span>return<span class="w"> </span>1
+<span class="w">    </span>fi
+<span class="w">    </span>ipcalc<span class="w"> </span>-cs<span class="w"> </span><span class="nv">$ADDR</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span>2&gt;<span class="err">&amp;</span>1
+<span class="w">    </span>if<span class="w"> </span>[<span class="w"> </span>$?<span class="w"> </span>-ne<span class="w"> </span>0<span class="w"> </span>];<span class="w"> </span>then
+<span class="w">        </span>echo<span class="w"> </span>&quot;\&quot;$$ADDR\&quot;<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>valid<span class="w"> </span>address&quot;
+<span class="w">        </span>echo<span class="w"> </span>&quot;<span class="nv">$HELP</span>&quot;
+<span class="w">        </span>return<span class="w"> </span>1
+<span class="w">    </span>fi
 
-    VLAN_DEV=vlan_<span class="cp">${</span><span class="n">VLAN</span><span class="cp">}</span>
-    SUBNET=&quot;$(ipcalc <span class="nv">$ADDR</span> | grep Network: | cut -d&#39; &#39; -f4)&quot;
+<span class="w">    </span>VLAN_DEV=vlan_<span class="cp">${</span><span class="n">VLAN</span><span class="cp">}</span>
+<span class="w">    </span>SUBNET=&quot;$(ipcalc<span class="w"> </span><span class="nv">$ADDR</span><span class="w"> </span>|<span class="w"> </span>grep<span class="w"> </span>Network:<span class="w"> </span>|<span class="w"> </span>cut<span class="w"> </span>-d&#39;<span class="w"> </span>&#39;<span class="w"> </span>-f4)&quot;
 
-    sudo ip link add link <span class="nv">$DEV</span> name <span class="nv">$VLAN_DEV</span> type vlan id <span class="nv">$VLAN</span>
-    sudo ip addr add <span class="nv">$ADDR</span> dev <span class="nv">$VLAN_DEV</span> metric 20
-    sudo ip link set dev <span class="nv">$VLAN_DEV</span> up
+<span class="w">    </span>sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>link<span class="w"> </span><span class="nv">$DEV</span><span class="w"> </span>name<span class="w"> </span><span class="nv">$VLAN_DEV</span><span class="w"> </span>type<span class="w"> </span>vlan<span class="w"> </span>id<span class="w"> </span><span class="nv">$VLAN</span>
+<span class="w">    </span>sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="nv">$ADDR</span><span class="w"> </span>dev<span class="w"> </span><span class="nv">$VLAN_DEV</span><span class="w"> </span>metric<span class="w"> </span>20
+<span class="w">    </span>sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span>set<span class="w"> </span>dev<span class="w"> </span><span class="nv">$VLAN_DEV</span><span class="w"> </span>up
 }
 </code></pre></div>
 
@@ -151,7 +151,7 @@ sudo ip link set dev vlan_42 up
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2022 Robert Foss
+					2023 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>
