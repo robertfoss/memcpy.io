@@ -51,8 +51,8 @@
 
 &lt;h2&gt;Hardware: iMX6 Sabre&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Build android, the kernel, and flash it onto an SD-card
+&lt;span class="gh"&gt;#&lt;/span&gt; Run build_android with the correct -d flag
 ./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
 ./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -62,8 +62,8 @@
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: iMX6 Sabrelite&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Build android, the kernel, and flash it onto an SD-card
+&lt;span class="gh"&gt;#&lt;/span&gt; Run build_android with the correct -d flag
 ./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -72,8 +72,8 @@ the device can be restarted.&lt;/p&gt;
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Build android, the kernel, and flash it onto an SD-card
+&lt;span class="gh"&gt;#&lt;/span&gt; Run build_android with the correct -d flag
 ./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
 ./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;

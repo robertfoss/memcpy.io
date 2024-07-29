@@ -60,9 +60,9 @@
 <h3>Build NodeMCU</h3>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/nodemcu/nodemcu-firmware.git
 cd nodemcu-firmware
-# Switch to dev branch, since it&#39;s the most up to date
+<span class="gh">#</span> Switch to dev branch, since it&#39;s the most up to date
 git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
+<span class="gh">#</span> Make INTEGER version, since it uses less memory/space
 make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 </code></pre></div>
 
@@ -74,19 +74,19 @@ make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 <h5>app/include/user_modules.h</h5>
 <p>Contains a list of which modules to include in the build.</p>
 <div class="highlight"><pre><span></span><code>...
-#define LUA_USE_MODULES_NODE
-#define LUA_USE_MODULES_FILE
-#define LUA_USE_MODULES_GPIO
-#define LUA_USE_MODULES_WIFI
-#define LUA_USE_MODULES_NET
+<span class="gh">#</span>define LUA_USE_MODULES_NODE
+<span class="gh">#</span>define LUA_USE_MODULES_FILE
+<span class="gh">#</span>define LUA_USE_MODULES_GPIO
+<span class="gh">#</span>define LUA_USE_MODULES_WIFI
+<span class="gh">#</span>define LUA_USE_MODULES_NET
 ...
 </code></pre></div>
 
 <h5>app/include/user_config.h</h5>
 <p>Contains NodeMCU developer options, but could be of use.</p>
 <div class="highlight"><pre><span></span><code>...
-#define DEVELOP_VERSION
-#define NODE_ERROR
+<span class="gh">#</span>define DEVELOP_VERSION
+<span class="gh">#</span>define NODE_ERROR
 ...
 </code></pre></div>
 		</article>
@@ -114,7 +114,7 @@ make EXTRA_CCFLAGS=&quot;-DLUA_NUMBER_INTEGRAL&quot;
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

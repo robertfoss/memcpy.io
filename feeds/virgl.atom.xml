@@ -113,12 +113,12 @@ make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Build Mesa&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Fetch dependencies
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Fetch dependencies
 sudo sed -i &amp;#39;s/\#[ ]*deb-src/deb-src/&amp;#39; /etc/apt/sources.list
 sudo apt update
 sudo apt-get build-dep mesa
 
-# Actually build Mesa
+&lt;span class="gh"&gt;#&lt;/span&gt; Actually build Mesa
 git clone https://anongit.freedesktop.org/git/mesa/mesa.git
 cd mesa
 ./autogen.sh \

@@ -108,15 +108,15 @@ sudo gdbserver :1234 chrome
 </code></pre></div>
 
 <h3>On dev machine</h3>
-<div class="highlight"><pre><span></span><code>#<span class="w"> </span><span class="nv">On</span><span class="w"> </span><span class="nv">x86</span>
-<span class="nv">cros_sdk</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">sudo</span><span class="w"> </span><span class="nv">USE</span><span class="o">=</span><span class="nv">expat</span><span class="w"> </span><span class="nv">emerge</span><span class="w"> </span><span class="nv">cross</span><span class="o">-</span><span class="nv">i686</span><span class="o">-</span><span class="nv">pc</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnu</span><span class="o">/</span><span class="nv">gdb</span>
-#<span class="w"> </span><span class="nv">On</span><span class="w"> </span><span class="nv">ARMv7</span>
-<span class="nv">cros_sdk</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">sudo</span><span class="w"> </span><span class="nv">USE</span><span class="o">=</span><span class="nv">expat</span><span class="w"> </span><span class="nv">emerge</span><span class="w"> </span><span class="nv">cross</span><span class="o">-</span><span class="nv">armv7a</span><span class="o">-</span><span class="nv">cros</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnueabi</span><span class="o">/</span><span class="nv">gdb</span>
+<div class="highlight"><pre><span></span><code><span class="gh">#</span> On x86
+cros_sdk -- sudo USE=expat emerge cross-i686-pc-linux-gnu/gdb
+<span class="gh">#</span> On ARMv7
+cros_sdk -- sudo USE=expat emerge cross-armv7a-cros-linux-gnueabi/gdb
 
-<span class="nv">cros_sdk</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">i686</span><span class="o">-</span><span class="nv">pc</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">gnu</span><span class="o">-</span><span class="nv">gdb</span><span class="w"> </span><span class="s2">&quot;/build/$BOARD/opt/google/chrome/chrome&quot;</span>
-<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">sysroot</span><span class="w"> </span><span class="o">/</span><span class="nv">build</span><span class="o">/</span><span class="mh">$B</span><span class="nv">OARD</span><span class="o">/</span>
-<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="nv">remote</span><span class="w"> </span><span class="nv">IP_ADDR_CHROMEBOOK</span>:<span class="mi">1234</span>
-<span class="ss">(</span><span class="nv">gdb</span><span class="ss">)</span><span class="w"> </span><span class="k">continue</span>
+cros_sdk -- i686-pc-linux-gnu-gdb &quot;/build/$BOARD/opt/google/chrome/chrome&quot;
+(gdb) set sysroot /build/$BOARD/
+(gdb) target remote IP_ADDR_CHROMEBOOK:1234
+(gdb) continue
 </code></pre></div>
 
 <h2>Conclusion</h2>
@@ -157,7 +157,7 @@ sudo gdbserver :1234 chrome
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

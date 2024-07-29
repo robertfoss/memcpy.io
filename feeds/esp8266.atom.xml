@@ -137,9 +137,9 @@ A guide to building NodeMCU can be found &lt;a href="http://memset.io/building-n
 &lt;h3&gt;Build NodeMCU&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
 cd nodemcu-firmware
-# Switch to dev branch, since it&amp;#39;s the most up to date
+&lt;span class="gh"&gt;#&lt;/span&gt; Switch to dev branch, since it&amp;#39;s the most up to date
 git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
+&lt;span class="gh"&gt;#&lt;/span&gt; Make INTEGER version, since it uses less memory/space
 make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -163,9 +163,9 @@ make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;h3&gt;Build NodeMCU&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
 cd nodemcu-firmware
-# Switch to dev branch, since it&amp;#39;s the most up to date
+&lt;span class="gh"&gt;#&lt;/span&gt; Switch to dev branch, since it&amp;#39;s the most up to date
 git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
+&lt;span class="gh"&gt;#&lt;/span&gt; Make INTEGER version, since it uses less memory/space
 make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -177,18 +177,18 @@ make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
 &lt;p&gt;Contains a list of which modules to include in the build.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;...
-#define LUA_USE_MODULES_NODE
-#define LUA_USE_MODULES_FILE
-#define LUA_USE_MODULES_GPIO
-#define LUA_USE_MODULES_WIFI
-#define LUA_USE_MODULES_NET
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_NODE
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_FILE
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_GPIO
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_WIFI
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_NET
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h5&gt;app/include/user_config.h&lt;/h5&gt;
 &lt;p&gt;Contains NodeMCU developer options, but could be of use.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;...
-#define DEVELOP_VERSION
-#define NODE_ERROR
+&lt;span class="gh"&gt;#&lt;/span&gt;define DEVELOP_VERSION
+&lt;span class="gh"&gt;#&lt;/span&gt;define NODE_ERROR
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="ESP8266"></category><category term="NodeMCU"></category><category term="ESP8266"></category></entry></feed>

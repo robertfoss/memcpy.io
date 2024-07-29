@@ -15,7 +15,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="![Alt text](/images/2016-06-03_weston.png &#34;Weston running on a RPi2.&#34;) Progress in the VC4 graphics camp and the Wayland camp now enables us to run Weston on top of the drm backend for VC4 platforms. Previously software acceleration using pixman was needed, but this is no longer the case. Additionally the rpi backend for weston is now being removed since it has been obsoleted by the improved drm layer. Let&#39;s explore running hardware accelerated Weston on the Raspberry Pi. Building Linux kernel A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has been written by the Raspberry Pi foundation and is available [here](https://www.raspberrypi.org/documentation/linux/kernel/building.md). As of this writing the guide …">
+		<meta name="description" content="Set up alternative install location These build instructions are based on the Wayland instructions from freedesktop.org. You probably don&#39;t want to install experimental builds of software among the usual software of your operating system, so let&#39;s define a prefix for where to install our builds. # Change ALT_LOCAL to any location you like export WORK_DIR=&#34;/opt&#34; export PROJECT_NAME=&#34;feature_x&#34; export PROJECT_PATH=&#34;$WORK_DIR/$PROJECT_NAME&#34; export ALT_LOCAL=&#34;$PROJECT_PATH/local&#34; export LD_LIBRARY_PATH=&#34;$ALT_LOCAL/lib&#34; export PKG_CONFIG_PATH=&#34;$ALT_LOCAL/lib/pkgconfig/:$ALT_LOCAL/share/pkgconfig/&#34; export PATH=&#34;$ALT_LOCAL/bin:$PATH&#34; export ACLOCAL_PATH=&#34;$ALT_LOCAL/share/aclocal&#34; export ACLOCAL=&#34;aclocal -I $ACLOCAL_PATH&#34; # Needed by autotools mkdir -p &#34;$ALT_LOCAL/share/aclocal&#34; export XDG_RUNTIME_DIR=&#34;$ALT_LOCAL/xdg&#34; export XDG_CONFIG_HOME=&#34;$ALT_LOCAL/home&#34; export MESA_LOADER_DRIVER_OVERRIDE=zink Installing dependencies Start by installing the build dependencies of mesa, weston and …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, xwayland, wayland, mesa, graphics, userspace">
 		<meta property="og:title" content="Setting up a Linux userspace graphics dev environment" />
@@ -34,7 +34,7 @@
 		<meta name="twitter:creator" content="@memcpy_io" />
 		<meta name="twitter:site" content="@memcpy_io" />
 		<meta name="twitter:title" content="Setting up a Linux userspace graphics dev environment" />
-		<meta name="twitter:description" content="This is a simple guide for how to build and run Wayland &amp; Weston on a Raspberry Pi." />
+		<meta name="twitter:description" content="This is a simple guide for how to build and run Wayland &amp; Weston." />
 	</head>
 	<body>
 		<article id="content" itemscope>
@@ -44,29 +44,10 @@
 				Published <time datetime="2023-04-26" itemprop="datePublished">2023-04-26</time>
 				</p>
 			</header>
-			<p>This is a simple guide for how to build and run Wayland & Weston on a Raspberry Pi.</p>
-			<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="o">!</span><span class="p">[</span><span class="n">Alt</span><span class="w"> </span><span class="n">text</span><span class="p">](</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="mi">2016</span><span class="mo">-06-03</span><span class="n">_weston</span><span class="p">.</span><span class="n">png</span><span class="w"> </span><span class="s">&quot;Weston running on a RPi2.&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="n">Progress</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">VC4</span><span class="w"> </span><span class="n">graphics</span><span class="w"> </span><span class="n">camp</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Wayland</span><span class="w"> </span><span class="n">camp</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">enables</span><span class="w"> </span><span class="n">us</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">run</span>
-<span class="w">    </span><span class="n">Weston</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">drm</span><span class="w"> </span><span class="n">backend</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">VC4</span><span class="w"> </span><span class="n">platforms</span><span class="p">.</span><span class="w"> </span><span class="n">Previously</span><span class="w"> </span><span class="n">software</span><span class="w"> </span><span class="n">acceleration</span>
-<span class="w">    </span><span class="n">using</span><span class="w"> </span><span class="n">pixman</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">needed</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">longer</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">case</span><span class="p">.</span>
-
-<span class="w">    </span><span class="no">Additionally</span><span class="w"> </span><span class="no">the</span><span class="w"> </span><span class="no">rpi</span><span class="w"> </span><span class="no">backend</span><span class="w"> </span><span class="no">for</span><span class="w"> </span><span class="no">weston</span><span class="w"> </span><span class="no">is</span><span class="w"> </span><span class="no">now</span><span class="w"> </span><span class="no">being</span><span class="w"> </span><span class="no">removed</span><span class="w"> </span><span class="no">since</span><span class="w"> </span><span class="no">it</span><span class="w"> </span><span class="no">has</span><span class="w"> </span><span class="no">been</span>
-<span class="w">    </span><span class="no">obsoleted</span><span class="w"> </span><span class="no">by</span><span class="w"> </span><span class="no">the</span><span class="w"> </span><span class="no">improved</span><span class="w"> </span><span class="no">drm</span><span class="w"> </span><span class="no">layer</span><span class="p">.</span>
-
-<span class="w">    </span><span class="no">Let</span><span class="err">&#39;</span><span class="no">s</span><span class="w"> </span><span class="no">explore</span><span class="w"> </span><span class="no">running</span><span class="w"> </span><span class="no">hardware</span><span class="w"> </span><span class="no">accelerated</span><span class="w"> </span><span class="no">Weston</span><span class="w"> </span><span class="no">on</span><span class="w"> </span><span class="no">the</span><span class="w"> </span><span class="no">Raspberry</span><span class="w"> </span><span class="no">Pi</span><span class="p">.</span>
-</code></pre></div>
-
-<h2>Building Linux kernel</h2>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="n">comprehensive</span><span class="w"> </span><span class="n">guide</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">Linux</span><span class="w"> </span><span class="n">kernel</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Raspberry</span><span class="w"> </span><span class="nf">Pi</span><span class="w"> </span><span class="n">boards</span><span class="w"> </span><span class="n">has</span>
-<span class="w">    </span><span class="n">been</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Raspberry</span><span class="w"> </span><span class="nf">Pi</span><span class="w"> </span><span class="n">foundation</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="o">[</span><span class="n">here</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">raspberrypi</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">documentation</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">building</span><span class="p">.</span><span class="n">md</span><span class="p">).</span>
-
-<span class="w">    </span><span class="k">As</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">writing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">guide</span><span class="w"> </span><span class="n">helps</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">v4</span><span class="mf">.4</span><span class="w"> </span><span class="n">kernel</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">good</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">purposes</span><span class="p">.</span>
-</code></pre></div>
-
-<h2>Set up alternative install location</h2>
+			<p>This is a simple guide for how to build and run Wayland & Weston.</p>
+			<h2>Set up alternative install location</h2>
 <p>These build instructions are based on the <a href="https://wayland.freedesktop.org/building.html">Wayland instructions</a>
-from freedesktop.org, but altered to target VC4 and Raspbian.</p>
+from freedesktop.org.</p>
 <p>You probably don't want to install experimental builds of software among the usual
 software of your operating system, so let's define a prefix for where to install
 our builds.</p>
@@ -91,9 +72,9 @@ our builds.</p>
 
 <h2>Installing dependencies</h2>
 <p>Start by installing the build dependencies of mesa, weston and wayland.</p>
-<div class="highlight"><pre><span></span><code># Enable source packages
-sudo sed -e &quot;s/#\sdeb-src/deb-src/g&quot; -i /etc/apt/sources.list
-sudo apt update
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Enable</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">packages</span>
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">sed</span><span class="w"> </span><span class="o">-</span><span class="nx">e</span><span class="w"> </span><span class="s">&quot;s/#\sdeb-src/deb-src/g&quot;</span><span class="w"> </span><span class="o">-</span><span class="nx">i</span><span class="w"> </span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">apt</span><span class="o">/</span><span class="nx">sources</span><span class="p">.</span><span class="nx">list</span>
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">apt</span><span class="w"> </span><span class="nx">update</span>
 </code></pre></div>
 
 <p>The above step can alternatively be completed using the GUI of your
@@ -150,7 +131,7 @@ meson setup build/ -Dprefix=&quot;$ALT_LOCAL&quot; \
   -Dgallium-drivers=swrast,zink,r600 \
 ninja -C build/ install
 
-# On some systems the lib paths need to be symlinked
+<span class="gh">#</span> On some systems the lib paths need to be symlinked
 ln -s &quot;$ALT_LOCAL/lib64&quot; &quot;$ALT_LOCAL/lib&quot;
 </code></pre></div>
 
@@ -248,7 +229,7 @@ directory.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

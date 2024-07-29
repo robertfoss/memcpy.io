@@ -15,7 +15,7 @@
 		<meta charset="utf-8">
 		<meta name="robots" content="index,follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
-		<meta name="description" content="Adam Jackson created the script add-gitlab-merge-requests.sh which is the basis of this workflow. git pr The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you&#39;re working on, but also enables you to search the contents of all PRs. This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform. [alias] mr = pr pr = &#34;!f() { \ REMOTES=$(git remote); \ REMOTE=\&#34;origin\&#34;; \ case \&#34;$REMOTES\&#34; in \ *upstream*) \ REMOTE=\&#34;upstream\&#34;; \ ;; \ esac; \ ORIGIN=${1:-${REMOTE}}; \ URL=$(git remote get-url ${ORIGIN}); \ \ case \&#34;$URL\&#34; in \ *gitlab*) \ REMOTE_EXT=&#34;mr&#34; \ REMOTE_PATH=&#34;merge-requests&#34; \ ;; \ *github*) \ REMOTE_EXT=&#34;pr&#34; \ REMOTE_PATH=&#34;pull&#34; \ ;; \ esac …">
+		<meta name="description" content="Adam Jackson created the script add-gitlab-merge-requests.sh which is the basis of this workflow. git pr The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you&#39;re working on, but also enables you to search the contents of all PRs. This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform. [alias] mr = pr pr = &#34;!f() { \ REMOTES=$(git remote); \ REMOTE=\&#34;origin\&#34;; \ case \&#34;$REMOTES\&#34; in \ *upstream*) \ REMOTE=\&#34;upstream\&#34;; \ ;; \ esac; \ ORIGIN=${1:-${REMOTE}}; \ URL=$(git remote get-url ${ORIGIN}); \ \ case \&#34;$URL\&#34; in \ *gitlab*) \ REMOTE_EXT=&#34;mr&#34; \ REMOTE_PATH=&#34;merge-requests&#34; \ ;; \ *github*) \ REMOTE_EXT=&#34;pr&#34; \ REMOTE_PATH=&#34;pull&#34; \ ;; \ esac; \ REMOTE_NAME …">
 		<meta name="author" content="Robert Foss">
 		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, shell, git, alias, pr, mr, pull, merge, request, gitlab, github, gitconfig">
 		<meta property="og:title" content="Git pull request fetching &amp; searching" />
@@ -55,34 +55,34 @@
 <h2>git pr</h2>
 <p>The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you're working on, but also enables you to search the contents of all PRs.</p>
 <p>This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform.</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s s-Atom">alias</span><span class="p">]</span>
-    <span class="s s-Atom">mr</span> <span class="o">=</span> <span class="s s-Atom">pr</span>
-    <span class="s s-Atom">pr</span> <span class="o">=</span> <span class="err">&quot;</span><span class="p">!</span><span class="nf">f</span><span class="p">()</span> <span class="p">{</span> <span class="s s-Atom">\</span>
-        <span class="nv">REMOTES</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">(</span><span class="s s-Atom">git</span> <span class="s s-Atom">remote</span><span class="p">);</span> <span class="s s-Atom">\</span>
-        <span class="nv">REMOTE</span><span class="s s-Atom">=\</span><span class="err">&quot;</span><span class="s s-Atom">origin\</span><span class="err">&quot;</span><span class="p">;</span> <span class="s s-Atom">\</span>
-    <span class="s s-Atom">case</span> <span class="s s-Atom">\</span><span class="err">&quot;$</span><span class="nv">REMOTES</span><span class="s s-Atom">\</span><span class="err">&quot;</span> <span class="s s-Atom">in</span> <span class="s s-Atom">\</span>
-        <span class="o">*</span><span class="s s-Atom">upstream*</span><span class="p">)</span> <span class="s s-Atom">\</span>
-            <span class="nv">REMOTE</span><span class="s s-Atom">=\</span><span class="err">&quot;</span><span class="s s-Atom">upstream\</span><span class="err">&quot;</span><span class="p">;</span> <span class="s s-Atom">\</span>
-            <span class="p">;;</span> <span class="s s-Atom">\</span>
-        <span class="s s-Atom">esac</span><span class="p">;</span> <span class="s s-Atom">\</span>
-        <span class="nv">ORIGIN</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">{</span><span class="mi">1</span><span class="o">:-</span><span class="err">$</span><span class="p">{</span><span class="nv">REMOTE</span><span class="p">}};</span> <span class="s s-Atom">\</span>
-        <span class="nv">URL</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">(</span><span class="s s-Atom">git</span> <span class="s s-Atom">remote</span> <span class="s s-Atom">get</span><span class="o">-</span><span class="s s-Atom">url</span> <span class="err">$</span><span class="p">{</span><span class="nv">ORIGIN</span><span class="p">});</span> <span class="s s-Atom">\</span>
-        <span class="s s-Atom">\</span>
-    <span class="s s-Atom">case</span> <span class="s s-Atom">\</span><span class="err">&quot;$</span><span class="nv">URL</span><span class="s s-Atom">\</span><span class="err">&quot;</span> <span class="s s-Atom">in</span> <span class="s s-Atom">\</span>
-    <span class="o">*</span><span class="s s-Atom">gitlab*</span><span class="p">)</span> <span class="s s-Atom">\</span>
-        <span class="nv">REMOTE_EXT</span><span class="s s-Atom">=</span><span class="s2">&quot;mr&quot;</span> <span class="s s-Atom">\</span>
-        <span class="nv">REMOTE_PATH</span><span class="s s-Atom">=</span><span class="s2">&quot;merge-requests&quot;</span> <span class="s s-Atom">\</span>
-        <span class="p">;;</span> <span class="s s-Atom">\</span>
-    <span class="o">*</span><span class="s s-Atom">github*</span><span class="p">)</span> <span class="s s-Atom">\</span>
-        <span class="nv">REMOTE_EXT</span><span class="s s-Atom">=</span><span class="s2">&quot;pr&quot;</span> <span class="s s-Atom">\</span>
-        <span class="nv">REMOTE_PATH</span><span class="s s-Atom">=</span><span class="s2">&quot;pull&quot;</span> <span class="s s-Atom">\</span>
-        <span class="p">;;</span> <span class="s s-Atom">\</span>
-    <span class="s s-Atom">esac</span><span class="p">;</span> <span class="s s-Atom">\</span>
-        <span class="nv">REMOTE_NAME</span><span class="s s-Atom">=</span><span class="err">$</span><span class="p">{</span><span class="nv">REMOTE</span><span class="p">}</span><span class="s s-Atom">-</span><span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_EXT</span><span class="p">};</span> <span class="s s-Atom">\</span>
-        <span class="s s-Atom">git</span> <span class="s s-Atom">remote</span> <span class="s s-Atom">add</span> <span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_NAME</span><span class="p">}</span> <span class="err">$</span><span class="p">{</span><span class="nv">URL</span><span class="p">};</span> <span class="s s-Atom">\</span>
-        <span class="s s-Atom">git</span> <span class="s s-Atom">config</span> <span class="s s-Atom">remote</span><span class="p">.</span><span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_NAME</span><span class="p">}.</span><span class="s s-Atom">fetch</span> <span class="s2">&quot;+refs/${REMOTE_PATH}/*/head:refs/remotes/${REMOTE_NAME}/*&quot;</span><span class="p">;</span> <span class="s s-Atom">\</span>
-        <span class="s s-Atom">git</span> <span class="s s-Atom">fetch</span> <span class="err">$</span><span class="p">{</span><span class="nv">REMOTE_NAME</span><span class="p">};</span> <span class="s s-Atom">\</span>
-    <span class="p">};</span> <span class="s s-Atom">f</span><span class="err">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">[alias]</span>
+<span class="w">    </span><span class="na">mr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">pr</span>
+<span class="w">    </span><span class="na">pr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() { </span>\
+<span class="w">        </span><span class="s">REMOTES=$(git remote); </span>\
+<span class="w">        </span><span class="s">REMOTE=\&quot;origin\&quot;; </span>\
+<span class="w">    </span><span class="s">case \&quot;$REMOTES\&quot; in </span>\
+<span class="w">        </span><span class="s">*upstream*) </span>\
+<span class="w">            </span><span class="s">REMOTE=\&quot;upstream\&quot;; </span>\
+<span class="w">            </span><span class="s">;; </span>\
+<span class="w">        </span><span class="s">esac; </span>\
+<span class="w">        </span><span class="s">ORIGIN=${1:-${REMOTE}}; </span>\
+<span class="w">        </span><span class="s">URL=$(git remote get-url ${ORIGIN}); </span>\
+<span class="w">        </span>\
+<span class="w">    </span><span class="s">case \&quot;$URL\&quot; in </span>\
+<span class="w">    </span><span class="s">*gitlab*) </span>\
+<span class="w">        </span><span class="s">REMOTE_EXT=&quot;mr&quot; </span>\
+<span class="w">        </span><span class="s">REMOTE_PATH=&quot;merge-requests&quot; </span>\
+<span class="w">        </span><span class="s">;; </span>\
+<span class="w">    </span><span class="s">*github*) </span>\
+<span class="w">        </span><span class="s">REMOTE_EXT=&quot;pr&quot; </span>\
+<span class="w">        </span><span class="s">REMOTE_PATH=&quot;pull&quot; </span>\
+<span class="w">        </span><span class="s">;; </span>\
+<span class="w">    </span><span class="s">esac; </span>\
+<span class="w">        </span><span class="s">REMOTE_NAME=${REMOTE}-${REMOTE_EXT}; </span>\
+<span class="w">        </span><span class="s">git remote add ${REMOTE_NAME} ${URL}; </span>\
+<span class="w">        </span><span class="s">git config remote.${REMOTE_NAME}.fetch &quot;+refs/${REMOTE_PATH}/*/head:refs/remotes/${REMOTE_NAME}/*&quot;; </span>\
+<span class="w">        </span><span class="s">git fetch ${REMOTE_NAME}; </span>\
+<span class="w">    </span><span class="s">}; f&quot;</span>
 </code></pre></div>
 
 <p>The syntax is <code>git pr [remote]</code>.</p>
@@ -160,7 +160,7 @@
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

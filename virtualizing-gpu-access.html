@@ -152,12 +152,12 @@ make install
 </code></pre></div>
 
 <h3>Build Mesa</h3>
-<div class="highlight"><pre><span></span><code># Fetch dependencies
+<div class="highlight"><pre><span></span><code><span class="gh">#</span> Fetch dependencies
 sudo sed -i &#39;s/\#[ ]*deb-src/deb-src/&#39; /etc/apt/sources.list
 sudo apt update
 sudo apt-get build-dep mesa
 
-# Actually build Mesa
+<span class="gh">#</span> Actually build Mesa
 git clone https://anongit.freedesktop.org/git/mesa/mesa.git
 cd mesa
 ./autogen.sh \
@@ -263,7 +263,7 @@ set up your very own virglrenderer enabled graphics stack.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

@@ -61,7 +61,7 @@ And even if nothing important has been lost, you probably don't want to spend an
 <p>Run this snippet in the terminal of your choice.</p>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;EOT&gt;&gt; ~/.zshrc
 
-# Backup and restore ZSH history
+<span class="gh">#</span> Backup and restore ZSH history
 strings ~/.zsh_history | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39; | sort | uniq -u &gt; ~/.zsh_history.backup
 cat ~/.zsh_history ~/.zsh_history.backup | sed &#39;:a;N;$!ba;s/\\\\\n//g&#39;| sort | uniq &gt; ~/.zsh_history
 
@@ -115,7 +115,7 @@ Lastly the backup is appended to your actual .zsh_history file.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

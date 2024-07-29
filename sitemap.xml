@@ -11,6 +11,11 @@
 <changefreq>weekly</changefreq>
 <priority>0.80</priority>
 </url><url>
+<loc>https://memcpy.io/setting-up-a-linux-userspace-graphics-dev-environment.html</loc>
+<lastmod>2023-04-26</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url><url>
 <loc>https://memcpy.io/configuring-linux-vlans.html</loc>
 <lastmod>2022-07-20</lastmod>
 <changefreq>weekly</changefreq>
@@ -337,7 +342,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/category/graphics.html</loc>
-<lastmod>2019-03-13</lastmod>
+<lastmod>2023-04-26</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -867,7 +872,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/graphics.html</loc>
-<lastmod>2020-01-15</lastmod>
+<lastmod>2023-04-26</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1007,7 +1012,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/mesa.html</loc>
-<lastmod>2017-06-28</lastmod>
+<lastmod>2023-04-26</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1326,6 +1331,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>https://memcpy.io/tag/userspace.html</loc>
+<lastmod>2023-04-26</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>https://memcpy.io/tag/v4l2.html</loc>
 <lastmod>2021-02-23</lastmod>
 <changefreq>monthly</changefreq>
@@ -1367,7 +1377,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>https://memcpy.io/tag/wayland.html</loc>
-<lastmod>2019-05-03</lastmod>
+<lastmod>2023-04-26</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -1393,6 +1403,11 @@
 </url><url>
 <loc>https://memcpy.io/tag/xdc.html</loc>
 <lastmod>2017-09-22</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
+<loc>https://memcpy.io/tag/xwayland.html</loc>
+<lastmod>2023-04-26</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>

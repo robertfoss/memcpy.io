@@ -78,9 +78,9 @@ our builds.</p>
 
 <h2>Installing dependencies</h2>
 <p>Start by installing the build dependencies of mesa, weston and wayland.</p>
-<div class="highlight"><pre><span></span><code># Enable source packages
-sudo sed -e &quot;s/#\sdeb-src/deb-src/g&quot; -i /etc/apt/sources.list
-sudo apt update
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Enable</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">packages</span>
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">sed</span><span class="w"> </span><span class="o">-</span><span class="nx">e</span><span class="w"> </span><span class="s">&quot;s/#\sdeb-src/deb-src/g&quot;</span><span class="w"> </span><span class="o">-</span><span class="nx">i</span><span class="w"> </span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">apt</span><span class="o">/</span><span class="nx">sources</span><span class="p">.</span><span class="nx">list</span>
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">apt</span><span class="w"> </span><span class="nx">update</span>
 </code></pre></div>
 
 <p>The above step can alternatively be completed using the GUI of your
@@ -218,7 +218,7 @@ directory.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

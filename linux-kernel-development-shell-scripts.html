@@ -118,10 +118,10 @@ for correctness.</p>
 <span class="w">  </span><span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/(.*//g&#39;</span><span class="k">)</span>
 
 <span class="w">  </span><span class="c1"># Remove names from email addresses</span>
-<span class="w">  </span><span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*&lt;!--/g&#39;</span><span class="k">)</span>
+<span class="w">  </span><span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*&lt;//g&#39;</span><span class="k">)</span>
 
 <span class="w">  </span><span class="c1"># Remove left over character</span>
-<span class="w">  </span><span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/--&gt;//g&#39;</span><span class="k">)</span>
+<span class="w">  </span><span class="nv">MAINTAINERS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/&gt;//g&#39;</span><span class="k">)</span>
 
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MAINTAINERS</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>email<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;--to=</span><span class="si">${</span><span class="nv">email</span><span class="si">}</span><span class="s2">  &quot;</span><span class="p">;</span>
@@ -164,7 +164,7 @@ for correctness.</p>
 					<br>
 					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
 					<span id="breakdot">&middot;</span>
-					2023 Robert Foss
+					2024 Robert Foss
 					<span id="breakdot">&middot;</span>
 					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
 					<br>

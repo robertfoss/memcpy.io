@@ -3,60 +3,61 @@
 &lt;h2&gt;git pr&lt;/h2&gt;
 &lt;p&gt;The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you're working on, but also enables you to search the contents of all PRs.&lt;/p&gt;
 &lt;p&gt;This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;alias&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;mr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;pr&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;pr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTES&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;git&lt;/span&gt; &lt;span class="s s-Atom"&gt;remote&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE&lt;/span&gt;&lt;span class="s s-Atom"&gt;=\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s s-Atom"&gt;origin\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;case&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;$&lt;/span&gt;&lt;span class="nv"&gt;REMOTES&lt;/span&gt;&lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;upstream*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-            &lt;span class="nv"&gt;REMOTE&lt;/span&gt;&lt;span class="s s-Atom"&gt;=\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s s-Atom"&gt;upstream\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-            &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="s s-Atom"&gt;esac&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;ORIGIN&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;REMOTE&lt;/span&gt;&lt;span class="p"&gt;}};&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;URL&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;git&lt;/span&gt; &lt;span class="s s-Atom"&gt;remote&lt;/span&gt; &lt;span class="s s-Atom"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s s-Atom"&gt;url&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;ORIGIN&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;case&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;$&lt;/span&gt;&lt;span class="nv"&gt;URL&lt;/span&gt;&lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;gitlab*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_EXT&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mr&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_PATH&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;merge-requests&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;github*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_EXT&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pr&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_PATH&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pull&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;esac …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://gitlab.freedesktop.org/ajax"&gt;Adam Jackson&lt;/a&gt; created the script &lt;a href="https://gitlab.freedesktop.org/xorg/util/modular/-/raw/master/add-gitlab-merge-requests.sh?inline=false"&gt;add-gitlab-merge-requests.sh&lt;/a&gt; which is the basis of this workflow.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;mr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pr&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;pr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() { &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTES=$(git remote); &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;origin\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$REMOTES\&amp;quot; in &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;*upstream*) &lt;/span&gt;\
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;upstream\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;ORIGIN=${1:-${REMOTE}}; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;URL=$(git remote get-url ${ORIGIN}); &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$URL\&amp;quot; in &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*gitlab*) &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;mr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;merge-requests&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*github*) &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;pr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;pull&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_NAME …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://gitlab.freedesktop.org/ajax"&gt;Adam Jackson&lt;/a&gt; created the script &lt;a href="https://gitlab.freedesktop.org/xorg/util/modular/-/raw/master/add-gitlab-merge-requests.sh?inline=false"&gt;add-gitlab-merge-requests.sh&lt;/a&gt; which is the basis of this workflow.&lt;/p&gt;
 &lt;h2&gt;git pr&lt;/h2&gt;
 &lt;p&gt;The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you're working on, but also enables you to search the contents of all PRs.&lt;/p&gt;
 &lt;p&gt;This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;alias&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;mr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;pr&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;pr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTES&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;git&lt;/span&gt; &lt;span class="s s-Atom"&gt;remote&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE&lt;/span&gt;&lt;span class="s s-Atom"&gt;=\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s s-Atom"&gt;origin\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;case&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;$&lt;/span&gt;&lt;span class="nv"&gt;REMOTES&lt;/span&gt;&lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;upstream*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-            &lt;span class="nv"&gt;REMOTE&lt;/span&gt;&lt;span class="s s-Atom"&gt;=\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s s-Atom"&gt;upstream\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-            &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="s s-Atom"&gt;esac&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;ORIGIN&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;REMOTE&lt;/span&gt;&lt;span class="p"&gt;}};&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;URL&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;git&lt;/span&gt; &lt;span class="s s-Atom"&gt;remote&lt;/span&gt; &lt;span class="s s-Atom"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s s-Atom"&gt;url&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;ORIGIN&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;case&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;$&lt;/span&gt;&lt;span class="nv"&gt;URL&lt;/span&gt;&lt;span class="s s-Atom"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;gitlab*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_EXT&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mr&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_PATH&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;merge-requests&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;github*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_EXT&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pr&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_PATH&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pull&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="s s-Atom"&gt;esac&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="nv"&gt;REMOTE_NAME&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;REMOTE&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="s s-Atom"&gt;-&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;REMOTE_EXT&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="s s-Atom"&gt;git&lt;/span&gt; &lt;span class="s s-Atom"&gt;remote&lt;/span&gt; &lt;span class="s s-Atom"&gt;add&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;REMOTE_NAME&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="s s-Atom"&gt;git&lt;/span&gt; &lt;span class="s s-Atom"&gt;config&lt;/span&gt; &lt;span class="s s-Atom"&gt;remote&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;REMOTE_NAME&lt;/span&gt;&lt;span class="p"&gt;}.&lt;/span&gt;&lt;span class="s s-Atom"&gt;fetch&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;+refs/${REMOTE_PATH}/*/head:refs/remotes/${REMOTE_NAME}/*&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-        &lt;span class="s s-Atom"&gt;git&lt;/span&gt; &lt;span class="s s-Atom"&gt;fetch&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;REMOTE_NAME&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt; &lt;span class="s s-Atom"&gt;\&lt;/span&gt;
-    &lt;span class="p"&gt;};&lt;/span&gt; &lt;span class="s s-Atom"&gt;f&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;mr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pr&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;pr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() { &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTES=$(git remote); &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;origin\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$REMOTES\&amp;quot; in &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;*upstream*) &lt;/span&gt;\
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;upstream\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;ORIGIN=${1:-${REMOTE}}; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;URL=$(git remote get-url ${ORIGIN}); &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$URL\&amp;quot; in &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*gitlab*) &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;mr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;merge-requests&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*github*) &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;pr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;pull&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_NAME=${REMOTE}-${REMOTE_EXT}; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;git remote add ${REMOTE_NAME} ${URL}; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;git config remote.${REMOTE_NAME}.fetch &amp;quot;+refs/${REMOTE_PATH}/*/head:refs/remotes/${REMOTE_NAME}/*&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;git fetch ${REMOTE_NAME}; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The syntax is &lt;code&gt;git pr [remote]&lt;/code&gt;.&lt;/p&gt;
@@ -90,7 +91,185 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;sa&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;~/.local/share&amp;quot;&lt;/span&gt;
 91a92e5&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;upstream-mr/192&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cursor:&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;XDG_DATA_DIRS&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;xcursor&lt;span class="w"&gt; &lt;/span&gt;search&lt;span class="w"&gt; &lt;/span&gt;path&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;months&lt;span class="w"&gt; &lt;/span&gt;ago&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;catsout&amp;gt;
 0aebb5b&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;upstream-mr/112&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cursor:&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;one&lt;span class="w"&gt; &lt;/span&gt;more&lt;span class="w"&gt; &lt;/span&gt;directory&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;XCURSORPATH&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;years,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;months&lt;span class="w"&gt; &lt;/span&gt;ago&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;Alexander&lt;span class="w"&gt; &lt;/span&gt;Dunaev&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="shell"></category><category term="git"></category><category term="alias"></category><category term="pr"></category><category term="mr"></category><category term="pull"></category><category term="merge"></category><category term="request"></category><category term="gitlab"></category><category term="github"></category><category term="gitconfig"></category></entry><entry><title>Configuring Linux VLANs</title><link href="https://memcpy.io/configuring-linux-vlans.html" rel="alternate"></link><published>2022-07-20T10:48:00+02:00</published><updated>2022-07-20T10:48:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2022-07-20:/configuring-linux-vlans.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;vlan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="shell"></category><category term="git"></category><category term="alias"></category><category term="pr"></category><category term="mr"></category><category term="pull"></category><category term="merge"></category><category term="request"></category><category term="gitlab"></category><category term="github"></category><category term="gitconfig"></category></entry><entry><title>Setting up a Linux userspace graphics dev environment</title><link href="https://memcpy.io/setting-up-a-linux-userspace-graphics-dev-environment.html" rel="alternate"></link><published>2023-04-26T10:32:00+02:00</published><updated>2023-04-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2023-04-26:/setting-up-a-linux-userspace-graphics-dev-environment.html</id><summary type="html">&lt;h2&gt;Set up alternative install location&lt;/h2&gt;
+&lt;p&gt;These build instructions are based on the &lt;a href="https://wayland.freedesktop.org/building.html"&gt;Wayland instructions&lt;/a&gt;
+from freedesktop.org.&lt;/p&gt;
+&lt;p&gt;You probably don't want to install experimental builds of software among the usual
+software of your operating system, so let's define a prefix for where to install
+our builds.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Change ALT_LOCAL to any location you like&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;WORK_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/opt&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PROJECT_NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;feature_x&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$WORK_DIR/$PROJECT_NAME&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ALT_LOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$PROJECT_PATH/local&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/lib&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PKG_CONFIG_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/lib/pkgconfig/:$ALT_LOCAL/share/pkgconfig/&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/bin:$PATH&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/share/aclocal&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Needed by autotools&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/share/aclocal&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/xdg&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;XDG_CONFIG_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/home&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MESA_LOADER_DRIVER_OVERRIDE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;zink&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Installing dependencies&lt;/h2&gt;
+&lt;p&gt;Start by installing the build dependencies of mesa, weston and …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Set up alternative install location&lt;/h2&gt;
+&lt;p&gt;These build instructions are based on the &lt;a href="https://wayland.freedesktop.org/building.html"&gt;Wayland instructions&lt;/a&gt;
+from freedesktop.org.&lt;/p&gt;
+&lt;p&gt;You probably don't want to install experimental builds of software among the usual
+software of your operating system, so let's define a prefix for where to install
+our builds.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Change ALT_LOCAL to any location you like&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;WORK_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/opt&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PROJECT_NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;feature_x&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$WORK_DIR/$PROJECT_NAME&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ALT_LOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$PROJECT_PATH/local&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/lib&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PKG_CONFIG_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/lib/pkgconfig/:$ALT_LOCAL/share/pkgconfig/&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/bin:$PATH&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/share/aclocal&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Needed by autotools&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/share/aclocal&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/xdg&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;XDG_CONFIG_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$ALT_LOCAL/home&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MESA_LOADER_DRIVER_OVERRIDE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;zink&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Installing dependencies&lt;/h2&gt;
+&lt;p&gt;Start by installing the build dependencies of mesa, weston and wayland.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;packages&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;sed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s/#\sdeb-src/deb-src/g&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;sources&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The above step can alternatively be completed using the GUI of your
+package manager, by enabling source packages.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install build dependencies of mesa
+sudo apt build-dep gtk3 gtk4 libinp/opt/zink/local/home/weston.iniut mesa wayland weston xserver
+
+sudo apt install xcb-util-cursor-dev
+
+# Install a recent version of meson
+pip3 install --user meson
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Building Wayland&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://gitlab.freedesktop.org/wayland/wayland.git \
+cd wayland \
+meson build/ --prefix=&amp;quot;$ALT_LOCAL&amp;quot; \
+ninja -C build/ install \
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Building Wayland Protocols&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://gitlab.freedesktop.org/wayland/wayland-protocols.git \
+cd wayland-protocols \
+meson build/ --prefix=&amp;quot;$ALT_LOCAL&amp;quot; \
+ninja -C build/ install \
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;libglvnd OpenGL Vendor-Neutral Dispatch library&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/NVIDIA/libglvnd.git \
+cd libglvnd \
+meson setup build/ --prefix=&amp;quot;$ALT_LOCAL&amp;quot; \
+ninja -C build/ install \
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;libinput&lt;/h2&gt;
+&lt;p&gt;libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://gitlab.freedesktop.org/libinput/libinput \
+cd libinput \
+meson setup build/ --prefix=&amp;quot;$ALT_LOCAL&amp;quot; \
+ninja -C build/ install \
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Building Mesa&lt;/h2&gt;
+&lt;p&gt;This build is targeting using swrast for Vulkan and Zink for OpenGL support.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://gitlab.freedesktop.org/mesa/mesa.git \
+cd mesa
+meson setup build/ -Dprefix=&amp;quot;$ALT_LOCAL&amp;quot; \
+  -Degl=x11,wayland,drm \
+  -Degl=enabled \
+  -Dgallium-drivers=swrast,zink,r600 \
+ninja -C build/ install
+
+&lt;span class="gh"&gt;#&lt;/span&gt; On some systems the lib paths need to be symlinked
+ln -s &amp;quot;$ALT_LOCAL/lib64&amp;quot; &amp;quot;$ALT_LOCAL/lib&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Weston&lt;/h2&gt;
+&lt;p&gt;Finally we've built all of the dependencies of Weston and can now build it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/wayland/weston \
+cd weston \
+meson setup build/ --prefix=&amp;quot;$ALT_LOCAL&amp;quot; \
+ninja -C build/ install \
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;x server&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.freedesktop.org/git/xorg/xserver \
+cd xserver \
+meson setup build/ -Dprefix=&amp;quot;$ALT_LOCAL&amp;quot; \
+  -Dxkb_bin_dir=/usr/bin \
+ninja -C build/ install \
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Running Weston&lt;/h2&gt;
+&lt;p&gt;That wasn't so bad, it took a little while, but now we're ready to start Weston.
+Now, let's fire up a (virtual) terminal. Make sure that you're not running an
+X terminal, ssh terminal or serial terminal.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;XDG_CONFIG_HOME&lt;/span&gt;&lt;span class="o"&gt;/.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;
+&lt;span class="n"&gt;cp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;weston&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;compositor&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;weston&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ini&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;XDG_CONFIG_HOME&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;WESTON_CONFIG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$XDG_CONFIG_HOME/.config/weston.ini&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;chmod&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0700&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;
+&lt;span class="n"&gt;chmod&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0700&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;XDG_CONFIG_HOME&lt;/span&gt;
+
+
+
+&lt;span class="c1"&gt;# Make sure that $DISPLAY is unset.&lt;/span&gt;
+&lt;span class="n"&gt;unset&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;
+
+&lt;span class="c1"&gt;# And that $XDG_RUNTIME_DIR has been set and created.&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;/$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;UID&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;runtime&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dir&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;chmod&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0700&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;fi&lt;/span&gt;
+&lt;span class="n"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Run weston:&lt;/span&gt;
+&lt;span class="n"&gt;weston&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Try weston applications&lt;/h2&gt;
+&lt;p&gt;Now that we're running weston, let's try some applications.
+They're located in the top level directory of weston.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;weston-terminal&lt;/li&gt;
+&lt;li&gt;weston-flower&lt;/li&gt;
+&lt;li&gt;weston-gears&lt;/li&gt;
+&lt;li&gt;weston-smoke&lt;/li&gt;
+&lt;li&gt;weston-image&lt;/li&gt;
+&lt;li&gt;weston-view&lt;/li&gt;
+&lt;li&gt;weston-resizor&lt;/li&gt;
+&lt;li&gt;weston-eventdemo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When you've started all of your favorite applications you can grab a screenshot 
+by pressing &lt;strong&gt;Super + s&lt;/strong&gt;, which will save wayland-screenshot.png in your home
+directory.&lt;/p&gt;</content><category term="graphics"></category><category term="xwayland"></category><category term="wayland"></category><category term="mesa"></category><category term="graphics"></category><category term="userspace"></category></entry><entry><title>Configuring Linux VLANs</title><link href="https://memcpy.io/configuring-linux-vlans.html" rel="alternate"></link><published>2022-07-20T10:48:00+02:00</published><updated>2022-07-20T10:48:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2022-07-20:/configuring-linux-vlans.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;vlan
 Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided
 
 &lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
@@ -99,40 +278,39 @@ Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This is a achieved by pasting the below function into your &lt;code&gt;.bashrc&lt;/code&gt; / &lt;code&gt;.zshrc&lt;/code&gt; and issuing a &lt;code&gt;source .bashrc&lt;/code&gt; or &lt;code&gt;source .zshrc&lt;/code&gt; correspondingly.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;function&lt;span class="w"&gt; &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;{
-&lt;span class="w"&gt;    &lt;/span&gt;DEV=$1
-&lt;span class="w"&gt;    &lt;/span&gt;VLAN=$2
-&lt;span class="w"&gt;    &lt;/span&gt;ADDR=$3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;vlan&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;DEV&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;VLAN&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;ADDR&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;HELP=&amp;quot;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;HELP&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+&lt;span class="s"&gt;    vlan \$DEV \$VLAN \$SUBNET&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;42&lt;span class="w"&gt; &lt;/span&gt;10.31.155.1/27
-&amp;quot;
+&lt;span class="s"&gt;    vlan eth0 42 10.31.155.1/27&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$DEV&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Device not provided&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;DEV&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;$?&lt;span class="w"&gt; &lt;/span&gt;-ne&lt;span class="w"&gt; &lt;/span&gt;0&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;valid&lt;span class="w"&gt; &lt;/span&gt;device&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;grep&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;${DEV}: &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;null&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;ne&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;$DEV\&amp;quot; is not a valid device&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;VLAN&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
-&lt;span class="w"&gt;    &lt;/span&gt;REGEX=&amp;#39;^[0-9]+$&amp;#39;
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;[[&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;=~&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$REGEX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;]]&lt;span class="w"&gt; &lt;/span&gt;;&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;number&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="ni"&gt;&amp;amp;2;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;        &lt;/span&gt;echo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;vlan
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$VLAN&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;VLAN not provided&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;REGEX&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="err"&gt;$&amp;#39;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;REGEX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;$VLAN\&amp;quot; is not a number&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;vlan
 Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided
 
 &lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
@@ -141,68 +319,68 @@ Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This is a achieved by pasting the below function into your &lt;code&gt;.bashrc&lt;/code&gt; / &lt;code&gt;.zshrc&lt;/code&gt; and issuing a &lt;code&gt;source .bashrc&lt;/code&gt; or &lt;code&gt;source .zshrc&lt;/code&gt; correspondingly.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;function&lt;span class="w"&gt; &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;{
-&lt;span class="w"&gt;    &lt;/span&gt;DEV=$1
-&lt;span class="w"&gt;    &lt;/span&gt;VLAN=$2
-&lt;span class="w"&gt;    &lt;/span&gt;ADDR=$3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;vlan&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;DEV&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;VLAN&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;ADDR&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;HELP=&amp;quot;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;HELP&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="nv"&gt;$SUBNET&lt;/span&gt;
+&lt;span class="s"&gt;    vlan \$DEV \$VLAN \$SUBNET&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;42&lt;span class="w"&gt; &lt;/span&gt;10.31.155.1/27
-&amp;quot;
+&lt;span class="s"&gt;    vlan eth0 42 10.31.155.1/27&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;Device&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$DEV&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Device not provided&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;DEV&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;$?&lt;span class="w"&gt; &lt;/span&gt;-ne&lt;span class="w"&gt; &lt;/span&gt;0&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$DEV&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;valid&lt;span class="w"&gt; &lt;/span&gt;device&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;grep&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;${DEV}: &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;null&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;ne&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;$DEV\&amp;quot; is not a valid device&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;VLAN&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
-&lt;span class="w"&gt;    &lt;/span&gt;REGEX=&amp;#39;^[0-9]+$&amp;#39;
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;[[&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;=~&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$REGEX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;]]&lt;span class="w"&gt; &lt;/span&gt;;&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;number&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="ni"&gt;&amp;amp;2;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;exit&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$VLAN&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;VLAN not provided&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;REGEX&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="err"&gt;$&amp;#39;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;VLAN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;REGEX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;$VLAN\&amp;quot; is not a number&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;IP&lt;span class="w"&gt; &lt;/span&gt;address&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;provided&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
-&lt;span class="w"&gt;    &lt;/span&gt;ipcalc&lt;span class="w"&gt; &lt;/span&gt;-cs&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;2&amp;gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;[&lt;span class="w"&gt; &lt;/span&gt;$?&lt;span class="w"&gt; &lt;/span&gt;-ne&lt;span class="w"&gt; &lt;/span&gt;0&lt;span class="w"&gt; &lt;/span&gt;];&lt;span class="w"&gt; &lt;/span&gt;then
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;\&amp;quot;$$ADDR\&amp;quot;&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;valid&lt;span class="w"&gt; &lt;/span&gt;address&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;echo&lt;span class="w"&gt; &lt;/span&gt;&amp;quot;&lt;span class="nv"&gt;$HELP&lt;/span&gt;&amp;quot;
-&lt;span class="w"&gt;        &lt;/span&gt;return&lt;span class="w"&gt; &lt;/span&gt;1
-&lt;span class="w"&gt;    &lt;/span&gt;fi
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$ADDR&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;IP address not provided&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;ipcalc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;cs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;null&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;ne&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;$$ADDR\&amp;quot; is not a valid address&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$HELP&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fi&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;VLAN_DEV=vlan_&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VLAN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;SUBNET=&amp;quot;$(ipcalc&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;Network:&lt;span class="w"&gt; &lt;/span&gt;|&lt;span class="w"&gt; &lt;/span&gt;cut&lt;span class="w"&gt; &lt;/span&gt;-d&amp;#39;&lt;span class="w"&gt; &lt;/span&gt;&amp;#39;&lt;span class="w"&gt; &lt;/span&gt;-f4)&amp;quot;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;VLAN_DEV&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;vlan_&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;VLAN&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;SUBNET&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$(ipcalc $ADDR | grep Network: | cut -d&amp;#39; &amp;#39; -f4)&amp;quot;&lt;/span&gt;
 
-&lt;span class="w"&gt;    &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;name&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;type&lt;span class="w"&gt; &lt;/span&gt;vlan&lt;span class="w"&gt; &lt;/span&gt;id&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;addr&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;dev&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;metric&lt;span class="w"&gt; &lt;/span&gt;20
-&lt;span class="w"&gt;    &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link&lt;span class="w"&gt; &lt;/span&gt;set&lt;span class="w"&gt; &lt;/span&gt;dev&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;up
-}
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;vlan&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;VLAN&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;addr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;ADDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;metric&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nx"&gt;VLAN_DEV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;up&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;If adding a full shell function is a bit too much for you, then the actual commands that need to be issued are the following.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo ip link add link wlp0s20f3 name vlan_42 type vlan id 42
-sudo ip addr add 10.31.155.1/27 dev vlan_42 metric 20
-sudo ip link set dev vlan_42 up
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;wlp0s20f3&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;vlan_42&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;vlan&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;addr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m m-Double"&gt;10.31.155.1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;vlan_42&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;metric&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;vlan_42&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;up&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="networking"></category><category term="linux"></category><category term="network"></category><category term="vlan"></category><category term="interface"></category><category term="configure"></category><category term="nic"></category></entry><entry><title>Git Alias function syntax</title><link href="https://memcpy.io/git-alias-function-syntax.html" rel="alternate"></link><published>2021-11-04T20:10:00+01:00</published><updated>2021-11-04T20:10:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2021-11-04:/git-alias-function-syntax.html</id><summary type="html">&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() &lt;/span&gt;\
@@ -1343,12 +1521,12 @@ make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Build Mesa&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Fetch dependencies
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Fetch dependencies
 sudo sed -i &amp;#39;s/\#[ ]*deb-src/deb-src/&amp;#39; /etc/apt/sources.list
 sudo apt update
 sudo apt-get build-dep mesa
 
-# Actually build Mesa
+&lt;span class="gh"&gt;#&lt;/span&gt; Actually build Mesa
 git clone https://anongit.freedesktop.org/git/mesa/mesa.git
 cd mesa
 ./autogen.sh \
@@ -1764,8 +1942,8 @@ and has been funded by &lt;a href="http://zii.aero"&gt;Zodiac Inflight Innovatio
 
 &lt;h2&gt;Hardware: iMX6 Sabre&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Build android, the kernel, and flash it onto an SD-card
+&lt;span class="gh"&gt;#&lt;/span&gt; Run build_android with the correct -d flag
 ./build_android.sh -b /dev/mmcblk0 -d imx6q-sabre
 ./build_android.sh -b /dev/mmcblk0 -d imx6qp-sabre
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -1775,8 +1953,8 @@ and has been funded by &lt;a href="http://zii.aero"&gt;Zodiac Inflight Innovatio
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: iMX6 Sabrelite&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Build android, the kernel, and flash it onto an SD-card
+&lt;span class="gh"&gt;#&lt;/span&gt; Run build_android with the correct -d flag
 ./build_android.sh -b /dev/mmcblk0 -d imx6q-sabrelite
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1785,8 +1963,8 @@ the device can be restarted.&lt;/p&gt;
 the device can be restarted.&lt;/p&gt;
 &lt;h2&gt;Hardware: RDU2&lt;/h2&gt;
 &lt;h3&gt;Build Android and Linux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Build android, the kernel, and flash it onto an SD-card
-# Run build_android with the correct -d flag
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Build android, the kernel, and flash it onto an SD-card
+&lt;span class="gh"&gt;#&lt;/span&gt; Run build_android with the correct -d flag
 ./build_android.sh -b /dev/mmcblk0 -d imx6q-zii-rdu2
 ./build_android.sh -b /dev/mmcblk0 -d imx6qp-zii-rdu2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -2264,15 +2442,15 @@ sudo gdbserver :1234 chrome
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;On dev machine&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;On&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;x86&lt;/span&gt;
-&lt;span class="nv"&gt;cros_sdk&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;USE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;expat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;emerge&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;cross&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;i686&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;pc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;gnu&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;gdb&lt;/span&gt;
-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;On&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ARMv7&lt;/span&gt;
-&lt;span class="nv"&gt;cros_sdk&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;USE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;expat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;emerge&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;cross&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;armv7a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;cros&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;gnueabi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;gdb&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; On x86
+cros_sdk -- sudo USE=expat emerge cross-i686-pc-linux-gnu/gdb
+&lt;span class="gh"&gt;#&lt;/span&gt; On ARMv7
+cros_sdk -- sudo USE=expat emerge cross-armv7a-cros-linux-gnueabi/gdb
 
-&lt;span class="nv"&gt;cros_sdk&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;i686&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;pc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;gnu&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;gdb&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/build/$BOARD/opt/google/chrome/chrome&amp;quot;&lt;/span&gt;
-&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gdb&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;sysroot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;build&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mh"&gt;$B&lt;/span&gt;&lt;span class="nv"&gt;OARD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gdb&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;target&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remote&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;IP_ADDR_CHROMEBOOK&lt;/span&gt;:&lt;span class="mi"&gt;1234&lt;/span&gt;
-&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gdb&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;continue&lt;/span&gt;
+cros_sdk -- i686-pc-linux-gnu-gdb &amp;quot;/build/$BOARD/opt/google/chrome/chrome&amp;quot;
+(gdb) set sysroot /build/$BOARD/
+(gdb) target remote IP_ADDR_CHROMEBOOK:1234
+(gdb) continue
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
@@ -2638,10 +2816,10 @@ for correctness.&lt;/p&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/(.*//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Remove names from email addresses&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/.*&amp;lt;!--/g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/.*&amp;lt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Remove left over character&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/--&amp;gt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/&amp;gt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;email&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-n&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--to=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;email&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;  &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -2697,9 +2875,9 @@ our builds.&lt;/p&gt;
 
 &lt;h2&gt;Installing dependencies&lt;/h2&gt;
 &lt;p&gt;Start by installing the build dependencies of mesa, weston and wayland.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Enable source packages
-sudo sed -e &amp;quot;s/#\sdeb-src/deb-src/g&amp;quot; -i /etc/apt/sources.list
-sudo apt update
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;packages&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;sed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s/#\sdeb-src/deb-src/g&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;sources&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;update&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The above step can alternatively be completed using the GUI of your
@@ -3015,9 +3193,9 @@ A guide to building NodeMCU can be found &lt;a href="http://memset.io/building-n
 &lt;h3&gt;Build NodeMCU&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
 cd nodemcu-firmware
-# Switch to dev branch, since it&amp;#39;s the most up to date
+&lt;span class="gh"&gt;#&lt;/span&gt; Switch to dev branch, since it&amp;#39;s the most up to date
 git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
+&lt;span class="gh"&gt;#&lt;/span&gt; Make INTEGER version, since it uses less memory/space
 make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -3041,9 +3219,9 @@ make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;h3&gt;Build NodeMCU&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/nodemcu/nodemcu-firmware.git
 cd nodemcu-firmware
-# Switch to dev branch, since it&amp;#39;s the most up to date
+&lt;span class="gh"&gt;#&lt;/span&gt; Switch to dev branch, since it&amp;#39;s the most up to date
 git checkout --track origin/dev
-# Make INTEGER version, since it uses less memory/space
+&lt;span class="gh"&gt;#&lt;/span&gt; Make INTEGER version, since it uses less memory/space
 make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -3055,18 +3233,18 @@ make EXTRA_CCFLAGS=&amp;quot;-DLUA_NUMBER_INTEGRAL&amp;quot;
 &lt;h5&gt;app/include/user_modules.h&lt;/h5&gt;
 &lt;p&gt;Contains a list of which modules to include in the build.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;...
-#define LUA_USE_MODULES_NODE
-#define LUA_USE_MODULES_FILE
-#define LUA_USE_MODULES_GPIO
-#define LUA_USE_MODULES_WIFI
-#define LUA_USE_MODULES_NET
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_NODE
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_FILE
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_GPIO
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_WIFI
+&lt;span class="gh"&gt;#&lt;/span&gt;define LUA_USE_MODULES_NET
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h5&gt;app/include/user_config.h&lt;/h5&gt;
 &lt;p&gt;Contains NodeMCU developer options, but could be of use.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;...
-#define DEVELOP_VERSION
-#define NODE_ERROR
+&lt;span class="gh"&gt;#&lt;/span&gt;define DEVELOP_VERSION
+&lt;span class="gh"&gt;#&lt;/span&gt;define NODE_ERROR
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="ESP8266"></category><category term="NodeMCU"></category><category term="ESP8266"></category></entry></feed>
