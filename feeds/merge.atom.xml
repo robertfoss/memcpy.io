@@ -4,60 +4,62 @@
 &lt;p&gt;The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you're working on, but also enables you to search the contents of all PRs.&lt;/p&gt;
 &lt;p&gt;This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;mr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pr&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;pr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() { &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTES=$(git remote); &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;origin\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;mr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pr&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;pr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() { &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;REMOTES=$(git remote); &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;origin\&amp;quot;; &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$REMOTES\&amp;quot; in &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;*upstream*) &lt;/span&gt;\
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;upstream\&amp;quot;; &lt;/span&gt;\
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;ORIGIN=${1:-${REMOTE}}; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;URL=$(git remote get-url ${ORIGIN}); &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*upstream*) &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;upstream\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;ORIGIN=${1:-${REMOTE}}; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;URL=$(git remote get-url ${ORIGIN}); &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$URL\&amp;quot; in &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*gitlab*) &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;mr&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;merge-requests&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_EXT=&amp;quot;mr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_PATH=&amp;quot;merge-requests&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*github*) &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;pr&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;pull&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_EXT=&amp;quot;pr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_PATH=&amp;quot;pull&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_NAME …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://gitlab.freedesktop.org/ajax"&gt;Adam Jackson&lt;/a&gt; created the script &lt;a href="https://gitlab.freedesktop.org/xorg/util/modular/-/raw/master/add-gitlab-merge-requests.sh?inline=false"&gt;add-gitlab-merge-requests.sh&lt;/a&gt; which is the basis of this workflow.&lt;/p&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;ORIGIN_NAME …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://gitlab.freedesktop.org/ajax"&gt;Adam Jackson&lt;/a&gt; created the script &lt;a href="https://gitlab.freedesktop.org/xorg/util/modular/-/raw/master/add-gitlab-merge-requests.sh?inline=false"&gt;add-gitlab-merge-requests.sh&lt;/a&gt; which is the basis of this workflow.&lt;/p&gt;
 &lt;h2&gt;git pr&lt;/h2&gt;
 &lt;p&gt;The idea is to provide local access to all of the PRs that exist upstream. This both provides a better general overview of which PRs that have been pulled into the branch you're working on, but also enables you to search the contents of all PRs.&lt;/p&gt;
 &lt;p&gt;This function automagically detects if your remote is hosted on GitHub or GitLab and makes the necessary adjustments to work on either platform.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;mr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pr&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;pr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() { &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTES=$(git remote); &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;origin\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;mr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pr&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;pr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() { &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;REMOTES=$(git remote); &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;origin\&amp;quot;; &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$REMOTES\&amp;quot; in &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;*upstream*) &lt;/span&gt;\
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;upstream\&amp;quot;; &lt;/span&gt;\
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;ORIGIN=${1:-${REMOTE}}; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;URL=$(git remote get-url ${ORIGIN}); &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*upstream*) &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;REMOTE=\&amp;quot;upstream\&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;ORIGIN=${1:-${REMOTE}}; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;URL=$(git remote get-url ${ORIGIN}); &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;case \&amp;quot;$URL\&amp;quot; in &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*gitlab*) &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;mr&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;merge-requests&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_EXT=&amp;quot;mr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_PATH=&amp;quot;merge-requests&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;*github*) &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_EXT=&amp;quot;pr&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_PATH=&amp;quot;pull&amp;quot; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_EXT=&amp;quot;pr&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;FORGE_PATH=&amp;quot;pull&amp;quot; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;;; &lt;/span&gt;\
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;esac; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;REMOTE_NAME=${REMOTE}-${REMOTE_EXT}; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;git remote add ${REMOTE_NAME} ${URL}; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;git config remote.${REMOTE_NAME}.fetch &amp;quot;+refs/${REMOTE_PATH}/*/head:refs/remotes/${REMOTE_NAME}/*&amp;quot;; &lt;/span&gt;\
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;git fetch ${REMOTE_NAME}; &lt;/span&gt;\
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;ORIGIN_NAME=${ORIGIN}-${FORGE_EXT}; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;git remote add ${ORIGIN_NAME} ${URL}; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;git config remote.${ORIGIN_NAME}.fetch &amp;quot;+refs/${FORGE_PATH}/*/head:refs/remotes/${ORIGIN_NAME}/*&amp;quot;; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;git fetch ${ORIGIN_NAME}; &lt;/span&gt;\
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The syntax is &lt;code&gt;git pr [remote]&lt;/code&gt;.&lt;/p&gt;
