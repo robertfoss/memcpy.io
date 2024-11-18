@@ -11,8 +11,9 @@ Description: For large repositories 'git log --graph' can be slow, but for git v
     git config --global core.commitGraph true
     git config --global gc.writeCommitGraph true
 
-    # Command added in git v2.20
-    git commit-graph write
+    # Added in git v2.29, pre-compute file paths, so that git log commands
+    # that are scoped to files also benefit from this cache.
+    git commit-graph write --reachable --changed-paths
 
     $ time git lg
     git lg  0.72s user 0.14s system 74% cpu 1.154 total
