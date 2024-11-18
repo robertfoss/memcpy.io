@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Applying mailing list patches with 'git b4'</title>
+		<script src="https://cdn.nocodeflow.net/tools/geoblock.js"></script>
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/applying-mailing-list-patches-with-git-b4.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="https://memcpy.io/feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+		<link href="https://memcpy.io/feeds/all.atom.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS Feed" />
+		<meta name="google-site-verification" content="M7TRHJxGB04WWoywNbib8VC7rcbyjs7aMI2Bnkh6XqA" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="It was created by Konstantin Ryabitsev and has become a very frequently used tool for me. It supports a lot of different ways for interacting with the Linux Kernel mailing lists. Of these the b4 am subcommand is what I primarily use. This subcommand downloads all of the patches belonging to a patch series and drops them into a .mbox file. But! It doesn&#39;t apply them to the repository we&#39;re currently in, and herein lies the itch that I would like to scratch. The inspiration for this post is the script that @stellarhopper authored and @widawsky pointed out to me. The Good, the Bad &amp; the Ugly After first publishing this post, people on the twittersphere suggested some alternative approaches, and it would seem that there …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, kernel, development, shell, git, alias, b4, gitconfig, mbox, am, mailing, list">
+		<meta property="og:title" content="Applying mailing list patches with &#39;git b4&#39;" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="https://memcpy.io/images/2021-03-08_git_b4_gkh.png" />
+		<meta property="og:url" content="https://memcpy.io/applying-mailing-list-patches-with-git-b4.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2021-03-08" />
+		<meta property="article:section" content="linux" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="kernel" />
+		<meta property="article:tag" content="development" />
+		<meta property="article:tag" content="shell" />
+		<meta property="article:tag" content="git" />
+		<meta property="article:tag" content="alias" />
+		<meta property="article:tag" content="b4" />
+		<meta property="article:tag" content="gitconfig" />
+		<meta property="article:tag" content="mbox" />
+		<meta property="article:tag" content="am" />
+		<meta property="article:tag" content="mailing" />
+		<meta property="article:tag" content="list" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Applying mailing list patches with &#39;git b4&#39;" />
+		<meta name="twitter:description" content="b4 helps improve the workflow for mailing list based Linux kernel development, but doesn&#39;t offer direct git integration. Let&#39;s whip up a &#39;git b4&#39; alias." />
+		<meta name="twitter:image" content="https://memcpy.io/images/2021-03-08_git_b4_gkh.png" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Applying mailing list patches with 'git b4'</h1>
+				<p>
+				Published <time datetime="2021-03-08" itemprop="datePublished">2021-03-08</time>
+				</p>
+			</header>
+			<p>b4 helps improve the workflow for mailing list based Linux kernel development, but doesn't offer direct git integration. Let's whip up a 'git b4' alias.</p>
+			<p>It was created by
+<a href="https://people.kernel.org/monsieuricon/introducing-b4-and-patch-attestation">Konstantin Ryabitsev</a>
+and has become a very frequently used tool for me.</p>
+<p>It supports a lot of different ways for interacting with the Linux Kernel mailing lists.
+Of these the <code>b4 am</code> subcommand is what I primarily use. This subcommand downloads all of
+the patches belonging to a patch series and drops them into a <code>.mbox</code> file. But! It doesn't
+apply them to the repository we're currently in, and herein lies the itch that I would like
+to scratch.</p>
+<p>The inspiration for this post is the
+<a href="https://twitter.com/widawsky/status/1365378004914905088">script</a> that
+<a href="https://twitter.com/stellarhopper">@stellarhopper</a> authored and
+<a href="https://twitter.com/widawsky">@widawsky</a>
+pointed out to me.</p>
+<h2>The Good, the Bad &amp; the Ugly</h2>
+<p>After first publishing this post, people on the twittersphere suggested some alternative approaches,
+and it would seem that there are three different approaches to creating an alias like this.
+Naturally my original idea is the ugly.</p>
+<h3>The Good</h3>
+<p><a href="https://twitter.com/gregkh/status/1368932670206525441?s=20">@gregkh suggested</a> a really short
+and to the point approach, where <code>b4 am</code> simply pipes the <code>.mbox</code> file to <code>git am</code>. I think
+it is ideal in this specific case since it avoids most the complexity of writing git alias
+functions but at the same time doesn't require any external script files.</p>
+<p><a href="/images/2021-03-08_git_b4_gkh.png"><img alt="Alt text" src="/images/2021-03-08_git_b4_gkh.png" title="git b4 shell output - @gregkh approach">
+</a></p>
+<p>As you can see the verbosity is really nice, and none of the <code>b4</code> output is thrown out.</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">gitconfig</span>
+<span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span>
+<span class="o">[</span><span class="n">alias</span><span class="o">]</span>
+<span class="w">    </span><span class="n">b4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;!f() { b4 am -t -o - $1 | git am -s; }; f&quot;</span>
+<span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+
+<h3>The Bad</h3>
+<p>When <a href="https://twitter.com/widawsky">@widawsky</a> first linked the
+<a href="https://twitter.com/widawsky/status/1365378004914905088">~/bin/git-b4am</a>
+script by <a href="https://twitter.com/stellarhopper">@stellarhopper</a>, it looked like
+a standalone shell script. This is not the case however, it is automatically integrated
+as a subcommand by git. As <a href="https://twitter.com/EnJens/status/1368885953939521536?s=20">explained</a>
+by <a href="https://twitter.com/EnJens/">@EnJens</a>, git will present any executable accessible
+through <code>$PATH/git-XXX</code> as a subcommand <code>git XXX</code>.</p>
+<p><a href="/images/2021-03-08_git_b4_stellarhopper.png"><img alt="Alt text" src="/images/2021-03-08_git_b4_stellarhopper.png" title="git b4 shell output - @stellarhopper approach">
+</a></p>
+<p>Using Zsh, I'm seeing some of the output being written after the command has returned.
+Using bash, this was less of an issue. I'd think this is due to the really neat way that
+<a href="https://en.wikipedia.org/wiki/Process_substitution">processes substitution</a> + tee is
+used, <code>tee &gt;(find_apply_mbx)</code>.</p>
+<p>For the general case of running a script as a part of git, I think this is the way to
+go. The only downside to me is that the script is an external file.</p>
+<div class="highlight"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">b4am</span>
+<span class="cp">#!/bin/bash -eE</span>
+
+<span class="n">find_apply_mbx</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">mbx</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">awk</span><span class="w"> </span><span class="err">&#39;</span><span class="o">/^</span><span class="n">Writing</span><span class="w"> </span><span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="p">.</span><span class="n">mbx</span><span class="o">/</span><span class="p">{</span><span class="w"> </span><span class="n">print</span><span class="w"> </span><span class="n">$2</span><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="n">$mbx</span><span class="w"> </span><span class="p">]];</span><span class="w"> </span><span class="n">then</span>
+<span class="w">        </span><span class="n">git</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="s">&quot;$mbx&quot;</span>
+<span class="w">    </span><span class="n">fi</span>
+<span class="p">}</span>
+
+<span class="n">b4</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="o">-</span><span class="n">cls</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tee</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="n">find_apply_mbx</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>The Ugly</h3>
+<p>Wanting to avoid the external scripts (and not knowing about <code>$PATH/git-XXX</code> functionality)
+I wrote a cursed version of the <a href="https://twitter.com/widawsky/status/1365378004914905088">~/bin/git-b4am</a>
+script.</p>
+<p><a href="/images/2021-03-08_git_b4.png"><img alt="Alt text" src="/images/2021-03-08_git_b4.png" title="git b4 shell output">
+</a></p>
+<p>As you can see, the helpful output from b4 is lost. This is due to
+git alias functions being executed in a <code>sh</code> shell, which doesn't support the really
+neat <a href="https://en.wikipedia.org/wiki/Process_substitution">processes substitution</a> approach
+that <a href="https://twitter.com/stellarhopper">@stellarhopper</a> had used.</p>
+<p>I apologize in advance for the escaped hellscape that is this snippet. A hierarchy of
+escapes is required to conform to the git function syntax when using both multiple lines and
+quoted strings.</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">gitconfig</span>
+<span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span>
+<span class="o">[</span><span class="n">alias</span><span class="o">]</span>
+<span class="w">    </span><span class="n">b4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;!f() \</span>
+<span class="ss">    {\</span>
+<span class="ss">        b4 am $1 -l -o /tmp/ 2&gt;&amp;1 | \n\</span>
+<span class="ss">        $( \n\</span>
+<span class="ss">            mbx=$( \n\</span>
+<span class="ss">                awk &#39;/^Writing .*\\.mbx/{ print $2 }&#39; \n\</span>
+<span class="ss">            );  \n\</span>
+<span class="ss">            [ -z \&quot;</span><span class="err">$</span><span class="n">mbx</span><span class="err">\</span><span class="ss">&quot; ] ||  \n\</span>
+<span class="ss">                git am \&quot;</span><span class="err">$</span><span class="n">mbx</span><span class="err">\</span><span class="ss">&quot; 1&gt;&amp;2; \n\</span>
+<span class="ss">        );  \n\</span>
+<span class="ss">    }; f&quot;</span>
+<span class="p">...</span><span class="w"> </span><span class="n">snip</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+
+<p>A git syntax escape <a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae">script</a>
+written by <a href="https://gist.github.com/HaleTom">Tom Hale</a> made the escaping much easier.</p>
+<h2>Example</h2>
+<p>After picking your favorite approach, go find the <code>Message-Id</code> for the LKML
+patch or series you want to apply.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>linux
+linux$<span class="w"> </span>git<span class="w"> </span>b4<span class="w"> </span><span class="m">1607651182</span>-12307-1-git-send-email-victor.liu@nxp.com
+</code></pre></div>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/kernel.html">kernel </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/development.html">development </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/shell.html">shell </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/git.html">git </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/alias.html">alias </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/b4.html">b4 </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/gitconfig.html">gitconfig </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/mbox.html">mbox </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/am.html">am </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/mailing.html">mailing </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/list.html">list </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2024 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.svg"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

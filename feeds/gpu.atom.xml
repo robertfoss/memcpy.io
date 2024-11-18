@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - gpu</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/gpu.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2019-03-13T16:25:00+01:00</updated><entry><title>An Overview of the Panfrost driver</title><link href="https://memcpy.io/an-overview-of-the-panfrost-driver.html" rel="alternate"></link><published>2019-03-13T16:25:00+01:00</published><updated>2019-03-13T16:25:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</id><summary type="html">&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
+&lt;p&gt;The process of reverse engineering Arm GPUs has been going on for a long time,
+starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
+on the Arm Utgard family of GPUs.&lt;br&gt;
+This driver has recently seen a lot new attention and is itself progressing quickly,
+which means it will likely be accepted into the kernel soon.&lt;br&gt;
+A piece of trivia is that this GPU architecture was what Arm received when they
+purchased the Norwegian GPU IP vendor Falanx Microsystems.&lt;/p&gt;
+&lt;p&gt;The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
+respectively, both of which are quite different from the 2/3/400 series.
+However the T and G-series are somewhat similar at least when …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
+&lt;p&gt;The process of reverse engineering Arm GPUs has been going on for a long time,
+starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
+on the Arm Utgard family of GPUs.&lt;br&gt;
+This driver has recently seen a lot new attention and is itself progressing quickly,
+which means it will likely be accepted into the kernel soon.&lt;br&gt;
+A piece of trivia is that this GPU architecture was what Arm received when they
+purchased the Norwegian GPU IP vendor Falanx Microsystems.&lt;/p&gt;
+&lt;p&gt;The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
+respectively, both of which are quite different from the 2/3/400 series.
+However the T and G-series are somewhat similar at least when it comes to the
+way a driver can be built for them. This is why the Panfrost driver is aiming
+to support both architectures with one driver.&lt;/p&gt;
+&lt;div style="text-align:center;"&gt;
+&lt;iframe src="https://drive.google.com/file/d/1GqOHbaI2ZcBkYnWBpMXy-LgCyLgzdLRg/preview" width="640" height="480"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At &lt;a href="https://www.embedded-world.de/en"&gt;Embedded World 2019&lt;/a&gt; Collabora demoed the
+Panfrost driver running kmscube (pictured to the right).
+The singleboard computer used was a &lt;a href="https://rockpi.org"&gt;Radxa Rock Pi 4&lt;/a&gt;,
+which was generously sent to us by &lt;a href="https://twitter.com/hipboi_"&gt;Tom Cubie&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Panfrost currently runs simple 3D applications like kmscube, the Wayland based
+Weston desktop and even more complex 3D benchmarks like glmark2.&lt;/p&gt;
+&lt;p&gt;This is still a new driver and it is in heavy development currently.&lt;/p&gt;
+&lt;h2&gt;Current status&lt;/h2&gt;
+&lt;p&gt;There are two semi-parallel parts under development currently; the new kernel
+driver and the Mesa userspace driver.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Panfrost demo" src="/images/2019-03-13_panfrost.svg"&gt;&lt;/p&gt;
+&lt;p&gt;The new kernel driver is intended to replace the Open Source driver that Arm
+provides for its Mali GPUs (mali_kbase). Up until recently the Mesa Panfrost driver
+has been used with a shim between the Arm kernel driver and the userspace driver.
+While the Arm kernel driver exists, it cannot be accepted into the upstream Linux
+kernel project for multiple reasons, but most importantly it doesn't expose the
+DRM API that userspace expects of modern GPU drivers in the kernel.&lt;/p&gt;
+&lt;p&gt;As for the Panfrost Mesa driver, this driver is under heavy development
+and is seeing fixes, improvements to the compiler and new features added at a
+rapid pace.
+This driver is being built on top of the common Gallium driver framework in
+Mesa, which means that it will be relatively easy to move features from other
+drivers to the Panfrost driver.&lt;br&gt;
+Additionally the Panfrost driver uses the NIR intermediate representation (IR) for
+its compiler, which is the most common and most modern IR that Mesa implements.
+This again means that new and upcoming features like OpenCL for example, will
+be portable from the other Gallium/NIR drivers to Panfrost.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;These drivers are community drivers, but have been spearheaded by
+&lt;a href="https://rosenzweig.io/blog/"&gt;Alyssa Rosenzweig&lt;/a&gt;,
+&lt;a href="https://twitter.com/_Lyude"&gt;Lyude Paul&lt;/a&gt;,
+&lt;a href="https://github.com/cwabbott0"&gt;Connor Abott&lt;/a&gt;,
+&lt;a href="https://github.com/robherring"&gt;Rob Herring&lt;/a&gt; and
+Collabora's very own &lt;a href="https://blog.tomeuvizoso.net"&gt;Tomeu Vizoso&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would also like to thank &lt;a href="https://twitter.com/hipboi_"&gt;Tom Cubie&lt;/a&gt; for sending
+out Rock Pi 4 boards to not just me, but the wider Panfrost development community.&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="graphics"></category><category term="linux"></category><category term="open source"></category><category term="gpu"></category><category term="driver"></category><category term="arm"></category><category term="mali"></category><category term="panfrost"></category></entry><entry><title>kms_swrast: A hardware-backed graphics driver</title><link href="https://memcpy.io/kms_swrast-a-hardware-backed-graphics-driver.html" rel="alternate"></link><published>2018-07-31T09:14:00+02:00</published><updated>2018-07-31T09:14:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-07-31:/kms_swrast-a-hardware-backed-graphics-driver.html</id><summary type="html">&lt;h2&gt;Stack overview&lt;/h2&gt;
+&lt;p&gt;Let's start with having a look at a high level overview of what the
+graphics stack looks like.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_overview.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Before digging too much further into this, lets cover some terminology.&lt;/p&gt;
+&lt;p&gt;DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
+which contains all of the graphics drivers and does all of the interfacing with
+hardware.&lt;br&gt;
+The DRM subsystem implements the KMS - kernel mode setting - API.&lt;/p&gt;
+&lt;p&gt;Mode setting is essentially configuring output settings like resolution
+for the displays that are being used. And doing it using the kernel means that
+userspace doesn't need access to setting these things directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_mesa.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The DRM subsystem talks to the hardware and Mesa is used by applications through
+the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc.
+All …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Stack overview&lt;/h2&gt;
+&lt;p&gt;Let's start with having a look at a high level overview of what the
+graphics stack looks like.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_overview.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Before digging too much further into this, lets cover some terminology.&lt;/p&gt;
+&lt;p&gt;DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
+which contains all of the graphics drivers and does all of the interfacing with
+hardware.&lt;br&gt;
+The DRM subsystem implements the KMS - kernel mode setting - API.&lt;/p&gt;
+&lt;p&gt;Mode setting is essentially configuring output settings like resolution
+for the displays that are being used. And doing it using the kernel means that
+userspace doesn't need access to setting these things directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_mesa.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The DRM subsystem talks to the hardware and Mesa is used by applications through
+the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc.
+All of Mesa is built ontop of DRM and libdrm.  &lt;/p&gt;
+&lt;p&gt;libdrm is a userspace library that wraps the DRM subsystem in order to simplify
+talking to drivers and avoiding common bugs in every user of DRM.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_detailed.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_detailed.svg" title="kms_swrast diagram"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Looking inside Mesa we find the Gallium driver framework. It is what &lt;em&gt;most&lt;/em&gt;
+of the Mesa drivers are built using, with the Intel i965 driver being the major
+exception.&lt;/p&gt;
+&lt;p&gt;kms_swrast is built using Gallium, with the intention of re-using as much of the
+infrastructure provided by Gallium and KMS as possible instead.&lt;/p&gt;
+&lt;p&gt;kms_swrast itself is backed by a backend, like softpipe or the faster llvmpipe,
+which actually implements the 3D primitives and functionality needed in order
+to reach OpenGL and OpenGL ES compliance.&lt;/p&gt;
+&lt;p&gt;Softpipe is the older and less complicated of the two implementations,
+whereas is llvmpipe is newer and relies on LLVM as an external dependency.&lt;br&gt;
+But as a result llvmpipe support JIT-compilation for example, which
+makes it a lot faster.&lt;/p&gt;
+&lt;h2&gt;Why is this a good idea?&lt;/h2&gt;
+&lt;p&gt;Re-using the Gallium framework gives you a lot of things for free. And the
+driver can remain relatively lightweight.  &lt;/p&gt;
+&lt;p&gt;Apart from the features that Gallium provides today, you'll also get free
+access to new features in the future, without having to write them yourself.&lt;br&gt;
+And since Gallium is shared between many drivers, it will be better tested and
+have fewer bugs than any one driver.&lt;/p&gt;
+&lt;p&gt;kms_swrast is built using DRM and actual kernel drivers, but no rendering
+hardware is actually used. Which may seem a bit odd.  &lt;/p&gt;
+&lt;p&gt;So why are the kernel drivers used for a software renderer? The answer is
+two-fold.  &lt;/p&gt;
+&lt;p&gt;It is what Gallium expects, and there is a kernel driver called VGEM
+(Virtual GEM) which was created specifically for this usecase. In order to
+not have to make invasive changes to it or make the switch to VGEM right away,
+just providing it with access to &lt;em&gt;some&lt;/em&gt; driver
+is the simplest possible solution. Since the actual hardware is mostly unused,
+it doesn't really matter what hardware you use.&lt;/p&gt;
+&lt;p&gt;The DRM driver is actually only used for a single thing, to allocate a slice
+of memory which can be used to render pixels to and then be sent to the display.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="graphics"></category><category term="collabora"></category><category term="kms_swrast"></category><category term="drm"></category><category term="kms"></category><category term="swrast"></category><category term="dumb"></category><category term="buffer"></category><category term="driver"></category><category term="gpu"></category></entry><entry><title>Status of the Embedded GPU Space @ Embedded Linux Conference NA</title><link href="https://memcpy.io/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html" rel="alternate"></link><published>2018-03-12T00:00:00+01:00</published><updated>2018-03-12T00:00:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-03-12:/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</id><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2018-03-12_elc_na.png" title="Speaking @ ELC NA"&gt;&lt;/p&gt;
+&lt;p&gt;A recording of the talk is available  &lt;a href="https://www.youtube.com/watch?v=Ag8BGMY8MOs"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-openiot-north-america-2018/program/schedule/"&gt;Embedded Linux Conference NA&lt;/a&gt;,
+for hosting a great event.&lt;/p&gt;</content><category term="talks"></category><category term="talks"></category><category term="slides"></category><category term="embedded linux conference"></category><category term="elc"></category><category term="na"></category><category term="portland"></category><category term="embedded"></category><category term="gpu"></category><category term="linux"></category><category term="driver"></category><category term="open"></category><category term="source"></category></entry><entry><title>Virtualizing GPU Access</title><link href="https://memcpy.io/virtualizing-gpu-access.html" rel="alternate"></link><published>2018-02-09T11:17:00+01:00</published><updated>2018-02-09T11:17:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-02-09:/virtualizing-gpu-access.html</id><summary type="html">&lt;p&gt;For the past few years a clear trend of containerization of applications
+and services has emerged. Having processes containerized is beneficial
+in a number of ways. It both improves portability and strengthens security,
+and if done properly the performance penalty can be low.&lt;/p&gt;
+&lt;p&gt;In order to further improve security containers are commonly run in
+virtualized environments. This provides some new challenges in terms
+of supporting the accelerated graphics usecase.&lt;/p&gt;
+&lt;h3&gt;OpenGL ES implementation&lt;/h3&gt;
+&lt;p&gt;Currently Collabora and Google are implementing OpenGL ES 2.0
+support. OpenGL ES 2.0 is the lowest common denominator for many mobile
+platforms and as such is a requirement for Virgil3D to be viable on
+the those platforms.&lt;/p&gt;
+&lt;p&gt;That is is the motivation for making Virgil3D work on OpenGL ES hosts.&lt;/p&gt;
+&lt;h2&gt;How …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;For the past few years a clear trend of containerization of applications
+and services has emerged. Having processes containerized is beneficial
+in a number of ways. It both improves portability and strengthens security,
+and if done properly the performance penalty can be low.&lt;/p&gt;
+&lt;p&gt;In order to further improve security containers are commonly run in
+virtualized environments. This provides some new challenges in terms
+of supporting the accelerated graphics usecase.&lt;/p&gt;
+&lt;h3&gt;OpenGL ES implementation&lt;/h3&gt;
+&lt;p&gt;Currently Collabora and Google are implementing OpenGL ES 2.0
+support. OpenGL ES 2.0 is the lowest common denominator for many mobile
+platforms and as such is a requirement for Virgil3D to be viable on
+the those platforms.&lt;/p&gt;
+&lt;p&gt;That is is the motivation for making Virgil3D work on OpenGL ES hosts.&lt;/p&gt;
+&lt;h2&gt;How does this work?&lt;/h2&gt;
+&lt;p&gt;This stack is commonly referred to as &lt;a href="https://virgil3d.github.io/"&gt;Virgil3D&lt;/a&gt;, since all of the parts originated from a project with that name.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-02-09_virgl.svg"&gt;&lt;img alt="Alt text" src="/images/2018-02-09_virgl.svg" title="Virtualized OpenGL Stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There are a few parts to this implementation.
+QEMU, virglrenderer and virtio-gpu. They way it works is by letting the guest
+applications speak unmodified OpenGL to the Mesa. But instead of Mesa handing
+commands over to the hardware it is channeled through virtio-gpu on the guest
+to QEMU on the host.&lt;/p&gt;
+&lt;p&gt;QEMU then receives the raw graphics stack state (Gallium state) and interprets
+it using virglrenderer from the raw state into an OpenGL form, which can be
+executed as entirely normal OpenGL on the host machine.&lt;/p&gt;
+&lt;p&gt;The host OpenGL stack does not even have to be Mesa, and could for example
+be the proprietary nvidia stack.&lt;/p&gt;
+&lt;h2&gt;Trying it out&lt;/h2&gt;
+&lt;h3&gt;Environment&lt;/h3&gt;
+&lt;p&gt;First of all, let's have a look at the development environment.
+When doing graphical development I find it quite helpful to set
+up a parallel graphics stack in order to not pollute or depend on
+the stack of the host machine more than we have to.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;concatenate_colon&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;:&amp;#39;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$*&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;add_export_env&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;VAR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;shift&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;VAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\$$VAR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$VAL&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;VAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;concatenate_colon&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$@&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$VAL&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;VAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;concatenate_colon&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$@&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;export $VAR=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;$VAL&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;prefix_setup&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
+
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;add_export_env&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$PREFIX/bin&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;add_export_env&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$PREFIX/lib&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;add_export_env&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PKG_CONFIG_PATH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$PREFIX/lib/pkgconfig/&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$PREFIX/share/pkgconfig/&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;add_export_env&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MANPATH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$PREFIX/share/man&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$PREFIX/share/aclocal&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;projectshell&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;in&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="no"&gt;virgl&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;virglrenderer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="no"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;ALT_LOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/opt/local/virgl&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="no"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="no"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$ALT_LOCAL&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="no"&gt;prefix_setup&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$ALT_LOCAL&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;;;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="no"&gt;esac&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The above snippet is something that I would put in my &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.zshrc&lt;/code&gt;.
+Don't forget so run &lt;code&gt;source ~/.bashrc&lt;/code&gt; or the equivalent after making changes.&lt;/p&gt;
+&lt;p&gt;To enter the environment I simply type &lt;code&gt;projectshell virgl&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Build libepoxy&lt;/h3&gt;
+&lt;p&gt;libepoxy is a library for managing OpenGL function pointers for you.
+And it is a dependency of virglrenderer, which we'll get to below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/anholt/libepoxy.git
+cd libepoxy
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Build virglrenderer&lt;/h3&gt;
+&lt;p&gt;Virgilrenderer is the component that QEMU uses to provide
+accelerated rendering.
+It receives Gallium states from the guest kernel
+via its virtio-gpu interface, which are then translated
+into OpenGL on the host. It also translates shaders from the
+TGSI format used by Gallium into the GLSL format used by OpenGL.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/virglrenderer
+cd virglrenderer
+./autogen.sh --prefix=$ALT_LOCAL
+make -j$(nproc --ignore=1)
+make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Build Mesa&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; Fetch dependencies
+sudo sed -i &amp;#39;s/\#[ ]*deb-src/deb-src/&amp;#39; /etc/apt/sources.list
+sudo apt update
+sudo apt-get build-dep mesa
+
+&lt;span class="gh"&gt;#&lt;/span&gt; Actually build Mesa
+git clone https://anongit.freedesktop.org/git/mesa/mesa.git
+cd mesa
+./autogen.sh \
+    --prefix=$ALT_LOCAL \
+    --enable-driglx-direct \
+    --enable-gles1 \
+    --enable-gles2 \
+    --enable-glx-tls \
+    --enable-texture-float \
+    --with-platforms=drm,x11,wayland \
+    --with-dri-drivers=i915,i965,nouveau \
+    --with-gallium-drivers=nouveau,swrast,radeonsi,virgl \
+    --without-vulkan-drivers
+make -j$(nproc --ignore=1)
+make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Build QEMU&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.qemu.org/qemu.git
+cd qemu
+./configure \
+    --prefix=$ALT_LOCAL \
+    --target-list=x86_64-softmmu \
+    --enable-gtk \
+    --with-gtkabi=3.0 \
+    --enable-kvm \
+    --enable-spice \
+    --enable-usb-redir \
+    --enable-libusb \
+    --enable-opengl \
+    --enable-virglrenderer
+make -j$(nproc --ignore=1)
+make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Set up a VM&lt;/h2&gt;
+&lt;p&gt;As a guest we're going to use Ubuntu 17.10, but just use the latest
+release of whatever distro you like. The kernel &lt;em&gt;has&lt;/em&gt; to have been
+built with the appropriate virtio-gpu Kconfig options though.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://releases.ubuntu.com/17.10/ubuntu-17.10.1-server-amd64.iso
+qemu-img create -f qcow2 ubuntu.qcow2 35G
+qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on \
+    -boot d -cdrom ubuntu-17.10.1-server-amd64.iso
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Run VM&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;qemu-system-x86_64 \
+    -enable-kvm -M q35 -smp 2 -m 4G \
+    -hda ubuntu.qcow2 \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -vga virtio \
+    -display sdl,gl=on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Et Voila! Your guest should now have GPU acceleration!&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Hopefully this guide will have helped you to build all of the software needed to
+set up your very own virglrenderer enabled graphics stack.&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="graphics"></category><category term="linux"></category><category term="gpu"></category><category term="virtualization"></category><category term="virgl"></category><category term="virglrenderer"></category><category term="opengl"></category><category term="vulkan"></category><category term="gles"></category><category term="collabora"></category></entry></feed>

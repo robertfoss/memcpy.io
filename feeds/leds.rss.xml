@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - leds</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Fri, 22 Jun 2018 12:26:00 +0200</lastBuildDate><item><title>Twistyplexing: A Charlieplexing variety</title><link>https://memcpy.io/twistyplexing-a-charlieplexing-variety.html</link><description>&lt;p&gt;&lt;a href="/images/2018-06-22_twistyplexing.png"&gt;&lt;img alt="Alt text" src="/images/2018-06-22_twistyplexing.png" title="A 42 LED, N == 7 Twistyplexing layout"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The above layout has N = 7, yielding 42 LEDs.&lt;/p&gt;
+&lt;p&gt;Apart from the symmetry being visually pleasing compared to the normal
+row &amp;amp; column Charlieplexing layouts, it's relatively easy to spot errors
+in the schematic.&lt;/p&gt;
+&lt;h2&gt;Avoiding lookup tables&lt;/h2&gt;
+&lt;p&gt;The major advantage of twistyplexing is the ability to avoid lookup tables
+and replace them with some relatively straight forward arithmetic.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;row = led_number / (N - 1)
+column = led_number % (N - 1)
+anode = (row + column + 1) % N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Of course the cathode still has to be controlled, but its pin id already
+defined by the &lt;strong&gt;row&lt;/strong&gt; variable above.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;The Twistyplexing concept was created by Tom Yu, and defined in &lt;a href="https://argonblue.wordpress.com/2012/06/30/twistyplexing-a-new-topology-for-led-multiplexing/"&gt;this&lt;/a&gt; blog post.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 22 Jun 2018 12:26:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-06-22:/twistyplexing-a-charlieplexing-variety.html</guid><category>leds</category><category>twistyplexing</category><category>charlieplexing</category><category>multiplexing</category><category>led</category><category>leds</category></item></channel></rss>

@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - kernel</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/kernel.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2021-11-04T20:10:00+01:00</updated><entry><title>Git Alias function syntax</title><link href="https://memcpy.io/git-alias-function-syntax.html" rel="alternate"></link><published>2021-11-04T20:10:00+01:00</published><updated>2021-11-04T20:10:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2021-11-04:/git-alias-function-syntax.html</id><summary type="html">&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;{&lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;echo Hello world!; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,
+which means there's no access to Bash / Zsh specific functionality.&lt;/p&gt;
+&lt;p&gt;Every command is ended with a &lt;code&gt;;&lt;/code&gt; and each line ended with a &lt;code&gt;\&lt;/code&gt;. This is easy enough
+to grok. But when we try to clean up the above snippet and add some quotes to
+&lt;code&gt;"Hello world!"&lt;/code&gt;, we hit this obtuse error message.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;}&lt;span class="c1"&gt;; f: 1: Syntax error: end of file unexpected (expecting &amp;quot;}&amp;quot;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This syntax error is caused by quotes needing to be escaped. The reason for this
+comes down to how git tokenizes and executes these functions. If you're curious …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;{&lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;echo Hello world!; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,
+which means there's no access to Bash / Zsh specific functionality.&lt;/p&gt;
+&lt;p&gt;Every command is ended with a &lt;code&gt;;&lt;/code&gt; and each line ended with a &lt;code&gt;\&lt;/code&gt;. This is easy enough
+to grok. But when we try to clean up the above snippet and add some quotes to
+&lt;code&gt;"Hello world!"&lt;/code&gt;, we hit this obtuse error message.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;}&lt;span class="c1"&gt;; f: 1: Syntax error: end of file unexpected (expecting &amp;quot;}&amp;quot;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This syntax error is caused by quotes needing to be escaped. The reason for this
+comes down to how git tokenizes and executes these functions. If you're curious
+about how it's managed internally, have a look at
+&lt;a href="https://git.kernel.org/pub/scm/git/git.git/tree/run-command.c?h=v2.31.0-rc1#n267"&gt;git/run-commands.c&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gist.github.com/HaleTom"&gt;Tom Hale&lt;/a&gt; wrote this
+&lt;a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae"&gt;script&lt;/a&gt;
+for doing automatic escaping.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;quote&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;sed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/([&amp;quot;\\])/\\\1/g&amp;#39;&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+}
+
+&lt;span class="nv"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;$&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\n!&amp;quot;&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;previous&lt;/span&gt;
+
+&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="c1"&gt;; do&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;quote&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$previous&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; \\n\\\n&amp;#39;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;previous&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$line&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;done&lt;/span&gt;
+
+&lt;span class="nv"&gt;quote&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$previous&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; #\&amp;quot;&lt;/span&gt;\&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="shell"></category><category term="git"></category><category term="alias"></category><category term="b4"></category><category term="gitconfig"></category><category term="mbox"></category><category term="am"></category><category term="kernel"></category><category term="mailing"></category><category term="list"></category><category term="mailinglists"></category></entry><entry><title>Applying mailing list patches with 'git b4'</title><link href="https://memcpy.io/applying-mailing-list-patches-with-git-b4.html" rel="alternate"></link><published>2021-03-08T12:23:00+01:00</published><updated>2021-03-08T12:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2021-03-08:/applying-mailing-list-patches-with-git-b4.html</id><summary type="html">&lt;p&gt;It was created by
+&lt;a href="https://people.kernel.org/monsieuricon/introducing-b4-and-patch-attestation"&gt;Konstantin Ryabitsev&lt;/a&gt;
+and has become a very frequently used tool for me.&lt;/p&gt;
+&lt;p&gt;It supports a lot of different ways for interacting with the Linux Kernel mailing lists.
+Of these the &lt;code&gt;b4 am&lt;/code&gt; subcommand is what I primarily use. This subcommand downloads all of
+the patches belonging to a patch series and drops them into a &lt;code&gt;.mbox&lt;/code&gt; file. But! It doesn't
+apply them to the repository we're currently in, and herein lies the itch that I would like
+to scratch.&lt;/p&gt;
+&lt;p&gt;The inspiration for this post is the
+&lt;a href="https://twitter.com/widawsky/status/1365378004914905088"&gt;script&lt;/a&gt; that
+&lt;a href="https://twitter.com/stellarhopper"&gt;@stellarhopper&lt;/a&gt; authored and
+&lt;a href="https://twitter.com/widawsky"&gt;@widawsky&lt;/a&gt;
+pointed out to me.&lt;/p&gt;
+&lt;h2&gt;The Good, the Bad &amp;amp; the Ugly&lt;/h2&gt;
+&lt;p&gt;After first publishing this post, people on the twittersphere suggested some alternative approaches,
+and it would seem that there …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It was created by
+&lt;a href="https://people.kernel.org/monsieuricon/introducing-b4-and-patch-attestation"&gt;Konstantin Ryabitsev&lt;/a&gt;
+and has become a very frequently used tool for me.&lt;/p&gt;
+&lt;p&gt;It supports a lot of different ways for interacting with the Linux Kernel mailing lists.
+Of these the &lt;code&gt;b4 am&lt;/code&gt; subcommand is what I primarily use. This subcommand downloads all of
+the patches belonging to a patch series and drops them into a &lt;code&gt;.mbox&lt;/code&gt; file. But! It doesn't
+apply them to the repository we're currently in, and herein lies the itch that I would like
+to scratch.&lt;/p&gt;
+&lt;p&gt;The inspiration for this post is the
+&lt;a href="https://twitter.com/widawsky/status/1365378004914905088"&gt;script&lt;/a&gt; that
+&lt;a href="https://twitter.com/stellarhopper"&gt;@stellarhopper&lt;/a&gt; authored and
+&lt;a href="https://twitter.com/widawsky"&gt;@widawsky&lt;/a&gt;
+pointed out to me.&lt;/p&gt;
+&lt;h2&gt;The Good, the Bad &amp;amp; the Ugly&lt;/h2&gt;
+&lt;p&gt;After first publishing this post, people on the twittersphere suggested some alternative approaches,
+and it would seem that there are three different approaches to creating an alias like this.
+Naturally my original idea is the ugly.&lt;/p&gt;
+&lt;h3&gt;The Good&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/gregkh/status/1368932670206525441?s=20"&gt;@gregkh suggested&lt;/a&gt; a really short
+and to the point approach, where &lt;code&gt;b4 am&lt;/code&gt; simply pipes the &lt;code&gt;.mbox&lt;/code&gt; file to &lt;code&gt;git am&lt;/code&gt;. I think
+it is ideal in this specific case since it avoids most the complexity of writing git alias
+functions but at the same time doesn't require any external script files.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2021-03-08_git_b4_gkh.png"&gt;&lt;img alt="Alt text" src="/images/2021-03-08_git_b4_gkh.png" title="git b4 shell output - @gregkh approach"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As you can see the verbosity is really nice, and none of the &lt;code&gt;b4&lt;/code&gt; output is thrown out.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gitconfig&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;snip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;b4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;!f() { b4 am -t -o - $1 | git am -s; }; f&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;snip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;The Bad&lt;/h3&gt;
+&lt;p&gt;When &lt;a href="https://twitter.com/widawsky"&gt;@widawsky&lt;/a&gt; first linked the
+&lt;a href="https://twitter.com/widawsky/status/1365378004914905088"&gt;~/bin/git-b4am&lt;/a&gt;
+script by &lt;a href="https://twitter.com/stellarhopper"&gt;@stellarhopper&lt;/a&gt;, it looked like
+a standalone shell script. This is not the case however, it is automatically integrated
+as a subcommand by git. As &lt;a href="https://twitter.com/EnJens/status/1368885953939521536?s=20"&gt;explained&lt;/a&gt;
+by &lt;a href="https://twitter.com/EnJens/"&gt;@EnJens&lt;/a&gt;, git will present any executable accessible
+through &lt;code&gt;$PATH/git-XXX&lt;/code&gt; as a subcommand &lt;code&gt;git XXX&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2021-03-08_git_b4_stellarhopper.png"&gt;&lt;img alt="Alt text" src="/images/2021-03-08_git_b4_stellarhopper.png" title="git b4 shell output - @stellarhopper approach"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Using Zsh, I'm seeing some of the output being written after the command has returned.
+Using bash, this was less of an issue. I'd think this is due to the really neat way that
+&lt;a href="https://en.wikipedia.org/wiki/Process_substitution"&gt;processes substitution&lt;/a&gt; + tee is
+used, &lt;code&gt;tee &amp;gt;(find_apply_mbx)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For the general case of running a script as a part of git, I think this is the way to
+go. The only downside to me is that the script is an external file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b4am&lt;/span&gt;
+&lt;span class="cp"&gt;#!/bin/bash -eE&lt;/span&gt;
+
+&lt;span class="n"&gt;find_apply_mbx&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;mbx&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;awk&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="n"&gt;Writing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mbx&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;$2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;$mbx&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;]];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;am&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$mbx&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;fi&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;b4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;am&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$@&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tee&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;find_apply_mbx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;The Ugly&lt;/h3&gt;
+&lt;p&gt;Wanting to avoid the external scripts (and not knowing about &lt;code&gt;$PATH/git-XXX&lt;/code&gt; functionality)
+I wrote a cursed version of the &lt;a href="https://twitter.com/widawsky/status/1365378004914905088"&gt;~/bin/git-b4am&lt;/a&gt;
+script.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2021-03-08_git_b4.png"&gt;&lt;img alt="Alt text" src="/images/2021-03-08_git_b4.png" title="git b4 shell output"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, the helpful output from b4 is lost. This is due to
+git alias functions being executed in a &lt;code&gt;sh&lt;/code&gt; shell, which doesn't support the really
+neat &lt;a href="https://en.wikipedia.org/wiki/Process_substitution"&gt;processes substitution&lt;/a&gt; approach
+that &lt;a href="https://twitter.com/stellarhopper"&gt;@stellarhopper&lt;/a&gt; had used.&lt;/p&gt;
+&lt;p&gt;I apologize in advance for the escaped hellscape that is this snippet. A hierarchy of
+escapes is required to conform to the git function syntax when using both multiple lines and
+quoted strings.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gitconfig&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;snip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;b4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;!f() \&lt;/span&gt;
+&lt;span class="ss"&gt;    {\&lt;/span&gt;
+&lt;span class="ss"&gt;        b4 am $1 -l -o /tmp/ 2&amp;gt;&amp;amp;1 | \n\&lt;/span&gt;
+&lt;span class="ss"&gt;        $( \n\&lt;/span&gt;
+&lt;span class="ss"&gt;            mbx=$( \n\&lt;/span&gt;
+&lt;span class="ss"&gt;                awk &amp;#39;/^Writing .*\\.mbx/{ print $2 }&amp;#39; \n\&lt;/span&gt;
+&lt;span class="ss"&gt;            );  \n\&lt;/span&gt;
+&lt;span class="ss"&gt;            [ -z \&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;mbx&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot; ] ||  \n\&lt;/span&gt;
+&lt;span class="ss"&gt;                git am \&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;mbx&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot; 1&amp;gt;&amp;amp;2; \n\&lt;/span&gt;
+&lt;span class="ss"&gt;        );  \n\&lt;/span&gt;
+&lt;span class="ss"&gt;    }; f&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;snip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A git syntax escape &lt;a href="https://gist.github.com/HaleTom/61e2c94dc4d76b58c9f38fc8b6cec3ae"&gt;script&lt;/a&gt;
+written by &lt;a href="https://gist.github.com/HaleTom"&gt;Tom Hale&lt;/a&gt; made the escaping much easier.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;After picking your favorite approach, go find the &lt;code&gt;Message-Id&lt;/code&gt; for the LKML
+patch or series you want to apply.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;linux
+linux$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;b4&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1607651182&lt;/span&gt;-12307-1-git-send-email-victor.liu@nxp.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="kernel"></category><category term="development"></category><category term="shell"></category><category term="git"></category><category term="alias"></category><category term="b4"></category><category term="gitconfig"></category><category term="mbox"></category><category term="am"></category><category term="mailing"></category><category term="list"></category></entry><entry><title>Upstream camera support for Qualcomm platforms</title><link href="https://memcpy.io/upstream-camera-support-for-qualcomm-platforms.html" rel="alternate"></link><published>2021-02-23T14:54:00+01:00</published><updated>2021-02-23T14:54:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2021-02-23:/upstream-camera-support-for-qualcomm-platforms.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.linaro.org/"&gt;Linaro&lt;/a&gt; has been working together with Qualcomm to enable camera support on
+their platformssince 2017. The Open Source CAMSS driver was written to support the ISP IP-block with
+the same name that is present on Qualcomm SoCs coming from the smartphone space.&lt;/p&gt;
+&lt;p&gt;The first development board targeted by this work was the DragonBoard 410C, which was followed in 2018 by
+DragonBoard 820C support. Recently support for the Snapdragon 660 SoC was added to the driver,
+which will be part of the v5.11 Linux Kernel release. These SoCs all contain the CAMSS
+(Camera SubSystem) version of the ISP architecture.&lt;/p&gt;
+&lt;p&gt;Currently, support for the ISP found in the Snapdragon 845 SoC and the DragonBoard 845C is in
+the process of being upstreamed to the mailinglists. Having …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.linaro.org/"&gt;Linaro&lt;/a&gt; has been working together with Qualcomm to enable camera support on
+their platformssince 2017. The Open Source CAMSS driver was written to support the ISP IP-block with
+the same name that is present on Qualcomm SoCs coming from the smartphone space.&lt;/p&gt;
+&lt;p&gt;The first development board targeted by this work was the DragonBoard 410C, which was followed in 2018 by
+DragonBoard 820C support. Recently support for the Snapdragon 660 SoC was added to the driver,
+which will be part of the v5.11 Linux Kernel release. These SoCs all contain the CAMSS
+(Camera SubSystem) version of the ISP architecture.&lt;/p&gt;
+&lt;p&gt;Currently, support for the ISP found in the Snapdragon 845 SoC and the DragonBoard 845C is in
+the process of being upstreamed to the mailinglists. Having seen major changes, the ISP is
+no longer referred to as CAMSS, but is instead known as Titan.&lt;/p&gt;
+&lt;p&gt;The Titan architecture offers improvements in resolution, framerates and most other dimensions
+of the ISP, and is the latest architecture shipped on modern Qualcomm chipsets.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;CAMSS is a V4L2 (Video for Linux 2) Linux driver which focuses on supporting the basic use cases of the ISP,
+such as receiving the &lt;a href="https://www.mipi.org/specifications/csi-2"&gt;MIPI CSI-2&lt;/a&gt; signals from the sensors,
+decoding them, and then writing them to memory. This leaves a lot of functionality typically provided
+by an ISP unimplemented, but that is intentional as the development priority has been to enable the
+data path from camera sensor to userspace.&lt;/p&gt;
+&lt;p&gt;The sub-components that the CAMSS drivers supports are the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CSIPHY - the CSI PHYsical layer manages the physical electrical signals sent by camera sensors.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CSID - the CSI Decoder decodes the CSI-2 encoded data transmitted by the sensors&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VFE - the Video Front End formats received data and exposes it through to further hardware blocks.
+         The VFE block was renamed to IFE (Image Front End) in the Titan architecture.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RDI - the Raw Dump Interface is exposed by the VFE, and is used to write the raw decoded
+         CSI output directly to memory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PIX - the PIXel interface is exposed by the VFE, and is used to transmit data prepared
+         for advanced processing by more specialized hardware blocks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ISPIF - the Image Signal Processor InterFace ties together a lot of specialized hardware blocks
+           into a data pipeline which can provide various levels of additionalprocessing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Qualcomm ISP Gen 1 - CAMSS&lt;/h3&gt;
+&lt;p&gt;The first generation of the ISP hardware block supported by the (aptly named) CAMSS driver is
+called CAMSS by Qualcomm.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2021-02-23_camss_gen1.svg"&gt;&lt;img alt="Alt text" src="/images/2021-02-23_camss_gen1.svg" title="Qualcomm CAMSS ISP Generation 1"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The CSIPHY, CSID &amp;amp; VFE IP-blocks are relatively fully featured, but some functionality like
+Virtual Channels are not implemented. However, a more substantial limitation of the ISPIF
+support is that only basic cropping and rotation is currently implemented.&lt;/p&gt;
+&lt;p&gt;An obstacle caused by this limited ISPIF functionality is that it's not able to do format
+conversions using the ISP. So whatever format the camera sensor is outputting, is directly
+output to userspace. This can be a problem for Bayer pixel format sensors, because
+they're poorly supported by userspace applications and require at least debayering to be
+done in a post-processing step before the output can be viewed.&lt;/p&gt;
+&lt;h3&gt;Qualcomm ISP Gen 2 - Titan&lt;/h3&gt;
+&lt;p&gt;The next iteration of the Qualcomm ISP architecture is called Titan. The changes from Gen1
+to Gen2/Titan can be summarized in two parts.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2021-02-23_camss_gen2_titan.svg"&gt;&lt;img alt="Alt text" src="/images/2021-02-23_camss_gen2_titan.svg" title="Qualcomm CAMSS ISP Generation 2, Titan"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The Titan frontend blocks (CSIPHY, CSID &amp;amp; VFE) are almost identical between Gen1 and Gen2
+with only minor structural changes and improvements.&lt;/p&gt;
+&lt;p&gt;However, the image processing pipeline has been revamped, and the ISPIF no longer exists.
+What replaces it is an embedded CPU which is fed commands and in turn configures the
+data processing blocks. Adding support for this CPU is beyond the current scope
+of CAMSS due to the amount of work it would take to enable and the lack of documentation
+for the CPU command stream. However, userspace applications are able to manage some of this
+post processing. This is enough to support the most basic use cases, but many will be CPU/GPU
+intensive and likely not have the same quality as an ISP based implementation would.&lt;/p&gt;
+&lt;h2&gt;Future&lt;/h2&gt;
+&lt;p&gt;Linaro will continue to maintain this driver, and is likely to extend it to support
+additional hardware platforms. However, contributions are very welcome and platforms
+like the SDM630 and SSDM660 have already had support contributed to the CAMSS driver.&lt;/p&gt;
+&lt;p&gt;Currently &lt;a href="https://libcamera.org/index.html"&gt;libcamera&lt;/a&gt; is a very useful development tool
+for working with CAMSS. It is more flexible than most V4L2 applications, and using the
+&lt;a href="https://libcamera.org/getting-started.html"&gt;libcamera/qcam&lt;/a&gt; application makes it possible
+to view live output of even Bayer camera sensors without the ISP doing any debayering.&lt;/p&gt;
+&lt;p&gt;Recent Linaro contributions towards libcamera have enabled GPU accelerated format conversion
+and debayering for the &lt;a href="https://libcamera.org/getting-started.html"&gt;libcamera/qcam&lt;/a&gt; test
+application, you can read more about that
+&lt;a href="https://www.linaro.org/blog/accelerating-libcamera-qcam-format-conversion-using-opengl-shaders/"&gt;here&lt;/a&gt;.
+Linaro has also contributed the Open Embedded &lt;a href="http://cgit.openembedded.org/meta-openembedded/tree/meta-multimedia/recipes-multimedia/libcamera/libcamera.bb?h=master"&gt;libcamera recipe&lt;/a&gt;
+for developers building their products with Yocto Project based Linux distributions.&lt;/p&gt;
+&lt;p&gt;Other Linaro contributions to the Linux camera landscape include work in both
+userspace with libcamera and in the kernel with camera sensor drivers,
+ISP drivers and V4L2 API work.&lt;/p&gt;
+&lt;p&gt;Further developments regarding software and GPU debayering are expected for libcamera,
+and hopefully the community will see libcamera debayering enabled for all of its data paths
+soon enough.&lt;/p&gt;
+&lt;h2&gt;Acknowledgments&lt;/h2&gt;
+&lt;p&gt;A lot of different contributors enabled this work, both directly and indirectly.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Todor Tomov for creating the camss driver.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gitlab.freedesktop.org/flto"&gt;Jonathan Marek&lt;/a&gt; for trail-blazing Titan driver work.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/andrey-konovalov"&gt;Andrey Konovalov&lt;/a&gt; for testing, finding bugs &amp;amp; being a great sounding board.&lt;/li&gt;
+&lt;li&gt;Qualcomm for sponsoring and providing hardware documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="https://www.linaro.org/blog/upstream-camera-support-for-qualcomm-platforms/"&gt;Linaro&lt;/a&gt;.&lt;/p&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="camera"></category><category term="v4l2"></category><category term="qualcomm"></category><category term="camss"></category><category term="sdm845"></category><category term="yocto"></category><category term="open embedded"></category><category term="db845c"></category></entry><entry><title>Building ChromiumOS for Qemu</title><link href="https://memcpy.io/building-chromiumos-for-qemu.html" rel="alternate"></link><published>2017-11-28T11:32:00+01:00</published><updated>2017-11-28T11:32:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;So let's start off by covering how ChromiumOS relates to ChromeOS. The
+ChromiumOS project is essentially ChromeOS minus branding and some
+packages for things like the media digital restrictions management.&lt;/p&gt;
+&lt;p&gt;But on the whole, almost everything is there, and the pieces that aren't,
+you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;ChromiumOS&lt;/h2&gt;
+&lt;h3&gt;Depot tools&lt;/h3&gt;
+&lt;p&gt;In order to check out ChromiumOS and other large Google projects,
+you'll need depot tools.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;depot_tools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PWD&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;depot_tools&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Maybe you'd want to add the PATH export to your .bashrc.&lt;/p&gt;
+&lt;h3&gt;Building ChromiumOS&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manifest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;external&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;minilayout&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sync&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j75&lt;/span&gt;
+&lt;span class="n"&gt;cros_sdk&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;amd64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;generic …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;So let's start off by covering how ChromiumOS relates to ChromeOS. The
+ChromiumOS project is essentially ChromeOS minus branding and some
+packages for things like the media digital restrictions management.&lt;/p&gt;
+&lt;p&gt;But on the whole, almost everything is there, and the pieces that aren't,
+you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;ChromiumOS&lt;/h2&gt;
+&lt;h3&gt;Depot tools&lt;/h3&gt;
+&lt;p&gt;In order to check out ChromiumOS and other large Google projects,
+you'll need depot tools.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;depot_tools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PWD&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;depot_tools&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Maybe you'd want to add the PATH export to your .bashrc.&lt;/p&gt;
+&lt;h3&gt;Building ChromiumOS&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manifest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;external&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;minilayout&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sync&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j75&lt;/span&gt;
+&lt;span class="n"&gt;cros_sdk&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;amd64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt;
+&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;setup_board&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;build_packages&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;build_image&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;boot_args&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;earlyprintk=serial,keep console=tty0&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;noenable_rootfs_verification&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;image_to_vm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;test_image&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;How to (not) boot ChromiumOS&lt;/h3&gt;
+&lt;p&gt;So, this is a command baked into ChromiumOS using the &lt;code&gt;cros_start_vm&lt;/code&gt; command,
+but at least on my machine it does not seem to boot properly.
+I have as of yet not been able to get any graphical output (over VNC).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cros_sdk
+./bin/cros_start_vm&lt;span class="w"&gt; &lt;/span&gt;--image_path=../build/images/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/latest/chromiumos_qemu_image.bin&lt;span class="w"&gt; &lt;/span&gt;--board=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Running Qemu ourselves&lt;/h2&gt;
+&lt;p&gt;So if the intended tools don't work, we'll just have to roll up our sleeves
+and do it ourselves. This is how I got ChromiumOS booting.&lt;/p&gt;
+&lt;h3&gt;Install build dependencies&lt;/h3&gt;
+&lt;p&gt;These dependencies were available on Ubuntu 17.10, some alternative packages
+might be needed for &lt;em&gt;your&lt;/em&gt; distributions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;autoconf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libaio&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libbluetooth&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libbrlapi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libbz2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libcap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libcap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ng&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libcurl4&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gnutls&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libepoxy&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libfdt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libgbm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libgles2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mesa&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libglib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libgtk&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libibverbs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libjpeg8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;liblzo2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libncurses5&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libnuma&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;librbd&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;librdmacm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsasl2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsdl1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsdl2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libseccomp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsnappy&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libssh2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libspice&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libspice&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libtool&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libusb&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libusb&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libvde&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libvdeplug&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libvte&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libxen&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;valgrind&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;xfslibs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;xutils&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;zlib1g&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libusbredirhost&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;usbredirserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Virglrenderer&lt;/h3&gt;
+&lt;p&gt;Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
+graphics capabilities of the host machine.&lt;/p&gt;
+&lt;p&gt;This step is optional, but allows for hardware accelerated OpenGL support on
+the guest system.
+If you don't want to use Virgl, remove it from the Qemu configure step and
+the Qemu runtime flags.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.freedesktop.org/git/virglrenderer
+cd virglrenderer
+./autogen.sh
+make -j7
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Qemu&lt;/h3&gt;
+&lt;p&gt;Qemu is a full system emulator, and supports a multitude of machine architectures.
+We're going to to use &lt;em&gt;x86_64&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://git.qemu-project.org/qemu.git
+mkdir -p qemu/build
+cd qemu/build
+../configure --target-list=x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb --enable-virglrenderer --enable-opengl
+make -j7
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Run image&lt;/h3&gt;
+&lt;p&gt;Now you can boot the image using Qemu.&lt;/p&gt;
+&lt;p&gt;Note that running Qemu with the virtio options requires that your host machine
+is running a Linux kernel which was built with the kconfig options &lt;code&gt;CONFIG_DRM_VIRTIO&lt;/code&gt;,
+&lt;code&gt;CONFIG_VIRT_DRIVERS&lt;/code&gt; and &lt;code&gt;CONFIG_VIRTIO_XXXX&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd chromiumos
+/usr/local/bin/qemu-system-x86_64 \
+    -enable-kvm \
+    -m 2G \
+    -smp 4 \
+    -hda src/build/images/amd64-generic/latest/chromiumos_qemu_image.bin \
+    -vga virtio \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp:127.0.0.1:9222-:22 \
+    -usb -usbdevice keyboard \
+    -usbdevice mouse \
+    -device virtio-gpu-pci,virgl \
+    -display gtk,gl=on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Hopefully this guide will have helped you to build all of the software needed to
+boot your very own ChromiumOS.&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="chromeos"></category><category term="chromiumos"></category><category term="chromium"></category><category term="qemu"></category><category term="ssh"></category><category term="collabora"></category></entry><entry><title>Running an Android Unit Test</title><link href="https://memcpy.io/running-an-android-unit-test.html" rel="alternate"></link><published>2016-12-07T20:23:00+01:00</published><updated>2016-12-07T20:23:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</id><content type="html">&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd aosp
+bash
+source build/envsetup.sh &amp;amp;&amp;amp; \
+lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
+mmm system/core/libsync/tests &amp;amp;&amp;amp; \
+adb root &amp;amp;&amp;amp; \
+adb remount &amp;amp;&amp;amp; \
+adb sync &amp;amp;&amp;amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="android"></category><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="aosp"></category><category term="adb"></category></entry><entry><title>XDC 2016</title><link href="https://memcpy.io/xdc-2016.html" rel="alternate"></link><published>2016-09-23T20:20:00+02:00</published><updated>2016-09-23T20:20:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-09-23:/xdc-2016.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
+The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
+&lt;p&gt;Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.&lt;/p&gt;
+&lt;p&gt;By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &amp;gt;9.3x faster than Cairo-CPU and &amp;gt;4.8x times the previous GPU state of the art SKIA-GL.&lt;/p&gt;
+&lt;p&gt;Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
+&lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
+The FPS/Watt …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
+The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
+&lt;p&gt;Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.&lt;/p&gt;
+&lt;p&gt;By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &amp;gt;9.3x faster than Cairo-CPU and &amp;gt;4.8x times the previous GPU state of the art SKIA-GL.&lt;/p&gt;
+&lt;p&gt;Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
+&lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
+The FPS/Watt measurements showed 0.73-15.1x times the CPU efficiency.&lt;/p&gt;
+&lt;p&gt;When looking at Cairo traces the power efficiency is actually lower using GPU accelaration than with CPU acceleration.
+This is somewhat expected in that the Cairo workload is not very high throughput, so the overhead of doing 2D operations is relatively high compared to the actual work.&lt;/p&gt;
+&lt;p&gt;Overall toolkits are moving away from letting the Xserver do 2D rendering, for reasons of portability and performance.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-glvnd-status.pdf"&gt;Slides&lt;/a&gt;] libglvnd Status Update&lt;/h2&gt;
+&lt;p&gt;Andy Ritger gave a talk about the current libglvnd status.
+The goal of libglvnd is to allow different graphics libraries from potentially different vendors to coexist on a filesystem and in a process.
+GLX/EGl/OpenGL/OpenGLES/GL are all supported by libglvnd.&lt;/p&gt;
+&lt;p&gt;Currently mesa supports libglvnd for OpenGL and GLX, with EGL support being in the pipeline.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-drm_hwcomposer.pdf"&gt;Slides&lt;/a&gt;] drm_hwcomposer&lt;/h2&gt;
+&lt;p&gt;Sean Paul and Zach Reizner gave an exceptionally well timed talk about the Android &amp;amp;&amp;amp; Chromium drm_hwcomposer project.
+drm_hwcomposer is an implementation of the hwcomposer (HWC) API ontop of the Linux DRM/KMS.&lt;/p&gt;
+&lt;p&gt;The talk detailed the implications of HWC2 and explicit fencing.
+A large part of the HWC1 implementation can be removed from drm_hwcomposer since it's made redundant by the fencing support in HWC2.
+So, for example the worker threads (DrmCompositorWorker and FrameWorker) are no longer necessary and can be removed.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-nouveau_update.pdf"&gt;Slides&lt;/a&gt;] Status update of Nouveau&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://hakzsam.wordpress.com/"&gt;Samuel Pitoiset&lt;/a&gt;, Karol Herbst, &lt;a href="https://twitter.com/kurtelborgpm"&gt;Pierre Moreau&lt;/a&gt; and &lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about what has happened in Nouveau land the last year.&lt;/p&gt;
+&lt;p&gt;Hardware support is as always taking steps forward, with Fermi support is scheduled for Linux v4.9+.&lt;/p&gt;
+&lt;p&gt;A call to arms for Nouveau compiler optimizations was issued by &lt;a href="mailto:martin.peres AT free DOT fr"&gt;Martin Perez&lt;/a&gt;.
+There is a lot of low hanging fruit for optimizations is available, and the compiler is overall in a good shape.
+So feel free to contact Martin or the Nouveau project if you are interested or curious.&lt;/p&gt;
+&lt;p&gt;As of the Maxwell generation of GPUs the firmware needed now has to be signed, GM20x/GP100 firmware has been released, but support for loading firmware on Tegra has not been provided by NVidia.&lt;/p&gt;
+&lt;p&gt;Martin made a rather clear point of needing to see some cooperation from NVidia in order for the Nouveau project to be able to make progress with new and upcoming NVidia hardware.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Thanks to the X.Org Foundation and the board of directors for arranging XDC 2016.
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="graphics"></category><category term="kernel"></category><category term="collabora"></category></entry><entry><title>Building Android for Qemu with Mesa and Virgil3D</title><link href="https://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html" rel="alternate"></link><published>2016-08-30T15:22:00+02:00</published><updated>2016-08-30T15:22:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
+not necessarily possible using the stock emulator.
+For my purposes I need access to a GPU and be able to modify the driver, which
+is where Virgilrenderer and Qemu comes in handy.&lt;/p&gt;
+&lt;p&gt;The guide below helps you compile Android and run it on top of Qemu with
+Mesa/Virgilrenderer supplying a virtual GPU.
+Because of this, the following guide is aimed at Linux hosts.&lt;/p&gt;
+&lt;p&gt;This guide is based on Rob Herrings &lt;a href="https://github.com/robherring/generic_device/wiki/KConfig-based-Multi-platform-Android-Device-(and-Mesa-graphics)"&gt;fantastic guide&lt;/a&gt;, but has
+been slightly streamlined and had physical hardware support stripped out.&lt;/p&gt;
+&lt;h2&gt;Install dependencies&lt;/h2&gt;
+&lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
+might be needed for other distributions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;autoconf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;gcc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aarch64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;linux …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
+not necessarily possible using the stock emulator.
+For my purposes I need access to a GPU and be able to modify the driver, which
+is where Virgilrenderer and Qemu comes in handy.&lt;/p&gt;
+&lt;p&gt;The guide below helps you compile Android and run it on top of Qemu with
+Mesa/Virgilrenderer supplying a virtual GPU.
+Because of this, the following guide is aimed at Linux hosts.&lt;/p&gt;
+&lt;p&gt;This guide is based on Rob Herrings &lt;a href="https://github.com/robherring/generic_device/wiki/KConfig-based-Multi-platform-Android-Device-(and-Mesa-graphics)"&gt;fantastic guide&lt;/a&gt;, but has
+been slightly streamlined and had physical hardware support stripped out.&lt;/p&gt;
+&lt;h2&gt;Install dependencies&lt;/h2&gt;
+&lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
+might be needed for other distributions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;autoconf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;gcc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aarch64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libaio&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libbluetooth&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libbrlapi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libbz2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libcap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libcap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ng&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libcurl4&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gnutls&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libepoxy&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libfdt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libgbm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libgles2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mesa&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libglib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libgtk&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libibverbs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libjpeg8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;liblzo2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libncurses5&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libnuma&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;librbd&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;librdmacm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsasl2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsdl1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsdl2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libseccomp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libsnappy&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libssh2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libspice&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libspice&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libtool&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libusb&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libusb&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libvde&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libvdeplug&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libvte&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libxen&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;valgrind&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;xfslibs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;xutils&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;zlib1g&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libusbredirhost&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;usbredirserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Set up paths&lt;/h2&gt;
+&lt;p&gt;Naturally all of the paths below are configurable, this is just what I used.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/opt/qemu_android&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${PROJECT_PATH}/virglrenderer&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${PROJECT_PATH}/qemu&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${PROJECT_PATH}/linux&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${PROJECT_PATH}/android&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ANDROID_TOOLS_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${PROJECT_PATH}/android-tools&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Virglrenderer&lt;/h2&gt;
+&lt;p&gt;Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
+graphics capabilities of the host machine.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;git://git.freedesktop.org/git/virglrenderer&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+cd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;VIRGLRENDERER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+./autogen.sh
+make&lt;span class="w"&gt; &lt;/span&gt;-j7
+sudo&lt;span class="w"&gt; &lt;/span&gt;make&lt;span class="w"&gt; &lt;/span&gt;install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Qemu&lt;/h2&gt;
+&lt;p&gt;Qemu is a full system emulator, and supports a multitude of machine architectures.
+We're going to to use x86_64 but also build support for arm64/aarch64.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;git://git.qemu-project.org/qemu.git&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+mkdir&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
+cd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;QEMU_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/build
+../configure&lt;span class="w"&gt; &lt;/span&gt;--target-list=aarch64-softmmu,x86_64-softmmu&lt;span class="w"&gt; &lt;/span&gt;--enable-gtk&lt;span class="w"&gt; &lt;/span&gt;--with-gtkabi=3.0&lt;span class="w"&gt; &lt;/span&gt;--enable-kvm&lt;span class="w"&gt; &lt;/span&gt;--enable-spice&lt;span class="w"&gt; &lt;/span&gt;--enable-usb-redir&lt;span class="w"&gt; &lt;/span&gt;--enable-libusb
+make&lt;span class="w"&gt; &lt;/span&gt;-j7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Linux kernel&lt;/h2&gt;
+&lt;p&gt;Build trunk of mainline linux kernel.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; The below instructions use upstream/master but during testing of
+this guide, &lt;em&gt;https://git.kernel.org/pub/scm/linux/kernel/git/padovan/linux.git&lt;/em&gt;
+and the &lt;em&gt;fences&lt;/em&gt; branch was used due to SW_SYNC not yet being included in upstream.
+Inclusion is targeted for &lt;em&gt;v4.9&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+cd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+wget&lt;span class="w"&gt; &lt;/span&gt;http://memcpy.io/files/2016-08-30/Kconfig&lt;span class="w"&gt; &lt;/span&gt;-O&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;LINUX_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/.config
+make&lt;span class="w"&gt; &lt;/span&gt;oldconfig
+make&lt;span class="w"&gt; &lt;/span&gt;-j7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; If you decide not to use the &lt;em&gt;.config&lt;/em&gt; linked in this step, a few
+Kconfig options need to be set:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;CONFIG_ANDROID=y
+CONFIG_ANDROID_BINDER_IPC=y
+CONFIG_AUDIT=y
+CONFIG_HAVE_ARCH_AUDITSYSCALL=y
+CONFIG_AUDITSYSCALL=y
+CONFIG_AUDIT_WATCH=y
+CONFIG_AUDIT_TREE=y
+CONFIG_DRM=y
+CONFIG_SECURITY_SELINUX=y
+CONFIG_SECURITY_SELINUX_BOOTPARAM=y
+CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE=1
+CONFIG_SECURITY_SELINUX_DISABLE=y
+CONFIG_SECURITY_SELINUX_DEVELOP=y
+CONFIG_SECURITY_SELINUX_AVC_STATS=y
+CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0
+CONFIG_DEFAULT_SECURITY_SELINUX=y
+CONFIG_DEFAULT_SECURITY=&amp;quot;selinux&amp;quot;
+CONFIG_VIRTIO_BLK=y
+CONFIG_SCSI_VIRTIO=y
+CONFIG_VIRTIO_NET=y
+CONFIG_VIRTIO_CONSOLE=y
+CONFIG_HW_RANDOM_VIRTIO=y
+CONFIG_DRM_VIRTIO_GPU=y
+CONFIG_VIRT_DRIVERS=y
+CONFIG_VIRTIO=y
+CONFIG_VIRTIO_PCI=y
+CONFIG_VIRTIO_PCI_LEGACY=y
+CONFIG_VIRTIO_BALLOON=y
+CONFIG_VIRTIO_INPUT=y
+CONFIG_VIRTIO_MMIO=y
+CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y
+CONFIG_NET_9P=y
+CONFIG_NET_9P_VIRTIO=y
+CONFIG_SYNC=y
+CONFIG_SW_SYNC=y
+CONFIG_SYNC_FILE=y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Android&lt;/h2&gt;
+&lt;p&gt;Build the Android Open Source Project.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; When running &lt;em&gt;source build/envsetup.sh&lt;/em&gt; make sure that you are
+using bash. I had issues running &lt;em&gt;lunch&lt;/em&gt; using zsh.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+cd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;ANDROID_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+repo&lt;span class="w"&gt; &lt;/span&gt;init&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;https://android.googlesource.com/platform/manifest&lt;span class="w"&gt; &lt;/span&gt;-b&lt;span class="w"&gt; &lt;/span&gt;master
+cd&lt;span class="w"&gt; &lt;/span&gt;.repo
+git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/robherring/android_manifest.git&lt;span class="w"&gt; &lt;/span&gt;-b&lt;span class="w"&gt; &lt;/span&gt;android-6.0&lt;span class="w"&gt; &lt;/span&gt;local_manifests
+cd&lt;span class="w"&gt; &lt;/span&gt;..
+repo&lt;span class="w"&gt; &lt;/span&gt;sync&lt;span class="w"&gt; &lt;/span&gt;-j20
+cd&lt;span class="w"&gt; &lt;/span&gt;device/linaro/generic
+make&lt;span class="w"&gt; &lt;/span&gt;defconfig
+make&lt;span class="w"&gt; &lt;/span&gt;all
+cd&lt;span class="w"&gt; &lt;/span&gt;../../..
+#&lt;span class="w"&gt; &lt;/span&gt;The&lt;span class="w"&gt; &lt;/span&gt;following&lt;span class="w"&gt; &lt;/span&gt;snippet&lt;span class="w"&gt; &lt;/span&gt;must&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;in&lt;span class="w"&gt; &lt;/span&gt;bash
+bash
+source&lt;span class="w"&gt; &lt;/span&gt;build/envsetup.sh
+#&lt;span class="w"&gt; &lt;/span&gt;Select&lt;span class="w"&gt; &lt;/span&gt;linaro_x86_64-userdebug
+lunch
+make&lt;span class="w"&gt; &lt;/span&gt;-j7
+#&lt;span class="w"&gt; &lt;/span&gt;We&lt;span class="w"&gt; &lt;/span&gt;don&amp;#39;t&lt;span class="w"&gt; &lt;/span&gt;need&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;use&lt;span class="w"&gt; &lt;/span&gt;bash&lt;span class="w"&gt; &lt;/span&gt;any&lt;span class="w"&gt; &lt;/span&gt;longer
+exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As of this writing DRM fences related patches by Gustavo Padovan have yet to be included
+into AOSP, and therefore have to be included manually until it is upstreamed.
+After switching to this branch, the AOSP project has to be rebuilt again.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd $ANDROID_PATH/system/core/
+git remote add padovan git://git.collabora.com/git/user/padovan/android-system-core.git
+git fetch padovan
+git checkout padovan/master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;mkbootimg&lt;/h2&gt;
+&lt;p&gt;Fetch the make boot image script. This script later assembles the boot image, &lt;em&gt;boot.img&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://android.googlesource.com/platform/system/core.git $ANDROID_TOOLS_PATH
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Run Qemu machine&lt;/h2&gt;
+&lt;p&gt;When running the below script, make sure that the all of the paths from step two
+have been exported.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget&lt;span class="w"&gt; &lt;/span&gt;http://memcpy.io/files/2016-08-30/boot_android_qemu.sh&lt;span class="w"&gt; &lt;/span&gt;-O&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
+chmod&lt;span class="w"&gt; &lt;/span&gt;+x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh
+&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/boot_android_qemu.sh&lt;span class="w"&gt; &lt;/span&gt;x86_64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Hopefully this guide will have enabled you build the required software and run Android on
+Qemu with a virtual GPU.
+This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="android"></category><category term="qemu"></category><category term="collabora"></category></entry><entry><title>Ethernet device stress testing</title><link href="https://memcpy.io/ethernet-device-stress-testing.html" rel="alternate"></link><published>2016-08-25T13:05:00+02:00</published><updated>2016-08-25T13:05:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+&lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
+was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
+&lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
+and can be found &lt;a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That script does however not run standalone and requires a remote device
+(chromebook) to execute on. So I took the liberty of changing it to support
+local testing. The modified version can be found &lt;a href="files/2016-08-25/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This might come in handy for someone, if not, the script will at least be
+archived on this site.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pip2.7&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;autotest
+$&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link
+&lt;span class="m"&gt;1&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;lo:&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;mtu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;65536&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;qdisc&lt;span class="w"&gt; &lt;/span&gt;noqueue&lt;span class="w"&gt; &lt;/span&gt;state&lt;span class="w"&gt; &lt;/span&gt;UNKNOWN&lt;span class="w"&gt; &lt;/span&gt;mode&lt;span class="w"&gt; &lt;/span&gt;DEFAULT&lt;span class="w"&gt; &lt;/span&gt;group&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;qlen&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;link/loopback&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00 …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+&lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
+was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
+&lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
+and can be found &lt;a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That script does however not run standalone and requires a remote device
+(chromebook) to execute on. So I took the liberty of changing it to support
+local testing. The modified version can be found &lt;a href="files/2016-08-25/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This might come in handy for someone, if not, the script will at least be
+archived on this site.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pip2.7&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;autotest
+$&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link
+&lt;span class="m"&gt;1&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;lo:&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;mtu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;65536&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;qdisc&lt;span class="w"&gt; &lt;/span&gt;noqueue&lt;span class="w"&gt; &lt;/span&gt;state&lt;span class="w"&gt; &lt;/span&gt;UNKNOWN&lt;span class="w"&gt; &lt;/span&gt;mode&lt;span class="w"&gt; &lt;/span&gt;DEFAULT&lt;span class="w"&gt; &lt;/span&gt;group&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;qlen&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;link/loopback&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00:00:00:00&lt;span class="w"&gt; &lt;/span&gt;brd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00:00:00:00
+&lt;span class="m"&gt;2&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;wlp2s0:&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;mtu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1500&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;qdisc&lt;span class="w"&gt; &lt;/span&gt;pfifo_fast&lt;span class="w"&gt; &lt;/span&gt;state&lt;span class="w"&gt; &lt;/span&gt;UP&lt;span class="w"&gt; &lt;/span&gt;mode&lt;span class="w"&gt; &lt;/span&gt;DORMANT&lt;span class="w"&gt; &lt;/span&gt;group&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;qlen&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;link/ether&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;48&lt;/span&gt;:e2:44:f6:e8:5b&lt;span class="w"&gt; &lt;/span&gt;brd&lt;span class="w"&gt; &lt;/span&gt;ff:ff:ff:ff:ff:ff
+&lt;span class="m"&gt;27&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;enx000ec689ab9e:&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;mtu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1500&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;qdisc&lt;span class="w"&gt; &lt;/span&gt;pfifo_fast&lt;span class="w"&gt; &lt;/span&gt;state&lt;span class="w"&gt; &lt;/span&gt;DOWN&lt;span class="w"&gt; &lt;/span&gt;mode&lt;span class="w"&gt; &lt;/span&gt;DEFAULT&lt;span class="w"&gt; &lt;/span&gt;group&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;qlen&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;link/ether&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:0e:c6:89:ab:9e&lt;span class="w"&gt; &lt;/span&gt;brd&lt;span class="w"&gt; &lt;/span&gt;ff:ff:ff:ff:ff:ff
+$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;INTERFACE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;enx000ec689ab9e
+$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;NUM_ITERATIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;
+$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;network_EthernetStressPlug.py&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$INTERFACE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$NUM_ITERATIONS&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category><category term="chromiumos"></category></entry><entry><title>Linux kernel development shell scripts</title><link href="https://memcpy.io/linux-kernel-development-shell-scripts.html" rel="alternate"></link><published>2016-07-26T10:32:00+02:00</published><updated>2016-07-26T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
+often come in handy.
+But to me the interface they provide is slightly bulky and rely
+on using patch files instead of git commits, which to me is a bit inconvenient.&lt;/p&gt;
+&lt;p&gt;These scripts are all meant to be included in &lt;strong&gt;.bashrc&lt;/strong&gt; or &lt;strong&gt;.zshrc&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;scripts/checkpatch.pl helper&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;checkpatch&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;+x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;elif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*&lt;span class="s2"&gt;&amp;quot;cache&amp;quot;&lt;/span&gt;*&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;--cached&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;NUM_COMMITS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;HEAD~&lt;span class="nv"&gt;$NUM_COMMITS&lt;/span&gt;..HEAD&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
+often come in handy.
+But to me the interface they provide is slightly bulky and rely
+on using patch files instead of git commits, which to me is a bit inconvenient.&lt;/p&gt;
+&lt;p&gt;These scripts are all meant to be included in &lt;strong&gt;.bashrc&lt;/strong&gt; or &lt;strong&gt;.zshrc&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;scripts/checkpatch.pl helper&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;checkpatch&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;+x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;elif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*&lt;span class="s2"&gt;&amp;quot;cache&amp;quot;&lt;/span&gt;*&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;--cached&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;NUM_COMMITS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;HEAD~&lt;span class="nv"&gt;$NUM_COMMITS&lt;/span&gt;..HEAD&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows you to
+right away specify which &lt;/p&gt;
+&lt;h4&gt;Example&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;work&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;checkpatch&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;
+&lt;span class="n"&gt;WARNING&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ENOSYS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;means&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;invalid syscall nr&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;nothing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;else&lt;/span&gt;
+&lt;span class="cp"&gt;#349: FILE: drivers/tty/serial/sh-sci.c:3026:&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nf"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IS_ERR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sciport&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;gpios&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PTR_ERR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sciport&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;gpios&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ENOSYS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;warnings&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;385&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;lines&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;checked&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In this example the 15 last commits are checked against scripts/checkpatch.pl
+for correctness.&lt;/p&gt;
+&lt;h2&gt;scripts/get_maintainer.pl helper&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;get_maintainer&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;NUM_COMMITS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;format-patch&lt;span class="w"&gt; &lt;/span&gt;HEAD~&lt;span class="nv"&gt;$NUM_COMMITS&lt;/span&gt;..HEAD&lt;span class="w"&gt; &lt;/span&gt;--stdout&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/get_maintainer.pl&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Remove extraneous stats&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/(.*//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Remove names from email addresses&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/.*&amp;lt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Remove left over character&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;MAINTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s/&amp;gt;//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$MAINTAINERS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;email&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-n&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--to=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;email&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;  &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;h4&gt;Example&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="k"&gt;work&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;get_maintainer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;gregkh&lt;/span&gt;&lt;span class="nv"&gt;@linuxfoundation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;jslaby&lt;/span&gt;&lt;span class="nv"&gt;@suse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;serial&lt;/span&gt;&lt;span class="nv"&gt;@vger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="nv"&gt;@vger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+
+&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="k"&gt;work&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;get_maintainer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="kernel"></category><category term="linux"></category><category term="kernel"></category><category term="script"></category><category term="collabora"></category></entry><entry><title>Running Weston on a Raspbian</title><link href="https://memcpy.io/running-weston-on-a-raspbian.html" rel="alternate"></link><published>2016-06-03T10:32:00+02:00</published><updated>2016-06-03T10:32:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2016-06-03:/running-weston-on-a-raspbian.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+&lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
+Weston on top of the drm backend for VC4 platforms. Previously software acceleration
+using pixman was needed, but this is no longer the case.&lt;/p&gt;
+&lt;p&gt;Additionally the rpi backend for weston is now being removed since it has been
+obsoleted by the improved drm layer.&lt;/p&gt;
+&lt;p&gt;Let's explore running hardware accelerated Weston on the Raspberry Pi.&lt;/p&gt;
+&lt;h2&gt;Building Linux kernel&lt;/h2&gt;
+&lt;p&gt;A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
+been written by the Raspberry Pi foundation and is available &lt;a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.&lt;/p&gt;
+&lt;h2&gt;Set up alternative install location&lt;/h2&gt;
+&lt;p&gt;These build instructions …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+&lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
+Weston on top of the drm backend for VC4 platforms. Previously software acceleration
+using pixman was needed, but this is no longer the case.&lt;/p&gt;
+&lt;p&gt;Additionally the rpi backend for weston is now being removed since it has been
+obsoleted by the improved drm layer.&lt;/p&gt;
+&lt;p&gt;Let's explore running hardware accelerated Weston on the Raspberry Pi.&lt;/p&gt;
+&lt;h2&gt;Building Linux kernel&lt;/h2&gt;
+&lt;p&gt;A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
+been written by the Raspberry Pi foundation and is available &lt;a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.&lt;/p&gt;
+&lt;h2&gt;Set up alternative install location&lt;/h2&gt;
+&lt;p&gt;These build instructions are based on the &lt;a href="https://wayland.freedesktop.org/building.html"&gt;Wayland instructions&lt;/a&gt;
+from freedesktop.org, but altered to target VC4 and Raspbian.&lt;/p&gt;
+&lt;p&gt;You probably don't want to install experimental builds of software among the usual
+software of your operating system, so let's define a prefix for where to install
+our builds.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Change WLD to any location you like&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;=~/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PKG_CONFIG_PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pkgconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL_PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ACLOCAL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;aclocal -I $ACLOCAL_PATH&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Needed by autotools&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;WLD&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;aclocal&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Installing dependencies&lt;/h2&gt;
+&lt;p&gt;Start by installing the build dependencies of mesa, weston and wayland.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;packages&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;sed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s/#\sdeb-src/deb-src/g&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;sources&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt;
+&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The above step can alternatively be completed using the GUI of your
+package manager, by enabling source packages.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Install build dependencies of mesa
+sudo apt-get build-dep mesa
+
+# Install build dependencies of wayland/weston
+sudo apt-get install \
+  libevdev libevdev-dev \
+  libwacom libwacom-dev \
+  libxkbcommon libxkbcommon-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Building Mesa&lt;/h2&gt;
+&lt;p&gt;Configure and compile mesa with vc4, wayland and EGL support.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/mesa/mesa
+cd mesa
+./autogen.sh --prefix=$WLD \
+  --enable-gles2 \
+  --with-egl-platforms=x11,wayland,drm \
+  --enable-gbm --enable-shared-glapi \
+  --with-gallium-drivers=vc4 \
+  --without-dri-drivers \
+  --disable-va \
+  --disable-vdpau \
+  --disable-xvmc \
+  --disable-omx
+make -j4 &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Building Weston and dependencies&lt;/h2&gt;
+&lt;p&gt;Weston and Wayland have a number of dependencies that also need to be fetched
+and built.&lt;/p&gt;
+&lt;h4&gt;Wayland&lt;/h4&gt;
+&lt;p&gt;Weston is a Wayland compositor, so we're going to have to build Wayland.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/wayland/wayland
+cd wayland
+./autogen.sh --prefix=$WLD
+make -j4 &amp;amp;&amp;amp; make install
+cd ..
+
+git clone git://anongit.freedesktop.org/wayland/wayland-protocols
+cd wayland-protocols
+./autogen.sh --prefix=$WLD
+make install
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;libinput&lt;/h4&gt;
+&lt;p&gt;libinput is a dependency of Weston, handles input devices like keyboards, touchpads and mice.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/wayland/libinput
+cd libinput
+./autogen.sh --prefix=$WLD
+make -j4 &amp;amp;&amp;amp; make install
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Weston&lt;/h4&gt;
+&lt;p&gt;Finally we've built all of the dependencies of Weston and can now build it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone git://anongit.freedesktop.org/wayland/weston
+cd weston
+./autogen.sh --prefix=$WLD \
+  --disable-libunwind
+make -j4 &amp;amp;&amp;amp;
+sudo make install
+cd ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Running Weston&lt;/h2&gt;
+&lt;p&gt;That wasn't so bad, it took a little while, but now we're ready to start Weston.
+Now, let's fire up a (virtual) terminal. Make sure that you're not running an
+X terminal, ssh terminal or serial terminal.&lt;/p&gt;
+&lt;p&gt;Running weston in this way depends on logind.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Make sure that $DISPLAY is unset.&lt;/span&gt;
+&lt;span class="n"&gt;unset&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;
+
+&lt;span class="c1"&gt;# And that $XDG_RUNTIME_DIR has been set and created.&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;XDG_RUNTIME_DIR&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;/$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;UID&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;runtime&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dir&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;chmod&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0700&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${XDG_RUNTIME_DIR}&amp;quot;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;fi&lt;/span&gt;
+&lt;span class="n"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Run weston:&lt;/span&gt;
+&lt;span class="n"&gt;weston&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Try weston applications&lt;/h2&gt;
+&lt;p&gt;Now that we're running weston, let's try some applications.
+They're located in the top level directory of weston.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;weston-terminal&lt;/li&gt;
+&lt;li&gt;weston-flower&lt;/li&gt;
+&lt;li&gt;weston-gears&lt;/li&gt;
+&lt;li&gt;weston-smoke&lt;/li&gt;
+&lt;li&gt;weston-image&lt;/li&gt;
+&lt;li&gt;weston-view&lt;/li&gt;
+&lt;li&gt;weston-resizor&lt;/li&gt;
+&lt;li&gt;weston-eventdemo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When you've started all of your favorite applications you can grab a screenshot 
+by pressing &lt;strong&gt;Super + s&lt;/strong&gt;, which will save wayland-screenshot.png in your home
+directory.&lt;/p&gt;</content><category term="wayland"></category><category term="wayland"></category><category term="weston"></category><category term="rpi"></category><category term="rpi2"></category><category term="kernel"></category></entry></feed>

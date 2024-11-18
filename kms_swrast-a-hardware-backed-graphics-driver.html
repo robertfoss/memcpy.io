@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | kms_swrast: A hardware-backed graphics driver</title>
+		<script src="https://cdn.nocodeflow.net/tools/geoblock.js"></script>
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/kms_swrast-a-hardware-backed-graphics-driver.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="https://memcpy.io/feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+		<link href="https://memcpy.io/feeds/all.atom.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS Feed" />
+		<meta name="google-site-verification" content="M7TRHJxGB04WWoywNbib8VC7rcbyjs7aMI2Bnkh6XqA" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="Stack overview Let&#39;s start with having a look at a high level overview of what the graphics stack looks like. Before digging too much further into this, lets cover some terminology. DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem, which contains all of the graphics drivers and does all of the interfacing with hardware. The DRM subsystem implements the KMS - kernel mode setting - API. Mode setting is essentially configuring output settings like resolution for the displays that are being used. And doing it using the kernel means that userspace doesn&#39;t need access to setting these things directly. The DRM subsystem talks to the hardware and Mesa is used by applications through the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc. All …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, collabora, kms_swrast, drm, kms, swrast, dumb, buffer, driver, gpu">
+		<meta property="og:title" content="kms_swrast: A hardware-backed graphics driver" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="https://memcpy.io/images/2018-07-31_kms_swrast_overview.svg" />
+		<meta property="og:url" content="https://memcpy.io/kms_swrast-a-hardware-backed-graphics-driver.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2018-07-31" />
+		<meta property="article:section" content="graphics" />
+		<meta property="article:tag" content="collabora" />
+		<meta property="article:tag" content="kms_swrast" />
+		<meta property="article:tag" content="drm" />
+		<meta property="article:tag" content="kms" />
+		<meta property="article:tag" content="swrast" />
+		<meta property="article:tag" content="dumb" />
+		<meta property="article:tag" content="buffer" />
+		<meta property="article:tag" content="driver" />
+		<meta property="article:tag" content="gpu" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="kms_swrast: A hardware-backed graphics driver" />
+		<meta name="twitter:description" content="kms_swrast is a software driver, built upon the Mesa gallium driver framework, which uses kernel kms drm nodes for memory allocation." />
+		<meta name="twitter:image" content="https://memcpy.io/images/2018-07-31_kms_swrast_overview.svg" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>kms_swrast: A hardware-backed graphics driver</h1>
+				<p>
+				Published <time datetime="2018-07-31" itemprop="datePublished">2018-07-31</time>
+				</p>
+			</header>
+			<p>kms_swrast is a software driver, built upon the Mesa gallium driver framework, which uses kernel kms drm nodes for memory allocation.</p>
+			<h2>Stack overview</h2>
+<p>Let's start with having a look at a high level overview of what the
+graphics stack looks like.</p>
+<p><a href="/images/2018-07-31_kms_swrast_overview.svg"><img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack">
+</a></p>
+<p>Before digging too much further into this, lets cover some terminology.</p>
+<p>DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
+which contains all of the graphics drivers and does all of the interfacing with
+hardware.<br>
+The DRM subsystem implements the KMS - kernel mode setting - API.</p>
+<p>Mode setting is essentially configuring output settings like resolution
+for the displays that are being used. And doing it using the kernel means that
+userspace doesn't need access to setting these things directly.</p>
+<p><a href="/images/2018-07-31_kms_swrast_mesa.svg"><img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals">
+</a></p>
+<p>The DRM subsystem talks to the hardware and Mesa is used by applications through
+the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc.
+All of Mesa is built ontop of DRM and libdrm.  </p>
+<p>libdrm is a userspace library that wraps the DRM subsystem in order to simplify
+talking to drivers and avoiding common bugs in every user of DRM.</p>
+<p><a href="/images/2018-07-31_kms_swrast_detailed.svg"><img alt="Alt text" src="/images/2018-07-31_kms_swrast_detailed.svg" title="kms_swrast diagram">
+</a></p>
+<p>Looking inside Mesa we find the Gallium driver framework. It is what <em>most</em>
+of the Mesa drivers are built using, with the Intel i965 driver being the major
+exception.</p>
+<p>kms_swrast is built using Gallium, with the intention of re-using as much of the
+infrastructure provided by Gallium and KMS as possible instead.</p>
+<p>kms_swrast itself is backed by a backend, like softpipe or the faster llvmpipe,
+which actually implements the 3D primitives and functionality needed in order
+to reach OpenGL and OpenGL ES compliance.</p>
+<p>Softpipe is the older and less complicated of the two implementations,
+whereas is llvmpipe is newer and relies on LLVM as an external dependency.<br>
+But as a result llvmpipe support JIT-compilation for example, which
+makes it a lot faster.</p>
+<h2>Why is this a good idea?</h2>
+<p>Re-using the Gallium framework gives you a lot of things for free. And the
+driver can remain relatively lightweight.  </p>
+<p>Apart from the features that Gallium provides today, you'll also get free
+access to new features in the future, without having to write them yourself.<br>
+And since Gallium is shared between many drivers, it will be better tested and
+have fewer bugs than any one driver.</p>
+<p>kms_swrast is built using DRM and actual kernel drivers, but no rendering
+hardware is actually used. Which may seem a bit odd.  </p>
+<p>So why are the kernel drivers used for a software renderer? The answer is
+two-fold.  </p>
+<p>It is what Gallium expects, and there is a kernel driver called VGEM
+(Virtual GEM) which was created specifically for this usecase. In order to
+not have to make invasive changes to it or make the switch to VGEM right away,
+just providing it with access to <em>some</em> driver
+is the simplest possible solution. Since the actual hardware is mostly unused,
+it doesn't really matter what hardware you use.</p>
+<p>The DRM driver is actually only used for a single thing, to allocate a slice
+of memory which can be used to render pixels to and then be sent to the display.</p>
+<h2>Thanks</h2>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/collabora.html">collabora </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/kms_swrast.html">kms_swrast </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/drm.html">drm </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/kms.html">kms </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/swrast.html">swrast </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/dumb.html">dumb </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/buffer.html">buffer </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/driver.html">driver </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/gpu.html">gpu </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2024 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.svg"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

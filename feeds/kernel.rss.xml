@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - kernel</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Thu, 04 Nov 2021 20:10:00 +0100</lastBuildDate><item><title>Git Alias function syntax</title><link>https://memcpy.io/git-alias-function-syntax.html</link><description>&lt;p&gt;A basic example of the git alias function syntax looks like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;shortcut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;!f() &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;{&lt;/span&gt;\
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;echo Hello world!; &lt;/span&gt;\
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;}; f&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This syntax defines a function &lt;code&gt;f&lt;/code&gt; and then calls it. These aliases are executed in a &lt;code&gt;sh&lt;/code&gt; shell,
+which means there's no access to Bash / Zsh specific functionality.&lt;/p&gt;
+&lt;p&gt;Every command is ended with a &lt;code&gt;;&lt;/code&gt; and each line ended with a &lt;code&gt;\&lt;/code&gt;. This is easy enough
+to grok. But when we try to clean up the above snippet and add some quotes to
+&lt;code&gt;"Hello world!"&lt;/code&gt;, we hit this obtuse error message.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;}&lt;span class="c1"&gt;; f: 1: Syntax error: end of file unexpected (expecting &amp;quot;}&amp;quot;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This syntax error is caused by quotes needing to be escaped. The reason for this
+comes down to how git tokenizes and executes these functions. If you're curious …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 04 Nov 2021 20:10:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2021-11-04:/git-alias-function-syntax.html</guid><category>linux</category><category>linux</category><category>shell</category><category>git</category><category>alias</category><category>b4</category><category>gitconfig</category><category>mbox</category><category>am</category><category>kernel</category><category>mailing</category><category>list</category><category>mailinglists</category></item><item><title>Applying mailing list patches with 'git b4'</title><link>https://memcpy.io/applying-mailing-list-patches-with-git-b4.html</link><description>&lt;p&gt;It was created by
+&lt;a href="https://people.kernel.org/monsieuricon/introducing-b4-and-patch-attestation"&gt;Konstantin Ryabitsev&lt;/a&gt;
+and has become a very frequently used tool for me.&lt;/p&gt;
+&lt;p&gt;It supports a lot of different ways for interacting with the Linux Kernel mailing lists.
+Of these the &lt;code&gt;b4 am&lt;/code&gt; subcommand is what I primarily use. This subcommand downloads all of
+the patches belonging to a patch series and drops them into a &lt;code&gt;.mbox&lt;/code&gt; file. But! It doesn't
+apply them to the repository we're currently in, and herein lies the itch that I would like
+to scratch.&lt;/p&gt;
+&lt;p&gt;The inspiration for this post is the
+&lt;a href="https://twitter.com/widawsky/status/1365378004914905088"&gt;script&lt;/a&gt; that
+&lt;a href="https://twitter.com/stellarhopper"&gt;@stellarhopper&lt;/a&gt; authored and
+&lt;a href="https://twitter.com/widawsky"&gt;@widawsky&lt;/a&gt;
+pointed out to me.&lt;/p&gt;
+&lt;h2&gt;The Good, the Bad &amp;amp; the Ugly&lt;/h2&gt;
+&lt;p&gt;After first publishing this post, people on the twittersphere suggested some alternative approaches,
+and it would seem that there …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 08 Mar 2021 12:23:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2021-03-08:/applying-mailing-list-patches-with-git-b4.html</guid><category>linux</category><category>linux</category><category>kernel</category><category>development</category><category>shell</category><category>git</category><category>alias</category><category>b4</category><category>gitconfig</category><category>mbox</category><category>am</category><category>mailing</category><category>list</category></item><item><title>Upstream camera support for Qualcomm platforms</title><link>https://memcpy.io/upstream-camera-support-for-qualcomm-platforms.html</link><description>&lt;p&gt;&lt;a href="https://www.linaro.org/"&gt;Linaro&lt;/a&gt; has been working together with Qualcomm to enable camera support on
+their platformssince 2017. The Open Source CAMSS driver was written to support the ISP IP-block with
+the same name that is present on Qualcomm SoCs coming from the smartphone space.&lt;/p&gt;
+&lt;p&gt;The first development board targeted by this work was the DragonBoard 410C, which was followed in 2018 by
+DragonBoard 820C support. Recently support for the Snapdragon 660 SoC was added to the driver,
+which will be part of the v5.11 Linux Kernel release. These SoCs all contain the CAMSS
+(Camera SubSystem) version of the ISP architecture.&lt;/p&gt;
+&lt;p&gt;Currently, support for the ISP found in the Snapdragon 845 SoC and the DragonBoard 845C is in
+the process of being upstreamed to the mailinglists. Having …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 23 Feb 2021 14:54:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2021-02-23:/upstream-camera-support-for-qualcomm-platforms.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>camera</category><category>v4l2</category><category>qualcomm</category><category>camss</category><category>sdm845</category><category>yocto</category><category>open embedded</category><category>db845c</category></item><item><title>Building ChromiumOS for Qemu</title><link>https://memcpy.io/building-chromiumos-for-qemu.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;So let's start off by covering how ChromiumOS relates to ChromeOS. The
+ChromiumOS project is essentially ChromeOS minus branding and some
+packages for things like the media digital restrictions management.&lt;/p&gt;
+&lt;p&gt;But on the whole, almost everything is there, and the pieces that aren't,
+you don't &lt;em&gt;need&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;ChromiumOS&lt;/h2&gt;
+&lt;h3&gt;Depot tools&lt;/h3&gt;
+&lt;p&gt;In order to check out ChromiumOS and other large Google projects,
+you'll need depot tools.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;depot_tools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PWD&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;depot_tools&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Maybe you'd want to add the PATH export to your .bashrc.&lt;/p&gt;
+&lt;h3&gt;Building ChromiumOS&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manifest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;chromium&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;googlesource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;external&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;minilayout&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sync&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j75&lt;/span&gt;
+&lt;span class="n"&gt;cros_sdk&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;amd64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;generic …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 28 Nov 2017 11:32:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-11-28:/building-chromiumos-for-qemu.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>chromeos</category><category>chromiumos</category><category>chromium</category><category>qemu</category><category>ssh</category><category>collabora</category></item><item><title>Running an Android Unit Test</title><link>https://memcpy.io/running-an-android-unit-test.html</link><description>&lt;p&gt;A similar approach can be used for any Android module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd aosp
+bash
+source build/envsetup.sh &amp;amp;&amp;amp; \
+lunch linaro_arm64-userdebug &amp;amp;&amp;amp; \
+mmm system/core/libsync/tests &amp;amp;&amp;amp; \
+adb root &amp;amp;&amp;amp; \
+adb remount &amp;amp;&amp;amp; \
+adb sync &amp;amp;&amp;amp; \
+adb shell /data/nativetest64/sync-unit-tests/sync-unit-tests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 07 Dec 2016 20:23:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-12-07:/running-an-android-unit-test.html</guid><category>android</category><category>linux</category><category>kernel</category><category>android</category><category>aosp</category><category>adb</category></item><item><title>XDC 2016</title><link>https://memcpy.io/xdc-2016.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-09-23_xdc_2016.jpg" title="XDC 2016"&gt;&lt;/p&gt;
+&lt;p&gt;XDC 2016 was hosted in Helsinki at Haaga-Helia.
+The full &lt;a href="https://www.x.org/wiki/Events/XDC2016/Program/"&gt;program&lt;/a&gt; was filmed and is archived &lt;a href="https://www.youtube.com/channel/UCXlH5v1PkEhjzLFTUTm_U7g/videos"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016-fast_ui_draw.pdf"&gt;Slides&lt;/a&gt;] FastUIDraw - High Performance 2D renderer for GPUs&lt;/h2&gt;
+&lt;p&gt;Kevin Rogovin gave an excellent talk about FastUIDraw, which is a highly optimiser 2d renderer for GPUs.&lt;/p&gt;
+&lt;p&gt;By agressively targetting GPUs only and limiting the feature set to what is required by a browser FastUIDraw performs &amp;gt;9.3x faster than Cairo-CPU and &amp;gt;4.8x times the previous GPU state of the art SKIA-GL.&lt;/p&gt;
+&lt;p&gt;Hopefully FastUIDraw can be incorporated into upstream of ChromiumOS and Android.&lt;/p&gt;
+&lt;h2&gt;[&lt;a href="files/2016-09-23/xdc-2016_2d_perf.pdf"&gt;Slides&lt;/a&gt;] 2D Performance&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://phd.mupuf.org/"&gt;Martin Perez&lt;/a&gt; gave a talk about 2D performance and power consumption of the Xserver.&lt;/p&gt;
+&lt;p&gt;The xf86-video-intel driver showed quite mixed performance numbers of 1.51-32.6x times the CPU performance.
+The FPS/Watt …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 23 Sep 2016 20:20:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-09-23:/xdc-2016.html</guid><category>linux</category><category>linux</category><category>graphics</category><category>kernel</category><category>collabora</category></item><item><title>Building Android for Qemu with Mesa and Virgil3D</title><link>https://memcpy.io/building-android-for-qemu-with-mesa-and-virgil3d.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-30_android_qemu.png" title="Android running on Qemu"&gt;&lt;/p&gt;
+&lt;p&gt;Developing Linux for Android on Qemu allows you to do some things that are
+not necessarily possible using the stock emulator.
+For my purposes I need access to a GPU and be able to modify the driver, which
+is where Virgilrenderer and Qemu comes in handy.&lt;/p&gt;
+&lt;p&gt;The guide below helps you compile Android and run it on top of Qemu with
+Mesa/Virgilrenderer supplying a virtual GPU.
+Because of this, the following guide is aimed at Linux hosts.&lt;/p&gt;
+&lt;p&gt;This guide is based on Rob Herrings &lt;a href="https://github.com/robherring/generic_device/wiki/KConfig-based-Multi-platform-Android-Device-(and-Mesa-graphics)"&gt;fantastic guide&lt;/a&gt;, but has
+been slightly streamlined and had physical hardware support stripped out.&lt;/p&gt;
+&lt;h2&gt;Install dependencies&lt;/h2&gt;
+&lt;p&gt;These dependencies were available on Ubuntu 16.04, some alternative packages
+might be needed for other distributions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;autoconf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;gcc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aarch64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;linux …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 30 Aug 2016 15:22:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-08-30:/building-android-for-qemu-with-mesa-and-virgil3d.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>android</category><category>qemu</category><category>collabora</category></item><item><title>Ethernet device stress testing</title><link>https://memcpy.io/ethernet-device-stress-testing.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-08-25_ethernet_device_testing.png" title="Screenshot of python script"&gt;&lt;/p&gt;
+&lt;p&gt;During testing of power management patches for usb ethernet dongles, a script
+was needed to stress test connecting/disconnecting/reconnecting these devices.&lt;/p&gt;
+&lt;p&gt;Luckily a script like that already exists as a part of the chromiumos project,
+and can be found &lt;a href="https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/site_tests/network_EthernetStressPlug/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That script does however not run standalone and requires a remote device
+(chromebook) to execute on. So I took the liberty of changing it to support
+local testing. The modified version can be found &lt;a href="files/2016-08-25/network_EthernetStressPlug.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This might come in handy for someone, if not, the script will at least be
+archived on this site.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pip2.7&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;autotest
+$&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;link
+&lt;span class="m"&gt;1&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;lo:&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;mtu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;65536&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;qdisc&lt;span class="w"&gt; &lt;/span&gt;noqueue&lt;span class="w"&gt; &lt;/span&gt;state&lt;span class="w"&gt; &lt;/span&gt;UNKNOWN&lt;span class="w"&gt; &lt;/span&gt;mode&lt;span class="w"&gt; &lt;/span&gt;DEFAULT&lt;span class="w"&gt; &lt;/span&gt;group&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;qlen&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;link/loopback&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00 …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 25 Aug 2016 13:05:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-08-25:/ethernet-device-stress-testing.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>script</category><category>collabora</category><category>chromiumos</category></item><item><title>Linux kernel development shell scripts</title><link>https://memcpy.io/linux-kernel-development-shell-scripts.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-07-26_linux_development_helper_script.png" title="Terminal screenshot of scripts in use"&gt;&lt;/p&gt;
+&lt;p&gt;While upstreaming kernel patches scripts/checkpatch.pl and scripts/get_maintainer.pl
+often come in handy.
+But to me the interface they provide is slightly bulky and rely
+on using patch files instead of git commits, which to me is a bit inconvenient.&lt;/p&gt;
+&lt;p&gt;These scripts are all meant to be included in &lt;strong&gt;.bashrc&lt;/strong&gt; or &lt;strong&gt;.zshrc&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;scripts/checkpatch.pl helper&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;checkpatch&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;+x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;elif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*&lt;span class="s2"&gt;&amp;quot;cache&amp;quot;&lt;/span&gt;*&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;--cached&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;NUM_COMMITS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;HEAD~&lt;span class="nv"&gt;$NUM_COMMITS&lt;/span&gt;..HEAD&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scripts/checkpatch.pl&lt;span class="w"&gt; &lt;/span&gt;--no-signoff&lt;span class="w"&gt; &lt;/span&gt;-q&lt;span class="w"&gt; &lt;/span&gt;-
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;The checkpatch script simply wraps the patch creation process and allows …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 26 Jul 2016 10:32:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-07-26:/linux-kernel-development-shell-scripts.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>script</category><category>collabora</category></item><item><title>Running Weston on a Raspbian</title><link>https://memcpy.io/running-weston-on-a-raspbian.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2016-06-03_weston.png" title="Weston running on a RPi2."&gt;&lt;/p&gt;
+&lt;p&gt;Progress in the VC4 graphics camp and the Wayland camp now enables us to run
+Weston on top of the drm backend for VC4 platforms. Previously software acceleration
+using pixman was needed, but this is no longer the case.&lt;/p&gt;
+&lt;p&gt;Additionally the rpi backend for weston is now being removed since it has been
+obsoleted by the improved drm layer.&lt;/p&gt;
+&lt;p&gt;Let's explore running hardware accelerated Weston on the Raspberry Pi.&lt;/p&gt;
+&lt;h2&gt;Building Linux kernel&lt;/h2&gt;
+&lt;p&gt;A comprehensive guide for building a recent Linux kernel for Raspberry Pi boards has
+been written by the Raspberry Pi foundation and is available &lt;a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As of this writing the guide helps you build a v4.4 kernel which is good enough for our purposes.&lt;/p&gt;
+&lt;h2&gt;Set up alternative install location&lt;/h2&gt;
+&lt;p&gt;These build instructions …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 03 Jun 2016 10:32:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2016-06-03:/running-weston-on-a-raspbian.html</guid><category>wayland</category><category>wayland</category><category>weston</category><category>rpi</category><category>rpi2</category><category>kernel</category></item></channel></rss>

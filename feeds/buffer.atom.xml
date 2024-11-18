@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - buffer</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/buffer.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-07-31T09:14:00+02:00</updated><entry><title>kms_swrast: A hardware-backed graphics driver</title><link href="https://memcpy.io/kms_swrast-a-hardware-backed-graphics-driver.html" rel="alternate"></link><published>2018-07-31T09:14:00+02:00</published><updated>2018-07-31T09:14:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-07-31:/kms_swrast-a-hardware-backed-graphics-driver.html</id><summary type="html">&lt;h2&gt;Stack overview&lt;/h2&gt;
+&lt;p&gt;Let's start with having a look at a high level overview of what the
+graphics stack looks like.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_overview.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Before digging too much further into this, lets cover some terminology.&lt;/p&gt;
+&lt;p&gt;DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
+which contains all of the graphics drivers and does all of the interfacing with
+hardware.&lt;br&gt;
+The DRM subsystem implements the KMS - kernel mode setting - API.&lt;/p&gt;
+&lt;p&gt;Mode setting is essentially configuring output settings like resolution
+for the displays that are being used. And doing it using the kernel means that
+userspace doesn't need access to setting these things directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_mesa.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The DRM subsystem talks to the hardware and Mesa is used by applications through
+the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc.
+All …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Stack overview&lt;/h2&gt;
+&lt;p&gt;Let's start with having a look at a high level overview of what the
+graphics stack looks like.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_overview.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Before digging too much further into this, lets cover some terminology.&lt;/p&gt;
+&lt;p&gt;DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
+which contains all of the graphics drivers and does all of the interfacing with
+hardware.&lt;br&gt;
+The DRM subsystem implements the KMS - kernel mode setting - API.&lt;/p&gt;
+&lt;p&gt;Mode setting is essentially configuring output settings like resolution
+for the displays that are being used. And doing it using the kernel means that
+userspace doesn't need access to setting these things directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_mesa.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The DRM subsystem talks to the hardware and Mesa is used by applications through
+the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc.
+All of Mesa is built ontop of DRM and libdrm.  &lt;/p&gt;
+&lt;p&gt;libdrm is a userspace library that wraps the DRM subsystem in order to simplify
+talking to drivers and avoiding common bugs in every user of DRM.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_detailed.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_detailed.svg" title="kms_swrast diagram"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Looking inside Mesa we find the Gallium driver framework. It is what &lt;em&gt;most&lt;/em&gt;
+of the Mesa drivers are built using, with the Intel i965 driver being the major
+exception.&lt;/p&gt;
+&lt;p&gt;kms_swrast is built using Gallium, with the intention of re-using as much of the
+infrastructure provided by Gallium and KMS as possible instead.&lt;/p&gt;
+&lt;p&gt;kms_swrast itself is backed by a backend, like softpipe or the faster llvmpipe,
+which actually implements the 3D primitives and functionality needed in order
+to reach OpenGL and OpenGL ES compliance.&lt;/p&gt;
+&lt;p&gt;Softpipe is the older and less complicated of the two implementations,
+whereas is llvmpipe is newer and relies on LLVM as an external dependency.&lt;br&gt;
+But as a result llvmpipe support JIT-compilation for example, which
+makes it a lot faster.&lt;/p&gt;
+&lt;h2&gt;Why is this a good idea?&lt;/h2&gt;
+&lt;p&gt;Re-using the Gallium framework gives you a lot of things for free. And the
+driver can remain relatively lightweight.  &lt;/p&gt;
+&lt;p&gt;Apart from the features that Gallium provides today, you'll also get free
+access to new features in the future, without having to write them yourself.&lt;br&gt;
+And since Gallium is shared between many drivers, it will be better tested and
+have fewer bugs than any one driver.&lt;/p&gt;
+&lt;p&gt;kms_swrast is built using DRM and actual kernel drivers, but no rendering
+hardware is actually used. Which may seem a bit odd.  &lt;/p&gt;
+&lt;p&gt;So why are the kernel drivers used for a software renderer? The answer is
+two-fold.  &lt;/p&gt;
+&lt;p&gt;It is what Gallium expects, and there is a kernel driver called VGEM
+(Virtual GEM) which was created specifically for this usecase. In order to
+not have to make invasive changes to it or make the switch to VGEM right away,
+just providing it with access to &lt;em&gt;some&lt;/em&gt; driver
+is the simplest possible solution. Since the actual hardware is mostly unused,
+it doesn't really matter what hardware you use.&lt;/p&gt;
+&lt;p&gt;The DRM driver is actually only used for a single thing, to allocate a slice
+of memory which can be used to render pixels to and then be sent to the display.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="graphics"></category><category term="collabora"></category><category term="kms_swrast"></category><category term="drm"></category><category term="kms"></category><category term="swrast"></category><category term="dumb"></category><category term="buffer"></category><category term="driver"></category><category term="gpu"></category></entry></feed>

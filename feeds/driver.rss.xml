@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - driver</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 13 Mar 2019 16:25:00 +0100</lastBuildDate><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
+&lt;p&gt;The process of reverse engineering Arm GPUs has been going on for a long time,
+starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
+on the Arm Utgard family of GPUs.&lt;br&gt;
+This driver has recently seen a lot new attention and is itself progressing quickly,
+which means it will likely be accepted into the kernel soon.&lt;br&gt;
+A piece of trivia is that this GPU architecture was what Arm received when they
+purchased the Norwegian GPU IP vendor Falanx Microsystems.&lt;/p&gt;
+&lt;p&gt;The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
+respectively, both of which are quite different from the 2/3/400 series.
+However the T and G-series are somewhat similar at least when …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>graphics</category><category>linux</category><category>open source</category><category>gpu</category><category>driver</category><category>arm</category><category>mali</category><category>panfrost</category></item><item><title>kms_swrast: A hardware-backed graphics driver</title><link>https://memcpy.io/kms_swrast-a-hardware-backed-graphics-driver.html</link><description>&lt;h2&gt;Stack overview&lt;/h2&gt;
+&lt;p&gt;Let's start with having a look at a high level overview of what the
+graphics stack looks like.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_overview.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_overview.svg" title="Linux graphics stack"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Before digging too much further into this, lets cover some terminology.&lt;/p&gt;
+&lt;p&gt;DRM - Direct Rendering Manager - is the Linux kernel graphics subsystem,
+which contains all of the graphics drivers and does all of the interfacing with
+hardware.&lt;br&gt;
+The DRM subsystem implements the KMS - kernel mode setting - API.&lt;/p&gt;
+&lt;p&gt;Mode setting is essentially configuring output settings like resolution
+for the displays that are being used. And doing it using the kernel means that
+userspace doesn't need access to setting these things directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-07-31_kms_swrast_mesa.svg"&gt;&lt;img alt="Alt text" src="/images/2018-07-31_kms_swrast_mesa.svg" title="Mesa internals"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The DRM subsystem talks to the hardware and Mesa is used by applications through
+the APIs it implements. APIs like OpenGL, OpenGL ES, Vulkan, etc.
+All …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 31 Jul 2018 09:14:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-07-31:/kms_swrast-a-hardware-backed-graphics-driver.html</guid><category>graphics</category><category>collabora</category><category>kms_swrast</category><category>drm</category><category>kms</category><category>swrast</category><category>dumb</category><category>buffer</category><category>driver</category><category>gpu</category></item><item><title>Status of the Embedded GPU Space @ Embedded Linux Conference NA</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2018-03-12_elc_na.png" title="Speaking @ ELC NA"&gt;&lt;/p&gt;
+&lt;p&gt;A recording of the talk is available  &lt;a href="https://www.youtube.com/watch?v=Ag8BGMY8MOs"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-openiot-north-america-2018/program/schedule/"&gt;Embedded Linux Conference NA&lt;/a&gt;,
+for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 12 Mar 2018 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-03-12:/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded linux conference</category><category>elc</category><category>na</category><category>portland</category><category>embedded</category><category>gpu</category><category>linux</category><category>driver</category><category>open</category><category>source</category></item><item><title>Fixing bluetooth on the XPS 15 9550 on Ubuntu</title><link>https://memcpy.io/fixing-bluetooth-on-the-xps-15-9550-on-ubuntu.html</link><description>&lt;h2&gt;Why doesn't this work automatically?&lt;/h2&gt;
+&lt;p&gt;The firmware blob that is needed by Broadcom devices is not supplied by default, and it has to be supplied manually.&lt;/p&gt;
+&lt;h2&gt;How To&lt;/h2&gt;
+&lt;p&gt;Download &lt;a href="/files/2017-10-28/BCM-0a5c-6410.hcd"&gt;BCM-0a5c-6410.hcd&lt;/a&gt; and copy it into &lt;code&gt;/lib/firmware/brcm/&lt;/code&gt; and then reboot your device.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget https://memcpy.io/files/2017-10-28/BCM-0a5c-6410.hcd
+sudo cp BCM-0a5c-6410.hcd /lib/firmware/brcm/
+sudo chmod 0644 /lib/firmware/brcm/BCM-0a5c-6410.hcd
+sudo reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 28 Oct 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-10-28:/fixing-bluetooth-on-the-xps-15-9550-on-ubuntu.html</guid><category>hack</category><category>desktop</category><category>debian</category><category>ubuntu</category><category>broadcom</category><category>brcm</category><category>bluetooth</category><category>connecting</category><category>pairing</category><category>driver</category></item></channel></rss>

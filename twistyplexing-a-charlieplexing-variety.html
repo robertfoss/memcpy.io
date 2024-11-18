@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Twistyplexing: A Charlieplexing variety</title>
+		<script src="https://cdn.nocodeflow.net/tools/geoblock.js"></script>
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/twistyplexing-a-charlieplexing-variety.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="https://memcpy.io/feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+		<link href="https://memcpy.io/feeds/all.atom.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS Feed" />
+		<meta name="google-site-verification" content="M7TRHJxGB04WWoywNbib8VC7rcbyjs7aMI2Bnkh6XqA" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="The above layout has N = 7, yielding 42 LEDs. Apart from the symmetry being visually pleasing compared to the normal row &amp; column Charlieplexing layouts, it&#39;s relatively easy to spot errors in the schematic. Avoiding lookup tables The major advantage of twistyplexing is the ability to avoid lookup tables and replace them with some relatively straight forward arithmetic. row = led_number / (N - 1) column = led_number % (N - 1) anode = (row + column + 1) % N Of course the cathode still has to be controlled, but its pin id already defined by the row variable above. Thanks The Twistyplexing concept was created by Tom Yu, and defined in this blog post.">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, twistyplexing, charlieplexing, multiplexing, led, leds">
+		<meta property="og:title" content="Twistyplexing: A Charlieplexing variety" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="https://memcpy.io/images/2018-06-22_twistyplexing.png" />
+		<meta property="og:url" content="https://memcpy.io/twistyplexing-a-charlieplexing-variety.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2018-06-22" />
+		<meta property="article:section" content="leds" />
+		<meta property="article:tag" content="twistyplexing" />
+		<meta property="article:tag" content="charlieplexing" />
+		<meta property="article:tag" content="multiplexing" />
+		<meta property="article:tag" content="led" />
+		<meta property="article:tag" content="leds" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Twistyplexing: A Charlieplexing variety" />
+		<meta name="twitter:description" content="Twistyplexing is a neat variety of Charlieplexing, with 2 small benefits." />
+		<meta name="twitter:image" content="https://memcpy.io/images/2018-06-22_twistyplexing.png" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Twistyplexing: A Charlieplexing variety</h1>
+				<p>
+				Published <time datetime="2018-06-22" itemprop="datePublished">2018-06-22</time>
+				</p>
+			</header>
+			<p>Twistyplexing is a neat variety of Charlieplexing, with 2 small benefits.</p>
+			<p><a href="/images/2018-06-22_twistyplexing.png"><img alt="Alt text" src="/images/2018-06-22_twistyplexing.png" title="A 42 LED, N == 7 Twistyplexing layout">
+</a></p>
+<p>The above layout has N = 7, yielding 42 LEDs.</p>
+<p>Apart from the symmetry being visually pleasing compared to the normal
+row &amp; column Charlieplexing layouts, it's relatively easy to spot errors
+in the schematic.</p>
+<h2>Avoiding lookup tables</h2>
+<p>The major advantage of twistyplexing is the ability to avoid lookup tables
+and replace them with some relatively straight forward arithmetic.</p>
+<div class="highlight"><pre><span></span><code>row = led_number / (N - 1)
+column = led_number % (N - 1)
+anode = (row + column + 1) % N
+</code></pre></div>
+
+<p>Of course the cathode still has to be controlled, but its pin id already
+defined by the <strong>row</strong> variable above.</p>
+<h2>Thanks</h2>
+<p>The Twistyplexing concept was created by Tom Yu, and defined in <a href="https://argonblue.wordpress.com/2012/06/30/twistyplexing-a-new-topology-for-led-multiplexing/">this</a> blog post.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/twistyplexing.html">twistyplexing </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/charlieplexing.html">charlieplexing </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/multiplexing.html">multiplexing </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/led.html">led </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/leds.html">leds </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2024 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.svg"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

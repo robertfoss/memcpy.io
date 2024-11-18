@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - 8m</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/8m.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2018-04-13T11:39:00+02:00</updated><entry><title>Upstream Linux support for the new NXP i.MX 8M</title><link href="https://memcpy.io/upstream-linux-support-for-the-new-nxp-imx-8m.html" rel="alternate"></link><published>2018-04-13T11:39:00+02:00</published><updated>2018-04-13T11:39:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2018-04-13:/upstream-linux-support-for-the-new-nxp-imx-8m.html</id><summary type="html">&lt;p&gt;&lt;a href="/images/2018-04-13_dart_imx8m.png"&gt;&lt;img alt="Dart iMX 8M" src="/images/2018-04-13_dart_imx8m.png"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The i.MX6 platform has for the past few years enjoyed a large effort to add
+upstream support to Linux and surrounding projects. Now it is at the point
+where nothing is really missing any more. Improvements are still being made,
+to the graphics driver for i.MX 6, but functionally it is complete.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-04-13_timeline_vivante_kernel_and_mesa.svg"&gt;&lt;img alt="Etnaviv driver development timeline" src="/images/2018-04-13_timeline_vivante_kernel_and_mesa.svg"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much
+still remains to be done.&lt;/p&gt;
+&lt;p&gt;That being said, initial support for the GPU, the Vivante GC7000, is in place
+and is able to successfully run Wayland/Weston, glmark, etc.
+This should also mean that running Android ontop of the currently not-quite-upstream stack is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/images/2018-04-13_dart_imx8m.png"&gt;&lt;img alt="Dart iMX 8M" src="/images/2018-04-13_dart_imx8m.png"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The i.MX6 platform has for the past few years enjoyed a large effort to add
+upstream support to Linux and surrounding projects. Now it is at the point
+where nothing is really missing any more. Improvements are still being made,
+to the graphics driver for i.MX 6, but functionally it is complete.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-04-13_timeline_vivante_kernel_and_mesa.svg"&gt;&lt;img alt="Etnaviv driver development timeline" src="/images/2018-04-13_timeline_vivante_kernel_and_mesa.svg"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The i.MX8 is a different story. The newly introduced platform, with hardware still difficult to get access to, is seeing lots of work being done, but much
+still remains to be done.&lt;/p&gt;
+&lt;p&gt;That being said, initial support for the GPU, the Vivante GC7000, is in place
+and is able to successfully run Wayland/Weston, glmark, etc.
+This should also mean that running Android ontop of the currently not-quite-upstream stack is possible using &lt;a href="https://gitlab.freedesktop.org/drm-hwcomposer/drm-hwcomposer"&gt;drm_hwcomposer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;An upstream display/scanout driver does currently not exist, since the display IP in the i.MX 8 is different and more capable than the IP in the i.MX 6 platform, the current imx-drm driver is not capable of supporting it.
+A driver is provided by the NXP base support package.
+This BSP driver is based on KMS Atomic and supports most of the bells and whistles one would hope for, but is currently not in an upstreamable shape.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-04-13_timeline_imx8qm_kernel.svg"&gt;&lt;img alt="i.MX8 Kernel Support" src="/images/2018-04-13_timeline_imx8qm_kernel.svg"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;But patches for the gpio, clk, netdev &amp;amp; arm-kernel subsystems have been submitted to their respective mailing lists by Lucas Stach.&lt;/p&gt;
+&lt;p&gt;The direct support for the i.MX8 that has landed in the kernel at this point is mostly done by NXP engineers.&lt;/p&gt;
+&lt;p&gt;But there are lots of components that currently have no support. The Video Processor Unit IP, the Hantro G1/G2, does not have any upstream support.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-04-13_timeline_imx8qm_i.mx_8_u-boot.svg"&gt;&lt;img alt="i.MX8 U-Boot Support" src="/images/2018-04-13_timeline_imx8qm_i.mx_8_u-boot.svg"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Looking at bootloader support, U-Boot has good support for the i.MX 8M platform
+since early 2018, and can be expected to just work.&lt;/p&gt;
+&lt;h2&gt;Looking forward&lt;/h2&gt;
+&lt;p&gt;While lot's of support is still missing for the i.MX 8, the platform
+is under active development, with many new pieces of the hardware seeing attention.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://puri.sm/"&gt;Purism&lt;/a&gt; is one of the vendors who currently is actively
+working towards full Open Source support of the i.MX8 platform.&lt;/p&gt;
+&lt;h2&gt;Devboards&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.wandboard.org/products/wandpi-8m/"&gt;WandPi 8M&lt;/a&gt; is a series of 3 different boards based on the i.MX 8M platform.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://boundarydevices.com/product/nitrogen8m-imx8/"&gt;Nitrogen 8M&lt;/a&gt; is another i.MX 8M based option, made by Boundary Devices who also made the popular Sabre Lite series of boards for the i.MX 6.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="imx"></category><category term="imx"></category><category term="i.mx"></category><category term="nxp"></category><category term="imx6"></category><category term="imx8"></category><category term="imx8m"></category><category term="8m"></category></entry></feed>

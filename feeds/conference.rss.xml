@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - conference</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Sun, 04 Feb 2018 00:00:00 +0100</lastBuildDate><item><title>Android on Mainline Graphics @ FOSDEM</title><link>https://memcpy.io/android-on-mainline-graphics-fosdem.html</link><description>&lt;p&gt;&lt;a href="https://fosdem.org"&gt;&lt;img alt="Alt text" src="/images/2018-02-04_fosdem.png" title="FOSDEM"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A recording of the talk can be found &lt;a href="https://fosdem.org/2018/schedule/event/android_graphics/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-02-04/2018_fosdem_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-02-04/2018_fosdem_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers and volunteers of &lt;a href="https://fosdem.org/"&gt;FOSDEM&lt;/a&gt;, for hosting a great community event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 04 Feb 2018 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-02-04:/android-on-mainline-graphics-fosdem.html</guid><category>talks</category><category>fosdem</category><category>2018</category><category>brussels</category><category>android</category><category>aosp</category><category>talk</category><category>slides</category><category>conference</category></item></channel></rss>

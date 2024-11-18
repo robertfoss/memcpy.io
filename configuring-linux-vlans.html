@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Configuring Linux VLANs</title>
+		<script src="https://cdn.nocodeflow.net/tools/geoblock.js"></script>
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/configuring-linux-vlans.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="https://memcpy.io/feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+		<link href="https://memcpy.io/feeds/all.atom.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS Feed" />
+		<meta name="google-site-verification" content="M7TRHJxGB04WWoywNbib8VC7rcbyjs7aMI2Bnkh6XqA" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="$ vlan Device not provided vlan $DEV $VLAN $SUBNET vlan eth0 42 10.31.155.1/27 This is a achieved by pasting the below function into your .bashrc / .zshrc and issuing a source .bashrc or source .zshrc correspondingly. function vlan { DEV=$1 VLAN=$2 ADDR=$3 HELP=&#34; vlan \$DEV \$VLAN \$SUBNET vlan eth0 42 10.31.155.1/27 &#34; if [ -z &#34;$DEV&#34; ]; then echo &#34;Device not provided&#34; echo &#34;$HELP&#34; return 1 fi ip link | grep &#34;${DEV}: &#34; &gt;/dev/null 2&gt;&amp;1 if [ $? -ne 0 ]; then echo &#34;\&#34;$DEV\&#34; is not a valid device&#34; echo &#34;$HELP&#34; return 1 fi if [ -z &#34;$VLAN&#34; ]; then echo &#34;VLAN not provided&#34; echo &#34;$HELP&#34; exit 1 fi REGEX=&#39;^[0-9]+$&#39; if ! [[ $VLAN =~ $REGEX ]] ; then echo &#34;\&#34;$VLAN\&#34; is not a number&#34; &gt;&amp;2; exit 1 …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, network, vlan, interface, configure, nic">
+		<meta property="og:title" content="Configuring Linux VLANs" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://memcpy.io/configuring-linux-vlans.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2022-07-20" />
+		<meta property="article:section" content="networking" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="network" />
+		<meta property="article:tag" content="vlan" />
+		<meta property="article:tag" content="interface" />
+		<meta property="article:tag" content="configure" />
+		<meta property="article:tag" content="nic" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Configuring Linux VLANs" />
+		<meta name="twitter:description" content="Setting up a VLAN for a network interface in Linux is a little bit convoluted. Let&#39;s write a Bash/ZSH function for simplifying the process." />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Configuring Linux VLANs</h1>
+				<p>
+				Published <time datetime="2022-07-20" itemprop="datePublished">2022-07-20</time>
+				</p>
+			</header>
+			<p>Setting up a VLAN for a network interface in Linux is a little bit convoluted. Let's write a Bash/ZSH function for simplifying the process.</p>
+			<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vlan
+Device<span class="w"> </span>not<span class="w"> </span>provided
+
+<span class="w">    </span>vlan<span class="w"> </span><span class="nv">$DEV</span><span class="w"> </span><span class="nv">$VLAN</span><span class="w"> </span><span class="nv">$SUBNET</span>
+
+<span class="w">    </span>vlan<span class="w"> </span>eth0<span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">10</span>.31.155.1/27
+</code></pre></div>
+
+<p>This is a achieved by pasting the below function into your <code>.bashrc</code> / <code>.zshrc</code> and issuing a <code>source .bashrc</code> or <code>source .zshrc</code> correspondingly.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">function</span><span class="w"> </span><span class="nx">vlan</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">DEV</span><span class="p">=</span><span class="err">$</span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">VLAN</span><span class="p">=</span><span class="err">$</span><span class="mi">2</span>
+<span class="w">    </span><span class="nx">ADDR</span><span class="p">=</span><span class="err">$</span><span class="mi">3</span>
+
+<span class="w">    </span><span class="nx">HELP</span><span class="p">=</span><span class="s">&quot;</span>
+
+<span class="s">    vlan \$DEV \$VLAN \$SUBNET</span>
+
+<span class="s">    vlan eth0 42 10.31.155.1/27</span>
+<span class="s">&quot;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="nx">z</span><span class="w"> </span><span class="s">&quot;$DEV&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;Device not provided&quot;</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;$HELP&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">fi</span>
+
+<span class="w">    </span><span class="nx">ip</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">grep</span><span class="w"> </span><span class="s">&quot;${DEV}: &quot;</span><span class="w"> </span><span class="p">&gt;</span><span class="o">/</span><span class="nx">dev</span><span class="o">/</span><span class="nx">null</span><span class="w"> </span><span class="mi">2</span><span class="p">&gt;</span><span class="o">&amp;</span><span class="mi">1</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">$</span><span class="p">?</span><span class="w"> </span><span class="o">-</span><span class="nx">ne</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;\&quot;$DEV\&quot; is not a valid device&quot;</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;$HELP&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">fi</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="nx">z</span><span class="w"> </span><span class="s">&quot;$VLAN&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;VLAN not provided&quot;</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;$HELP&quot;</span>
+<span class="w">        </span><span class="nx">exit</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">fi</span>
+<span class="w">    </span><span class="nx">REGEX</span><span class="p">=</span><span class="err">&#39;</span><span class="o">^</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="err">$&#39;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="err">$</span><span class="nx">VLAN</span><span class="w"> </span><span class="p">=</span><span class="o">~</span><span class="w"> </span><span class="err">$</span><span class="nx">REGEX</span><span class="w"> </span><span class="p">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;\&quot;$VLAN\&quot; is not a number&quot;</span><span class="w"> </span><span class="p">&gt;</span><span class="o">&amp;</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="nx">exit</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;$HELP&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">fi</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="nx">z</span><span class="w"> </span><span class="s">&quot;$ADDR&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;IP address not provided&quot;</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;$HELP&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">fi</span>
+<span class="w">    </span><span class="nx">ipcalc</span><span class="w"> </span><span class="o">-</span><span class="nx">cs</span><span class="w"> </span><span class="err">$</span><span class="nx">ADDR</span><span class="w"> </span><span class="p">&gt;</span><span class="o">/</span><span class="nx">dev</span><span class="o">/</span><span class="nx">null</span><span class="w"> </span><span class="mi">2</span><span class="p">&gt;</span><span class="o">&amp;</span><span class="mi">1</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">$</span><span class="p">?</span><span class="w"> </span><span class="o">-</span><span class="nx">ne</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;\&quot;$$ADDR\&quot; is not a valid address&quot;</span>
+<span class="w">        </span><span class="nx">echo</span><span class="w"> </span><span class="s">&quot;$HELP&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">fi</span>
+
+<span class="w">    </span><span class="nx">VLAN_DEV</span><span class="p">=</span><span class="nx">vlan_</span><span class="err">$</span><span class="p">{</span><span class="nx">VLAN</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">SUBNET</span><span class="p">=</span><span class="s">&quot;$(ipcalc $ADDR | grep Network: | cut -d&#39; &#39; -f4)&quot;</span>
+
+<span class="w">    </span><span class="nx">sudo</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="err">$</span><span class="nx">DEV</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="err">$</span><span class="nx">VLAN_DEV</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="nx">vlan</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="err">$</span><span class="nx">VLAN</span>
+<span class="w">    </span><span class="nx">sudo</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="kd">addr</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="err">$</span><span class="nx">ADDR</span><span class="w"> </span><span class="nx">dev</span><span class="w"> </span><span class="err">$</span><span class="nx">VLAN_DEV</span><span class="w"> </span><span class="nx">metric</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">    </span><span class="nx">sudo</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">dev</span><span class="w"> </span><span class="err">$</span><span class="nx">VLAN_DEV</span><span class="w"> </span><span class="nx">up</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>If adding a full shell function is a bit too much for you, then the actual commands that need to be issued are the following.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">sudo</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="nx">wlp0s20f3</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="nx">vlan_42</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="nx">vlan</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="mi">42</span>
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="kd">addr</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="m m-Double">10.31.155.1</span><span class="o">/</span><span class="mi">27</span><span class="w"> </span><span class="nx">dev</span><span class="w"> </span><span class="nx">vlan_42</span><span class="w"> </span><span class="nx">metric</span><span class="w"> </span><span class="mi">20</span>
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">dev</span><span class="w"> </span><span class="nx">vlan_42</span><span class="w"> </span><span class="nx">up</span>
+</code></pre></div>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/network.html">network </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/vlan.html">vlan </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/interface.html">interface </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/configure.html">configure </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/nic.html">nic </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2024 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.svg"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

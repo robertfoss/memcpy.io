@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - talks</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 15 Jan 2020 00:00:00 +0100</lastBuildDate><item><title>Panfrost: Liberating ARM GPUs @ Linux Conf Au</title><link>https://memcpy.io/panfrost-liberating-arm-gpus-linux-conf-au.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/files/2020-01-15/title.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2020-01-15/2020_lca_panfrost_robertfoss.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Diagrams&lt;/h2&gt;
+&lt;h4&gt;Overview&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_overview.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_overview.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Kernel&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_kernel_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_kernel_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_kernel_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_kernel_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Userspace&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_userspace_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_userspace_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_2.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_userspace_3.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_userspace_3.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa overview&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_overview.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_overview.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa Gallium&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_gallium_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_gallium_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_gallium_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_gallium_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa Winsys&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_winsys_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_winsys_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_winsys_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_winsys_2.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;Mesa Compiler&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/files/2020-01-15/diagram_mesa_compiler_1.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_1.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_compiler_2.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_2.svg"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href="/files/2020-01-15/diagram_mesa_compiler_3.svg"&gt;&lt;img alt="" src="/files/2020-01-15/diagram_mesa_compiler_3.svg"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h2&gt;License&lt;/h2&gt;
+&lt;p&gt;All of the material you can find on this page is licensed under the
+&lt;a href="https://opensource.org/licenses/MIT"&gt;MIT&lt;/a&gt; license, and you are free to use,
+modify and re-distribute these materials however you like.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://linux.conf.au/"&gt;Linux Conf Au&lt;/a&gt; for hosting the event.
+This was my first LCA, and I think it may be the best Linux conference out of all of them.&lt;/p&gt;
+&lt;p&gt;I would also like to thank the organizers for paying for my flights,
+without it I would not have been able to give this talk.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 15 Jan 2020 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2020-01-15:/panfrost-liberating-arm-gpus-linux-conf-au.html</guid><category>talks</category><category>talks</category><category>slides</category><category>linux</category><category>conf</category><category>au</category><category>lca</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Panfrost the Open Source Arm GPU Driver @ ELC NA</title><link>https://memcpy.io/panfrost-the-open-source-arm-gpu-driver-elc-na.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-22_panfrost_gpu_driver_elc_na.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2019-08-22/2019_panfrost_elc-na.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sun, 22 Sep 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-09-22:/panfrost-the-open-source-arm-gpu-driver-elc-na.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded</category><category>linux</category><category>elc</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Status of the Embedded GPU Space @ ELC NA</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-elc-na.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-08-21_embedded_gpu_elc_na.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2019-08-21/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-north-america-2019/"&gt;ELC NA&lt;/a&gt; for hosting the event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 21 Sep 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-09-21:/status-of-the-embedded-gpu-space-elc-na.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded</category><category>linux</category><category>elc</category><category>graphics</category><category>open source</category><category>drivers</category></item><item><title>Status of the Embedded GPU Space @ Embedded World</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-world.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2019-02-27_embedded_world.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2019-02-27/2019_embedded-gfx_embedded-world.odp"&gt;ODP&lt;/a&gt; and of course the &lt;a href="files/2019-02-27/2019_embedded-world_embedded-gpu-space.pdf"&gt;whitepaper&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.embedded-world.de/en"&gt;Embedded World&lt;/a&gt; for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 27 Feb 2019 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-02-27:/status-of-the-embedded-gpu-space-embedded-world.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded</category><category>world</category><category>graphics</category><category>open source</category><category>drivers</category><category>linux</category></item><item><title>Android on Mainline Graphics @ All Systems Go</title><link>https://memcpy.io/android-on-mainline-graphics-all-systems-go.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-09-29_all_systems_go.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-09-29/2018_running_android_on_mainline_gfx_all_systems_go.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://all-systems-go.io/"&gt;All Systems Go!&lt;/a&gt;, the &lt;a href="https://twitter.com/ASGConf"&gt;@ASGConf&lt;/a&gt; for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Sat, 29 Sep 2018 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-09-29:/android-on-mainline-graphics-all-systems-go.html</guid><category>talks</category><category>talks</category><category>slides</category><category>all systems go</category><category>linux</category><category>graphics</category><category>drivers</category></item><item><title>Status of the Open Source GPU Ecosystem @ OSSummit NA</title><link>https://memcpy.io/status-of-the-open-source-gpu-ecosystem-ossummit-na.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-08-31_ossummit.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-08-31/2018_gfx_status_ossummit_na.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-08-31/2018_gfx_status_ossummit_na.odp"&gt;ODP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/open-source-summit-north-america-2018/"&gt;OSSummit NA&lt;/a&gt;, the &lt;a href="https://www.linuxfoundation.org/"&gt;Linux Foundation&lt;/a&gt; for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 31 Aug 2018 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-08-31:/status-of-the-open-source-gpu-ecosystem-ossummit-na.html</guid><category>talks</category><category>talks</category><category>slides</category><category>ossummit</category><category>open</category><category>source summit</category><category>linux</category><category>graphics</category><category>drivers</category></item><item><title>Status of the Open Source Graphics Ecosystem @ OpenTechSummit</title><link>https://memcpy.io/status-of-the-open-source-graphics-ecosystem-opentechsummit.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-05-10_opentechsummit.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-05-10/2018_opentechsummit.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-05-10/2018_opentechsummit.odp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://opentechsummit.net/"&gt;OpenTechSummit&lt;/a&gt;, specifically &lt;a href="https://twitter.com/hpdang"&gt;@hpdang&lt;/a&gt; and &lt;a href="https://twitter.com/mariobehling"&gt;@mariobehling&lt;/a&gt;
+for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Thu, 10 May 2018 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-05-10:/status-of-the-open-source-graphics-ecosystem-opentechsummit.html</guid><category>talks</category><category>talks</category><category>slides</category><category>graphics</category><category>linux</category><category>drivers</category><category>open</category><category>tech</category><category>summit</category><category>opentechsummit</category><category>source</category></item><item><title>Running Android on the Mainline Graphics Stack @ FossNorth</title><link>https://memcpy.io/running-android-on-the-mainline-graphics-stack-fossnorth.html</link><description>&lt;p&gt;&lt;img alt="Intro slide" src="/images/2018-04-23_intro.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-04-23/2018_fossnorth_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="http://foss-north.se/2018/schedule.html"&gt;FossNorth&lt;/a&gt;, specifically &lt;a href="https://twitter.com/e8johan"&gt;@e8johan&lt;/a&gt;
+for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 23 Apr 2018 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-04-23:/running-android-on-the-mainline-graphics-stack-fossnorth.html</guid><category>talks</category><category>talks</category><category>slides</category><category>fossnorth</category><category>foss</category><category>north</category><category>aosp</category><category>android</category><category>open</category><category>source</category></item><item><title>Status of the Embedded GPU Space @ Embedded Linux Conference NA</title><link>https://memcpy.io/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2018-03-12_elc_na.png" title="Speaking @ ELC NA"&gt;&lt;/p&gt;
+&lt;p&gt;A recording of the talk is available  &lt;a href="https://www.youtube.com/watch?v=Ag8BGMY8MOs"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2018-03-12/2018_elc_na_gpu_ecosystem_status.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://events.linuxfoundation.org/events/elc-openiot-north-america-2018/program/schedule/"&gt;Embedded Linux Conference NA&lt;/a&gt;,
+for hosting a great event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 12 Mar 2018 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-03-12:/status-of-the-embedded-gpu-space-embedded-linux-conference-na.html</guid><category>talks</category><category>talks</category><category>slides</category><category>embedded linux conference</category><category>elc</category><category>na</category><category>portland</category><category>embedded</category><category>gpu</category><category>linux</category><category>driver</category><category>open</category><category>source</category></item><item><title>Android on Mainline Graphics @ Embedded Linux Conference EU</title><link>https://memcpy.io/android-on-mainline-graphics-embedded-linux-conference-eu.html</link><description>&lt;p&gt;&lt;img alt="Alt text" src="/images/2017-10-25_speaking_photo.jpg" title="Speaking @ ELC EU"&gt;&lt;/p&gt;
+&lt;p&gt;A recording of the talk can be found &lt;a href="https://www.youtube.com/watch?v=D9OUcQs0TnQ"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2017-10-25/2017_elc_running_android_on_mainline_gfx.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2017-10-25/2017_elc_running_android_on_mainline_gfx.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://osseu17.sched.com/"&gt;Embedded Linux Conference EU&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 25 Oct 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-10-25:/android-on-mainline-graphics-embedded-linux-conference-eu.html</guid><category>talks</category><category>android</category><category>aosp</category><category>talks</category><category>slides</category><category>embedded linux conference</category><category>elc</category><category>eu</category><category>prague</category></item><item><title>drm_hwcomposer: A brief update @ XDC 20117</title><link>https://memcpy.io/drm_hwcomposer-a-brief-update-xdc-20117.html</link><description>&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-22/xdc_drm_hwcomposer.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2017-09-22/xdc_drm_hwcomposer.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://www.x.org/wiki/Events/XDC2017/"&gt;XDC&lt;/a&gt;,
+and Google for hosting a great community event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 22 Sep 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-09-22:/drm_hwcomposer-a-brief-update-xdc-20117.html</guid><category>talks</category><category>android</category><category>aosp</category><category>talks</category><category>slides</category><category>xdc</category><category>x developers conference</category></item><item><title>Android on Mainline Graphics @ Open Source Summit NA</title><link>https://memcpy.io/android-on-mainline-graphics-open-source-summit-na.html</link><description>&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curious about the slides, you can download the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2017-09-11/oss_na_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank the wonderful organizers of &lt;a href="https://ossna2017.sched.com/"&gt;Open Source Summit NA&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 11 Sep 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-09-11:/android-on-mainline-graphics-open-source-summit-na.html</guid><category>talks</category><category>android</category><category>aosp</category><category>talks</category><category>slides</category><category>open source summit</category><category>north america</category><category>oss na</category><category>ossna</category></item><item><title>Android on Mainline Graphics @ GDG Berlin Android</title><link>https://memcpy.io/android-on-mainline-graphics-gdg-berlin-android.html</link><description>&lt;p&gt;I would like to thank the wonderful organizers, &lt;a href="https://www.meetup.com/GDG-Berlin-Android"&gt;GDG Berlin Android&lt;/a&gt;,
+for hosting a great community event.&lt;/p&gt;
+&lt;h2&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;If you're curios about the slides, you can download the &lt;a href="/files/2017-09-01/gdg_2017_android_oss_graphics.pdf"&gt;PDF&lt;/a&gt; or
+the &lt;a href="/files/2017-09-01/gdg_2017_android_oss_graphics.otp"&gt;OTP&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 01 Sep 2017 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2017-09-01:/android-on-mainline-graphics-gdg-berlin-android.html</guid><category>talks</category><category>android</category><category>aosp</category><category>imx6</category><category>talks</category><category>slides</category><category>GDG Berlin Android</category></item></channel></rss>

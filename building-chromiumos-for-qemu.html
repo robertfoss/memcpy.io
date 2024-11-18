@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>memcpy.io | Building ChromiumOS for Qemu</title>
+		<script src="https://cdn.nocodeflow.net/tools/geoblock.js"></script>
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="/theme/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/theme/css/math.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+		<link rel="canonical" href="https://memcpy.io/building-chromiumos-for-qemu.html">
+		<link rel="stylesheet" type="text/css" href="/theme/css/page.css">
+		<link href="https://memcpy.io/feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="memcpy.io ATOM Feed" />
+		<link href="https://memcpy.io/feeds/all.atom.xml" type="application/rss+xml" rel="alternate" title="memcpy.io RSS Feed" />
+		<meta name="google-site-verification" content="M7TRHJxGB04WWoywNbib8VC7rcbyjs7aMI2Bnkh6XqA" />
+		<meta charset="utf-8">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- TODO: is this still required in 2015? -->
+		<meta name="description" content="So let&#39;s start off by covering how ChromiumOS relates to ChromeOS. The ChromiumOS project is essentially ChromeOS minus branding and some packages for things like the media digital restrictions management. But on the whole, almost everything is there, and the pieces that aren&#39;t, you don&#39;t need. ChromiumOS Depot tools In order to check out ChromiumOS and other large Google projects, you&#39;ll need depot tools. git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git export PATH=$PATH:$(PWD)/depot_tools Maybe you&#39;d want to add the PATH export to your .bashrc. Building ChromiumOS mkdir chromiumos cd chromiumos repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git [-g minilayout] repo sync -j75 cros_sdk export BOARD=amd64-generic …">
+		<meta name="author" content="Robert Foss">
+		<meta name="keywords" content="Robert Foss memcpy Robert Foss, Open Source, Software, Linux, Kernel, Embedded, Engineer, linux, kernel, chromeos, chromiumos, chromium, qemu, ssh, collabora">
+		<meta property="og:title" content="Building ChromiumOS for Qemu" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="https://memcpy.io/images/2017-11-28_chromeos_qemu.png" />
+		<meta property="og:url" content="https://memcpy.io/building-chromiumos-for-qemu.html" />
+		<meta property="og:locale" content="" />
+		<meta property="og:site_name" content="memcpy.io" />
+		<meta property="article:published_time" content="2017-11-28" />
+		<meta property="article:section" content="kernel" />
+		<meta property="article:tag" content="linux" />
+		<meta property="article:tag" content="kernel" />
+		<meta property="article:tag" content="chromeos" />
+		<meta property="article:tag" content="chromiumos" />
+		<meta property="article:tag" content="chromium" />
+		<meta property="article:tag" content="qemu" />
+		<meta property="article:tag" content="ssh" />
+		<meta property="article:tag" content="collabora" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@memcpy_io" />
+		<meta name="twitter:site" content="@memcpy_io" />
+		<meta name="twitter:title" content="Building ChromiumOS for Qemu" />
+		<meta name="twitter:description" content="Getting ChromiumOS building is reasonably easy, but running it under Qemu requires some work." />
+		<meta name="twitter:image" content="https://memcpy.io/images/2017-11-28_chromeos_qemu.png" />
+	</head>
+	<body>
+		<article id="content" itemscope>
+			<header>
+				<h1>Building ChromiumOS for Qemu</h1>
+				<p>
+				Published <time datetime="2017-11-28" itemprop="datePublished">2017-11-28</time>
+				</p>
+			</header>
+			<p>Getting ChromiumOS building is reasonably easy, but running it under Qemu requires some work.</p>
+			<p><img alt="Alt text" src="/images/2017-11-28_chromeos_qemu.png" title="ChromiumOS running on Qemu"></p>
+<p>So let's start off by covering how ChromiumOS relates to ChromeOS. The
+ChromiumOS project is essentially ChromeOS minus branding and some
+packages for things like the media digital restrictions management.</p>
+<p>But on the whole, almost everything is there, and the pieces that aren't,
+you don't <em>need</em>.</p>
+<h2>ChromiumOS</h2>
+<h3>Depot tools</h3>
+<p>In order to check out ChromiumOS and other large Google projects,
+you'll need depot tools.</p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">chromium</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chromium</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">depot_tools</span><span class="o">.</span><span class="n">git</span>
+<span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=$</span><span class="n">PATH</span><span class="p">:</span><span class="o">$</span><span class="p">(</span><span class="n">PWD</span><span class="p">)</span><span class="o">/</span><span class="n">depot_tools</span>
+</code></pre></div>
+
+<p>Maybe you'd want to add the PATH export to your .bashrc.</p>
+<h3>Building ChromiumOS</h3>
+<div class="highlight"><pre><span></span><code><span class="n">mkdir</span><span class="w"> </span><span class="n">chromiumos</span>
+<span class="n">cd</span><span class="w"> </span><span class="n">chromiumos</span>
+<span class="n">repo</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">chromium</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chromiumos</span><span class="o">/</span><span class="n">manifest</span><span class="o">.</span><span class="n">git</span><span class="w"> </span><span class="o">--</span><span class="n">repo</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">chromium</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">minilayout</span><span class="p">]</span>
+<span class="n">repo</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="o">-</span><span class="n">j75</span>
+<span class="n">cros_sdk</span>
+<span class="k">export</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=</span><span class="n">amd64</span><span class="o">-</span><span class="n">generic</span>
+<span class="o">./</span><span class="n">setup_board</span><span class="w"> </span><span class="o">--</span><span class="n">board</span><span class="o">=$</span><span class="p">{</span><span class="n">BOARD</span><span class="p">}</span>
+<span class="o">./</span><span class="n">build_packages</span><span class="w"> </span><span class="o">--</span><span class="n">board</span><span class="o">=$</span><span class="p">{</span><span class="n">BOARD</span><span class="p">}</span>
+<span class="o">./</span><span class="n">build_image</span><span class="w"> </span><span class="o">--</span><span class="n">board</span><span class="o">=$</span><span class="p">{</span><span class="n">BOARD</span><span class="p">}</span><span class="w"> </span><span class="o">--</span><span class="n">boot_args</span><span class="w"> </span><span class="s2">&quot;earlyprintk=serial,keep console=tty0&quot;</span><span class="w"> </span><span class="o">--</span><span class="n">noenable_rootfs_verification</span><span class="w"> </span><span class="n">test</span>
+<span class="o">./</span><span class="n">image_to_vm</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="o">--</span><span class="n">board</span><span class="o">=$</span><span class="p">{</span><span class="n">BOARD</span><span class="p">}</span><span class="w"> </span><span class="o">--</span><span class="n">test_image</span>
+</code></pre></div>
+
+<h3>How to (not) boot ChromiumOS</h3>
+<p>So, this is a command baked into ChromiumOS using the <code>cros_start_vm</code> command,
+but at least on my machine it does not seem to boot properly.
+I have as of yet not been able to get any graphical output (over VNC).</p>
+<div class="highlight"><pre><span></span><code>cros_sdk
+./bin/cros_start_vm<span class="w"> </span>--image_path=../build/images/<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>/latest/chromiumos_qemu_image.bin<span class="w"> </span>--board=<span class="cp">${</span><span class="n">BOARD</span><span class="cp">}</span>
+</code></pre></div>
+
+<h2>Running Qemu ourselves</h2>
+<p>So if the intended tools don't work, we'll just have to roll up our sleeves
+and do it ourselves. This is how I got ChromiumOS booting.</p>
+<h3>Install build dependencies</h3>
+<p>These dependencies were available on Ubuntu 17.10, some alternative packages
+might be needed for <em>your</em> distributions.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">autoconf</span><span class="w"> </span><span class="n">libaio</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbluetooth</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbrlapi</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libbz2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcap</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcap</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libcurl4</span><span class="o">-</span><span class="n">gnutls</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libepoxy</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libfdt</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgbm</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgles2</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libibverbs</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libjpeg8</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">liblzo2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libncurses5</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libnuma</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">librbd</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">librdmacm</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsasl2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsdl1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsdl2</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libseccomp</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libsnappy</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libssh2</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libspice</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libspice</span><span class="o">-</span><span class="n">server1</span><span class="w"> </span><span class="n">libtool</span><span class="w"> </span><span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="w"> </span><span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvde</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvdeplug</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libvte</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libxen</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">valgrind</span><span class="w"> </span><span class="n">xfslibs</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">xutils</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libusbredirhost</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">usbredirserver</span>
+</code></pre></div>
+
+<h3>Virglrenderer</h3>
+<p>Virglrenderer creates a virtual 3D GPU, that allows the Qemu guest to use the
+graphics capabilities of the host machine.</p>
+<p>This step is optional, but allows for hardware accelerated OpenGL support on
+the guest system.
+If you don't want to use Virgl, remove it from the Qemu configure step and
+the Qemu runtime flags.</p>
+<div class="highlight"><pre><span></span><code>git clone git://git.freedesktop.org/git/virglrenderer
+cd virglrenderer
+./autogen.sh
+make -j7
+sudo make install
+</code></pre></div>
+
+<h3>Qemu</h3>
+<p>Qemu is a full system emulator, and supports a multitude of machine architectures.
+We're going to to use <em>x86_64</em>.</p>
+<div class="highlight"><pre><span></span><code>git clone git://git.qemu-project.org/qemu.git
+mkdir -p qemu/build
+cd qemu/build
+../configure --target-list=x86_64-softmmu --enable-gtk --with-gtkabi=3.0 --enable-kvm --enable-spice --enable-usb-redir --enable-libusb --enable-virglrenderer --enable-opengl
+make -j7
+sudo make install
+</code></pre></div>
+
+<h3>Run image</h3>
+<p>Now you can boot the image using Qemu.</p>
+<p>Note that running Qemu with the virtio options requires that your host machine
+is running a Linux kernel which was built with the kconfig options <code>CONFIG_DRM_VIRTIO</code>,
+<code>CONFIG_VIRT_DRIVERS</code> and <code>CONFIG_VIRTIO_XXXX</code>.</p>
+<div class="highlight"><pre><span></span><code>cd chromiumos
+/usr/local/bin/qemu-system-x86_64 \
+    -enable-kvm \
+    -m 2G \
+    -smp 4 \
+    -hda src/build/images/amd64-generic/latest/chromiumos_qemu_image.bin \
+    -vga virtio \
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp:127.0.0.1:9222-:22 \
+    -usb -usbdevice keyboard \
+    -usbdevice mouse \
+    -device virtio-gpu-pci,virgl \
+    -display gtk,gl=on
+</code></pre></div>
+
+<h2>Conclusion</h2>
+<p>Hopefully this guide will have helped you to build all of the software needed to
+boot your very own ChromiumOS.</p>
+<p>This post has been a part of work undertaken by my employer <a href="http://www.collabora.com">Collabora</a>.</p>
+		</article>
+		<section id="teaser-section">
+			<div id="teaser">
+				<p>Tags:
+					<a href="https://memcpy.io/tag/linux.html">linux </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/kernel.html">kernel </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/chromeos.html">chromeos </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/chromiumos.html">chromiumos </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/chromium.html">chromium </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/qemu.html">qemu </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/ssh.html">ssh </a>
+					<span id="breakdot">&middot; </span>
+					<a href="https://memcpy.io/tag/collabora.html">collabora </a>
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div id="footer">
+				<p id="notices" class="smcp">
+					<a href="/about.html">About</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/index.html">Blog</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/talks.html">Talks</a>
+					<span id="breakdot">&middot;</span>
+					<a href="/contact.html">Contact</a>
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss">GitHub</a>
+					<br>
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Copyleft</a>
+					<span id="breakdot">&middot;</span>
+					2024 Robert Foss
+					<span id="breakdot">&middot;</span>
+					<a href="https://github.com/robertfoss/memcpy.io">Source</a>
+					<br>
+					<a href="/"><img src="/logo.svg"></a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - wp screw</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/wp-screw.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2017-02-27T16:55:00+01:00</updated><entry><title>Removing the Chromebook Write-Protect screw</title><link href="https://memcpy.io/removing-the-chromebook-write-protect-screw.html" rel="alternate"></link><published>2017-02-27T16:55:00+01:00</published><updated>2017-02-27T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-27:/removing-the-chromebook-write-protect-screw.html</id><summary type="html">&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+(HP Chromebook 13 G1) device, and verifying that it has been successfully
+removed.&lt;/p&gt;
+&lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;
+is needed. While these devices aren't available publicly, they can
+be produced freely or possibly requested from Google if you are contributing
+code to the ChromiumOS project.&lt;/p&gt;
+&lt;h2&gt;Removing the Write-Protect screw&lt;/h2&gt;
+&lt;p&gt;&lt;a href="/images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So this is what the WP screw looks like on a Chell Chromebook. This may or may
+not be what you will find in other devices. But if you take a close look,
+you will notice that the copper pad that the the screw attaches against is
+split into parts that are bridged by a screw …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+(HP Chromebook 13 G1) device, and verifying that it has been successfully
+removed.&lt;/p&gt;
+&lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;
+is needed. While these devices aren't available publicly, they can
+be produced freely or possibly requested from Google if you are contributing
+code to the ChromiumOS project.&lt;/p&gt;
+&lt;h2&gt;Removing the Write-Protect screw&lt;/h2&gt;
+&lt;p&gt;&lt;a href="/images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So this is what the WP screw looks like on a Chell Chromebook. This may or may
+not be what you will find in other devices. But if you take a close look,
+you will notice that the copper pad that the the screw attaches against is
+split into parts that are bridged by a screw being inserted.&lt;/p&gt;
+&lt;h2&gt;Disable Write-Protect&lt;/h2&gt;
+&lt;p&gt;So this is the part that requires a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt; device.
+And a ChromiumOS checkout, for some help setting one up, have a look at &lt;a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html"&gt;my previous post&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Go to your ChromiumOS checkout&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Enter dev environment&lt;/span&gt;
+&lt;span class="n"&gt;cros_sdk&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Set device variable&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;chell&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Connect to Chromebook using a Servo device&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;servod&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Disable WP&lt;/span&gt;
+&lt;span class="c1"&gt;# This step may vary depending on the hardware of your actual Chromebook&lt;/span&gt;
+&lt;span class="n"&gt;dut&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;control&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fw_wp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;off&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;flashrom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ft2232_spi&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;servo&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;wp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;disable&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;flashrom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;wp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;disable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;ChromiumOS Servo&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html"&gt;Setting up a ChromiumOS dev environment&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="chromium"></category><category term="chromium"></category><category term="chromebook"></category><category term="chell"></category><category term="wp screw"></category><category term="wp-screw"></category><category term="collabora"></category></entry><entry><title>Removing the Chromebook Write-Protect screw</title><link href="https://memcpy.io/removing-the-chromebook-write-protect-screw.html" rel="alternate"></link><published>2017-02-27T16:55:00+01:00</published><updated>2017-02-27T16:55:00+01:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-02-27:/removing-the-chromebook-write-protect-screw.html</id><summary type="html">&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+(HP Chromebook 13 G1) device, and verifying that it has been successfully
+removed.&lt;/p&gt;
+&lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;
+is needed. While these devices aren't available publicly, they can
+be produced freely or possibly requested from Google if you are contributing
+code to the ChromiumOS project.&lt;/p&gt;
+&lt;h2&gt;Removing the Write-Protect screw&lt;/h2&gt;
+&lt;p&gt;&lt;a href="/images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So this is what the WP screw looks like on a Chell Chromebook. This may or may
+not be what you will find in other devices. But if you take a close look,
+you will notice that the copper pad that the the screw attaches against is
+split into parts that are bridged by a screw …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post will look specifically at removing the WP screw from a Chell 
+(HP Chromebook 13 G1) device, and verifying that it has been successfully
+removed.&lt;/p&gt;
+&lt;p&gt;To actually flash firmware to Chromebook machines, a device called a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt;
+is needed. While these devices aren't available publicly, they can
+be produced freely or possibly requested from Google if you are contributing
+code to the ChromiumOS project.&lt;/p&gt;
+&lt;h2&gt;Removing the Write-Protect screw&lt;/h2&gt;
+&lt;p&gt;&lt;a href="/images/2017-02-27_wp_screw.jpg"&gt;&lt;img alt="Alt text" src="/images/2017-02-27_wp_screw.jpg" title="WP screw on Chell Chromebook"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So this is what the WP screw looks like on a Chell Chromebook. This may or may
+not be what you will find in other devices. But if you take a close look,
+you will notice that the copper pad that the the screw attaches against is
+split into parts that are bridged by a screw being inserted.&lt;/p&gt;
+&lt;h2&gt;Disable Write-Protect&lt;/h2&gt;
+&lt;p&gt;So this is the part that requires a &lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;Servo&lt;/a&gt; device.
+And a ChromiumOS checkout, for some help setting one up, have a look at &lt;a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html"&gt;my previous post&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Go to your ChromiumOS checkout&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;chromiumos&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Enter dev environment&lt;/span&gt;
+&lt;span class="n"&gt;cros_sdk&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Set device variable&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;chell&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Connect to Chromebook using a Servo device&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;servod&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;BOARD&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Disable WP&lt;/span&gt;
+&lt;span class="c1"&gt;# This step may vary depending on the hardware of your actual Chromebook&lt;/span&gt;
+&lt;span class="n"&gt;dut&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;control&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fw_wp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;off&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;flashrom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ft2232_spi&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;servo&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;wp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;disable&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;flashrom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;wp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;disable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://dev.chromium.org/developers/how-tos/install-depot-tools"&gt;ChromiumOS Servo&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://memcpy.io/setting-up-a-chromiumos-dev-environment.html"&gt;Setting up a ChromiumOS dev environment&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="chromium"></category><category term="chromium"></category><category term="chromebook"></category><category term="chell"></category><category term="wp screw"></category><category term="wp-screw"></category><category term="collabora"></category></entry></feed>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>memcpy.io - hwcomposer</title><link href="https://memcpy.io/" rel="alternate"></link><link href="https://memcpy.io/feeds/hwcomposer.atom.xml" rel="self"></link><id>https://memcpy.io/</id><updated>2017-03-28T15:18:00+02:00</updated><entry><title>Android: Enabling mainline graphics</title><link href="https://memcpy.io/android-enabling-mainline-graphics.html" rel="alternate"></link><published>2017-03-28T15:18:00+02:00</published><updated>2017-03-28T15:18:00+02:00</updated><author><name>Robert Foss</name></author><id>tag:memcpy.io,2017-03-28:/android-enabling-mainline-graphics.html</id><summary type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+(Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
+The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
+that would normally be done with OpenGL.
+SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
+and sends them to the display.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="/images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The above graphic depicts the traditional Android graphics stack.&lt;/p&gt;
+&lt;p&gt;This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
+doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
+graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the
+HWC1 API.
+Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The  &lt;a href="https://source.android.com/devices/graphics/implement-hwc.html"&gt;HWC&lt;/a&gt; 
+(Hardware Composer) API is used by SurfaceFlinger for compositing layers to the screen.
+The HWC abstracts objects such as overlays and 2D blitters and helps offload some work
+that would normally be done with OpenGL.
+SurfaceFlinger on the other hand accepts buffers from multiple sources, composites them,
+and sends them to the display.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2017-03-28_android_graphics_stack.png"&gt;&lt;img alt="Alt text" src="/images/2017-03-28_android_graphics_stack.png" title="Android Graphics Stack"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The above graphic depicts the traditional Android graphics stack.&lt;/p&gt;
+&lt;p&gt;This is where drm_hwcomposer comes into play. Since the mainline kernel graphics stack
+doesn't offer the HWC API, drm_hwcomposer is introduced to interface with the mainline
+graphics stack through mesa and libdrm. Before this work drm_hwcomposer only offered the
+HWC1 API.
+Since Android 7.0 version 2 of the HWC API is used by SurfaceFlinger. HWC2 differs in a few
+ways from the previous version, for example the semantics of fence support were changed and
+the GPU can now be used as a fallback when compositing layers.&lt;/p&gt;
+&lt;p&gt;Up until recently the mainline kernel lacked the fence primitive offered by Android
+used in HWC1 and HWC2. But after my fellow Collaboran Gustavo Padovan's work on
+&lt;a href="http://padovan.org/blog/2016/09/mainline-explicit-fencing-part-1/"&gt;adding fence support&lt;/a&gt;
+to the mainline kernel was upstreamed in
+&lt;a href="http://padovan.org/blog/2017/02/collabora-contributions-to-linux-kernel-4-10/"&gt;v4.10&lt;/a&gt;,
+the mainline kernel now has fence support equivalent to that of Android.&lt;/p&gt;
+&lt;p&gt;The new fence support enabled work on drm_hwcomposer to add HWC2 support.
+And with it we are now able to boot Android on the db410c running the freedreno driver.
+But in theory it should work on any mainline kernel graphics stack enabled GPU.&lt;/p&gt;
+&lt;p&gt;Currently the work is being upstreamed to the
+&lt;a href="https://chromium.googlesource.com/chromiumos/drm_hwcomposer/"&gt;ChromiumOS repo&lt;/a&gt;
+which is the official upstream for drm_hwcomposer.&lt;/p&gt;
+&lt;p&gt;A number of projects have seen contributions 8in order to enable this work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;kernel - sync_file, in-fence and out-fence support added.&lt;/li&gt;
+&lt;li&gt;libdrm - fence support added.&lt;/li&gt;
+&lt;li&gt;mesa - support for passing fences added.&lt;/li&gt;
+&lt;li&gt;intel-gpu-tools - sync and fence tests added.&lt;/li&gt;
+&lt;li&gt;drm_hwcomposer - HWC2 and fence support added.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;This drm_hwcomposer work is part of a long-standing collaboration between
+Google's ChromeOS team and Collabora.&lt;/p&gt;
+&lt;p&gt;A number of people have played an important role in this work:
+Gustavo Padovan, Rob Clark, Sean Paul, Zach Reizner and Rob Herring.&lt;/p&gt;
+&lt;p&gt;This post has been a part of work undertaken by my employer &lt;a href="http://www.collabora.com"&gt;Collabora&lt;/a&gt;.&lt;/p&gt;</content><category term="aosp"></category><category term="android"></category><category term="aosp"></category><category term="graphics"></category><category term="drm"></category><category term="drm_hwcomposer"></category><category term="hwcomposer"></category><category term="hwc2"></category><category term="collabora"></category></entry></feed>

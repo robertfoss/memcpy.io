@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - speed up</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 07 Apr 2020 15:06:00 +0200</lastBuildDate><item><title>Speed up `git log --graph` 18x times</title><link>https://memcpy.io/speed-up-git-log-graph-18x-times.html</link><description>&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;lg
+git&lt;span class="w"&gt; &lt;/span&gt;lg&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;13&lt;/span&gt;.34s&lt;span class="w"&gt; &lt;/span&gt;user&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.87s&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;84&lt;/span&gt;%&lt;span class="w"&gt; &lt;/span&gt;cpu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;.845&lt;span class="w"&gt; &lt;/span&gt;total
+
+&lt;span class="c1"&gt;# True by default as of git v2.24&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;--global&lt;span class="w"&gt; &lt;/span&gt;core.commitGraph&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;--global&lt;span class="w"&gt; &lt;/span&gt;gc.writeCommitGraph&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Added in git v2.29, pre-compute file paths, so that git log commands&lt;/span&gt;
+&lt;span class="c1"&gt;# that are scoped to files also benefit from this cache.&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;commit-graph&lt;span class="w"&gt; &lt;/span&gt;write&lt;span class="w"&gt; &lt;/span&gt;--reachable&lt;span class="w"&gt; &lt;/span&gt;--changed-paths
+
+$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;lg
+git&lt;span class="w"&gt; &lt;/span&gt;lg&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.72s&lt;span class="w"&gt; &lt;/span&gt;user&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.14s&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;%&lt;span class="w"&gt; &lt;/span&gt;cpu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.154&lt;span class="w"&gt; &lt;/span&gt;total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is a speed up of ~18x, compared to the older versions.&lt;/p&gt;
+&lt;p&gt;The way this works is that the &lt;a href="https://git-scm.com/docs/commit-graph"&gt;commit-graph&lt;/a&gt;
+file stores the commit graph structure along with some extra metadata to
+speed up graph in the &lt;code&gt;.git/objects/info&lt;/code&gt; directory.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 07 Apr 2020 15:06:00 +0200</pubDate><guid isPermaLink="false">tag:memcpy.io,2020-04-07:/speed-up-git-log-graph-18x-times.html</guid><category>developer</category><category>git</category><category>lg</category><category>log</category><category>format</category><category>pretty</category><category>slow</category><category>speed up</category><category>commit</category><category>graph</category></item></channel></rss>

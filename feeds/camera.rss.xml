@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - camera</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Tue, 23 Feb 2021 14:54:00 +0100</lastBuildDate><item><title>Upstream camera support for Qualcomm platforms</title><link>https://memcpy.io/upstream-camera-support-for-qualcomm-platforms.html</link><description>&lt;p&gt;&lt;a href="https://www.linaro.org/"&gt;Linaro&lt;/a&gt; has been working together with Qualcomm to enable camera support on
+their platformssince 2017. The Open Source CAMSS driver was written to support the ISP IP-block with
+the same name that is present on Qualcomm SoCs coming from the smartphone space.&lt;/p&gt;
+&lt;p&gt;The first development board targeted by this work was the DragonBoard 410C, which was followed in 2018 by
+DragonBoard 820C support. Recently support for the Snapdragon 660 SoC was added to the driver,
+which will be part of the v5.11 Linux Kernel release. These SoCs all contain the CAMSS
+(Camera SubSystem) version of the ISP architecture.&lt;/p&gt;
+&lt;p&gt;Currently, support for the ISP found in the Snapdragon 845 SoC and the DragonBoard 845C is in
+the process of being upstreamed to the mailinglists. Having …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Tue, 23 Feb 2021 14:54:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2021-02-23:/upstream-camera-support-for-qualcomm-platforms.html</guid><category>kernel</category><category>linux</category><category>kernel</category><category>camera</category><category>v4l2</category><category>qualcomm</category><category>camss</category><category>sdm845</category><category>yocto</category><category>open embedded</category><category>db845c</category></item></channel></rss>

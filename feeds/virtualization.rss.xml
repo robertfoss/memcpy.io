@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - virtualization</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Mon, 03 Dec 2018 19:00:00 +0100</lastBuildDate><item><title>Running Docker privileged inside of LXC / LXD</title><link>https://memcpy.io/running-docker-privileged-inside-of-lxc-lxd.html</link><description>&lt;p&gt;The architecture is a bit of container matroska, but what we're trying to
+achieve is running Docker privileged inside of a LXC container on a baremetal
+host.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/2018-12-03_docker.png"&gt;&lt;img alt="Alt text" src="/images/2018-12-03_docker.png" title="Docker running inside of LXC"&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Setup container on LXC Host&lt;/h2&gt;
+&lt;p&gt;In order to give Docker in the guest privileges, the guest container
+itself has to be given privileges.&lt;/p&gt;
+&lt;p&gt;There is no simple switch for doing this in LXC unfortunately, but a few
+config options will do the trick.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;lxc launch images:ubuntu/bionic container
+
+lxc config set container security.nesting true
+lxc config set container security.privileged true
+cat &amp;lt;&amp;lt;EOT | lxc config set container raw.lxc -
+lxc.cgroup.devices.allow = a
+lxc.cap.drop =
+EOT
+
+lxc restart container
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Setup docker on container&lt;/h2&gt;
+&lt;p&gt;Just to verify that this works, start a privileged Docker container …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Mon, 03 Dec 2018 19:00:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-12-03:/running-docker-privileged-inside-of-lxc-lxd.html</guid><category>linux</category><category>linux</category><category>virtualization</category><category>lxc</category><category>lxd</category><category>docker</category><category>privileged</category></item><item><title>Virtualizing GPU Access</title><link>https://memcpy.io/virtualizing-gpu-access.html</link><description>&lt;p&gt;For the past few years a clear trend of containerization of applications
+and services has emerged. Having processes containerized is beneficial
+in a number of ways. It both improves portability and strengthens security,
+and if done properly the performance penalty can be low.&lt;/p&gt;
+&lt;p&gt;In order to further improve security containers are commonly run in
+virtualized environments. This provides some new challenges in terms
+of supporting the accelerated graphics usecase.&lt;/p&gt;
+&lt;h3&gt;OpenGL ES implementation&lt;/h3&gt;
+&lt;p&gt;Currently Collabora and Google are implementing OpenGL ES 2.0
+support. OpenGL ES 2.0 is the lowest common denominator for many mobile
+platforms and as such is a requirement for Virgil3D to be viable on
+the those platforms.&lt;/p&gt;
+&lt;p&gt;That is is the motivation for making Virgil3D work on OpenGL ES hosts.&lt;/p&gt;
+&lt;h2&gt;How …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Fri, 09 Feb 2018 11:17:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2018-02-09:/virtualizing-gpu-access.html</guid><category>graphics</category><category>linux</category><category>gpu</category><category>virtualization</category><category>virgl</category><category>virglrenderer</category><category>opengl</category><category>vulkan</category><category>gles</category><category>collabora</category></item></channel></rss>

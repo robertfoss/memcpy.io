@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>memcpy.io - mali</title><link>https://memcpy.io/</link><description></description><lastBuildDate>Wed, 13 Mar 2019 16:25:00 +0100</lastBuildDate><item><title>An Overview of the Panfrost driver</title><link>https://memcpy.io/an-overview-of-the-panfrost-driver.html</link><description>&lt;p&gt;&lt;img alt="Arm driver timeline" src="/images/2019-03-13_arm_driver_timeline.png"&gt;&lt;/p&gt;
+&lt;p&gt;The process of reverse engineering Arm GPUs has been going on for a long time,
+starting with &lt;a href="https://github.com/libv"&gt;Luc Verhaegens&lt;/a&gt; work on the low-end Mali 2/3/400 series of GPUs based
+on the Arm Utgard family of GPUs.&lt;br&gt;
+This driver has recently seen a lot new attention and is itself progressing quickly,
+which means it will likely be accepted into the kernel soon.&lt;br&gt;
+A piece of trivia is that this GPU architecture was what Arm received when they
+purchased the Norwegian GPU IP vendor Falanx Microsystems.&lt;/p&gt;
+&lt;p&gt;The Mali T and G-series of GPUs are based on the Midgard and Bifrost architectures
+respectively, both of which are quite different from the 2/3/400 series.
+However the T and G-series are somewhat similar at least when …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Robert Foss</dc:creator><pubDate>Wed, 13 Mar 2019 16:25:00 +0100</pubDate><guid isPermaLink="false">tag:memcpy.io,2019-03-13:/an-overview-of-the-panfrost-driver.html</guid><category>graphics</category><category>linux</category><category>open source</category><category>gpu</category><category>driver</category><category>arm</category><category>mali</category><category>panfrost</category></item></channel></rss>
